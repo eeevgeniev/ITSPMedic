@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="HOSP_Practice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ZdrRajon" type="xs:unsignedByte" />
+        <xs:element name="PracticeCode" type="xs:unsignedInt" />
+        <xs:element name="PracticeName" type="xs:string" />
+        <xs:element name="DateFrom" type="xs:date" />
+        <xs:element name="DateTo" type="xs:date" />
+        <xs:element name="fileType" type="xs:string" />
+        <xs:element maxOccurs="unbounded" name="In_Clin_Proc">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Patient">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="EGN" type="xs:string" />
+                    <xs:element name="dateBirth" type="xs:date" />
+                    <xs:element name="Sex" type="xs:unsignedByte" />
+                    <xs:element name="Given" />
+                    <xs:element name="Sur" />
+                    <xs:element name="Family" />
+                    <xs:element name="Address" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="patientBranch" type="xs:unsignedByte" />
+              <xs:element name="patientHRegion" type="xs:unsignedByte" />
+              <xs:element name="Sender">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ZdrRajon" type="xs:unsignedByte" />
+                    <xs:element name="PracticeCode" type="xs:unsignedInt" />
+                    <xs:element name="UIN" type="xs:unsignedInt" />
+                    <xs:element name="PracticeName" type="xs:string" />
+                    <xs:element name="DoctorName" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="SenderType" type="xs:unsignedByte" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="CPr_Send" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="APr_Send" type="xs:decimal" />
+              <xs:element name="TypeProc_Send" type="xs:unsignedByte" />
+              <xs:element name="Date_Send" type="xs:date" />
+              <xs:element minOccurs="0" name="CPr_Priem" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="APr_Priem" type="xs:decimal" />
+              <xs:element name="TypeProc_Priem" type="xs:unsignedByte" />
+              <xs:element name="Proc_Refuse" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="ceasedClinicalPath">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="code" type="xs:unsignedByte" />
+                    <xs:element name="IZMedicalWard" type="xs:unsignedShort" />
+                    <xs:element name="IZYearMedicalWard" type="xs:unsignedShort" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IZNum_Child" type="xs:unsignedShort" />
+              <xs:element name="IZYear_Child" type="xs:unsignedShort" />
+              <xs:element minOccurs="0" name="Date_FirstVisit" type="xs:date" />
+              <xs:element minOccurs="0" name="Date_PlanPriem" type="xs:date" />
+              <xs:element name="UIN_PriemDoc" type="xs:unsignedInt" />
+              <xs:element name="Name_PriemDoc" type="xs:string" />
+              <xs:element name="MainDiag1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="imeMD" type="xs:string" />
+                    <xs:element name="MKB" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="MainDiag2">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="imeMD" type="xs:string" />
+                    <xs:element name="MKB" type="xs:string" />
+                    <xs:element minOccurs="0" name="imeLinkD" type="xs:string" />
+                    <xs:element minOccurs="0" name="MKBLinkD" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pacientStatus" type="xs:unsignedByte" />
+              <xs:element name="NZOKPay" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="Napr_Proc">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded">
+                <xs:element name="Patient">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="Notes" />
+                      <xs:element minOccurs="0" name="EGN" type="xs:string" />
+                      <xs:element name="dateBirth" type="xs:date" />
+                      <xs:element name="Sex" type="xs:unsignedByte" />
+                      <xs:element name="Given" />
+                      <xs:element name="Sur" />
+                      <xs:element name="Family" />
+                      <xs:element minOccurs="0" name="personType" type="xs:unsignedByte" />
+                      <xs:element name="Address" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="patientBranch" type="xs:unsignedByte" />
+                <xs:element name="patientHRegion" type="xs:unsignedByte" />
+                <xs:element name="Sender">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="ZdrRajon" type="xs:unsignedByte" />
+                      <xs:element name="PracticeCode" type="xs:unsignedInt" />
+                      <xs:element name="UIN" type="xs:unsignedInt" />
+                      <xs:element name="PracticeName" type="xs:string" />
+                      <xs:element name="DoctorName" type="xs:string" />
+                    </xs:sequence>
+                    <xs:attribute name="SenderType" type="xs:unsignedByte" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="CPr_Send" type="xs:unsignedByte" />
+                <xs:element name="APr_Send" type="xs:decimal" />
+                <xs:element name="TypeProc_Send" type="xs:unsignedByte" />
+                <xs:element name="Date_Send" type="xs:date" />
+                <xs:element name="CPr_Priem" type="xs:unsignedByte" />
+                <xs:element name="APr_Priem" type="xs:decimal" />
+                <xs:element name="MedicalWard" type="xs:decimal" />
+                <xs:element name="TypeProc_Priem" type="xs:unsignedByte" />
+                <xs:element name="Proc_Refuse" type="xs:unsignedByte" />
+                <xs:element name="ceasedProc">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="code" type="xs:unsignedByte" />
+                      <xs:element name="IZMedicalWard" type="xs:unsignedShort" />
+                      <xs:element name="IZYearMedicalWard" type="xs:unsignedShort" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="ceasedClinicalPath">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="code" type="xs:decimal" />
+                      <xs:element name="IZMedicalWard" type="xs:unsignedShort" />
+                      <xs:element name="IZYearMedicalWard" type="xs:unsignedShort" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="IZNum_Child" type="xs:unsignedShort" />
+                <xs:element name="IZYear_Child" type="xs:unsignedShort" />
+                <xs:element name="Date_FirstVisit" type="xs:date" />
+                <xs:element name="Date_PlanPriem" type="xs:date" />
+                <xs:element name="UIN_PriemDoc" type="xs:unsignedInt" />
+                <xs:element name="Name_PriemDoc" type="xs:string" />
+                <xs:element name="MainDiag1">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="imeMD" type="xs:string" />
+                      <xs:element name="MKB" type="xs:string" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Date_Proc_Begin" type="xs:dateTime" />
+                <xs:element name="Date_Proc_End" type="xs:dateTime" />
+                <xs:element maxOccurs="unbounded" name="Done_New_Proc">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Code_Proc" type="xs:decimal" />
+                      <xs:element name="Date_Proc" type="xs:date" />
+                      <xs:element minOccurs="0" name="ACHIcode" type="xs:string" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="MainDiag2">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="imeMD" type="xs:string" />
+                      <xs:element name="MKB" type="xs:string" />
+                      <xs:element minOccurs="0" name="imeLinkD" type="xs:string" />
+                      <xs:element minOccurs="0" name="MKBLinkD" type="xs:string" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Used_Drug">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Drug_Date" type="xs:date" />
+                      <xs:element name="Drug_Code" type="xs:string" />
+                      <xs:element name="Drug_Name" type="xs:string" />
+                      <xs:element name="Drug_Quantity" type="xs:decimal" />
+                      <xs:element name="Drug_Cost" type="xs:decimal" />
+                      <xs:element name="ICD_drug" type="xs:string" />
+                      <xs:element minOccurs="0" name="UIN_prescr" type="xs:unsignedInt" />
+                      <xs:element minOccurs="0" name="No_prescr" type="xs:unsignedShort" />
+                      <xs:element name="date_prescr" type="xs:date" />
+                      <xs:element name="PracticeCode_Protocol" type="xs:unsignedInt" />
+                      <xs:element name="No_Protocol" type="xs:unsignedInt" />
+                      <xs:element name="date_Protocol" type="xs:date" />
+                      <xs:element name="type_Protocol" type="xs:unsignedByte" />
+                      <xs:element name="Ver_Code">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="Batch_number" type="xs:unsignedInt" />
+                            <xs:element name="quantity_pack" type="xs:decimal" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="Procedure">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="imeP" type="xs:string" />
+                      <xs:element name="kodP" type="xs:decimal" />
+                      <xs:element name="Date_Proc" type="xs:date" />
+                      <xs:element minOccurs="0" name="ACHIcode" type="xs:string" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Done_Proc">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Date_Proc" type="xs:date" />
+                      <xs:element name="Time_Begin" type="xs:time" />
+                      <xs:element name="Time_End" type="xs:time" />
+                      <xs:element name="Doctor_Name" type="xs:string" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="All_Done_Proc" type="xs:unsignedByte" />
+                <xs:element name="All_Drug_Cost" type="xs:decimal" />
+                <xs:element name="pacientStatus" type="xs:unsignedByte" />
+                <xs:element name="outUin" type="xs:unsignedInt" />
+                <xs:element name="Sign" type="xs:unsignedByte" />
+                <xs:element name="NZOKPay" type="xs:unsignedByte" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="Disp_Observ">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Patient">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="EGN" type="xs:string" />
+                    <xs:element name="dateBirth" type="xs:date" />
+                    <xs:element name="Sex" type="xs:unsignedByte" />
+                    <xs:element name="Given" />
+                    <xs:element name="Sur" />
+                    <xs:element name="Family" />
+                    <xs:element name="Address" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="patientBranch" type="xs:unsignedByte" />
+              <xs:element name="patientHRegion" type="xs:unsignedByte" />
+              <xs:element name="Doctor">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="UIN_Doc" type="xs:unsignedInt" />
+                    <xs:element name="Name_Doc" type="xs:string" />
+                    <xs:element name="CodeSpec" type="xs:unsignedByte" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Disp_Num" type="xs:unsignedShort" />
+              <xs:element name="Disp_Date" type="xs:date" />
+              <xs:element name="Disp_Time" type="xs:time" />
+              <xs:element name="APr_Code" type="xs:unsignedByte" />
+              <xs:element name="Diag_Date" type="xs:date" />
+              <xs:element name="Dispanser_Date" type="xs:date" />
+              <xs:element name="Disp_Visit" type="xs:unsignedByte" />
+              <xs:element maxOccurs="unbounded" name="MDI">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="imeMDI" type="xs:string" />
+                    <xs:element name="kodMDI" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MainDiag1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="imeMD" type="xs:string" />
+                    <xs:element name="MKB" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MainDiag2">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="imeMD" type="xs:string" />
+                    <xs:element name="MKB" type="xs:string" />
+                    <xs:element minOccurs="0" name="imeLinkD" type="xs:string" />
+                    <xs:element minOccurs="0" name="MKBLinkD" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Anamnesa" type="xs:string" />
+              <xs:element name="HState" type="xs:string" />
+              <xs:element name="Therapy" type="xs:string" />
+              <xs:element name="Sign" type="xs:unsignedByte" />
+              <xs:element name="NZOKPay" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="APr_Commission">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Patient">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="EGN" type="xs:string" />
+                    <xs:element name="dateBirth" type="xs:date" />
+                    <xs:element name="Sex" type="xs:unsignedByte" />
+                    <xs:element name="Given" />
+                    <xs:element name="Sur" />
+                    <xs:element name="Family" />
+                    <xs:element name="Address" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="patientBranch" type="xs:unsignedByte" />
+              <xs:element name="patientHRegion" type="xs:unsignedByte" />
+              <xs:element name="Sender">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ZdrRajon" type="xs:unsignedByte" />
+                    <xs:element name="PracticeCode" type="xs:unsignedInt" />
+                    <xs:element name="UIN" type="xs:unsignedInt" />
+                    <xs:element name="PracticeName" type="xs:string" />
+                    <xs:element name="DoctorName" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="SenderType" type="xs:unsignedByte" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="APr_Send" type="xs:unsignedByte" />
+              <xs:element name="Date_Send" type="xs:date" />
+              <xs:element name="APr_Priem" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Spec_Commission" type="xs:unsignedByte" />
+              <xs:element name="No_Decision" type="xs:unsignedShort" />
+              <xs:element name="date_Decision" type="xs:date" />
+              <xs:element name="Chairman">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Spec" type="xs:unsignedByte" />
+                    <xs:element name="UIN" type="xs:unsignedInt" />
+                    <xs:element name="DoctorName" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" name="Members">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Spec" type="xs:unsignedByte" />
+                    <xs:element name="UIN" type="xs:unsignedInt" />
+                    <xs:element name="DoctorName" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MainDiag">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="imeMD" type="xs:string" />
+                    <xs:element name="MKB" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="AddDiag">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="imeMD" type="xs:string" />
+                    <xs:element name="MKB" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="APr38">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="height" type="xs:unsignedByte" />
+                    <xs:element minOccurs="0" name="weight" type="xs:unsignedByte" />
+                    <xs:element name="history" type="xs:string" />
+                    <xs:element name="fairCondition" type="xs:string" />
+                    <xs:element name="therapy" type="xs:string" />
+                    <xs:element name="Decision">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Choise">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="No" type="xs:unsignedByte" />
+                                <xs:element name="Checked" type="xs:unsignedByte" />
+                                <xs:element name="Text" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="APr05">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="date_Diag" type="xs:date" />
+                    <xs:element name="Histology">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="NameHS" type="xs:string" />
+                          <xs:element name="CodeHS" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Staging" type="xs:unsignedByte" />
+                    <xs:element name="Imuno" type="xs:string" />
+                    <xs:element name="Genetic" type="xs:string" />
+                    <xs:element minOccurs="0" name="Part_Hematology">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" name="Stage_Hemo" type="xs:string" />
+                          <xs:element name="Ongoing_Therapy" type="xs:unsignedByte" />
+                          <xs:element name="Evaluation">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Choise">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="No" type="xs:unsignedByte" />
+                                      <xs:element name="Checked" type="xs:unsignedByte" />
+                                      <xs:element name="Text" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Decision">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="unbounded" name="Choise">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="No" type="xs:unsignedByte" />
+                                      <xs:element name="Checked" type="xs:unsignedByte" />
+                                      <xs:element name="Text" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Part_Chemotherapy">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ECOG" type="xs:unsignedByte" />
+                          <xs:element name="TNM" type="xs:string" />
+                          <xs:element name="Evaluation">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Choise">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="No" type="xs:unsignedByte" />
+                                      <xs:element name="Checked" type="xs:unsignedByte" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Decision">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="unbounded" name="Choise">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="No" type="xs:unsignedByte" />
+                                      <xs:element name="Checked" type="xs:unsignedByte" />
+                                      <xs:element name="Text" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Sign" type="xs:unsignedByte" />
+              <xs:element name="NZOKPay" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="Protocol_DrugTherapy">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Patient">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="EGN" type="xs:string" />
+                    <xs:element name="dateBirth" type="xs:date" />
+                    <xs:element name="Sex" type="xs:unsignedByte" />
+                    <xs:element name="Given" />
+                    <xs:element name="Sur" />
+                    <xs:element name="Family" />
+                    <xs:element name="Address" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="patientBranch" type="xs:unsignedByte" />
+              <xs:element name="patientHRegion" type="xs:unsignedByte" />
+              <xs:element name="PracticeZdrRajon" type="xs:unsignedByte" />
+              <xs:element name="PracticeCode" type="xs:unsignedInt" />
+              <xs:element name="PracticeName" type="xs:string" />
+              <xs:element name="No_Decision" type="xs:unsignedShort" />
+              <xs:element name="date_Decision" type="xs:date" />
+              <xs:element name="PracticeCode_Protocol" type="xs:unsignedInt" />
+              <xs:element name="No_Protocol" type="xs:unsignedShort" />
+              <xs:element name="date_Protocol" type="xs:date" />
+              <xs:element name="Diag">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="imeMD" type="xs:string" />
+                    <xs:element name="MKB" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="height" type="xs:unsignedByte" />
+              <xs:element name="weight" type="xs:unsignedByte" />
+              <xs:element name="BSA" type="xs:decimal" />
+              <xs:element name="Line_Therapy" type="xs:unsignedByte" />
+              <xs:element name="Scheme" type="xs:string" />
+              <xs:element name="Cycle_Count" type="xs:unsignedByte" />
+              <xs:element name="Part_Hematology">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Pred_Marker">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Choise">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="No" type="xs:unsignedByte" />
+                                <xs:element name="Checked" type="xs:unsignedByte" />
+                                <xs:element name="Text" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Prot_Drug">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Type_Therapy" type="xs:unsignedByte" />
+                    <xs:element name="ATC_Code" type="xs:string" />
+                    <xs:element name="ATC_Name" type="xs:string" />
+                    <xs:element name="Days" type="xs:string" />
+                    <xs:element name="Application_Way" type="xs:string" />
+                    <xs:element name="Standart_Dose" type="xs:decimal" />
+                    <xs:element name="Individual_Dose" type="xs:decimal" />
+                    <xs:element name="Cycle_Dose" type="xs:decimal" />
+                    <xs:element name="All_Dose" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Chairman">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Spec" type="xs:unsignedByte" />
+                    <xs:element name="UIN" type="xs:unsignedInt" />
+                    <xs:element name="DoctorName" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" name="Members">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Spec" type="xs:unsignedByte" />
+                    <xs:element name="UIN" type="xs:unsignedInt" />
+                    <xs:element name="DoctorName" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Sign" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PatientTransfers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Transfer">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="IZYear" type="xs:unsignedShort" />
+                    <xs:element name="IZNo" type="xs:unsignedShort" />
+                    <xs:element name="MainDiag1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="MKB" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="clinicalProcedure" type="xs:unsignedByte" />
+                    <xs:element minOccurs="0" name="clinicalPath" type="xs:unsignedByte" />
+                    <xs:element name="dischargeWard" type="xs:decimal" />
+                    <xs:element name="transferWard" type="xs:decimal" />
+                    <xs:element name="transferDateTime" type="xs:dateTime" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

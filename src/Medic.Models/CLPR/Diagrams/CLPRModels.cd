@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.Models.CLPR.CeasedClinicalPath">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAgAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CLPR\CeasedClinicalPath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Models.CLPR.DoneNewProcedure">
+    <Position X="0.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAEAAAAAAAAAAAAAIAAAAAAIAAAAAAABAAAAQA=</HashCode>
+      <FileName>CLPR\DoneNewProcedure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Models.CLPR.HospitalPractice">
+    <Position X="0.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgACAAAACAEBAAAgAAAAAAAAIFgAEAAAAAAECAA=</HashCode>
+      <FileName>CLPR\HospitalPractice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Models.CLPR.InClinicProcedure">
+    <Position X="3" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BQACAAgAABAEAEAQAAAAAAACAAgAIAICCAQAABgMCIE=</HashCode>
+      <FileName>CLPR\InClinicProcedure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Models.CLPR.PathProcedure">
+    <Position X="6" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BQgBAAhCABAEAFAAAAAAAAACAAgEIEICCAQAABgMCAE=</HashCode>
+      <FileName>CLPR\PathProcedure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Models.CLPR.Sender">
+    <Position X="9" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAEAAAAgAAAAAAAAQAAAEAAAAAAAAgA=</HashCode>
+      <FileName>CLPR\Sender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

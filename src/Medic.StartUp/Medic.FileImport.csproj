@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>bda199da-e262-4669-b803-8624c343f920</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Medic.Contexts\Medic.Contexts.csproj" />
+    <ProjectReference Include="..\Medic.Entities\Medic.Entities.csproj" />
+    <ProjectReference Include="..\Medic.Import\Medic.Import.csproj" />
+    <ProjectReference Include="..\Medic.Mappers\Medic.Mappers.csproj" />
+    <ProjectReference Include="..\Medic.Models\Medic.Models.csproj" />
+  </ItemGroup>
+
+</Project>
