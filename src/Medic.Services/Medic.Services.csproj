@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Medic.Contexts\Medic.Contexts.csproj" />
+    <ProjectReference Include="..\Medic.Entities\Medic.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

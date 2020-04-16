@@ -22,178 +22,206 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.ChemotherapyPart">
-    <Position X="0.5" Y="6.25" Width="2" />
+    <Position X="0.5" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACgAAAAAQAAAABAIAgAgBASAgAYQAAAAAAACAAAAA=</HashCode>
       <FileName>CP\ChemotherapyPart.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Choise">
-    <Position X="3" Y="0.5" Width="2" />
+    <Position X="0.5" Y="11" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAEAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>CP\Choise.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.CPFile">
-    <Position X="3" Y="2.5" Width="2" />
+    <Position X="0.5" Y="13" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAQAgAAAAAAAAAAAAAgAAAggAAAAFgAAAAAAAAECCA=</HashCode>
+      <HashCode>AAAQAgBAIAAAAAAAAAAgAAAggAAAAFgAAAAAAAAECCA=</HashCode>
       <FileName>CP\CPFile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Dead">
-    <Position X="3" Y="6.25" Width="2" />
+    <Position X="3" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>CP\Dead.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Diag">
-    <Position X="3" Y="7.75" Width="2" />
+    <Position X="3" Y="2.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAEAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAIAAAAAEAAACAAAAA=</HashCode>
       <FileName>CP\Diag.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Diagnose">
-    <Position X="3" Y="9.25" Width="2" />
+    <Position X="3" Y="4.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAA=</HashCode>
       <FileName>CP\Diagnose.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.DrugProtocol">
-    <Position X="5.5" Y="0.5" Width="2" />
+    <Position X="3" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAIAAAgAAIAAAAAAAAAgAAAAAIAEAAAAQAAAACABAAA=</HashCode>
       <FileName>CP\DrugProtocol.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Epicrisis">
-    <Position X="5.5" Y="3.5" Width="2" />
+    <Position X="3" Y="9.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAAAAIAAIBAEAACAQACAgAAgAECAAACAQA=</HashCode>
+      <HashCode>AAAAAAgAAAAAACIAAIBAEAACAQACAgEAgAECAAAiAQA=</HashCode>
       <FileName>CP\Epicrisis.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Evaluation">
-    <Position X="5.5" Y="7.75" Width="2" />
+    <Position X="3" Y="14.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CP\Evaluation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.GenMarker">
-    <Position X="5.5" Y="9.25" Width="2" />
+    <Position X="5.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAABAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CP\GenMarker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.HematologyPart">
-    <Position X="8" Y="0.5" Width="2.5" />
+    <Position X="5.5" Y="2.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CP\HematologyPart.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Medic.Models.CP.HistologicalResult">
+    <Position X="5.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAABAAgAAAAAAAAAAABAAAAAAEAAAA=</HashCode>
+      <FileName>CP\HistologicalResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Medic.Models.CP.Histology">
-    <Position X="8" Y="2" Width="2.5" />
+    <Position X="5.5" Y="6.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AABAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CP\Histology.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Implant">
-    <Position X="8" Y="3.75" Width="2.5" />
+    <Position X="5.5" Y="8.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAgAAAAQAACUAAAQBAAgAACAAAEAIBADACAAgAAAJIA=</HashCode>
       <FileName>CP\Implant.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.In">
-    <Position X="11" Y="0.5" Width="2.25" />
+    <Position X="5.5" Y="14.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>RAAAEQEQAMIUASAABAAgAgCAAAAIIAAIAAAAABRKCJA=</HashCode>
+      <HashCode>RAAAEQEQAMI0AyAABAAgAgCIAAAJIAAIIIABABRKCJA=</HashCode>
       <FileName>CP\In.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Member">
-    <Position X="11" Y="7.75" Width="2.25" />
+    <Position X="8" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAQAAAAAAAAAACAAA=</HashCode>
       <FileName>CP\Member.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Out">
-    <Position X="13.5" Y="0.5" Width="2.5" />
+    <Position X="8" Y="2.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>RBAAEQESIcIUgaAQBBCgAgiAwAAIIAAIAAIEDBRKCJE=</HashCode>
+      <HashCode>RBAgEQESJcIUgaAQBBTgAgiIwAAJMAAIMIIFDBRKCJE=</HashCode>
       <FileName>CP\Out.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.OutDiagnose">
-    <Position X="16.25" Y="0.5" Width="2" />
+    <Position X="8" Y="16.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAA=</HashCode>
       <FileName>CP\OutDiagnose.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.OutMainDiagnose">
-    <Position X="16.25" Y="2" Width="2" />
+    <Position X="8" Y="18.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAA=</HashCode>
       <FileName>CP\OutMainDiagnose.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Patient">
-    <Position X="16.25" Y="3.5" Width="2" />
+    <Position X="8" Y="20.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAGgAAAAIBAAAAAAAAAQCAAAAIAACAAAAAAAAAAg=</HashCode>
+      <HashCode>BCAgAGgAAAAIBIAAAAAgAAQCAAAAIBACAIAQAgAACAg=</HashCode>
       <FileName>CP\Patient.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Medic.Models.CP.PatientTransfer">
+    <Position X="10.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAgBGAAAACAAAAAAAAIAEAQAAAAAAAAABAAAAAAIA=</HashCode>
+      <FileName>CP\PatientTransfer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Models.CP.PlannedProcedure">
+    <Position X="10.75" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAAQEQAIIUAiAAAAAgQgAAAIAIIAAIAAACABAKCBA=</HashCode>
+      <FileName>CP\PlannedProcedure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Medic.Models.CP.Practice">
-    <Position X="16.25" Y="7" Width="2" />
+    <Position X="10.75" Y="10.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAEAAAAQAAAAAAAgCAAAAAAAAAAA=</HashCode>
       <FileName>CP\Practice.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.PredMarker">
-    <Position X="16.25" Y="9.25" Width="2" />
+    <Position X="10.75" Y="13" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CP\PredMarker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Procedure">
-    <Position X="18.75" Y="0.5" Width="2" />
+    <Position X="10.75" Y="14.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAACAAAAABAAgAAAAAAAAIAABAAAIAAAAAAA=</HashCode>
+      <HashCode>AAIAAAIAIMCgAIASBACgAAAAgAAAIAABAAAMBAAIAAA=</HashCode>
       <FileName>CP\Procedure.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.ProtocolDrugTherapy">
-    <Position X="18.75" Y="3.25" Width="2" />
+    <Position X="10.75" Y="20.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>DAAEAACATAQECBAAAAABACCEACAAIAAAEBAECQQAKAA=</HashCode>
       <FileName>CP\ProtocolDrugTherapy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.SendDiagnose">
-    <Position X="21.25" Y="0.5" Width="2" />
+    <Position X="14" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAA=</HashCode>
       <FileName>CP\SendDiagnose.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Medic.Models.CP.Sender">
-    <Position X="21.25" Y="2" Width="2" />
+    <Position X="14" Y="2.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAEAAAAAAAAAAgAAAgAAAAAAAAAAAAAAACAAA=</HashCode>
+      <HashCode>AAAAAAAAEAAAAAAAAAAgAACgAAAAAAAAAAAAAAACAAA=</HashCode>
       <FileName>CP\Sender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Models.CP.UsedDrug">
+    <Position X="14" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAJACACAAABAAhABSAABAAAAABAAAggAAISAA=</HashCode>
+      <FileName>CP\UsedDrug.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -4,6 +4,7 @@ using Medic.Contexts.Seeders;
 using Medic.Entities;
 using Medic.Import;
 using Medic.Import.Contracts;
+using Medic.Infrastructure;
 using Medic.Mappers;
 using Medic.Mappers.Contracts;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,7 @@ namespace Medic.FileImport
                 IConfigurationRoot configuration = configurationBuilder.Build();
 
                 DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
-                builder.UseSqlServer(configuration["connectionString"]);
+                builder.UseSqlServer(configuration[MedicConstants.ConnectionString]);
                 builder.EnableSensitiveDataLogging();
 
                 using (MedicContext context = new MedicContext(builder.Options))

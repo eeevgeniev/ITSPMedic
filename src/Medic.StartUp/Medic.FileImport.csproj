@@ -15,6 +15,7 @@
     <ProjectReference Include="..\Medic.Contexts\Medic.Contexts.csproj" />
     <ProjectReference Include="..\Medic.Entities\Medic.Entities.csproj" />
     <ProjectReference Include="..\Medic.Import\Medic.Import.csproj" />
+    <ProjectReference Include="..\Medic.Infrastructure\Medic.Infrastructure.csproj" />
     <ProjectReference Include="..\Medic.Mappers\Medic.Mappers.csproj" />
     <ProjectReference Include="..\Medic.Models\Medic.Models.csproj" />
   </ItemGroup>
