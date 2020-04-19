@@ -1,0 +1,39 @@
+﻿@model HomePageDiagnoseModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<article>
+    <header>
+        <h2>Summary</h2>
+    </header>
+    <section>
+        <header>
+            <h4>Diagnoses MKB summary</h4>
+        </header>
+        <div>
+            <div class="row">
+                <div class="col-sm-2 font-weight-bold">MKB code</div>
+                <div class="col-sm-8 font-weight-bold">MKB name</div>
+                <div class="col-sm-2 font-weight-bold">Count</div>
+            </div>
+            @if (Model.DiagnosesMKBSummaryViewModels != default && Model.DiagnosesMKBSummaryViewModels.Count > 0)
+            {
+                foreach (var diagnose in Model.DiagnosesMKBSummaryViewModels)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-2 font-weight-bold">@diagnose.Code</div>
+                        <div class="col-sm-8 font-weight-bold">@diagnose.Name</div>
+                        <div class="col-sm-2 font-weight-bold">@diagnose.Count</div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>No results.</div>
+            }
+        </div>
+    </section>
+</article>

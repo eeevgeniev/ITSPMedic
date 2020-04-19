@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.Ins;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -30,6 +31,10 @@ namespace Medic.Entities
                 .ForMember(i => i.SenderId, config => config.Ignore())
                 .ForMember(i => i.SendDiagnoseId, config => config.Ignore())
                 .ForMember(i => i.Id, config => config.Ignore());
+
+            expression.CreateMap<In, PatientInPreviewViewModel>()
+                .ForMember(pi => pi.MKBCode, config => config.MapFrom(i => i.SendDiagnose.Primary.Code ?? string.Empty))
+                .ForMember(pi => pi.MKBName, config => config.MapFrom(i => i.SendDiagnose.Primary.Name ?? string.Empty));
         }
     }
 }

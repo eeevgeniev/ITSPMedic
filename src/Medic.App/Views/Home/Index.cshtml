@@ -1,8 +1,293 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model HomePageModel
+
+@{
+    ViewData["Title"] = Model.Title;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<article>
+    <header>
+        <h2>Information</h2>
+        <h4>Totla patients: @Model.PatientCount</h4>
+    </header>
+    <section>
+        <section>
+            <header>
+                <h4>CP files summary</h4>
+            </header>
+            <div>
+                <canvas id="cp-planned-procedures">
+                </canvas>
+            </div>
+            <div>
+                <canvas id="cp-ins">
+                </canvas>
+            </div>
+            <div>
+                <canvas id="cp-outs">
+                </canvas>
+            </div>
+            <div>
+                <canvas id="cp-protocol-drug-therapies">
+                </canvas>
+            </div>
+            <div>
+                <canvas id="cp-patient-transfers">
+                </canvas>
+            </div>
+        </section>
+        <section>
+            <header>
+                <h4>Hospital practices summary</h4>
+            </header>
+            <div>
+                <canvas id="hospital-practice-clinic-procedures">
+                </canvas>
+            </div>
+            <div>
+                <canvas id="hospital-practice-path-procedures">
+                </canvas>
+            </div>
+            <div>
+                <canvas id="hospital-practice-disp-observations">
+                </canvas>
+            </div>
+            <div>
+                <canvas id="hospital-practice-commision-arps">
+                </canvas>
+            </div>
+            <div>
+                <canvas id="hospital-practice-drug-therapiest">
+                </canvas>
+            </div>
+            <div>
+                <canvas id="hospital-practice-patient-transfers">
+                </canvas>
+            </div>
+        </section>
+    </section>
+</article>
+
+@section Scripts {
+    <environment names="Development">
+        <script src="~/lib/chartjs/Chart.js"></script>
+    </environment>
+    <environment names="Production">
+        <script src="~/lib/chartjs/Chart.min.js"></script>
+    </environment>
+    <script src="~/js/chart.js"></script>
+    <script>
+        window.addEventListener('load', (e) => {
+            const labels = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.DateFrom.ToString("dd-MM-yyyy"))));
+
+            const plannedProcedures = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.PlannedProceduresCount)));
+            const ins = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.InsCount)));
+            const outs = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.OutsCount)));
+            const protocolDrugTherapies = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.ProtocolDrugTherapiesCount)));
+            const patientTransfers = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.PatientTransfersCount)));
+
+            const inClinicProcedures = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.InClinicProceduresCount)));
+            const pathProcedures = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.PathProceduresCount)));
+            const dispObservations = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.DispObservationsCount)));
+            const commissionAprs = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.CommissionAprsCount)));
+            const protocolDrugHPTherapies = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.ProtocolDrugTherapiesCount)));
+            const patientHPTransfers = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.PatientTransfersCount)));
+
+            const ppData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Planned procedures',
+                        data: plannedProcedures,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const insData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Ins',
+                        data: ins,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const outsData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Outs',
+                        data: outs,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const protocolDrugTherapiesData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Protocol drug therapies',
+                        data: protocolDrugTherapies,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const patientTransfersData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Patient Transfers',
+                        data: patientTransfers,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const inClinicProceduresData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'In clinic procedures',
+                        data: inClinicProcedures,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const pathProceduresData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Path procedure',
+                        data: pathProcedures,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const dispObservationsData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Disp observations',
+                        data: dispObservations,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const commissionAprsData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Commission aprs',
+                        data: commissionAprs,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const protocolDrugTherapiesHPData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Protocol drug pherapies',
+                        data: protocolDrugHPTherapies,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const patientTransfersHPData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Patient transfers',
+                        data: patientHPTransfers,
+                        backgroundColor: "blue",
+                        borderColor: "lightblue",
+                        fill: false,
+                        lineTension: 0,
+                        radius: 5
+                    }
+                ]
+            };
+
+            const options = {
+                responsive: true,
+                title: {
+                    display: true,
+                    position: "top",
+                    text: "Line Graph",
+                    fontSize: 18,
+                    fontColor: "#111"
+                },
+                legend: {
+                    display: true,
+                    position: "bottom",
+                    labels: {
+                        fontColor: "#333",
+                        fontSize: 16
+                    }
+                }
+            };
+
+            LineChart(document.querySelector('#cp-planned-procedures'), ppData, options);
+            LineChart(document.querySelector('#cp-ins'), insData, options);
+            LineChart(document.querySelector('#cp-outs'), outsData, options);
+            LineChart(document.querySelector('#cp-protocol-drug-therapies'), protocolDrugTherapiesData, options);
+            LineChart(document.querySelector('#cp-patient-transfers'), patientTransfersData, options);
+
+            LineChart(document.querySelector('#hospital-practice-clinic-procedures'), inClinicProceduresData, options);
+            LineChart(document.querySelector('#hospital-practice-path-procedures'), pathProceduresData, options);
+            LineChart(document.querySelector('#hospital-practice-disp-observations'), dispObservationsData, options);
+            LineChart(document.querySelector('#hospital-practice-commision-arps'), commissionAprsData, options);
+            LineChart(document.querySelector('#hospital-practice-drug-therapiest'), protocolDrugTherapiesHPData, options);
+            LineChart(document.querySelector('#hospital-practice-patient-transfers'), patientTransfersHPData, options);
+        })
+    </script>
+}

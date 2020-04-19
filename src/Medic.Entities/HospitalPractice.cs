@@ -30,8 +30,6 @@ namespace Medic.Entities
 
         public FileType FileType { get; set; }
 
-        //public string FileType { get; set; }
-
         public ICollection<InClinicProcedure> InClinicProcedures { get; set; } = new HashSet<InClinicProcedure>();
 
         public ICollection<PathProcedure> PathProcedures { get; set; } = new HashSet<PathProcedure>();

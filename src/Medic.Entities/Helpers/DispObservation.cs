@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.DispObservations;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -33,6 +34,10 @@ namespace Medic.Entities
                 .ForMember(disp => disp.HospitalPracticeId, config => config.Ignore())
                 .ForMember(disp => disp.HospitalPractice, config => config.Ignore())
                 .ForMember(disp => disp.Id, config => config.Ignore());
+
+            expression.CreateMap<DispObservation, PatientDispObservationPreviewViewModel>()
+                .ForMember(pdisp => pdisp.MKBCode, config => config.MapFrom(disp => disp.FirstMainDiag.MKB.Code))
+                .ForMember(pdisp => pdisp.MKBName, config => config.MapFrom(disp => disp.FirstMainDiag.MKB.Name));
         }
     }
 }

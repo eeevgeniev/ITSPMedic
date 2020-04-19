@@ -1,6 +1,10 @@
-﻿using Medic.Contexts;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Medic.AppModels.Patients;
+using Medic.Contexts;
 using Medic.Entities;
 using Medic.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,41 +15,100 @@ namespace Medic.Services
     public class PatientService : IPatientService
     {
         private readonly MedicContext MedicContext;
+        private readonly MapperConfiguration Configuration;
 
-        public PatientService(MedicContext medicContext)
+        public PatientService(MedicContext medicContext, MapperConfiguration configuration)
         {
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
+            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
-        public async Task<Patient> GetPatientAsync(int index)
+        public async Task<PatientViewModel> GetPatientAsync(int id)
         {
-            if (index < 1)
+            if (id < 1)
             {
-                throw new ArgumentException(nameof(index));
+                throw new ArgumentException(nameof(id));
             }
 
-            return await Task<Patient>.Run(() => MedicContext.Patients.Find(index));
+            return await MedicContext.Patients
+                .Include(p => p.Sex)
+                .Include(p => p.Ins)
+                    .ThenInclude(i => i.SendDiagnose)
+                        .ThenInclude(d => d.Primary)
+                .Include(p => p.InClinicProcedures)
+                    .ThenInclude(p => p.FirstMainDiag)
+                        .ThenInclude(d => d.MKB)
+                .Include(p => p.Outs)
+                    .ThenInclude(o => o.OutMainDiagnose)
+                        .ThenInclude(d => d.Primary)
+                .Include(p => p.PathProcedures)
+                    .ThenInclude(pp => pp.FirstMainDiag)
+                        .ThenInclude(d => d.MKB)
+                .Include(p => p.ProtocolDrugTherapies)
+                    .ThenInclude(p => p.Diag)
+                        .ThenInclude(d => d.MKB)
+                .Include(p => p.CommissionAprs)
+                    .ThenInclude(ca => ca.MainDiag)
+                        .ThenInclude(d => d.MKB)
+                .Include(p => p.DispObservations)
+                    .ThenInclude(obs => obs.FirstMainDiag)
+                        .ThenInclude(d => d.MKB)
+                .Include(p => p.PlannedProcedures)
+                    .ThenInclude(pp => pp.Diagnose)
+                        .ThenInclude(d => d.Primary)
+                .ProjectTo<PatientViewModel>(Configuration)
+                .SingleOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<List<Patient>> GetPatientsAsync(int startIndex = 0, int length = 10)
+        public async Task<List<PatientPreviewViewModel>> GetPatientsByQueryAsync(PatientSearch patientSearch, int startIndex, int length)
         {
-            if (startIndex < 0)
+            IQueryable<Patient> patientsQueryable = GetQueryable(MedicContext.Patients, patientSearch);
+
+            return await patientsQueryable
+                .ProjectTo<PatientPreviewViewModel>(Configuration)
+                .Skip(startIndex)
+                .Take(length)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetPatientsCountAsync(PatientSearch patientSearch)
+        {
+            IQueryable<Patient> patientsQueryable = GetQueryable(MedicContext.Patients, patientSearch);
+
+            return await patientsQueryable.CountAsync();
+        }
+
+        private IQueryable<Patient> GetQueryable(IQueryable<Patient> patientsQueryable, PatientSearch patientSearch)
+        {
+            if (patientSearch != default)
             {
-                throw new ArgumentException(nameof(startIndex));
+                if (!string.IsNullOrWhiteSpace(patientSearch.IdentityNumber))
+                {
+                    patientsQueryable = patientsQueryable.Where(p => EF.Functions.Like(p.IdentityNumber, patientSearch.IdentityNumber));
+                }
+
+                if (!string.IsNullOrWhiteSpace(patientSearch.FirstName))
+                {
+                    patientsQueryable = patientsQueryable.Where(p => EF.Functions.Like(p.FirstName, $"{patientSearch.FirstName}%"));
+                }
+
+                if (!string.IsNullOrWhiteSpace(patientSearch.SecondName))
+                {
+                    patientsQueryable = patientsQueryable.Where(p => EF.Functions.Like(p.SecondName, $"{patientSearch.SecondName}%"));
+                }
+
+                if (!string.IsNullOrWhiteSpace(patientSearch.LastName))
+                {
+                    patientsQueryable = patientsQueryable.Where(p => EF.Functions.Like(p.LastName, $"{patientSearch.LastName}%"));
+                }
+
+                if (patientSearch.BirthDate != null && patientSearch.BirthDate != default)
+                {
+                    patientsQueryable = patientsQueryable.Where(p => p.BirthDate == patientSearch.BirthDate);
+                }
             }
 
-            return await Task<List<Patient>>.Run(() =>
-              {
-                  return MedicContext.Patients
-                      .Skip(startIndex)
-                      .Take(length)
-                      .ToList();
-              });
-        }
-
-        public async Task<int> GetPatientsCountAsync()
-        {
-            return await Task<int>.Run(() => MedicContext.Patients.Count());
+            return patientsQueryable;
         }
     }
 }

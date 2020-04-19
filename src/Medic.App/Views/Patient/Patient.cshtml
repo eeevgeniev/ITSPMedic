@@ -1,0 +1,266 @@
+﻿@model PatientPageModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@if (Model.Patient != default)
+{
+    <article>
+        <header>
+            @{
+                string name = $"{Model.Patient.FirstName} {Model.Patient.SecondName} {Model.Patient.LastName}".Replace("  ", " ");
+            }
+            <h2 class="text-center">@(string.IsNullOrWhiteSpace(name) ? "No patient name" : name)</h2>
+            <div>
+                <div class="row">
+                    <div class="col-sm-2 font-weight-bold">Birth date</div>
+                    <div class="col-sm-10">@Model.Patient.BirthDate.ToShortDateString()</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 font-weight-bold">Identity number</div>
+                    <div class="col-sm-10">@Model.Patient.IdentityNumber</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 font-weight-bold">Address</div>
+                    <div class="col-sm-10">@Model.Patient.Address</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 font-weight-bold">Sex</div>
+                    <div class="col-sm-10">@Model.Patient.Sex</div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-2 font-weight-bold">Notes</div>
+                    <div class="col-sm-10"><p>@(Model.Patient.Notes ?? "No notes")</p></div>
+                </div>
+            </div>
+        </header>
+        <section class="mt-4">
+            <section class="mt-2">
+                <header class="text-center">
+                    <h4>Ins</h4>
+                </header>
+                @if (Model.Patient.Ins != default && Model.Patient.Ins.Count > 0)
+                {
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Entry date</div>
+                        <div class="col-sm-4 font-weight-bold">MKB code</div>
+                        <div class="col-sm-4 font-weight-bold">MKB name</div>
+                    </div>
+
+                    foreach (var currentIn in Model.Patient.Ins.OrderBy(i => i.EntryDate))
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-4">@currentIn.EntryDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-4">@currentIn.MKBCode</div>
+                            <div class="col-sm-4">@currentIn.MKBName</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-info text-center">No patient ins information</p>
+                }
+            </section>
+            <section class="mt-2">
+                <header class="text-center">
+                    <h4>In clinic procedures</h4>
+                </header>
+                @if (Model.Patient.InClinicProcedures != default && Model.Patient.InClinicProcedures.Count > 0)
+                {
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Plan visit date</div>
+                        <div class="col-sm-4 font-weight-bold">MKB code</div>
+                        <div class="col-sm-4 font-weight-bold">MKB name</div>
+                    </div>
+
+                    foreach (var currentProcedure in Model.Patient.InClinicProcedures.OrderBy(icp => icp.PlanVisitDate))
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-4">@currentProcedure.PlanVisitDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-4">@currentProcedure.MKBCode</div>
+                            <div class="col-sm-4">@currentProcedure.MKBName</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-info text-center">No patient in clinic procedures information</p>
+                }
+            </section>
+            <section class="mt-2">
+                <header class="text-center">
+                    <h4>Outs</h4>
+                </header>
+                @if (Model.Patient.Outs != default && Model.Patient.Outs.Count > 0)
+                {
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Out date</div>
+                        <div class="col-sm-4 font-weight-bold">MKB code</div>
+                        <div class="col-sm-4 font-weight-bold">MKB name</div>
+                    </div>
+
+                    foreach (var currentOut in Model.Patient.Outs.OrderBy(o => o.OutDate))
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-4">@currentOut.OutDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-4">@currentOut.MKBCode</div>
+                            <div class="col-sm-4">@currentOut.MKBName</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-info text-center">No patient outs information</p>
+                }
+            </section>
+            <section class="mt-2">
+                <header class="text-center">
+                    <h4>Path procedures</h4>
+                </header>
+                @if (Model.Patient.PathProcedures != default && Model.Patient.PathProcedures.Count > 0)
+                {
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Date procedure begins</div>
+                        <div class="col-sm-4 font-weight-bold">MKB code</div>
+                        <div class="col-sm-4 font-weight-bold">MKB name</div>
+                    </div>
+
+                    foreach (var currentPathProcedure in Model.Patient.PathProcedures.OrderBy(pp => pp.DateProcedureBegins))
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-4">@currentPathProcedure.DateProcedureBegins.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-4">@currentPathProcedure.MKBCode</div>
+                            <div class="col-sm-4">@currentPathProcedure.MKBName</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-info text-center">No patient ins information</p>
+                }
+            </section>
+            <section class="mt-2">
+                <header class="text-center">
+                    <h4>Protocol path procedures therapies</h4>
+                </header>
+                @if (Model.Patient.ProtocolDrugTherapies != default && Model.Patient.ProtocolDrugTherapies.Count > 0)
+                {
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Protocol date</div>
+                        <div class="col-sm-4 font-weight-bold">MKB code</div>
+                        <div class="col-sm-4 font-weight-bold">MKB name</div>
+                    </div>
+
+                    foreach (var currentProtocolDrugTherapy in Model.Patient.ProtocolDrugTherapies.OrderBy(pdt => pdt.ProtocolDate))
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-4">@currentProtocolDrugTherapy.ProtocolDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-4">@currentProtocolDrugTherapy.MKBCode</div>
+                            <div class="col-sm-4">@currentProtocolDrugTherapy.MKBName</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-info text-center">No patient protocol drug therapies information</p>
+                }
+            </section>
+            <section class="mt-2">
+                <header class="text-center">
+                    <h4>Commission aprs</h4>
+                </header>
+                @if (Model.Patient.CommissionAprs != default && Model.Patient.CommissionAprs.Count > 0)
+                {
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Decision date</div>
+                        <div class="col-sm-4 font-weight-bold">MKB code</div>
+                        <div class="col-sm-4 font-weight-bold">MKB name</div>
+                    </div>
+
+                    foreach (var currentCommissionApr in Model.Patient.CommissionAprs.OrderBy(ca => ca.DecisionDate))
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-4">@currentCommissionApr.DecisionDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-4">@currentCommissionApr.MKBCode</div>
+                            <div class="col-sm-4">@currentCommissionApr.MKBName</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-info text-center">No patient commission aprs information</p>
+                }
+            </section>
+            <section class="mt-2">
+                <header class="text-center">
+                    <h4>Disp observations</h4>
+                </header>
+                @if (Model.Patient.DispObservations != default && Model.Patient.DispObservations.Count > 0)
+                {
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Disp Date</div>
+                        <div class="col-sm-4 font-weight-bold">MKB code</div>
+                        <div class="col-sm-4 font-weight-bold">MKB name</div>
+                    </div>
+
+                    foreach (var currentDispObservation in Model.Patient.DispObservations.OrderBy(obs => obs.DispDate))
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-4">@currentDispObservation.DispDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-4">@currentDispObservation.MKBCode</div>
+                            <div class="col-sm-4">@currentDispObservation.MKBName</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-info text-center">No patient disp observations information</p>
+                }
+            </section>
+            <section class="mt-2">
+                <header class="text-center text-center">
+                    <h4>Planned procedures</h4>
+                </header>
+                @if (Model.Patient.PlannedProcedures != default && Model.Patient.PlannedProcedures.Count > 0)
+                {
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Examination date</div>
+                        <div class="col-sm-4 font-weight-bold">MKB code</div>
+                        <div class="col-sm-4 font-weight-bold">MKB name</div>
+                    </div>
+
+                    foreach (var currentPlannedProcedure in Model.Patient.PlannedProcedures.OrderBy(pp => pp.ExaminationDate))
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-4">@currentPlannedProcedure.ExaminationDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-4">@currentPlannedProcedure.MKBCode</div>
+                            <div class="col-sm-4">@currentPlannedProcedure.MKBName</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-info text-center">No patient planned procedure information</p>
+                }
+            </section>
+        </section>
+        <footer>
+        </footer>
+    </article>
+}
+else
+{
+    <article>
+        <p>No patient information</p>
+    </article>
+}

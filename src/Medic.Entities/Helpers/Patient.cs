@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.Patients;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -29,6 +30,11 @@ namespace Medic.Entities
                 .ForMember(p => p.DispObservations, config => config.Ignore())
                 .ForMember(p => p.PlannedProcedures, config => config.Ignore())
                 .ForMember(p => p.Id, config => config.Ignore());
+
+            expression.CreateMap<Patient, PatientPreviewViewModel>();
+
+            expression.CreateMap<Patient, PatientViewModel>()
+                .ForMember(p => p.Sex, config => config.MapFrom(p => p.Sex == default ? string.Empty : p.Sex.Name));
         }
     }
 }

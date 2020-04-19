@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Medic.AppModels\Medic.AppModels.csproj" />
     <ProjectReference Include="..\Medic.Contexts\Medic.Contexts.csproj" />
     <ProjectReference Include="..\Medic.Entities\Medic.Entities.csproj" />
   </ItemGroup>

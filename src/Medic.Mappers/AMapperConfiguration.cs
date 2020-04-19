@@ -14,6 +14,11 @@ namespace Medic.Mappers
 
             MapperConfiguration configuration = new MapperConfiguration(cfg =>
             {
+                var a = AppDomain.CurrentDomain
+                    .GetAssemblies()
+                    .Where(a => a.FullName.Contains("Medic"))
+                    .ToList();
+
                 AppDomain.CurrentDomain
                     .GetAssemblies()
                     .SelectMany(a => a.GetTypes())

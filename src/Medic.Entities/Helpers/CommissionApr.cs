@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.CommissionAprs;
 using System.Linq;
 using CLPR = Medic.Models.CLPR;
 using CP = Medic.Models.CP;
@@ -51,6 +52,10 @@ namespace Medic.Entities
                 .ForMember(ca => ca.APr38Id, config => config.Ignore())
                 .ForMember(ca => ca.APr05Id, config => config.Ignore())
                 .ForMember(ca => ca.Id, config => config.Ignore());
+
+            expression.CreateMap<CommissionApr, PatientCommissionAprPreviewViewModel>()
+                .ForMember(pca => pca.MKBCode, config => config.MapFrom(ca => ca.MainDiag.MKB.Code))
+                .ForMember(pca => pca.MKBName, config => config.MapFrom(ca => ca.MainDiag.MKB.Name));
         }
     }
 }

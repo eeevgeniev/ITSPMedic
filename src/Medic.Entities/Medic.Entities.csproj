@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Medic.AppModels\Medic.AppModels.csproj" />
     <ProjectReference Include="..\Medic.Mappers\Medic.Mappers.csproj" />
     <ProjectReference Include="..\Medic.Models\Medic.Models.csproj" />
   </ItemGroup>

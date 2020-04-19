@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.PlannedProcedures;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -31,6 +32,10 @@ namespace Medic.Entities
                 .ForMember(pp => pp.CPFileId, config => config.Ignore())
                 .ForMember(pp => pp.CPFile, config => config.Ignore())
                 .ForMember(pp => pp.Id, config => config.Ignore());
+
+            expression.CreateMap<PlannedProcedure, PatientPlannedProcedurePreviewViewModel>()
+                .ForMember(ppp => ppp.MKBCode, config => config.MapFrom(pp => pp.Diagnose.Primary.Code))
+                .ForMember(ppp => ppp.MKBName, config => config.MapFrom(pp => pp.Diagnose.Primary.Name));
         }
     }
 }

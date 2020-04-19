@@ -1,4 +1,6 @@
 ﻿using Medic.App.Controllers.Base;
+using Medic.App.Models.Patients;
+using Medic.AppModels.Patients;
 using Medic.Entities;
 using Medic.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -17,24 +19,55 @@ namespace Medic.App.Controllers
             PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
         }
         
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(PatientSearch search = default, int page = 1)
         {
-            Task<List<Patient>> patientsTask = PatientService.GetPatientsAsync();
-            Task<int> countTask = PatientService.GetPatientsCountAsync();
+            try
+            {
+                int startIndex = page > 0 ? (page - 1) * 10 : 0;
+                
+                List<PatientPreviewViewModel> patients = await PatientService.GetPatientsByQueryAsync(search, startIndex, 10);
+                int count = await PatientService.GetPatientsCountAsync(search);
 
-            await Task.WhenAll(patientsTask, countTask);
-
-            List<Patient> patients = patientsTask.Result;
-            int count = countTask.Result;
-
-            return View(patients);
+                return View(new IndexPageModel()
+                {
+                    Patients = patients,
+                    Count = count,
+                    CurrentPage = page,
+                    Title = nameof(PatientController.Index),
+                    Search = search,
+                    Description = "Patient search",
+                    Keywords = "patient, search"
+                });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<IActionResult> Patient(int id)
         {
-            Patient patient = await PatientService.GetPatientAsync(id);
+            try
+            {
+                if (id > 0)
+                {
+                    PatientViewModel patient = await PatientService.GetPatientAsync(id);
 
-            return View(patient);
+                    return View(new PatientPageModel()
+                    {
+                        Patient = patient,
+                        Title = nameof(PatientController.Patient),
+                        Description = "Patient data",
+                        Keywords = "patient, information"
+                    });
+                }
+
+                return RedirectToAction(nameof(PatientController.Index), GetControllerName(nameof(PatientController)));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Medic.Entities;
+﻿using Medic.AppModels.Patients;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,10 +6,10 @@ namespace Medic.Services.Contracts
 {
     public interface IPatientService
     {
-        public Task<List<Patient>> GetPatientsAsync(int startIndex = 0, int length = 10);
+        Task<PatientViewModel> GetPatientAsync(int id);
 
-        public Task<int> GetPatientsCountAsync();
+        Task<List<PatientPreviewViewModel>> GetPatientsByQueryAsync(PatientSearch patientSearch, int startIndex, int length);
 
-        public Task<Patient> GetPatientAsync(int index);
+        Task<int> GetPatientsCountAsync(PatientSearch search);
     }
 }

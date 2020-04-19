@@ -9,28 +9,42 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Medic.App.AppServices
 {
     public static class ConfigureAppServices
     {
-        public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration Configuration, IWebHostEnvironment Environment)
+        public static IServiceCollection ConfigureServices(this IServiceCollection services, IConfiguration configuration, IWebHostEnvironment environment)
         {
-            services.AddTransient<MapperConfiguration>(serviceProvider =>
+            if (configuration == default)
             {
-                AMapperConfiguration mapConfiguration = new AMapperConfiguration();
+                throw new ArgumentNullException(nameof(configuration));
+            }
 
-                return mapConfiguration.CreateConfiguration();
-            });
+            if (environment == default)
+            {
+                throw new ArgumentNullException(nameof(environment));
+            }
             
             services.AddTransient<IMappable, AMapper>();
 
             services.AddDbContext<MedicContext>(options =>
             {
-                options.UseSqlServer(MedicConstants.ConnectionString);
+                options.UseSqlServer(configuration[MedicConstants.ConnectionString]);
             });
 
+            services.AddTransient<ICPFileService, CPFileService>();
+            services.AddTransient<IDiagnoseService, DiagnoseService>();
+            services.AddTransient<IDiagService, DiagService>();
+            services.AddTransient<IHospitalPracticeService, HospitalPracticeService>();
             services.AddTransient<IPatientService, PatientService>();
+
+            services.BuildServiceProvider().GetRequiredService<MedicContext>();
+
+            AMapperConfiguration mapConfiguration = new AMapperConfiguration();
+
+            services.AddSingleton<MapperConfiguration>(mapConfiguration.CreateConfiguration());
 
             return services;
         }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.ProtocolDrugTherapies;
 using System.Linq;
 using CP = Medic.Models.CP;
 
@@ -63,6 +64,10 @@ namespace Medic.Entities
                 .ForMember(pdt => pdt.HospitalPractice, config => config.Ignore())
                 .ForMember(pdt => pdt.HospitalPracticeId, config => config.Ignore())
                 .ForMember(pdt => pdt.Id, config => config.Ignore());
+
+            expression.CreateMap<ProtocolDrugTherapy, PatientProtocolDrugTherapyPreviewViewModel>()
+                .ForMember(ppdt => ppdt.MKBCode, config => config.MapFrom(pdt => pdt.Diag.MKB.Code))
+                .ForMember(ppdt => ppdt.MKBName, config => config.MapFrom(pdt => pdt.Diag.MKB.Name));
         }
     }
 }

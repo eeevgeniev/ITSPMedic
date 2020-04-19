@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.InClinicProcedures;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -36,6 +37,10 @@ namespace Medic.Entities
                 .ForMember(icp => icp.SenderId, config => config.Ignore())
                 .ForMember(icp => icp.CeasedClinicalPathId, config => config.Ignore())
                 .ForMember(icp => icp.Id, config => config.Ignore());
+
+            expression.CreateMap<InClinicProcedure, PatientInClinicProcedurePreviewViewModel>()
+                .ForMember(pip => pip.MKBCode, config => config.MapFrom(icp => icp.FirstMainDiag.MKB.Code))
+                .ForMember(pip => pip.MKBName, config => config.MapFrom(icp => icp.FirstMainDiag.MKB.Name));
         }
     }
 }

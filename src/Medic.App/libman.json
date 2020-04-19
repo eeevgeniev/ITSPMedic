@@ -10,6 +10,11 @@
       "provider": "unpkg",
       "library": "bootstrap@4.4.1",
       "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "Chart.js@2.9.3",
+      "destination": "wwwroot/lib/chartjs"
     }
   ]
 }
