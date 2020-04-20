@@ -28,7 +28,7 @@ namespace Medic.Entities
 
         public int BedDays { get; set; }
 
-        public DateTime HLDateFrom { get; set; }
+        public DateTime? HLDateFrom { get; set; }
 
         public string HLNumber { get; set; }
 

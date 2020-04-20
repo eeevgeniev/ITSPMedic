@@ -6,6 +6,6 @@ namespace Medic.Services.Contracts
 {
     public interface IDiagService
     {
-        Task<List<DiagMKBSummaryViewModel>> GetMKBSummary();
+        Task<List<DiagMKBSummaryViewModel>> GetMKBSummaryAsync();
     }
 }

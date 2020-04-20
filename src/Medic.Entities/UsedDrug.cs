@@ -27,7 +27,7 @@ namespace Medic.Entities
 
         public string NoPrescr { get; set; }
 
-        public DateTime DatePrescr { get; set; }
+        public DateTime? DatePrescr { get; set; }
 
         public string PracticeCodeProtocol { get; set; }
 

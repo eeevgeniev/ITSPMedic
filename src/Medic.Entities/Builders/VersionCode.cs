@@ -9,6 +9,8 @@ namespace Medic.Entities
             builder.Entity<VersionCode>(b =>
             {
                 b.HasKey(model => model.Id);
+
+                b.Property(model => model.BatchNumber).HasMaxLength(12);
             });
         }
     }

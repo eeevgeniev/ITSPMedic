@@ -41,6 +41,16 @@ namespace Medic.Entities
                 b.HasOne(model => model.SecondMainDiag)
                     .WithOne(d => d.SecondDispObservation)
                     .HasForeignKey<DispObservation>(model => model.MainDiagSecondId);
+
+                b.Property(model => model.AprCode).HasMaxLength(10);
+
+                b.Property(model => model.Anamnesa).HasMaxLength(4000);
+
+                b.Property(model => model.HState).HasMaxLength(3000);
+
+                b.Property(model => model.Therapy).HasMaxLength(1000);
+
+                b.Property(model => model.Sign).HasMaxLength(5);
             });
         }
     }

@@ -17,6 +17,14 @@ namespace Medic.Entities
                 b.HasOne(model => model.LinkDMKB)
                     .WithMany(mkb => mkb.LinkedDiags)
                     .HasForeignKey(model => model.LinkDMKBCode);
+
+                b.Property(model => model.ImeMD).HasMaxLength(500);
+
+                b.Property(model => model.MKBCode).HasMaxLength(10);
+
+                b.Property(model => model.LinkDName).HasMaxLength(200);
+
+                b.Property(model => model.LinkDMKBCode).HasMaxLength(10);
             });
         }
     }

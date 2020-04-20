@@ -17,6 +17,8 @@ namespace Medic.Entities
                 b.HasOne(model => model.Evaluation)
                     .WithOne(e => e.ClinicHematologyPartDecision)
                     .HasForeignKey<ClinicHematologyPart>(model => model.EvalutionId);
+
+                b.Property(model => model.StageHemo).HasMaxLength(10);
             });
         }
     }

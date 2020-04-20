@@ -42,7 +42,7 @@ namespace Medic.Entities
 
         public DateTime DiagDate { get; set; }
 
-        public DateTime DispancerDate { get; set; }
+        public DateTime? DispancerDate { get; set; }
 
         public int DispVisit { get; set; }
 

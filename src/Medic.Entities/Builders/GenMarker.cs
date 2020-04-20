@@ -9,6 +9,8 @@ namespace Medic.Entities
             builder.Entity<GenMarker>(b =>
             {
                 b.HasKey(model => model.Id);
+
+                b.Property(model => model.Name).HasMaxLength(50);
             });
         }
     }

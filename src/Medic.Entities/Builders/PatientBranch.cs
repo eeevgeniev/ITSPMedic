@@ -9,7 +9,8 @@ namespace Medic.Entities
             builder.Entity<PatientBranch>(b =>
             {
                 b.HasKey(model => model.Id);
-                b.Property(model => model.Code).HasMaxLength(200);
+
+                b.Property(model => model.Code).HasMaxLength(5);
             });
         }
     }

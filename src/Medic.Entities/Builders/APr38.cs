@@ -13,6 +13,12 @@ namespace Medic.Entities
                 b.HasOne(model => model.Decision)
                     .WithOne(e => e.APr38s)
                     .HasForeignKey<APr38>(model => model.DecisionId);
+
+                b.Property(model => model.History).HasMaxLength(4000);
+
+                b.Property(model => model.FairCondition).HasMaxLength(4000);
+
+                b.Property(model => model.Therapy).HasMaxLength(4000);
             });
         }
     }

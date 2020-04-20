@@ -243,8 +243,6 @@ namespace Medic.Import
 
             HashSet<MKB> addedmkbs = new HashSet<MKB>(MedicContext.MKBs.ToList(), new MKBComparer());
 
-            var difference = addedmkbs.Except(_mkbs, new MKBComparer()).ToList();
-
             MedicContext.CPFiles.Add(cpFile);
 
             MedicContext.SaveChanges();
@@ -424,8 +422,6 @@ namespace Medic.Import
             _providers.UnionWith(MedicContext.Providers.ToList());
             _therapyTypes.UnionWith(MedicContext.TherapyTypes.ToList());
             _patientBranches.UnionWith(MedicContext.PatientBranches.ToList());
-            _patients.UnionWith(MedicContext.Patients.ToList());
-            _healthcarePractitioners.UnionWith(MedicContext.HealthcarePractitioners.ToList());
             _practices.UnionWith(MedicContext.Practices.ToList());
             _fileTypes.UnionWith(MedicContext.FileTypes.ToList());
             _senderTypes.UnionWith(MedicContext.SenderTypes.ToList());

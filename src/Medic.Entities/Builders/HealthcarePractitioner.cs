@@ -41,6 +41,12 @@ namespace Medic.Entities
                 b.HasMany(model => model.CommissionAprsMembers)
                     .WithOne(cahp => cahp.HealthcarePractitioner)
                     .HasForeignKey(cahp => cahp.HealthcarePractitionerId);
+
+                b.Property(model => model.UniqueIdentifier).HasMaxLength(12);
+
+                b.Property(model => model.DeputyUniqueIdentifier).HasMaxLength(12);
+
+                b.Property(model => model.Name).HasMaxLength(100);
             });
         }
     }

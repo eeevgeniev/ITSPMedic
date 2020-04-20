@@ -49,6 +49,10 @@ namespace Medic.Entities
                 b.HasMany(model => model.Members)
                     .WithOne(pdthp => pdthp.ProtocolDrugTherapy)
                     .HasForeignKey(pdthp => pdthp.ProtocolDrugTherapyId);
+
+                b.Property(model => model.PracticeCodeProtocol).HasMaxLength(12);
+
+                b.Property(model => model.Scheme).HasMaxLength(50);
             });
         }
     }

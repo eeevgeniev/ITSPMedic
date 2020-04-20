@@ -45,8 +45,8 @@ namespace Medic.App.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<CPFileSummaryViewModel> cpFileSummaryViewModels = await CPFileService.GetSummary();
-            List<HospitalPracticeSummaryViewModel> hospitalPracticeSummaryViewModels = await HospitalPracticeService.GetSummary();
+            List<CPFileSummaryViewModel> cpFileSummaryViewModels = await CPFileService.GetSummaryByMonthAsync();
+            List<HospitalPracticeSummaryViewModel> hospitalPracticeSummaryViewModels = await HospitalPracticeService.GetSummaryByMonthAsync();
             int patientCount = await PatientService.GetPatientsCountAsync(default);
 
             return View(new HomePageModel()
@@ -62,7 +62,7 @@ namespace Medic.App.Controllers
 
         public async Task<IActionResult> Diags()
         {
-            List<DiagMKBSummaryViewModel> diagMKBSummaryViewModels = await DiagService.GetMKBSummary();
+            List<DiagMKBSummaryViewModel> diagMKBSummaryViewModels = await DiagService.GetMKBSummaryAsync();
 
             return View(new HomePageDiagModel()
             {
@@ -75,7 +75,7 @@ namespace Medic.App.Controllers
 
         public async Task<IActionResult> Diagnoses()
         {
-            List<DiagnosesMKBSummaryViewModel> diagnosesMKBSummaryViewModels = await DiagnoseService.MKBSummary();
+            List<DiagnosesMKBSummaryViewModel> diagnosesMKBSummaryViewModels = await DiagnoseService.MKBSummaryAsync();
 
             return View(new HomePageDiagnoseModel()
             {

@@ -17,6 +17,8 @@ namespace Medic.Entities
                 b.HasOne(model => model.Evaluation)
                     .WithOne(e => e.ClinicChemotherapyPartDecision)
                     .HasForeignKey<ClinicChemotherapyPart>(model => model.EvalutionId);
+
+                b.Property(model => model.TNM).HasMaxLength(100);
             });
         }
     }

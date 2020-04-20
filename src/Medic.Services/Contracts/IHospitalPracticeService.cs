@@ -6,6 +6,8 @@ namespace Medic.Services.Contracts
 {
     public interface IHospitalPracticeService
     {
-        Task<List<HospitalPracticeSummaryViewModel>> GetSummary();
+        Task<List<HospitalPracticeSummaryViewModel>> GetSummaryAsync();
+
+        Task<List<HospitalPracticeSummaryViewModel>> GetSummaryByMonthAsync();
     }
 }

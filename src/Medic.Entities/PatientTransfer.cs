@@ -39,7 +39,7 @@ namespace Medic.Entities
 
         public decimal TransferWard { get; set; }
 
-        public DateTime TransferDateTime { get; set; }
+        public DateTime? TransferDateTime { get; set; }
 
         public int? CPFileId { get; set; }
 

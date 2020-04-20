@@ -13,9 +13,9 @@ namespace Medic.Entities
     {
         public int Id { get; set; }
 
-        public DateTime ProcedureStartDate { get; set; }
+        public DateTime? ProcedureStartDate { get; set; }
 
-        public DateTime ProcedureEndDate { get; set; }
+        public DateTime? ProcedureEndDate { get; set; }
 
         public int? DoctorId { get; set; }
 

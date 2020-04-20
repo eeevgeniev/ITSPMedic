@@ -18,7 +18,7 @@ namespace Medic.Services
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
         }
 
-        public async Task<List<DiagMKBSummaryViewModel>> GetMKBSummary()
+        public async Task<List<DiagMKBSummaryViewModel>> GetMKBSummaryAsync()
         {
             return await MedicContext.Diags
                 .GroupBy(d => new { d.MKB.Code, d.MKB.Name })

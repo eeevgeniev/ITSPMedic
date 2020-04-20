@@ -33,11 +33,9 @@ namespace Medic.FileImport
                 builder.UseSqlServer(configuration[MedicConstants.ConnectionString]);
                 builder.EnableSensitiveDataLogging();
 
-                using (MedicContext context = new MedicContext(builder.Options))
-                {
-                    IMedicContextSeeder medicContextSeeder = new MedicContextSeeder(context);
-                    medicContextSeeder.Seed();
-                }
+                using MedicContext context = new MedicContext(builder.Options);
+                IMedicContextSeeder medicContextSeeder = new MedicContextSeeder(context);
+                medicContextSeeder.Seed();
 
                 AMapperConfiguration mapConfiguration = new AMapperConfiguration();
                 IMappable mapper = new AMapper(mapConfiguration.CreateConfiguration());
@@ -87,27 +85,22 @@ namespace Medic.FileImport
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
             CP.CPFile cpFile;
             CPFile cpFileEntity;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(CP.CPFile));
 
             int counter = 1;
 
             foreach (string file in files)
             {
                 using StreamReader sr = new StreamReader(file, Encoding.UTF8);
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(CP.CPFile));
-
                 cpFile = xmlSerializer.Deserialize(sr) as CP.CPFile;
 
                 if (cpFile != default)
                 {
                     cpFileEntity = mapper.Map<CPFile, CP.CPFile>(cpFile);
 
-                    using (MedicContext medicContext = new MedicContext(builder.Options))
-                    {
-                        using (IImportMedicFile importMedicFile = new ImportMedicFile(medicContext))
-                        {
-                            importMedicFile.ImportCPFile(cpFileEntity);
-                        }
-                    }
+                    using MedicContext medicContext = new MedicContext(builder.Options);
+                    using IImportMedicFile importMedicFile = new ImportMedicFile(medicContext);
+                    importMedicFile.ImportCPFile(cpFileEntity);
 
                     Console.WriteLine($"{file} - imported, ({counter++}/{files.Length}).");
                     cpFileEntity = null;
@@ -121,13 +114,13 @@ namespace Medic.FileImport
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
             CLPR.HospitalPractice clprFile;
             HospitalPractice hospitalPracticeEntity;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(CLPR.HospitalPractice));
 
             int counter = 1;
 
             foreach (string file in files)
             {
                 using StreamReader sr = new StreamReader(file, Encoding.UTF8);
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(CLPR.HospitalPractice));
 
                 clprFile = xmlSerializer.Deserialize(sr) as CLPR.HospitalPractice;
 
@@ -135,13 +128,10 @@ namespace Medic.FileImport
                 {
                     hospitalPracticeEntity = mapper.Map<HospitalPractice, CLPR.HospitalPractice>(clprFile);
 
-                    using (MedicContext medicContext = new MedicContext(builder.Options))
-                    {
-                        using (IImportMedicFile importMedicFile = new ImportMedicFile(medicContext))
-                        {
-                            importMedicFile.ImportHospitalPractice(hospitalPracticeEntity);
-                        }
-                    }
+                    using MedicContext medicContext = new MedicContext(builder.Options);
+                    using IImportMedicFile importMedicFile = new ImportMedicFile(medicContext);
+
+                    importMedicFile.ImportHospitalPractice(hospitalPracticeEntity);
 
                     Console.WriteLine($"{file} - imported, ({counter++}/{files.Length}).");
                     hospitalPracticeEntity = null;

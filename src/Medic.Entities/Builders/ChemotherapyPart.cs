@@ -25,6 +25,12 @@ namespace Medic.Entities
                 b.HasMany(model => model.GenMarkers)
                     .WithOne(gm => gm.ChemotherapyPart)
                     .HasForeignKey(gm => gm.ChemotherapyPartId);
+
+                b.Property(model => model.ExpandDiagnose).HasMaxLength(300);
+
+                b.Property(model => model.Staging).HasMaxLength(5);
+
+                b.Property(model => model.TNM).HasMaxLength(100);
             });
         }
     }

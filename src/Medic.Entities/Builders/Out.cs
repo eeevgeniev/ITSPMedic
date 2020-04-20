@@ -61,6 +61,16 @@ namespace Medic.Entities
                 b.HasOne(model => model.UsedDrug)
                     .WithOne(ud => ud.Out)
                     .HasForeignKey<Out>(model => model.UsedDrugId);
+
+                b.Property(model => model.UniqueIdentifier).HasMaxLength(12);
+
+                b.Property(model => model.OutUniqueIdentifier).HasMaxLength(12);
+
+                b.Property(model => model.BirthPractice).HasMaxLength(12);
+
+                b.Property(model => model.OutAPr).HasMaxLength(12);
+
+                b.Property(model => model.HLNumber).HasMaxLength(12);
             });
         }
     }

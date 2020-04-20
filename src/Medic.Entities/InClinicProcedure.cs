@@ -53,9 +53,9 @@ namespace Medic.Entities
 
         public int IZYearChild { get; set; }
 
-        public DateTime FirstVisitDate { get; set; }
+        public DateTime? FirstVisitDate { get; set; }
 
-        public DateTime PlanVisitDate { get; set; }
+        public DateTime? PlanVisitDate { get; set; }
 
         public string VisitDocumentUniqueIdentifier { get; set; }
 

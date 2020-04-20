@@ -28,7 +28,7 @@ namespace Medic.Entities
 
         public string Complications { get; set; }
 
-        public DateTime DateOfSurgery { get; set; }
+        public DateTime? DateOfSurgery { get; set; }
 
         public string SampleProtocol { get; set; }
 

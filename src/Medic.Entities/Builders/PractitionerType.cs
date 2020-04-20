@@ -9,7 +9,10 @@ namespace Medic.Entities
             builder.Entity<PractitionerType>(b =>
             {
                 b.HasKey(model => model.Id);
+                
                 b.HasIndex(model => model.Name).IsUnique();
+
+                b.Property(model => model.Name).HasMaxLength(200);
             });
         }
     }

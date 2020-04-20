@@ -13,6 +13,14 @@ namespace Medic.Entities
                 b.HasOne(model => model.HealthRegion)
                     .WithOne(hr => hr.Practice)
                     .HasForeignKey<Practice>(model => model.HealthRegionId);
+
+                b.Property(model => model.Number).HasMaxLength(12);
+
+                b.Property(model => model.Code).HasMaxLength(12);
+
+                b.Property(model => model.Name).HasMaxLength(50);
+
+                b.Property(model => model.Address).HasMaxLength(50);
             });
         }
     }

@@ -17,6 +17,18 @@ namespace Medic.Entities
                 b.HasOne(model => model.Provider)
                     .WithMany(p => p.Implants)
                     .HasForeignKey(model => model.ProviderId);
+
+                b.Property(model => model.TradeName).HasMaxLength(500);
+
+                b.Property(model => model.ReferenceNumber).HasMaxLength(10);
+
+                b.Property(model => model.Manufacturer).HasMaxLength(100);
+
+                b.Property(model => model.Code).HasMaxLength(20);
+
+                b.Property(model => model.SerialNumber).HasMaxLength(50);
+
+                b.Property(model => model.DistributorInvoiceNumber).HasMaxLength(10);
             });
         }
     }

@@ -21,6 +21,11 @@ namespace Medic.Entities
                 b.HasOne(model => model.ClinicHematologyPart)
                     .WithMany(chp => chp.APr05s)
                     .HasForeignKey(model => model.ClinicHematologyPartId);
+
+                b.Property(model => model.Staging).HasMaxLength(20);
+                b.Property(model => model.Imuno).HasMaxLength(3000);
+                b.Property(model => model.Genetic).HasMaxLength(2000);
+                b.Property(model => model.Sign).HasMaxLength(50);
             });
         }
     }

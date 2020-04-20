@@ -9,6 +9,8 @@ namespace Medic.Entities
             builder.Entity<Choise>(b =>
             {
                 b.HasKey(model => model.Id);
+
+                b.Property(model => model.Text).HasMaxLength(1000);
             });
         }
     }

@@ -6,6 +6,8 @@ namespace Medic.Services.Contracts
 {
     public interface ICPFileService
     {
-        Task<List<CPFileSummaryViewModel>> GetSummary();
+        Task<List<CPFileSummaryViewModel>> GetSummaryAsync();
+
+        Task<List<CPFileSummaryViewModel>> GetSummaryByMonthAsync();
     }
 }
