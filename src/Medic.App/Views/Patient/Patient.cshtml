@@ -1,4 +1,4 @@
-﻿@model PatientPageModel
+﻿@model PateintPagePatientModel
 
 @{
     ViewData["Title"] = Model.Title;
@@ -125,16 +125,16 @@
                 @if (Model.Patient.PathProcedures != default && Model.Patient.PathProcedures.Count > 0)
                 {
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Date procedure begins</div>
+                        <div class="col-sm-2 font-weight-bold">Date send</div>
                         <div class="col-sm-2 font-weight-bold">MKB code</div>
                         <div class="col-sm-8 font-weight-bold">MKB name</div>
                     </div>
 
-                    foreach (var currentPathProcedure in Model.Patient.PathProcedures.OrderBy(pp => pp.DateProcedureBegins))
+                    foreach (var currentPathProcedure in Model.Patient.PathProcedures.OrderBy(pp => pp.DateSend))
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentPathProcedure.DateProcedureBegins.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-2">@currentPathProcedure.DateSend.ToString("dd-MM-yyyy HH:mm:ss")</div>
                             <div class="col-sm-2">@currentPathProcedure.MKBCode</div>
                             <div class="col-sm-8">@currentPathProcedure.MKBName</div>
                         </div>

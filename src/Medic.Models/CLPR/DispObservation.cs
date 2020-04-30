@@ -12,16 +12,16 @@ namespace Medic.Models.CLPR
         
         private DateTime _dispDate;
         private DateTime _diagDate;
-        private DateTime _dispancerDate;
+        private DateTime? _dispancerDate;
         
         [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
-        public string PatientBranch { get; set; }
+        public int? PatientBranch { get; set; }
 
         [XmlElement(ElementName = "patientHRegion")]
-        public string PatientHRegion { get; set; }
+        public int? PatientHRegion { get; set; }
 
         [XmlElement(ElementName = "Sender")]
         public Sender Sender { get; set; }
@@ -54,12 +54,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_dispDate == default)
-                {
-                    return string.Empty;
-                }
-                
-                return _dispDate.ToString(DateFormat);
+                return _dispDate == default ? default : _dispDate.ToString(DateFormat);
             }
             set
             {
@@ -82,12 +77,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_dispDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dispDate.ToString("hh:mm:ss");
+                return _dispDate == default ? default : _dispDate.ToString("hh:mm:ss");
             }
             set
             {
@@ -118,12 +108,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_diagDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _diagDate.ToString(DateFormat);
+                return _diagDate == default ? default : _diagDate.ToString(DateFormat);
             }
             set
             {
@@ -132,7 +117,7 @@ namespace Medic.Models.CLPR
         }
 
         [XmlIgnore]
-        public DateTime DispancerDate
+        public DateTime? DispancerDate
         {
             get { return _dispancerDate; }
             set { _dispancerDate = value; }
@@ -143,12 +128,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_dispancerDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dispancerDate.ToString(DateFormat);
+                return _dispancerDate == default ? default : ((DateTime)_dispancerDate).ToString(DateFormat);
             }
             set
             {
@@ -157,8 +137,9 @@ namespace Medic.Models.CLPR
         }
 
         [XmlElement(ElementName = "Disp_Visit")]
-        public int DispVisit { get; set; } 
-
+        public int DispVisit { get; set; }
+        
+        [XmlElement(ElementName = "MDI")]
         public List<MDI> MDIs { get; set; }
 
         [XmlElement(ElementName = "MainDiag1")]
@@ -173,7 +154,7 @@ namespace Medic.Models.CLPR
 
         public string Therapy { get; set; }
 
-        public string Sign { get; set; }
+        public int Sign { get; set; }
 
         public int NZOKPay { get; set; }
     }

@@ -39,7 +39,7 @@ namespace Medic.Entities
 
         public int SendUrgency { get; set; }
 
-        public string SendClinicalPath { get; set; }
+        public double? SendClinicalPath { get; set; }
 
         public string UniqueIdentifier { get; set; }
 
@@ -55,7 +55,7 @@ namespace Medic.Entities
 
         public int Urgency { get; set; }
 
-        public string ClinicalPath { get; set; }
+        public double? ClinicalPath { get; set; }
 
         public int NZOKPay { get; set; }
 

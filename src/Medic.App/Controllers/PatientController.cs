@@ -28,7 +28,7 @@ namespace Medic.App.Controllers
                 List<PatientPreviewViewModel> patients = await PatientService.GetPatientsByQueryAsync(search, startIndex, 10);
                 int count = await PatientService.GetPatientsCountAsync(search);
 
-                return View(new IndexPageModel()
+                return View(new PatientPageIndexModel()
                 {
                     Patients = patients,
                     Count = count,
@@ -41,7 +41,7 @@ namespace Medic.App.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -53,7 +53,7 @@ namespace Medic.App.Controllers
                 {
                     PatientViewModel patient = await PatientService.GetPatientAsync(id);
 
-                    return View(new PatientPageModel()
+                    return View(new PateintPagePatientModel()
                     {
                         Patient = patient,
                         Title = nameof(PatientController.Patient),
@@ -66,7 +66,7 @@ namespace Medic.App.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
     }

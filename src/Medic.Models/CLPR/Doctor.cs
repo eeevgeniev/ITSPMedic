@@ -11,6 +11,6 @@ namespace Medic.Models.CLPR
         public string Name { get; set; }
 
         [XmlElement(ElementName = "CodeSpec")]
-        public string SpecialtyCode { get; set; }
+        public int SpecialtyCode { get; set; }
     }
 }

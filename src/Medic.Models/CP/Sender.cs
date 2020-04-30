@@ -13,7 +13,7 @@ namespace Medic.Models.CP
         public string DeputyUniqueIdentifier { get; set; }
 
         [XmlElement(ElementName = "speciality")]
-        public string Speciality { get; set; }
+        public int? Speciality { get; set; }
 
         [XmlElement(ElementName = "NumNapr")]
         public int ClinicalPathNumber { get; set; }

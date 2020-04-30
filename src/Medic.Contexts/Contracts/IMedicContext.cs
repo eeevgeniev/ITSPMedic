@@ -58,8 +58,6 @@ namespace Medic.Contexts.Contracts
 
         DbSet<Practice> Practices { get; set; }
 
-        DbSet<PractitionerType> PractitionerTypes { get; set; }
-
         DbSet<Procedure> Procedures { get; set; }
 
         DbSet<ProtocolDrugTherapy> ProtocolDrugTherapies { get; set; }

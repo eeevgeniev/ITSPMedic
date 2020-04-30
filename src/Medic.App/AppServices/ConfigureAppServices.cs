@@ -39,6 +39,7 @@ namespace Medic.App.AppServices
             services.AddTransient<IDiagService, DiagService>();
             services.AddTransient<IHospitalPracticeService, HospitalPracticeService>();
             services.AddTransient<IPatientService, PatientService>();
+            services.AddTransient<IInService, InService>();
 
             services.BuildServiceProvider().GetRequiredService<MedicContext>();
 

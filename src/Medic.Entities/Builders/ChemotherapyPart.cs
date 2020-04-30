@@ -28,9 +28,9 @@ namespace Medic.Entities
 
                 b.Property(model => model.ExpandDiagnose).HasMaxLength(300);
 
-                b.Property(model => model.Staging).HasMaxLength(5);
-
                 b.Property(model => model.TNM).HasMaxLength(100);
+
+                b.Property(model => model.Staging).HasMaxLength(5);
             });
         }
     }

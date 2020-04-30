@@ -8,7 +8,7 @@ namespace Medic.Models.CLPR
         public int SenderType { get; set; }
 
         [XmlElement(ElementName = "ZdrRajon")]
-        public string HealthRegion { get; set; }
+        public int? HealthRegion { get; set; }
 
         [XmlElement(ElementName = "PracticeCode")]
         public string PracticeCode { get; set; }

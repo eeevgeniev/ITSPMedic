@@ -7,7 +7,7 @@ namespace Medic.Models.CP
     [XmlRoot(ElementName = "Transfer")]
     public class PatientTransfer
     {
-        private DateTime _transferDateTime;
+        private DateTime? _transferDateTime;
 
         public int IZYear { get; set; }
 
@@ -31,7 +31,7 @@ namespace Medic.Models.CP
         public decimal TransferWard { get; set; }
 
         [XmlIgnore]
-        public DateTime TransferDateTime
+        public DateTime? TransferDateTime
         {
             get { return _transferDateTime; }
             set { _transferDateTime = value; }
@@ -42,15 +42,9 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_transferDateTime == default)
-                {
-                    return string.Empty;
-                }
-
-                return _transferDateTime.ToString("yyyy-MM-ddTHH:mm:ss");
-
+                return _transferDateTime == default ? default : ((DateTime)_transferDateTime).ToString("yyyy-MM-ddTHH:mm:ss");
             }
-            set 
+            set
             {
                 _transferDateTime = DateTime.Parse(value, CultureInfo.InvariantCulture);
             }

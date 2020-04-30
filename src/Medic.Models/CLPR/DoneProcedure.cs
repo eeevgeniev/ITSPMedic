@@ -7,26 +7,29 @@ namespace Medic.Models.CLPR
 {
     public class DoneProcedure
     {
-        private DateTime _procedureStartDate;
-        private DateTime _procedureEndDate;
+        private DateTime? _procedureStartDate;
+        private DateTime? _procedureEndDate;
 
         [XmlIgnore]
-        public DateTime ProcedureStartDate { get; set; }
+        public DateTime? ProcedureStartDate 
+        {
+            get { return _procedureStartDate; }
+            set { _procedureStartDate = value; }
+        }
 
         [XmlIgnore]
-        public DateTime ProcedureEndDate { get; set; }
+        public DateTime? ProcedureEndDate 
+        {
+            get { return _procedureEndDate; }
+            set { _procedureEndDate = value; } 
+        }
 
         [XmlElement(ElementName = "Date_Proc")]
         public string ProcedureDateAsString
         {
             get
             {
-                if (_procedureStartDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _procedureStartDate.ToString("yyyy-MM-dd");
+                return _procedureStartDate == default ? default : ((DateTime)_procedureStartDate).ToString("yyyy-MM-dd");
             }
             set
             {
@@ -37,7 +40,17 @@ namespace Medic.Models.CLPR
         [XmlElement(ElementName = "Time_Begin")]
         public string TimeBegin
         {
-            get { return $"{_procedureStartDate.Hour}:{_procedureStartDate.Minute}:{_procedureStartDate.Second}"; }
+            get 
+            { 
+                if (_procedureStartDate == default)
+                {
+                    return default;
+                }
+
+                DateTime tempDate = (DateTime)_procedureStartDate;
+
+                return $"{tempDate.Hour}:{tempDate.Minute}:{tempDate.Second}"; 
+            }
             set
             {
                 if (!string.IsNullOrWhiteSpace(value))
@@ -46,7 +59,9 @@ namespace Medic.Models.CLPR
 
                     if (_procedureStartDate != default)
                     {
-                        _procedureStartDate = new DateTime(_procedureStartDate.Year, _procedureStartDate.Month, _procedureStartDate.Day, values[0], values[1], values[2]);
+                        DateTime tempDate = (DateTime)_procedureStartDate;
+
+                        _procedureStartDate = new DateTime(tempDate.Year, tempDate.Month, tempDate.Day, values[0], values[1], values[2]);
                     }
                     else
                     {
@@ -59,7 +74,17 @@ namespace Medic.Models.CLPR
         [XmlElement(ElementName = "Time_End")]
         public string TimeEnd
         {
-            get { return $"{_procedureEndDate.Hour}:{_procedureEndDate.Minute}:{_procedureEndDate.Second}"; }
+            get 
+            { 
+                if (_procedureEndDate == default)
+                {
+                    return default;
+                }
+
+                DateTime tempDate = (DateTime)_procedureEndDate;
+
+                return $"{tempDate.Hour}:{tempDate.Minute}:{tempDate.Second}"; 
+            }
             set
             {
                 if (!string.IsNullOrWhiteSpace(value))
@@ -68,7 +93,9 @@ namespace Medic.Models.CLPR
 
                     if (_procedureEndDate != default)
                     {
-                        _procedureEndDate = new DateTime(_procedureEndDate.Year, _procedureEndDate.Month, _procedureEndDate.Day, values[0], values[1], values[2]);
+                        DateTime tempDate = (DateTime)_procedureStartDate;
+
+                        _procedureEndDate = new DateTime(tempDate.Year, tempDate.Month, tempDate.Day, values[0], values[1], values[2]);
                     }
                     else
                     {

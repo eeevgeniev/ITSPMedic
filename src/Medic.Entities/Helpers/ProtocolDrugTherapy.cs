@@ -15,7 +15,7 @@ namespace Medic.Entities
         public void ConfigureTransformations(IMapperConfigurationExpression expression)
         {
             expression.CreateMap<ProtocolDrugTherapy, CP.ProtocolDrugTherapy>()
-                .ForMember(pdt => pdt.PatientBranch, config => config.MapFrom(pdt => pdt.PatientBranch == default ? default : pdt.PatientBranch.Code))
+                .ForMember(pdt => pdt.PatientBranch, config => config.MapFrom(pdt => pdt.PatientBranch == default && pdt.PatientBranch.HealthRegion == default ? default : pdt.PatientBranch.HealthRegion.Code))
                 .ForMember(pdt => pdt.PatientHRegion, config => config.MapFrom(pdt => pdt.PatientHRegion == default ? default : pdt.PatientHRegion.Code))
                 .ForMember(pdt => pdt.PracticeCode, config => config.MapFrom(pdt => pdt.Practice == default ? default : pdt.Practice.Code))
                 .ForMember(pdt => pdt.PracticeName, config => config.MapFrom(pdt => pdt.Practice == default ? default : pdt.Practice.Name))
@@ -25,7 +25,7 @@ namespace Medic.Entities
                 .ForMember(pdt => pdt.ProtocolDateAsString, config => config.Ignore());
 
             expression.CreateMap<CP.ProtocolDrugTherapy, ProtocolDrugTherapy>()
-                .ForMember(pdt => pdt.PatientBranch, config => config.MapFrom(pdt => pdt.PatientBranch == default ? default : new PatientBranch() { Code = pdt.PatientBranch }))
+                .ForMember(pdt => pdt.PatientBranch, config => config.MapFrom(pdt => pdt.PatientBranch == default ? default : new PatientBranch() { HealthRegion = new HealthRegion() { Code = pdt.PatientBranch } }))
                 .ForMember(pdt => pdt.PatientBranchId, config => config.Ignore())
                 .ForMember(pdt => pdt.PatientHRegion, config => config.MapFrom(pdt => pdt.PatientHRegion == default ? default : new HealthRegion() { Code = pdt.PatientHRegion }))
                 .ForMember(pdt => pdt.PatientHRegionId, config => config.Ignore())

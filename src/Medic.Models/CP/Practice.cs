@@ -14,7 +14,7 @@ namespace Medic.Models.CP
         public string Name { get; set; }
 
         [XmlElement(ElementName = "healthRegion")]
-        public string HealthRegion { get; set; }
+        public int? HealthRegion { get; set; }
 
         [XmlElement(ElementName = "address", IsNullable = false)]
         public string Address { get; set; }

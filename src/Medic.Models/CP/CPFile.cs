@@ -28,12 +28,7 @@ namespace Medic.Models.CP
         { 
             get
             {
-                if (_dateFrom == default)
-                {
-                    return string.Empty;
-                }
-                
-                return _dateFrom.ToString("yyyy-MM-ddTHH:mm:ss");
+                return _dateFrom == default ? default : _dateFrom.ToString("yyyy-MM-ddTHH:mm:ss");
             }
             set
             {
@@ -53,16 +48,11 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_dateTo == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dateTo.ToString("yyyy-MM-ddTHH:mm:ss.fff");
+                return _dateTo == default ? default : _dateTo.ToString("yyyy-MM-ddTHH:mm:ss.fff");
             }
             set
             {
-                _dateTo = DateTime.ParseExact(value, "yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture);
+                _dateTo = DateTime.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 

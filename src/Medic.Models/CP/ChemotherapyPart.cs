@@ -23,12 +23,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_diagnoseDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _diagnoseDate.ToString(DateFormat);
+                return _diagnoseDate == default ? default : _diagnoseDate.ToString(DateFormat);
             }
 
             set

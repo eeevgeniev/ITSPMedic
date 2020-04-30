@@ -9,7 +9,7 @@ namespace Medic.Models.CP
         private const string DateFormat = "yyyy-MM-dd";
 
         private DateTime _birthDate;
-        public DateTime _dateTo;
+        public DateTime? _dateTo;
 
         [XmlElement(ElementName = "COUNTRYCODE")]
         public string CountryCode { get; set; }
@@ -24,7 +24,7 @@ namespace Medic.Models.CP
         public string CertificateType { get; set; }
 
         [XmlIgnore]
-        public DateTime DateTo
+        public DateTime? DateTo
         {
             get { return _dateTo; }
             set { _dateTo = value; }
@@ -35,12 +35,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_dateTo == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dateTo.ToString(DateFormat);
+                return _dateTo == default ? default : ((DateTime)_dateTo).ToString(DateFormat);
             }
             set
             {
@@ -72,12 +67,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_birthDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _birthDate.ToString(DateFormat);
+                return _birthDate == default ? default : _birthDate.ToString(DateFormat);
             }
             set
             {

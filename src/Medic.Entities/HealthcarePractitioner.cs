@@ -18,10 +18,6 @@ namespace Medic.Entities
     {
         public int Id { get; set; }
 
-        public int? PractitionerTypeId { get; set; }
-
-        public PractitionerType PractitionerType { get; set; }
-
         public int? HealthRegionId { get; set; }
 
         public HealthRegion HealthRegion { get; set; }

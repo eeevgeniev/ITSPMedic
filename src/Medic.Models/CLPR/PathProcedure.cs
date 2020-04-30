@@ -11,28 +11,28 @@ namespace Medic.Models.CLPR
         private const string DateFormat = "yyyy-MM-dd";
 
         private DateTime _dateSend;
-        private DateTime _firstVisitDate;
-        private DateTime _dateProcedureBegins;
-        private DateTime _datePlanPriem;
-        private DateTime _dateProcedureEnd;
+        private DateTime? _firstVisitDate;
+        private DateTime? _dateProcedureBegins;
+        private DateTime? _datePlanPriem;
+        private DateTime? _dateProcedureEnd;
 
         [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
-        public string PatientBranch { get; set; }
+        public int? PatientBranch { get; set; }
 
         [XmlElement(ElementName = "patientHRegion")]
-        public string PatientHRegion { get; set; }
+        public int? PatientHRegion { get; set; }
 
         [XmlElement(ElementName = "Sender")]
         public Sender Sender { get; set; }
 
         [XmlElement(ElementName = "CPr_Send")]
-        public string CPrSend { get; set; }
+        public double? CPrSend { get; set; }
 
         [XmlElement(ElementName = "APr_Send")]
-        public string APrSend { get; set; }
+        public decimal? APrSend { get; set; }
 
         [XmlElement(ElementName = "TypeProc_Send")]
         public int TypeProcSend { get; set; }
@@ -49,12 +49,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_dateSend == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dateSend.ToString(DateFormat);
+                return _dateSend == default ? default : _dateSend.ToString(DateFormat);
             }
             set
             {
@@ -63,10 +58,10 @@ namespace Medic.Models.CLPR
         }
 
         [XmlElement(ElementName = "CPr_Priem")]
-        public string CPrPriem { get; set; }
+        public double? CPrPriem { get; set; }
 
         [XmlElement(ElementName = "APr_Priem")]
-        public string APrPriem { get; set; }
+        public decimal? APrPriem { get; set; }
 
         public decimal MedicalWard { get; set; }
 
@@ -89,7 +84,7 @@ namespace Medic.Models.CLPR
         public int IZYearChild { get; set; }
 
         [XmlIgnore]
-        public DateTime FirstVisitDate
+        public DateTime? FirstVisitDate
         {
             get { return _firstVisitDate; }
             set { _firstVisitDate = value; }
@@ -100,12 +95,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_firstVisitDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _firstVisitDate.ToString(DateFormat);
+                return _firstVisitDate == default ? default : ((DateTime)_firstVisitDate).ToString(DateFormat);
             }
             set
             {
@@ -114,7 +104,7 @@ namespace Medic.Models.CLPR
         }
 
         [XmlIgnore]
-        public DateTime DatePlanPriem
+        public DateTime? DatePlanPriem
         {
             get { return _datePlanPriem; }
             set { _datePlanPriem = value; }
@@ -125,12 +115,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_datePlanPriem == default)
-                {
-                    return string.Empty;
-                }
-
-                return _datePlanPriem.ToString(DateFormat);
+                return _datePlanPriem == default ? default : ((DateTime)_datePlanPriem).ToString(DateFormat);
             }
             set
             {
@@ -151,7 +136,7 @@ namespace Medic.Models.CLPR
         public Diag MainDiag2 { get; set; }
 
         [XmlIgnore]
-        public DateTime DateProcedureBegins
+        public DateTime? DateProcedureBegins
         {
             get { return _dateProcedureBegins; }
             set { _dateProcedureBegins = value; }
@@ -162,12 +147,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_dateProcedureBegins == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dateProcedureBegins.ToString(DateFormat);
+                return _dateProcedureBegins == default ? default : ((DateTime)_dateProcedureBegins).ToString(DateFormat);
             }
             set
             {
@@ -176,7 +156,7 @@ namespace Medic.Models.CLPR
         }
 
         [XmlIgnore]
-        public DateTime DateProcedureEnd
+        public DateTime? DateProcedureEnd
         {
             get { return _dateProcedureEnd; }
             set { _dateProcedureEnd = value; }
@@ -187,12 +167,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_dateProcedureEnd == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dateProcedureEnd.ToString(DateFormat);
+                return _dateProcedureEnd == default ? default : ((DateTime)_dateProcedureEnd).ToString(DateFormat);
             }
             set
             {

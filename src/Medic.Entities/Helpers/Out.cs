@@ -14,7 +14,7 @@ namespace Medic.Entities
         public void ConfigureTransformations(IMapperConfigurationExpression expression)
         {
             expression.CreateMap<Out, CP.Out>()
-                .ForMember(o => o.PatientBranch, config => config.MapFrom(o => o.PatientBranch == default ? default : o.PatientBranch.Code))
+                .ForMember(o => o.PatientBranch, config => config.MapFrom(o => o.PatientBranch == default && o.PatientBranch.HealthRegion == default ? default : o.PatientBranch.HealthRegion.Code))
                 .ForMember(o => o.PatientHRegion, config => config.MapFrom(o => o.PatientHRegion == default ? default : o.PatientHRegion.Code))
                 .ForMember(o => o.SendDiagnose, config => config.MapFrom(o => o.SendDiagnose))
                 .ForMember(o => o.Diagnoses, config => config.MapFrom(o => o.Diagnoses))
@@ -26,7 +26,7 @@ namespace Medic.Entities
                 .ForMember(o => o.HLDateFromAsString, config => config.Ignore());
 
             expression.CreateMap<CP.Out, Out>()
-                .ForMember(o => o.PatientBranch, config => config.MapFrom(o => new PatientBranch() { Code = o.PatientBranch }))
+                .ForMember(o => o.PatientBranch, config => config.MapFrom(o => new PatientBranch() { HealthRegion = new HealthRegion() { Code = o.PatientBranch } }))
                 .ForMember(o => o.PatientBranchId, config => config.Ignore())
                 .ForMember(o => o.PatientHRegion, config => config.MapFrom(o => new HealthRegion() { Code = o.PatientHRegion }))
                 .ForMember(o => o.SendDiagnose, config => config.MapFrom(o => o.SendDiagnose))

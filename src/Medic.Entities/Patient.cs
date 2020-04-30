@@ -22,7 +22,7 @@ namespace Medic.Entities
 
         public string CertificateType { get; set; }
 
-        public DateTime DateTo { get; set;}
+        public DateTime? DateTo { get; set;}
 
         public string EhicC { get; set; }
 

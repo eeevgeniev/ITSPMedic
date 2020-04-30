@@ -26,6 +26,16 @@ namespace Medic.Contexts.Seeders
             bool isSexesInserted = MedicContext.Sexes.Any();
             bool isMKBInserted = MedicContext.MKBs.Any();
 
+            if (!isSexesInserted)
+            {
+                foreach (Sex sex in GetElementsFromFile<Sex>(Path.Combine("./Resources/sexes.json")))
+                {
+                    MedicContext.Sexes.Add(sex);
+
+                    MedicContext.SaveChanges();
+                }
+            }
+
             if (!isSpecialtyInserted)
             {
                 MedicContext.SpecialtyTypes
@@ -38,19 +48,13 @@ namespace Medic.Contexts.Seeders
                     .AddRange(GetElementsFromFile<HealthRegion>(Path.Combine("./Resources/healthRegions.json")));
             }
 
-            if (!isSexesInserted)
-            {
-                MedicContext.Sexes
-                    .AddRange(GetElementsFromFile<Sex>(Path.Combine("./Resources/sexes.json")));
-            }
-
             if (!isMKBInserted)
             {
                 MedicContext.MKBs
                     .AddRange(GetElementsFromFile<MKB>(Path.Combine("./Resources/mkbs.json")));
             }
 
-            if (!isSpecialtyInserted || !isRegionsInserted || !isSexesInserted || !isMKBInserted)
+            if (!isSpecialtyInserted || !isRegionsInserted || !isMKBInserted)
             {
                 MedicContext.SaveChanges();
             }

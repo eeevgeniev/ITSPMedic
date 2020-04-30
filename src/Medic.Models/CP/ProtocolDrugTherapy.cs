@@ -15,13 +15,13 @@ namespace Medic.Models.CP
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
-        public string PatientBranch { get; set; }
+        public int? PatientBranch { get; set; }
 
         [XmlElement(ElementName = "patientHRegion")]
-        public string PatientHRegion { get; set; }
+        public int? PatientHRegion { get; set; }
 
         [XmlElement(ElementName = "PracticeZdrRajon")]
-        public string PracticeRegion { get; set; }
+        public int? PracticeRegion { get; set; }
 
         [XmlElement(ElementName = "PracticeCode")]
         public string PracticeCode { get; set; }
@@ -44,12 +44,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_decisionDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _decisionDate.ToString(DateFormat);
+                return _decisionDate == default ? default : _decisionDate.ToString(DateFormat);
             }
             set
             {
@@ -75,12 +70,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_protocolDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _protocolDate.ToString(DateFormat);
+                return _protocolDate == default ? default : _protocolDate.ToString(DateFormat);
             }
             set
             {

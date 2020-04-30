@@ -23,7 +23,7 @@ namespace Medic.Models.CLPR
         {
             get 
             {
-                return _drugDate == default ? string.Empty : _drugDate.ToString("yyyy-MM-dd");
+                return _drugDate == default ? default : _drugDate.ToString("yyyy-MM-dd");
             }
             set 
             {

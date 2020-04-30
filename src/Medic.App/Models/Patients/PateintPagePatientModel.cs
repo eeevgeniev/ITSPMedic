@@ -3,7 +3,7 @@ using Medic.AppModels.Patients;
 
 namespace Medic.App.Models.Patients
 {
-    public class PatientPageModel : BasePageModel
+    public class PateintPagePatientModel : BasePageModel
     {
         public PatientViewModel Patient { get; set; }
     }

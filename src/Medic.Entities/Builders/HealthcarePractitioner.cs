@@ -18,10 +18,6 @@ namespace Medic.Entities
                     .WithOne(pdthp => pdthp.HealthcarePractitioner)
                     .HasForeignKey(pdthp => pdthp.HealthcarePractitionerId);
 
-                b.HasOne(model => model.PractitionerType)
-                    .WithMany(pt => pt.HealthcarePractitioners)
-                    .HasForeignKey(model => model.PractitionerTypeId);
-
                 b.HasOne(model => model.HealthRegion)
                     .WithMany(hr => hr.HealthcarePractitioners)
                     .HasForeignKey(model => model.HealthRegionId);

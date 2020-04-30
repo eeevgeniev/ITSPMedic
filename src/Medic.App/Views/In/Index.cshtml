@@ -1,0 +1,142 @@
+﻿@using Medic.AppModels.Ins 
+
+@model InPageIndexModel
+
+@{
+    ViewData["Title"] = Model.Title;
+
+    Dictionary<string, string> paramsByName = new Dictionary<string, string>();
+
+    int pagesCount = Model.TotalCount % 10 != 0 ? (Model.TotalCount / 10) + 1 : Model.TotalCount / 10;
+
+    if (Model.Search != default)
+    {
+        if (!string.IsNullOrWhiteSpace(Model.Search.MainDiagnose))
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.MainDiagnose)}", Model.Search.MainDiagnose);
+        }
+
+        if (Model.Search.NumberOfAdditionalDiagnoses != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.NumberOfAdditionalDiagnoses)}", Model.Search.NumberOfAdditionalDiagnoses.ToString());
+        }
+
+        if (Model.Search.Sex != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Sex)}", Model.Search.Sex.ToString());
+        }
+
+        if (Model.Search.Diagnoses != default && Model.Search.Diagnoses.Count > 0)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Diagnoses)}", string.Join(",", Model.Search.Diagnoses));
+        }
+
+        if (Model.Search.Age != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Age)}", Model.Search.Age.ToString());
+        }
+
+        if (Model.Search.OlderThan != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.OlderThan)}", Model.Search.OlderThan.ToString());
+        }
+
+        if (Model.Search.YoungerThan != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.YoungerThan)}", Model.Search.YoungerThan.ToString());
+        }
+    }
+
+}
+
+<article>
+    <header>
+        <h2>Result: @Model.TotalCount</h2>
+    </header>
+    <section>
+        <form asp-controller="@MedicBaseController.GetName(nameof(InController))"
+              asp-action="@nameof(InController.Index)"
+              method="get">
+            <div class="form-group">
+                <label asp-for="@Model.Search.MainDiagnose"></label>
+                <input class="form-control" asp-for="@Model.Search.MainDiagnose" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Search.NumberOfAdditionalDiagnoses"></label>
+                <input class="form-control" asp-for="@Model.Search.NumberOfAdditionalDiagnoses" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Search.Sex"></label>
+                <select class="form-control" asp-for="@Model.Search.Sex" asp-items="@Model.Sexes.Select(s => new SelectListItem(s.Name, s.Id.ToString(), s.Id == null))"></select>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="@Model.Search.Diagnoses"></label>
+            <input class="form-control" asp-for="@Model.Search.Diagnoses" />
+        </div>*@
+            <div class="form-group">
+                <label asp-for="@Model.Search.Age"></label>
+                <input class="form-control" asp-for="@Model.Search.Age" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Search.OlderThan"></label>
+                <input class="form-control" asp-for="@Model.Search.OlderThan" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Search.YoungerThan"></label>
+                <input class="form-control" asp-for="@Model.Search.YoungerThan" />
+            </div>
+            <input type="submit" class="btn btn-primary" value="Search" />
+            <input type="reset" class="btn btn-dark" value="Reset" />
+        </form>
+    </section>
+    <section>
+        @if(Model.Ins != default && Model.Ins.Count > 0)
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Entry date</th>
+                        <th scope="col">Send diagnose code</th>
+                        <th scope="col">Send diagnose name</th>
+                        <th scope="col">Additional diagnoses</th>
+                        <th scope="col">View patient</th>
+                        <th scope="col">View in</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (InPreviewViewModel currentIn in Model.Ins)
+                    {
+                    <tr>
+                        <td>@currentIn.EntryDate.ToShortDateString()</td>
+                        <td>@currentIn.SendDiagnoseCode</td>
+                        <td>@currentIn.SendDiagnoseName</td>
+                        <td>@string.Join(", ", currentIn.CodeDiagnoses)</td>
+                        <td><a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
+                               asp-action="@nameof(PatientController.Patient)"
+                               asp-route-id="@currentIn.PatientId" class="btn btn-info">View</a></td>
+                        <td><a href="#" class="btn btn-default">View</a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <footer>
+                <pager page-count="@pagesCount" 
+                       current-page="@Model.CurrentPage" 
+                       controller-name="@MedicBaseController.GetName(nameof(InController))"
+                       action-name="@nameof(InController.Index)"
+                       additional-properties="@paramsByName"
+                       nav-class-names="btn-toolbar"
+                       ul-class-names="pagination"
+                       li-class-names="page-item"
+                       li-selected-class-names="page-item active"
+                       anchor-class-names="page-link">
+
+                </pager>
+            </footer>
+        }
+        else
+        {
+            <span>No results</span>
+        }
+    </section>
+</article>

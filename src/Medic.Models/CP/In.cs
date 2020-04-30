@@ -17,10 +17,10 @@ namespace Medic.Models.CP
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
-        public string PatientBranch { get; set; }
+        public int? PatientBranch { get; set; }
 
         [XmlElement(ElementName = "patientHRegion")]
-        public string PatientHRegion { get; set; }
+        public int? PatientHRegion { get; set; }
 
         [XmlElement(ElementName = "inType")]
         public int InType { get; set; }
@@ -39,12 +39,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_sendDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _sendDate.ToString(DateFormat);
+                return _sendDate == default ? default : _sendDate.ToString(DateFormat);
             }
             set
             {
@@ -59,7 +54,7 @@ namespace Medic.Models.CP
         public int SendUrgency { get; set; }
 
         [XmlElement(ElementName = "SendAPr")]
-        public string SendApr { get; set; }
+        public int? SendApr { get; set; }
 
         [XmlElement(ElementName = "sendClinicalPath")]
         public string SendClinicalPath { get; set; }
@@ -79,12 +74,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_examinationDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _examinationDate.ToString(DateFormat);
+                return _examinationDate == default ? default : _examinationDate.ToString(DateFormat);
             }
             set
             {
@@ -102,7 +92,7 @@ namespace Medic.Models.CP
         public int Urgency { get; set; }
 
         [XmlElement(ElementName = "InAPr")]
-        public string InApr { get; set; }
+        public int? InApr { get; set; }
 
         [XmlElement(ElementName = "clinicalPath")]
         public string ClinicalPath { get; set; }
@@ -125,12 +115,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_entryDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _entryDate.ToString(DateTimeFormat);
+                return _entryDate == default ? default : _entryDate.ToString(DateTimeFormat);
             }
             set
             {

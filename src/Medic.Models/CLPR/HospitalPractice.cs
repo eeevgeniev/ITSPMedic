@@ -15,7 +15,7 @@ namespace Medic.Models.CLPR
         private DateTime _dateTo;
 
         [XmlElement(ElementName = "ZdrRajon")]
-        public string HealthRegion { get; set; }
+        public int? HealthRegion { get; set; }
 
         [XmlElement(ElementName = "PracticeCode")]
         public string PracticeCode { get; set; }
@@ -35,16 +35,11 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_dateFrom == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dateFrom.ToString(DateFormat);
+                return _dateFrom == default ? default : _dateFrom.ToString(DateFormat);
             }
             set
             {
-                _dateFrom = DateTime.ParseExact(value, DateFormat, CultureInfo.InvariantCulture);
+                _dateFrom = DateTime.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 
@@ -60,16 +55,11 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_dateTo == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dateTo.ToString(DateFormat);
+               return _dateTo == default ? default : _dateTo.ToString(DateFormat);
             }
             set
             {
-                _dateTo = DateTime.ParseExact(value, DateFormat, CultureInfo.InvariantCulture);
+                _dateTo = DateTime.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 

@@ -29,17 +29,17 @@ namespace Medic.Entities
 
         public HealthcarePractitioner Sender { get; set; }
 
-        public string CPrSend { get; set; }
+        public double? CPrSend { get; set; }
 
-        public string APrSend { get; set; }
+        public double? APrSend { get; set; }
 
         public int TypeProcSend { get; set; }
 
         public DateTime DateSend { get; set; }
 
-        public string CPrPriem { get; set; }
+        public double? CPrPriem { get; set; }
 
-        public string APrPriem { get; set; }
+        public double? APrPriem { get; set; }
 
         public int TypeProcPriem { get; set; }
 
@@ -49,7 +49,7 @@ namespace Medic.Entities
 
         public CeasedClinicalPath CeasedClinicalPath { get; set; }
 
-        public string IZNumChild { get; set; }
+        public int? IZNumChild { get; set; }
 
         public int IZYearChild { get; set; }
 

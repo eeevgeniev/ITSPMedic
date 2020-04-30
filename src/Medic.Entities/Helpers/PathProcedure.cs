@@ -14,7 +14,7 @@ namespace Medic.Entities
         public void ConfigureTransformations(IMapperConfigurationExpression expression)
         {
             expression.CreateMap<PathProcedure, CLPR.PathProcedure>()
-                .ForMember(pp => pp.PatientBranch, config => config.MapFrom(pp => pp.PatientBranch == default ? default : pp.PatientBranch.Code))
+                .ForMember(pp => pp.PatientBranch, config => config.MapFrom(pp => pp.PatientBranch == default && pp.PatientBranch.HealthRegion == default ? default : pp.PatientBranch.HealthRegion.Code))
                 .ForMember(pp => pp.PatientHRegion, config => config.MapFrom(pp => pp.PatientHRegion == default ? default : pp.PatientHRegion.Code))
                 .ForMember(pp => pp.Patient, config => config.MapFrom(pp => pp.Patient))
                 .ForMember(pp => pp.MainDiag1, config => config.MapFrom(pp => pp.FirstMainDiag))
@@ -28,7 +28,7 @@ namespace Medic.Entities
                 .ForMember(pp => pp.DateProcedureEndAsString, config => config.Ignore());
 
             expression.CreateMap<CLPR.PathProcedure, PathProcedure>()
-                .ForMember(pp => pp.PatientBranch, config => config.MapFrom(pp => new PatientBranch() { Code = pp.PatientBranch }))
+                .ForMember(pp => pp.PatientBranch, config => config.MapFrom(pp => new PatientBranch() { HealthRegion = new HealthRegion() { Code = pp.PatientBranch } }))
                 .ForMember(pp => pp.PatientBranchId, config => config.Ignore())
                 .ForMember(pp => pp.PatientHRegion, config => config.MapFrom(pp => pp.PatientHRegion == default ? default : new HealthRegion() { Code = pp.PatientHRegion }))
                 .ForMember(pp => pp.PatientHRegionId, config => config.Ignore())

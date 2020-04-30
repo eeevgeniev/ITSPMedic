@@ -21,12 +21,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_diagDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _diagDate.ToString("yyyy-MM-dd");
+                return _diagDate == default ? default : _diagDate.ToString("yyyy-MM-dd");
             }
             set
             {

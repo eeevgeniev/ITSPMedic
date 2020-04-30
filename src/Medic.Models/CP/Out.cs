@@ -14,15 +14,15 @@ namespace Medic.Models.CP
         private DateTime _examinationDate;
         private DateTime _entryDate;
         private DateTime _outDate;
-        private DateTime _hLDateFrom;
+        private DateTime? _hLDateFrom;
 
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
-        public string PatientBranch { get; set; }
+        public int? PatientBranch { get; set; }
 
         [XmlElement(ElementName = "patientHRegion")]
-        public string PatientHRegion { get; set; }
+        public int? PatientHRegion { get; set; }
 
         [XmlElement(ElementName = "inType")]
         public int InType { get; set; }
@@ -41,12 +41,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_sendDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _sendDate.ToString(DateFormat);
+                return _sendDate == default ? default : _sendDate.ToString(DateFormat);
             }
             set
             {
@@ -78,12 +73,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_examinationDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _examinationDate.ToString(DateFormat);
+                return _examinationDate == default ? default : _examinationDate.ToString(DateFormat);
             }
             set
             {
@@ -117,12 +107,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_entryDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _entryDate.ToString(DateTimeFormat);
+                return _entryDate == default ? default : _entryDate.ToString(DateTimeFormat);
             }
             set
             {
@@ -176,12 +161,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_outDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _outDate.ToString(DateTimeFormat);
+                return _outDate == default ? default : _outDate.ToString(DateTimeFormat);
             }
             set
             {
@@ -230,7 +210,7 @@ namespace Medic.Models.CP
         public int BedDays { get; set; }
 
         [XmlIgnore]
-        public DateTime HLDateFrom
+        public DateTime? HLDateFrom
         {
             get { return _hLDateFrom; }
             set { _hLDateFrom = value; }
@@ -241,12 +221,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_hLDateFrom == default)
-                {
-                    return string.Empty;
-                }
-
-                return _hLDateFrom.ToString(DateFormat);
+                return _hLDateFrom == default ? default : ((DateTime)_hLDateFrom).ToString(DateFormat);
             }
             set
             {

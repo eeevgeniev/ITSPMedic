@@ -12,7 +12,7 @@ namespace Medic.Entities
 
         public string Name { get; set; }
 
-        public string SpecialtyCode { get; set; }
+        public int? SpecialtyCode { get; set; }
 
         public ICollection<HealthcarePractitioner> HealthcarePractitioners { get; set; } = new HashSet<HealthcarePractitioner>();
     }

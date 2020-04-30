@@ -58,14 +58,6 @@ namespace Medic.Entities
                     .WithOne(dp => dp.PathProcedure)
                     .HasForeignKey(dp => dp.PathProcedureId);
 
-                b.Property(model => model.CPrSend).HasMaxLength(5);
-
-                b.Property(model => model.APrSend).HasMaxLength(5);
-
-                b.Property(model => model.CPrPriem).HasMaxLength(5);
-
-                b.Property(model => model.APrPriem).HasMaxLength(5);
-
                 b.Property(model => model.IZNumChild).HasMaxLength(12);
 
                 b.Property(model => model.VisitDocumentUniqueIdentifier).HasMaxLength(12);

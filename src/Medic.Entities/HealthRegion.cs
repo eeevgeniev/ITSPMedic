@@ -12,7 +12,7 @@ namespace Medic.Entities
 
         public string Name { get; set; }
 
-        public string Code { get; set; }
+        public int? Code { get; set; }
 
         public Practice Practice { get; set; }
 
@@ -35,5 +35,7 @@ namespace Medic.Entities
         public ICollection<DispObservation> DispObservations { get; set; } = new HashSet<DispObservation>();
 
         public ICollection<PlannedProcedure> PlannedProcedures { get; set; } = new HashSet<PlannedProcedure>();
+
+        public ICollection<PatientBranch> PatientBranches { get; set; } = new HashSet<PatientBranch>();
     }
 }

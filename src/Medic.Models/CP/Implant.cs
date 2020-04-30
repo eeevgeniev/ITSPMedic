@@ -44,12 +44,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_date == default)
-                {
-                    return string.Empty;
-                }
-                
-                return _date.ToString(DateFormat);
+                return _date == default ? default : _date.ToString(DateFormat);
             }
 
             set
@@ -79,12 +74,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_distributorInvoiceDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _distributorInvoiceDate.ToString(DateFormat);
+                return _distributorInvoiceDate == default ? default : _distributorInvoiceDate.ToString(DateFormat);
             }
 
             set

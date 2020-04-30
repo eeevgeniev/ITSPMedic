@@ -12,20 +12,19 @@ namespace Medic.Models.CLPR
 
         private DateTime _sendDate;
         private DateTime _decisionDate;
-
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
-        public string PatientBranch { get; set; }
+        public int? PatientBranch { get; set; }
 
         [XmlElement(ElementName = "patientHRegion")]
-        public string PatientHRegion { get; set; }
+        public int? PatientHRegion { get; set; }
 
         [XmlElement(ElementName = "Sender")]
         public Sender Sender { get; set; }
 
         [XmlElement(ElementName = "APr_Send")]
-        public string AprSend { get; set; }
+        public double? AprSend { get; set; }
 
         [XmlIgnore]
         public DateTime SendDate
@@ -39,12 +38,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_sendDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _sendDate.ToString(DateFormat);
+                return _sendDate == default ? default : _sendDate.ToString(DateFormat);
             }
             set
             {
@@ -53,7 +47,7 @@ namespace Medic.Models.CLPR
         }
 
         [XmlElement(ElementName = "APr_Priem")]
-        public string AprPriem { get; set; }
+        public double? AprPriem { get; set; }
 
         [XmlElement(ElementName = "Spec_Commission")]
         public int SpecCommission { get; set; }
@@ -73,12 +67,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_decisionDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _decisionDate.ToString(DateFormat);
+                return _decisionDate == default ? default : _decisionDate.ToString(DateFormat);
             }
             set
             {

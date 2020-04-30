@@ -1,1 +1,17 @@
-[{"Id":0,"Name":"Жена","Patients":[]},{"Id":0,"Name":"Мъж","Patients":[]},{"Id":0,"Name":"Друг","Patients":[]}]
+[
+  {
+    "Id": 0,
+    "Name": "Мъж",
+    "Patients": []
+  },
+  {
+    "Id": 0,
+    "Name": "Жена",
+    "Patients": []
+  },
+  {
+    "Id": 0,
+    "Name": "Друг",
+    "Patients": []
+  }
+]

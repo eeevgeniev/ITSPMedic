@@ -1,11 +1,11 @@
 ﻿@using System.Globalization
 
-@model IndexPageModel
+@model PatientPageIndexModel
 
 @{
     ViewData["Title"] = Model.Title;
 
-    int pages = (Model.Count / 10) + 1;
+    int pages = Model.Count % 10 == 0 ? Model.Count / 10 : (Model.Count / 10) + 1;
 
     Dictionary<string, string> paramsByName = new Dictionary<string, string>();
 

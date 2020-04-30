@@ -49,10 +49,6 @@ namespace Medic.Entities
                 b.HasMany(model => model.Members)
                     .WithOne(cahp => cahp.CommissionApr)
                     .HasForeignKey(cahp => cahp.CommissionAprId);
-
-                b.Property(model => model.AprSend).HasMaxLength(5);
-
-                b.Property(model => model.AprPriem).HasMaxLength(5);
             });
         }
     }

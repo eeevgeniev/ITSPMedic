@@ -9,7 +9,7 @@ namespace Medic.Models.CP
         private const string DateFormat = "yyyy-MM-dd";
 
         private DateTime _date;
-        private DateTime _hLDateFrom;
+        private DateTime? _hLDateFrom;
 
         [XmlElement(ElementName = "code")]
         public double Code { get; set; }
@@ -32,12 +32,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_date == default)
-                {
-                    return string.Empty;
-                }
-
-                return _date.ToString(DateFormat);
+                return _date == default ? default : _date.ToString(DateFormat);
             }
             set
             {
@@ -52,7 +47,7 @@ namespace Medic.Models.CP
         public int BedDays { get; set; }
 
         [XmlIgnore]
-        public DateTime HLDateFrom
+        public DateTime? HLDateFrom
         {
             get { return _hLDateFrom; }
             set { _hLDateFrom = value; }
@@ -63,12 +58,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_hLDateFrom == default)
-                {
-                    return string.Empty;
-                }
-
-                return _hLDateFrom.ToString(DateFormat);
+                return _hLDateFrom == default ? default : ((DateTime)_hLDateFrom).ToString(DateFormat);
             }
             set
             {

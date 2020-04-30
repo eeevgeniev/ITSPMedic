@@ -40,7 +40,7 @@ namespace Medic.Entities
 
         public int SendUrgency { get; set; }
 
-        public string SendApr { get; set; }
+        public int? SendApr { get; set; }
 
         public string SendClinicalPath { get; set; }
 
@@ -54,7 +54,7 @@ namespace Medic.Entities
 
         public int Urgency { get; set; }
 
-        public string InApr { get; set; }
+        public int? InApr { get; set; }
 
         public string ClinicalPath { get; set; }
 

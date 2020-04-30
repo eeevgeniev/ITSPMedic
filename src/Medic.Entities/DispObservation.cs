@@ -66,7 +66,7 @@ namespace Medic.Entities
 
         public string Therapy { get; set; }
 
-        public string Sign { get; set; }
+        public int Sign { get; set; }
 
         public int NZOKPay { get; set; }
     }

@@ -2,6 +2,7 @@
 using Medic.Entities;
 using Medic.Import.Contracts;
 using Medic.Import.Rules;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -241,8 +242,6 @@ namespace Medic.Import
                 }
             }
 
-            HashSet<MKB> addedmkbs = new HashSet<MKB>(MedicContext.MKBs.ToList(), new MKBComparer());
-
             MedicContext.CPFiles.Add(cpFile);
 
             MedicContext.SaveChanges();
@@ -421,7 +420,7 @@ namespace Medic.Import
         {
             _providers.UnionWith(MedicContext.Providers.ToList());
             _therapyTypes.UnionWith(MedicContext.TherapyTypes.ToList());
-            _patientBranches.UnionWith(MedicContext.PatientBranches.ToList());
+            _patientBranches.UnionWith(MedicContext.PatientBranches.Include(pb => pb.HealthRegion).ToList());
             _practices.UnionWith(MedicContext.Practices.ToList());
             _fileTypes.UnionWith(MedicContext.FileTypes.ToList());
             _senderTypes.UnionWith(MedicContext.SenderTypes.ToList());
@@ -435,9 +434,7 @@ namespace Medic.Import
         {
             if (patient != default)
             {
-                Patient currentPatient;
-
-                if (!_patients.TryGetValue(patient, out currentPatient))
+                if (!_patients.TryGetValue(patient, out Patient currentPatient))
                 {
                     HashSet<Patient> patients = MedicContext.Patients.Where(p => p.IdentityNumber == patient.IdentityNumber).ToHashSet();
                     currentPatient = patients.FirstOrDefault(p => DateTime.Equals(p.BirthDate, patient.BirthDate));
@@ -480,9 +477,7 @@ namespace Medic.Import
         {
             if (practitioner != default)
             {
-                HealthcarePractitioner currentPractitioner;
-
-                if (!_healthcarePractitioners.TryGetValue(practitioner, out currentPractitioner))
+                if (!_healthcarePractitioners.TryGetValue(practitioner, out HealthcarePractitioner currentPractitioner))
                 {
                     HashSet<HealthcarePractitioner> healthcarePractitioners = MedicContext.HealthcarePractitioners.Where(hp => hp.UniqueIdentifier == practitioner.UniqueIdentifier).ToHashSet();
                     currentPractitioner = healthcarePractitioners.FirstOrDefault(p => string.Equals(p.Name, practitioner.Name));
@@ -539,6 +534,8 @@ namespace Medic.Import
             {
                 _patientBranches.Add(patientBranch);
                 _patientBranches.TryGetValue(patientBranch, out patientBranch);
+
+                patientBranch.HealthRegion = AddHealthRegion(patientBranch.HealthRegion);
             }
 
             return patientBranch;

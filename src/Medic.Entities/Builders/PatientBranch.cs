@@ -10,7 +10,9 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
-                b.Property(model => model.Code).HasMaxLength(5);
+                b.HasOne(model => model.HealthRegion)
+                    .WithMany(hr => hr.PatientBranches)
+                    .HasForeignKey(model => model.HealthRegionId);
             });
         }
     }

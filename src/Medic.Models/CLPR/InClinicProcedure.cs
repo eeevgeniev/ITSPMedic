@@ -10,29 +10,29 @@ namespace Medic.Models.CLPR
         private const string DateFormat = "yyyy-MM-dd";
 
         private DateTime _dateSend;
-        private DateTime _firstVisitDate;
-        private DateTime _planVisitDate;
+        private DateTime? _firstVisitDate;
+        private DateTime? _planVisitDate;
 
         [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
-        public string PatientBranch { get; set; }
+        public int? PatientBranch { get; set; }
 
         [XmlElement(ElementName = "patientHRegion")]
-        public string PatientHRegion { get; set; }
+        public int? PatientHRegion { get; set; }
 
         [XmlElement(ElementName = "Sender")]
         public Sender Sender { get; set; }
 
         [XmlElement(ElementName = "CPr_Send")]
-        public string CPrSend { get; set; }
+        public double? CPrSend { get; set; }
 
         [XmlElement(ElementName = "APr_Send")]
-        public string APrSend { get; set; }
+        public double? APrSend { get; set; }
 
         [XmlElement(ElementName = "TypeProc_Send")]
-        public int TypeProcSend { get; set; }
+        public decimal? TypeProcSend { get; set; }
 
         [XmlIgnore]
         public DateTime DateSend
@@ -46,12 +46,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_dateSend == default)
-                {
-                    return string.Empty;
-                }
-                
-                return _dateSend.ToString(DateFormat);
+                return _dateSend == default ? default : _dateSend.ToString(DateFormat);
             }
             set
             {
@@ -60,10 +55,10 @@ namespace Medic.Models.CLPR
         }
 
         [XmlElement(ElementName = "CPr_Priem")]
-        public string CPrPriem { get; set; }
+        public double? CPrPriem { get; set; }
 
         [XmlElement(ElementName = "APr_Priem")]
-        public string APrPriem { get; set; }
+        public double? APrPriem { get; set; }
 
         [XmlElement(ElementName = "TypeProc_Priem")]
         public int TypeProcPriem { get; set; }
@@ -75,13 +70,13 @@ namespace Medic.Models.CLPR
         public CeasedClinicalPath CeasedClinicalPath { get; set; }
 
         [XmlElement(ElementName = "IZNum_Child")]
-        public string IZNumChild { get; set; }
+        public int? IZNumChild { get; set; }
 
         [XmlElement(ElementName = "IZYear_Child")]
         public int IZYearChild { get; set; }
 
         [XmlIgnore]
-        public DateTime FirstVisitDate
+        public DateTime? FirstVisitDate
         {
             get { return _firstVisitDate; }
             set { _firstVisitDate = value; }
@@ -92,12 +87,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                if (_firstVisitDate == default)
-                {
-                    return string.Empty;
-                }
-
-                return _firstVisitDate.ToString(DateFormat);
+                return _firstVisitDate == default ? default : ((DateTime)_firstVisitDate).ToString(DateFormat);
             }
             set
             {
@@ -106,7 +96,7 @@ namespace Medic.Models.CLPR
         }
 
         [XmlIgnore]
-        public DateTime PlanVisitDate
+        public DateTime? PlanVisitDate
         {
             get { return _planVisitDate; }
             set { _planVisitDate = value; }
@@ -119,10 +109,10 @@ namespace Medic.Models.CLPR
             {
                 if (_planVisitDate == default)
                 {
-                    return string.Empty;
+                    return default;
                 }
 
-                return _planVisitDate.ToString(DateFormat);
+                return ((DateTime)_planVisitDate).ToString(DateFormat);
             }
             set
             {

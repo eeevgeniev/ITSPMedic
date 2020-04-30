@@ -6,7 +6,7 @@ namespace Medic.Models.CP
 {
     public class Epicrisis
     {
-        private DateTime _dateOfSurgery;
+        private DateTime? _dateOfSurgery;
 
         [XmlElement(ElementName = "history")]
         public string History { get; set; }
@@ -30,7 +30,7 @@ namespace Medic.Models.CP
         public string Complications { get; set; }
 
         [XmlIgnore]
-        public DateTime DateOfSurgery
+        public DateTime? DateOfSurgery
         {
             get { return _dateOfSurgery; }
             set { _dateOfSurgery = value; }
@@ -41,12 +41,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                if (_dateOfSurgery == default)
-                {
-                    return string.Empty;
-                }
-
-                return _dateOfSurgery.ToString("yyyy-MM-hh");
+                return _dateOfSurgery == default ? default : ((DateTime)_dateOfSurgery).ToString("yyyy-MM-hh");
             }
             set
             {

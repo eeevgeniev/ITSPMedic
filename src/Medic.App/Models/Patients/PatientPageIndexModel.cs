@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Medic.App.Models.Patients
 {
-    public class IndexPageModel : BasePageModel
+    public class PatientPageIndexModel : BasePageModel
     {
         public int Count { get; set; }
 

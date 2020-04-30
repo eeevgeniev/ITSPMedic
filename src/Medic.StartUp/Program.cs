@@ -41,7 +41,7 @@ namespace Medic.FileImport
                 IMappable mapper = new AMapper(mapConfiguration.CreateConfiguration());
 
                 string cpDirectory, clprDirectory;
-                bool doesCpDirectoryExist, doesCLPRDirectoryExist;
+                bool doesCpDirectoryExist = true, doesCLPRDirectoryExist = true;
 
                 while (true)
                 {
@@ -50,9 +50,17 @@ namespace Medic.FileImport
                     Console.WriteLine("Enter directory for CLPR files");
                     clprDirectory = Console.ReadLine();
 
-                    doesCpDirectoryExist = Directory.Exists(cpDirectory);
-                    doesCLPRDirectoryExist = Directory.Exists(clprDirectory);
+                    if (!string.IsNullOrWhiteSpace(cpDirectory))
+                    {
+                        doesCpDirectoryExist = Directory.Exists(cpDirectory);
+                    }
 
+                    if (!string.IsNullOrWhiteSpace(clprDirectory))
+                    {
+                        doesCLPRDirectoryExist = Directory.Exists(clprDirectory);
+                    }
+
+                    
                     if (doesCpDirectoryExist && doesCLPRDirectoryExist)
                     {
                         break;
@@ -71,8 +79,15 @@ namespace Medic.FileImport
                     }
                 }
 
-                ReadCpFiles(mapper, builder, cpDirectory);
-                ReadCLPRFiles(mapper, builder, clprDirectory);
+                if (!string.IsNullOrWhiteSpace(cpDirectory))
+                {
+                    ReadCpFiles(mapper, builder, cpDirectory);
+                }
+
+                if (!string.IsNullOrWhiteSpace(clprDirectory))
+                {
+                    ReadCLPRFiles(mapper, builder, clprDirectory);
+                }
             }
             catch (Exception ex)
             {

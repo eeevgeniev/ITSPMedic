@@ -25,28 +25,28 @@ namespace Medic.Entities
 
         public MKB Secondary { get; set; }
 
-        public In In { get; set; } // added
+        public In In { get; set; }
 
-        public int? MainInId { get; set; } // added
+        public int? MainInId { get; set; }
 
         public In MainIn { get; set; }
 
-        public Out SendOut { get; set; } // added
+        public Out SendOut { get; set; }
 
         public int? OutId { get; set; }
 
-        public Out Out { get; set; } //added
+        public Out Out { get; set; }
 
-        public Out OutDead { get; set; } // added
+        public Out OutDead { get; set; }
 
-        public Out OutMain { get; set; } // added
+        public Out OutMain { get; set; }
 
         public int? OutOutId { get; set; }
 
-        public Out OutOut { get; set; } // added
+        public Out OutOut { get; set; }
 
-        public PlannedProcedure SendPlannedProcedure { get; set; } //added
+        public PlannedProcedure SendPlannedProcedure { get; set; }
 
-        public PlannedProcedure PlannedProcedure { get; set; } // added
+        public PlannedProcedure PlannedProcedure { get; set; }
     }
 }

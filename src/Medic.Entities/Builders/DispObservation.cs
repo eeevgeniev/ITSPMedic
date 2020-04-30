@@ -49,8 +49,6 @@ namespace Medic.Entities
                 b.Property(model => model.HState).HasMaxLength(3000);
 
                 b.Property(model => model.Therapy).HasMaxLength(1000);
-
-                b.Property(model => model.Sign).HasMaxLength(5);
             });
         }
     }

@@ -14,7 +14,7 @@ namespace Medic.Entities
         public void ConfigureTransformations(IMapperConfigurationExpression expression)
         {
             expression.CreateMap<InClinicProcedure, CLPR.InClinicProcedure>()
-                .ForMember(icp => icp.PatientBranch, config => config.MapFrom(icp => icp.PatientBranch == default ? default : icp.PatientBranch.Code))
+                .ForMember(icp => icp.PatientBranch, config => config.MapFrom(icp => icp.PatientBranch == default && icp.PatientBranch.HealthRegion == default ? default : icp.PatientBranch.HealthRegion.Code))
                 .ForMember(icp => icp.PatientHRegion, config => config.MapFrom(icp => icp.PatientHealthRegion == default ? default : icp.PatientHealthRegion.Code))
                 .ForMember(icp => icp.MainDiag1, config => config.MapFrom(icp => icp.FirstMainDiag))
                 .ForMember(icp => icp.MainDiag2, config => config.MapFrom(icp => icp.SecondMainDiag))
@@ -23,7 +23,7 @@ namespace Medic.Entities
                 .ForMember(icp => icp.PlanVisitDateAsString, config => config.Ignore());
 
             expression.CreateMap<CLPR.InClinicProcedure, InClinicProcedure>()
-                .ForMember(icp => icp.PatientBranch, config => config.MapFrom(icp => new PatientBranch() { Code = icp.PatientBranch }))
+                .ForMember(icp => icp.PatientBranch, config => config.MapFrom(icp => new PatientBranch() { HealthRegion = new HealthRegion() { Code = icp.PatientBranch } }))
                 .ForMember(icp => icp.PatientBranchId, config => config.Ignore())
                 .ForMember(icp => icp.PatientHealthRegion, config => config.MapFrom(icp => icp.PatientHRegion == default ? default : new HealthRegion() { Code = icp.PatientHRegion }))
                 .ForMember(icp => icp.PatientHealthRegionId, config => config.Ignore())

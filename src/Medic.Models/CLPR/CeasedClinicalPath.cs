@@ -8,9 +8,9 @@ namespace Medic.Models.CLPR
         public string Code { get; set; }
 
         [XmlElement(ElementName = "IZMedicalWard")]
-        public string IZMedicalWard { get; set; }
+        public int IZMedicalWard { get; set; }
 
         [XmlElement(ElementName = "IZYearMedicalWard")]
-        public string IZYearMedicalWard { get; set; }
+        public int IZYearMedicalWard { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Medic.Models.CP
     public class UsedDrug
     {
         private DateTime _date;
-        private DateTime _datePrescr;
+        private DateTime? _datePrescr;
         private DateTime _protocolDate;
 
         [XmlIgnore]
@@ -23,7 +23,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                return _date == default ? string.Empty : _date.ToString("yyyy-MM-dd");
+                return _date == default ? default : _date.ToString("yyyy-MM-dd");
             }
             set
             {
@@ -50,7 +50,7 @@ namespace Medic.Models.CP
         public string NoPrescr { get; set; }
 
         [XmlIgnore]
-        public DateTime DatePrescr
+        public DateTime? DatePrescr
         {
             get { return _datePrescr; }
             set { _datePrescr = value; }
@@ -61,7 +61,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                return _datePrescr == default ? string.Empty : _date.ToString("yyyy-MM-dd");
+                return _datePrescr == default ? default : ((DateTime)_datePrescr).ToString("yyyy-MM-dd");
             }
             set
             {
@@ -90,7 +90,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                return _protocolDate == default ? string.Empty : _protocolDate.ToString("yyyy-MM-dd");
+                return _protocolDate == default ? default : _protocolDate.ToString("yyyy-MM-dd");
             }
             set
             {

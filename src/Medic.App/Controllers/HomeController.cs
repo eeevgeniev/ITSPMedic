@@ -12,10 +12,11 @@ using Medic.AppModels.HospitalPractices;
 using Medic.AppModels.Diagnoses;
 using Medic.AppModels.Diags;
 using Medic.App.Models.Home;
+using Medic.App.Controllers.Base;
 
 namespace Medic.App.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : MedicBaseController
     {
         private readonly ICPFileService CPFileService;
         private readonly IDiagnoseService DiagnoseService;

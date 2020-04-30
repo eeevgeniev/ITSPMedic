@@ -34,13 +34,9 @@ namespace Medic.Entities
                     .WithOne(d => d.MainIn)
                     .HasForeignKey(d => d.MainInId);
 
-                b.Property(model => model.SendApr).HasMaxLength(5);
-
                 b.Property(model => model.SendClinicalPath).HasMaxLength(10);
 
                 b.Property(model => model.UniqueIdentifier).HasMaxLength(12);
-
-                b.Property(model => model.InApr).HasMaxLength(5);
 
                 b.Property(model => model.ClinicalPath).HasMaxLength(10);
             });

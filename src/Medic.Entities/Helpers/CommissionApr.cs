@@ -16,7 +16,7 @@ namespace Medic.Entities
         public void ConfigureTransformations(IMapperConfigurationExpression expression)
         {
             expression.CreateMap<CommissionApr, CLPR.CommissionApr>()
-                .ForMember(ca => ca.PatientBranch, config => config.MapFrom(ca => ca.PatientBranch == default ? default : ca.PatientBranch.Code))
+                .ForMember(ca => ca.PatientBranch, config => config.MapFrom(ca => ca.PatientBranch == default && ca.PatientBranch.HealthRegion == default ? default : ca.PatientBranch.HealthRegion.Code))
                 .ForMember(ca => ca.PatientHRegion, config => config.MapFrom(ca => ca.PatientHRegion == default ? default : ca.PatientHRegion.Code))
                 .ForMember(ca => ca.Members, config => config.MapFrom(
                     ca => ca.Members == default ? default : ca.Members.Select(
@@ -32,12 +32,12 @@ namespace Medic.Entities
                 .ForMember(ca => ca.DiagDateAsString, config => config.Ignore());
 
             expression.CreateMap<CLPR.CommissionApr, CommissionApr>()
-                .ForMember(ca => ca.PatientBranch, config => config.MapFrom(ca => ca.PatientBranch == default ? default :  new PatientBranch() { Code = ca.PatientBranch }))
+                .ForMember(ca => ca.PatientBranch, config => config.MapFrom(ca => ca.PatientBranch == default ? default :  new PatientBranch() { HealthRegion = new HealthRegion() { Code = ca.PatientBranch } }))
                 .ForMember(ca => ca.PatientHRegion, config => config.MapFrom(ca => ca.PatientHRegion == default ? default : new HealthRegion() { Code = ca.PatientHRegion }))
                 .ForMember(ca => ca.Members, config => config.MapFrom(ca => 
                     ca.Members.Select(m => new CommissionAprHealthcarePractitioner() 
                     { 
-                        HealthcarePractitioner = new HealthcarePractitioner() { Name = m.DoctorName } 
+                        HealthcarePractitioner = new HealthcarePractitioner() { Name = m.DoctorName, Speciality = new SpecialtyType() { SpecialtyCode = m.Speciality }, UniqueIdentifier = m.UniqueIdentifier } 
                     })
                     .ToList()
                     ))

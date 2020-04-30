@@ -17,7 +17,8 @@ namespace Medic.Import.Rules
                 return false;
             }
 
-            return string.Equals(x.Code, y.Code, StringComparison.OrdinalIgnoreCase);
+            return string.Equals(x.Code, y.Code, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(x.Number, y.Number, StringComparison.OrdinalIgnoreCase);
         }
 
         public int GetHashCode(Practice obj)
@@ -27,9 +28,9 @@ namespace Medic.Import.Rules
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            if (!string.IsNullOrWhiteSpace(obj.Code))
+            if (!string.IsNullOrWhiteSpace(obj.Code) || !string.IsNullOrWhiteSpace(obj.Number))
             {
-                return obj.Code.GetHashCode();
+                return ((obj.Code ?? string.Empty) + (obj.Number ?? string.Empty)).GetHashCode();
             }
 
             return -1;

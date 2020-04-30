@@ -17,13 +17,7 @@ namespace Medic.Import.Rules
                 return false;
             }
 
-            if (!string.IsNullOrWhiteSpace(x.SpecialtyCode) && !string.IsNullOrWhiteSpace(y.SpecialtyCode))
-            {
-                return string.Equals(x.SpecialtyCode, y.SpecialtyCode, StringComparison.OrdinalIgnoreCase);
-            }
-
-            return string.Equals(x.SpecialtyCode, y.SpecialtyCode, StringComparison.OrdinalIgnoreCase) &&
-                string.Equals(x.Name, y.Name, StringComparison.OrdinalIgnoreCase);
+            return x.SpecialtyCode == y.SpecialtyCode;
         }
 
         public int GetHashCode(SpecialtyType obj)
@@ -33,12 +27,7 @@ namespace Medic.Import.Rules
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            if (!string.IsNullOrWhiteSpace(obj.SpecialtyCode))
-            {
-                return obj.SpecialtyCode.GetHashCode();
-            }
-
-            return -1;
+            return obj.SpecialtyCode != default ? obj.SpecialtyCode.GetHashCode() : -1;
         }
     }
 }

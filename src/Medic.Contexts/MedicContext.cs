@@ -103,8 +103,6 @@ namespace Medic.Contexts
 
         public DbSet<Practice> Practices { get; set; }
 
-        public DbSet<PractitionerType> PractitionerTypes { get; set; }
-
         public DbSet<Procedure> Procedures { get; set; }
 
         public DbSet<ProtocolDrugTherapy> ProtocolDrugTherapies { get; set; }

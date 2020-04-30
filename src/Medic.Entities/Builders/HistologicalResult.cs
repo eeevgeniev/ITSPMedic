@@ -9,6 +9,8 @@ namespace Medic.Entities
             builder.Entity<HistologicalResult>(b =>
             {
                 b.HasKey(model => model.Id);
+
+                b.Property(model => model.Note).HasMaxLength(2000);
             });
         }
     }

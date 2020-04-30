@@ -17,7 +17,7 @@ namespace Medic.Import.Rules
                 return false;
             }
 
-            return string.Equals(x.Code, y.Code, StringComparison.OrdinalIgnoreCase);
+            return x.Code == y.Code;
         }
 
         public int GetHashCode(HealthRegion obj)

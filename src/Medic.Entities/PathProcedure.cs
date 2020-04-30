@@ -30,17 +30,17 @@ namespace Medic.Entities
 
         public HealthcarePractitioner Sender { get; set; }
 
-        public string CPrSend { get; set; }
+        public double? CPrSend { get; set; }
 
-        public string APrSend { get; set; }
+        public decimal? APrSend { get; set; }
 
         public int TypeProcSend { get; set; }
 
         public DateTime DateSend { get; set; }
 
-        public string CPrPriem { get; set; }
+        public double? CPrPriem { get; set; }
 
-        public string APrPriem { get; set; }
+        public decimal? APrPriem { get; set; }
 
         public decimal MedicalWard { get; set; }
 
@@ -60,9 +60,9 @@ namespace Medic.Entities
 
         public int IZYearChild { get; set; }
 
-        public DateTime FirstVisitDate { get; set; }
+        public DateTime? FirstVisitDate { get; set; }
 
-        public DateTime DatePlanPriem { get; set; }
+        public DateTime? DatePlanPriem { get; set; }
 
         public string VisitDocumentUniqueIdentifier { get; set; }
 
@@ -76,9 +76,9 @@ namespace Medic.Entities
 
         public Diag SecondMainDiag { get; set; }
 
-        public DateTime DateProcedureBegins { get; set; }
+        public DateTime? DateProcedureBegins { get; set; }
 
-        public DateTime DateProcedureEnd { get; set; }
+        public DateTime? DateProcedureEnd { get; set; }
 
         public ICollection<Procedure> DoneNewProcedures { get; set; } = new HashSet<Procedure>();
 

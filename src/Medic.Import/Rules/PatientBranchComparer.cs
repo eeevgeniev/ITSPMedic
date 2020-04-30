@@ -17,7 +17,7 @@ namespace Medic.Import.Rules
                 return false;
             }
 
-            return string.Equals(x.Code, y.Code, StringComparison.OrdinalIgnoreCase);
+            return x.HealthRegion.Code == y.HealthRegion.Code;
         }
 
         public int GetHashCode(PatientBranch obj)
@@ -27,7 +27,7 @@ namespace Medic.Import.Rules
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            return obj.Code.GetHashCode();
+            return obj.HealthRegion.Code != default ? obj.HealthRegion.Code.GetHashCode() : -1;
         }
     }
 }

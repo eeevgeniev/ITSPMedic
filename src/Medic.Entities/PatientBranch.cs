@@ -10,7 +10,9 @@ namespace Medic.Entities
     {
         public int Id { get; set; }
 
-        public string Code { get; set; }
+        public int HealthRegionId { get; set; }
+
+        public HealthRegion HealthRegion { get; set; }
 
         public ICollection<In> Ins { get; set; } = new HashSet<In>();
 

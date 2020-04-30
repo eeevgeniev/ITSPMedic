@@ -15,9 +15,9 @@ namespace Medic.Entities
 
         public string Code { get; set; }
 
-        public string IZMedicalWard { get; set; }
+        public int IZMedicalWard { get; set; }
 
-        public string IZYearMedicalWard { get; set; }
+        public int IZYearMedicalWard { get; set; }
 
         public PathProcedure PathProcedure { get; set; }
 

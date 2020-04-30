@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Medic.AppModels.Patients;
+using Medic.AppModels.Sexes;
 using Medic.Contexts;
 using Medic.Entities;
 using Medic.Services.Contracts;
@@ -76,6 +77,13 @@ namespace Medic.Services
             IQueryable<Patient> patientsQueryable = GetQueryable(MedicContext.Patients, patientSearch);
 
             return await patientsQueryable.CountAsync();
+        }
+
+        public async Task<List<SexOption>> GetSexOptionsAsync()
+        {
+            return await MedicContext.Sexes
+                .ProjectTo<SexOption>(Configuration)
+                .ToListAsync();
         }
 
         private IQueryable<Patient> GetQueryable(IQueryable<Patient> patientsQueryable, PatientSearch patientSearch)
