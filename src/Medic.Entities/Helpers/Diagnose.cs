@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.Diagnoses;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -126,6 +127,10 @@ namespace Medic.Entities
                 .ForMember(d => d.SendPlannedProcedure, config => config.Ignore())
                 .ForMember(d => d.PlannedProcedure, config => config.Ignore())
                 .ForMember(d => d.Id, config => config.Ignore());
+
+            expression.CreateMap<Diagnose, DiagnosePreviewViewModel>()
+                .ForMember(dpvm => dpvm.Name, config => config.MapFrom(d => d.Primary.Name))
+                .ForMember(dpvm => dpvm.Code, config => config.MapFrom(d => d.Primary.Code));
         }
     }
 }

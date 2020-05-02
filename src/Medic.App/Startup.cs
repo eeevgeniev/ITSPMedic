@@ -1,9 +1,16 @@
 using Medic.App.AppServices;
+using Medic.App.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Primitives;
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
 
 namespace Medic.App
 {
@@ -45,6 +52,25 @@ namespace Medic.App
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.Use(async (context, next) =>
+            {
+                string value = MedicConstants.DefaultLanguage;
+
+                if (context.Request.Cookies.TryGetValue(MedicConstants.LanguageCookieName, out string newValue))
+                {
+                    newValue = newValue.ToLower();
+                    
+                    if (MedicConstants.AllowedLanguages.Contains(newValue.ToLower()))
+                    {
+                        value = newValue;
+                    }
+                }
+                
+                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(value);
+
+                await next();
+            });
 
             app.UseEndpoints(endpoints =>
             {

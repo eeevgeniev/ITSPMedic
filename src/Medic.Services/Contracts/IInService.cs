@@ -8,8 +8,10 @@ namespace Medic.Services.Contracts
 {
     public interface IInService
     {
-        public Task<List<InPreviewViewModel>> GetInsAsync(InsSerach search, int startIndex, int count);
+        Task<List<InPreviewViewModel>> GetInsAsync(InsSerach search, int startIndex, int count);
 
-        public Task<int> GetInsCountAsync(InsSerach search);
+        Task<int> GetInsCountAsync(InsSerach search);
+
+        Task<InViewModel> GetInAsync(int id);
     }
 }

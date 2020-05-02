@@ -42,6 +42,11 @@ namespace Medic.Entities
                 .ForMember(pvm => pvm.SendDiagnoseCode, config => config.MapFrom(i => i.SendDiagnose.Primary.Code))
                 .ForMember(pvm => pvm.SendDiagnoseName, config => config.MapFrom(i => i.SendDiagnose.Primary.Name))
                 .ForMember(pvm => pvm.CodeDiagnoses, config => config.MapFrom(i => i.Diagnoses.Select(d => d.Primary.Code)));
+
+            expression.CreateMap<In, InViewModel>()
+                .ForMember(ivm => ivm.PatientBranch, config => config.MapFrom(i => i.PatientBranch != default && i.PatientBranch.HealthRegion != default ? i.PatientBranch.HealthRegion.Name : default))
+                .ForMember(ivm => ivm.PatientHRegion, config => config.MapFrom(i => i.PatientHRegion != default ? i.PatientHRegion.Name : default))
+                .ForMember(ivm => ivm.CPFile, config => config.MapFrom(i => i.CPFile != default && i.CPFile.FileType != default ? i.CPFile.FileType.Name : default));
         }
     }
 }

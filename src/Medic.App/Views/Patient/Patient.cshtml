@@ -46,7 +46,8 @@
                     <div class="row">
                         <div class="col-sm-2 font-weight-bold">Entry date</div>
                         <div class="col-sm-2 font-weight-bold">MKB code</div>
-                        <div class="col-sm-8 font-weight-bold">MKB name</div>
+                        <div class="col-sm-6 font-weight-bold">MKB name</div>
+                        <div class="col-sm-2 font-weight-bold">View</div>
                     </div>
 
                     foreach (var currentIn in Model.Patient.Ins.OrderBy(i => i.EntryDate))
@@ -55,7 +56,11 @@
                         <div class="row">
                             <div class="col-sm-2">@currentIn.EntryDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
                             <div class="col-sm-2">@currentIn.MKBCode</div>
-                            <div class="col-sm-8">@currentIn.MKBName</div>
+                            <div class="col-sm-6">@currentIn.MKBName</div>
+                            <div class="col-sm-2"><a asp-controller="@MedicBaseController.GetName(nameof(InController))"
+                                                     asp-action="@nameof(InController.In)"
+                                                     asp-route-id="@currentIn.Id"
+                                                     class="btn btn-info">View</a></div>
                         </div>
                     }
                 }
@@ -97,11 +102,12 @@
                 </header>
                 @if (Model.Patient.Outs != default && Model.Patient.Outs.Count > 0)
                 {
-                    <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Out date</div>
-                        <div class="col-sm-2 font-weight-bold">MKB code</div>
-                        <div class="col-sm-8 font-weight-bold">MKB name</div>
-                    </div>
+            <div class="row">
+                <div class="col-sm-2 font-weight-bold">Out date</div>
+                <div class="col-sm-2 font-weight-bold">MKB code</div>
+                <div class="col-sm-6 font-weight-bold">MKB name</div>
+                <div class="col-sm-2 font-weight-bold">View</div>
+            </div>
 
                     foreach (var currentOut in Model.Patient.Outs.OrderBy(o => o.OutDate))
                     {
@@ -109,7 +115,13 @@
                         <div class="row">
                             <div class="col-sm-2">@currentOut.OutDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
                             <div class="col-sm-2">@currentOut.MKBCode</div>
-                            <div class="col-sm-8">@currentOut.MKBName</div>
+                            <div class="col-sm-6">@currentOut.MKBName</div>
+                            <div class="col-sm-2">
+                                <a asp-controller="@MedicBaseController.GetName(nameof(OutController))"
+                                   asp-action="@nameof(OutController.Out)"
+                                   asp-route-id="@currentOut.Id"
+                                   class="btn btn-info">View</a>
+                            </div>
                         </div>
                     }
                 }

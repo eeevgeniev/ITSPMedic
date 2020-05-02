@@ -1,0 +1,19 @@
+﻿@model HistologicalResultSummaryViewModel
+
+@if (Model != default)
+{
+    <div class="row">
+        <div class="col-sm-2 font-weight-bold"></div>
+        <div class="col-sm-2 font-weight-bold"></div>
+        <div class="col-sm-8 font-weight-bold"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">@Model.Code</div>
+        <div class="col-sm-2">@Model.Date.ToShortDateString()</div>
+        <div class="col-sm-8">@Model.Note</div>
+    </div>
+}
+else
+{
+    <div class="text-center text-info">No histological result data</div>
+}

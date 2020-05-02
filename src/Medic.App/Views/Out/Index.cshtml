@@ -1,0 +1,179 @@
+﻿@using Medic.AppModels.Outs
+
+@model OutPageIndexModel
+
+@{
+    ViewData["Title"] = Model.Title;
+
+    Dictionary<string, string> paramsByName = new Dictionary<string, string>();
+
+    int pagesCount = Model.TotalCount % 10 != 0 ? (Model.TotalCount / 10) + 1 : Model.TotalCount / 10;
+
+    if (Model.Search != default)
+    {
+        if (!string.IsNullOrWhiteSpace(Model.Search.MainOutDiagnose))
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.MainOutDiagnose)}", Model.Search.MainOutDiagnose);
+        }
+
+        if (Model.Search.NumberOfAdditionalOutDiagnoses != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.NumberOfAdditionalOutDiagnoses)}", Model.Search.NumberOfAdditionalOutDiagnoses.ToString());
+        }
+
+        if (Model.Search.Sex != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Sex)}", Model.Search.Sex.ToString());
+        }
+
+        if (!string.IsNullOrWhiteSpace(Model.Search.UsedDrug))
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.UsedDrug)}", Model.Search.UsedDrug);
+        }
+
+        if (!string.IsNullOrWhiteSpace(Model.Search.SendDiagnose))
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.SendDiagnose)}", Model.Search.SendDiagnose);
+        }
+
+        if (Model.Search.NumberOfAdditionalDiagnoses != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.NumberOfAdditionalDiagnoses)}", Model.Search.NumberOfAdditionalDiagnoses.ToString());
+        }
+
+        if (Model.Search.Diagnoses != default && Model.Search.Diagnoses.Count > 0)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Diagnoses)}", string.Join(",", Model.Search.Diagnoses));
+        }
+
+        if (Model.Search.Age != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Age)}", Model.Search.Age.ToString());
+        }
+
+        if (Model.Search.OlderThan != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.OlderThan)}", Model.Search.OlderThan.ToString());
+        }
+
+        if (Model.Search.YoungerThan != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.YoungerThan)}", Model.Search.YoungerThan.ToString());
+        }
+    }
+}
+
+<article>
+    <header>
+        <h2>Result: @Model.TotalCount</h2>
+    </header>
+    <section>
+        <form asp-controller="@MedicBaseController.GetName(nameof(OutController))"
+              asp-action="@nameof(OutController.Index)"
+              method="get">
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.MainOutDiagnose"></label>
+                    <input class="form-control" asp-for="@Model.Search.MainOutDiagnose" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.NumberOfAdditionalOutDiagnoses"></label>
+                    <input class="form-control" asp-for="@Model.Search.NumberOfAdditionalOutDiagnoses" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.Sex"></label>
+                    <select class="form-control" asp-for="@Model.Search.Sex" asp-items="@Model.Sexes.Select(s => new SelectListItem(s.Name, s.Id.ToString(), s.Id == null))"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.UsedDrug"></label>
+                    <select class="form-control" asp-for="@Model.Search.UsedDrug" asp-items="@Model.UsedDrugCodes.Select(udc => new SelectListItem(udc.Code, udc.Key, udc.Key == string.Empty))"></select>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.SendDiagnose"></label>
+                    <input class="form-control" asp-for="@Model.Search.SendDiagnose" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.NumberOfAdditionalDiagnoses"></label>
+                    <input class="form-control" asp-for="@Model.Search.NumberOfAdditionalDiagnoses" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.Age"></label>
+                    <input class="form-control" asp-for="@Model.Search.Age" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.OlderThan"></label>
+                    <input class="form-control" asp-for="@Model.Search.OlderThan" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.YoungerThan"></label>
+                    <input class="form-control" asp-for="@Model.Search.YoungerThan" />
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Search" />
+            <input type="reset" class="btn btn-dark" value="Reset" />
+        </form>
+    </section>
+    <section>
+        @if (Model.Outs != default && Model.Outs.Count > 0)
+        {
+            <div>
+                <div class="row">
+                    <div class="col-sm-1 font-weight-bold">Out date</div>
+                    <div class="col-sm-1 font-weight-bold">Out main diagnose code</div>
+                    <div class="col-sm-4 font-weight-bold">Out diagnose name</div>
+                    <div class="col-sm-1 font-weight-bold">Out diagnoses</div>
+                    <div class="col-sm-1 font-weight-bold">Send diagnose</div>
+                    <div class="col-sm-1 font-weight-bold">Diagnoses</div>
+                    <div class="col-sm-1 font-weight-bold">Used drug</div>
+                    <div class="col-sm-1 font-weight-bold">View patient</div>
+                    <div class="col-sm-1 font-weight-bold">View</div>
+                </div>
+                @foreach (OutPreviewViewModel currentOut in Model.Outs)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-1">@currentOut.OutDate.ToShortDateString()</div>
+                        <div class="col-sm-1">@currentOut.OutMainDiagnoseCode</div>
+                        <div class="col-sm-4">@currentOut.OutMainDiagnoseName</div>
+                        <div class="col-sm-1">@string.Join(", ", currentOut.OutCodeDiagnoses)</div>
+                        <div class="col-sm-1">@currentOut.SendDiagnoseCode</div>
+                        <div class="col-sm-1">@string.Join(", ", currentOut.Diagnoses)</div>
+                        <div class="col-sm-1">@currentOut.UsedDrugCode</div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
+                               asp-action="@nameof(PatientController.Patient)"
+                               asp-route-id="@currentOut.PatientId" class="btn btn-info">View</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(OutController))"
+                               asp-action="@nameof(OutController.Out)"
+                               asp-route-id="@currentOut.Id"
+                               class="btn btn-default">View</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <footer>
+                <pager page-count="@pagesCount"
+                       current-page="@Model.CurrentPage"
+                       controller-name="@MedicBaseController.GetName(nameof(OutController))"
+                       action-name="@nameof(OutController.Index)"
+                       additional-properties="@paramsByName"
+                       nav-class-names="btn-toolbar"
+                       ul-class-names="pagination"
+                       li-class-names="page-item"
+                       li-selected-class-names="page-item active"
+                       anchor-class-names="page-link">
+                </pager>
+            </footer>
+        }
+        else
+        {
+            <span>No results</span>
+        }
+    </section>
+</article>

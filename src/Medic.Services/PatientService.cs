@@ -5,6 +5,7 @@ using Medic.AppModels.Sexes;
 using Medic.Contexts;
 using Medic.Entities;
 using Medic.Services.Contracts;
+using Medic.Services.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -90,29 +91,28 @@ namespace Medic.Services
         {
             if (patientSearch != default)
             {
+                DateTimeHelper dateTimeHelper = new DateTimeHelper();
+
                 if (!string.IsNullOrWhiteSpace(patientSearch.IdentityNumber))
                 {
                     patientsQueryable = patientsQueryable.Where(p => EF.Functions.Like(p.IdentityNumber, patientSearch.IdentityNumber));
                 }
 
-                if (!string.IsNullOrWhiteSpace(patientSearch.FirstName))
+                if (patientSearch.Age != default)
                 {
-                    patientsQueryable = patientsQueryable.Where(p => EF.Functions.Like(p.FirstName, $"{patientSearch.FirstName}%"));
+                    (DateTime startDate, DateTime endDate) = dateTimeHelper.CalculateYearsBoundsByAges((int)patientSearch.Age);
+
+                    patientsQueryable = patientsQueryable.Where(p => startDate < p.BirthDate && p.BirthDate <= endDate);
                 }
 
-                if (!string.IsNullOrWhiteSpace(patientSearch.SecondName))
+                if (patientSearch.Age == default && patientSearch.OlderThan != default)
                 {
-                    patientsQueryable = patientsQueryable.Where(p => EF.Functions.Like(p.SecondName, $"{patientSearch.SecondName}%"));
+                    patientsQueryable = patientsQueryable.Where(p => p.BirthDate <= dateTimeHelper.CalculateYearBoundByAge((int)patientSearch.OlderThan));
                 }
 
-                if (!string.IsNullOrWhiteSpace(patientSearch.LastName))
+                if (patientSearch.Age == default && patientSearch.YoungerThan != default)
                 {
-                    patientsQueryable = patientsQueryable.Where(p => EF.Functions.Like(p.LastName, $"{patientSearch.LastName}%"));
-                }
-
-                if (patientSearch.BirthDate != null && patientSearch.BirthDate != default)
-                {
-                    patientsQueryable = patientsQueryable.Where(p => p.BirthDate == patientSearch.BirthDate);
+                    patientsQueryable = patientsQueryable.Where(p => p.BirthDate >= dateTimeHelper.CalculateYearBoundByAge((int)patientSearch.YoungerThan));
                 }
             }
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.Procedures;
 using CLPR = Medic.Models.CLPR;
 using CP = Medic.Models.CP;
 
@@ -54,8 +55,12 @@ namespace Medic.Entities
                 .ForMember(p => p.EndCourse, config => config.Ignore())
                 .ForMember(p => p.SendAPr, config => config.Ignore())
                 .ForMember(p => p.InAPr, config => config.Ignore())
-
                 .ForMember(p => p.Id, config => config.Ignore());
+
+            expression.CreateMap<Procedure, ProcedureSummaryViewModel>()
+                .ForMember(psvm => psvm.ImplantReferenceNumber, config => config.MapFrom(p => p.Implant != default ? p.Implant.ReferenceNumber : default))
+                .ForMember(psvm => psvm.ImplantManufacturer, config => config.MapFrom(p => p.Implant != default ? p.Implant.Manufacturer : default))
+                .ForMember(psvm => psvm.ImplantCode, config => config.MapFrom(p => p.Implant != default ? p.Implant.Code : default));
         }
     }
 }

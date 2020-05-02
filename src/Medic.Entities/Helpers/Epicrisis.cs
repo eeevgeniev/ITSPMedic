@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.Epicrisises;
 using System;
 using System.Linq;
 using CP = Medic.Models.CP;
@@ -42,6 +43,8 @@ namespace Medic.Entities
                             )
                     .ForMember(e => e.Out, config => config.Ignore())
                     .ForMember(e => e.Id, config => config.Ignore());
+
+            expression.CreateMap<Epicrisis, EpicrisisSummaryViewModel>();
         }
     }
 }

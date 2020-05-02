@@ -4,11 +4,11 @@ using Medic.AppModels.Ins;
 using Medic.Contexts;
 using Medic.Entities;
 using Medic.Services.Contracts;
+using Medic.Services.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Medic.Services
@@ -22,6 +22,25 @@ namespace Medic.Services
         {
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+        }
+
+        public async Task<InViewModel> GetInAsync(int id)
+        {
+            if (id < 1)
+            {
+                throw new ArgumentException(nameof(id));
+            }
+
+            return await MedicContext.Ins
+                .Include(i => i.Patient)
+                .Include(i => i.PatientBranch)
+                .Include(i => i.PatientHRegion)
+                .Include(i => i.Sender)
+                .Include(i => i.SendDiagnose)
+                .Include(i => i.Diagnoses)
+                .Include(i => i.CPFile)
+                .ProjectTo<InViewModel>(Configuration)
+                .SingleOrDefaultAsync(i => i.Id == id);
         }
 
         public async Task<List<InPreviewViewModel>> GetInsAsync(InsSerach search, int startIndex, int count)
@@ -48,6 +67,8 @@ namespace Medic.Services
         {
             if (search != default)
             {
+                DateTimeHelper dateTimeHelper = new DateTimeHelper();
+                
                 if (!string.IsNullOrEmpty(search.MainDiagnose))
                 {
                     insQuery = insQuery.Where(i => EF.Functions.Like(i.SendDiagnose.Primary.Code, search.MainDiagnose));
@@ -74,30 +95,19 @@ namespace Medic.Services
 
                 if (search.Age != default)
                 {
-                    int age = (int)search.Age;
+                    (DateTime startDate, DateTime endDate) = dateTimeHelper.CalculateYearsBoundsByAges((int)search.Age);
 
-                    DateTime startDate = new DateTime(DateTime.Now.Year - age, 1, 1);
-                    DateTime endDate = new DateTime(DateTime.Now.Year - age, 12, 31);
-
-                    insQuery = insQuery.Where(i => startDate <= i.Patient.BirthDate && i.Patient.BirthDate <= endDate);
+                    insQuery = insQuery.Where(i => startDate < i.Patient.BirthDate && i.Patient.BirthDate <= endDate);
                 }
 
                 if (search.Age == default && search.OlderThan != default)
                 {
-                    int targetYear = (int)search.OlderThan;
-                    
-                    DateTime targetDate = new DateTime(DateTime.Now.Year - targetYear, DateTime.Now.Month, DateTime.Now.Day);
-
-                    insQuery = insQuery.Where(i => i.Patient.BirthDate <= targetDate);
+                    insQuery = insQuery.Where(i => i.Patient.BirthDate <= dateTimeHelper.CalculateYearBoundByAge((int)search.OlderThan));
                 }
 
-                if (search.Age == default && search.OlderThan == default && search.YoungerThan != default)
+                if (search.Age == default && search.YoungerThan != default)
                 {
-                    int targetYear = (int)search.YoungerThan;
-
-                    DateTime targetDate = new DateTime(DateTime.Now.Year - targetYear, DateTime.Now.Month, DateTime.Now.Day);
-
-                    insQuery = insQuery.Where(i => i.Patient.BirthDate >= targetDate);
+                    insQuery = insQuery.Where(i => i.Patient.BirthDate >= dateTimeHelper.CalculateYearBoundByAge((int)search.YoungerThan));
                 }
             }
 

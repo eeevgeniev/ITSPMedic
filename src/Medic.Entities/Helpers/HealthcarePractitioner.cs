@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.HealthcarePractitioners;
 using CLPR = Medic.Models.CLPR;
 using CP = Medic.Models.CP;
 
@@ -170,6 +171,9 @@ namespace Medic.Entities
                 .ForMember(hp => hp.PlannedProcedures, config => config.Ignore())
                 .ForMember(hp => hp.DeputyUniqueIdentifier, config => config.Ignore())
                 .ForMember(hp => hp.Id, config => config.Ignore());
+
+            expression.CreateMap<HealthcarePractitioner, HealthcarePractitionerSummaryViewModel>()
+                .ForMember(hpsm => hpsm.Speciality, config => config.MapFrom(hp => hp.Speciality != default ? hp.Speciality.Name : default));
         }
     }
 }

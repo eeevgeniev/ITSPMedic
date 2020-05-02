@@ -35,6 +35,9 @@ namespace Medic.Entities
 
             expression.CreateMap<Patient, PatientViewModel>()
                 .ForMember(p => p.Sex, config => config.MapFrom(p => p.Sex == default ? string.Empty : p.Sex.Name));
+
+            expression.CreateMap<Patient, PatientSummaryViewModel>()
+                .ForMember(p => p.Sex, config => config.MapFrom(p => p.Sex == default ? string.Empty : p.Sex.Name));
         }
     }
 }

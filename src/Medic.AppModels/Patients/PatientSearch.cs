@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Medic.AppModels.Patients
+﻿namespace Medic.AppModels.Patients
 {
     /// <summary>
     /// Class for managing patient search
@@ -11,12 +7,10 @@ namespace Medic.AppModels.Patients
     {
         public string IdentityNumber { get; set; }
 
-        public string FirstName { get; set; }
+        public int? Age { get; set; }
 
-        public string SecondName { get; set; }
+        public int? OlderThan { get; set; }
 
-        public string LastName { get; set; }
-
-        public DateTime? BirthDate { get; set; } = null;
+        public int? YoungerThan { get; set; }
     }
 }

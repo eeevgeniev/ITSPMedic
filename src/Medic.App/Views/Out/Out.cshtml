@@ -1,0 +1,134 @@
+﻿@model OutPageOutModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@if (Model.OutViewModel != default)
+{
+    <article>
+        <header>
+            <h1>Out data - @Model.OutViewModel.UniqueIdentifier</h1>
+        </header>
+        <h2 class="text-center">Patient</h2>
+        <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.OutViewModel.Patient" />
+        <hr />
+        <h2 class="text-center">Sender</h2>
+        <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.OutViewModel.Sender" />
+        <hr />
+        <div>Send date: @Model.OutViewModel.SendDate.ToShortDateString()</div>
+        <hr />
+        <h2 class="text-center">Send diagnose</h2>
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.OutViewModel.SendDiagnose })" />
+        <hr />
+        <h2 class="text-center">Diagnoses</h2>
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@Model.OutViewModel.Diagnoses" />
+        <hr />
+        <h2 class="text-center">Out main diagnose</h2>
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.OutViewModel.OutMainDiagnose })" />
+        <hr />
+        <h2 class="text-center">Out diagnoses</h2>
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@Model.OutViewModel.OutDiagnoses" />
+        <hr />
+        <h2 class="text-center">Dead</h2>
+        @if (Model.OutViewModel.Dead != default)
+        {
+            <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.OutViewModel.Dead })" />
+            <hr />
+        }
+        <h2 class="text-center">Histological result</h2>
+        <partial name="~/Views/Shared/Partials/HistologicalResults/HistologicalResultSummaryViewModel.cshtml" model="@Model.OutViewModel.HistologicalResult" />
+        <hr />
+        <h2 class="text-center">Epicrisis</h2>
+        <partial name="~/Views/Shared/Partials/Epicrisises/EpicrisisSummaryViewModel.cshtml" model="@Model.OutViewModel.Epicrisis" />
+        <hr />
+        <h2 class="text-center">Used drug</h2>
+        <partial name="~/Views/Shared/Partials/UsedDrugs/UsedDrugSummaryViewModel.cshtml" model="@Model.OutViewModel.UsedDrug" />
+        <hr />
+        <h2 class="text-center">Procedures</h2>
+        <partial name="~/Views/Shared/Partials/Procedures/ProcedureSummaryViewModel.cshtml" model="@Model.OutViewModel.Procedures" />
+        <hr />
+        <h2 class="text-center">Additional information</h2>
+        <div class="row">
+            <div class="col-sm-4">Patient branch: @Model.OutViewModel.PatientBranch</div>
+            <div class="col-sm-4">Patient HRegion: @Model.OutViewModel.PatientHRegion</div>
+            <div class="col-sm-4">In type: @Model.OutViewModel.InType</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">Send urgency: @Model.OutViewModel.SendUrgency</div>
+            <div class="col-sm-4">Send clinical path: @Model.OutViewModel.SendClinicalPath</div>
+            <div class="col-sm-4">Unique identifier: @Model.OutViewModel.UniqueIdentifier</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">Examination date: @Model.OutViewModel.ExaminationDate.ToShortDateString()</div>
+            <div class="col-sm-4">Urgency: @Model.OutViewModel.Urgency</div>
+            <div class="col-sm-4">Clinical path: @Model.OutViewModel.ClinicalPath</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">NZOK pay: @Model.OutViewModel.NZOKPay</div>
+            <div class="col-sm-4">In medical ward: @Model.OutViewModel.InMedicalWard</div>
+            <div class="col-sm-4">Entry date: @Model.OutViewModel.EntryDate.ToShortDateString()</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">Severity: @Model.OutViewModel.Severity</div>
+            <div class="col-sm-4">Delay: @Model.OutViewModel.Delay</div>
+            <div class="col-sm-4">Payer: @Model.OutViewModel.Payer</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">Age in days: @Model.OutViewModel.AgeInDays</div>
+            <div class="col-sm-4">Weight in grams: @Model.OutViewModel.WeightInGrams</div>
+            <div class="col-sm-4">Birth weight: @Model.OutViewModel.BirthWeight</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">Mother IZ year: @Model.OutViewModel.MotherIZYear</div>
+            <div class="col-sm-4">Mother IZ No: @Model.OutViewModel.MotherIZNo</div>
+            <div class="col-sm-4">IZ year: @Model.OutViewModel.IZYear</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">IZ No: @Model.OutViewModel.IZNo</div>
+            <div class="col-sm-4">Out medical ward: @Model.OutViewModel.OutMedicalWard</div>
+            <div class="col-sm-4">Out unique identifier: @Model.OutViewModel.OutUniqueIdentifier</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">Out date: @Model.OutViewModel.OutDate.ToShortDateString()</div>
+            <div class="col-sm-4">Out type: @Model.OutViewModel.OutType</div>
+            <div class="col-sm-4">Birth practice: @Model.OutViewModel.BirthPractice</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">Birth number: @Model.OutViewModel.BirthNumber</div>
+            <div class="col-sm-4">Birth gest week: @Model.OutViewModel.BirthGestWeek</div>
+            <div class="col-sm-4">Out clinical path: @Model.OutViewModel.OutClinicalPath</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">Out APr: @Model.OutViewModel.OutAPr</div>
+            <div class="col-sm-4">Bed days: @Model.OutViewModel.BedDays</div>
+            <div class="col-sm-4">HL date from: @(Model.OutViewModel.HLDateFrom != default ? ((DateTime)Model.OutViewModel.HLDateFrom).ToShortDateString() : default)</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">HL number: @Model.OutViewModel.HLNumber</div>
+            <div class="col-sm-4">HL total days: @Model.OutViewModel.HLTotalDays</div>
+            <div class="col-sm-4">State at discharge: @Model.OutViewModel.StateAtDischarge</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">Laparoscopic: @Model.OutViewModel.Laparoscopic</div>
+            <div class="col-sm-4">End course: @Model.OutViewModel.EndCourse</div>
+            <div class="col-sm-4">CP file: @Model.OutViewModel.CPFile</div>
+        </div>
+    </article>
+}
+else
+{
+    <div class="text-center text-info">No out information</div>
+}

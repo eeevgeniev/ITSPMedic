@@ -51,5 +51,25 @@ namespace Medic.App.Controllers
                 throw;
             }
         }
+
+        public async Task<IActionResult> In(int id)
+        {
+            try
+            {
+                InViewModel inViewModel = await InService.GetInAsync(id);
+
+                return View(new InPageInModel()
+                {
+                    Title = "In view",
+                    Description = "In data",
+                    Keywords = "In, patient, diagnoses",
+                    InViewModel = inViewModel
+                });
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

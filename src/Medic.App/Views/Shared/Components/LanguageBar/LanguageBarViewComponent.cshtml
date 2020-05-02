@@ -1,0 +1,12 @@
+﻿@model string
+
+<div>
+    <a asp-controller="@MedicBaseController.GetName(nameof(HomeController))"
+       asp-action="@nameof(HomeController.Language)"
+       asp-route-lang="en"
+       class="@(string.Equals(Model, "en", StringComparison.OrdinalIgnoreCase) ? "btn-sm btn-success" : "btn-sm-dark btn")">En</a>
+    <a asp-controller="@MedicBaseController.GetName(nameof(HomeController))"
+       asp-action="@nameof(HomeController.Language)"
+       asp-route-lang="bg"
+       class="@(string.Equals(Model, "bg", StringComparison.OrdinalIgnoreCase) ? "btn-sm btn-success" : "btn-sm-dark btn")">Bg</a>
+</div>

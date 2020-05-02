@@ -6,6 +6,6 @@ namespace Medic.Services.Contracts
 {
     public interface IDiagnoseService
     {
-        Task<List<DiagnosesMKBSummaryViewModel>> MKBSummaryAsync();
+        Task<List<DiagnoseMKBSummaryViewModel>> MKBSummaryAsync();
     }
 }

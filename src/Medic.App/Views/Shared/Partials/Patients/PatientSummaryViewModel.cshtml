@@ -1,0 +1,43 @@
+﻿@model PatientSummaryViewModel
+
+@if (Model != default)
+{
+    <div>
+        <div class="row">
+            <div class="col-sm-2">Identity number:</div>
+            <div class="col-sm-10">@Model.IdentityNumber</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">First name</div>
+            <div class="col-sm-10">@Model.FirstName</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Second name</div>
+            <div class="col-sm-10">@Model.SecondName</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Last name</div>
+            <div class="col-sm-10">@Model.LastName</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Sex:</div>
+            <div class="col-sm-10">@Model.Sex</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Address:</div>
+            <div class="col-sm-10">@Model.Address</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Birth date:</div>
+            <div class="col-sm-10">@Model.BirthDate.ToShortDateString()</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Notes:</div>
+            <div class="col-sm-10">@Model.Notes</div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center text-info">No patient data</div>
+}

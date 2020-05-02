@@ -1,0 +1,44 @@
+﻿@model List<ProcedureSummaryViewModel>
+
+@if (Model != default && Model.Count > 0)
+{
+    foreach (var currentProcedure in Model)
+    {
+        <hr />
+        <div>
+            <div class="row">
+                <div class="col-sm-4">Date: @currentProcedure.Date.ToShortDateString()</div>
+                <div class="col-sm-4">Code: @currentProcedure.Code</div>
+                <div class="col-sm-4">ACHICode: @currentProcedure.ACHICode</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Out hospital: @currentProcedure.OutHospital</div>
+                <div class="col-sm-4">Implant reference number: @currentProcedure.ImplantReferenceNumber</div>
+                <div class="col-sm-4">Implant manufacturer: @currentProcedure.ImplantManufacturer</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Implant code: @currentProcedure.ImplantCode</div>
+                <div class="col-sm-4">Bed days: @currentProcedure.BedDays</div>
+                <div class="col-sm-4">HL date from: @(currentProcedure.HLDateFrom != default ? ((DateTime)currentProcedure.HLDateFrom).ToShortDateString() : default)</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">HL number: @currentProcedure.HLNumber</div>
+                <div class="col-sm-4">HL total days: @currentProcedure.HLTotalDays</div>
+                <div class="col-sm-4">State at discharge: @currentProcedure.StateAtDischarge</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Laparoscopic: @currentProcedure.Laparoscopic</div>
+                <div class="col-sm-4">Pathologic finding: @currentProcedure.PathologicFinding</div>
+                <div class="col-sm-4">End course: @currentProcedure.EndCourse</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Send APr: @currentProcedure.SendAPr</div>
+                <div class="col-sm-4">In APr: @currentProcedure.InAPr</div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="text-center text-info">No procedure summary data</div>
+}

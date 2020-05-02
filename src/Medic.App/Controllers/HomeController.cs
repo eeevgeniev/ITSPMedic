@@ -13,6 +13,8 @@ using Medic.AppModels.Diagnoses;
 using Medic.AppModels.Diags;
 using Medic.App.Models.Home;
 using Medic.App.Controllers.Base;
+using Medic.App.Infrastructure;
+using Microsoft.AspNetCore.Http;
 
 namespace Medic.App.Controllers
 {
@@ -76,7 +78,7 @@ namespace Medic.App.Controllers
 
         public async Task<IActionResult> Diagnoses()
         {
-            List<DiagnosesMKBSummaryViewModel> diagnosesMKBSummaryViewModels = await DiagnoseService.MKBSummaryAsync();
+            List<DiagnoseMKBSummaryViewModel> diagnosesMKBSummaryViewModels = await DiagnoseService.MKBSummaryAsync();
 
             return View(new HomePageDiagnoseModel()
             {
@@ -85,6 +87,28 @@ namespace Medic.App.Controllers
                 Description = "Diagnoses information",
                 Keywords = "Statistic information, diagnoses, mkb"
             });
+        }
+
+        public IActionResult Language(string lang)
+        {
+            if (!string.IsNullOrWhiteSpace(lang))
+            {
+                string language = lang.ToLower();
+
+                if (MedicConstants.AllowedLanguages.Contains(language))
+                {
+                    CookieOptions options = new CookieOptions()
+                    {
+                        MaxAge = TimeSpan.FromDays(MedicConstants.LanguageCookieSpanInDays),
+                        SameSite = SameSiteMode.Strict,
+                        HttpOnly = true
+                    };
+
+                    HttpContext.Response.Cookies.Append(MedicConstants.LanguageCookieName, language, options);
+                }
+            }
+
+            return RedirectToAction(nameof(HomeController.Index), GetControllerName(nameof(HomeController)));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

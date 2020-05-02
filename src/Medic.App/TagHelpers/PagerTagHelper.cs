@@ -45,7 +45,6 @@ namespace Medic.App.TagHelpers
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            string className = LiClassNames;
 
             output.TagName = "nav";
 
@@ -55,8 +54,6 @@ namespace Medic.App.TagHelpers
             }
 
             string ulClass = string.IsNullOrWhiteSpace(UlClassNames) ? string.Empty : $" class=\"{UlClassNames}\"";
-
-
 
             stringBuilder.Append($"<ul{ulClass}>");
 

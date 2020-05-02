@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Medic.AppModels.Outs;
+using System.Linq;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -48,6 +49,19 @@ namespace Medic.Entities
             expression.CreateMap<Out, PatientOutPreviewViewModel>()
                 .ForMember(po => po.MKBCode, config => config.MapFrom(o => o.OutMainDiagnose.Primary.Code))
                 .ForMember(po => po.MKBName, config => config.MapFrom(o => o.OutMainDiagnose.Primary.Name));
+
+            expression.CreateMap<Out, OutPreviewViewModel>()
+                .ForMember(opvm => opvm.OutMainDiagnoseCode, config => config.MapFrom(o => o.OutMainDiagnose.Primary.Code))
+                .ForMember(opvm => opvm.OutMainDiagnoseName, config => config.MapFrom(o => o.OutMainDiagnose.Primary.Name))
+                .ForMember(opvm => opvm.OutCodeDiagnoses, config => config.MapFrom(o => o.OutDiagnoses.Select(d => d.Primary.Code)))
+                .ForMember(opvm => opvm.SendDiagnoseCode, config => config.MapFrom(o => o.SendDiagnose.Primary.Code))
+                .ForMember(opvm => opvm.UsedDrugCode, config => config.MapFrom(o => o.UsedDrug.Code))
+                .ForMember(opvm => opvm.Diagnoses, config => config.MapFrom(o => o.Diagnoses.Select(d => d.Primary.Code)));
+
+            expression.CreateMap<Out, OutViewModel>()
+                .ForMember(ovm => ovm.PatientBranch, config => config.MapFrom(o => o.PatientBranch != default && o.PatientBranch.HealthRegion != default ? o.PatientBranch.HealthRegion.Name : default))
+                .ForMember(ovm => ovm.PatientHRegion, config => config.MapFrom(o => o.PatientHRegion != default ? o.PatientHRegion.Name : default))
+                .ForMember(ovm => ovm.CPFile, config => config.MapFrom(o => o.CPFile != default ? o.CPFile.FileType : default));
         }
     }
 }

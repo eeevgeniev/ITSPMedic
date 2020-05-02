@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.HistologicalResult;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -18,6 +19,8 @@ namespace Medic.Entities
             expression.CreateMap<CP.HistologicalResult, HistologicalResult>()
                 .ForMember(hr => hr.Out, config => config.Ignore())
                 .ForMember(hr => hr.Id, config => config.Ignore());
+
+            expression.CreateMap<HistologicalResult, HistologicalResultSummaryViewModel>();
         }
     }
 }

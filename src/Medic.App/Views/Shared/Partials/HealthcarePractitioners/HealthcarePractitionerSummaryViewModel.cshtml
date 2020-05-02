@@ -1,0 +1,27 @@
+﻿@model HealthcarePractitionerSummaryViewModel
+
+@if (Model != default)
+{
+    <div>
+        <div class="row">
+            <div class="col-sm-2">Speciality:</div>
+            <div class="col-sm-10">@Model.Speciality</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Name:</div>
+            <div class="col-sm-10">@Model.Name</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Unique identifier:</div>
+            <div class="col-sm-10">@Model.UniqueIdentifier</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Deputy unique identifier:</div>
+            <div class="col-sm-10">@Model.DeputyUniqueIdentifier</div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center text-info">No practitioner data</div>
+}

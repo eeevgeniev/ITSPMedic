@@ -1,6 +1,6 @@
 ﻿namespace Medic.AppModels.Diagnoses
 {
-    public class DiagnosesMKBSummaryViewModel
+    public class DiagnoseMKBSummaryViewModel
     {
         public string Name { get; set; }
 
