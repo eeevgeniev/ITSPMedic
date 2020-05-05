@@ -29,7 +29,7 @@ namespace Medic.FileImport
 
                 IConfigurationRoot configuration = configurationBuilder.Build();
 
-                DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
+                DbContextOptionsBuilder<MedicContext> builder = new DbContextOptionsBuilder<MedicContext>();
                 builder.UseSqlServer(configuration[MedicConstants.ConnectionString]);
                 builder.EnableSensitiveDataLogging();
 
@@ -93,9 +93,12 @@ namespace Medic.FileImport
             {
                 Console.WriteLine(ex.Message);
             }
+
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
         }
 
-        private static void ReadCpFiles(IMappable mapper, DbContextOptionsBuilder builder, string directoryPath)
+        private static void ReadCpFiles(IMappable mapper, DbContextOptionsBuilder<MedicContext> builder, string directoryPath)
         {
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
             CP.CPFile cpFile;
@@ -124,7 +127,7 @@ namespace Medic.FileImport
             }
         }
 
-        private static void ReadCLPRFiles(IMappable mapper, DbContextOptionsBuilder builder, string directoryPath)
+        private static void ReadCLPRFiles(IMappable mapper, DbContextOptionsBuilder<MedicContext> builder, string directoryPath)
         {
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
             CLPR.HospitalPractice clprFile;

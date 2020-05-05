@@ -1,4 +1,6 @@
 ﻿@model PateintPagePatientModel
+@inject PatientLocalization patientLocalization
+@inject MedicDataLocalization medicDataLocalization
 
 @{
     ViewData["Title"] = Model.Title;
@@ -11,81 +13,83 @@
             @{
                 string name = $"{Model.Patient.FirstName} {Model.Patient.SecondName} {Model.Patient.LastName}".Replace("  ", " ");
             }
-            <h2 class="text-center">@(string.IsNullOrWhiteSpace(name) ? "No patient name" : name)</h2>
+            <h2 class="text-center">@(string.IsNullOrWhiteSpace(name) ? patientLocalization.Get("NotSpecified") : name)</h2>
             <div>
                 <div class="row">
-                    <div class="col-sm-2 font-weight-bold">Birth date</div>
+                    <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("BirthDate")</div>
                     <div class="col-sm-10">@Model.Patient.BirthDate.ToShortDateString()</div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2 font-weight-bold">Identity number</div>
+                    <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("IdentityNumber")</div>
                     <div class="col-sm-10">@Model.Patient.IdentityNumber</div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2 font-weight-bold">Address</div>
+                    <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("Address")</div>
                     <div class="col-sm-10">@Model.Patient.Address</div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2 font-weight-bold">Sex</div>
+                    <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("Sex")</div>
                     <div class="col-sm-10">@Model.Patient.Sex</div>
                 </div>
                 <hr />
                 <div class="row">
-                    <div class="col-sm-2 font-weight-bold">Notes</div>
-                    <div class="col-sm-10"><p>@(Model.Patient.Notes ?? "No notes")</p></div>
+                    <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("Notes")</div>
+                    <div class="col-sm-10"><p>@(Model.Patient.Notes ?? patientLocalization.Get("NoResults"))</p></div>
                 </div>
             </div>
         </header>
         <section class="mt-4">
             <section class="mt-2">
                 <header class="text-center">
-                    <h4>Ins</h4>
+                    <h4>@medicDataLocalization.Get("Ins")</h4>
                 </header>
                 @if (Model.Patient.Ins != default && Model.Patient.Ins.Count > 0)
                 {
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Entry date</div>
-                        <div class="col-sm-2 font-weight-bold">MKB code</div>
-                        <div class="col-sm-6 font-weight-bold">MKB name</div>
-                        <div class="col-sm-2 font-weight-bold">View</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("EntryDate")</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                        <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
+                        <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("View")</div>
                     </div>
 
                     foreach (var currentIn in Model.Patient.Ins.OrderBy(i => i.EntryDate))
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentIn.EntryDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-2">@currentIn.EntryDate.ToString("g")</div>
                             <div class="col-sm-2">@currentIn.MKBCode</div>
                             <div class="col-sm-6">@currentIn.MKBName</div>
-                            <div class="col-sm-2"><a asp-controller="@MedicBaseController.GetName(nameof(InController))"
-                                                     asp-action="@nameof(InController.In)"
-                                                     asp-route-id="@currentIn.Id"
-                                                     class="btn btn-info">View</a></div>
+                            <div class="col-sm-2">
+                                <a asp-controller="@MedicBaseController.GetName(nameof(InController))"
+                                   asp-action="@nameof(InController.In)"
+                                   asp-route-id="@currentIn.Id"
+                                   class="btn btn-info">@patientLocalization.Get("View")</a>
+                            </div>
                         </div>
                     }
                 }
                 else
                 {
-                    <p class="text-info text-center">No patient ins information</p>
+                    <p class="text-info text-center">@patientLocalization.Get("NoResults")</p>
                 }
             </section>
             <section class="mt-2">
                 <header class="text-center">
-                    <h4>In clinic procedures</h4>
+                    <h4>@medicDataLocalization.Get("InClinicProcedures")</h4>
                 </header>
                 @if (Model.Patient.InClinicProcedures != default && Model.Patient.InClinicProcedures.Count > 0)
                 {
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Plan visit date</div>
-                        <div class="col-sm-2 font-weight-bold">MKB code</div>
-                        <div class="col-sm-8 font-weight-bold">MKB name</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("PlanVisitDate")</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
                     </div>
 
                     foreach (var currentProcedure in Model.Patient.InClinicProcedures.OrderBy(icp => icp.PlanVisitDate))
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentProcedure.PlanVisitDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-2">@(currentProcedure.PlanVisitDate != default ? ((DateTime)currentProcedure.PlanVisitDate).ToString("g") : default)</div>
                             <div class="col-sm-2">@currentProcedure.MKBCode</div>
                             <div class="col-sm-8">@currentProcedure.MKBName</div>
                         </div>
@@ -93,60 +97,60 @@
                 }
                 else
                 {
-                    <p class="text-info text-center">No patient in clinic procedures information</p>
+                    <p class="text-info text-center">@patientLocalization.Get("NoResults")</p>
                 }
             </section>
             <section class="mt-2">
                 <header class="text-center">
-                    <h4>Outs</h4>
+                    <h4>@medicDataLocalization.Get("Outs")</h4>
                 </header>
                 @if (Model.Patient.Outs != default && Model.Patient.Outs.Count > 0)
                 {
-            <div class="row">
-                <div class="col-sm-2 font-weight-bold">Out date</div>
-                <div class="col-sm-2 font-weight-bold">MKB code</div>
-                <div class="col-sm-6 font-weight-bold">MKB name</div>
-                <div class="col-sm-2 font-weight-bold">View</div>
-            </div>
+                    <div class="row">
+                        <div class="col-sm-2 font-weight-bold">Out date</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                        <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
+                        <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("View")</div>
+                    </div>
 
                     foreach (var currentOut in Model.Patient.Outs.OrderBy(o => o.OutDate))
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentOut.OutDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-2">@currentOut.OutDate.ToString("g")</div>
                             <div class="col-sm-2">@currentOut.MKBCode</div>
                             <div class="col-sm-6">@currentOut.MKBName</div>
                             <div class="col-sm-2">
                                 <a asp-controller="@MedicBaseController.GetName(nameof(OutController))"
                                    asp-action="@nameof(OutController.Out)"
                                    asp-route-id="@currentOut.Id"
-                                   class="btn btn-info">View</a>
+                                   class="btn btn-info">@patientLocalization.Get("View")</a>
                             </div>
                         </div>
                     }
                 }
                 else
                 {
-                    <p class="text-info text-center">No patient outs information</p>
+                    <p class="text-info text-center">@patientLocalization.Get("NoResults")</p>
                 }
             </section>
             <section class="mt-2">
                 <header class="text-center">
-                    <h4>Path procedures</h4>
+                    <h4>@medicDataLocalization.Get("PathProcedures")</h4>
                 </header>
                 @if (Model.Patient.PathProcedures != default && Model.Patient.PathProcedures.Count > 0)
                 {
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Date send</div>
-                        <div class="col-sm-2 font-weight-bold">MKB code</div>
-                        <div class="col-sm-8 font-weight-bold">MKB name</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("DateSend")</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
                     </div>
 
                     foreach (var currentPathProcedure in Model.Patient.PathProcedures.OrderBy(pp => pp.DateSend))
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentPathProcedure.DateSend.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-2">@currentPathProcedure.DateSend.ToString("g")</div>
                             <div class="col-sm-2">@currentPathProcedure.MKBCode</div>
                             <div class="col-sm-8">@currentPathProcedure.MKBName</div>
                         </div>
@@ -154,26 +158,26 @@
                 }
                 else
                 {
-                    <p class="text-info text-center">No patient ins information</p>
+                    <p class="text-info text-center">@patientLocalization.Get("NoResults")</p>
                 }
             </section>
             <section class="mt-2">
                 <header class="text-center">
-                    <h4>Protocol path procedures therapies</h4>
+                    <h4>@medicDataLocalization.Get("ProtocolDrugTherapies")</h4>
                 </header>
                 @if (Model.Patient.ProtocolDrugTherapies != default && Model.Patient.ProtocolDrugTherapies.Count > 0)
                 {
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Protocol date</div>
-                        <div class="col-sm-2 font-weight-bold">MKB code</div>
-                        <div class="col-sm-8 font-weight-bold">MKB name</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("ProtocolDate")</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
                     </div>
 
                     foreach (var currentProtocolDrugTherapy in Model.Patient.ProtocolDrugTherapies.OrderBy(pdt => pdt.ProtocolDate))
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentProtocolDrugTherapy.ProtocolDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-2">@currentProtocolDrugTherapy.ProtocolDate.ToString("g")</div>
                             <div class="col-sm-2">@currentProtocolDrugTherapy.MKBCode</div>
                             <div class="col-sm-8">@currentProtocolDrugTherapy.MKBName</div>
                         </div>
@@ -181,26 +185,26 @@
                 }
                 else
                 {
-                    <p class="text-info text-center">No patient protocol drug therapies information</p>
+                    <p class="text-info text-center">@patientLocalization.Get("NoResults")</p>
                 }
             </section>
             <section class="mt-2">
                 <header class="text-center">
-                    <h4>Commission aprs</h4>
+                    <h4>@medicDataLocalization.Get("CommissionAprs")</h4>
                 </header>
                 @if (Model.Patient.CommissionAprs != default && Model.Patient.CommissionAprs.Count > 0)
                 {
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Decision date</div>
-                        <div class="col-sm-2 font-weight-bold">MKB code</div>
-                        <div class="col-sm-8 font-weight-bold">MKB name</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("DecisionDate")</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
                     </div>
 
                     foreach (var currentCommissionApr in Model.Patient.CommissionAprs.OrderBy(ca => ca.DecisionDate))
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentCommissionApr.DecisionDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-2">@currentCommissionApr.DecisionDate.ToString("g")</div>
                             <div class="col-sm-2">@currentCommissionApr.MKBCode</div>
                             <div class="col-sm-8">@currentCommissionApr.MKBName</div>
                         </div>
@@ -208,26 +212,26 @@
                 }
                 else
                 {
-                    <p class="text-info text-center">No patient commission aprs information</p>
+                    <p class="text-info text-center">@patientLocalization.Get("NoResults")</p>
                 }
             </section>
             <section class="mt-2">
                 <header class="text-center">
-                    <h4>Disp observations</h4>
+                    <h4>@medicDataLocalization.Get("DispObservations")</h4>
                 </header>
                 @if (Model.Patient.DispObservations != default && Model.Patient.DispObservations.Count > 0)
                 {
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Disp Date</div>
-                        <div class="col-sm-2 font-weight-bold">MKB code</div>
-                        <div class="col-sm-8 font-weight-bold">MKB name</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("DispDate")</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
                     </div>
 
                     foreach (var currentDispObservation in Model.Patient.DispObservations.OrderBy(obs => obs.DispDate))
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentDispObservation.DispDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-2">@currentDispObservation.DispDate.ToString("g")</div>
                             <div class="col-sm-2">@currentDispObservation.MKBCode</div>
                             <div class="col-sm-8">@currentDispObservation.MKBName</div>
                         </div>
@@ -235,26 +239,26 @@
                 }
                 else
                 {
-                    <p class="text-info text-center">No patient disp observations information</p>
+                    <p class="text-info text-center">@patientLocalization.Get("NoResults")</p>
                 }
             </section>
             <section class="mt-2">
                 <header class="text-center text-center">
-                    <h4>Planned procedures</h4>
+                    <h4>@medicDataLocalization.Get("PlannedProcedures")</h4>
                 </header>
                 @if (Model.Patient.PlannedProcedures != default && Model.Patient.PlannedProcedures.Count > 0)
                 {
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Examination date</div>
-                        <div class="col-sm-2 font-weight-bold">MKB code</div>
-                        <div class="col-sm-8 font-weight-bold">MKB name</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("ExaminationDate")</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
                     </div>
 
                     foreach (var currentPlannedProcedure in Model.Patient.PlannedProcedures.OrderBy(pp => pp.ExaminationDate))
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentPlannedProcedure.ExaminationDate.ToString("dd-MM-yyyy HH:mm:ss")</div>
+                            <div class="col-sm-2">@currentPlannedProcedure.ExaminationDate.ToString("g")</div>
                             <div class="col-sm-2">@currentPlannedProcedure.MKBCode</div>
                             <div class="col-sm-8">@currentPlannedProcedure.MKBName</div>
                         </div>
@@ -262,7 +266,7 @@
                 }
                 else
                 {
-                    <p class="text-info text-center">No patient planned procedure information</p>
+                    <p class="text-info text-center">@patientLocalization.Get("NoResults")</p>
                 }
             </section>
         </section>
@@ -273,6 +277,6 @@
 else
 {
     <article>
-        <p>No patient information</p>
+        <p class="text-center text-info">@patientLocalization.Get("NoResults")</p>
     </article>
 }

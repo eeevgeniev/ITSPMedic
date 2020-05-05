@@ -26,21 +26,21 @@ namespace Medic.Entities
 
         public Implant Implant { get; set; }
 
-        public int BedDays { get; set; }
+        public int? BedDays { get; set; }
 
         public DateTime? HLDateFrom { get; set; }
 
         public string HLNumber { get; set; }
 
-        public int HLTotalDays { get; set; }
+        public int? HLTotalDays { get; set; }
 
-        public int StateAtDischarge { get; set; }
+        public int? StateAtDischarge { get; set; }
 
-        public int Laparoscopic { get; set; }
+        public int? Laparoscopic { get; set; }
 
-        public int PathologicFinding { get; set; }
+        public int? PathologicFinding { get; set; }
 
-        public int EndCourse { get; set; }
+        public int? EndCourse { get; set; }
 
         public string SendAPr { get; set; }
 

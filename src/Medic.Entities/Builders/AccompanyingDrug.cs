@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace Medic.Entities
 {
@@ -18,6 +17,10 @@ namespace Medic.Entities
                 b.Property(model => model.ATCCode).HasMaxLength(20);
 
                 b.Property(model => model.ATCName).HasMaxLength(200);
+
+                b.Property(model => model.SingleDose).HasColumnType("decimal(12,4)");
+
+                b.Property(model => model.AllDose).HasColumnType("decimal(12,4)");
             });
         }
     }

@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACHICode" xml:space="preserve">
+    <value>ACHI код</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Години</value>
+  </data>
+  <data name="AgeInDays" xml:space="preserve">
+    <value>Години в дни</value>
+  </data>
+  <data name="BatchNumber" xml:space="preserve">
+    <value>Batch number</value>
+  </data>
+  <data name="BedDays" xml:space="preserve">
+    <value>Bed days</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Дата на раждане</value>
+  </data>
+  <data name="BirthGestWeek" xml:space="preserve">
+    <value>Birth gest week</value>
+  </data>
+  <data name="BirthNumber" xml:space="preserve">
+    <value>Номер при раждане</value>
+  </data>
+  <data name="BirthPractice" xml:space="preserve">
+    <value>Birth practice</value>
+  </data>
+  <data name="BirthWeight" xml:space="preserve">
+    <value>Тегло при раждането</value>
+  </data>
+  <data name="CheckupAfterDischarge" xml:space="preserve">
+    <value>Checkup after discharge</value>
+  </data>
+  <data name="ClinicalExaminations" xml:space="preserve">
+    <value>Клинични прегледи</value>
+  </data>
+  <data name="ClinicalPath" xml:space="preserve">
+    <value>Клинична пътека</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="CodeDiagnoses" xml:space="preserve">
+    <value>Code diagnoses</value>
+  </data>
+  <data name="CommissionAprsCount" xml:space="preserve">
+    <value>Commission aprs брой</value>
+  </data>
+  <data name="Complications" xml:space="preserve">
+    <value>Усложнения</value>
+  </data>
+  <data name="Consultations" xml:space="preserve">
+    <value>Консултации</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Брой</value>
+  </data>
+  <data name="CountOfAdditionalDiagnoses" xml:space="preserve">
+    <value>Брой на допълнителните диагнози</value>
+  </data>
+  <data name="CountOfAdditionalOutDiagnoses" xml:space="preserve">
+    <value>Брой на допълнителните диагнози при изписване</value>
+  </data>
+  <data name="CPFile" xml:space="preserve">
+    <value>CP файл</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value>от дата</value>
+  </data>
+  <data name="DateOfSurgery" xml:space="preserve">
+    <value>Дата на операция</value>
+  </data>
+  <data name="DatePrescr" xml:space="preserve">
+    <value>Date prescr</value>
+  </data>
+  <data name="DateSend" xml:space="preserve">
+    <value>Дата на изпращане</value>
+  </data>
+  <data name="Dead" xml:space="preserve">
+    <value>Смърт</value>
+  </data>
+  <data name="DecisionDate" xml:space="preserve">
+    <value>Дата на решението</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
+  <data name="DeputyUniqueIdentifier" xml:space="preserve">
+    <value>Deputy уникален номер</value>
+  </data>
+  <data name="Diagnoses" xml:space="preserve">
+    <value>Диагнози</value>
+  </data>
+  <data name="DischargeStatus" xml:space="preserve">
+    <value>Discharge status</value>
+  </data>
+  <data name="DiseaseCourse" xml:space="preserve">
+    <value>Disease course</value>
+  </data>
+  <data name="DispDate" xml:space="preserve">
+    <value>Disp дата</value>
+  </data>
+  <data name="DispObservationsCount" xml:space="preserve">
+    <value>Disp observations брой</value>
+  </data>
+  <data name="EndCourse" xml:space="preserve">
+    <value>End course</value>
+  </data>
+  <data name="EntryDate" xml:space="preserve">
+    <value>Дата на постъпване</value>
+  </data>
+  <data name="ExaminationDate" xml:space="preserve">
+    <value>Дата на прегледа</value>
+  </data>
+  <data name="FairCondition" xml:space="preserve">
+    <value>Fair condition</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Първо име</value>
+  </data>
+  <data name="GPRecommendations" xml:space="preserve">
+    <value>GP предписания</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>История</value>
+  </data>
+  <data name="HLDateFrom" xml:space="preserve">
+    <value>HL дата от</value>
+  </data>
+  <data name="HLNumber" xml:space="preserve">
+    <value>HL номер</value>
+  </data>
+  <data name="HLTotalDays" xml:space="preserve">
+    <value>HL брой дни</value>
+  </data>
+  <data name="ICDDrug" xml:space="preserve">
+    <value>ICD лекарство</value>
+  </data>
+  <data name="IdentityNumber" xml:space="preserve">
+    <value>ЕГН</value>
+  </data>
+  <data name="ImplantCode" xml:space="preserve">
+    <value>Код на импланта</value>
+  </data>
+  <data name="ImplantManufacturer" xml:space="preserve">
+    <value>Производител на импланта</value>
+  </data>
+  <data name="ImplantReferenceNumber" xml:space="preserve">
+    <value>Референтен номер на импланта</value>
+  </data>
+  <data name="InApr" xml:space="preserve">
+    <value>In Apr</value>
+  </data>
+  <data name="InClinicProceduresCount" xml:space="preserve">
+    <value>Брой на процедурите в клиниката</value>
+  </data>
+  <data name="InMedicalWard" xml:space="preserve">
+    <value>In medical ward</value>
+  </data>
+  <data name="InsCount" xml:space="preserve">
+    <value>Брой на приеманията</value>
+  </data>
+  <data name="InType" xml:space="preserve">
+    <value>In type</value>
+  </data>
+  <data name="IZNo" xml:space="preserve">
+    <value>IZ No</value>
+  </data>
+  <data name="IZYear" xml:space="preserve">
+    <value>IZ Year</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Ключ</value>
+  </data>
+  <data name="Laparoscopic" xml:space="preserve">
+    <value>Laparoscopic</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Фамилно име</value>
+  </data>
+  <data name="MainDiagnose" xml:space="preserve">
+    <value>Основна диагноза</value>
+  </data>
+  <data name="MainOutDiagnose" xml:space="preserve">
+    <value>Основна диагноза при изписване</value>
+  </data>
+  <data name="MKBCode" xml:space="preserve">
+    <value>MKB код</value>
+  </data>
+  <data name="MKBName" xml:space="preserve">
+    <value>MKB име</value>
+  </data>
+  <data name="MotherIZNo" xml:space="preserve">
+    <value>Mother IZ No</value>
+  </data>
+  <data name="MotherIZYear" xml:space="preserve">
+    <value>Mother IZ year</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="NoPatients" xml:space="preserve">
+    <value>Няма намерени пациенти.</value>
+  </data>
+  <data name="NoPrescr" xml:space="preserve">
+    <value>No prescr</value>
+  </data>
+  <data name="NoResults" xml:space="preserve">
+    <value>Няма намерени резултати.</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Бележки</value>
+  </data>
+  <data name="NotSpecified" xml:space="preserve">
+    <value>Не е посочено</value>
+  </data>
+  <data name="NZOKPay" xml:space="preserve">
+    <value>NZOK pay</value>
+  </data>
+  <data name="OlderThan" xml:space="preserve">
+    <value>По-възрастен от</value>
+  </data>
+  <data name="OtherDocuments" xml:space="preserve">
+    <value>Други документи</value>
+  </data>
+  <data name="OutAPr" xml:space="preserve">
+    <value>Out APr</value>
+  </data>
+  <data name="OutClinicalPath" xml:space="preserve">
+    <value>Изписване клиничен път</value>
+  </data>
+  <data name="OutCodeDiagnoses" xml:space="preserve">
+    <value>Кодове на диагнози при изписване</value>
+  </data>
+  <data name="OutDate" xml:space="preserve">
+    <value>Дата на изписване</value>
+  </data>
+  <data name="OutHospital" xml:space="preserve">
+    <value>Изписване от болница</value>
+  </data>
+  <data name="OutMainDiagnoseCode" xml:space="preserve">
+    <value>Код на основната диагноза при изписване</value>
+  </data>
+  <data name="OutMainDiagnoseName" xml:space="preserve">
+    <value>Име на основната диагноза при изписване</value>
+  </data>
+  <data name="OutMedicalWard" xml:space="preserve">
+    <value>Out medical ward</value>
+  </data>
+  <data name="OutsCount" xml:space="preserve">
+    <value>Брой на изписванията</value>
+  </data>
+  <data name="OutType" xml:space="preserve">
+    <value>Тип на изписване</value>
+  </data>
+  <data name="OutUniqueIdentifier" xml:space="preserve">
+    <value>Уникален номер при изписване</value>
+  </data>
+  <data name="PathologicFinding" xml:space="preserve">
+    <value>Pathologic finding</value>
+  </data>
+  <data name="PathProceduresCount" xml:space="preserve">
+    <value>Брой на процедурите по пътека</value>
+  </data>
+  <data name="PatientBranch" xml:space="preserve">
+    <value>Клон на пациента</value>
+  </data>
+  <data name="PatientData" xml:space="preserve">
+    <value>Преглед на пациент</value>
+  </data>
+  <data name="PatientHRegion" xml:space="preserve">
+    <value>Здравен регион</value>
+  </data>
+  <data name="PatientSearch" xml:space="preserve">
+    <value>Търсене по пациенти</value>
+  </data>
+  <data name="PatientTransfersCount" xml:space="preserve">
+    <value>Брой на трансферите на пациенти</value>
+  </data>
+  <data name="Payer" xml:space="preserve">
+    <value>Payer</value>
+  </data>
+  <data name="PlannedNumber" xml:space="preserve">
+    <value>Планиран номер</value>
+  </data>
+  <data name="PlannedProceduresCount" xml:space="preserve">
+    <value>Брой на планираните процедури</value>
+  </data>
+  <data name="PlanVisitDate" xml:space="preserve">
+    <value>Дата на планираното посещение</value>
+  </data>
+  <data name="PostoperativeStatus" xml:space="preserve">
+    <value>Postoperative status</value>
+  </data>
+  <data name="PracticeCodeProtocol" xml:space="preserve">
+    <value>Код на протокола на практиката</value>
+  </data>
+  <data name="ProtocolDate" xml:space="preserve">
+    <value>Дата на протокола</value>
+  </data>
+  <data name="ProtocolDrugTherapiesCount" xml:space="preserve">
+    <value>Брой на протоколите от лечения с лекарства</value>
+  </data>
+  <data name="ProtocolNumber" xml:space="preserve">
+    <value>Номер на протокола</value>
+  </data>
+  <data name="ProtocolType" xml:space="preserve">
+    <value>Тип на протокола</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="QuantityPack" xml:space="preserve">
+    <value>Quantity pack</value>
+  </data>
+  <data name="Recommendations" xml:space="preserve">
+    <value>Предписания</value>
+  </data>
+  <data name="Regimen" xml:space="preserve">
+    <value>Regimen</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>резултата</value>
+  </data>
+  <data name="SampleProtocol" xml:space="preserve">
+    <value>Sample protocol</value>
+  </data>
+  <data name="SecondName" xml:space="preserve">
+    <value>Бащино име</value>
+  </data>
+  <data name="SendApr" xml:space="preserve">
+    <value>Send apr</value>
+  </data>
+  <data name="SendClinicalPath" xml:space="preserve">
+    <value>Клинична пътека на изпращането</value>
+  </data>
+  <data name="SendDate" xml:space="preserve">
+    <value>Дата на изпращане</value>
+  </data>
+  <data name="SendDiagnose" xml:space="preserve">
+    <value>Диагноза при приемане</value>
+  </data>
+  <data name="SendDiagnoseCode" xml:space="preserve">
+    <value>Код на изпратената диагноза</value>
+  </data>
+  <data name="SendDiagnoseName" xml:space="preserve">
+    <value>Име на изпратената диагноза</value>
+  </data>
+  <data name="SendUrgency" xml:space="preserve">
+    <value>Спешност на изпращането</value>
+  </data>
+  <data name="Severity" xml:space="preserve">
+    <value>Severity</value>
+  </data>
+  <data name="Sex" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="Speciality" xml:space="preserve">
+    <value>Специалност</value>
+  </data>
+  <data name="StateAtDischarge" xml:space="preserve">
+    <value>State at discharge</value>
+  </data>
+  <data name="UINPrescr" xml:space="preserve">
+    <value>UIN prescr</value>
+  </data>
+  <data name="UniqueIdentifier" xml:space="preserve">
+    <value>Уникалне номер</value>
+  </data>
+  <data name="Urgency" xml:space="preserve">
+    <value>Спешност</value>
+  </data>
+  <data name="UsedDrug" xml:space="preserve">
+    <value>Използвано лекарство</value>
+  </data>
+  <data name="UsedDrugCode" xml:space="preserve">
+    <value>Използвани лекарства</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Преглед</value>
+  </data>
+  <data name="WeightInGrams" xml:space="preserve">
+    <value>Тегло в грамове</value>
+  </data>
+  <data name="YoungerThan" xml:space="preserve">
+    <value>По-млад от</value>
+  </data>
+</root>

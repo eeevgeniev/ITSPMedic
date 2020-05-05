@@ -64,19 +64,19 @@ namespace Medic.Entities
 
         public int Payer { get; set; }
 
-        public int AgeInDays { get; set; }
+        public int? AgeInDays { get; set; }
 
-        public int WeightInGrams { get; set; }
+        public int? WeightInGrams { get; set; }
 
-        public int BirthWeight { get; set; }
+        public int? BirthWeight { get; set; }
 
-        public int MotherIZYear { get; set; }
+        public int? MotherIZYear { get; set; }
 
-        public int MotherIZNo { get; set; }
+        public int? MotherIZNo { get; set; }
 
-        public int IZYear { get; set; }
+        public int? IZYear { get; set; }
 
-        public int IZNo { get; set; }
+        public int? IZNo { get; set; }
 
         public decimal OutMedicalWard { get; set; }
 
@@ -92,9 +92,9 @@ namespace Medic.Entities
 
         public string BirthPractice { get; set; }
 
-        public int BirthNumber { get; set; }
+        public int? BirthNumber { get; set; }
 
-        public int BirthGestWeek { get; set; }
+        public int? BirthGestWeek { get; set; }
 
         public double OutClinicalPath { get; set; }
 
@@ -120,19 +120,19 @@ namespace Medic.Entities
 
         public ICollection<Procedure> Procedures { get; set; } = new HashSet<Procedure>();
 
-        public int BedDays { get; set; }
+        public int? BedDays { get; set; }
 
         public DateTime? HLDateFrom { get; set; }
 
         public string HLNumber { get; set; }
 
-        public int HLTotalDays { get; set; }
+        public int? HLTotalDays { get; set; }
 
-        public int StateAtDischarge { get; set; }
+        public int? StateAtDischarge { get; set; }
 
-        public int Laparoscopic { get; set; }
+        public int? Laparoscopic { get; set; }
 
-        public int EndCourse { get; set; }
+        public int? EndCourse { get; set; }
 
         public int? CPFileId { get; set; }
 

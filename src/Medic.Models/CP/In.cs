@@ -133,24 +133,24 @@ namespace Medic.Models.CP
         public int Payer { get; set; }
 
         [XmlElement(ElementName = "ageInDays")]
-        public int AgeInDays { get; set;  }
+        public int? AgeInDays { get; set;  }
 
         [XmlElement(ElementName = "weightInGrams")]
-        public int WeightInGrams { get; set; }
+        public int? WeightInGrams { get; set; }
 
         [XmlElement(ElementName = "birthWeight")]
-        public int BirthWeight { get; set; }
+        public int? BirthWeight { get; set; }
 
         [XmlElement(ElementName = "motherIZYear")]
-        public int MotherIZYear { get; set; }
+        public int? MotherIZYear { get; set; }
 
         [XmlElement(ElementName = "motherIZNo")]
-        public int MotherIZNo { get; set; }
+        public int? MotherIZNo { get; set; }
 
         [XmlElement(ElementName = "IZYear")]
-        public int IZYear { get; set; }
+        public int? IZYear { get; set; }
 
         [XmlElement(ElementName = "IZNo")]
-        public int IZNo { get; set; }
+        public int? IZNo { get; set; }
     }
 }

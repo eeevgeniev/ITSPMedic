@@ -1,4 +1,6 @@
 ﻿@using Medic.AppModels.Ins
+@inject MedicDataLocalization medicDataLocalization
+
 
 @model InPageIndexModel
 
@@ -16,9 +18,9 @@
             paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.MainDiagnose)}", Model.Search.MainDiagnose);
         }
 
-        if (Model.Search.NumberOfAdditionalDiagnoses != default)
+        if (Model.Search.CountOfAdditionalDiagnoses != default)
         {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.NumberOfAdditionalDiagnoses)}", Model.Search.NumberOfAdditionalDiagnoses.ToString());
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.CountOfAdditionalDiagnoses)}", Model.Search.CountOfAdditionalDiagnoses.ToString());
         }
 
         if (Model.Search.Sex != default)
@@ -63,8 +65,8 @@
                     <input class="form-control" asp-for="@Model.Search.MainDiagnose" />
                 </div>
                 <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.NumberOfAdditionalDiagnoses"></label>
-                    <input class="form-control" asp-for="@Model.Search.NumberOfAdditionalDiagnoses" />
+                    <label asp-for="@Model.Search.CountOfAdditionalDiagnoses"></label>
+                    <input class="form-control" asp-for="@Model.Search.CountOfAdditionalDiagnoses" />
                 </div>
                 <div class="form-group col-sm-4">
                     <label asp-for="@Model.Search.Sex"></label>
@@ -94,12 +96,12 @@
         {
             <div>
                 <div class="row">
-                    <div class="col-sm-2 font-weight-bold">Entry date</div>
-                    <div class="col-sm-2 font-weight-bold">Send diagnose code</div>
-                    <div class="col-sm-4 font-weight-bold">Send diagnose name</div>
-                    <div class="col-sm-2 font-weight-bold">Additional diagnoses</div>
-                    <div class="col-sm-1 font-weight-bold">View patient</div>
-                    <div class="col-sm-1 font-weight-bold">View in</div>
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("EntryDate")</div>
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("SendDiagnoseCode")</div>
+                    <div class="col-sm-4 font-weight-bold">@medicDataLocalization.Get("SendDiagnoseName")</div>
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("AdditionalDiagnoses")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewIn")</div>
                 </div>
                 @foreach (InPreviewViewModel currentIn in Model.Ins)
                 {
@@ -112,13 +114,13 @@
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                                asp-action="@nameof(PatientController.Patient)"
-                               asp-route-id="@currentIn.PatientId" class="btn btn-info">View</a>
+                               asp-route-id="@currentIn.PatientId" class="btn btn-info">@medicDataLocalization.Get("View")</a>
                         </div>
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(InController))"
                                asp-action="@nameof(InController.In)"
                                asp-route-id="@currentIn.Id"
-                               class="btn btn-default">View</a>
+                               class="btn btn-default">@medicDataLocalization.Get("View")</a>
                         </div>
                     </div>
                 }
@@ -140,7 +142,7 @@
         }
         else
         {
-            <div class="text-center text-info font-weight-bold">No results</div>
+            <div class="text-center text-info font-weight-bold">@medicDataLocalization.Get("NoResults")</div>
         }
     </section>
 </article>

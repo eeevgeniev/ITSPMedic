@@ -1,6 +1,5 @@
 ﻿using Medic.App.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;
 using System.Linq;
 

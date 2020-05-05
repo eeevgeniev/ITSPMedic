@@ -13,11 +13,8 @@ namespace Medic.Contexts
     /// </summary>
     public class MedicContext : DbContext, IMedicContext
     {
-        public MedicContext(DbContextOptions options)
-            : base(options)
-        {
-
-        }
+        public MedicContext(DbContextOptions<MedicContext> options)
+            : base(options) { }
 
         public DbSet<AccompanyingDrug> AccompanyingDrugs { get; set; }
 

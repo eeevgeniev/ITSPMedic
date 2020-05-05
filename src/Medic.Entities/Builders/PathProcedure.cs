@@ -58,6 +58,8 @@ namespace Medic.Entities
                     .WithOne(dp => dp.PathProcedure)
                     .HasForeignKey(dp => dp.PathProcedureId);
 
+                b.HasIndex(model => model.PatientId).IsUnique(false);
+
                 b.Property(model => model.IZNumChild).HasMaxLength(12);
 
                 b.Property(model => model.VisitDocumentUniqueIdentifier).HasMaxLength(12);
@@ -65,6 +67,16 @@ namespace Medic.Entities
                 b.Property(model => model.VisitDocumentName).HasMaxLength(100);
 
                 b.Property(model => model.OutUniqueIdentifier).HasMaxLength(12);
+
+                b.Property(model => model.APrPriem).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.APrSend).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.AllDoneCost).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.AllDoneProcedures).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.MedicalWard).HasColumnType("decimal(15,4)");
             });
         }
     }

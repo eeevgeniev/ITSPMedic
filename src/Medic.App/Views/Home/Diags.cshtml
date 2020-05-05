@@ -1,4 +1,5 @@
 ﻿@model HomePageDiagModel
+@inject MedicDataLocalization medicDataLocalization
 
 @{
     ViewData["Title"] = Model.Title;
@@ -6,17 +7,17 @@
 
 <article>
     <header class="text-center">
-        <h2>Summary</h2>
+        <h2>@medicDataLocalization.Get("Summary")</h2>
     </header>
     <section>
         <header class="text-center">
-            <h4>Diag MKB summary - MKB code</h4>
+            <h4>@medicDataLocalization.Get("DiagSummaryTitle")</h4>
         </header>
         <div>
             <div class="row">
-                <div class="col-sm-2 font-weight-bold">MKB code</div>
-                <div class="col-sm-8 font-weight-bold">MKB name</div>
-                <div class="col-sm-2 font-weight-bold">Count</div>
+                <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
+                <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("Count")</div>
             </div>
             @if (Model.DiagMKBSummaryViewModels != default && Model.DiagMKBSummaryViewModels.Count > 0)
             {
@@ -32,7 +33,7 @@
             }
             else
             {
-                <div>No results.</div>
+                <div>@medicDataLocalization.Get("NoResults")</div>
             }
         </div>
     </section>

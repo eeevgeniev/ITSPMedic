@@ -62,6 +62,8 @@ namespace Medic.Entities
                     .WithOne(ud => ud.Out)
                     .HasForeignKey<Out>(model => model.UsedDrugId);
 
+                b.HasIndex(model => model.PatientId).IsUnique(false);
+
                 b.Property(model => model.UniqueIdentifier).HasMaxLength(12);
 
                 b.Property(model => model.OutUniqueIdentifier).HasMaxLength(12);
@@ -71,6 +73,12 @@ namespace Medic.Entities
                 b.Property(model => model.OutAPr).HasMaxLength(12);
 
                 b.Property(model => model.HLNumber).HasMaxLength(12);
+
+                b.Property(model => model.InMedicalWard).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.OutMedicalWard).HasColumnType("decimal(15,4)");
+
+
             });
         }
     }

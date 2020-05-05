@@ -38,6 +38,8 @@ namespace Medic.Entities
                     .WithOne(ccp => ccp.InClinicProcedure)
                     .HasForeignKey<InClinicProcedure>(model => model.CeasedClinicalPathId);
 
+                b.HasIndex(model => model.PatientId).IsUnique(false);
+
                 b.Property(model => model.VisitDocumentUniqueIdentifier).HasMaxLength(12);
 
                 b.Property(model => model.VisitDocumentName).HasMaxLength(100);

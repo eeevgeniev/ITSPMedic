@@ -31,7 +31,7 @@ namespace Medic.Import.Rules
             string uniqueIdentifier = obj.UniqueIdentifier ?? string.Empty;
             string name = obj.Name ?? string.Empty;
 
-            return (uniqueIdentifier + name).GetHashCode();
+            return ($"{uniqueIdentifier} - {name}").GetHashCode();
         }
     }
 }

@@ -42,6 +42,8 @@ namespace Medic.Entities
                     .WithOne(d => d.SecondDispObservation)
                     .HasForeignKey<DispObservation>(model => model.MainDiagSecondId);
 
+                b.HasIndex(model => model.PatientId).IsUnique(false);
+
                 b.Property(model => model.AprCode).HasMaxLength(10);
 
                 b.Property(model => model.Anamnesa).HasMaxLength(4000);

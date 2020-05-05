@@ -21,6 +21,14 @@ namespace Medic.Entities
                 b.Property(model => model.Days).HasMaxLength(200);
 
                 b.Property(model => model.ApplicationWay).HasMaxLength(20);
+
+                b.Property(model => model.AllDose).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.CycleDose).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.IndividualDose).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.StandartDose).HasColumnType("decimal(15,4)");
             });
         }
     }

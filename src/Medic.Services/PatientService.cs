@@ -114,6 +114,13 @@ namespace Medic.Services
                 {
                     patientsQueryable = patientsQueryable.Where(p => p.BirthDate >= dateTimeHelper.CalculateYearBoundByAge((int)patientSearch.YoungerThan));
                 }
+
+                if (patientSearch.Sex != default)
+                {
+                    int sex = (int)patientSearch.Sex;
+
+                    patientsQueryable = patientsQueryable.Where(p => p.Sex.Id == sex);
+                }
             }
 
             return patientsQueryable;

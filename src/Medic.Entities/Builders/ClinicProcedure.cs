@@ -13,6 +13,8 @@ namespace Medic.Entities
                 b.Property(model => model.ProcedureName).HasMaxLength(200);
 
                 b.Property(model => model.ACHIcode).HasMaxLength(12);
+
+                b.Property(model => model.ProcedureCode).HasColumnType("decimal(15,4)");
             });
         }
     }

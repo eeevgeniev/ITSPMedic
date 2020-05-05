@@ -11,6 +11,8 @@ namespace Medic.Entities
                 b.HasKey(model => model.Id);
 
                 b.Property(model => model.BatchNumber).HasMaxLength(12);
+
+                b.Property(model => model.QuantityPack).HasColumnType("decimal(15,4)");
             });
         }
     }

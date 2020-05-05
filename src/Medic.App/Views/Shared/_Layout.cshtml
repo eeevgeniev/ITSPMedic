@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject GeneralLocalization generalLocalization 
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,7 +13,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Medic.App</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@generalLocalization.Get("SiteTile")</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,22 +21,22 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Index)">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Index)">@generalLocalization.Get("Home")</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(OutController))" asp-action="@nameof(OutController.Index)">Outs</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(OutController))" asp-action="@nameof(OutController.Index)">@generalLocalization.Get("Outs")</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(InController))" asp-action="@nameof(InController.Index)">Ins</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(InController))" asp-action="@nameof(InController.Index)">@generalLocalization.Get("Ins")</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diags)">Diags summary</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diags)">@generalLocalization.Get("DiagsSummary")</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diagnoses)">Diagnoses summary</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diagnoses)">@generalLocalization.Get("DiagnosesSummary")</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PatientController))" asp-action="@nameof(PatientController.Index)">Patients</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PatientController))" asp-action="@nameof(PatientController.Index)">@generalLocalization.Get("Patients")</a>
                         </li>
                     </ul>
                 </div>
@@ -50,7 +52,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - Medic.App - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - @(generalLocalization.Get("SiteTile")) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <environment names="Development">

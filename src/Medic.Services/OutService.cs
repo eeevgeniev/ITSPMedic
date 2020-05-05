@@ -92,9 +92,9 @@ namespace Medic.Services
                     outQuery = outQuery.Where(o => o.Patient.SexId == search.Sex);
                 }
 
-                if (search.NumberOfAdditionalOutDiagnoses != default)
+                if (search.CountOfAdditionalOutDiagnoses != default)
                 {
-                    outQuery = outQuery.Where(o => o.OutDiagnoses.Count == search.NumberOfAdditionalOutDiagnoses);
+                    outQuery = outQuery.Where(o => o.OutDiagnoses.Count == search.CountOfAdditionalOutDiagnoses);
                 }
 
                 if (!string.IsNullOrEmpty(search.SendDiagnose))
@@ -102,9 +102,9 @@ namespace Medic.Services
                     outQuery = outQuery.Where(o => EF.Functions.Like(o.SendDiagnose.Primary.Code, search.SendDiagnose));
                 }
 
-                if (search.NumberOfAdditionalDiagnoses != default)
+                if (search.CountOfAdditionalDiagnoses != default)
                 {
-                    int number = (int)search.NumberOfAdditionalDiagnoses;
+                    int number = (int)search.CountOfAdditionalDiagnoses;
 
                     outQuery = outQuery.Where(o => o.Diagnoses.Count == number);
                 }

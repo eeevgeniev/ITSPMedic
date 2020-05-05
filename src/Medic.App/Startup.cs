@@ -1,5 +1,6 @@
 using Medic.App.AppServices;
 using Medic.App.Infrastructure;
+using Medic.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,9 +29,20 @@ namespace Medic.App
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureServices(Configuration, Environment);
+            services.AddControllersWithViews()
+                .AddViewLocalization()
+                .AddDataAnnotationsLocalization(options =>
+                {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                    {
+                        MedicDataAnnotationLocalizerProvider medicDataAnnotationLocalizerProvider =
+                            new MedicDataAnnotationLocalizerProvider();
 
-            services.AddControllersWithViews();
+                        return medicDataAnnotationLocalizerProvider.Build(factory);
+                    };
+                });
+
+            services.ConfigureServices(Configuration, Environment);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,15 +71,19 @@ namespace Medic.App
 
                 if (context.Request.Cookies.TryGetValue(MedicConstants.LanguageCookieName, out string newValue))
                 {
-                    newValue = newValue.ToLower();
-                    
-                    if (MedicConstants.AllowedLanguages.Contains(newValue.ToLower()))
+                    if (!string.IsNullOrWhiteSpace(newValue))
                     {
-                        value = newValue;
+                        newValue = newValue.ToLower();
+
+                        if (MedicConstants.AllowedLanguages.Contains(newValue.ToLower()))
+                        {
+                            value = newValue;
+                        }
                     }
                 }
                 
                 Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(value);
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(value);
 
                 await next();
             });

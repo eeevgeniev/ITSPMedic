@@ -1,69 +1,70 @@
 ﻿@model EpicrisisSummaryViewModel
+@inject MedicDataLocalization medicDataLocalization
 
 @if (Model != default)
 {
     <div class="row">
-        <div class="col-sm-2">History</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("History")</div>
         <div class="col-sm-10">@Model.History</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Fair condition</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("FairCondition")</div>
         <div class="col-sm-10">@Model.FairCondition</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Clinical examinations</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("ClinicalExaminations")</div>
         <div class="col-sm-10">@Model.ClinicalExaminations</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Consultations</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("Consultations")</div>
         <div class="col-sm-10">@Model.Consultations</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Regimen</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("Regimen")</div>
         <div class="col-sm-10">@Model.Regimen</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Disease course</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("DiseaseCourse")</div>
         <div class="col-sm-10">@Model.DiseaseCourse</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Complications</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("Complications")</div>
         <div class="col-sm-10">@Model.Complications</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">DateOfSurgery</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("DateOfSurgery")</div>
         <div class="col-sm-10">@(Model.DateOfSurgery != default ? ((DateTime)Model.DateOfSurgery).ToShortDateString() : default)</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Sample protocol</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("SampleProtocol")</div>
         <div class="col-sm-10">@Model.SampleProtocol</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Postoperative status</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("PostoperativeStatus")</div>
         <div class="col-sm-10">@Model.PostoperativeStatus</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Discharge status</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("DischargeStatus")</div>
         <div class="col-sm-10">@Model.DischargeStatus</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Recommendations</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("Recommendations")</div>
         <div class="col-sm-10">@Model.Recommendations</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Checkup after discharge</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("CheckupAfterDischarge")</div>
         <div class="col-sm-10">@Model.CheckupAfterDischarge</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">GP recommendations</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("GPRecommendations")</div>
         <div class="col-sm-10">@Model.GPRecommendations</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">Other documents</div>
+        <div class="col-sm-2">@medicDataLocalization.Get("OtherDocuments")</div>
         <div class="col-sm-10">@Model.OtherDocuments</div>
     </div>
 }
 else
 {
-    <div class="text-center text-info">No epicrisis summary data</div>
+<div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
 }

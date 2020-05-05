@@ -1,20 +1,21 @@
-﻿using System;
+﻿using Medic.App.Controllers.Base;
+using Medic.App.Infrastructure;
+using Medic.App.Models;
+using Medic.App.Models.Home;
+using Medic.AppModels.CPFiles;
+using Medic.AppModels.Diagnoses;
+using Medic.AppModels.Diags;
+using Medic.AppModels.HospitalPractices;
+using Medic.Resources;
+using Medic.Services.Contracts;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Medic.App.Models;
-using Medic.Services.Contracts;
-using Medic.AppModels.CPFiles;
-using Medic.AppModels.HospitalPractices;
-using Medic.AppModels.Diagnoses;
-using Medic.AppModels.Diags;
-using Medic.App.Models.Home;
-using Medic.App.Controllers.Base;
-using Medic.App.Infrastructure;
-using Microsoft.AspNetCore.Http;
 
 namespace Medic.App.Controllers
 {
@@ -25,9 +26,8 @@ namespace Medic.App.Controllers
         private readonly IDiagService DiagService;
         private readonly IHospitalPracticeService HospitalPracticeService;
         private readonly IPatientService PatientService;
-
         private readonly ILogger<HomeController> Logger;
-
+        private readonly MedicDataLocalization MedicDataLocalization;
 
         public HomeController(
             ICPFileService cpFileService,
@@ -35,81 +35,116 @@ namespace Medic.App.Controllers
             IDiagService diagService,
             IHospitalPracticeService hospitalPracticeService,
             IPatientService patientService,
-            ILogger<HomeController> logger)
+            ILogger<HomeController> logger,
+            MedicDataLocalization мedicDataLocalization)
         {
             CPFileService = cpFileService ?? throw new ArgumentNullException(nameof(cpFileService));
             DiagnoseService = diagnoseService ?? throw new ArgumentNullException(nameof(diagnoseService));
             DiagService = diagService ?? throw new ArgumentNullException(nameof(diagService));
             HospitalPracticeService = hospitalPracticeService ?? throw new ArgumentNullException(nameof(hospitalPracticeService));
             PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
-
-            Logger = logger;
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            MedicDataLocalization = мedicDataLocalization ?? throw new ArgumentNullException(nameof(мedicDataLocalization));
         }
 
         public async Task<IActionResult> Index()
         {
-            List<CPFileSummaryViewModel> cpFileSummaryViewModels = await CPFileService.GetSummaryByMonthAsync();
-            List<HospitalPracticeSummaryViewModel> hospitalPracticeSummaryViewModels = await HospitalPracticeService.GetSummaryByMonthAsync();
-            int patientCount = await PatientService.GetPatientsCountAsync(default);
-
-            return View(new HomePageModel()
+            try
             {
-                CPFileSummaryViewModels = cpFileSummaryViewModels,
-                HospitalPracticeSummaryViewModels = hospitalPracticeSummaryViewModels,
-                PatientCount = patientCount,
-                Title = nameof(HomeController.Index),
-                Description = "Summary information",
-                Keywords = "Statistic information, summary"
-            });
+                List<CPFileSummaryViewModel> cpFileSummaryViewModels = await CPFileService.GetSummaryByMonthAsync();
+                List<HospitalPracticeSummaryViewModel> hospitalPracticeSummaryViewModels = await HospitalPracticeService.GetSummaryByMonthAsync();
+                int patientCount = await PatientService.GetPatientsCountAsync(default);
+
+                return View(new HomePageModel()
+                {
+                    CPFileSummaryViewModels = cpFileSummaryViewModels,
+                    HospitalPracticeSummaryViewModels = hospitalPracticeSummaryViewModels,
+                    PatientCount = patientCount,
+                    Title = MedicDataLocalization.Get("SummaryInformation"),
+                    Description = MedicDataLocalization.Get("SummaryInformation"),
+                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
+                });
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<IActionResult> Diags()
         {
-            List<DiagMKBSummaryViewModel> diagMKBSummaryViewModels = await DiagService.GetMKBSummaryAsync();
-
-            return View(new HomePageDiagModel()
+            try
             {
-                DiagMKBSummaryViewModels = diagMKBSummaryViewModels,
-                Title = nameof(HomeController.Diags),
-                Description = "Diag information",
-                Keywords = "Statistic information, diag, mkb"
-            });
+                List<DiagMKBSummaryViewModel> diagMKBSummaryViewModels = await DiagService.GetMKBSummaryAsync();
+
+                return View(new HomePageDiagModel()
+                {
+                    DiagMKBSummaryViewModels = diagMKBSummaryViewModels,
+                    Title = MedicDataLocalization.Get("Diags"),
+                    Description = MedicDataLocalization.Get("Diags"),
+                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
+                });
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<IActionResult> Diagnoses()
         {
-            List<DiagnoseMKBSummaryViewModel> diagnosesMKBSummaryViewModels = await DiagnoseService.MKBSummaryAsync();
-
-            return View(new HomePageDiagnoseModel()
+            try
             {
-                DiagnosesMKBSummaryViewModels = diagnosesMKBSummaryViewModels,
-                Title = nameof(HomeController.Diagnoses),
-                Description = "Diagnoses information",
-                Keywords = "Statistic information, diagnoses, mkb"
-            });
+                List<DiagnoseMKBSummaryViewModel> diagnosesMKBSummaryViewModels = await DiagnoseService.MKBSummaryAsync();
+
+                return View(new HomePageDiagnoseModel()
+                {
+                    DiagnosesMKBSummaryViewModels = diagnosesMKBSummaryViewModels,
+                    Title = MedicDataLocalization.Get("Diagnoses"),
+                    Description = MedicDataLocalization.Get("Diagnoses"),
+                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords"),
+                });
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public IActionResult Language(string lang)
         {
-            if (!string.IsNullOrWhiteSpace(lang))
+            try
             {
-                string language = lang.ToLower();
-
-                if (MedicConstants.AllowedLanguages.Contains(language))
+                if (!string.IsNullOrWhiteSpace(lang))
                 {
-                    CookieOptions options = new CookieOptions()
+                    string language = lang.ToLower();
+
+                    if (MedicConstants.AllowedLanguages.Contains(language))
                     {
-                        MaxAge = TimeSpan.FromDays(MedicConstants.LanguageCookieSpanInDays),
-                        SameSite = SameSiteMode.Strict,
-                        HttpOnly = true
-                    };
+                        CookieOptions options = new CookieOptions()
+                        {
+                            MaxAge = TimeSpan.FromDays(MedicConstants.LanguageCookieSpanInDays),
+                            SameSite = SameSiteMode.Strict,
+                            HttpOnly = true
+                        };
 
-                    HttpContext.Response.Cookies.Append(MedicConstants.LanguageCookieName, language, options);
+                        HttpContext.Response.Cookies.Append(MedicConstants.LanguageCookieName, language, options);
+                    }
                 }
-            }
 
-            return RedirectToAction(nameof(HomeController.Index), GetControllerName(nameof(HomeController)));
+                return RedirectToAction(nameof(HomeController.Index), GetControllerName(nameof(HomeController)));
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
+
+        public IActionResult Privacy(string lang)
+        {
+            return RedirectToAction(nameof(HomeController.Index));
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

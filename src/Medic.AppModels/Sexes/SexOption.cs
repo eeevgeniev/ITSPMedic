@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.Sexes
 {
     public class SexOption
     {
-        public byte? Id { get; set; }
+        public int? Id { get; set; }
 
+        [Display(Name = nameof(Name))]
         public string Name { get; set; }
     }
 }

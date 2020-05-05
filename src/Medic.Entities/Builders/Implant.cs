@@ -29,6 +29,12 @@ namespace Medic.Entities
                 b.Property(model => model.SerialNumber).HasMaxLength(50);
 
                 b.Property(model => model.DistributorInvoiceNumber).HasMaxLength(10);
+
+                b.Property(model => model.NhifAmount).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.PatientAmount).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.TotalAmount).HasColumnType("decimal(15,4)");
             });
         }
     }

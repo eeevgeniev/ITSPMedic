@@ -125,23 +125,23 @@ namespace Medic.Models.CP
         public int Payer { get; set; }
 
         [XmlElement(ElementName = "ageInDays")]
-        public int AgeInDays { get; set; }
+        public int? AgeInDays { get; set; }
 
         [XmlElement(ElementName = "weightInGrams")]
-        public int WeightInGrams { get; set; }
+        public int? WeightInGrams { get; set; }
 
         [XmlElement(ElementName = "birthWeight")]
-        public int BirthWeight { get; set; }
+        public int? BirthWeight { get; set; }
 
         [XmlElement(ElementName = "motherIZYear")]
-        public int MotherIZYear { get; set; }
+        public int? MotherIZYear { get; set; }
 
         [XmlElement(ElementName = "motherIZNo")]
-        public int MotherIZNo { get; set; }
+        public int? MotherIZNo { get; set; }
 
-        public int IZYear { get; set; }
+        public int? IZYear { get; set; }
 
-        public int IZNo { get; set; }
+        public int? IZNo { get; set; }
 
         [XmlElement(ElementName = "outMedicalWard")]
         public decimal OutMedicalWard { get; set; }
@@ -178,9 +178,9 @@ namespace Medic.Models.CP
         public string BirthPractice { get; set; }
 
         [XmlElement(ElementName = "BirthNum")]
-        public int BirthNumber { get; set; }
+        public int? BirthNumber { get; set; }
 
-        public int BirthGestWeek { get; set; }
+        public int? BirthGestWeek { get; set; }
 
         [XmlElement(ElementName = "outClinicalPath")]
         public double OutClinicalPath { get; set; }
@@ -207,7 +207,7 @@ namespace Medic.Models.CP
         public List<Procedure> Procedures { get; set; }
 
         [XmlElement(ElementName = "bedDays")]
-        public int BedDays { get; set; }
+        public int? BedDays { get; set; }
 
         [XmlIgnore]
         public DateTime? HLDateFrom
@@ -232,13 +232,13 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "HLNo")]
         public string HLNumber { get; set; }
 
-        public int HLTotalDays { get; set; }
+        public int? HLTotalDays { get; set; }
 
         [XmlElement(ElementName = "stateAtDischarge")]
-        public int StateAtDischarge { get; set; }
+        public int? StateAtDischarge { get; set; }
 
-        public int Laparoscopic { get; set; }
+        public int? Laparoscopic { get; set; }
 
-        public int EndCourse { get; set; }
+        public int? EndCourse { get; set; }
     }
 }

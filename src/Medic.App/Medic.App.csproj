@@ -6,17 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="3.1.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Medic.Contexts\Medic.Contexts.csproj" />
     <ProjectReference Include="..\Medic.Entities\Medic.Entities.csproj" />
+    <ProjectReference Include="..\Medic.Identity\Medic.Identity.csproj" />
     <ProjectReference Include="..\Medic.Import\Medic.Import.csproj" />
     <ProjectReference Include="..\Medic.Infrastructure\Medic.Infrastructure.csproj" />
     <ProjectReference Include="..\Medic.Mappers\Medic.Mappers.csproj" />
     <ProjectReference Include="..\Medic.Models\Medic.Models.csproj" />
+    <ProjectReference Include="..\Medic.Resources\Medic.Resources.csproj" />
     <ProjectReference Include="..\Medic.Services\Medic.Services.csproj" />
   </ItemGroup>
 

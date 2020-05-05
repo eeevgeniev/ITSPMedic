@@ -3,6 +3,7 @@ using Medic.App.Models.Outs;
 using Medic.AppModels.Outs;
 using Medic.AppModels.Sexes;
 using Medic.AppModels.UsedDrugs;
+using Medic.Resources;
 using Medic.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,12 +17,17 @@ namespace Medic.App.Controllers
         private readonly IOutService OutService;
         private readonly IPatientService PatientService;
         private readonly IUsedDrugService UsedDrugService;
+        private readonly MedicDataLocalization MedicDataLocalization;
 
-        public OutController(IOutService outService, IPatientService patientService, IUsedDrugService usedDrugService)
+        public OutController(IOutService outService, 
+            IPatientService patientService, 
+            IUsedDrugService usedDrugService,
+            MedicDataLocalization medicDataLocalization)
         {
             OutService = outService ?? throw new ArgumentNullException(nameof(outService));
             PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
             UsedDrugService = usedDrugService ?? throw new ArgumentNullException(nameof(usedDrugService));
+            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
         }
 
         public async Task<IActionResult> Index(OutSearch search, int page = 1)
@@ -33,19 +39,19 @@ namespace Medic.App.Controllers
                 List<OutPreviewViewModel> outs = await OutService.GetOutsAsync(search, startIndex, 10);
                 int count = await OutService.GetOutsCountAsync(search);
 
-                List<SexOption> sexes = new List<SexOption>() { new SexOption() { Id = null, Name = "No selection" } };
+                List<SexOption> sexes = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
                 sexes.AddRange(await PatientService.GetSexOptionsAsync());
 
-                List<UsedDrugCodeOption> usedDrugCodes = new List<UsedDrugCodeOption>() { new UsedDrugCodeOption() { Key = string.Empty, Code = "No selection" } };
+                List<UsedDrugCodeOption> usedDrugCodes = new List<UsedDrugCodeOption>() { new UsedDrugCodeOption() { Key = string.Empty, Code = MedicDataLocalization.Get("NoSelection") } };
 
                 usedDrugCodes.AddRange(await UsedDrugService.UsedDrugsByCodeAsync());
 
                 return View(new OutPageIndexModel()
                 {
                     Outs = outs,
-                    Title = "Ins view",
-                    Description = "Ins",
-                    Keywords = "Ins, patients, mkb",
+                    Title = MedicDataLocalization.Get("OutsView"),
+                    Description = MedicDataLocalization.Get("OutsView"),
+                    Keywords = MedicDataLocalization.Get("OutsSummary"),
                     Search = search,
                     CurrentPage = page,
                     TotalCount = count,
@@ -67,9 +73,9 @@ namespace Medic.App.Controllers
 
                 return View(new OutPageOutModel()
                 {
-                    Title = "Out view",
-                    Description = "Out",
-                    Keywords = "Out, patients, mkb",
+                    Title = MedicDataLocalization.Get("OutView"),
+                    Description = MedicDataLocalization.Get("OutView"),
+                    Keywords = MedicDataLocalization.Get("OutSummary"),
                     OutViewModel = outViewModel
                 });
             }

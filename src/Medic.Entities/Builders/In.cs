@@ -34,11 +34,15 @@ namespace Medic.Entities
                     .WithOne(d => d.MainIn)
                     .HasForeignKey(d => d.MainInId);
 
+                b.HasIndex(model => model.PatientId).IsUnique(false);
+
                 b.Property(model => model.SendClinicalPath).HasMaxLength(10);
 
                 b.Property(model => model.UniqueIdentifier).HasMaxLength(12);
 
                 b.Property(model => model.ClinicalPath).HasMaxLength(10);
+
+                b.Property(model => model.InMedicalWard).HasColumnType("decimal(15,4)");
             });
         }
     }

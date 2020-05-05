@@ -17,6 +17,10 @@ namespace Medic.Entities
                 b.HasOne(model => model.SecondMainDiag)
                     .WithOne(d => d.SecondPatientTransfer)
                     .HasForeignKey<PatientTransfer>(model => model.SecondMainDiagId);
+
+                b.Property(model => model.DischargeWard).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.TransferWard).HasColumnType("decimal(15,4)");
             });
         }
     }

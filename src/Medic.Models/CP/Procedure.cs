@@ -44,7 +44,7 @@ namespace Medic.Models.CP
         public Implant Implant { get; set; }
 
         [XmlElement(ElementName = "bedDays")]
-        public int BedDays { get; set; }
+        public int? BedDays { get; set; }
 
         [XmlIgnore]
         public DateTime? HLDateFrom
@@ -69,17 +69,17 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "HLNo")]
         public string HLNumber { get; set; }
 
-        public int HLTotalDays { get; set; }
+        public int? HLTotalDays { get; set; }
 
         [XmlElement(ElementName = "stateAtDischarge")]
-        public int StateAtDischarge { get; set; }
+        public int? StateAtDischarge { get; set; }
 
-        public int Laparoscopic { get; set; }
+        public int? Laparoscopic { get; set; }
 
         [XmlElement(ElementName = "Pathologic_Finding")]
-        public int PathologicFinding { get; set; }
+        public int? PathologicFinding { get; set; }
 
-        public int EndCourse { get; set; }
+        public int? EndCourse { get; set; }
 
         [XmlElement(ElementName = "sendAPr")]
         public string SendAPr { get; set; }

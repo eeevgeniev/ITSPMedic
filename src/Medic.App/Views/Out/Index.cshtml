@@ -1,4 +1,5 @@
 ﻿@using Medic.AppModels.Outs
+@inject MedicDataLocalization medicDataLocalization
 
 @model OutPageIndexModel
 
@@ -16,9 +17,9 @@
             paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.MainOutDiagnose)}", Model.Search.MainOutDiagnose);
         }
 
-        if (Model.Search.NumberOfAdditionalOutDiagnoses != default)
+        if (Model.Search.CountOfAdditionalOutDiagnoses != default)
         {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.NumberOfAdditionalOutDiagnoses)}", Model.Search.NumberOfAdditionalOutDiagnoses.ToString());
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.CountOfAdditionalOutDiagnoses)}", Model.Search.CountOfAdditionalOutDiagnoses.ToString());
         }
 
         if (Model.Search.Sex != default)
@@ -36,9 +37,9 @@
             paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.SendDiagnose)}", Model.Search.SendDiagnose);
         }
 
-        if (Model.Search.NumberOfAdditionalDiagnoses != default)
+        if (Model.Search.CountOfAdditionalDiagnoses != default)
         {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.NumberOfAdditionalDiagnoses)}", Model.Search.NumberOfAdditionalDiagnoses.ToString());
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.CountOfAdditionalDiagnoses)}", Model.Search.CountOfAdditionalDiagnoses.ToString());
         }
 
         if (Model.Search.Diagnoses != default && Model.Search.Diagnoses.Count > 0)
@@ -65,7 +66,7 @@
 
 <article>
     <header>
-        <h2>Result: @Model.TotalCount</h2>
+        <h2>@($"{medicDataLocalization.Get("OutsView")}: {@Model.TotalCount}")</h2>
     </header>
     <section>
         <form asp-controller="@MedicBaseController.GetName(nameof(OutController))"
@@ -77,8 +78,8 @@
                     <input class="form-control" asp-for="@Model.Search.MainOutDiagnose" />
                 </div>
                 <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.NumberOfAdditionalOutDiagnoses"></label>
-                    <input class="form-control" asp-for="@Model.Search.NumberOfAdditionalOutDiagnoses" />
+                    <label asp-for="@Model.Search.CountOfAdditionalOutDiagnoses"></label>
+                    <input class="form-control" asp-for="@Model.Search.CountOfAdditionalOutDiagnoses" />
                 </div>
                 <div class="form-group col-sm-4">
                     <label asp-for="@Model.Search.Sex"></label>
@@ -95,8 +96,8 @@
                     <input class="form-control" asp-for="@Model.Search.SendDiagnose" />
                 </div>
                 <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.NumberOfAdditionalDiagnoses"></label>
-                    <input class="form-control" asp-for="@Model.Search.NumberOfAdditionalDiagnoses" />
+                    <label asp-for="@Model.Search.CountOfAdditionalDiagnoses"></label>
+                    <input class="form-control" asp-for="@Model.Search.CountOfAdditionalDiagnoses" />
                 </div>
             </div>
             <div class="row">
@@ -122,15 +123,15 @@
         {
             <div>
                 <div class="row">
-                    <div class="col-sm-1 font-weight-bold">Out date</div>
-                    <div class="col-sm-1 font-weight-bold">Out main diagnose code</div>
-                    <div class="col-sm-4 font-weight-bold">Out diagnose name</div>
-                    <div class="col-sm-1 font-weight-bold">Out diagnoses</div>
-                    <div class="col-sm-1 font-weight-bold">Send diagnose</div>
-                    <div class="col-sm-1 font-weight-bold">Diagnoses</div>
-                    <div class="col-sm-1 font-weight-bold">Used drug</div>
-                    <div class="col-sm-1 font-weight-bold">View patient</div>
-                    <div class="col-sm-1 font-weight-bold">View</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutDate")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutMainDiagnoseCode")</div>
+                    <div class="col-sm-4 font-weight-bold">@medicDataLocalization.Get("OutDiagnoseName")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutDiagnoses")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("SendDiagnoses")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("Diagnoses")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("UsedDrug")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("View")</div>
                 </div>
                 @foreach (OutPreviewViewModel currentOut in Model.Outs)
                 {
@@ -146,13 +147,13 @@
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                                asp-action="@nameof(PatientController.Patient)"
-                               asp-route-id="@currentOut.PatientId" class="btn btn-info">View</a>
+                               asp-route-id="@currentOut.PatientId" class="btn btn-info">@medicDataLocalization.Get("View")</a>
                         </div>
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(OutController))"
                                asp-action="@nameof(OutController.Out)"
                                asp-route-id="@currentOut.Id"
-                               class="btn btn-default">View</a>
+                               class="btn btn-default">@medicDataLocalization.Get("View")</a>
                         </div>
                     </div>
                 }
@@ -173,7 +174,7 @@
         }
         else
         {
-            <span>No results</span>
+            <span>@medicDataLocalization.Get("NoResults")</span>
         }
     </section>
 </article>

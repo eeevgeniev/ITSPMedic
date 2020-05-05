@@ -25,6 +25,10 @@ namespace Medic.Entities
                 b.Property(model => model.NoPrescr).HasMaxLength(10);
 
                 b.Property(model => model.PracticeCodeProtocol).HasMaxLength(20);
+
+                b.Property(model => model.DrugCost).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.DrugQuantity).HasColumnType("decimal(15,4)");
             });
         }
     }

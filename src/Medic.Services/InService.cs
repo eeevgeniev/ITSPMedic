@@ -81,9 +81,9 @@ namespace Medic.Services
                     insQuery = insQuery.Where(i => i.Patient.Sex.Id == sex);
                 }
 
-                if (search.NumberOfAdditionalDiagnoses != default)
+                if (search.CountOfAdditionalDiagnoses != default)
                 {
-                    int number = (int)search.NumberOfAdditionalDiagnoses;
+                    int number = (int)search.CountOfAdditionalDiagnoses;
 
                     insQuery = insQuery.Where(i => i.Diagnoses.Count == number);
                 }

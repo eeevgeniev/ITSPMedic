@@ -1,6 +1,7 @@
 ﻿@using System.Globalization
 
 @model PatientPageIndexModel
+@inject PatientLocalization patientLocalization
 
 @{
     ViewData["Title"] = Model.Title;
@@ -32,12 +33,17 @@
         {
             paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.OlderThan)}", Model.Search.OlderThan.ToString());
         }
+
+        if (Model.Search.Sex != default)
+        {
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Sex)}", Model.Search.Sex.ToString());
+        }
     }
 }
 
 <article>
     <header>
-        <h3>Total patient count - @Model.Count</h3>
+        <h3>@($"{patientLocalization.Get("PatientSearch")} - {Model.Count} {patientLocalization.Get("Results")}")</h3>
     </header>
     <section class="container">
         <form asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
@@ -54,13 +60,17 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     <label asp-for="@Model.Search.OlderThan"></label>
                     <input class="form-control" asp-for="@Model.Search.OlderThan" />
                 </div>
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     <label asp-for="@Model.Search.YoungerThan"></label>
                     <input class="form-control" asp-for="@Model.Search.YoungerThan" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label asp-for="@Model.Search.Sex"></label>
+                    <select class="form-control" asp-for="@Model.Search.Sex" asp-items="@(Model.Sexes.Select(s => new SelectListItem() { Value = s.Id.ToString(), Text = s.Name, Selected = s.Id == null }))"></select>
                 </div>
             </div>
             <input type="submit" class="btn btn-primary" value="Search" />
@@ -71,31 +81,31 @@
         @if (hasResults)
         {
             <div class="row">
-                <div class="col-sm-3 font-weight-bold">First Name</div>
-                <div class="col-sm-2 font-weight-bold">Second Name</div>
-                <div class="col-sm-3 font-weight-bold">Last Name</div>
-                <div class="col-sm-2 font-weight-bold">Birth Date</div>
-                <div class="col-sm-2 font-weight-bold">View</div>
+                <div class="col-sm-3 font-weight-bold">@patientLocalization.Get("FirstName")</div>
+                <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("SecondName")</div>
+                <div class="col-sm-3 font-weight-bold">@patientLocalization.Get("LastName")</div>
+                <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("BirthDate")</div>
+                <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("View")</div>
             </div>
             @foreach (PatientPreviewViewModel patient in Model.Patients)
             {
                 <hr />
                 <div class="row">
-                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.FirstName) ? "not specified" : patient.FirstName)</div>
-                    <div class="col-sm-2">@(string.IsNullOrWhiteSpace(patient.LastName) ? "not specified" : patient.LastName)</div>
-                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.SecondName) ? "not specified" : patient.LastName)</div>
-                    <div class="col-sm-2">@(patient.BirthDate.ToShortDateString() ?? "not specified")</div>
+                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.FirstName) ? patientLocalization.Get("NotSpecified") : patient.FirstName)</div>
+                    <div class="col-sm-2">@(string.IsNullOrWhiteSpace(patient.SecondName) ? patientLocalization.Get("NotSpecified") : patient.SecondName)</div>
+                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.LastName) ? patientLocalization.Get("NotSpecified") : patient.LastName)</div>
+                    <div class="col-sm-2">@(patient.BirthDate.ToShortDateString())</div>
                     <div class="col-sm-2">
                         <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                            asp-action="@nameof(PatientController.Patient)"
-                           asp-route-id="@(patient.Id)" class="btn btn-info">View</a>
+                           asp-route-id="@(patient.Id)" class="btn btn-info">@patientLocalization.Get("View")</a>
                     </div>
                 </div>
             }
         }
         else
         {
-            <div class="text-info font-weight-bold text-center">No patients found.</div>
+            <div class="text-info font-weight-bold text-center">@patientLocalization.Get("NoPatients")</div>
         }
     </section>
     @if (hasResults)

@@ -21,6 +21,7 @@ namespace Medic.Services
         public async Task<List<DiagnoseMKBSummaryViewModel>> MKBSummaryAsync()
         {
             return await MedicContext.Diagnoses
+                .Where(d => d.MainInId != null || d.OutId != null)
                 .GroupBy(d => new { d.Primary.Code, d.Primary.Name })
                 .Select(g => new DiagnoseMKBSummaryViewModel()
                 {

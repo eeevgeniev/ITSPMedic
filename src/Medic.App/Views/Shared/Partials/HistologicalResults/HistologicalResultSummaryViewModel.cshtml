@@ -1,11 +1,12 @@
 ﻿@model HistologicalResultSummaryViewModel
+@inject MedicDataLocalization medicDataLocalization
 
 @if (Model != default)
 {
     <div class="row">
-        <div class="col-sm-2 font-weight-bold"></div>
-        <div class="col-sm-2 font-weight-bold"></div>
-        <div class="col-sm-8 font-weight-bold"></div>
+        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("Code")</div>
+        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("Date")</div>
+        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("Note")</div>
     </div>
     <div class="row">
         <div class="col-sm-2">@Model.Code</div>
@@ -15,5 +16,5 @@
 }
 else
 {
-    <div class="text-center text-info">No histological result data</div>
+<div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
 }

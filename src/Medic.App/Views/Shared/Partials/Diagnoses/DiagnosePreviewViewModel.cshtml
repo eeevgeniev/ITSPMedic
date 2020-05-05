@@ -1,10 +1,11 @@
 ﻿@model List<DiagnosePreviewViewModel>
+@inject GeneralLocalization generalLocalization
 
 @if (Model != default && Model.Count > 0)
 {
     <div class="row">
-        <div class="col-sm-2 font-weight-bold">Code</div>
-        <div class="col-sm-10 font-weight-bold">Name</div>
+        <div class="col-sm-2 font-weight-bold">@generalLocalization.Get("Code")</div>
+        <div class="col-sm-10 font-weight-bold">@generalLocalization.Get("Name")</div>
     </div>
 
     @foreach (DiagnosePreviewViewModel currentDiagnose in Model)
@@ -18,5 +19,5 @@
 }
 else
 {
-    <div class="text-center text-info">No diagnose data</div>
+    <div class="text-center text-info">@generalLocalization.Get("NoData")</div>
 }

@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Medic.Mappers\Medic.Mappers.csproj" />
+    <ProjectReference Include="..\Medic.Resources\Medic.Resources.csproj" />
   </ItemGroup>
 
 </Project>

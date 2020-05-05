@@ -21,6 +21,8 @@ namespace Medic.Entities
                 b.Property(model => model.SendAPr).HasMaxLength(12);
 
                 b.Property(model => model.InAPr).HasMaxLength(12);
+
+                b.Property(model => model.Code).HasColumnType("decimal(15,4)");
             });
         }
     }

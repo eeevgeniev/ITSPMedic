@@ -46,6 +46,8 @@ namespace Medic.Entities
                     .WithOne(a => a.CommissionApr)
                     .HasForeignKey<CommissionApr>(model => model.APr38Id);
 
+                b.HasIndex(model => model.PatientId).IsUnique(false);
+
                 b.HasMany(model => model.Members)
                     .WithOne(cahp => cahp.CommissionApr)
                     .HasForeignKey(cahp => cahp.CommissionAprId);

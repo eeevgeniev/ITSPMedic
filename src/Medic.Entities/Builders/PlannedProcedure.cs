@@ -34,6 +34,8 @@ namespace Medic.Entities
                     .WithOne(d => d.PlannedProcedure)
                     .HasForeignKey<PlannedProcedure>(model => model.DiagnoseId);
 
+                b.HasIndex(model => model.PatientId).IsUnique(false);
+
                 b.Property(model => model.UniqueIdentifier).HasMaxLength(12);
             });
         }

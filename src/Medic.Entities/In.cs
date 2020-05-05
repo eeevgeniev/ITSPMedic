@@ -70,19 +70,19 @@ namespace Medic.Entities
 
         public int Payer { get; set; }
 
-        public int AgeInDays { get; set; }
+        public int? AgeInDays { get; set; }
 
-        public int WeightInGrams { get; set; }
+        public int? WeightInGrams { get; set; }
 
-        public int BirthWeight { get; set; }
+        public int? BirthWeight { get; set; }
 
-        public int MotherIZYear { get; set; }
+        public int? MotherIZYear { get; set; }
 
-        public int MotherIZNo { get; set; }
+        public int? MotherIZNo { get; set; }
 
-        public int IZYear { get; set; }
+        public int? IZYear { get; set; }
 
-        public int IZNo { get; set; }
+        public int? IZNo { get; set; }
 
         public int? CPFileId { get; set; }
 

@@ -18,7 +18,9 @@ namespace Medic.Import.Rules
             }
 
             return string.Equals(x.IdentityNumber, y.IdentityNumber, StringComparison.OrdinalIgnoreCase) &&
-                DateTime.Equals(x.BirthDate, y.BirthDate);
+                DateTime.Equals(x.BirthDate, y.BirthDate) &&
+                string.Equals(x.CountryCode, y.CountryCode, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(x.PersonalIdNumber, y.PersonalIdNumber, StringComparison.OrdinalIgnoreCase);
         }
 
         public int GetHashCode(Patient obj)
@@ -29,8 +31,10 @@ namespace Medic.Import.Rules
             }
 
             string identityNumber = obj.IdentityNumber ?? string.Empty;
+            string countryCode = obj.CountryCode ?? string.Empty;
+            string personIdNumber = obj.PersonalIdNumber ?? string.Empty;
 
-            return (identityNumber + obj.BirthDate).GetHashCode();
+            return ($"{identityNumber} - {obj.BirthDate} - {countryCode} - {personIdNumber}").GetHashCode();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Medic.App.Models.Ins;
 using Medic.AppModels.Ins;
 using Medic.AppModels.Sexes;
+using Medic.Resources;
 using Medic.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,11 +15,13 @@ namespace Medic.App.Controllers
     {
         private readonly IInService InService;
         private readonly IPatientService PatientService;
+        private readonly MedicDataLocalization MedicDataLocalization;
 
-        public InController(IInService inService, IPatientService patientService)
+        public InController(IInService inService, IPatientService patientService, MedicDataLocalization medicDataLocalization)
         {
             InService = inService ?? throw new ArgumentNullException(nameof(inService));
             PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
+            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(MedicBaseController));
         }
 
         [HttpGet]
@@ -30,16 +33,15 @@ namespace Medic.App.Controllers
 
                 List<InPreviewViewModel> ins = await InService.GetInsAsync(search, startIndex, 10);
                 int count = await InService.GetInsCountAsync(search);
-                List<SexOption> sexes = await PatientService.GetSexOptionsAsync();
-
-                sexes.Add(new SexOption() { Id = null, Name = "No selection" });
+                List<SexOption> sexes = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
+                sexes.AddRange(await PatientService.GetSexOptionsAsync());
 
                 return View(new InPageIndexModel()
                 {
                     Ins = ins,
-                    Title = "Ins view",
-                    Description = "Ins",
-                    Keywords = "Ins, patients, mkb",
+                    Title = MedicDataLocalization.Get("InsView"),
+                    Description = MedicDataLocalization.Get("InsView"),
+                    Keywords = MedicDataLocalization.Get("InsSummary"),
                     Search = search,
                     CurrentPage = page,
                     TotalCount = count,
@@ -60,9 +62,9 @@ namespace Medic.App.Controllers
 
                 return View(new InPageInModel()
                 {
-                    Title = "In view",
-                    Description = "In data",
-                    Keywords = "In, patient, diagnoses",
+                    Title = MedicDataLocalization.Get("InView"),
+                    Description = MedicDataLocalization.Get("InView"),
+                    Keywords = MedicDataLocalization.Get("InSummary"),
                     InViewModel = inViewModel
                 });
             }
