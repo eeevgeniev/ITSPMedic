@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>Достъпа е отказан</value>
+  </data>
   <data name="Bg" xml:space="preserve">
     <value>Бг</value>
   </data>
@@ -132,11 +135,26 @@
   <data name="En" xml:space="preserve">
     <value>Англ</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Грешка</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Начало</value>
   </data>
   <data name="Ins" xml:space="preserve">
     <value>Приеми</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Изход</value>
+  </data>
+  <data name="MaxLengthPassword" xml:space="preserve">
+    <value>Паролата не може да е по-дълга от 100 символа</value>
+  </data>
+  <data name="MaxLengthUsername" xml:space="preserve">
+    <value>Потребителското име не може да е по-дълго от 100 символа.</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Име</value>
@@ -150,10 +168,34 @@
   <data name="Outs" xml:space="preserve">
     <value>Изписвания</value>
   </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Страницата не е намерена</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Парола</value>
+  </data>
   <data name="Patients" xml:space="preserve">
     <value>Пациенти</value>
   </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Условия за ползване</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запомни ме</value>
+  </data>
+  <data name="RequestError" xml:space="preserve">
+    <value>Възникна грешка по време на изпълението на Вашата заявка.</value>
+  </data>
+  <data name="RequiredPassword" xml:space="preserve">
+    <value>Паролата е задължителна.</value>
+  </data>
+  <data name="RequiredUsername" xml:space="preserve">
+    <value>Потребителското име е задължително.</value>
+  </data>
   <data name="SiteTile" xml:space="preserve">
     <value>ИТУП Медик</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Потребителско име</value>
   </data>
 </root>

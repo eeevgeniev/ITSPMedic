@@ -312,6 +312,12 @@
   <data name="MainOutDiagnose" xml:space="preserve">
     <value>Основна диагноза при изписване</value>
   </data>
+  <data name="MaxLengthPassword" xml:space="preserve">
+    <value>Паролата не може да е по-дълга от 100 символа</value>
+  </data>
+  <data name="MaxLengthUsername" xml:space="preserve">
+    <value>Потребителското име не може да е по-дълго от 100 символа.</value>
+  </data>
   <data name="MKBCode" xml:space="preserve">
     <value>MKB код</value>
   </data>
@@ -384,6 +390,9 @@
   <data name="OutUniqueIdentifier" xml:space="preserve">
     <value>Уникален номер при изписване</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Парола</value>
+  </data>
   <data name="PathologicFinding" xml:space="preserve">
     <value>Pathologic finding</value>
   </data>
@@ -447,6 +456,15 @@
   <data name="Regimen" xml:space="preserve">
     <value>Regimen</value>
   </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запомни ме</value>
+  </data>
+  <data name="RequiredPassword" xml:space="preserve">
+    <value>Паролата е задължителна.</value>
+  </data>
+  <data name="RequiredUsername" xml:space="preserve">
+    <value>Потребителското име е задължително.</value>
+  </data>
   <data name="Results" xml:space="preserve">
     <value>резултата</value>
   </data>
@@ -503,6 +521,9 @@
   </data>
   <data name="UsedDrugCode" xml:space="preserve">
     <value>Използвани лекарства</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Потребителско име</value>
   </data>
   <data name="View" xml:space="preserve">
     <value>Преглед</value>

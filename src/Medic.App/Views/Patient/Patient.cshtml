@@ -107,7 +107,7 @@
                 @if (Model.Patient.Outs != default && Model.Patient.Outs.Count > 0)
                 {
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold">Out date</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("OutDate")</div>
                         <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
                         <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
                         <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("View")</div>

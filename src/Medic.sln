@@ -25,7 +25,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.AppModels", "Medic.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.Resources", "Medic.Resources\Medic.Resources.csproj", "{E06F3754-DA64-4133-A15F-F8F1696C3F07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medic.Identity", "Medic.Identity\Medic.Identity.csproj", "{E0294CCC-B67F-45DA-ADE5-13348F105D30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.Identity", "Medic.Identity\Medic.Identity.csproj", "{E0294CCC-B67F-45DA-ADE5-13348F105D30}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.IdentityModels", "Medic.IdentityModels\Medic.IdentityModels.csproj", "{A2BF24F0-3F4F-4B24-A2AA-F78404F7A3F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.Cache", "Medic.Cache\Medic.Cache.csproj", "{25061223-A2ED-41EB-BF16-3B8A0A05903D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medic.Logs", "Medic.Logs\Medic.Logs.csproj", "{807CCD42-F8A1-43FE-A0E5-496DACB811EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +87,18 @@ Global
 		{E0294CCC-B67F-45DA-ADE5-13348F105D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0294CCC-B67F-45DA-ADE5-13348F105D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0294CCC-B67F-45DA-ADE5-13348F105D30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2BF24F0-3F4F-4B24-A2AA-F78404F7A3F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BF24F0-3F4F-4B24-A2AA-F78404F7A3F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BF24F0-3F4F-4B24-A2AA-F78404F7A3F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BF24F0-3F4F-4B24-A2AA-F78404F7A3F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25061223-A2ED-41EB-BF16-3B8A0A05903D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25061223-A2ED-41EB-BF16-3B8A0A05903D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25061223-A2ED-41EB-BF16-3B8A0A05903D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25061223-A2ED-41EB-BF16-3B8A0A05903D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{807CCD42-F8A1-43FE-A0E5-496DACB811EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{807CCD42-F8A1-43FE-A0E5-496DACB811EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{807CCD42-F8A1-43FE-A0E5-496DACB811EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{807CCD42-F8A1-43FE-A0E5-496DACB811EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

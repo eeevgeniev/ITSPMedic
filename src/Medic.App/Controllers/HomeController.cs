@@ -2,23 +2,23 @@
 using Medic.App.Infrastructure;
 using Medic.App.Models;
 using Medic.App.Models.Home;
-using Medic.AppModels.CPFiles;
-using Medic.AppModels.Diagnoses;
-using Medic.AppModels.Diags;
-using Medic.AppModels.HospitalPractices;
+using Medic.Cache.Contacts;
+using Medic.Logs.Contracts;
+using Medic.Logs.Models;
 using Medic.Resources;
 using Medic.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Medic.App.Controllers
 {
+    [Authorize]
     public class HomeController : MedicBaseController
     {
         private readonly ICPFileService CPFileService;
@@ -28,6 +28,8 @@ namespace Medic.App.Controllers
         private readonly IPatientService PatientService;
         private readonly ILogger<HomeController> Logger;
         private readonly MedicDataLocalization MedicDataLocalization;
+        private readonly ICacheable MedicCache;
+        private readonly IMedicLoggerService MedicLoggerService;
 
         public HomeController(
             ICPFileService cpFileService,
@@ -36,7 +38,9 @@ namespace Medic.App.Controllers
             IHospitalPracticeService hospitalPracticeService,
             IPatientService patientService,
             ILogger<HomeController> logger,
-            MedicDataLocalization мedicDataLocalization)
+            MedicDataLocalization мedicDataLocalization,
+            ICacheable medicCache,
+            IMedicLoggerService medicLoggerService)
         {
             CPFileService = cpFileService ?? throw new ArgumentNullException(nameof(cpFileService));
             DiagnoseService = diagnoseService ?? throw new ArgumentNullException(nameof(diagnoseService));
@@ -45,28 +49,44 @@ namespace Medic.App.Controllers
             PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             MedicDataLocalization = мedicDataLocalization ?? throw new ArgumentNullException(nameof(мedicDataLocalization));
+            MedicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
+            MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                List<CPFileSummaryViewModel> cpFileSummaryViewModels = await CPFileService.GetSummaryByMonthAsync();
-                List<HospitalPracticeSummaryViewModel> hospitalPracticeSummaryViewModels = await HospitalPracticeService.GetSummaryByMonthAsync();
-                int patientCount = await PatientService.GetPatientsCountAsync(default);
+                string key = nameof(HomePageModel);
 
-                return View(new HomePageModel()
+                if (!MedicCache.TryGetValue(key, out HomePageModel homePageModel))
                 {
-                    CPFileSummaryViewModels = cpFileSummaryViewModels,
-                    HospitalPracticeSummaryViewModels = hospitalPracticeSummaryViewModels,
-                    PatientCount = patientCount,
-                    Title = MedicDataLocalization.Get("SummaryInformation"),
-                    Description = MedicDataLocalization.Get("SummaryInformation"),
-                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
-                });
+                    homePageModel = new HomePageModel()
+                    {
+                        CPFileSummaryViewModels = await CPFileService.GetSummaryByMonthAsync(),
+                        HospitalPracticeSummaryViewModels = await HospitalPracticeService.GetSummaryByMonthAsync(),
+                        PatientCount = await PatientService.GetPatientsCountAsync(default),
+                        Title = MedicDataLocalization.Get("SummaryInformation"),
+                        Description = MedicDataLocalization.Get("SummaryInformation"),
+                        Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
+                    };
+
+                    MedicCache.Set(key, homePageModel);
+                }
+                
+                return View(homePageModel);
             }
             catch(Exception ex)
             {
+                await MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
                 throw;
             }
         }
@@ -75,18 +95,34 @@ namespace Medic.App.Controllers
         {
             try
             {
-                List<DiagMKBSummaryViewModel> diagMKBSummaryViewModels = await DiagService.GetMKBSummaryAsync();
+                string key = nameof(HomePageDiagModel);
 
-                return View(new HomePageDiagModel()
+                if (!MedicCache.TryGetValue(key, out HomePageDiagModel homePageDiagModel))
                 {
-                    DiagMKBSummaryViewModels = diagMKBSummaryViewModels,
-                    Title = MedicDataLocalization.Get("Diags"),
-                    Description = MedicDataLocalization.Get("Diags"),
-                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
-                });
+                    homePageDiagModel = new HomePageDiagModel()
+                    {
+                        DiagMKBSummaryViewModels = await DiagService.GetMKBSummaryAsync(),
+                        Title = MedicDataLocalization.Get("Diags"),
+                        Description = MedicDataLocalization.Get("Diags"),
+                        Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
+                    };
+
+                    MedicCache.Set(key, homePageDiagModel);
+                }
+                
+                return View(homePageDiagModel);
             }
             catch (Exception ex)
             {
+                await MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
                 throw;
             }
         }
@@ -95,18 +131,34 @@ namespace Medic.App.Controllers
         {
             try
             {
-                List<DiagnoseMKBSummaryViewModel> diagnosesMKBSummaryViewModels = await DiagnoseService.MKBSummaryAsync();
+                string key = nameof(HomePageDiagnoseModel);
 
-                return View(new HomePageDiagnoseModel()
+                if (!MedicCache.TryGetValue(key, out HomePageDiagnoseModel homePageDiagnoseModel))
                 {
-                    DiagnosesMKBSummaryViewModels = diagnosesMKBSummaryViewModels,
-                    Title = MedicDataLocalization.Get("Diagnoses"),
-                    Description = MedicDataLocalization.Get("Diagnoses"),
-                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords"),
-                });
+                    homePageDiagnoseModel = new HomePageDiagnoseModel()
+                    {
+                        DiagnosesMKBSummaryViewModels = await DiagnoseService.MKBSummaryAsync(),
+                        Title = MedicDataLocalization.Get("Diagnoses"),
+                        Description = MedicDataLocalization.Get("Diagnoses"),
+                        Keywords = MedicDataLocalization.Get("SummaryInformationKeywords"),
+                    };
+
+                    MedicCache.Set(key, homePageDiagnoseModel);
+                }
+
+                return View(homePageDiagnoseModel);
             }
             catch (Exception ex)
             {
+                await MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
                 throw;
             }
         }
@@ -136,13 +188,27 @@ namespace Medic.App.Controllers
             }
             catch (Exception ex)
             {
+                MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                }).Wait();
+
                 throw;
             }
         }
 
-        public IActionResult Privacy(string lang)
+        public IActionResult Privacy()
         {
-            return RedirectToAction(nameof(HomeController.Index));
+            return View();
+        }
+
+        public IActionResult PageNotFound()
+        {
+            return View();
         }
 
 

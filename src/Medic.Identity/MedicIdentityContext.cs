@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Medic.Identity
 {
-    public class MedicIdentity : IdentityDbContext
+    public class MedicIdentityContext : IdentityDbContext
     {
-        public MedicIdentity(DbContextOptions<MedicIdentity> options)
+        public MedicIdentityContext(DbContextOptions<MedicIdentityContext> options)
             : base (options)
         {
 

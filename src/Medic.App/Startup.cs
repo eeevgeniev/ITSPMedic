@@ -1,12 +1,16 @@
 using Medic.App.AppServices;
+using Medic.App.Controllers;
+using Medic.App.Controllers.Base;
 using Medic.App.Infrastructure;
 using Medic.Resources;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using System;
 using System.Globalization;
@@ -25,7 +29,7 @@ namespace Medic.App
 
         public IConfiguration Configuration { get; }
 
-        public IWebHostEnvironment Environment { get;  }
+        public IWebHostEnvironment Environment { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -41,6 +45,23 @@ namespace Medic.App
                         return medicDataAnnotationLocalizerProvider.Build(factory);
                     };
                 });
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+            .AddCookie(options =>
+            {
+                options.Cookie.Name = "MedicAuth";
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SameSite = SameSiteMode.Strict;
+                options.LoginPath = new PathString($"/{MedicBaseController.GetName(nameof(AccountController))}/{nameof(AccountController.Login)}");
+                options.AccessDeniedPath = new PathString($"/{MedicBaseController.GetName(nameof(AccountController))}/{nameof(AccountController.AccessDenied)}");
+                options.SlidingExpiration = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+            });
 
             services.ConfigureServices(Configuration, Environment);
         }
@@ -63,6 +84,8 @@ namespace Medic.App
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.Use(async (context, next) =>
@@ -81,7 +104,7 @@ namespace Medic.App
                         }
                     }
                 }
-                
+
                 Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(value);
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(value);
 
@@ -93,6 +116,11 @@ namespace Medic.App
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "catchAll",
+                    pattern: "{*url}",
+                    defaults: new { controller = MedicBaseController.GetName(nameof(HomeController)), action = nameof(HomeController.PageNotFound) });
             });
         }
     }

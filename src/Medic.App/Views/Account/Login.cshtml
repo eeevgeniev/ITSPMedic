@@ -1,0 +1,10 @@
+﻿@model AccountPageLoginModel
+@inject GeneralLocalization GeneralLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<article>
+    <partial name="~/Views/Shared/Partials/Login/LoginInputModel.cshtml" model="@Model.LoginInputModel" />
+</article>

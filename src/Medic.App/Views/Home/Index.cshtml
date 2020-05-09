@@ -71,33 +71,34 @@
 @section Scripts {
     <environment names="Development">
         <script src="~/lib/chartjs/Chart.js"></script>
+        <script src="~/bundle/bundle.js"></script>
     </environment>
     <environment names="Production">
         <script src="~/lib/chartjs/Chart.min.js"></script>
+        <script src="~/bundle/bundle.min.js"></script>
     </environment>
-    <script src="~/js/chart.js"></script>
     <script>
         (function () {
             window.addEventListener('load', showCharts);
 
             function showCharts(e) {
-                const labelsCP = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.DateFrom.ToString("MM-yyyy"))));
-                const labelsHP = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(cp => cp.DateFrom.ToString("MM-yyyy"))));
+                var labelsCP = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.DateFrom.ToString("MM-yyyy"))));
+                var labelsHP = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(cp => cp.DateFrom.ToString("MM-yyyy"))));
 
-                const plannedProcedures = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.PlannedProceduresCount)));
-                const ins = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.InsCount)));
-                const outs = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.OutsCount)));
-                const protocolDrugTherapies = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.ProtocolDrugTherapiesCount)));
-                const patientTransfers = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.PatientTransfersCount)));
+                var plannedProcedures = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.PlannedProceduresCount)));
+                var ins = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.InsCount)));
+                var outs = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.OutsCount)));
+                var protocolDrugTherapies = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.ProtocolDrugTherapiesCount)));
+                var patientTransfers = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.PatientTransfersCount)));
 
-                const inClinicProcedures = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.InClinicProceduresCount)));
-                const pathProcedures = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.PathProceduresCount)));
-                const dispObservations = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.DispObservationsCount)));
-                const commissionAprs = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.CommissionAprsCount)));
-                const protocolDrugHPTherapies = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.ProtocolDrugTherapiesCount)));
-                const patientHPTransfers = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.PatientTransfersCount)));
+                var inClinicProcedures = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.InClinicProceduresCount)));
+                var pathProcedures = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.PathProceduresCount)));
+                var dispObservations = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.DispObservationsCount)));
+                var commissionAprs = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.CommissionAprsCount)));
+                var protocolDrugHPTherapies = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.ProtocolDrugTherapiesCount)));
+                var patientHPTransfers = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(hp => hp.PatientTransfersCount)));
 
-                const ppData = {
+                var ppData = {
                     labels: labelsCP,
                     datasets: [
                         {
@@ -112,7 +113,7 @@
                     ]
                 };
 
-                const insData = {
+                var insData = {
                     labels: labelsCP,
                     datasets: [
                         {
@@ -127,7 +128,7 @@
                     ]
                 };
 
-                const outsData = {
+                var outsData = {
                     labels: labelsCP,
                     datasets: [
                         {
@@ -142,7 +143,7 @@
                     ]
                 };
 
-                const protocolDrugTherapiesData = {
+                var protocolDrugTherapiesData = {
                     labels: labelsCP,
                     datasets: [
                         {
@@ -157,7 +158,7 @@
                     ]
                 };
 
-                const patientTransfersData = {
+                var patientTransfersData = {
                     labels: labelsCP,
                     datasets: [
                         {
@@ -172,7 +173,7 @@
                     ]
                 };
 
-                const inClinicProceduresData = {
+                var inClinicProceduresData = {
                     labels: labelsHP,
                     datasets: [
                         {
@@ -187,7 +188,7 @@
                     ]
                 };
 
-                const pathProceduresData = {
+                var pathProceduresData = {
                     labels: labelsHP,
                     datasets: [
                         {
@@ -202,7 +203,7 @@
                     ]
                 };
 
-                const dispObservationsData = {
+                var dispObservationsData = {
                     labels: labelsHP,
                     datasets: [
                         {
@@ -217,7 +218,7 @@
                     ]
                 };
 
-                const commissionAprsData = {
+                var commissionAprsData = {
                     labels: labelsHP,
                     datasets: [
                         {
@@ -232,7 +233,7 @@
                     ]
                 };
 
-                const protocolDrugTherapiesHPData = {
+                var protocolDrugTherapiesHPData = {
                     labels: labelsHP,
                     datasets: [
                         {
@@ -247,7 +248,7 @@
                     ]
                 };
 
-                const patientTransfersHPData = {
+                var patientTransfersHPData = {
                     labels: labelsHP,
                     datasets: [
                         {

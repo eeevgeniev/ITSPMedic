@@ -21,5 +21,10 @@ namespace Medic.AppModels.Patients
 
         [Display(Name = nameof(Sex))]
         public int? Sex { get; set; }
+
+        public override string ToString()
+        {
+            return $"{nameof(IdentityNumber)}:{IdentityNumber}&{nameof(Age)}:{Age}&{nameof(OlderThan)}:{OlderThan}&{nameof(YoungerThan)}:{YoungerThan}&{nameof(Sex)}:{Sex}";
+        }
     }
 }

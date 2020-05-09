@@ -1,0 +1,8 @@
+﻿@model bool
+@inject GeneralLocalization generalLocalization
+
+@if (Model)
+{
+    <a class="btn-sm mr-1"asp-controller="@MedicBaseController.GetName(nameof(AccountController))"
+       asp-action="@nameof(AccountController.Logout)">@generalLocalization.Get("Logout")</a>
+}

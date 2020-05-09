@@ -312,6 +312,12 @@
   <data name="MainOutDiagnose" xml:space="preserve">
     <value>Main out diagnose</value>
   </data>
+  <data name="MaxLengthPassword" xml:space="preserve">
+    <value>Password cannot be longer than 100 characters.</value>
+  </data>
+  <data name="MaxLengthUsername" xml:space="preserve">
+    <value>Username cannot be longer than 100 character.</value>
+  </data>
   <data name="MKBCode" xml:space="preserve">
     <value>MKB code</value>
   </data>
@@ -384,6 +390,9 @@
   <data name="OutUniqueIdentifier" xml:space="preserve">
     <value>Out unique identifier</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
   <data name="PathologicFinding" xml:space="preserve">
     <value>Pathologic finding</value>
   </data>
@@ -447,6 +456,15 @@
   <data name="Regimen" xml:space="preserve">
     <value>Regimen</value>
   </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="RequiredPassword" xml:space="preserve">
+    <value>Password is required.</value>
+  </data>
+  <data name="RequiredUsername" xml:space="preserve">
+    <value>Username is required.</value>
+  </data>
   <data name="Results" xml:space="preserve">
     <value>results</value>
   </data>
@@ -503,6 +521,9 @@
   </data>
   <data name="UsedDrugCode" xml:space="preserve">
     <value>Used drug code</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
   </data>
   <data name="View" xml:space="preserve">
     <value>View</value>

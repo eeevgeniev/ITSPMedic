@@ -34,5 +34,11 @@ namespace Medic.AppModels.Outs
 
         [Display(Name = nameof(YoungerThan))]
         public int? YoungerThan { get; set; }
+
+        public override string ToString()
+        {
+            return $"{nameof(MainOutDiagnose)}:{MainOutDiagnose}&{nameof(CountOfAdditionalOutDiagnoses)}:{CountOfAdditionalOutDiagnoses}&{nameof(Sex)}:{Sex}&{nameof(SendDiagnose)}:{SendDiagnose}&" +
+                $"{nameof(CountOfAdditionalDiagnoses)}:{CountOfAdditionalDiagnoses}&{nameof(Diagnoses)}:{Diagnoses}&{nameof(UsedDrug)}:{UsedDrug}&{nameof(Age)}:{Age}&{nameof(OlderThan)}:{OlderThan}&{nameof(YoungerThan)}:{YoungerThan}";
+        }
     }
 }

@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
+using Medic.Cache;
+using Medic.Cache.Contacts;
 using Medic.Contexts;
 using Medic.Identity;
 using Medic.Infrastructure;
+using Medic.Logs;
+using Medic.Logs.Contracts;
 using Medic.Mappers;
 using Medic.Mappers.Contracts;
 using Medic.Resources;
@@ -13,6 +17,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using MC = Medic.App.Infrastructure;
 
 namespace Medic.App.AppServices
 {
@@ -37,7 +44,7 @@ namespace Medic.App.AppServices
                 options.UseSqlServer(configuration[MedicConstants.ConnectionString]);
             });
 
-            services.AddDbContext<MedicIdentity>(options =>
+            services.AddDbContext<MedicIdentityContext>(options =>
             {
                 options.UseSqlServer(configuration[MedicConstants.IdentityConnectionString]);
             });
@@ -50,7 +57,7 @@ namespace Medic.App.AppServices
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
             })
-            .AddEntityFrameworkStores<MedicIdentity>();
+            .AddEntityFrameworkStores<MedicIdentityContext>();
 
             services.AddTransient<ICPFileService, CPFileService>();
             services.AddTransient<IDiagnoseService, DiagnoseService>();
@@ -70,6 +77,32 @@ namespace Medic.App.AppServices
             AMapperConfiguration mapConfiguration = new AMapperConfiguration();
 
             services.AddSingleton<MapperConfiguration>(mapConfiguration.CreateConfiguration());
+            services.AddSingleton<ICacheable>(new MedicCache());
+
+            services.AddDbContext<MedicLoggerContext>(options =>
+            {
+                options.UseSqlite($"Data Source={Path.Combine(environment.ContentRootPath, "Logs\\Logs.sqlite")}");
+            });
+
+            services.AddTransient<IMedicLoggerService, MedicLoggerService>();
+
+            ServiceProvider serviceProvider = services.BuildServiceProvider();
+
+            MedicContextSeeder medicContextSeeder = new MedicContextSeeder(
+                serviceProvider.GetRequiredService<MedicIdentityContext>(),
+                serviceProvider.GetRequiredService<UserManager<IdentityUser>>(), 
+                serviceProvider.GetRequiredService<RoleManager<IdentityRole>>());
+
+            medicContextSeeder.Seed(new List<(string username, string password, string email)>()
+            {
+                (
+                    configuration[MC.MedicConstants.AdministratorName],
+                    configuration[MC.MedicConstants.AdministratorPassword],
+                    configuration[MC.MedicConstants.AdministratorEmail]
+                )
+            }).Wait();
+
+            serviceProvider.GetRequiredService<MedicLoggerContext>().Database.EnsureCreated();
 
             return services;
         }

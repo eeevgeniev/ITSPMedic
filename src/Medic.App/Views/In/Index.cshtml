@@ -53,7 +53,7 @@
 
 <article>
     <header>
-        <h2>Result: @Model.TotalCount</h2>
+        <h2>@medicDataLocalization.Get("InsView"): @Model.TotalCount</h2>
     </header>
     <section>
         <form asp-controller="@MedicBaseController.GetName(nameof(InController))"
