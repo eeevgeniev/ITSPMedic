@@ -102,9 +102,9 @@ namespace Medic.Services
                     outQuery = outQuery.Where(o => EF.Functions.Like(o.SendDiagnose.Primary.Code, search.SendDiagnose));
                 }
 
-                if (search.CountOfAdditionalDiagnoses != default)
+                if (search.CountOfAdditionalSendDiagnoses != default)
                 {
-                    int number = (int)search.CountOfAdditionalDiagnoses;
+                    int number = (int)search.CountOfAdditionalSendDiagnoses;
 
                     outQuery = outQuery.Where(o => o.Diagnoses.Count == number);
                 }
@@ -112,6 +112,11 @@ namespace Medic.Services
                 if (!string.IsNullOrWhiteSpace(search.UsedDrug))
                 {
                     outQuery = outQuery.Where(o => EF.Functions.Like(o.UsedDrug.Code, search.UsedDrug));
+                }
+
+                if (search.HealthRegion != default)
+                {
+                    outQuery = outQuery.Where(i => i.PatientHRegionId == search.HealthRegion);
                 }
 
                 if (search.Age != default)

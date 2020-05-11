@@ -1,0 +1,100 @@
+﻿@model PathProcedurePagePathProcedureModel
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@if (Model.PathProcedureViewModel != default)
+{
+    <article>
+        <header>
+            <h1>@($"{medicDataLocalization.Get("PathProcedure")} - {@Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier}")</h1>
+        </header>
+        <h2 class="text-center">@medicDataLocalization.Get("Patient")</h2>
+        <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.PathProcedureViewModel.Patient" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("Sender")</h2>
+        <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.PathProcedureViewModel.Sender" />
+        <hr />
+        <div>Send date: @Model.PathProcedureViewModel.DateSend.ToShortDateString()</div>
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("FirstMainDiag")</h2>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.PathProcedureViewModel.FirstMainDiag" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("SecondMainDiag")</h2>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.PathProcedureViewModel.SecondMainDiag" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("DoneProcedures")</h2>
+        <partial name="~/Views/Shared/Partials/DoneProcedures/DoneProcedureViewModel.cshtml" model="@Model.PathProcedureViewModel.DoneProcedures" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("DoneNewProcedures")</h2>
+        <partial name="~/Views/Shared/Partials/Procedures/ProcedureSummaryViewModel.cshtml" model="@Model.PathProcedureViewModel.DoneNewProcedures" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("UsedDrug")</h2>
+        <partial name="~/Views/Shared/Partials/ClinicUsedDrugs/ClinicUsedDrugViewModel.cshtml" model="@Model.PathProcedureViewModel.UsedDrug" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("ClinicProcedures")</h2>
+        <partial name="~/Views/Shared/Partials/ClinicProcedures/ClinicProcedureViewModel.cshtml" model="@Model.PathProcedureViewModel.ClinicProcedures" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("CeasedClinicalPath")</h2>
+        <hr />
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.PathProcedureViewModel.CeasedClinicalPath" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("CeasedProcedure")</h2>
+        <hr />
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.PathProcedureViewModel.CeasedProcedure" />
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("PatientBranch"): @Model.PathProcedureViewModel.PatientBranch</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("PatientHRegion"): @Model.PathProcedureViewModel.PatientHRegion</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("CPrSend"): @Model.PathProcedureViewModel.CPrSend</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("APrSend"): @Model.PathProcedureViewModel.APrSend</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("TypeProcSend"): @Model.PathProcedureViewModel.TypeProcSend</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("CPrPriem"): @Model.PathProcedureViewModel.CPrPriem</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("APrPriem"): @Model.PathProcedureViewModel.APrPriem</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("MedicalWard"): @Model.PathProcedureViewModel.MedicalWard</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("TypeProcPriem"): @Model.PathProcedureViewModel.TypeProcPriem</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("ProcRefuse"): @Model.PathProcedureViewModel.ProcRefuse</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("IZNumChild"): @Model.PathProcedureViewModel.IZNumChild</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("IZYearChild"): @Model.PathProcedureViewModel.IZYearChild</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("FirstVisitDate"): @(Model.PathProcedureViewModel.FirstVisitDate == default ? default : ((DateTime)Model.PathProcedureViewModel.FirstVisitDate).ToShortDateString())</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DatePlanPriem"): @(Model.PathProcedureViewModel.DatePlanPriem == default ? default : ((DateTime)Model.PathProcedureViewModel.DatePlanPriem).ToShortDateString())</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("VisitDocumentUniqueIdentifier"): @Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("VisitDocumentName"): @Model.PathProcedureViewModel.VisitDocumentName</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DateProcedureBegins"): @(Model.PathProcedureViewModel.DateProcedureBegins == default ? default : ((DateTime)Model.PathProcedureViewModel.DateProcedureBegins).ToShortDateString())</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DateProcedureEnd"): @(Model.PathProcedureViewModel.DateProcedureEnd == default ? default : ((DateTime)Model.PathProcedureViewModel.DateProcedureEnd).ToShortDateString())</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("AllDoneProcedures"): @Model.PathProcedureViewModel.AllDoneProcedures</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("AllDoneCost"): @Model.PathProcedureViewModel.AllDoneCost</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("PatientStatus"): @Model.PathProcedureViewModel.PatientStatus</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("OutUniqueIdentifier"): @Model.PathProcedureViewModel.OutUniqueIdentifier</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Sign"): @Model.PathProcedureViewModel.Sign</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("NZOKPay"): @Model.PathProcedureViewModel.NZOKPay</div>
+        </div>
+    </article>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

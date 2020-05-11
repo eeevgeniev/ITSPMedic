@@ -17,11 +17,11 @@ namespace Medic.AppModels.Outs
         [Display(Name = nameof(SendDiagnose))]
         public string SendDiagnose { get; set; }
 
-        [Display(Name = nameof(CountOfAdditionalDiagnoses))]
-        public int? CountOfAdditionalDiagnoses { get; set; }
+        [Display(Name = nameof(CountOfAdditionalSendDiagnoses))]
+        public int? CountOfAdditionalSendDiagnoses { get; set; }
 
-        [Display(Name = nameof(Diagnoses))]
-        public List<string> Diagnoses { get; set; }
+        [Display(Name = nameof(HealthRegion))]
+        public int? HealthRegion { get; set; }
 
         [Display(Name = nameof(UsedDrug))]
         public string UsedDrug { get; set; }
@@ -38,7 +38,7 @@ namespace Medic.AppModels.Outs
         public override string ToString()
         {
             return $"{nameof(MainOutDiagnose)}:{MainOutDiagnose}&{nameof(CountOfAdditionalOutDiagnoses)}:{CountOfAdditionalOutDiagnoses}&{nameof(Sex)}:{Sex}&{nameof(SendDiagnose)}:{SendDiagnose}&" +
-                $"{nameof(CountOfAdditionalDiagnoses)}:{CountOfAdditionalDiagnoses}&{nameof(Diagnoses)}:{Diagnoses}&{nameof(UsedDrug)}:{UsedDrug}&{nameof(Age)}:{Age}&{nameof(OlderThan)}:{OlderThan}&{nameof(YoungerThan)}:{YoungerThan}";
+                $"{nameof(CountOfAdditionalSendDiagnoses)}:{CountOfAdditionalSendDiagnoses}&{nameof(HealthRegion)}:{HealthRegion}&{nameof(UsedDrug)}:{UsedDrug}&{nameof(Age)}:{Age}&{nameof(OlderThan)}:{OlderThan}&{nameof(YoungerThan)}:{YoungerThan}";
         }
     }
 }

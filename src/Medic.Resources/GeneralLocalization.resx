@@ -141,6 +141,9 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Inquires" xml:space="preserve">
+    <value>Inquires</value>
+  </data>
   <data name="Ins" xml:space="preserve">
     <value>Ins</value>
   </data>
@@ -189,8 +192,14 @@
   <data name="RequiredUsername" xml:space="preserve">
     <value>Username is required.</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="SiteTile" xml:space="preserve">
     <value>ITSP Medic</value>
+  </data>
+  <data name="UsedDrugs" xml:space="preserve">
+    <value>Used drugs</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>

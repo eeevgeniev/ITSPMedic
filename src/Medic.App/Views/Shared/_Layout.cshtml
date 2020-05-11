@@ -1,4 +1,4 @@
-﻿@inject GeneralLocalization generalLocalization 
+﻿@inject GeneralLocalization generalLocalization
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,21 +23,26 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Index)">@generalLocalization.Get("Home")</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(OutController))" asp-action="@nameof(OutController.Index)">@generalLocalization.Get("Outs")</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                               href="#" role="button"
+                               aria-haspopup="true" aria-expanded="false">@generalLocalization.Get("Search")</a>
+                            <div class="dropdown-menu">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(OutController))" asp-action="@nameof(OutController.Index)">@generalLocalization.Get("Outs")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(InController))" asp-action="@nameof(InController.Index)">@generalLocalization.Get("Ins")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PatientController))" asp-action="@nameof(PatientController.Index)">@generalLocalization.Get("Patients")</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(InController))" asp-action="@nameof(InController.Index)">@generalLocalization.Get("Ins")</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diags)">@generalLocalization.Get("DiagsSummary")</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diagnoses)">@generalLocalization.Get("DiagnosesSummary")</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PatientController))" asp-action="@nameof(PatientController.Index)">@generalLocalization.Get("Patients")</a>
-                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                               href="#" role="button"
+                               aria-haspopup="true" aria-expanded="false">@generalLocalization.Get("Inquires")</a>
+                            <div class="dropdown-menu">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diags)">@generalLocalization.Get("DiagsSummary")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diagnoses)">@generalLocalization.Get("DiagnosesSummary")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.UsedDrugs)">@generalLocalization.Get("UsedDrugs")</a>
+                            </div>
+                        </li> 
                     </ul>
                 </div>
                 <vc:user-management></vc:user-management>

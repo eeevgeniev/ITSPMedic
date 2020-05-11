@@ -129,6 +129,21 @@
   <data name="AgeInDays" xml:space="preserve">
     <value>Години в дни</value>
   </data>
+  <data name="AllDoneCost" xml:space="preserve">
+    <value>Всички направени разходи</value>
+  </data>
+  <data name="AllDoneProcedures" xml:space="preserve">
+    <value>Всички направени процедури</value>
+  </data>
+  <data name="APrPriem" xml:space="preserve">
+    <value>APr priem</value>
+  </data>
+  <data name="APrSend" xml:space="preserve">
+    <value>APr send</value>
+  </data>
+  <data name="AverageQuantity" xml:space="preserve">
+    <value>Средно използвано количество</value>
+  </data>
   <data name="BatchNumber" xml:space="preserve">
     <value>Batch number</value>
   </data>
@@ -186,8 +201,17 @@
   <data name="CountOfAdditionalOutDiagnoses" xml:space="preserve">
     <value>Брой на допълнителните диагнози при изписване</value>
   </data>
+  <data name="CountOfAdditionalSendDiagnoses" xml:space="preserve">
+    <value>Брой на допълнителните изпратени диагнози</value>
+  </data>
   <data name="CPFile" xml:space="preserve">
     <value>CP файл</value>
+  </data>
+  <data name="CPrPriem" xml:space="preserve">
+    <value>CPr priem</value>
+  </data>
+  <data name="CPrSend" xml:space="preserve">
+    <value>CPr send</value>
   </data>
   <data name="Date" xml:space="preserve">
     <value>Дата</value>
@@ -198,8 +222,17 @@
   <data name="DateOfSurgery" xml:space="preserve">
     <value>Дата на операция</value>
   </data>
+  <data name="DatePlanPriem" xml:space="preserve">
+    <value>Date plan priem</value>
+  </data>
   <data name="DatePrescr" xml:space="preserve">
     <value>Date prescr</value>
+  </data>
+  <data name="DateProcedureBegins" xml:space="preserve">
+    <value>Дата на започване на процедурите</value>
+  </data>
+  <data name="DateProcedureEnd" xml:space="preserve">
+    <value>Дата на завършване на процедурите</value>
   </data>
   <data name="DateSend" xml:space="preserve">
     <value>Дата на изпращане</value>
@@ -231,6 +264,21 @@
   <data name="DispObservationsCount" xml:space="preserve">
     <value>Disp observations брой</value>
   </data>
+  <data name="Drug Name" xml:space="preserve">
+    <value>Име на клекарството</value>
+  </data>
+  <data name="DrugCode" xml:space="preserve">
+    <value>Код на лекраството</value>
+  </data>
+  <data name="DrugCost" xml:space="preserve">
+    <value>Цена на лекарството</value>
+  </data>
+  <data name="DrugDate" xml:space="preserve">
+    <value>Drug date</value>
+  </data>
+  <data name="DrugQuantity" xml:space="preserve">
+    <value>Количество на лекатството</value>
+  </data>
   <data name="EndCourse" xml:space="preserve">
     <value>End course</value>
   </data>
@@ -246,8 +294,14 @@
   <data name="FirstName" xml:space="preserve">
     <value>Първо име</value>
   </data>
+  <data name="FirstVisitDate" xml:space="preserve">
+    <value>Дата на първото посещение</value>
+  </data>
   <data name="GPRecommendations" xml:space="preserve">
     <value>GP предписания</value>
+  </data>
+  <data name="HealthRegion" xml:space="preserve">
+    <value>Здравен регион</value>
   </data>
   <data name="History" xml:space="preserve">
     <value>История</value>
@@ -291,11 +345,23 @@
   <data name="InType" xml:space="preserve">
     <value>In type</value>
   </data>
+  <data name="IZMedicalWard" xml:space="preserve">
+    <value>IZ Medical Ward</value>
+  </data>
   <data name="IZNo" xml:space="preserve">
     <value>IZ No</value>
   </data>
+  <data name="IZNumChild" xml:space="preserve">
+    <value>IZ num child</value>
+  </data>
   <data name="IZYear" xml:space="preserve">
     <value>IZ Year</value>
+  </data>
+  <data name="IZYearChild" xml:space="preserve">
+    <value>IZ year child</value>
+  </data>
+  <data name="IZYearMedicalWard" xml:space="preserve">
+    <value>IZ Year Medical Ward</value>
   </data>
   <data name="Key" xml:space="preserve">
     <value>Ключ</value>
@@ -317,6 +383,9 @@
   </data>
   <data name="MaxLengthUsername" xml:space="preserve">
     <value>Потребителското име не може да е по-дълго от 100 символа.</value>
+  </data>
+  <data name="MedicalWard" xml:space="preserve">
+    <value>Medical ward</value>
   </data>
   <data name="MKBCode" xml:space="preserve">
     <value>MKB код</value>
@@ -369,6 +438,12 @@
   <data name="OutDate" xml:space="preserve">
     <value>Дата на изписване</value>
   </data>
+  <data name="OutDiagnoseCode" xml:space="preserve">
+    <value>Код на диагнозата при изписване</value>
+  </data>
+  <data name="OutDiagnoseName" xml:space="preserve">
+    <value>Име на диагнозата при изписване</value>
+  </data>
   <data name="OutHospital" xml:space="preserve">
     <value>Изписване от болница</value>
   </data>
@@ -411,6 +486,9 @@
   <data name="PatientSearch" xml:space="preserve">
     <value>Търсене по пациенти</value>
   </data>
+  <data name="PatientStatus" xml:space="preserve">
+    <value>Статус на пациента</value>
+  </data>
   <data name="PatientTransfersCount" xml:space="preserve">
     <value>Брой на трансферите на пациенти</value>
   </data>
@@ -431,6 +509,24 @@
   </data>
   <data name="PracticeCodeProtocol" xml:space="preserve">
     <value>Код на протокола на практиката</value>
+  </data>
+  <data name="ProcedureCode" xml:space="preserve">
+    <value>Код на процедурата</value>
+  </data>
+  <data name="ProcedureDate" xml:space="preserve">
+    <value>Дата на процедурата</value>
+  </data>
+  <data name="ProcedureEndDate" xml:space="preserve">
+    <value>Крайна дата на процедурата</value>
+  </data>
+  <data name="ProcedureName" xml:space="preserve">
+    <value>Име на процедурата</value>
+  </data>
+  <data name="ProcedureStartDate" xml:space="preserve">
+    <value>Начална дата на процедурата</value>
+  </data>
+  <data name="ProcRefuse" xml:space="preserve">
+    <value>Proc refuse</value>
   </data>
   <data name="ProtocolDate" xml:space="preserve">
     <value>Дата на протокола</value>
@@ -484,13 +580,16 @@
     <value>Дата на изпращане</value>
   </data>
   <data name="SendDiagnose" xml:space="preserve">
-    <value>Диагноза при приемане</value>
+    <value>Изпратена диагноза</value>
   </data>
   <data name="SendDiagnoseCode" xml:space="preserve">
     <value>Код на изпратената диагноза</value>
   </data>
   <data name="SendDiagnoseName" xml:space="preserve">
     <value>Име на изпратената диагноза</value>
+  </data>
+  <data name="SendDignoseCode" xml:space="preserve">
+    <value>Код на изпратената диагноза</value>
   </data>
   <data name="SendUrgency" xml:space="preserve">
     <value>Спешност на изпращането</value>
@@ -501,11 +600,26 @@
   <data name="Sex" xml:space="preserve">
     <value>Пол</value>
   </data>
+  <data name="Sign" xml:space="preserve">
+    <value>Знак</value>
+  </data>
   <data name="Speciality" xml:space="preserve">
     <value>Специалност</value>
   </data>
   <data name="StateAtDischarge" xml:space="preserve">
     <value>State at discharge</value>
+  </data>
+  <data name="TotalCosts" xml:space="preserve">
+    <value>Общи разходи</value>
+  </data>
+  <data name="TotalUses" xml:space="preserve">
+    <value>Общ брой на прилагания</value>
+  </data>
+  <data name="TypeProcPriem" xml:space="preserve">
+    <value>Type proc priem</value>
+  </data>
+  <data name="TypeProcSend" xml:space="preserve">
+    <value>Type proc send</value>
   </data>
   <data name="UINPrescr" xml:space="preserve">
     <value>UIN prescr</value>
@@ -520,13 +634,19 @@
     <value>Използвано лекарство</value>
   </data>
   <data name="UsedDrugCode" xml:space="preserve">
-    <value>Използвани лекарства</value>
+    <value>Код на използваното лекарство</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Потребителско име</value>
   </data>
   <data name="View" xml:space="preserve">
     <value>Преглед</value>
+  </data>
+  <data name="VisitDocumentName" xml:space="preserve">
+    <value>Име на документа за посещение</value>
+  </data>
+  <data name="VisitDocumentUniqueIdentifier" xml:space="preserve">
+    <value>Идентификатор на документа за посещение</value>
   </data>
   <data name="WeightInGrams" xml:space="preserve">
     <value>Тегло в грамове</value>

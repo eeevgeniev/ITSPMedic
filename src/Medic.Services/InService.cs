@@ -88,9 +88,9 @@ namespace Medic.Services
                     insQuery = insQuery.Where(i => i.Diagnoses.Count == number);
                 }
 
-                if (search.Diagnoses != default && search.Diagnoses.Count > 0)
+                if (search.HealthRegion != default)
                 {
-                    insQuery = insQuery.Where(i => i.Diagnoses.Any(d => search.Diagnoses.Contains(d.Primary.Code)));
+                    insQuery = insQuery.Where(i => i.PatientHRegionId == search.HealthRegion);
                 }
 
                 if (search.Age != default)

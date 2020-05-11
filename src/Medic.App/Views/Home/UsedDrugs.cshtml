@@ -1,0 +1,50 @@
+﻿@model HomePageUsedDrugsModel
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+    <article>
+        <header class="text-center">
+            <h2>@medicDataLocalization.Get("Summary")</h2>
+        </header>
+        <section>
+            <header class="text-center">
+                <h4>@medicDataLocalization.Get("UsedDrugs")</h4>
+            </header>
+            <div>
+                <div class="row">
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("UsedDrugCode")</div>
+                    <div class="col-sm-3 font-weight-bold">@medicDataLocalization.Get("SendDiagnoseName")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("SendDignoseCode")</div>
+                    <div class="col-sm-3 font-weight-bold">@medicDataLocalization.Get("OutDiagnoseName")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutDiagnoseCode")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("TotalUses")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("AverageQuantity")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("TotalCosts")</div>
+                </div>
+                @if (Model.UsedDrugsSummary != default && Model.UsedDrugsSummary.Count > 0)
+                {
+                    foreach (var usedDrug in Model.UsedDrugsSummary)
+                    {
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-1">@usedDrug.UsedDrugCode</div>
+                            <div class="col-sm-3">@usedDrug.SendDiagnoseName</div>
+                            <div class="col-sm-1">@usedDrug.SendDignoseCode</div>
+                            <div class="col-sm-3">@usedDrug.OutDiagnoseName</div>
+                            <div class="col-sm-1">@usedDrug.OutDiagnoseCode</div>
+                            <div class="col-sm-1">@usedDrug.TotalUses</div>
+                            <div class="col-sm-1">@usedDrug.AverageQuantity</div>
+                            <div class="col-sm-1">@usedDrug.TotalCosts</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-info text-center">@medicDataLocalization.Get("NoResults")</div>
+                }
+            </div>
+        </section>
+    </article>

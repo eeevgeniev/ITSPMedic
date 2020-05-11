@@ -1,0 +1,20 @@
+﻿@model VersionCodeViewModel
+
+@inject MedicDataLocalization medicDataLocalization
+
+
+@if (Model != default)
+{
+    <div class="row">
+        <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("BatchNumber")</div>
+        <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("QuantityPack")</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">@Model.BatchNumber</div>
+        <div class="col-sm-6">@Model.QuantityPack</div>
+    </div>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

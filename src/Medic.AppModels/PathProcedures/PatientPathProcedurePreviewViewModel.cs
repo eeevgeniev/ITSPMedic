@@ -5,6 +5,8 @@ namespace Medic.AppModels.PathProcedures
 {
     public class PatientPathProcedurePreviewViewModel
     {
+        public int Id { get; set; }
+        
         [Display(Name = nameof(DateSend))]
         public DateTime DateSend { get; set; }
 

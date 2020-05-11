@@ -17,7 +17,7 @@
         <h2 class="text-center">@medicDataLocalization.Get("Sender")</h2>
         <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.OutViewModel.Sender" />
         <hr />
-        <div>Send date: @Model.OutViewModel.SendDate.ToShortDateString()</div>
+        <div>@medicDataLocalization.Get("DateSend"): @Model.OutViewModel.SendDate.ToShortDateString()</div>
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("SendDiangose")</h2>
         <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.OutViewModel.SendDiagnose })" />

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.CeasedClinicalPaths;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -19,6 +20,8 @@ namespace Medic.Entities
                     .ForMember(ccp => ccp.PathProcedure, config => config.Ignore())
                     .ForMember(ccp => ccp.InClinicProcedure, config => config.Ignore())
                     .ForMember(ccp => ccp.Id, config => config.Ignore());
+
+            expression.CreateMap<CeasedClinicalPath, CeasedClinicalPathViewModel>();
         }
     }
 }

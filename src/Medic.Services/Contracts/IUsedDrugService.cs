@@ -7,5 +7,7 @@ namespace Medic.Services.Contracts
     public interface IUsedDrugService
     {
         Task<List<UsedDrugCodeOption>> UsedDrugsByCodeAsync();
+
+        Task<List<UsedDrugsSummaryStatistic>> UsedDrugsSummaryAsync();
     }
 }

@@ -9,7 +9,7 @@
 {
     <article>
         <header>
-            <h1>@($"{medicDataLocalization.Get("InView")} - {@Model.InViewModel.UniqueIdentifier}")</h1>
+            <h1>@($"{medicDataLocalization.Get("InClinicProcedure")} - {@Model.InViewModel.UniqueIdentifier}")</h1>
         </header>
         <h2 class="text-center">@medicDataLocalization.Get("Patient")</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.InViewModel.Patient" />
@@ -17,7 +17,7 @@
         <h2 class="text-center">@medicDataLocalization.Get("Sender")</h2>
         <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.InViewModel.Sender" />
         <hr />
-        <div>Send date: @Model.InViewModel.SendDate.ToShortDateString()</div>
+        <div>@medicDataLocalization.Get("DateSend"): @Model.InViewModel.SendDate.ToShortDateString()</div>
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("SendDiangose")</h2>
         <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.InViewModel.SendDiagnose })" />
@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-sm-4">@medicDataLocalization.Get("NZOKPay"): @Model.InViewModel.NZOKPay</div>
             <div class="col-sm-4">@medicDataLocalization.Get("InMedicalWard"): @Model.InViewModel.InMedicalWard</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("EntryDate"): @Model.InViewModel.EntryDate.ToShortDateString()</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("EntryDate"): @Model.InViewModel.EntryDate.ToString("g")</div>
         </div>
         <hr />
         <div class="row">
@@ -84,5 +84,5 @@
 }
 else
 {
-<div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
 }

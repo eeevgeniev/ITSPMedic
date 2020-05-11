@@ -67,6 +67,9 @@ namespace Medic.App.AppServices
             services.AddTransient<IInService, InService>();
             services.AddTransient<IOutService, OutService>();
             services.AddTransient<IUsedDrugService, UsedDrugService>();
+            services.AddTransient<IInClinicProcedureService, InClinicProcedureService>();
+            services.AddTransient<IPathProcedureService, PathProcedureService>();
+            services.AddTransient<IHealthRegionService, HealthRegionService>();
 
             services.AddTransient<PatientLocalization>();
             services.AddTransient<MedicDataLocalization>();

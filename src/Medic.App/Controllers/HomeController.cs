@@ -26,6 +26,7 @@ namespace Medic.App.Controllers
         private readonly IDiagService DiagService;
         private readonly IHospitalPracticeService HospitalPracticeService;
         private readonly IPatientService PatientService;
+        private readonly IUsedDrugService UsedDrugService;
         private readonly ILogger<HomeController> Logger;
         private readonly MedicDataLocalization MedicDataLocalization;
         private readonly ICacheable MedicCache;
@@ -37,6 +38,7 @@ namespace Medic.App.Controllers
             IDiagService diagService,
             IHospitalPracticeService hospitalPracticeService,
             IPatientService patientService,
+            IUsedDrugService usedDrugService,
             ILogger<HomeController> logger,
             MedicDataLocalization мedicDataLocalization,
             ICacheable medicCache,
@@ -47,6 +49,7 @@ namespace Medic.App.Controllers
             DiagService = diagService ?? throw new ArgumentNullException(nameof(diagService));
             HospitalPracticeService = hospitalPracticeService ?? throw new ArgumentNullException(nameof(hospitalPracticeService));
             PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
+            UsedDrugService = usedDrugService ?? throw new ArgumentNullException(nameof(usedDrugService));
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             MedicDataLocalization = мedicDataLocalization ?? throw new ArgumentNullException(nameof(мedicDataLocalization));
             MedicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
@@ -163,6 +166,42 @@ namespace Medic.App.Controllers
             }
         }
 
+        public async Task<IActionResult> UsedDrugs()
+        {
+            try
+            {
+                string key = nameof(HomePageUsedDrugsModel);
+
+                if (!MedicCache.TryGetValue(key, out HomePageUsedDrugsModel homePageUsedDrugsModel))
+                {
+                    homePageUsedDrugsModel = new HomePageUsedDrugsModel()
+                    {
+                        UsedDrugsSummary = await UsedDrugService.UsedDrugsSummaryAsync(),
+                        Title = MedicDataLocalization.Get("UsedDrug"),
+                        Description = MedicDataLocalization.Get("UsedDrugs"),
+                        Keywords = MedicDataLocalization.Get("UsedDrugsInformationKeywords"),
+                    };
+
+                    MedicCache.Set(key, homePageUsedDrugsModel);
+                }
+
+                return View(homePageUsedDrugsModel);
+            }
+            catch (Exception ex)
+            {
+                await MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw ex;
+            }
+        }
+
         public IActionResult Language(string lang)
         {
             try
@@ -195,7 +234,7 @@ namespace Medic.App.Controllers
                     Source = ex.Source,
                     StackTrace = ex.StackTrace,
                     Date = DateTime.Now
-                }).Wait();
+                });
 
                 throw;
             }

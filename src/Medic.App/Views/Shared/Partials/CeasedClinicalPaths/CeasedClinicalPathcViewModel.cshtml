@@ -1,0 +1,18 @@
+﻿@model CeasedClinicalPathViewModel
+@inject GeneralLocalization generalLocalization
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default)
+{
+    <div>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("Code"): @Model.Code</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("IZMedicalWard"): @Model.IZMedicalWard</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("IZYearMedicalWard"): @Model.IZYearMedicalWard</div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center text-info">@generalLocalization.Get("NoData")</div>
+}

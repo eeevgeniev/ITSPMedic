@@ -1,5 +1,6 @@
 ﻿using Medic.App.Controllers.Base;
 using Medic.App.Models.Outs;
+using Medic.AppModels.HealthRegions;
 using Medic.AppModels.Outs;
 using Medic.AppModels.Sexes;
 using Medic.AppModels.UsedDrugs;
@@ -22,6 +23,7 @@ namespace Medic.App.Controllers
         private readonly IOutService OutService;
         private readonly IPatientService PatientService;
         private readonly IUsedDrugService UsedDrugService;
+        private readonly IHealthRegionService HealthRegionService;
         private readonly MedicDataLocalization MedicDataLocalization;
         private readonly ICacheable MedicCache;
         private readonly IMedicLoggerService MedicLoggerService;
@@ -29,6 +31,7 @@ namespace Medic.App.Controllers
         public OutController(IOutService outService, 
             IPatientService patientService, 
             IUsedDrugService usedDrugService,
+            IHealthRegionService healthRegionService,
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
@@ -36,6 +39,7 @@ namespace Medic.App.Controllers
             OutService = outService ?? throw new ArgumentNullException(nameof(outService));
             PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
             UsedDrugService = usedDrugService ?? throw new ArgumentNullException(nameof(usedDrugService));
+            HealthRegionService = healthRegionService ?? throw new ArgumentNullException(nameof(healthRegionService));
             MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
             MedicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
@@ -60,11 +64,13 @@ namespace Medic.App.Controllers
                         CurrentPage = page,
                         TotalCount = await OutService.GetOutsCountAsync(search),
                         Sexes = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } },
-                        UsedDrugCodes = new List<UsedDrugCodeOption>() { new UsedDrugCodeOption() { Key = string.Empty, Code = MedicDataLocalization.Get("NoSelection") } }
+                        UsedDrugCodes = new List<UsedDrugCodeOption>() { new UsedDrugCodeOption() { Key = string.Empty, Code = MedicDataLocalization.Get("NoSelection") } },
+                        HealthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } }
                     };
 
                     outPageIndexModel.Sexes.AddRange(await PatientService.GetSexOptionsAsync());
                     outPageIndexModel.UsedDrugCodes.AddRange(await UsedDrugService.UsedDrugsByCodeAsync());
+                    outPageIndexModel.HealthRegions.AddRange(await HealthRegionService.GetHealthRegionsAsync());
 
                     MedicCache.Set(key, outPageIndexModel);
                 }

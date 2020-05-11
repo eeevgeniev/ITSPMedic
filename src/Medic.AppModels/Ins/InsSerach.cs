@@ -14,8 +14,8 @@ namespace Medic.AppModels.Ins
         [Display(Name = nameof(Sex))]
         public int? Sex { get; set; }
 
-        [Display(Name = nameof(Diagnoses))]
-        public List<string> Diagnoses { get; set; }
+        [Display(Name = nameof(HealthRegion))]
+        public int? HealthRegion { get; set; }
 
         [Display(Name = nameof(Age))]
         public int? Age { get; set; }
@@ -29,7 +29,7 @@ namespace Medic.AppModels.Ins
         public override string ToString()
         {
             return $"{nameof(MainDiagnose)}:{MainDiagnose}&{nameof(CountOfAdditionalDiagnoses)}:{CountOfAdditionalDiagnoses}&{nameof(Sex)}:{Sex}&" +
-                $"{nameof(Diagnoses)}:{Diagnoses}&{nameof(Age)}:{Age}&{nameof(OlderThan)}:{OlderThan}&{nameof(YoungerThan)}:{YoungerThan}";
+                $"{nameof(HealthRegion)}:{HealthRegion}&{nameof(Age)}:{Age}&{nameof(OlderThan)}:{OlderThan}&{nameof(YoungerThan)}:{YoungerThan}";
         }
     }
 }

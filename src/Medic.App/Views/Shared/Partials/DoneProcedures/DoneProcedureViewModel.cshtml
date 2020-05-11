@@ -1,0 +1,26 @@
+﻿@model List<DoneProcedureViewModel>
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default && Model.Count > 0)
+{
+    foreach (var currentProcedure in Model)
+    {
+        <hr />
+        <div>
+            <div class="row">
+                <div class="col-sm-6">@medicDataLocalization.Get("ProcedureStartDate"): @(currentProcedure.ProcedureStartDate == default ? default : ((DateTime)currentProcedure.ProcedureStartDate).ToShortDateString())</div>
+                <div class="col-sm-6">@medicDataLocalization.Get("ProcedureEndDate"): @(currentProcedure.ProcedureEndDate == default ? default : ((DateTime)currentProcedure.ProcedureEndDate).ToShortDateString())</div>
+            </div>
+            <div>
+                <div class="text-center">@medicDataLocalization.Get("Doctor")</div>
+                <div>
+                    <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@currentProcedure.Doctor" />
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

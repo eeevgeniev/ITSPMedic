@@ -141,6 +141,9 @@
   <data name="Home" xml:space="preserve">
     <value>Начало</value>
   </data>
+  <data name="Inquires" xml:space="preserve">
+    <value>Справки</value>
+  </data>
   <data name="Ins" xml:space="preserve">
     <value>Приеми</value>
   </data>
@@ -192,8 +195,14 @@
   <data name="RequiredUsername" xml:space="preserve">
     <value>Потребителското име е задължително.</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Търсене</value>
+  </data>
   <data name="SiteTile" xml:space="preserve">
     <value>ИТУП Медик</value>
+  </data>
+  <data name="UsedDrugs" xml:space="preserve">
+    <value>Използвани лекарства</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Потребителско име</value>

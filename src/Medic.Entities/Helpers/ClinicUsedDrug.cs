@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.ClinicUsedDrugs;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -21,6 +22,8 @@ namespace Medic.Entities
                 .ForMember(cud => cud.VersionCodeId, config => config.Ignore())
                 .ForMember(cud => cud.PathProcedure, config => config.Ignore())
                 .ForMember(cud => cud.Id, config => config.Ignore());
+
+            expression.CreateMap<ClinicUsedDrug, ClinicUsedDrugViewModel>();
         }
     }
 }

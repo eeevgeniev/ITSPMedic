@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.DoneProcedures;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -23,6 +24,8 @@ namespace Medic.Entities
                 .ForMember(dp => dp.PathProcedureId, config => config.Ignore())
                 .ForMember(dp => dp.PathProcedure, config => config.Ignore())
                 .ForMember(dp => dp.Id, config => config.Ignore());
+
+            expression.CreateMap<DoneProcedure, DoneProcedureViewModel>();
         }
     }
 }

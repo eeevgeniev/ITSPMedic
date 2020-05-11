@@ -41,6 +41,11 @@ namespace Medic.Entities
             expression.CreateMap<InClinicProcedure, PatientInClinicProcedurePreviewViewModel>()
                 .ForMember(pip => pip.MKBCode, config => config.MapFrom(icp => icp.FirstMainDiag.MKB.Code))
                 .ForMember(pip => pip.MKBName, config => config.MapFrom(icp => icp.FirstMainDiag.MKB.Name));
+
+            expression.CreateMap<InClinicProcedure, InClinicProcedureViewModel>()
+                .ForMember(icpvm => icpvm.PatientBranch, config => config.MapFrom(icp => icp.PatientBranch == default && icp.PatientBranch.HealthRegion == default ? default : icp.PatientBranch.HealthRegion.Name))
+                .ForMember(icpvm => icpvm.PatientHealthRegion, config => config.MapFrom(icp => icp.PatientHealthRegion == default ? default : icp.PatientHealthRegion.Name))
+                .ForMember(icpvm => icpvm.PatientStatus, config => config.MapFrom(icp => icp.PacientStatus));
         }
     }
 }

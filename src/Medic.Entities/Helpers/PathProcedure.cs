@@ -48,6 +48,10 @@ namespace Medic.Entities
             expression.CreateMap<PathProcedure, PatientPathProcedurePreviewViewModel>()
                 .ForMember(ppp => ppp.MKBCode, config => config.MapFrom(pp => pp.FirstMainDiag.MKB.Code))
                 .ForMember(ppp => ppp.MKBName, config => config.MapFrom(pp => pp.FirstMainDiag.MKB.Name));
+
+            expression.CreateMap<PathProcedure, PathProcedureViewModel>()
+                .ForMember(ppvm => ppvm.PatientBranch, config => config.MapFrom(pp => pp.PatientBranch != default && pp.PatientBranch.HealthRegion != default ? pp.PatientBranch.HealthRegion.Name : default))
+                .ForMember(ppvm => ppvm.PatientHRegion, config => config.MapFrom(pp => pp.PatientHRegion != default ? pp.PatientHRegion.Name : default));
         }
     }
 }

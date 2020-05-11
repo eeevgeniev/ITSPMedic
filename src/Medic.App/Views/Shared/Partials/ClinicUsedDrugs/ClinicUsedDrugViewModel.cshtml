@@ -1,0 +1,39 @@
+﻿@model ClinicUsedDrugViewModel
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default)
+{
+    <div>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("DrugDate"): @Model.DrugDate.ToString("d")</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DrugCode"): @Model.DrugCode</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DrugName"): @Model.DrugName</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("DrugQuantity"): @Model.DrugQuantity</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DrugCost"): @Model.DrugCost</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("ICDDrug"): @Model.ICDDrug</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("UINPrescr"): @Model.UINPrescr</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("NoPrescr"): @Model.NoPrescr</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DatePrescr"): @(Model.DatePrescr.ToString("d"))</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("PracticeCodeProtocol"): @Model.PracticeCodeProtocol</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("ProtocolNumber"): @Model.ProtocolNumber</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("ProtocolDate"): @Model.ProtocolDate.ToString("d")</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("ProtocolType"): @Model.ProtocolType</div>
+        </div>
+        <div>
+            <div class="text-center font-weight-bold">@medicDataLocalization.Get("VersionCode")</div>
+            <partial name="~/Views/Shared/Partials/VersionCodes/VersionCodeViewModel.cshtml" model="@Model.VersionCode" />
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

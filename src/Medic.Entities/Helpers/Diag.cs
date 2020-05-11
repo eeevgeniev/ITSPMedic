@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.Diags;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -59,6 +60,10 @@ namespace Medic.Entities
                 .ForMember(d => d.FirstPatientTransfer, config => config.Ignore())
                 .ForMember(d => d.SecondPatientTransfer, config => config.Ignore())
                 .ForMember(d => d.Id, config => config.Ignore());
+
+            expression.CreateMap<Diag, DiagPreviewViewModel>()
+                .ForMember(dpvm => dpvm.Code, config => config.MapFrom(d => d.MKB == default ? default : d.MKB.Code))
+                .ForMember(dpvm => dpvm.Name, config => config.MapFrom(d => d.MKB == default ? default : d.MKB.Name));
         }
     }
 }

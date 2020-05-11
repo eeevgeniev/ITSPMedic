@@ -5,6 +5,8 @@ namespace Medic.AppModels.InClinicProcedures
 {
     public class PatientInClinicProcedurePreviewViewModel
     {
+        public int Id { get; set; }
+
         [Display(Name = nameof(PlanVisitDate))]
         public DateTime? PlanVisitDate { get; set; }
 

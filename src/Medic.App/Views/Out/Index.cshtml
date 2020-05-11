@@ -37,14 +37,14 @@
             paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.SendDiagnose)}", Model.Search.SendDiagnose);
         }
 
-        if (Model.Search.CountOfAdditionalDiagnoses != default)
+        if (Model.Search.CountOfAdditionalSendDiagnoses != default)
         {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.CountOfAdditionalDiagnoses)}", Model.Search.CountOfAdditionalDiagnoses.ToString());
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.CountOfAdditionalSendDiagnoses)}", Model.Search.CountOfAdditionalSendDiagnoses.ToString());
         }
 
-        if (Model.Search.Diagnoses != default && Model.Search.Diagnoses.Count > 0)
+        if (Model.Search.HealthRegion != default)
         {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Diagnoses)}", string.Join(",", Model.Search.Diagnoses));
+            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.HealthRegion)}", Model.Search.HealthRegion.ToString());
         }
 
         if (Model.Search.Age != default)
@@ -96,8 +96,8 @@
                     <input class="form-control" asp-for="@Model.Search.SendDiagnose" />
                 </div>
                 <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.CountOfAdditionalDiagnoses"></label>
-                    <input class="form-control" asp-for="@Model.Search.CountOfAdditionalDiagnoses" />
+                    <label asp-for="@Model.Search.CountOfAdditionalSendDiagnoses"></label>
+                    <input class="form-control" asp-for="@Model.Search.CountOfAdditionalSendDiagnoses" />
                 </div>
             </div>
             <div class="row">
@@ -114,6 +114,12 @@
                     <input class="form-control" asp-for="@Model.Search.YoungerThan" />
                 </div>
             </div>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label asp-for="@Model.Search.HealthRegion"></label>
+                    <select class="form-control" asp-for="@Model.Search.HealthRegion" asp-items="@Model.HealthRegions.Select(hr => new SelectListItem(hr.Name, hr.Id.ToString(), hr.Id == null))"></select>
+                </div>
+            </div>
             <input type="submit" class="btn btn-primary" value="Search" />
             <input type="reset" class="btn btn-dark" value="Reset" />
         </form>
@@ -127,8 +133,8 @@
                     <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutMainDiagnoseCode")</div>
                     <div class="col-sm-4 font-weight-bold">@medicDataLocalization.Get("OutDiagnoseName")</div>
                     <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutDiagnoses")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("SendDiagnose")</div>
                     <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("SendDiagnoses")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("Diagnoses")</div>
                     <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("UsedDrug")</div>
                     <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
                     <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("View")</div>

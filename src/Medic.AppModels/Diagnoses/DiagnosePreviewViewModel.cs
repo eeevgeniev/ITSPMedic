@@ -4,10 +4,10 @@ namespace Medic.AppModels.Diagnoses
 {
     public class DiagnosePreviewViewModel
     {
-        [Display(Name = "Name")]
+        [Display(Name = nameof(Name))]
         public string Name { get; set; }
 
-        [Display(Name = "Code")]
+        [Display(Name = nameof(Code))]
         public string Code { get; set; }
     }
 }

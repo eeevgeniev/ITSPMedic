@@ -129,6 +129,15 @@
   <data name="AgeInDays" xml:space="preserve">
     <value>AgeInDays</value>
   </data>
+  <data name="APrPriem" xml:space="preserve">
+    <value>APr priem</value>
+  </data>
+  <data name="APrSend" xml:space="preserve">
+    <value>APr send</value>
+  </data>
+  <data name="AverageQuantity" xml:space="preserve">
+    <value>Average quantity</value>
+  </data>
   <data name="BatchNumber" xml:space="preserve">
     <value>Batch number</value>
   </data>
@@ -147,6 +156,15 @@
   <data name="BirthWeight" xml:space="preserve">
     <value>BirthWeight</value>
   </data>
+  <data name="CeasedClinicalPath" xml:space="preserve">
+    <value>Ceased clinical path</value>
+  </data>
+  <data name="CeasedClinicalPathc" xml:space="preserve">
+    <value>Прекратена клинична пътека</value>
+  </data>
+  <data name="CeasedProcedure" xml:space="preserve">
+    <value>Ceased procedure</value>
+  </data>
   <data name="CheckupAfterDischarge" xml:space="preserve">
     <value>Checkup after discharge</value>
   </data>
@@ -155,6 +173,9 @@
   </data>
   <data name="ClinicalPath" xml:space="preserve">
     <value>ClinicalPath</value>
+  </data>
+  <data name="ClinicProcedures" xml:space="preserve">
+    <value>Clinic procedures</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>Code</value>
@@ -179,6 +200,12 @@
   </data>
   <data name="CPFilesSummary" xml:space="preserve">
     <value>CP files summary</value>
+  </data>
+  <data name="CPrPriem" xml:space="preserve">
+    <value>CPr priem</value>
+  </data>
+  <data name="CPrSend" xml:space="preserve">
+    <value>CPr send</value>
   </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
@@ -228,6 +255,30 @@
   <data name="DispObservations" xml:space="preserve">
     <value>Disp observations</value>
   </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="DoneNewProcedures" xml:space="preserve">
+    <value>Done new procedures</value>
+  </data>
+  <data name="DoneProcedures" xml:space="preserve">
+    <value>Done procedures</value>
+  </data>
+  <data name="Drug Name" xml:space="preserve">
+    <value>Drug name</value>
+  </data>
+  <data name="DrugCode" xml:space="preserve">
+    <value>Drug code</value>
+  </data>
+  <data name="DrugCost" xml:space="preserve">
+    <value>Drug cost</value>
+  </data>
+  <data name="DrugDate" xml:space="preserve">
+    <value>Drug date</value>
+  </data>
+  <data name="DrugQuantity" xml:space="preserve">
+    <value>Drug quantity</value>
+  </data>
   <data name="EndCourse" xml:space="preserve">
     <value>End course</value>
   </data>
@@ -242,6 +293,12 @@
   </data>
   <data name="FairCondition" xml:space="preserve">
     <value>Fair condition</value>
+  </data>
+  <data name="FirstMainDiag" xml:space="preserve">
+    <value>First main diag</value>
+  </data>
+  <data name="FirstVisitDate" xml:space="preserve">
+    <value>First visit date</value>
   </data>
   <data name="GPRecommendations" xml:space="preserve">
     <value>GP recommendations</value>
@@ -279,8 +336,14 @@
   <data name="InApr" xml:space="preserve">
     <value>InApr</value>
   </data>
+  <data name="InClinicProcedure" xml:space="preserve">
+    <value>In clinic procedure</value>
+  </data>
   <data name="InClinicProcedures" xml:space="preserve">
     <value>In clinic procedures</value>
+  </data>
+  <data name="InClinicProcedureSummary" xml:space="preserve">
+    <value>Pateint, in clinic procedure, mkb</value>
   </data>
   <data name="Information" xml:space="preserve">
     <value>Information</value>
@@ -303,14 +366,29 @@
   <data name="InType" xml:space="preserve">
     <value>InType</value>
   </data>
+  <data name="InvalidId" xml:space="preserve">
+    <value>Invalid identifier error.</value>
+  </data>
   <data name="InView" xml:space="preserve">
     <value>View in</value>
+  </data>
+  <data name="IZMedicalWard" xml:space="preserve">
+    <value>IZ Medical Ward</value>
   </data>
   <data name="IZNo" xml:space="preserve">
     <value>IZNo</value>
   </data>
+  <data name="IZNumChild" xml:space="preserve">
+    <value>IZ num child</value>
+  </data>
   <data name="IZYear" xml:space="preserve">
     <value>IZYear</value>
+  </data>
+  <data name="IZYearChild" xml:space="preserve">
+    <value>IZ year child</value>
+  </data>
+  <data name="IZYearMedicalWard" xml:space="preserve">
+    <value>IZ Year Medical Ward</value>
   </data>
   <data name="Laparoscopic" xml:space="preserve">
     <value>Laparoscopic</value>
@@ -354,7 +432,13 @@
   <data name="OutDate" xml:space="preserve">
     <value>Out date</value>
   </data>
+  <data name="OutDiagnoseCode" xml:space="preserve">
+    <value>Out diagnose code</value>
+  </data>
   <data name="OutDiagnoseName" xml:space="preserve">
+    <value>Out diagnose name</value>
+  </data>
+  <data name="OutDiagnoseName1" xml:space="preserve">
     <value>Out diagnose name</value>
   </data>
   <data name="OutDiagnoses" xml:space="preserve">
@@ -396,8 +480,14 @@
   <data name="PathologicFinding" xml:space="preserve">
     <value>Pathologic finding</value>
   </data>
+  <data name="PathProcedure" xml:space="preserve">
+    <value>Path procedure</value>
+  </data>
   <data name="PathProcedures" xml:space="preserve">
     <value>Path procedures</value>
+  </data>
+  <data name="PathProcedureSummary" xml:space="preserve">
+    <value>Path procedure, patient, mkb</value>
   </data>
   <data name="Patient" xml:space="preserve">
     <value>Patient</value>
@@ -407,6 +497,9 @@
   </data>
   <data name="PatientHRegion" xml:space="preserve">
     <value>Patient HRegion</value>
+  </data>
+  <data name="PatientStatus" xml:space="preserve">
+    <value>Patient status</value>
   </data>
   <data name="PatientTransfers" xml:space="preserve">
     <value>Patient transfers</value>
@@ -429,8 +522,26 @@
   <data name="PracticeCodeProtocol" xml:space="preserve">
     <value>Practice code protocol</value>
   </data>
+  <data name="ProcedureCode" xml:space="preserve">
+    <value>Procedure code</value>
+  </data>
+  <data name="ProcedureDate" xml:space="preserve">
+    <value>Procedure date</value>
+  </data>
+  <data name="ProcedureEndDate" xml:space="preserve">
+    <value>Procedure end date</value>
+  </data>
+  <data name="ProcedureName" xml:space="preserve">
+    <value>Procedure name</value>
+  </data>
   <data name="Procedures" xml:space="preserve">
     <value>Procedures</value>
+  </data>
+  <data name="ProcedureStartDate" xml:space="preserve">
+    <value>Procedure start date</value>
+  </data>
+  <data name="ProcRefuse" xml:space="preserve">
+    <value>Proc refuse</value>
   </data>
   <data name="Protocol Type" xml:space="preserve">
     <value>Protocol type</value>
@@ -459,11 +570,17 @@
   <data name="SampleProtocol" xml:space="preserve">
     <value>Sample protocol</value>
   </data>
+  <data name="SecondMainDiag" xml:space="preserve">
+    <value>Second main diag</value>
+  </data>
   <data name="SendApr" xml:space="preserve">
     <value>Send apr</value>
   </data>
   <data name="SendClinicalPath" xml:space="preserve">
     <value>Send clinical path</value>
+  </data>
+  <data name="SendDiagnose" xml:space="preserve">
+    <value>Send diangose</value>
   </data>
   <data name="SendDiagnoseCode" xml:space="preserve">
     <value>Send diagnose code</value>
@@ -474,8 +591,8 @@
   <data name="SendDiagnoses" xml:space="preserve">
     <value>Send diagnoses</value>
   </data>
-  <data name="SendDiangose" xml:space="preserve">
-    <value>Send diangose</value>
+  <data name="SendDignoseCode" xml:space="preserve">
+    <value>Send dignose code</value>
   </data>
   <data name="Sender" xml:space="preserve">
     <value>Sender</value>
@@ -501,8 +618,20 @@
   <data name="SummaryInformationKeywords" xml:space="preserve">
     <value>Statistic, information, summary</value>
   </data>
+  <data name="TotalCosts" xml:space="preserve">
+    <value>Total costs</value>
+  </data>
   <data name="TotalPatients" xml:space="preserve">
     <value>Patients count</value>
+  </data>
+  <data name="TotalUses" xml:space="preserve">
+    <value>Total uses</value>
+  </data>
+  <data name="TypeProcPriem" xml:space="preserve">
+    <value>Type proc priem</value>
+  </data>
+  <data name="TypeProcSend" xml:space="preserve">
+    <value>Type proc send</value>
   </data>
   <data name="UINPrescr" xml:space="preserve">
     <value>UIN Prescr</value>
@@ -516,6 +645,18 @@
   <data name="UsedDrug" xml:space="preserve">
     <value>Used drug</value>
   </data>
+  <data name="UsedDrugCode" xml:space="preserve">
+    <value>Used drug code</value>
+  </data>
+  <data name="UsedDrugs" xml:space="preserve">
+    <value>Used drugs</value>
+  </data>
+  <data name="UsedDrugsInformationKeywords" xml:space="preserve">
+    <value>Used drugs, mkb, statistic</value>
+  </data>
+  <data name="VersionCode" xml:space="preserve">
+    <value>Version code</value>
+  </data>
   <data name="View" xml:space="preserve">
     <value>View</value>
   </data>
@@ -524,6 +665,12 @@
   </data>
   <data name="ViewPatient" xml:space="preserve">
     <value>View patient</value>
+  </data>
+  <data name="VisitDocumentName" xml:space="preserve">
+    <value>Visit document name</value>
+  </data>
+  <data name="VisitDocumentUniqueIdentifier" xml:space="preserve">
+    <value>Visit document unique identifier</value>
   </data>
   <data name="WeightInGrams" xml:space="preserve">
     <value>WeightInGrams</value>

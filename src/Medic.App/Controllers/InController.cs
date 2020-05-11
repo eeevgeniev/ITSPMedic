@@ -1,5 +1,6 @@
 ﻿using Medic.App.Controllers.Base;
 using Medic.App.Models.Ins;
+using Medic.AppModels.HealthRegions;
 using Medic.AppModels.Ins;
 using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
@@ -20,18 +21,21 @@ namespace Medic.App.Controllers
     {
         private readonly IInService InService;
         private readonly IPatientService PatientService;
+        private readonly IHealthRegionService HealthRegionService;
         private readonly MedicDataLocalization MedicDataLocalization;
         private readonly ICacheable MedicCache;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public InController(IInService inService, 
-            IPatientService patientService, 
+            IPatientService patientService,
+            IHealthRegionService healthRegionService,
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
         {
             InService = inService ?? throw new ArgumentNullException(nameof(inService));
             PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
+            HealthRegionService = healthRegionService ?? throw new ArgumentNullException(nameof(healthRegionService));
             MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(MedicBaseController));
             MedicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
@@ -56,10 +60,12 @@ namespace Medic.App.Controllers
                         Search = search,
                         CurrentPage = page,
                         TotalCount = await InService.GetInsCountAsync(search),
-                        Sexes = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } }
+                        Sexes = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } },
+                        HealthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } }
                     };
 
                     inPageIndexModel.Sexes.AddRange(await PatientService.GetSexOptionsAsync());
+                    inPageIndexModel.HealthRegions.AddRange(await HealthRegionService.GetHealthRegionsAsync());
 
                     MedicCache.Set(key, inPageIndexModel);
                 }
