@@ -2,11 +2,11 @@
 
 namespace Medic.Entities
 {
-    public partial class Choise
+    public partial class Choice
     {
         public void CreateRules(ModelBuilder builder)
         {
-            builder.Entity<Choise>(b =>
+            builder.Entity<Choice>(b =>
             {
                 b.HasKey(model => model.Id);
 

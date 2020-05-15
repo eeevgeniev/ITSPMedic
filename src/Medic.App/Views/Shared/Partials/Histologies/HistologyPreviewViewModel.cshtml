@@ -1,0 +1,24 @@
+﻿@model HistologyPreviewViewModel
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default)
+{
+    <div>
+        <div class="row">
+            <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("NameHS")</div>
+            <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("CodeHS")</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-6">@Model.NameHS</div>
+            <div class="col-sm-6">@Model.CodeHS</div>
+        </div>
+        <div>
+            <partial name="~/Views/Shared/Partials/APr05s/APr05PreviewViewModel.cshtml" model="@Model.APr05" />
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

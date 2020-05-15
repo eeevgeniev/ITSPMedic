@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.Histologies;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -18,6 +19,8 @@ namespace Medic.Entities
                 .ForMember(h => h.ChemotherapyParts, config => config.Ignore())
                 .ForMember(h => h.APr05, config => config.Ignore())
                 .ForMember(h => h.Id, config => config.Ignore());
+
+            expression.CreateMap<Histology, HistologyPreviewViewModel>();
         }
     }
 }

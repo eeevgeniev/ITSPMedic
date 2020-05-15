@@ -67,6 +67,12 @@ namespace Medic.Services
         private async Task<List<HospitalPracticeSummaryViewModel>> GetSummary()
         {
             return await MedicContext.HospitalPractices
+                .Include(hp => hp.CommissionAprs)
+                .Include(hp => hp.DispObservations)
+                .Include(hp => hp.ProtocolDrugTherapies)
+                .Include(hp => hp.InClinicProcedures)
+                .Include(hp => hp.PathProcedures)
+                .Include(pt => pt.Transfers)
                 .Select(hp => new HospitalPracticeSummaryViewModel()
                 {
                     DateFrom = hp.DateFrom,
@@ -75,7 +81,7 @@ namespace Medic.Services
                     ProtocolDrugTherapiesCount = hp.ProtocolDrugTherapies.Count,
                     InClinicProceduresCount = hp.InClinicProcedures.Count,
                     PathProceduresCount = hp.PathProcedures.Count,
-                    PatientTransfersCount = hp.PatientTransfers.Count
+                    PatientTransfersCount = hp.Transfers.Count
                 })
                 .OrderBy(hp => hp.DateFrom)
                 .ToListAsync();

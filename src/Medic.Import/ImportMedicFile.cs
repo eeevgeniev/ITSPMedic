@@ -3,6 +3,7 @@ using Medic.Entities;
 using Medic.Import.Contracts;
 using Medic.Import.Rules;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -227,18 +228,21 @@ namespace Medic.Import
                 }
             }
 
-            foreach (PatientTransfer patientTransfer in cpFile.PatientTransfers)
+            if (cpFile.Transfers != default)
             {
-                if (patientTransfer.FirstMainDiag != default)
+                foreach (Transfer transfer in cpFile.Transfers)
                 {
-                    patientTransfer.FirstMainDiag.MKB = AddMKB(patientTransfer.FirstMainDiag.MKB);
-                    patientTransfer.FirstMainDiag.LinkDMKB = AddMKB(patientTransfer.FirstMainDiag.LinkDMKB);
-                }
+                    if (transfer.FirstMainDiag != default)
+                    {
+                        transfer.FirstMainDiag.MKB = AddMKB(transfer.FirstMainDiag.MKB);
+                        transfer.FirstMainDiag.LinkDMKB = AddMKB(transfer.FirstMainDiag.LinkDMKB);
+                    }
 
-                if (patientTransfer.SecondMainDiag != default)
-                {
-                    patientTransfer.SecondMainDiag.MKB = AddMKB(patientTransfer.SecondMainDiag.MKB);
-                    patientTransfer.SecondMainDiag.LinkDMKB = AddMKB(patientTransfer.SecondMainDiag.LinkDMKB);
+                    if (transfer.SecondMainDiag != default)
+                    {
+                        transfer.SecondMainDiag.MKB = AddMKB(transfer.SecondMainDiag.MKB);
+                        transfer.SecondMainDiag.LinkDMKB = AddMKB(transfer.SecondMainDiag.LinkDMKB);
+                    }
                 }
             }
 
@@ -340,9 +344,21 @@ namespace Medic.Import
                 commissionApr.Sender = AddHealthcarePractitioner(commissionApr.Sender);
                 commissionApr.Chairman = AddHealthcarePractitioner(commissionApr.Chairman);
 
-                foreach (CommissionAprHealthcarePractitioner practitioner in commissionApr.Members)
+                if (commissionApr.Members != default && commissionApr.Members.Count > 0)
                 {
-                    practitioner.HealthcarePractitioner = AddHealthcarePractitioner(practitioner.HealthcarePractitioner);
+                    List<CommissionAprHealthcarePractitioner> tempCommPract = new List<CommissionAprHealthcarePractitioner>();
+
+                    foreach (CommissionAprHealthcarePractitioner practitioner in commissionApr.Members)
+                    {
+                        practitioner.HealthcarePractitioner = AddHealthcarePractitioner(practitioner.HealthcarePractitioner);
+
+                        if (!tempCommPract.Any(t => t.HealthcarePractitioner == practitioner.HealthcarePractitioner))
+                        {
+                            tempCommPract.Add(practitioner);
+                        }
+                    }
+
+                    commissionApr.Members = tempCommPract.ToHashSet();
                 }
 
                 if (commissionApr.MainDiag != default)
@@ -394,18 +410,21 @@ namespace Medic.Import
                 }
             }
 
-            foreach (PatientTransfer patientTransfer in hospitalPractice.PatientTransfers)
+            if (hospitalPractice.Transfers != default)
             {
-                if (patientTransfer.FirstMainDiag != default)
+                foreach (Transfer transfer in hospitalPractice.Transfers)
                 {
-                    patientTransfer.FirstMainDiag.MKB = AddMKB(patientTransfer.FirstMainDiag.MKB);
-                    patientTransfer.FirstMainDiag.LinkDMKB = AddMKB(patientTransfer.FirstMainDiag.LinkDMKB);
-                }
+                    if (transfer.FirstMainDiag != default)
+                    {
+                        transfer.FirstMainDiag.MKB = AddMKB(transfer.FirstMainDiag.MKB);
+                        transfer.FirstMainDiag.LinkDMKB = AddMKB(transfer.FirstMainDiag.LinkDMKB);
+                    }
 
-                if (patientTransfer.SecondMainDiag != default)
-                {
-                    patientTransfer.SecondMainDiag.MKB = AddMKB(patientTransfer.SecondMainDiag.MKB);
-                    patientTransfer.SecondMainDiag.LinkDMKB = AddMKB(patientTransfer.SecondMainDiag.LinkDMKB);
+                    if (transfer.SecondMainDiag != default)
+                    {
+                        transfer.SecondMainDiag.MKB = AddMKB(transfer.SecondMainDiag.MKB);
+                        transfer.SecondMainDiag.LinkDMKB = AddMKB(transfer.SecondMainDiag.LinkDMKB);
+                    }
                 }
             }
 

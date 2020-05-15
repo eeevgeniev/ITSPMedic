@@ -9,7 +9,7 @@
 {
     <article>
         <header>
-            <h1>@($"{medicDataLocalization.Get("InClinicProcedure")} - {@Model.InViewModel.UniqueIdentifier}")</h1>
+            <h1>@($"{medicDataLocalization.Get("InsView")} - {@Model.InViewModel.UniqueIdentifier}")</h1>
         </header>
         <h2 class="text-center">@medicDataLocalization.Get("Patient")</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.InViewModel.Patient" />
@@ -19,7 +19,7 @@
         <hr />
         <div>@medicDataLocalization.Get("DateSend"): @Model.InViewModel.SendDate.ToShortDateString()</div>
         <hr />
-        <h2 class="text-center">@medicDataLocalization.Get("SendDiangose")</h2>
+        <h2 class="text-center">@medicDataLocalization.Get("SendDiagnose")</h2>
         <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.InViewModel.SendDiagnose })" />
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("Diagnoses")</h2>

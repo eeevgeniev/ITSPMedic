@@ -133,7 +133,7 @@ namespace Medic.Models.CLPR
         public Diag MainDiag2 { get; set; }
 
         [XmlElement(ElementName = "pacientStatus")]
-        public int PacientStatus { get; set; }
+        public int PatientStatus { get; set; }
 
         [XmlElement(ElementName = "NZOKPay")]
         public int NZOKPay { get; set; }

@@ -6,10 +6,10 @@ using System;
 namespace Medic.Entities
 {
     /// <summary>
-    /// CP -> Choise
+    /// CP -> Choice
     /// </summary>
     [Serializable]
-    public partial class Choise : BaseEntity, IModelBuilder, IModelTransformer
+    public partial class Choice : BaseEntity, IModelBuilder, IModelTransformer
     {
         public int Id { get; set; }
         

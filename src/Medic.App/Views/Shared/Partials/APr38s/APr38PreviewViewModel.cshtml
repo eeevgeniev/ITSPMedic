@@ -1,0 +1,24 @@
+﻿@model APr38PreviewViewModel
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default)
+{
+    <div>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("Height"): @Model.Height</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Weight"): @Model.Weight</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("History"): @Model.History</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("FairCondition"): @Model.FairCondition</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Therapy"): @Model.Therapy</div>
+        </div>
+        <h6 class="text-center">@medicDataLocalization.Get("Evaluation")</h6>
+        <partial name="~/Views/Shared/Partials/Evaluations/EvaluationPreviewViewModel.cshtml" model="@Model.Decision" />
+    </div>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

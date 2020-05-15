@@ -13,6 +13,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "ATC_Name")]
         public string ATCName { get; set; }
 
+        [XmlElement(ElementName = "Days")]
         public string Days { get; set; }
 
         [XmlElement(ElementName = "Application_Way")]

@@ -26,7 +26,7 @@ namespace Medic.Contexts
 
         public DbSet<ChemotherapyPart> ChemotherapyParts { get; set; }
 
-        public DbSet<Choise> Choises { get; set; }
+        public DbSet<Choice> Choices { get; set; }
 
         public DbSet<ClinicChemotherapyPart> ClinicChemotherapyParts { get; set; }
 
@@ -94,8 +94,6 @@ namespace Medic.Contexts
 
         public DbSet<PatientBranch> PatientBranches { get; set; }
 
-        public DbSet<PatientTransfer> PatientTransfers { get; set; }
-
         public DbSet<PlannedProcedure> PlannedProcedures { get; set; }
 
         public DbSet<Practice> Practices { get; set; }
@@ -115,6 +113,8 @@ namespace Medic.Contexts
         public DbSet<SpecialtyType> SpecialtyTypes { get; set; }
 
         public DbSet<TherapyType> TherapyTypes { get; set; }
+
+        public DbSet<Transfer> Transfers { get; set; }
 
         public DbSet<UsedDrug> UsedDrugs { get; set; }
 

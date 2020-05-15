@@ -5,6 +5,8 @@ namespace Medic.AppModels.CommissionAprs
 {
     public class PatientCommissionAprPreviewViewModel
     {
+        public int Id { get; set; }
+        
         [Display(Name = "DecisionDate")]
         public DateTime DecisionDate { get; set; }
 

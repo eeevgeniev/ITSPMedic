@@ -6,6 +6,6 @@ namespace Medic.Models.CP
     public class Evaluation
     {
         [XmlElement(ElementName = "Choise")]
-        public List<Choise> Choises { get; set; }
+        public List<Choice> Choices { get; set; }
     }
 }

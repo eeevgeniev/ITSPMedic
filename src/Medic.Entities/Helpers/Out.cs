@@ -61,7 +61,7 @@ namespace Medic.Entities
             expression.CreateMap<Out, OutViewModel>()
                 .ForMember(ovm => ovm.PatientBranch, config => config.MapFrom(o => o.PatientBranch != default && o.PatientBranch.HealthRegion != default ? o.PatientBranch.HealthRegion.Name : default))
                 .ForMember(ovm => ovm.PatientHRegion, config => config.MapFrom(o => o.PatientHRegion != default ? o.PatientHRegion.Name : default))
-                .ForMember(ovm => ovm.CPFile, config => config.MapFrom(o => o.CPFile != default ? o.CPFile.FileType : default));
+                .ForMember(ovm => ovm.CPFile, config => config.MapFrom(o => o.CPFile != default && o.CPFile.FileType != default ? o.CPFile.FileType.Name : default));
         }
     }
 }

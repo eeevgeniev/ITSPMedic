@@ -32,13 +32,13 @@ namespace Medic.Entities
 
                 b.Property(model => model.Notes).HasMaxLength(200);
 
-                b.Property(model => model.FirstName).HasMaxLength(30);
+                b.Property(model => model.FirstName).HasMaxLength(50);
 
-                b.Property(model => model.SecondName).HasMaxLength(30);
+                b.Property(model => model.SecondName).HasMaxLength(50);
 
-                b.Property(model => model.LastName).HasMaxLength(30);
+                b.Property(model => model.LastName).HasMaxLength(50);
 
-                b.Property(model => model.Address).HasMaxLength(100);
+                b.Property(model => model.Address).HasMaxLength(200);
             });
         }
     }

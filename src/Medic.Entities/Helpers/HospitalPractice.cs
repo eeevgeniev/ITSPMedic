@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using CLPR = Medic.Models.CLPR;
+using CP = Medic.Models.CP;
 
 namespace Medic.Entities
 {
@@ -17,6 +19,7 @@ namespace Medic.Entities
                 .ForMember(hp => hp.FileType, config => config.MapFrom(hp => hp.FileType == default ? default : hp.FileType.Name))
                 .ForMember(hp => hp.PracticeCode, config => config.MapFrom(hp => hp.Practice == default ? default : hp.Practice.Code))
                 .ForMember(hp => hp.PracticeName, config => config.MapFrom(hp => hp.Practice == default ? default : hp.Practice.Name))
+                .ForMember(hp => hp.PatientTransfer, config => config.MapFrom((hp, dest, prop, cntx) => hp.Transfers != default ? new CP.PatientTransfer() { Transfers = cntx.Mapper.Map<ICollection<Transfer>, List<CP.Transfer>>(hp.Transfers) } : default ))
                 .ForMember(hp => hp.DateFromAsString, config => config.Ignore())
                 .ForMember(hp => hp.DateToAsString, config => config.Ignore());
 
@@ -27,6 +30,7 @@ namespace Medic.Entities
                 .ForMember(hp => hp.HealthRegionId, config => config.Ignore())
                 .ForMember(hp => hp.FileType, config => config.MapFrom(hp => hp.FileType == default ? default : new FileType() { Name = hp.FileType }))
                 .ForMember(hp => hp.FileTypeId, config => config.Ignore())
+                .ForMember(hp => hp.Transfers, config => config.MapFrom(hp => hp.PatientTransfer != default ? hp.PatientTransfer.Transfers : default))
                 .ForMember(hp => hp.Id, config => config.Ignore());
         }
     }

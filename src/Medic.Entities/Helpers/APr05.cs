@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.APr05s;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -21,6 +22,8 @@ namespace Medic.Entities
                 .ForMember(ap => ap.HistologyId, config => config.Ignore())
                 .ForMember(ap => ap.CommissionApr, config => config.Ignore())
                 .ForMember(ap => ap.Id, config => config.Ignore());
+
+            expression.CreateMap<APr05, APr05PreviewViewModel>();
         }
     }
 }

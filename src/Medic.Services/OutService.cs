@@ -32,21 +32,6 @@ namespace Medic.Services
             }
 
             return await MedicContext.Outs
-                .Include(o => o.Patient)
-                .Include(o => o.PatientBranch)
-                .Include(o => o.PatientHRegion)
-                .Include(o => o.Sender)
-                .Include(o => o.SendDiagnose)
-                .Include(o => o.Diagnoses)
-                .Include(o => o.Dead)
-                .Include(o => o.HistologicalResult)
-                .Include(o => o.Epicrisis)
-                .Include(o => o.OutMainDiagnose)
-                .Include(o => o.OutDiagnoses)
-                .Include(o => o.UsedDrug)
-                    .ThenInclude(ud => ud.VersionCode)
-                .Include(o => o.Procedures)
-                    .ThenInclude(p => p.Implant)
                 .ProjectTo<OutViewModel>(Configuration)
                 .SingleOrDefaultAsync(o => o.Id == id);
         }
@@ -54,16 +39,6 @@ namespace Medic.Services
         public async Task<List<OutPreviewViewModel>> GetOutsAsync(OutSearch search, int startIndex, int count)
         {
             return await GetQueryable(MedicContext.Outs, search)
-                .Include(o => o.OutMainDiagnose)
-                    .ThenInclude(md => md.Primary)
-                .Include(o => o.Patient)
-                .Include(o => o.OutDiagnoses)
-                    .ThenInclude(od => od.Primary)
-                .Include(o => o.SendDiagnose)
-                    .ThenInclude(sd => sd.Primary)
-                .Include(o => o.Diagnoses)
-                    .ThenInclude(d => d.Primary)
-                .Include(o => o.UsedDrug)
                 .ProjectTo<OutPreviewViewModel>(Configuration)
                 .Skip(startIndex)
                 .Take(count)

@@ -1,12 +1,13 @@
 ﻿using Medic.Entities.Bases;
 using Medic.Entities.Contracts;
+using Medic.Mappers.Contracts;
 using System;
 using System.Collections.Generic;
 
 namespace Medic.Entities
 {
     [Serializable]
-    public partial class TherapyType : BaseEntity, IModelBuilder
+    public partial class TherapyType : BaseEntity, IModelBuilder, IModelTransformer
     {
         public int Id { get; set; }
 

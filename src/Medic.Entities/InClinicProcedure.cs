@@ -69,7 +69,7 @@ namespace Medic.Entities
 
         public Diag SecondMainDiag { get; set; }
 
-        public int PacientStatus { get; set; }
+        public int PatientStatus { get; set; }
 
         public int NZOKPay { get; set; }
 

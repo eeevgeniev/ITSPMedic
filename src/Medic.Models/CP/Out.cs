@@ -16,6 +16,7 @@ namespace Medic.Models.CP
         private DateTime _outDate;
         private DateTime? _hLDateFrom;
 
+        [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
@@ -27,6 +28,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "inType")]
         public int InType { get; set; }
 
+        [XmlElement(ElementName = "Sender")]
         public Sender Sender { get; set; }
 
         [XmlIgnore]
@@ -90,6 +92,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "clinicalPath")]
         public double ClinicalPath { get; set; }
 
+        [XmlElement(ElementName = "NZOKPay")]
         public int NZOKPay { get; set; }
 
         [XmlElement(ElementName = "inMedicalWard")]
@@ -139,8 +142,10 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "motherIZNo")]
         public int? MotherIZNo { get; set; }
 
+        [XmlElement(ElementName = "IZYear")]
         public int? IZYear { get; set; }
 
+        [XmlElement(ElementName = "IZNo")]
         public int? IZNo { get; set; }
 
         [XmlElement(ElementName = "outMedicalWard")]
@@ -175,6 +180,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "dead")]
         public Dead Dead { get; set; }
 
+        [XmlElement(ElementName = "BirthPractice")]
         public string BirthPractice { get; set; }
 
         [XmlElement(ElementName = "BirthNum")]
@@ -232,13 +238,16 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "HLNo")]
         public string HLNumber { get; set; }
 
+        [XmlElement(ElementName = "HLTotalDays")]
         public int? HLTotalDays { get; set; }
 
         [XmlElement(ElementName = "stateAtDischarge")]
         public int? StateAtDischarge { get; set; }
 
+        [XmlElement(ElementName = "Laparoscopic")]
         public int? Laparoscopic { get; set; }
 
+        [XmlElement(ElementName = "EndCourse")]
         public int? EndCourse { get; set; }
     }
 }

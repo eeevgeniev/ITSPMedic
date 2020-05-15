@@ -40,7 +40,7 @@ namespace Medic.Entities
 
                 b.Property(model => model.GPRecommendations).HasMaxLength(5000);
 
-                b.Property(model => model.OtherDocuments).HasMaxLength(3000);
+                b.Property(model => model.OtherDocuments).HasMaxLength(5000);
             });
         }
     }

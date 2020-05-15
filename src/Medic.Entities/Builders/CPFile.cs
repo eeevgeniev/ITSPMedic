@@ -30,9 +30,9 @@ namespace Medic.Entities
                     .WithOne(pdt => pdt.CPFile)
                     .HasForeignKey(pdt => pdt.CPFileId);
 
-                b.HasMany(model => model.PatientTransfers)
-                    .WithOne(pt => pt.CPFile)
-                    .HasForeignKey(pt => pt.CPFileId);
+                b.HasMany(model => model.Transfers)
+                    .WithOne(t => t.CPFile)
+                    .HasForeignKey(t => t.CPFileId);
 
                 b.HasMany(model => model.PlannedProcedures)
                     .WithOne(pp => pp.CPFile)

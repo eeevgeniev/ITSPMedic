@@ -60,7 +60,7 @@ namespace Medic.Services
                     AverageQuantity = v.Average(v => v.Quantity),
                     TotalCosts = v.Sum(v => v.Cost)
                 })
-                .OrderBy(v => v.OutDiagnoseCode)
+                .OrderBy(v => v.UsedDrugCode)
                 .ThenByDescending(v => v.TotalUses)
                 .ToListAsync();
         }

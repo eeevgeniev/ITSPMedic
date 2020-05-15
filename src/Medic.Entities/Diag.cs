@@ -49,8 +49,8 @@ namespace Medic.Entities
 
         public DispObservation SecondDispObservation { get; set; } // added
 
-        public PatientTransfer FirstPatientTransfer { get; set; } // added
+        public Transfer FirstPatientTransfer { get; set; } // added
 
-        public PatientTransfer SecondPatientTransfer { get; set; } // added
+        public Transfer SecondPatientTransfer { get; set; } // added
     }
 }

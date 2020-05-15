@@ -1,23 +1,26 @@
 ﻿using AutoMapper;
+using Medic.AppModels.Choices;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
 {
-    public partial class Choise
+    public partial class Choice
     {
-        public Choise Copy()
+        public Choice Copy()
         {
-            return base.Copy<Choise>(this);
+            return base.Copy<Choice>(this);
         }
 
         public void ConfigureTransformations(IMapperConfigurationExpression expression)
         {
-            expression.CreateMap<Choise, CP.Choise>();
+            expression.CreateMap<Choice, CP.Choice>();
 
-            expression.CreateMap<CP.Choise, Choise>()
+            expression.CreateMap<CP.Choice, Choice>()
                     .ForMember(c => c.Evaluation, config => config.Ignore())
                     .ForMember(c => c.EvaluationId, config => config.Ignore())
                     .ForMember(c => c.Id, config => config.Ignore());
+
+            expression.CreateMap<Choice, ChoicePreviewViewModel>();
         }
     }
 }

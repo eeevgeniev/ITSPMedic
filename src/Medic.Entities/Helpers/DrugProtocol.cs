@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.DrugProtocols;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -21,6 +22,8 @@ namespace Medic.Entities
                 .ForMember(cp => cp.ProtocolDrugTherapy, config => config.Ignore())
                 .ForMember(cp => cp.ProtocolDrugTherapyId, config => config.Ignore())
                 .ForMember(dp => dp.Id, config => config.Ignore());
+
+            expression.CreateMap<DrugProtocol, DrugProtocolPreviewViewModel>();
         }
     }
 }

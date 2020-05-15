@@ -5,6 +5,8 @@ namespace Medic.AppModels.ProtocolDrugTherapies
 {
     public class PatientProtocolDrugTherapyPreviewViewModel
     {
+        public int Id { get; set; }
+        
         [Display(Name = nameof(ProtocolDate))]
         public DateTime ProtocolDate { get; set; }
 

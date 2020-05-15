@@ -59,8 +59,10 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "Eval_after_Cycle")]
         public int EvalAfterCycle { get; set; }
 
+        [XmlElement(ElementName = "Interval")]
         public int Interval { get; set; }
 
+        [XmlElement(ElementName = "Evaluation")]
         public Evaluation Evaluation { get; set; }
     }
 }

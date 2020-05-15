@@ -12,6 +12,7 @@ namespace Medic.Models.CP
         private DateTime _examinationDate;
         private DateTime _plannedEntryDate;
 
+        [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
@@ -23,6 +24,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "inType")]
         public int InType { get; set; }
 
+        [XmlElement(ElementName = "Sender")]
         public Sender Sender { get; set; }
 
         [XmlIgnore]

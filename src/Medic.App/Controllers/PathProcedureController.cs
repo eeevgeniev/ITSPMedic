@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Medic.App.Controllers
 {
+    [Authorize]
     public class PathProcedureController : MedicBaseController
     {
         private readonly IPathProcedureService PathProcedureService;
@@ -31,7 +32,7 @@ namespace Medic.App.Controllers
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
-        [Authorize]
+        
         public async Task<IActionResult> PathProcedure(int id)
         {
             try

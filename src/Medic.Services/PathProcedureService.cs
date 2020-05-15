@@ -23,21 +23,6 @@ namespace Medic.Services
         public async Task<PathProcedureViewModel> GetPathProcedureByIdAsync(int id)
         {
             return await MedicContext.PathProcedures
-                .Include(pp => pp.Patient)
-                .Include(pp => pp.PatientBranch)
-                    .ThenInclude(pp => pp.HealthRegion)
-                .Include(pp => pp.PatientHRegion)
-                .Include(pp => pp.Sender)
-                .Include(pp => pp.CeasedProcedure)
-                .Include(pp => pp.CeasedClinicalPath)
-                .Include(pp => pp.FirstMainDiag)
-                .Include(pp => pp.SecondMainDiag)
-                .Include(pp => pp.DoneNewProcedures)
-                .Include(pp => pp.UsedDrug)
-                    .ThenInclude(ud => ud.VersionCode)
-                .Include(pp => pp.ClinicProcedures)
-                .Include(pp => pp.DoneProcedures)
-                    .ThenInclude(dp => dp.Doctor)
                 .ProjectTo<PathProcedureViewModel>(Configuration)
                 .SingleOrDefaultAsync(pp => pp.Id == id);
         }

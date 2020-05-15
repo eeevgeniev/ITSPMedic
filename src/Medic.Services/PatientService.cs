@@ -33,31 +33,6 @@ namespace Medic.Services
             }
 
             return await MedicContext.Patients
-                .Include(p => p.Sex)
-                .Include(p => p.Ins)
-                    .ThenInclude(i => i.SendDiagnose)
-                        .ThenInclude(d => d.Primary)
-                .Include(p => p.InClinicProcedures)
-                    .ThenInclude(p => p.FirstMainDiag)
-                        .ThenInclude(d => d.MKB)
-                .Include(p => p.Outs)
-                    .ThenInclude(o => o.OutMainDiagnose)
-                        .ThenInclude(d => d.Primary)
-                .Include(p => p.PathProcedures)
-                    .ThenInclude(pp => pp.FirstMainDiag)
-                        .ThenInclude(d => d.MKB)
-                .Include(p => p.ProtocolDrugTherapies)
-                    .ThenInclude(p => p.Diag)
-                        .ThenInclude(d => d.MKB)
-                .Include(p => p.CommissionAprs)
-                    .ThenInclude(ca => ca.MainDiag)
-                        .ThenInclude(d => d.MKB)
-                .Include(p => p.DispObservations)
-                    .ThenInclude(obs => obs.FirstMainDiag)
-                        .ThenInclude(d => d.MKB)
-                .Include(p => p.PlannedProcedures)
-                    .ThenInclude(pp => pp.Diagnose)
-                        .ThenInclude(d => d.Primary)
                 .ProjectTo<PatientViewModel>(Configuration)
                 .SingleOrDefaultAsync(p => p.Id == id);
         }

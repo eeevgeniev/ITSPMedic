@@ -1,0 +1,24 @@
+﻿@model List<ChoicePreviewViewModel>
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default && Model.Count > 0)
+{
+    <div class="row">
+        <div class="col-sm-4 font-weight-bold">@medicDataLocalization.Get("Number")</div>
+        <div class="col-sm-4 font-weight-bold">@medicDataLocalization.Get("Checked")</div>
+        <div class="col-sm-4 font-weight-bold">@medicDataLocalization.Get("Text")</div>
+    </div>
+    @foreach (var currentChoice in Model)
+    {
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@currentChoice.Number</div>
+            <div class="col-sm-4">@currentChoice.Checked</div>
+            <div class="col-sm-4">@currentChoice.Text</div>
+        </div>
+    }
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

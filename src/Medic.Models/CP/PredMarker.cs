@@ -5,7 +5,7 @@ namespace Medic.Models.CP
 {
     public class PredMarker
     {
-        [XmlElement(ElementName = "Choises")]
-        public List<Choise> Choises { get; set; }
+        [XmlElement(ElementName = "Choise")]
+        public List<Choice> Choices { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Medic.Contexts.Contracts
 
         DbSet<ChemotherapyPart> ChemotherapyParts { get; set; }
 
-        DbSet<Choise> Choises { get; set; }
+        DbSet<Choice> Choices { get; set; }
 
         DbSet<CPFile> CPFiles { get; set; }
 
@@ -73,5 +73,7 @@ namespace Medic.Contexts.Contracts
         DbSet<SpecialtyType> SpecialtyTypes { get; set; }
 
         DbSet<TherapyType> TherapyTypes { get; set; }
+
+        public DbSet<Transfer> Transfers { get; set; }
     }
 }

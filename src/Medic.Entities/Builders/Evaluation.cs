@@ -10,7 +10,7 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
-                b.HasMany(model => model.Choises)
+                b.HasMany(model => model.Choices)
                     .WithOne(c => c.Evaluation)
                     .HasForeignKey(c => c.EvaluationId);
             });

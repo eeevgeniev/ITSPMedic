@@ -1,0 +1,23 @@
+﻿@model List<AccompanyingDrugPreviewViewModel>
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default && Model.Count > 0)
+{
+    @foreach (var currentAccProtocol in Model)
+    {
+        <hr />
+        <div>
+            <div class="row">
+                <div class="col-sm-3">@medicDataLocalization.Get("ATCCode"): @currentAccProtocol.ATCCode</div>
+                <div class="col-sm-3">@medicDataLocalization.Get("ATCName"): @currentAccProtocol.ATCName</div>
+                <div class="col-sm-3">@medicDataLocalization.Get("SingleDose"): @currentAccProtocol.SingleDose</div>
+                <div class="col-sm-3">@medicDataLocalization.Get("AllDose"): @currentAccProtocol.AllDose</div>
+            </div>
+            <partial name="~/Views/Shared/Partials/TherapyTypes/TherapyTypePreviewViewModel.cshtml" model="@currentAccProtocol.TherapyType" />
+        </div>
+    }
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

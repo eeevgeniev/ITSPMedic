@@ -75,6 +75,7 @@ namespace Medic.Models.CP
             }
         }
 
+        [XmlElement(ElementName = "Sex")]
         public int Sex { get; set; }
 
         [XmlElement(ElementName = "Given")]
@@ -86,6 +87,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "Family")]
         public string LastName { get; set; }
 
+        [XmlElement(ElementName = "Address")]
         public string Address { get; set; }
     }
 }

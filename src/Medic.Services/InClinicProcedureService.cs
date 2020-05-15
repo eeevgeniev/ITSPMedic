@@ -28,14 +28,6 @@ namespace Medic.Services
             }
             
             return await MedicContext.InClinicProcedures
-                .Include(icp => icp.Patient)
-                .Include(icp => icp.PatientBranch)
-                    .ThenInclude(pb => pb.HealthRegion)
-                .Include(icp => icp.PatientHealthRegion)
-                .Include(icp => icp.Sender)
-                .Include(icp => icp.CeasedClinicalPath)
-                .Include(icp => icp.FirstMainDiag)
-                .Include(icp => icp.SecondMainDiag)
                 .ProjectTo<InClinicProcedureViewModel>(Configuration)
                 .SingleOrDefaultAsync(icp => icp.Id == id);
         }

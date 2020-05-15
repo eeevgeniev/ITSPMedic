@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.Practices;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -13,7 +14,7 @@ namespace Medic.Entities
         public void ConfigureTransformations(IMapperConfigurationExpression expression)
         {
             expression.CreateMap<Practice, CP.Practice>()
-                .ForMember(p => p.HealthRegion, config => config.MapFrom(p => p.HealthRegion == default ? default : p.HealthRegion.Code));
+                .ForMember(p => p.HealthRegion, config => config.MapFrom(p => p.HealthRegion != default ? p.HealthRegion.Code : default));
 
             expression.CreateMap<CP.Practice, Practice>()
                 .ForMember(p => p.HealthRegion, config => config.MapFrom(p => new HealthRegion() { Code = p.HealthRegion }))
@@ -23,6 +24,9 @@ namespace Medic.Entities
                 .ForMember(p => p.HealthcarePractitioners, config => config.Ignore())
                 .ForMember(p => p.HospitalPractices, config => config.Ignore())
                 .ForMember(p => p.Id, config => config.Ignore());
+
+            expression.CreateMap<Practice, PracticePreviewViewModel>()
+                .ForMember(ppvm => ppvm.HealthRegion, config => config.MapFrom(p => p.HealthRegion != default ? p.HealthRegion.Name : default));
         }
     }
 }

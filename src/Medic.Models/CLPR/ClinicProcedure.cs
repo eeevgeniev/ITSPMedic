@@ -34,6 +34,7 @@ namespace Medic.Models.CLPR
             }
         }
 
+        [XmlElement(ElementName = "ACHIcode")]
         public string ACHIcode { get; set; }
     }
 }

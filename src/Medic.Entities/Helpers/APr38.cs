@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.APr38s;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -18,6 +19,8 @@ namespace Medic.Entities
                 .ForMember(ap => ap.DecisionId, config => config.Ignore())
                 .ForMember(ap => ap.CommissionApr, config => config.Ignore())
                 .ForMember(ap => ap.Id, config => config.Ignore());
+
+            expression.CreateMap<APr38, APr38PreviewViewModel>();
         }
     }
 }

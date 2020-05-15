@@ -34,6 +34,6 @@ namespace Medic.Entities
 
         public ICollection<ProtocolDrugTherapy> ProtocolDrugTherapies { get; set; } = new HashSet<ProtocolDrugTherapy>();
 
-        public List<PatientTransfer> PatientTransfers { get; set; }
+        public ICollection<Transfer> Transfers { get; set; } = new HashSet<Transfer>();
     }
 }

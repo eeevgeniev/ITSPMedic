@@ -1,0 +1,74 @@
+﻿@model ProtocolDrugTherapyPageProtocolDrugTherapyModel
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@if (Model.ProtocolDrugTherapy != default)
+{
+    <article>
+        <header>
+            <h1>@medicDataLocalization.Get("ProtocolDrugTherapyView")</h1>
+        </header>
+        <h2 class="text-center">@medicDataLocalization.Get("Patient")</h2>
+        <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.ProtocolDrugTherapy.Patient" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("Chairman")</h2>
+        <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.ProtocolDrugTherapy.Chairman" />
+        <hr />
+        <div>@medicDataLocalization.Get("ProtocolDate"): @Model.ProtocolDrugTherapy.ProtocolDate.ToString("g")</div>
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("Diag")</h2>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.ProtocolDrugTherapy.Diag" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("Practice")</h2>
+        <partial name="~/Views/Shared/Partials/Practices/PracticePreviewViewModel.cshtml" model="@Model.ProtocolDrugTherapy.Practice" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("HematologyPart")</h2>
+        <partial name="~/Views/Shared/Partials/HematologyParts/HematologyPartPreviewViewModel.cshtml" model="@Model.ProtocolDrugTherapy.HematologyPart" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("ChemotherapyPart")</h2>
+        <partial name="~/Views/Shared/Partials/ChemotherapyParts/ChemotherapyPartPreviewViewModel.cshtml" model="@Model.ProtocolDrugTherapy.ChemotherapyPart" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("DrugProtocols")</h2>
+        <partial name="~/Views/Shared/Partials/DrugProtocols/DrugProtocolPreviewViewModels.cshtml" model="@Model.ProtocolDrugTherapy.DrugProtocols" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("AccompanyingDrugs")</h2>
+        <partial name="~/Views/Shared/Partials/AccompanyingDrugs/AccompanyingDrugPreviewViewModels.cshtml" model="@Model.ProtocolDrugTherapy.AccompanyingDrugs" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("AdditionalInformation")</h2>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("PatientBranch"): @Model.ProtocolDrugTherapy.PatientBranch</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("PatientHRegion"): @Model.ProtocolDrugTherapy.PatientHRegion</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("NumberOfDecision"): @Model.ProtocolDrugTherapy.NumberOfDecision</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("DecisionDate"): @Model.ProtocolDrugTherapy.DecisionDate.ToString("g")</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("PracticeCodeProtocol"): @Model.ProtocolDrugTherapy.PracticeCodeProtocol</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("NumberOfProtocol"): @Model.ProtocolDrugTherapy.NumberOfProtocol</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("Height"): @Model.ProtocolDrugTherapy.Height</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Weight"): @Model.ProtocolDrugTherapy.Weight</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("BSA"): @Model.ProtocolDrugTherapy.BSA</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("TherapyLine"): @Model.ProtocolDrugTherapy.TherapyLine</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Scheme"): @Model.ProtocolDrugTherapy.Scheme</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("CycleCount"): @Model.ProtocolDrugTherapy.CycleCount</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("Sign"): @Model.ProtocolDrugTherapy.Sign</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("CPFile"): @Model.ProtocolDrugTherapy.CPFile</div>
+        </div>
+    </article>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

@@ -1,5 +1,6 @@
 ﻿using Medic.AppModels.CPFiles;
 using Medic.Contexts;
+using Medic.Entities;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -64,12 +65,17 @@ namespace Medic.Services
         private async Task<List<CPFileSummaryViewModel>> GetSummary()
         {
             return await MedicContext.CPFiles
+                    .Include(cp => cp.Ins)
+                    .Include(cp => cp.Outs)
+                    .Include(cp => cp.Transfers)
+                    .Include(cp => cp.PlannedProcedures)
+                    .Include(cp => cp.ProtocolDrugTherapies)
                 .Select(cp => new CPFileSummaryViewModel()
                 {
                     DateFrom = cp.DateFrom,
                     InsCount = cp.Ins.Count,
                     OutsCount = cp.Outs.Count,
-                    PatientTransfersCount = cp.PatientTransfers.Count,
+                    PatientTransfersCount = cp.Transfers.Count,
                     PlannedProceduresCount = cp.PlannedProcedures.Count,
                     ProtocolDrugTherapiesCount = cp.ProtocolDrugTherapies.Count
                 })

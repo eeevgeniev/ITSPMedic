@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.GenMarkers;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -18,6 +19,8 @@ namespace Medic.Entities
                 .ForMember(gm => gm.ChemotherapyPartId, config => config.Ignore())
                 .ForMember(gm => gm.ChemotherapyPart, config => config.Ignore())
                 .ForMember(gm => gm.Id, config => config.Ignore());
+
+            expression.CreateMap<GenMarker, GenMarkerPreviewViewModel>();
         }
     }
 }

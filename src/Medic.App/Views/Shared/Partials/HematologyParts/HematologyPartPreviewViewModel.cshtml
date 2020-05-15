@@ -1,0 +1,13 @@
+﻿@model HematologyPartPreviewViewModel
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default)
+{
+    <div>
+        <partial name="~/Views/Shared/Partials/Evaluations/EvaluationPreviewViewModel.cshtml" model="@Model.PredMarker" />
+    </div>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

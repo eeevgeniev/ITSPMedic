@@ -12,6 +12,8 @@ namespace Medic.Models.CLPR
 
         private DateTime _sendDate;
         private DateTime _decisionDate;
+
+        [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
@@ -77,15 +79,19 @@ namespace Medic.Models.CLPR
 
         public Chairman Chairman { get; set; }
 
+        [XmlElement(ElementName = "Members")]
         public List<Member> Members { get; set; }
 
+        [XmlElement(ElementName = "MainDiag")]
         public Diag MainDiag { get; set; }
 
+        [XmlElement(ElementName = "AddDiag")]
         public List<Diag> AddDiag { get; set; }
 
         [XmlElement(ElementName = "APr38")]
         public APr38 APr38 { get; set; }
 
+        [XmlElement(ElementName = "APr05")]
         public APr05 APr05 { get; set; }
 
         [XmlElement(ElementName = "Sign")]

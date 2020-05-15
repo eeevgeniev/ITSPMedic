@@ -15,7 +15,7 @@ namespace Medic.Entities
     {
         public int Id { get; set; }
 
-        public ICollection<Choise> Choises { get; set; } = new HashSet<Choise>();
+        public ICollection<Choice> Choices { get; set; } = new HashSet<Choice>();
 
         public ChemotherapyPart ChemotherapyPart { get; set; }
 

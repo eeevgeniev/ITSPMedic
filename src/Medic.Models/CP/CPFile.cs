@@ -69,6 +69,6 @@ namespace Medic.Models.CP
         public List<ProtocolDrugTherapy> ProtocolDrugTherapies { get; set; }
 
         [XmlElement(ElementName = "PatientTransfers")]
-        public List<PatientTransfer> PatientTransfers { get; set; }
+        public PatientTransfer PatientTransfer { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace Medic.Models.CLPR
         [XmlElement(ElementName = "Sender")]
         public Sender Sender { get; set; }
 
+        [XmlElement(ElementName = "Doctor")]
         public Doctor Doctor { get; set; }
 
         [XmlElement(ElementName = "Disp_Num")]
@@ -148,14 +149,19 @@ namespace Medic.Models.CLPR
         [XmlElement(ElementName = "MainDiag2")]
         public Diag SecondMainDiag { get; set; }
 
+        [XmlElement(ElementName = "Anamnesa")]
         public string Anamnesa { get; set; }
 
+        [XmlElement(ElementName = "HState")]
         public string HState { get; set; }
 
+        [XmlElement(ElementName = "Therapy")]
         public string Therapy { get; set; }
 
+        [XmlElement(ElementName = "Sign")]
         public int Sign { get; set; }
 
+        [XmlElement(ElementName = "NZOKPay")]
         public int NZOKPay { get; set; }
     }
 }

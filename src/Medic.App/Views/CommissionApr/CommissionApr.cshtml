@@ -1,0 +1,61 @@
+﻿@model CommissionAprPageCommissionAprModel
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@if (Model.CommissionApr != default)
+{
+    <article>
+        <header>
+            <h1>@medicDataLocalization.Get("CommissionAprView")</h1>
+        </header>
+        <h2 class="text-center">@medicDataLocalization.Get("Patient")</h2>
+        <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.CommissionApr.Patient" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("Chairman")</h2>
+        <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.CommissionApr.Chairman" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("Sender")</h2>
+        <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.CommissionApr.Sender" />
+        <hr />
+        <div>@medicDataLocalization.Get("DateSend"): @Model.CommissionApr.SendDate.ToShortDateString()</div>
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("MainDiag")</h2>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.CommissionApr.MainDiag" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("AddDiag")</h2>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModels.cshtml" model="@Model.CommissionApr.AddDiag" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("APr05")</h2>
+        <partial name="~/Views/Shared/Partials/APr05s/APr05PreviewViewModel.cshtml" model="@Model.CommissionApr.APr05" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("APr38s")</h2>
+        <partial name="~/Views/Shared/Partials/APr38s/APr38PreviewViewModel.cshtml" model="@Model.CommissionApr.APr38" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("AdditionalInformation")</h2>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("PatientBranch"): @Model.CommissionApr.PatientBranch</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("PatientHRegion"): @Model.CommissionApr.PatientHRegion</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("AprSend"): @Model.CommissionApr.AprSend</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("AprPriem"): @Model.CommissionApr.AprPriem</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("SpecCommission"): @Model.CommissionApr.SpecCommission</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("NoDecision"): @Model.CommissionApr.NoDecision</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("DecisionDate"): @Model.CommissionApr.DecisionDate.ToString("g")</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Sign"): @Model.CommissionApr.Sign</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("NZOKPay"): @Model.CommissionApr.NZOKPay</div>
+        </div>
+    </article>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

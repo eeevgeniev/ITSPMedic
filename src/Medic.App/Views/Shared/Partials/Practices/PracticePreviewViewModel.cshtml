@@ -1,0 +1,27 @@
+﻿@model PracticePreviewViewModel
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default)
+{
+    <div class="row">
+        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("Branch")</div>
+        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("Number")</div>
+        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("Code")</div>
+        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("Name")</div>
+        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("HealthRegion")</div>
+        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("Address")</div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-2">@Model.Branch</div>
+        <div class="col-sm-2">@Model.Number</div>
+        <div class="col-sm-2">@Model.Code</div>
+        <div class="col-sm-2">@Model.Name</div>
+        <div class="col-sm-2">@Model.HealthRegion</div>
+        <div class="col-sm-2">@Model.Address</div>
+    </div>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

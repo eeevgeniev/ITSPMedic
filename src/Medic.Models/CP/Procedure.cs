@@ -69,16 +69,19 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "HLNo")]
         public string HLNumber { get; set; }
 
+        [XmlElement(ElementName = "HLTotalDays")]
         public int? HLTotalDays { get; set; }
 
         [XmlElement(ElementName = "stateAtDischarge")]
         public int? StateAtDischarge { get; set; }
 
+        [XmlElement(ElementName = "Laparoscopic")]
         public int? Laparoscopic { get; set; }
 
         [XmlElement(ElementName = "Pathologic_Finding")]
         public int? PathologicFinding { get; set; }
 
+        [XmlElement(ElementName = "EndCourse")]
         public int? EndCourse { get; set; }
 
         [XmlElement(ElementName = "sendAPr")]

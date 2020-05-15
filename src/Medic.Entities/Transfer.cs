@@ -5,11 +5,7 @@ using System;
 
 namespace Medic.Entities
 {
-    /// <summary>
-    /// CP -> PatientTransfer
-    /// </summary>
-    [Serializable]
-    public partial class PatientTransfer : BaseEntity, IModelBuilder, IModelTransformer
+    public partial class Transfer : BaseEntity, IModelBuilder, IModelTransformer
     {
         public int Id { get; set; }
 
@@ -17,7 +13,7 @@ namespace Medic.Entities
 
         public int IZNumber { get; set; }
 
-        public int? FirstMainDiagId { get; set; } 
+        public int? FirstMainDiagId { get; set; }
 
         public Diag FirstMainDiag { get; set; }
 
@@ -29,17 +25,17 @@ namespace Medic.Entities
 
         public int ClinicalProcedure { get; set; }
 
-        public int ClinicalPath { get; set; }
+        public double ClinicalPath { get; set; }
+
+        public double DischargeWard { get; set; }
+
+        public double TransferWard { get; set; }
+
+        public DateTime? TransferDateTime { get; set; }
 
         public int? HospitalPracticeId { get; set; }
 
         public HospitalPractice HospitalPractice { get; set; }
-
-        public decimal DischargeWard { get; set; }
-
-        public decimal TransferWard { get; set; }
-
-        public DateTime? TransferDateTime { get; set; }
 
         public int? CPFileId { get; set; }
 

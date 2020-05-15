@@ -1,0 +1,18 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Medic.AppModels.Choices
+{
+    public class ChoicePreviewViewModel
+    {
+        public int Id { get; set; }
+
+        [Display(Name = nameof(Number))]
+        public int Number { get; set; }
+
+        [Display(Name = nameof(Checked))]
+        public int Checked { get; set; }
+
+        [Display(Name = nameof(Text))]
+        public string Text { get; set; }
+    }
+}

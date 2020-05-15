@@ -1,0 +1,36 @@
+﻿@model ChemotherapyPartPreviewViewModel
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default)
+{
+    <div>
+        <div class="row">
+            <div class="col-sm-3">@medicDataLocalization.Get("DiagnoseDate"): @Model.DiagnoseDate.ToString("g")</div>
+            <div class="col-sm-3">@medicDataLocalization.Get("ExpandDiagnose"): @Model.ExpandDiagnose</div>
+            <div class="col-sm-3">@medicDataLocalization.Get("ECOG"): @Model.ECOG</div>
+            <div class="col-sm-3">@medicDataLocalization.Get("Staging"): @Model.Staging</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">@medicDataLocalization.Get("TNM"): @Model.TNM</div>
+            <div class="col-sm-3">@medicDataLocalization.Get("TherapyType"): @Model.TherapyType</div>
+            <div class="col-sm-3">@medicDataLocalization.Get("EvalAfterCycle"): @Model.EvalAfterCycle</div>
+            <div class="col-sm-3">@medicDataLocalization.Get("Interval"): @Model.Interval</div>
+        </div>
+        <hr />
+        <h6 class="text-center">@medicDataLocalization.Get("Diag")</h6>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.AddDiag" />
+        <hr />
+        <h6 class="text-center">@medicDataLocalization.Get("Histology")</h6>
+        <partial name="~/Views/Shared/Partials/Histologies/HistologyPreviewViewModel.cshtml" model="@Model.Histology" />
+        <hr />
+        <h6 class="text-center">@medicDataLocalization.Get("GenMarkers")</h6>
+        <partial name="~/Views/Shared/Partials/GenMarkers/GenMarkerPreviewViewModels.cshtml" model="@Model.GenMarkers" />
+        <hr />
+        <h6 class="text-center">@medicDataLocalization.Get("Evaluation")</h6>
+        <partial name="~/Views/Shared/Partials/Evaluations/EvaluationPreviewViewModel.cshtml" model="@Model.Evaluation" />
+    </div>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

@@ -45,7 +45,7 @@ namespace Medic.Entities
             expression.CreateMap<InClinicProcedure, InClinicProcedureViewModel>()
                 .ForMember(icpvm => icpvm.PatientBranch, config => config.MapFrom(icp => icp.PatientBranch == default && icp.PatientBranch.HealthRegion == default ? default : icp.PatientBranch.HealthRegion.Name))
                 .ForMember(icpvm => icpvm.PatientHealthRegion, config => config.MapFrom(icp => icp.PatientHealthRegion == default ? default : icp.PatientHealthRegion.Name))
-                .ForMember(icpvm => icpvm.PatientStatus, config => config.MapFrom(icp => icp.PacientStatus));
+                .ForMember(icpvm => icpvm.PatientStatus, config => config.MapFrom(icp => icp.PatientStatus));
         }
     }
 }

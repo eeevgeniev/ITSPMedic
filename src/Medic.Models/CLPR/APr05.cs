@@ -29,12 +29,16 @@ namespace Medic.Models.CLPR
             }
         }
 
+        [XmlElement(ElementName = "Histology")]
         public Histology Histology { get; set; }
 
+        [XmlElement(ElementName = "Staging")]
         public string Staging { get; set; }
 
+        [XmlElement(ElementName = "Imuno")]
         public string Imuno { get; set; }
 
+        [XmlElement(ElementName = "Genetic")]
         public string Genetic { get; set; }
 
         [XmlElement(ElementName = "Part_Hematology")]
@@ -43,8 +47,10 @@ namespace Medic.Models.CLPR
         [XmlElement(ElementName = "Part_Chemotherapy")]
         public ClinicChemotherapyPart ClinicChemotherapyPart { get; set; }
 
+        [XmlElement(ElementName = "Sign")]
         public string Sign { get; set; }
 
+        [XmlElement(ElementName = "NZOKPay")]
         public int NZOKPay { get; set; }
     }
 }

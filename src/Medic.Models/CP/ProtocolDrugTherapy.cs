@@ -12,6 +12,7 @@ namespace Medic.Models.CP
         private DateTime _decisionDate;
         private DateTime _protocolDate;
 
+        [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
@@ -78,6 +79,7 @@ namespace Medic.Models.CP
             }
         }
 
+        [XmlElement(ElementName = "Diag")]
         public Diag Diag { get; set; }
 
         [XmlElement(ElementName = "height")]
@@ -114,6 +116,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "Members")]
         public List<Member> Members { get; set; }
 
+        [XmlElement(ElementName = "Sign")]
         public int Sign { get; set; }
     }
 }

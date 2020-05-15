@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.HematologyParts;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -15,10 +16,11 @@ namespace Medic.Entities
             expression.CreateMap<HematologyPart, CP.HematologyPart>();
 
             expression.CreateMap<CP.HematologyPart, HematologyPart>()
-                .ForMember(hp => hp.PredMarker, config => config.Ignore())
                 .ForMember(hp => hp.PredMarkerId, config => config.Ignore())
                 .ForMember(hp => hp.ProtocolDrugTherapy, config => config.Ignore())
                 .ForMember(hp => hp.Id, config => config.Ignore());
+
+            expression.CreateMap<HematologyPart, HematologyPartPreviewViewModel>();
         }
     }
 }

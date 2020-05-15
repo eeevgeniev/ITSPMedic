@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using AutoMapper.Configuration;
+using Medic.AppModels.Evaluations;
 using CP = Medic.Models.CP;
 
 namespace Medic.Entities
@@ -39,6 +39,8 @@ namespace Medic.Entities
                 .ForMember(e => e.ChemotherapyPart, config => config.Ignore())
                 .ForMember(e => e.HematologyPart, config => config.Ignore())
                 .ForMember(e => e.Id, config => config.Ignore());
+
+            expression.CreateMap<Evaluation, EvaluationPreviewViewModel>();
         }
     }
 }

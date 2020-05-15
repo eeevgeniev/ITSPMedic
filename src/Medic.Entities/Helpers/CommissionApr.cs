@@ -56,6 +56,10 @@ namespace Medic.Entities
             expression.CreateMap<CommissionApr, PatientCommissionAprPreviewViewModel>()
                 .ForMember(pca => pca.MKBCode, config => config.MapFrom(ca => ca.MainDiag.MKB.Code))
                 .ForMember(pca => pca.MKBName, config => config.MapFrom(ca => ca.MainDiag.MKB.Name));
+
+            expression.CreateMap<CommissionApr, CommissionAprViewModel>()
+                .ForMember(cavm => cavm.PatientBranch, config => config.MapFrom(ca => ca.PatientBranch != default && ca.PatientBranch.HealthRegion != default ? ca.PatientBranch.HealthRegion.Name : default))
+                .ForMember(cavm => cavm.PatientHRegion, config => config.MapFrom(ca => ca.PatientHRegion != default ? ca.PatientHRegion.Name : default));
         }
     }
 }

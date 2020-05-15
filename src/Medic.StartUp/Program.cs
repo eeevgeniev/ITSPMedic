@@ -111,13 +111,14 @@ namespace Medic.FileImport
             {
                 using StreamReader sr = new StreamReader(file, Encoding.UTF8);
                 cpFile = xmlSerializer.Deserialize(sr) as CP.CPFile;
-
+                
                 if (cpFile != default)
                 {
                     cpFileEntity = mapper.Map<CPFile, CP.CPFile>(cpFile);
 
                     using MedicContext medicContext = new MedicContext(builder.Options);
                     using IImportMedicFile importMedicFile = new ImportMedicFile(medicContext);
+
                     importMedicFile.ImportCPFile(cpFileEntity);
 
                     Console.WriteLine($"{file} - imported, ({counter++}/{files.Length}).");

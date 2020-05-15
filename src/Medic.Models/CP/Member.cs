@@ -10,6 +10,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "UIN")]
         public string UniqueIdentifier { get; set; }
 
+        [XmlElement(ElementName = "DoctorName")]
         public string DoctorName { get; set; }
     }
 }

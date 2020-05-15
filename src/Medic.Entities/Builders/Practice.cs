@@ -18,9 +18,9 @@ namespace Medic.Entities
 
                 b.Property(model => model.Code).HasMaxLength(12);
 
-                b.Property(model => model.Name).HasMaxLength(50);
+                b.Property(model => model.Name).HasMaxLength(200);
 
-                b.Property(model => model.Address).HasMaxLength(50);
+                b.Property(model => model.Address).HasMaxLength(200);
             });
         }
     }

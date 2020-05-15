@@ -1,0 +1,23 @@
+﻿@model APr05PreviewViewModel
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default)
+{
+    <div>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("DiagnoseDate"): @Model.DiagnoseDate.ToString("g")</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Staging"): @Model.Staging</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Imuno"): @Model.Imuno</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("Genetic"): @Model.Genetic</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Sign"): @Model.Sign</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("NZOKPay"): @Model.NZOKPay</div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

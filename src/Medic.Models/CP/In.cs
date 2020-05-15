@@ -25,6 +25,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "inType")]
         public int InType { get; set; }
 
+        [XmlElement(ElementName = "Sender")]
         public Sender Sender { get; set; }
 
         [XmlIgnore]

@@ -32,13 +32,6 @@ namespace Medic.Services
             }
 
             return await MedicContext.Ins
-                .Include(i => i.Patient)
-                .Include(i => i.PatientBranch)
-                .Include(i => i.PatientHRegion)
-                .Include(i => i.Sender)
-                .Include(i => i.SendDiagnose)
-                .Include(i => i.Diagnoses)
-                .Include(i => i.CPFile)
                 .ProjectTo<InViewModel>(Configuration)
                 .SingleOrDefaultAsync(i => i.Id == id);
         }
@@ -46,11 +39,6 @@ namespace Medic.Services
         public async Task<List<InPreviewViewModel>> GetInsAsync(InsSerach search, int startIndex, int count)
         {
             return await GetQueryable(MedicContext.Ins, search)
-                .Include(i => i.SendDiagnose)
-                    .ThenInclude(sd => sd.Primary)
-                .Include(i => i.Patient)
-                .Include(i => i.Diagnoses)
-                    .ThenInclude(d => d.Primary)
                 .ProjectTo<InPreviewViewModel>(Configuration)
                 .Skip(startIndex)
                 .Take(count)
