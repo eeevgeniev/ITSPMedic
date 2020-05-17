@@ -252,7 +252,8 @@
                     <div class="row">
                         <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("DispDate")</div>
                         <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
-                        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
+                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("View")</div>
                     </div>
 
                     foreach (var currentDispObservation in Model.Patient.DispObservations.OrderBy(obs => obs.DispDate))
@@ -261,7 +262,13 @@
                         <div class="row">
                             <div class="col-sm-2">@currentDispObservation.DispDate.ToString("g")</div>
                             <div class="col-sm-2">@currentDispObservation.MKBCode</div>
-                            <div class="col-sm-8">@currentDispObservation.MKBName</div>
+                            <div class="col-sm-6">@currentDispObservation.MKBName</div>
+                            <div class="col-sm-2">
+                                <a asp-controller="@MedicBaseController.GetName(nameof(DispObservationController))"
+                                   asp-action="@nameof(DispObservationController.DispObservation)"
+                                   asp-route-id="@currentDispObservation.Id"
+                                   class="btn btn-info">@patientLocalization.Get("View")</a>
+                            </div>
                         </div>
                     }
                 }
@@ -276,11 +283,12 @@
                 </header>
                 @if (Model.Patient.PlannedProcedures != default && Model.Patient.PlannedProcedures.Count > 0)
                 {
-                    <div class="row">
-                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("ExaminationDate")</div>
-                        <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
-                        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
-                    </div>
+            <div class="row">
+                <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("ExaminationDate")</div>
+                <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MKBCode")</div>
+                <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("MKBName")</div>
+                <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("View")</div>
+            </div>
 
                     foreach (var currentPlannedProcedure in Model.Patient.PlannedProcedures.OrderBy(pp => pp.ExaminationDate))
                     {
@@ -288,7 +296,13 @@
                         <div class="row">
                             <div class="col-sm-2">@currentPlannedProcedure.ExaminationDate.ToString("g")</div>
                             <div class="col-sm-2">@currentPlannedProcedure.MKBCode</div>
-                            <div class="col-sm-8">@currentPlannedProcedure.MKBName</div>
+                            <div class="col-sm-6">@currentPlannedProcedure.MKBName</div>
+                            <div class="col-sm-2">
+                                <a asp-controller="@MedicBaseController.GetName(nameof(PlannedProcedureController))"
+                                   asp-action="@nameof(PlannedProcedureController.PlannedProcedure)"
+                                   asp-route-id="@currentPlannedProcedure.Id"
+                                   class="btn btn-info">@patientLocalization.Get("View")</a>
+                            </div>
                         </div>
                     }
                 }

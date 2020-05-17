@@ -144,8 +144,14 @@
   <data name="AllDose" xml:space="preserve">
     <value>All dose</value>
   </data>
+  <data name="Anamnesa" xml:space="preserve">
+    <value>Anamnesa</value>
+  </data>
   <data name="ApplicationWay" xml:space="preserve">
     <value>Application way</value>
+  </data>
+  <data name="AprCode" xml:space="preserve">
+    <value>Apr code</value>
   </data>
   <data name="APrPriem" xml:space="preserve">
     <value>APr priem</value>
@@ -297,6 +303,9 @@
   <data name="Diag" xml:space="preserve">
     <value>Diag</value>
   </data>
+  <data name="DiagDate" xml:space="preserve">
+    <value>Diag date</value>
+  </data>
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Diagnose date</value>
   </data>
@@ -309,11 +318,20 @@
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Disease course</value>
   </data>
+  <data name="DispancerDate" xml:space="preserve">
+    <value>Dispancer date</value>
+  </data>
   <data name="DispDate" xml:space="preserve">
     <value>Disp date</value>
   </data>
+  <data name="DispNum" xml:space="preserve">
+    <value>Disp num</value>
+  </data>
   <data name="DispObservationsCount" xml:space="preserve">
     <value>Disp observations count</value>
+  </data>
+  <data name="DispVisit" xml:space="preserve">
+    <value>Disp visit</value>
   </data>
   <data name="Drug Name" xml:space="preserve">
     <value>Drug name</value>
@@ -396,6 +414,9 @@
   <data name="HLTotalDays" xml:space="preserve">
     <value>HL total days</value>
   </data>
+  <data name="HState" xml:space="preserve">
+    <value>H state</value>
+  </data>
   <data name="ICDDrug" xml:space="preserve">
     <value>ICD drug</value>
   </data>
@@ -473,6 +494,12 @@
   </data>
   <data name="MaxLengthUsername" xml:space="preserve">
     <value>Username cannot be longer than 100 character.</value>
+  </data>
+  <data name="MDICode" xml:space="preserve">
+    <value>MDI code</value>
+  </data>
+  <data name="MDIName" xml:space="preserve">
+    <value>MDI name</value>
   </data>
   <data name="MedicalWard" xml:space="preserve">
     <value>Medical ward</value>
@@ -599,6 +626,9 @@
   </data>
   <data name="Payer" xml:space="preserve">
     <value>Payer</value>
+  </data>
+  <data name="PlannedEntryDate" xml:space="preserve">
+    <value>Planned entry date</value>
   </data>
   <data name="PlannedNumber" xml:space="preserve">
     <value>Planned number</value>

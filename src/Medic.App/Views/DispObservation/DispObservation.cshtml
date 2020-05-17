@@ -1,0 +1,17 @@
+﻿@model DispObservationPageDispObservationModel
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@if (Model.DispObservation != default)
+{
+    <article>
+        
+    </article>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

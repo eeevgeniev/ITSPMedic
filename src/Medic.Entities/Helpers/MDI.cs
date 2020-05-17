@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Medic.AppModels.MDIs;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -18,6 +19,8 @@ namespace Medic.Entities
                 .ForMember(m => m.DispObservation, config => config.Ignore())
                 .ForMember(m => m.DispObservationId, config => config.Ignore())
                 .ForMember(m => m.Id, config => config.Ignore());
+
+            expression.CreateMap<MDI, MDISummaryViewModel>();
         }
     }
 }

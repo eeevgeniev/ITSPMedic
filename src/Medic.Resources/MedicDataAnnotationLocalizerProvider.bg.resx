@@ -144,8 +144,14 @@
   <data name="AllDose" xml:space="preserve">
     <value>Всички дози</value>
   </data>
+  <data name="Anamnesa" xml:space="preserve">
+    <value>Анамнеза</value>
+  </data>
   <data name="ApplicationWay" xml:space="preserve">
     <value>Начин на приложение</value>
+  </data>
+  <data name="AprCode" xml:space="preserve">
+    <value>Apr код</value>
   </data>
   <data name="APrPriem" xml:space="preserve">
     <value>APr priem</value>
@@ -297,6 +303,9 @@
   <data name="Diag" xml:space="preserve">
     <value>Diag</value>
   </data>
+  <data name="DiagDate" xml:space="preserve">
+    <value>Diag дата</value>
+  </data>
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Дата на диагноза</value>
   </data>
@@ -309,11 +318,20 @@
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Disease course</value>
   </data>
+  <data name="DispancerDate" xml:space="preserve">
+    <value>Dispancer дата</value>
+  </data>
   <data name="DispDate" xml:space="preserve">
     <value>Disp дата</value>
   </data>
+  <data name="DispNum" xml:space="preserve">
+    <value>Disp num</value>
+  </data>
   <data name="DispObservationsCount" xml:space="preserve">
     <value>Disp observations брой</value>
+  </data>
+  <data name="DispVisit" xml:space="preserve">
+    <value>Disp visit</value>
   </data>
   <data name="Drug Name" xml:space="preserve">
     <value>Име на клекарството</value>
@@ -399,6 +417,9 @@
   <data name="HLTotalDays" xml:space="preserve">
     <value>HL брой дни</value>
   </data>
+  <data name="HState" xml:space="preserve">
+    <value>H state</value>
+  </data>
   <data name="ICDDrug" xml:space="preserve">
     <value>ICD лекарство</value>
   </data>
@@ -476,6 +497,12 @@
   </data>
   <data name="MaxLengthUsername" xml:space="preserve">
     <value>Потребителското име не може да е по-дълго от 100 символа.</value>
+  </data>
+  <data name="MDICode" xml:space="preserve">
+    <value>MDI код</value>
+  </data>
+  <data name="MDIName" xml:space="preserve">
+    <value>MDI име</value>
   </data>
   <data name="MedicalWard" xml:space="preserve">
     <value>Medical ward</value>
@@ -602,6 +629,9 @@
   </data>
   <data name="Payer" xml:space="preserve">
     <value>Payer</value>
+  </data>
+  <data name="PlannedEntryDate" xml:space="preserve">
+    <value>Планирана дата на приемане</value>
   </data>
   <data name="PlannedNumber" xml:space="preserve">
     <value>Планиран номер</value>

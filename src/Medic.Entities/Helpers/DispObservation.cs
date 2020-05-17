@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Medic.AppModels.DispObservations;
+using System.ComponentModel;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -38,6 +39,10 @@ namespace Medic.Entities
             expression.CreateMap<DispObservation, PatientDispObservationPreviewViewModel>()
                 .ForMember(pdisp => pdisp.MKBCode, config => config.MapFrom(disp => disp.FirstMainDiag.MKB.Code))
                 .ForMember(pdisp => pdisp.MKBName, config => config.MapFrom(disp => disp.FirstMainDiag.MKB.Name));
+
+            expression.CreateMap<DispObservation, DispObservationViewModel>()
+                .ForMember(dovm => dovm.PatientBranch, config => config.MapFrom(disp => disp.PatientBranch != default && disp.PatientBranch.HealthRegion != default ? disp.PatientBranch.HealthRegion.Name : default))
+                .ForMember(dovm => dovm.PatientHRegion, config => config.MapFrom(disp => disp.PatientHRegion != default ? disp.PatientHRegion.Name : default));
         }
     }
 }

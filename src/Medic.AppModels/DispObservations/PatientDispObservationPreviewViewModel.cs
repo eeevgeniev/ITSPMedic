@@ -5,6 +5,8 @@ namespace Medic.AppModels.DispObservations
 {
     public class PatientDispObservationPreviewViewModel
     {
+        public int Id { get; set; }
+        
         [Display(Name = nameof(DispDate))]
         public DateTime DispDate { get; set; }
 

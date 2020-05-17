@@ -1,0 +1,12 @@
+﻿@model PlannedProcedurePagePlannedProcedureModel
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model.PlannedProcedure != default)
+{
+    <article>
+    </article>
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

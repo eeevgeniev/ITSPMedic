@@ -141,6 +141,9 @@
   <data name="AllDose" xml:space="preserve">
     <value>All dose</value>
   </data>
+  <data name="Anamnesa" xml:space="preserve">
+    <value>Anamnesa</value>
+  </data>
   <data name="ApplicationWay" xml:space="preserve">
     <value>Application way</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="APr38" xml:space="preserve">
     <value>APr38</value>
+  </data>
+  <data name="AprCode" xml:space="preserve">
+    <value>Apr code</value>
   </data>
   <data name="APrPriem" xml:space="preserve">
     <value>APr priem</value>
@@ -297,6 +303,9 @@
   <data name="Diag" xml:space="preserve">
     <value>Diag</value>
   </data>
+  <data name="DiagDate" xml:space="preserve">
+    <value>Diag date</value>
+  </data>
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Diagnose date</value>
   </data>
@@ -318,11 +327,26 @@
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Disease course</value>
   </data>
+  <data name="DispancerDate" xml:space="preserve">
+    <value>Dispancer date</value>
+  </data>
   <data name="DispDate" xml:space="preserve">
     <value>Disp date</value>
   </data>
+  <data name="DispNum" xml:space="preserve">
+    <value>Disp num</value>
+  </data>
+  <data name="DispObservation" xml:space="preserve">
+    <value>Disp observation</value>
+  </data>
   <data name="DispObservations" xml:space="preserve">
     <value>Disp observations</value>
+  </data>
+  <data name="DispObservationSummary" xml:space="preserve">
+    <value>Disp observation, patient, mkb</value>
+  </data>
+  <data name="DispVisit" xml:space="preserve">
+    <value>Disp visit</value>
   </data>
   <data name="Doctor" xml:space="preserve">
     <value>Doctor</value>
@@ -423,6 +447,9 @@
   <data name="HospitalPracticesSummary" xml:space="preserve">
     <value>Hospital practices summary</value>
   </data>
+  <data name="HState" xml:space="preserve">
+    <value>H state</value>
+  </data>
   <data name="ICDDrug" xml:space="preserve">
     <value>ICD Drug</value>
   </data>
@@ -506,6 +533,12 @@
   </data>
   <data name="MainDiag" xml:space="preserve">
     <value>Main diag</value>
+  </data>
+  <data name="MDICode" xml:space="preserve">
+    <value>MDI code</value>
+  </data>
+  <data name="MDIName" xml:space="preserve">
+    <value>MDI name</value>
   </data>
   <data name="MKBCode" xml:space="preserve">
     <value>MKB code</value>
@@ -633,11 +666,20 @@
   <data name="Payer" xml:space="preserve">
     <value>Payer</value>
   </data>
+  <data name="PlannedEntryDate" xml:space="preserve">
+    <value>Planned entry date</value>
+  </data>
   <data name="PlannedNumber" xml:space="preserve">
     <value>Planned number</value>
   </data>
+  <data name="PlannedProcedure" xml:space="preserve">
+    <value>Planned procedure</value>
+  </data>
   <data name="PlannedProcedures" xml:space="preserve">
     <value>Planned procedures</value>
+  </data>
+  <data name="PlannedProcedureSummary" xml:space="preserve">
+    <value>Planned procedure, patient, mkb</value>
   </data>
   <data name="PlanVisitDate" xml:space="preserve">
     <value>Plan visit date</value>

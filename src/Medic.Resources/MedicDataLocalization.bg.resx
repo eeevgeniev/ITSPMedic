@@ -141,6 +141,9 @@
   <data name="AllDose" xml:space="preserve">
     <value>Всички дози</value>
   </data>
+  <data name="Anamnesa" xml:space="preserve">
+    <value>Анамнеза</value>
+  </data>
   <data name="ApplicationWay" xml:space="preserve">
     <value>Начин на приложение</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="APr38" xml:space="preserve">
     <value>APr38</value>
+  </data>
+  <data name="AprCode" xml:space="preserve">
+    <value>Apr код</value>
   </data>
   <data name="APrPriem" xml:space="preserve">
     <value>APr priem</value>
@@ -297,6 +303,9 @@
   <data name="Diag" xml:space="preserve">
     <value>Diag</value>
   </data>
+  <data name="DiagDate" xml:space="preserve">
+    <value>Diag дата</value>
+  </data>
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Дата на диагноза</value>
   </data>
@@ -318,11 +327,26 @@
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Disease course</value>
   </data>
+  <data name="DispancerDate" xml:space="preserve">
+    <value>Dispancer дата</value>
+  </data>
   <data name="DispDate" xml:space="preserve">
     <value>Disp дата</value>
   </data>
+  <data name="DispNum" xml:space="preserve">
+    <value>Disp num</value>
+  </data>
+  <data name="DispObservation" xml:space="preserve">
+    <value>Disp observation</value>
+  </data>
   <data name="DispObservations" xml:space="preserve">
     <value>Disp observations</value>
+  </data>
+  <data name="DispObservationSummary" xml:space="preserve">
+    <value>Disp observation, пациент, мкб</value>
+  </data>
+  <data name="DispVisit" xml:space="preserve">
+    <value>Disp visit</value>
   </data>
   <data name="Doctor" xml:space="preserve">
     <value>Доктор</value>
@@ -423,6 +447,9 @@
   <data name="HospitalPracticesSummary" xml:space="preserve">
     <value>Справка за действията в болницата</value>
   </data>
+  <data name="HState" xml:space="preserve">
+    <value>H state</value>
+  </data>
   <data name="ICDDrug" xml:space="preserve">
     <value>ICD лекарство</value>
   </data>
@@ -506,6 +533,12 @@
   </data>
   <data name="MainDiag" xml:space="preserve">
     <value>Основна diag</value>
+  </data>
+  <data name="MDICode" xml:space="preserve">
+    <value>MDI код</value>
+  </data>
+  <data name="MDIName" xml:space="preserve">
+    <value>MDI име</value>
   </data>
   <data name="MKBCode" xml:space="preserve">
     <value>MKB код</value>
@@ -633,11 +666,20 @@
   <data name="Payer" xml:space="preserve">
     <value>Payer</value>
   </data>
+  <data name="PlannedEntryDate" xml:space="preserve">
+    <value>Планирана дата на приемане</value>
+  </data>
   <data name="PlannedNumber" xml:space="preserve">
     <value>Планиран номер</value>
   </data>
+  <data name="PlannedProcedure" xml:space="preserve">
+    <value>Планирана процедура</value>
+  </data>
   <data name="PlannedProcedures" xml:space="preserve">
     <value>Планирани процедури</value>
+  </data>
+  <data name="PlannedProcedureSummary" xml:space="preserve">
+    <value>Планирана процедура, пациент, мкб</value>
   </data>
   <data name="PlanVisitDate" xml:space="preserve">
     <value>Дата на планираното посещение</value>
