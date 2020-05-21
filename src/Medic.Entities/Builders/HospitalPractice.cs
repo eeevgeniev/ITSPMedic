@@ -14,6 +14,8 @@ namespace Medic.Entities
                     .WithMany(hr => hr.HospitalPractices)
                     .HasForeignKey(model => model.HealthRegionId);
 
+                b.HasIndex(model => model.HealthRegionId).IsUnique(false);
+
                 b.HasMany(model => model.InClinicProcedures)
                     .WithOne(icp => icp.HospitalPractice)
                     .HasForeignKey(icp => icp.HospitalPracticeId);
@@ -42,9 +44,13 @@ namespace Medic.Entities
                     .WithMany(p => p.HospitalPractices)
                     .HasForeignKey(model => model.PracticeId);
 
+                b.HasIndex(model => model.PracticeId).IsUnique(false);
+
                 b.HasOne(model => model.FileType)
                     .WithMany(ft => ft.HospitalPractice)
                     .HasForeignKey(model => model.FileTypeId);
+
+                b.HasIndex(model => model.FileTypeId).IsUnique(false);
             });
         }
     }

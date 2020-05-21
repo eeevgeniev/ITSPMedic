@@ -12,7 +12,7 @@ namespace Medic.Models.CLPR
         
         private DateTime _dispDate;
         private DateTime _diagDate;
-        private DateTime? _dispancerDate;
+        private DateTime? _dispanserDate;
         
         [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
@@ -22,9 +22,6 @@ namespace Medic.Models.CLPR
 
         [XmlElement(ElementName = "patientHRegion")]
         public int? PatientHRegion { get; set; }
-
-        [XmlElement(ElementName = "Sender")]
-        public Sender Sender { get; set; }
 
         [XmlElement(ElementName = "Doctor")]
         public Doctor Doctor { get; set; }
@@ -118,22 +115,22 @@ namespace Medic.Models.CLPR
         }
 
         [XmlIgnore]
-        public DateTime? DispancerDate
+        public DateTime? DispanserDate
         {
-            get { return _dispancerDate; }
-            set { _dispancerDate = value; }
+            get { return _dispanserDate; }
+            set { _dispanserDate = value; }
         }
 
-        [XmlElement(ElementName = "Dispancer_Date")]
-        public string DispancerDateAsString
+        [XmlElement(ElementName = "Dispanser_Date")]
+        public string DispanserDateAsString
         {
             get
             {
-                return _dispancerDate == default ? default : ((DateTime)_dispancerDate).ToString(DateFormat);
+                return _dispanserDate == default ? default : ((DateTime)_dispanserDate).ToString(DateFormat);
             }
             set
             {
-                _dispancerDate = DateTime.Parse(value, CultureInfo.InvariantCulture);
+                _dispanserDate = DateTime.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 

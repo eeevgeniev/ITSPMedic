@@ -14,6 +14,8 @@ namespace Medic.Entities
                     .WithMany(s => s.Patients)
                     .HasForeignKey(model => model.SexId);
 
+                b.HasIndex(model => model.SexId).IsUnique(false);
+
                 b.HasIndex(model => model.IdentityNumber).IsUnique(false);
 
                 b.Property(model => model.IdentityNumber).HasMaxLength(50);

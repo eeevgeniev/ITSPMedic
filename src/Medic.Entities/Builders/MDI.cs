@@ -10,6 +10,8 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
+                b.HasIndex(model => model.DispObservationId).IsUnique(false);
+
                 b.Property(model => model.MDIName).HasMaxLength(100);
 
                 b.Property(model => model.MDICode).HasColumnType("decimal(15,4)");

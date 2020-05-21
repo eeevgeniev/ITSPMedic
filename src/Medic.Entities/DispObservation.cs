@@ -26,10 +26,6 @@ namespace Medic.Entities
 
         public HealthRegion PatientHRegion { get; set; }
 
-        public int? SenderId { get; set; }
-
-        public HealthcarePractitioner Sender { get; set; }
-
         public int? DoctorId { get; set; }
         
         public HealthcarePractitioner Doctor { get; set; }
@@ -42,7 +38,7 @@ namespace Medic.Entities
 
         public DateTime DiagDate { get; set; }
 
-        public DateTime? DispancerDate { get; set; }
+        public DateTime? DispanserDate { get; set; }
 
         public int DispVisit { get; set; }
 

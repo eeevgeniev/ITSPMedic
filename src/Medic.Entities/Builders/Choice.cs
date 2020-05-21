@@ -11,6 +11,8 @@ namespace Medic.Entities
                 b.HasKey(model => model.Id);
 
                 b.Property(model => model.Text).HasMaxLength(1000);
+
+                b.HasIndex(model => model.EvaluationId).IsUnique(false);
             });
         }
     }

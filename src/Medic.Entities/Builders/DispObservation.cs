@@ -14,21 +14,25 @@ namespace Medic.Entities
                     .WithMany(p => p.DispObservations)
                     .HasForeignKey(model => model.PatientId);
 
+                b.HasIndex(model => model.PatientId).IsUnique(false);
+
                 b.HasOne(model => model.PatientBranch)
                     .WithMany(pb => pb.DispObservations)
                     .HasForeignKey(model => model.PatientBranchId);
+
+                b.HasIndex(model => model.PatientBranchId).IsUnique(false);
 
                 b.HasOne(model => model.PatientHRegion)
                     .WithMany(hr => hr.DispObservations)
                     .HasForeignKey(model => model.PatientHRegionId);
 
-                b.HasOne(model => model.Sender)
-                    .WithMany(s => s.DispObservations)
-                    .HasForeignKey(model => model.SenderId);
+                b.HasIndex(model => model.PatientHRegionId).IsUnique(false);
 
                 b.HasOne(model => model.Doctor)
                     .WithMany(s => s.DoctorDispObservations)
                     .HasForeignKey(model => model.DoctorId);
+
+                b.HasIndex(model => model.DoctorId).IsUnique(false);
 
                 b.HasMany(model => model.MDIs)
                     .WithOne(m => m.DispObservation)
@@ -38,9 +42,15 @@ namespace Medic.Entities
                     .WithOne(d => d.FirstDispObservation)
                     .HasForeignKey<DispObservation>(model => model.MainDiagFirstId);
 
+                b.HasIndex(model => model.MainDiagFirstId).IsUnique(false);
+
                 b.HasOne(model => model.SecondMainDiag)
                     .WithOne(d => d.SecondDispObservation)
                     .HasForeignKey<DispObservation>(model => model.MainDiagSecondId);
+
+                b.HasIndex(model => model.HospitalPracticeId).IsUnique(false);
+
+                b.HasIndex(model => model.MainDiagSecondId).IsUnique(false);
 
                 b.HasIndex(model => model.PatientId).IsUnique(false);
 

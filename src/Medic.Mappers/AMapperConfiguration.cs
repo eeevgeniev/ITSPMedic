@@ -2,7 +2,6 @@
 using Medic.Mappers.Contracts;
 using System;
 using System.Linq;
-using System.Reflection;
 
 namespace Medic.Mappers
 {

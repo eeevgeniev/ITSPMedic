@@ -14,6 +14,10 @@ namespace Medic.Entities
                     .WithOne(i => i.Procedure)
                     .HasForeignKey<Procedure>(model => model.ImplantId);
 
+                b.HasIndex(model => model.ImplantId).IsUnique(false);
+
+                b.HasIndex(model => model.PathProcedureId).IsUnique(false);
+
                 b.Property(model => model.ACHICode).HasMaxLength(12);
 
                 b.Property(model => model.HLNumber).HasMaxLength(12);

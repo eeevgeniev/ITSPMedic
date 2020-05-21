@@ -1,21 +1,17 @@
-﻿@model List<DiagnosePreviewViewModel>
+﻿@model DiagnosePreviewViewModel
 @inject GeneralLocalization generalLocalization
 
-@if (Model != default && Model.Count > 0)
+@if (Model != default)
 {
     <div class="row">
         <div class="col-sm-2 font-weight-bold">@generalLocalization.Get("Code")</div>
         <div class="col-sm-10 font-weight-bold">@generalLocalization.Get("Name")</div>
     </div>
-
-    @foreach (DiagnosePreviewViewModel currentDiagnose in Model)
-    {
-        <hr/>
-        <div class="row">
-            <div class="col-sm-2">@currentDiagnose.Code</div>
-            <div class="col-sm-10">@currentDiagnose.Name</div>
-        </div>
-    }
+    <hr />
+    <div class="row">
+        <div class="col-sm-2">@Model.Code</div>
+        <div class="col-sm-10">@Model.Name</div>
+    </div>
 }
 else
 {

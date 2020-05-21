@@ -14,9 +14,15 @@ namespace Medic.Entities
                     .WithMany(mkb => mkb.Diags)
                     .HasForeignKey(model => model.MKBCode);
 
+                b.HasIndex(model => model.MKBCode).IsUnique(false);
+
                 b.HasOne(model => model.LinkDMKB)
                     .WithMany(mkb => mkb.LinkedDiags)
                     .HasForeignKey(model => model.LinkDMKBCode);
+
+                b.HasIndex(model => model.LinkDMKBCode).IsUnique(false);
+
+                b.HasIndex(model => model.CommissionAprId).IsUnique(false);
 
                 b.Property(model => model.ImeMD).HasMaxLength(500);
 

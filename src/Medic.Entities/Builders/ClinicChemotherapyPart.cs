@@ -18,6 +18,8 @@ namespace Medic.Entities
                     .WithOne(e => e.ClinicChemotherapyPartDecision)
                     .HasForeignKey<ClinicChemotherapyPart>(model => model.EvalutionId);
 
+                b.HasIndex(model => model.EvalutionId).IsUnique(false);
+
                 b.Property(model => model.TNM).HasMaxLength(100);
             });
         }

@@ -1,0 +1,23 @@
+﻿@model List<MDISummaryViewModel>
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default && Model.Count > 0)
+{
+    <div class="row">
+        <div class="col-sm-4 font-weight-bold">@medicDataLocalization.Get("MDICode")</div>
+        <div class="col-sm-8 font-weight-bold">@medicDataLocalization.Get("MDIName")</div>
+    </div>
+
+    @foreach (var currentMdi in Model)
+    {
+        <hr/>
+        <div class="row">
+            <div class="col-sm-4">@currentMdi.MDICode</div>
+            <div class="col-sm-8">@currentMdi.MDIName</div>
+        </div>
+    }
+}
+else
+{
+    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+}

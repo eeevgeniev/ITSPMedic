@@ -320,7 +320,6 @@ namespace Medic.Import
                 dispObservation.Patient = AddPatient(dispObservation.Patient);
                 dispObservation.PatientHRegion = AddHealthRegion(dispObservation.PatientHRegion);
                 dispObservation.PatientBranch = AddPatientBarch(dispObservation.PatientBranch);
-                dispObservation.Sender = AddHealthcarePractitioner(dispObservation.Sender);
                 dispObservation.Doctor = AddHealthcarePractitioner(dispObservation.Doctor);
 
                 if (dispObservation.FirstMainDiag != default)

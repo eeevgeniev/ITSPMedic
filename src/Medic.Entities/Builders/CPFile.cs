@@ -14,9 +14,13 @@ namespace Medic.Entities
                     .WithMany(p => p.CPFiles)
                     .HasForeignKey(model => model.PracticeId);
 
+                b.HasIndex(model => model.PracticeId).IsUnique(false);
+
                 b.HasOne(model => model.FileType)
                     .WithMany(ft => ft.CPFiles)
                     .HasForeignKey(model => model.FileTypeId);
+
+                b.HasIndex(model => model.FileTypeId).IsUnique(false);
 
                 b.HasMany(model => model.Ins)
                     .WithOne(i => i.CPFile)

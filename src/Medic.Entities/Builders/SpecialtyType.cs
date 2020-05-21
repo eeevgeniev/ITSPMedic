@@ -9,9 +9,11 @@ namespace Medic.Entities
             builder.Entity<SpecialtyType>(b =>
             {
                 b.HasKey(model => model.Id);
+                
                 b.HasIndex(model => model.SpecialtyCode).IsUnique();
 
                 b.HasIndex(model => model.Name).IsUnique();
+                
                 b.Property(model => model.Name).HasMaxLength(200);
             });
         }

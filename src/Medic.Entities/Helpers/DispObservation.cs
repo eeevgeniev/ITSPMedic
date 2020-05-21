@@ -20,7 +20,7 @@ namespace Medic.Entities
                 .ForMember(disp => disp.DispDateAsString, config => config.Ignore())
                 .ForMember(disp => disp.DispTimeAsString, config => config.Ignore())
                 .ForMember(disp => disp.DiagDateAsString, config => config.Ignore())
-                .ForMember(disp => disp.DispancerDateAsString, config => config.Ignore());
+                .ForMember(disp => disp.DispanserDateAsString, config => config.Ignore());
             
             expression.CreateMap<CLPR.DispObservation, DispObservation>()
                 .ForMember(disp => disp.PatientBranch, config => config.MapFrom(disp => disp.PatientBranch == default ? default : new PatientBranch() { HealthRegion = new HealthRegion() { Code = disp.PatientBranch } }))
@@ -28,7 +28,6 @@ namespace Medic.Entities
                 .ForMember(disp => disp.PatientId, config => config.Ignore())
                 .ForMember(disp => disp.PatientBranchId, config => config.Ignore())
                 .ForMember(disp => disp.PatientHRegionId, config => config.Ignore())
-                .ForMember(disp => disp.SenderId, config => config.Ignore())
                 .ForMember(disp => disp.DoctorId, config => config.Ignore())
                 .ForMember(disp => disp.MainDiagFirstId, config => config.Ignore())
                 .ForMember(disp => disp.MainDiagSecondId, config => config.Ignore())

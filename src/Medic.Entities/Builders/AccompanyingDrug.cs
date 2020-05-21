@@ -14,6 +14,10 @@ namespace Medic.Entities
                     .WithMany(tt => tt.AccompanyingDrugs)
                     .HasForeignKey(model => model.TherapyTypeId);
 
+                b.HasIndex(model => model.TherapyTypeId).IsUnique(false);
+
+                b.HasIndex(model => model.ProtocolDrugTherapyId).IsUnique(false);
+
                 b.Property(model => model.ATCCode).HasMaxLength(20);
 
                 b.Property(model => model.ATCName).HasMaxLength(200);

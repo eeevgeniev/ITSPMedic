@@ -126,9 +126,6 @@
   <data name="Address" xml:space="preserve">
     <value>Адрес</value>
   </data>
-  <data name="Address1" xml:space="preserve">
-    <value>Адрес</value>
-  </data>
   <data name="Age" xml:space="preserve">
     <value>Години</value>
   </data>
@@ -318,8 +315,8 @@
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Disease course</value>
   </data>
-  <data name="DispancerDate" xml:space="preserve">
-    <value>Dispancer дата</value>
+  <data name="DispanserDate" xml:space="preserve">
+    <value>Dispanser дата</value>
   </data>
   <data name="DispDate" xml:space="preserve">
     <value>Disp дата</value>
@@ -745,9 +742,6 @@
     <value>Пол</value>
   </data>
   <data name="Sign" xml:space="preserve">
-    <value>Знак</value>
-  </data>
-  <data name="Sign1" xml:space="preserve">
     <value>Знак</value>
   </data>
   <data name="SingleDose" xml:space="preserve">

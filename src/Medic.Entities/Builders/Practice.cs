@@ -14,6 +14,8 @@ namespace Medic.Entities
                     .WithOne(hr => hr.Practice)
                     .HasForeignKey<Practice>(model => model.HealthRegionId);
 
+                b.HasIndex(model => model.HealthRegionId).IsUnique(false);
+
                 b.Property(model => model.Number).HasMaxLength(12);
 
                 b.Property(model => model.Code).HasMaxLength(12);

@@ -14,6 +14,8 @@ namespace Medic.Entities
                     .WithOne(vc => vc.ClinicUsedDrug)
                     .HasForeignKey<ClinicUsedDrug>(model => model.VersionCodeId);
 
+                b.HasIndex(model => model.VersionCodeId).IsUnique(false);
+
                 b.Property(model => model.DrugCode).HasMaxLength(10);
 
                 b.Property(model => model.DrugName).HasMaxLength(200);

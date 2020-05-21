@@ -14,9 +14,17 @@ namespace Medic.Entities
                     .WithOne(d => d.FirstPatientTransfer)
                     .HasForeignKey<Transfer>(model => model.FirstMainDiagId);
 
+                b.HasIndex(model => model.FirstMainDiagId).IsUnique(false);
+
                 b.HasOne(model => model.SecondMainDiag)
                     .WithOne(d => d.SecondPatientTransfer)
                     .HasForeignKey<Transfer>(model => model.SecondMainDiagId);
+
+                b.HasIndex(model => model.SecondMainDiagId).IsUnique(false);
+
+                b.HasIndex(model => model.HospitalPracticeId).IsUnique(false);
+
+                b.HasIndex(model => model.CPFileId).IsUnique(false);
 
                 b.Property(model => model.DischargeWard).HasColumnType("decimal(15,4)");
 

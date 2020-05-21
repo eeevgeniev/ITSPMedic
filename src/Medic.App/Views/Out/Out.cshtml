@@ -19,24 +19,21 @@
         <hr />
         <div>@medicDataLocalization.Get("DateSend"): @Model.OutViewModel.SendDate.ToShortDateString()</div>
         <hr />
-        <h2 class="text-center">@medicDataLocalization.Get("SendDiangose")</h2>
-        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.OutViewModel.SendDiagnose })" />
+        <h2 class="text-center">@medicDataLocalization.Get("SendDiagnose")</h2>
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@Model.OutViewModel.SendDiagnose" />
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("Diagnoses")</h2>
-        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@Model.OutViewModel.Diagnoses" />
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModels.cshtml" model="@Model.OutViewModel.Diagnoses" />
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("OutMainDiagnose")</h2>
-        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.OutViewModel.OutMainDiagnose })" />
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@Model.OutViewModel.OutMainDiagnose" />
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("OutDiagnoses")</h2>
-        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@Model.OutViewModel.OutDiagnoses" />
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModels.cshtml" model="@Model.OutViewModel.OutDiagnoses" />
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("Dead")</h2>
-        @if (Model.OutViewModel.Dead != default)
-        {
-            <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.OutViewModel.Dead })" />
-            <hr />
-        }
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@Model.OutViewModel.Dead" />
+        <hr />
         <h2 class="text-center">@medicDataLocalization.Get("HistologicalResult")</h2>
         <partial name="~/Views/Shared/Partials/HistologicalResults/HistologicalResultSummaryViewModel.cshtml" model="@Model.OutViewModel.HistologicalResult" />
         <hr />

@@ -10,6 +10,10 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
+                b.HasIndex(model => model.PathProcedureId).IsUnique(false);
+
+                b.HasIndex(model => model.DoctorId).IsUnique(false);
+
                 b.HasOne(model => model.Doctor)
                     .WithMany(hp => hp.DoneProcedures)
                     .HasForeignKey(model => model.DoctorId);

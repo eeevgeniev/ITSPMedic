@@ -14,25 +14,37 @@ namespace Medic.Entities
                     .WithMany(p => p.ProtocolDrugTherapies)
                     .HasForeignKey(model => model.PatientId);
 
+                b.HasIndex(model => model.PatientId).IsUnique(false);
+
                 b.HasOne(model => model.PatientBranch)
                     .WithMany(pb => pb.ProtocolDrugTherapies)
                     .HasForeignKey(model => model.PatientBranchId);
+
+                b.HasIndex(model => model.PatientBranchId).IsUnique(false);
 
                 b.HasOne(model => model.PatientHRegion)
                     .WithMany(hr => hr.ProtocolDrugTherapies)
                     .HasForeignKey(model => model.PatientHRegionId);
 
+                b.HasIndex(model => model.PatientHRegionId).IsUnique(false);
+
                 b.HasOne(model => model.Diag)
                     .WithOne(d => d.ProtocolDrugTherapy)
                     .HasForeignKey<ProtocolDrugTherapy>(model => model.DiagId);
+
+                b.HasIndex(model => model.DiagId).IsUnique(false);
 
                 b.HasOne(model => model.HematologyPart)
                     .WithOne(hp => hp.ProtocolDrugTherapy)
                     .HasForeignKey<ProtocolDrugTherapy>(model => model.HematologyPartId);
 
+                b.HasIndex(model => model.HematologyPartId).IsUnique(false);
+
                 b.HasOne(model => model.ChemotherapyPart)
                     .WithOne(cp => cp.ProtocolDrugTherapy)
                     .HasForeignKey<ProtocolDrugTherapy>(model => model.ChemotherapyPartId);
+
+                b.HasIndex(model => model.ChemotherapyPartId).IsUnique(false);
 
                 b.HasMany(model => model.DrugProtocols)
                     .WithOne(dp => dp.ProtocolDrugTherapy)
@@ -46,9 +58,15 @@ namespace Medic.Entities
                     .WithMany(hp => hp.ProtocolDrugTherapiesAsChairman)
                     .HasForeignKey(model => model.ChairmanId);
 
+                b.HasIndex(model => model.ChairmanId).IsUnique(false);
+
                 b.HasMany(model => model.Members)
                     .WithOne(pdthp => pdthp.ProtocolDrugTherapy)
                     .HasForeignKey(pdthp => pdthp.ProtocolDrugTherapyId);
+
+                b.HasIndex(model => model.HospitalPracticeId).IsUnique(false);
+
+                b.HasIndex(model => model.CPFileId).IsUnique(false);
 
                 b.HasIndex(model => model.PatientId).IsUnique(false);
 

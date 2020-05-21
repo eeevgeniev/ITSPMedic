@@ -13,6 +13,8 @@ namespace Medic.Entities
                 b.HasOne(model => model.HealthRegion)
                     .WithMany(hr => hr.PatientBranches)
                     .HasForeignKey(model => model.HealthRegionId);
+
+                b.HasIndex(model => model.HealthRegionId).IsUnique(false);
             });
         }
     }

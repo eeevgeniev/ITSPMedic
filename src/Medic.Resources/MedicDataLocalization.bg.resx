@@ -306,6 +306,9 @@
   <data name="DiagDate" xml:space="preserve">
     <value>Diag дата</value>
   </data>
+  <data name="Diagnose" xml:space="preserve">
+    <value>Диагноза</value>
+  </data>
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Дата на диагноза</value>
   </data>
@@ -327,8 +330,8 @@
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Disease course</value>
   </data>
-  <data name="DispancerDate" xml:space="preserve">
-    <value>Dispancer дата</value>
+  <data name="DispanserDate" xml:space="preserve">
+    <value>Dispanser дата</value>
   </data>
   <data name="DispDate" xml:space="preserve">
     <value>Disp дата</value>
@@ -344,6 +347,9 @@
   </data>
   <data name="DispObservationSummary" xml:space="preserve">
     <value>Disp observation, пациент, мкб</value>
+  </data>
+  <data name="DispObservationView" xml:space="preserve">
+    <value>Преглед на Disp observation</value>
   </data>
   <data name="DispVisit" xml:space="preserve">
     <value>Disp visit</value>
@@ -540,6 +546,9 @@
   <data name="MDIName" xml:space="preserve">
     <value>MDI име</value>
   </data>
+  <data name="MDIs" xml:space="preserve">
+    <value>MDIs</value>
+  </data>
   <data name="MKBCode" xml:space="preserve">
     <value>MKB код</value>
   </data>
@@ -681,6 +690,9 @@
   <data name="PlannedProcedureSummary" xml:space="preserve">
     <value>Планирана процедура, пациент, мкб</value>
   </data>
+  <data name="PlannedProcedureView" xml:space="preserve">
+    <value>Преглед на планирана процедура</value>
+  </data>
   <data name="PlanVisitDate" xml:space="preserve">
     <value>Дата на планираното посещение</value>
   </data>
@@ -755,6 +767,9 @@
   </data>
   <data name="SendClinicalPath" xml:space="preserve">
     <value>Клинична пътека на изпращането</value>
+  </data>
+  <data name="SendDate" xml:space="preserve">
+    <value>Дата на изпращане</value>
   </data>
   <data name="SendDiagnose" xml:space="preserve">
     <value>Изпратена диагноза</value>

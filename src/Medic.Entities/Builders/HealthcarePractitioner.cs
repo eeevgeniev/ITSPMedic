@@ -22,17 +22,25 @@ namespace Medic.Entities
                     .WithMany(hr => hr.HealthcarePractitioners)
                     .HasForeignKey(model => model.HealthRegionId);
 
+                b.HasIndex(model => model.HealthRegionId).IsUnique(false);
+
                 b.HasOne(model => model.SenderType)
                     .WithMany(st => st.HealthcarePractitioners)
                     .HasForeignKey(model => model.SenderTypeId);
+
+                b.HasIndex(model => model.SenderTypeId).IsUnique(false);
 
                 b.HasOne(model => model.Speciality)
                     .WithMany(s => s.HealthcarePractitioners)
                     .HasForeignKey(model => model.SpecialityId);
 
+                b.HasIndex(model => model.SpecialityId).IsUnique(false);
+
                 b.HasOne(model => model.Practice)
                     .WithMany(p => p.HealthcarePractitioners)
                     .HasForeignKey(model => model.PracticeId);
+
+                b.HasIndex(model => model.PracticeId).IsUnique(false);
 
                 b.HasMany(model => model.CommissionAprsMembers)
                     .WithOne(cahp => cahp.HealthcarePractitioner)

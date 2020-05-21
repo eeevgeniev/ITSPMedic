@@ -13,6 +13,8 @@ namespace Medic.Entities
                 b.HasOne(model => model.PredMarker)
                     .WithOne(e => e.HematologyPart)
                     .HasForeignKey<HematologyPart>(model => model.PredMarkerId);
+
+                b.HasIndex(model => model.PredMarkerId).IsUnique(false);
             });
         }
     }

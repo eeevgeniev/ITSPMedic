@@ -8,7 +8,55 @@
 @if (Model.DispObservation != default)
 {
     <article>
-        
+        <header>
+            <h1>@(medicDataLocalization.Get("DispObservationView"))</h1>
+        </header>
+        <h2 class="text-center">@medicDataLocalization.Get("Patient")</h2>
+        <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.DispObservation.Patient" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("Doctor")</h2>
+        <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.DispObservation.Doctor" />
+        <hr />
+        <div>@medicDataLocalization.Get("DispDate"): @Model.DispObservation.DispDate.ToShortDateString()</div>
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("FirstMainDiag")</h2>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.DispObservation.FirstMainDiag" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("SecondMainDiag")</h2>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.DispObservation.SecondMainDiag" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("MDIs")</h2>
+        <partial name="~/Views/Shared/Partials/MDIs/MDISummaryViewModel.cshtml" model="@Model.DispObservation.MDIs" />
+        <hr />
+        <h2 class="text-center">@medicDataLocalization.Get("AdditionalInformation")</h2>
+        <hr/>
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("PatientBranch"): @Model.DispObservation.PatientBranch</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("PatientHRegion"): @Model.DispObservation.PatientHRegion</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DispNum"): @Model.DispObservation.DispNum</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("DispDate"): @Model.DispObservation.DispDate.ToString("g")</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("AprCode"): @Model.DispObservation.AprCode</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DiagDate"): @Model.DispObservation.DiagDate.ToString("g")</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("DispanserDate"): @(Model.DispObservation.DispanserDate != default ? ((DateTime)Model.DispObservation.DispanserDate).ToString("g") : default)</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("DispVisit"): @Model.DispObservation.DispVisit</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Anamnesa"): @Model.DispObservation.Anamnesa</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("HState"): @Model.DispObservation.HState</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Therapy"): @Model.DispObservation.Therapy</div>
+            <div class="col-sm-4">@medicDataLocalization.Get("Sign"): @Model.DispObservation.Sign</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@medicDataLocalization.Get("NZOKPay"): @Model.DispObservation.NZOKPay</div>
+        </div>
     </article>
 }
 else

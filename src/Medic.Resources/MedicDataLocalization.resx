@@ -306,6 +306,9 @@
   <data name="DiagDate" xml:space="preserve">
     <value>Diag date</value>
   </data>
+  <data name="Diagnose" xml:space="preserve">
+    <value>Diagnose</value>
+  </data>
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Diagnose date</value>
   </data>
@@ -327,8 +330,8 @@
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Disease course</value>
   </data>
-  <data name="DispancerDate" xml:space="preserve">
-    <value>Dispancer date</value>
+  <data name="DispanserDate" xml:space="preserve">
+    <value>Dispanser date</value>
   </data>
   <data name="DispDate" xml:space="preserve">
     <value>Disp date</value>
@@ -344,6 +347,9 @@
   </data>
   <data name="DispObservationSummary" xml:space="preserve">
     <value>Disp observation, patient, mkb</value>
+  </data>
+  <data name="DispObservationView" xml:space="preserve">
+    <value>Disp observation view</value>
   </data>
   <data name="DispVisit" xml:space="preserve">
     <value>Disp visit</value>
@@ -540,6 +546,9 @@
   <data name="MDIName" xml:space="preserve">
     <value>MDI name</value>
   </data>
+  <data name="MDIs" xml:space="preserve">
+    <value>MDIs</value>
+  </data>
   <data name="MKBCode" xml:space="preserve">
     <value>MKB code</value>
   </data>
@@ -681,6 +690,9 @@
   <data name="PlannedProcedureSummary" xml:space="preserve">
     <value>Planned procedure, patient, mkb</value>
   </data>
+  <data name="PlannedProcedureView" xml:space="preserve">
+    <value>Planned procedure view</value>
+  </data>
   <data name="PlanVisitDate" xml:space="preserve">
     <value>Plan visit date</value>
   </data>
@@ -755,6 +767,9 @@
   </data>
   <data name="SendClinicalPath" xml:space="preserve">
     <value>Send clinical path</value>
+  </data>
+  <data name="SendDate" xml:space="preserve">
+    <value>Send date</value>
   </data>
   <data name="SendDiagnose" xml:space="preserve">
     <value>Send diangose</value>

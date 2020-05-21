@@ -11,6 +11,8 @@ namespace Medic.Entities
                 b.HasKey(model => model.Id);
 
                 b.Property(model => model.Name).HasMaxLength(50);
+
+                b.HasIndex(model => model.ChemotherapyPartId).IsUnique(false);
             });
         }
     }

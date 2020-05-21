@@ -20,8 +20,6 @@ namespace Medic.AppModels.DispObservations
         [Display(Name = nameof(PatientHRegion))]
         public string PatientHRegion { get; set; }
 
-        public HealthcarePractitionerSummaryViewModel Sender { get; set; }
-
         public HealthcarePractitionerSummaryViewModel Doctor { get; set; }
 
         [Display(Name = nameof(DispNum))]
@@ -36,8 +34,8 @@ namespace Medic.AppModels.DispObservations
         [Display(Name = nameof(DiagDate))]
         public DateTime DiagDate { get; set; }
 
-        [Display(Name = nameof(DispancerDate))]
-        public DateTime? DispancerDate { get; set; }
+        [Display(Name = nameof(DispanserDate))]
+        public DateTime? DispanserDate { get; set; }
         
         [Display(Name = nameof(DispVisit))]
         public int DispVisit { get; set; }

@@ -20,10 +20,10 @@
         <div>@medicDataLocalization.Get("DateSend"): @Model.InViewModel.SendDate.ToShortDateString()</div>
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("SendDiagnose")</h2>
-        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@(new List<DiagnosePreviewViewModel>() { Model.InViewModel.SendDiagnose })" />
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@Model.InViewModel.SendDiagnose" />
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("Diagnoses")</h2>
-        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModel.cshtml" model="@Model.InViewModel.Diagnoses" />
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModels.cshtml" model="@Model.InViewModel.Diagnoses" />
         <hr />
         <h2 class="text-center">@medicDataLocalization.Get("AdditionalInformation")</h2>
         <hr />

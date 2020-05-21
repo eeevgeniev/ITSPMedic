@@ -14,13 +14,19 @@ namespace Medic.Entities
                     .WithOne(h => h.APr05)
                     .HasForeignKey<APr05>(model => model.HistologyId);
 
+                b.HasIndex(model => model.HistologyId).IsUnique(false);
+
                 b.HasOne(model => model.ClinicChemotherapyPart)
                     .WithMany(ccp => ccp.APr05s)
                     .HasForeignKey(model => model.ClinicChemotherapyPartId);
 
+                b.HasIndex(model => model.ClinicChemotherapyPartId).IsUnique(false);
+
                 b.HasOne(model => model.ClinicHematologyPart)
                     .WithMany(chp => chp.APr05s)
                     .HasForeignKey(model => model.ClinicHematologyPartId);
+
+                b.HasIndex(model => model.ClinicHematologyPartId).IsUnique(false);
 
                 b.Property(model => model.Staging).HasMaxLength(20);
                 b.Property(model => model.Imuno).HasMaxLength(3000);

@@ -10,6 +10,8 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
+                b.HasIndex(model => model.PathProcedureId).IsUnique(false);
+
                 b.Property(model => model.ProcedureName).HasMaxLength(200);
 
                 b.Property(model => model.ACHIcode).HasMaxLength(12);
