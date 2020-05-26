@@ -41,12 +41,12 @@ namespace Medic.App.AppServices
 
             services.AddDbContext<MedicContext>(options =>
             {
-                options.UseSqlServer(configuration[MedicConstants.ConnectionString]);
+                options.UseSqlServer(configuration[Constants.ConnectionString]);
             });
 
             services.AddDbContext<MedicIdentityContext>(options =>
             {
-                options.UseSqlServer(configuration[MedicConstants.IdentityConnectionString]);
+                options.UseSqlServer(configuration[Constants.IdentityConnectionString]);
             });
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>

@@ -4,7 +4,6 @@ using Medic.AppModels.Ins;
 using Medic.Contexts;
 using Medic.Entities;
 using Medic.Services.Contracts;
-using Medic.Services.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -36,70 +35,35 @@ namespace Medic.Services
                 .SingleOrDefaultAsync(i => i.Id == id);
         }
 
-        public async Task<List<InPreviewViewModel>> GetInsAsync(InsSerach search, int startIndex, int count)
+        public async Task<List<InPreviewViewModel>> GetInsAsync(
+            IWhereBuilder<In> inBuilder, 
+            IHelperBuilder<In> helperBuilder, 
+            int startIndex)
         {
-            return await GetQueryable(MedicContext.Ins, search)
+            if (inBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(inBuilder));
+            }
+
+            if (helperBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(helperBuilder));
+            }
+
+            return await helperBuilder.BuildQuery(inBuilder.Where(MedicContext.Ins).Skip(startIndex))
                 .ProjectTo<InPreviewViewModel>(Configuration)
-                .Skip(startIndex)
-                .Take(count)
                 .ToListAsync();
         }
 
-        public async Task<int> GetInsCountAsync(InsSerach search)
+        public async Task<int> GetInsCountAsync(IWhereBuilder<In> inBuilder)
         {
-            return await GetQueryable(MedicContext.Ins, search)
-                .CountAsync();
-        }
-
-        private IQueryable<In> GetQueryable(IQueryable<In> insQuery, InsSerach search)
-        {
-            if (search != default)
+            if (inBuilder == default)
             {
-                DateTimeHelper dateTimeHelper = new DateTimeHelper();
-                
-                if (!string.IsNullOrEmpty(search.MainDiagnose))
-                {
-                    insQuery = insQuery.Where(i => EF.Functions.Like(i.SendDiagnose.Primary.Code, search.MainDiagnose));
-                }
-
-                if (search.Sex != default)
-                {
-                    int sex = (int)search.Sex;
-
-                    insQuery = insQuery.Where(i => i.Patient.Sex.Id == sex);
-                }
-
-                if (search.CountOfAdditionalDiagnoses != default)
-                {
-                    int number = (int)search.CountOfAdditionalDiagnoses;
-
-                    insQuery = insQuery.Where(i => i.Diagnoses.Count == number);
-                }
-
-                if (search.HealthRegion != default)
-                {
-                    insQuery = insQuery.Where(i => i.PatientHRegionId == search.HealthRegion);
-                }
-
-                if (search.Age != default)
-                {
-                    (DateTime startDate, DateTime endDate) = dateTimeHelper.CalculateYearsBoundsByAges((int)search.Age);
-
-                    insQuery = insQuery.Where(i => startDate < i.Patient.BirthDate && i.Patient.BirthDate <= endDate);
-                }
-
-                if (search.Age == default && search.OlderThan != default)
-                {
-                    insQuery = insQuery.Where(i => i.Patient.BirthDate <= dateTimeHelper.CalculateYearBoundByAge((int)search.OlderThan));
-                }
-
-                if (search.Age == default && search.YoungerThan != default)
-                {
-                    insQuery = insQuery.Where(i => i.Patient.BirthDate >= dateTimeHelper.CalculateYearBoundByAge((int)search.YoungerThan));
-                }
+                throw new ArgumentNullException(nameof(inBuilder));
             }
 
-            return insQuery;
+            return await inBuilder.Where(MedicContext.Ins)
+                .CountAsync();
         }
     }
 }

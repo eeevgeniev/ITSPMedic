@@ -1,0 +1,41 @@
+﻿@using Medic.AppModels.Sexes; 
+
+@model PatientSearch
+
+@{ 
+    List<SexOption> sexOptions = ViewData[Constants.Sexes] as List<SexOption>;
+}
+
+<form asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
+      asp-action="@nameof(PatientController.Index)"
+      method="get">
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label asp-for="@Model.IdentityNumber"></label>
+            <input class="form-control" asp-for="@Model.IdentityNumber" />
+        </div>
+        <div class="form-group col-sm-6">
+            <label asp-for="@Model.Age"></label>
+            <input class="form-control" asp-for="@Model.Age" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label asp-for="@Model.OlderThan"></label>
+            <input class="form-control" asp-for="@Model.OlderThan" />
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="@Model.YoungerThan"></label>
+            <input class="form-control" asp-for="@Model.YoungerThan" />
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="@Model.Sex"></label>
+            <select class="form-control" asp-for="@Model.Sex" asp-items="@(sexOptions.Select(s => new SelectListItem() { Value = s.Id.ToString(), Text = s.Name, Selected = s.Id == null }))"></select>
+        </div>
+        <input type="hidden" asp-for="@Model.Order" />
+        <input type="hidden" asp-for="@Model.Length" />
+        <input type="hidden" asp-for="@Model.Direction" />
+    </div>
+    <input type="submit" class="btn btn-primary" value="Search" />
+    <input type="reset" class="btn btn-dark" value="Reset" />
+</form> 

@@ -1,4 +1,5 @@
 ﻿using Medic.App.Controllers.Base;
+using Medic.App.Infrastructure;
 using Medic.App.Models.Outs;
 using Medic.AppModels.HealthRegions;
 using Medic.AppModels.Outs;
@@ -9,6 +10,7 @@ using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.Resources;
 using Medic.Services.Contracts;
+using Medic.Services.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -49,37 +51,78 @@ namespace Medic.App.Controllers
         {
             try
             {
-                int startIndex = page > 0 ? (page - 1) * 10 : 0;
-                string key = $"{nameof(OutPageIndexModel)} - {startIndex} - {search?.ToString() ?? string.Empty}";
+                int pageLength = (int)search.Length;
+                int startIndex = page > 0 ? (page - 1) * pageLength : 0;
+                OutWhereBuilder outWhereBuilder = new OutWhereBuilder(search);
 
-                if (!MedicCache.TryGetValue(key, out OutPageIndexModel outPageIndexModel))
+                string searchParams = search != default ? search.ToString() : default;
+                string outsKey = $"{nameof(OutPreviewViewModel)} - {startIndex} - {searchParams}";
+                string outsCountKey = $"{MedicConstants.OutsCount} - {searchParams}";
+                
+                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
+                List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
+                List<UsedDrugCodeOption> usedDrugs = new List<UsedDrugCodeOption>() { new UsedDrugCodeOption() { Key = string.Empty, Code = MedicDataLocalization.Get("NoSelection") } };
+
+                if (!MedicCache.TryGetValue(outsKey, out List<OutPreviewViewModel> outs))
                 {
-                    outPageIndexModel = new OutPageIndexModel()
-                    {
-                        Outs = await OutService.GetOutsAsync(search, startIndex, 10),
-                        Title = MedicDataLocalization.Get("OutsView"),
-                        Description = MedicDataLocalization.Get("OutsView"),
-                        Keywords = MedicDataLocalization.Get("OutsSummary"),
-                        Search = search,
-                        CurrentPage = page,
-                        TotalCount = await OutService.GetOutsCountAsync(search),
-                        Sexes = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } },
-                        UsedDrugCodes = new List<UsedDrugCodeOption>() { new UsedDrugCodeOption() { Key = string.Empty, Code = MedicDataLocalization.Get("NoSelection") } },
-                        HealthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } }
-                    };
+                    OutHelperBuilder outHelperBuilder = new OutHelperBuilder(search);
 
-                    outPageIndexModel.Sexes.AddRange(await PatientService.GetSexOptionsAsync());
-                    outPageIndexModel.UsedDrugCodes.AddRange(await UsedDrugService.UsedDrugsByCodeAsync());
-                    outPageIndexModel.HealthRegions.AddRange(await HealthRegionService.GetHealthRegionsAsync());
+                    outs = await OutService.GetOutsAsync(outWhereBuilder, outHelperBuilder, startIndex);
 
-                    MedicCache.Set(key, outPageIndexModel);
+                    MedicCache.Set(outsKey, outs);
                 }
 
-                return View(outPageIndexModel);
+                if (!MedicCache.TryGetValue(outsCountKey, out int outsCount))
+                {
+                    outsCount = await OutService.GetOutsCountAsync(outWhereBuilder);
+
+                    MedicCache.Set(outsCountKey, outsCount);
+                }
+
+                if (!MedicCache.TryGetValue(MedicConstants.SexKeyName, out List<SexOption> sexes))
+                {
+                    sexes = await PatientService.GetSexOptionsAsync();
+
+                    MedicCache.Set(MedicConstants.SexKeyName, sexes);
+                }
+
+                sexOptions.AddRange(sexes);
+
+                if (!MedicCache.TryGetValue(MedicConstants.HealthRegionsKeyName, out List<HealthRegionOption> regions))
+                {
+                    regions = await HealthRegionService.GetHealthRegionsAsync();
+
+                    MedicCache.Set(MedicConstants.HealthRegionsKeyName, regions);
+                }
+
+                healthRegions.AddRange(regions);
+
+                if (!MedicCache.TryGetValue(MedicConstants.UsedDrugs, out List<UsedDrugCodeOption> drugs))
+                {
+                    drugs = await UsedDrugService.UsedDrugsByCodeAsync();
+
+                    MedicCache.Set(MedicConstants.UsedDrugs, drugs);
+                }
+
+                usedDrugs.AddRange(drugs);
+
+                return View(new OutPageIndexModel()
+                {
+                    Outs = outs,
+                    Title = MedicDataLocalization.Get("OutsView"),
+                    Description = MedicDataLocalization.Get("OutsView"),
+                    Keywords = MedicDataLocalization.Get("OutsSummary"),
+                    Search = search,
+                    CurrentPage = page,
+                    TotalCount = outsCount,
+                    Sexes = sexOptions,
+                    UsedDrugCodes = usedDrugs,
+                    HealthRegions = healthRegions
+                });
             }
             catch (Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,
@@ -96,31 +139,39 @@ namespace Medic.App.Controllers
         {
             try
             {
-                if (id > 0)
+                OutViewModel model;
+                string error = default;
+
+                if (id < 1)
                 {
-                    string key = $"{nameof(OutPageOutModel)} - {id}";
+                    error = MedicDataLocalization.Get("InvalidId"); ;
+                    model = default;
+                }
+                else
+                {
+                    string key = $"{nameof(OutViewModel)} - {id}";
 
-                    if (!MedicCache.TryGetValue(key, out OutPageOutModel outPageOutModel))
+                    if (!MedicCache.TryGetValue(key, out model))
                     {
-                        outPageOutModel = new OutPageOutModel()
-                        {
-                            Title = MedicDataLocalization.Get("OutView"),
-                            Description = MedicDataLocalization.Get("OutView"),
-                            Keywords = MedicDataLocalization.Get("OutSummary"),
-                            OutViewModel = await OutService.GetOutAsyns(id)
-                        };
+                        model = await OutService.GetOutAsyns(id);
 
-                        MedicCache.Set(key, outPageOutModel);
+                        MedicCache.Set(key, model);
                     }
 
-                    return View(outPageOutModel);
+                    return View(new OutPageOutModel()
+                    {
+                        Title = MedicDataLocalization.Get("OutView"),
+                        Description = MedicDataLocalization.Get("OutView"),
+                        Keywords = MedicDataLocalization.Get("OutSummary"),
+                        OutViewModel = model
+                    });
                 }
 
                 return RedirectToAction(nameof(OutController.Index), GetControllerName(nameof(OutController)));
             }
             catch (Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,

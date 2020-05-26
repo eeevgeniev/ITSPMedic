@@ -1,54 +1,20 @@
 ﻿@using Medic.AppModels.Ins
 @inject MedicDataLocalization medicDataLocalization
 
-
 @model InPageIndexModel
 
 @{
     ViewData["Title"] = Model.Title;
 
-    Dictionary<string, string> paramsByName = new Dictionary<string, string>();
+    int pageLength = (int)Model.Search.Length;
 
-    int pagesCount = Model.TotalCount % 10 != 0 ? (Model.TotalCount / 10) + 1 : Model.TotalCount / 10;
+    int pagesCount = Model.TotalCount % pageLength != 0 ? (Model.TotalCount / pageLength) + 1 : Model.TotalCount / pageLength;
 
-    if (Model.Search != default)
-    {
-        if (!string.IsNullOrWhiteSpace(Model.Search.MainDiagnose))
-        {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.MainDiagnose)}", Model.Search.MainDiagnose);
-        }
+    Dictionary<string, string> paramsByName = Model.Search != default ?
+        Model.Search.BuildQuery(default) : new Dictionary<string, string>();
 
-        if (Model.Search.CountOfAdditionalDiagnoses != default)
-        {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.CountOfAdditionalDiagnoses)}", Model.Search.CountOfAdditionalDiagnoses.ToString());
-        }
-
-        if (Model.Search.Sex != default)
-        {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Sex)}", Model.Search.Sex.ToString());
-        }
-
-        if (Model.Search.HealthRegion != default)
-        {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.HealthRegion)}", Model.Search.HealthRegion.ToString());
-        }
-
-        if (Model.Search.Age != default)
-        {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.Age)}", Model.Search.Age.ToString());
-        }
-
-        if (Model.Search.OlderThan != default)
-        {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.OlderThan)}", Model.Search.OlderThan.ToString());
-        }
-
-        if (Model.Search.YoungerThan != default)
-        {
-            paramsByName.Add($"{nameof(Model.Search)}.{nameof(Model.Search.YoungerThan)}", Model.Search.YoungerThan.ToString());
-        }
-    }
-
+    ViewData[Constants.Sexes] = Model.Sexes;
+    ViewData[Constants.HealthRegions] = Model.HealthRegions;
 }
 
 <article>
@@ -56,48 +22,12 @@
         <h2>@medicDataLocalization.Get("InsView"): @Model.TotalCount</h2>
     </header>
     <section>
-        <form asp-controller="@MedicBaseController.GetName(nameof(InController))"
-              asp-action="@nameof(InController.Index)"
-              method="get">
-            <div class="row">
-                <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.MainDiagnose"></label>
-                    <input class="form-control" asp-for="@Model.Search.MainDiagnose" />
-                </div>
-                <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.CountOfAdditionalDiagnoses"></label>
-                    <input class="form-control" asp-for="@Model.Search.CountOfAdditionalDiagnoses" />
-                </div>
-                <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.Sex"></label>
-                    <select class="form-control" asp-for="@Model.Search.Sex" asp-items="@Model.Sexes.Select(s => new SelectListItem(s.Name, s.Id.ToString(), s.Id == null))"></select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.Age"></label>
-                    <input class="form-control" asp-for="@Model.Search.Age" />
-                </div>
-                <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.OlderThan"></label>
-                    <input class="form-control" asp-for="@Model.Search.OlderThan" />
-                </div>
-                <div class="form-group col-sm-4">
-                    <label asp-for="@Model.Search.YoungerThan"></label>
-                    <input class="form-control" asp-for="@Model.Search.YoungerThan" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-sm-6">
-                    <label asp-for="@Model.Search.HealthRegion"></label>
-                    <select class="form-control" asp-for="@Model.Search.HealthRegion" asp-items="@Model.HealthRegions.Select(hr => new SelectListItem(hr.Name, hr.Id.ToString(), hr.Id == null))"></select>
-                </div>
-            </div>
-            <input type="submit" class="btn btn-primary" value="Search" />
-            <input type="reset" class="btn btn-dark" value="Reset" />
-        </form>
+        <partial name="~/Views/Shared/Partials/Ins/InsSerach.cshtml" model="@Model.Search" view-data="@ViewData" />
     </section>
-    <section>
+    <section class="mt-sm-1 clearfix">
+        <partial name="~/Views/Shared/Partials/Ins/InsOrder.cshtml" model="@Model.Search" />
+    </section>
+    <section class="mt-sm-1">
         @if (Model.Ins != default && Model.Ins.Count > 0)
         {
             <div>

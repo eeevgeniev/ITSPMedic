@@ -8,7 +8,7 @@ namespace Medic.App.Models.Ins
 {
     public class InPageIndexModel : BasePageModel
     {
-        public InsSerach Search { get; set; }
+        public InsSearch Search { get; set; }
 
         public List<InPreviewViewModel> Ins { get; set; }
 

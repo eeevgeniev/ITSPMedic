@@ -2,16 +2,23 @@
 using Medic.App.Infrastructure;
 using Medic.App.Models;
 using Medic.App.Models.Home;
+using Medic.AppModels.CPFiles;
+using Medic.AppModels.Diagnoses;
+using Medic.AppModels.Diags;
+using Medic.AppModels.HospitalPractices;
+using Medic.AppModels.UsedDrugs;
 using Medic.Cache.Contacts;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.Resources;
 using Medic.Services.Contracts;
+using Medic.Services.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,28 +67,43 @@ namespace Medic.App.Controllers
         {
             try
             {
-                string key = nameof(HomePageModel);
+                string cpFileKey = nameof(CPFileSummaryViewModel);
+                string hospitalPracticeKey = nameof(HospitalPracticeSummaryViewModel);
 
-                if (!MedicCache.TryGetValue(key, out HomePageModel homePageModel))
+                if (!MedicCache.TryGetValue(cpFileKey, out List<CPFileSummaryViewModel> cpFiles))
                 {
-                    homePageModel = new HomePageModel()
-                    {
-                        CPFileSummaryViewModels = await CPFileService.GetSummaryByMonthAsync(),
-                        HospitalPracticeSummaryViewModels = await HospitalPracticeService.GetSummaryByMonthAsync(),
-                        PatientCount = await PatientService.GetPatientsCountAsync(default),
-                        Title = MedicDataLocalization.Get("SummaryInformation"),
-                        Description = MedicDataLocalization.Get("SummaryInformation"),
-                        Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
-                    };
+                    cpFiles = await CPFileService.GetSummaryByMonthAsync();
 
-                    MedicCache.Set(key, homePageModel);
+                    MedicCache.Set(cpFileKey, cpFiles);
                 }
-                
-                return View(homePageModel);
+
+                if (!MedicCache.TryGetValue(hospitalPracticeKey, out List<HospitalPracticeSummaryViewModel> hospitalPractices))
+                {
+                    hospitalPractices = await HospitalPracticeService.GetSummaryByMonthAsync();
+
+                    MedicCache.Set(hospitalPracticeKey, hospitalPractices);
+                }
+
+                if (!MedicCache.TryGetValue(MedicConstants.PatientsCount, out int patientsCount))
+                {
+                    patientsCount = await PatientService.GetPatientsCountAsync(new PatientWhereBuilder(default));
+
+                    MedicCache.Set(MedicConstants.PatientsCount, patientsCount);
+                }
+
+                return View(new HomePageModel()
+                {
+                    CPFileSummaryViewModels = cpFiles,
+                    HospitalPracticeSummaryViewModels = hospitalPractices,
+                    PatientCount = patientsCount,
+                    Title = MedicDataLocalization.Get("SummaryInformation"),
+                    Description = MedicDataLocalization.Get("SummaryInformation"),
+                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
+                });
             }
             catch(Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,
@@ -98,26 +120,26 @@ namespace Medic.App.Controllers
         {
             try
             {
-                string key = nameof(HomePageDiagModel);
+                string key = nameof(DiagMKBSummaryViewModel);
 
-                if (!MedicCache.TryGetValue(key, out HomePageDiagModel homePageDiagModel))
+                if (!MedicCache.TryGetValue(key, out List<DiagMKBSummaryViewModel> model))
                 {
-                    homePageDiagModel = new HomePageDiagModel()
-                    {
-                        DiagMKBSummaryViewModels = await DiagService.GetMKBSummaryAsync(),
-                        Title = MedicDataLocalization.Get("Diags"),
-                        Description = MedicDataLocalization.Get("Diags"),
-                        Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
-                    };
+                    model = await DiagService.GetMKBSummaryAsync();
 
-                    MedicCache.Set(key, homePageDiagModel);
+                    MedicCache.Set(key, model);
                 }
                 
-                return View(homePageDiagModel);
+                return View(new HomePageDiagModel()
+                {
+                    DiagMKBSummaryViewModels = model,
+                    Title = MedicDataLocalization.Get("Diags"),
+                    Description = MedicDataLocalization.Get("Diags"),
+                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
+                });
             }
             catch (Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,
@@ -134,26 +156,26 @@ namespace Medic.App.Controllers
         {
             try
             {
-                string key = nameof(HomePageDiagnoseModel);
+                string key = nameof(DiagnoseMKBSummaryViewModel);
 
-                if (!MedicCache.TryGetValue(key, out HomePageDiagnoseModel homePageDiagnoseModel))
+                if (!MedicCache.TryGetValue(key, out List<DiagnoseMKBSummaryViewModel> model))
                 {
-                    homePageDiagnoseModel = new HomePageDiagnoseModel()
-                    {
-                        DiagnosesMKBSummaryViewModels = await DiagnoseService.MKBSummaryAsync(),
-                        Title = MedicDataLocalization.Get("Diagnoses"),
-                        Description = MedicDataLocalization.Get("Diagnoses"),
-                        Keywords = MedicDataLocalization.Get("SummaryInformationKeywords"),
-                    };
+                    model = await DiagnoseService.MKBSummaryAsync();
 
-                    MedicCache.Set(key, homePageDiagnoseModel);
+                    MedicCache.Set(key, model);
                 }
 
-                return View(homePageDiagnoseModel);
+                return View(new HomePageDiagnoseModel()
+                {
+                    DiagnosesMKBSummaryViewModels = model,
+                    Title = MedicDataLocalization.Get("Diagnoses"),
+                    Description = MedicDataLocalization.Get("Diagnoses"),
+                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords"),
+                });
             }
             catch (Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,
@@ -170,26 +192,26 @@ namespace Medic.App.Controllers
         {
             try
             {
-                string key = nameof(HomePageUsedDrugsModel);
+                string key = nameof(UsedDrugsSummaryStatistic);
 
-                if (!MedicCache.TryGetValue(key, out HomePageUsedDrugsModel homePageUsedDrugsModel))
+                if (!MedicCache.TryGetValue(key, out List<UsedDrugsSummaryStatistic> model))
                 {
-                    homePageUsedDrugsModel = new HomePageUsedDrugsModel()
-                    {
-                        UsedDrugsSummary = await UsedDrugService.UsedDrugsSummaryAsync(),
-                        Title = MedicDataLocalization.Get("UsedDrug"),
-                        Description = MedicDataLocalization.Get("UsedDrugs"),
-                        Keywords = MedicDataLocalization.Get("UsedDrugsInformationKeywords"),
-                    };
+                    model = await UsedDrugService.UsedDrugsSummaryAsync();
 
-                    MedicCache.Set(key, homePageUsedDrugsModel);
+                    MedicCache.Set(key, model);
                 }
 
-                return View(homePageUsedDrugsModel);
+                return View(new HomePageUsedDrugsModel()
+                {
+                    UsedDrugsSummary = model,
+                    Title = MedicDataLocalization.Get("UsedDrug"),
+                    Description = MedicDataLocalization.Get("UsedDrugs"),
+                    Keywords = MedicDataLocalization.Get("UsedDrugsInformationKeywords"),
+                });
             }
             catch (Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,

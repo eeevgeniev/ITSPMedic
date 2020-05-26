@@ -156,6 +156,9 @@
   <data name="APrSend" xml:space="preserve">
     <value>APr send</value>
   </data>
+  <data name="Asc" xml:space="preserve">
+    <value>Възходящ ред</value>
+  </data>
   <data name="ATCCode" xml:space="preserve">
     <value>ATC code</value>
   </data>
@@ -291,11 +294,17 @@
   <data name="DecisionDate" xml:space="preserve">
     <value>Дата на решението</value>
   </data>
+  <data name="Default" xml:space="preserve">
+    <value>По подразбиране</value>
+  </data>
   <data name="Delay" xml:space="preserve">
     <value>Delay</value>
   </data>
   <data name="DeputyUniqueIdentifier" xml:space="preserve">
     <value>Deputy уникален номер</value>
+  </data>
+  <data name="Desc" xml:space="preserve">
+    <value>Низходящ ред</value>
   </data>
   <data name="Diag" xml:space="preserve">
     <value>Diag</value>
@@ -308,6 +317,9 @@
   </data>
   <data name="Diagnoses" xml:space="preserve">
     <value>Диагнози</value>
+  </data>
+  <data name="Direction" xml:space="preserve">
+    <value>Ред</value>
   </data>
   <data name="DischargeStatus" xml:space="preserve">
     <value>Discharge status</value>
@@ -388,9 +400,6 @@
     <value>GP предписания</value>
   </data>
   <data name="HealthRegion" xml:space="preserve">
-    <value>Здравен регион</value>
-  </data>
-  <data name="HealthRegion1" xml:space="preserve">
     <value>Здравен регион</value>
   </data>
   <data name="Height" xml:space="preserve">
@@ -480,8 +489,14 @@
   <data name="Laparoscopic" xml:space="preserve">
     <value>Laparoscopic</value>
   </data>
+  <data name="LargeLength" xml:space="preserve">
+    <value>100</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Фамилно име</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Дължина</value>
   </data>
   <data name="MainDiagnose" xml:space="preserve">
     <value>Основна диагноза</value>
@@ -534,6 +549,9 @@
   <data name="NoResults" xml:space="preserve">
     <value>Няма намерени резултати.</value>
   </data>
+  <data name="NormalLength" xml:space="preserve">
+    <value>50</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>Бележки</value>
   </data>
@@ -554,6 +572,9 @@
   </data>
   <data name="OlderThan" xml:space="preserve">
     <value>По-възрастен от</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Подреди</value>
   </data>
   <data name="OtherDocuments" xml:space="preserve">
     <value>Други документи</value>
@@ -747,6 +768,9 @@
   <data name="SingleDose" xml:space="preserve">
     <value>Единична доза</value>
   </data>
+  <data name="SmallLength" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="SpecCommission" xml:space="preserve">
     <value>Spec Commission</value>
   </data>
@@ -794,6 +818,9 @@
   </data>
   <data name="UniqueIdentifier" xml:space="preserve">
     <value>Уникалне номер</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Обнови</value>
   </data>
   <data name="Urgency" xml:space="preserve">
     <value>Спешност</value>

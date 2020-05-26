@@ -162,6 +162,9 @@
   <data name="APrSend" xml:space="preserve">
     <value>APr send</value>
   </data>
+  <data name="Asc" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
   <data name="ATCCode" xml:space="preserve">
     <value>ATC code</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="BedDays" xml:space="preserve">
     <value>BedDays</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth date</value>
   </data>
   <data name="BirthGestWeek" xml:space="preserve">
     <value>Birth gest Week</value>
@@ -294,11 +300,17 @@
   <data name="DecisionDate" xml:space="preserve">
     <value>Decision date</value>
   </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
   <data name="Delay" xml:space="preserve">
     <value>Delay</value>
   </data>
   <data name="DeputyUniqueIdentifier" xml:space="preserve">
     <value>Deputy unique identifier</value>
+  </data>
+  <data name="Desc" xml:space="preserve">
+    <value>Descending</value>
   </data>
   <data name="Diag" xml:space="preserve">
     <value>Diag</value>
@@ -323,6 +335,9 @@
   </data>
   <data name="DiagSummaryTitle" xml:space="preserve">
     <value>Diag MKB summary by MKB code</value>
+  </data>
+  <data name="Direction" xml:space="preserve">
+    <value>Direction</value>
   </data>
   <data name="DischargeStatus" xml:space="preserve">
     <value>Discharge status</value>
@@ -459,6 +474,9 @@
   <data name="ICDDrug" xml:space="preserve">
     <value>ICD Drug</value>
   </data>
+  <data name="IdentityNumber" xml:space="preserve">
+    <value>Identity number</value>
+  </data>
   <data name="ImplantCode" xml:space="preserve">
     <value>Implant code</value>
   </data>
@@ -537,6 +555,12 @@
   <data name="Laparoscopic" xml:space="preserve">
     <value>Laparoscopic</value>
   </data>
+  <data name="LargeLength" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Length</value>
+  </data>
   <data name="MainDiag" xml:space="preserve">
     <value>Main diag</value>
   </data>
@@ -573,6 +597,9 @@
   <data name="NoResults" xml:space="preserve">
     <value>No results found.</value>
   </data>
+  <data name="NormalLength" xml:space="preserve">
+    <value>50</value>
+  </data>
   <data name="NoSelection" xml:space="preserve">
     <value>No selection</value>
   </data>
@@ -587,6 +614,9 @@
   </data>
   <data name="NZOKPay" xml:space="preserve">
     <value>NZOKPay</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
   </data>
   <data name="OtherDocuments" xml:space="preserve">
     <value>Other documents</value>
@@ -801,6 +831,9 @@
   <data name="SingleDose" xml:space="preserve">
     <value>Single dose</value>
   </data>
+  <data name="SmallLength" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="Speciality" xml:space="preserve">
     <value>Speciality</value>
   </data>
@@ -857,6 +890,9 @@
   </data>
   <data name="UniqueIdentifier" xml:space="preserve">
     <value>Unique identifier</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
   </data>
   <data name="Urgency" xml:space="preserve">
     <value>Urgency</value>

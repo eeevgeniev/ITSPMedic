@@ -3,30 +3,21 @@ using Medic.AppModels.Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Medic.AppModels.Outs
+namespace Medic.AppModels.Ins
 {
-    public class OutSearch : IQueryStringBuilder
+    public class InsSearch : IQueryStringBuilder
     {
-        [Display(Name = nameof(MainOutDiagnose))]
-        public string MainOutDiagnose { get; set; }
+        [Display(Name = nameof(MainDiagnose))]
+        public string MainDiagnose { get; set; }
 
-        [Display(Name = nameof(CountOfAdditionalOutDiagnoses))]
-        public int? CountOfAdditionalOutDiagnoses { get; set; }
+        [Display(Name = nameof(CountOfAdditionalDiagnoses))]
+        public int? CountOfAdditionalDiagnoses { get; set; }
 
         [Display(Name = nameof(Sex))]
         public int? Sex { get; set; }
 
-        [Display(Name = nameof(SendDiagnose))]
-        public string SendDiagnose { get; set; }
-
-        [Display(Name = nameof(CountOfAdditionalSendDiagnoses))]
-        public int? CountOfAdditionalSendDiagnoses { get; set; }
-
         [Display(Name = nameof(HealthRegion))]
         public int? HealthRegion { get; set; }
-
-        [Display(Name = nameof(UsedDrug))]
-        public string UsedDrug { get; set; }
 
         [Display(Name = nameof(Age))]
         public int? Age { get; set; }
@@ -38,7 +29,7 @@ namespace Medic.AppModels.Outs
         public int? YoungerThan { get; set; }
 
         [Display(Name = nameof(Order))]
-        public OutOrderEnum Order { get; set; }
+        public InOrderEnum Order { get; set; }
 
         [Display(Name = nameof(Direction))]
         public OrderDirectionEnum Direction { get; set; }
@@ -50,34 +41,19 @@ namespace Medic.AppModels.Outs
         {
             Dictionary<string, string> queryString = new Dictionary<string, string>();
 
-            if (!string.IsNullOrWhiteSpace(MainOutDiagnose))
+            if (!string.IsNullOrWhiteSpace(MainDiagnose))
             {
-                queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(MainOutDiagnose)}", MainOutDiagnose);
+                queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(MainDiagnose)}", MainDiagnose);
             }
 
-            if (CountOfAdditionalOutDiagnoses != default)
+            if (CountOfAdditionalDiagnoses != default)
             {
-                queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(CountOfAdditionalOutDiagnoses)}", CountOfAdditionalOutDiagnoses.ToString());
+                queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(CountOfAdditionalDiagnoses)}", CountOfAdditionalDiagnoses.ToString());
             }
 
             if (Sex != default)
             {
                 queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(Sex)}", Sex.ToString());
-            }
-
-            if (!string.IsNullOrWhiteSpace(UsedDrug))
-            {
-                queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(UsedDrug)}", UsedDrug);
-            }
-
-            if (!string.IsNullOrWhiteSpace(SendDiagnose))
-            {
-                queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(SendDiagnose)}", SendDiagnose);
-            }
-
-            if (CountOfAdditionalSendDiagnoses != default)
-            {
-                queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(CountOfAdditionalSendDiagnoses)}", CountOfAdditionalSendDiagnoses.ToString());
             }
 
             if (HealthRegion != default)
@@ -101,9 +77,7 @@ namespace Medic.AppModels.Outs
             }
 
             queryString.Add(nameof(Order), ((int)Order).ToString());
-
             queryString.Add(nameof(Direction), ((int)Direction).ToString());
-
             queryString.Add(nameof(Length), ((int)Length).ToString());
 
             return queryString;
@@ -111,9 +85,8 @@ namespace Medic.AppModels.Outs
 
         public override string ToString()
         {
-            return $"{nameof(MainOutDiagnose)}:{MainOutDiagnose}&{nameof(CountOfAdditionalOutDiagnoses)}:{CountOfAdditionalOutDiagnoses}&{nameof(Sex)}:{Sex}&{nameof(SendDiagnose)}:{SendDiagnose}" +
-                $"&{nameof(CountOfAdditionalSendDiagnoses)}:{CountOfAdditionalSendDiagnoses}&{nameof(HealthRegion)}:{HealthRegion}" +
-                $"&{nameof(UsedDrug)}:{UsedDrug}&{nameof(Age)}:{Age}&{nameof(OlderThan)}:{OlderThan}&{nameof(YoungerThan)}:{YoungerThan}" + 
+            return $"{nameof(MainDiagnose)}:{MainDiagnose}&{nameof(CountOfAdditionalDiagnoses)}:{CountOfAdditionalDiagnoses}&{nameof(Sex)}:{Sex}" +
+                $"&{nameof(HealthRegion)}:{HealthRegion}&{nameof(Age)}:{Age}&{nameof(OlderThan)}:{OlderThan}&{nameof(YoungerThan)}:{YoungerThan}" + 
                 $"&{nameof(Order)}:{(int)Order}&{nameof(Direction)}:{(int)Direction}&{nameof(Length)}:{(int)Length}";
         }
     }

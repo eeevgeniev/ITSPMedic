@@ -80,6 +80,7 @@ namespace Medic.App
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            
             app.UseStaticFiles();
 
             app.UseRouting();

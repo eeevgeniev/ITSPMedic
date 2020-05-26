@@ -66,7 +66,7 @@ namespace Medic.App.Controllers
             }
             catch (Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,

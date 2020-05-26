@@ -30,7 +30,7 @@ namespace Medic.FileImport
                 IConfigurationRoot configuration = configurationBuilder.Build();
 
                 DbContextOptionsBuilder<MedicContext> builder = new DbContextOptionsBuilder<MedicContext>();
-                builder.UseSqlServer(configuration[MedicConstants.ConnectionString]);
+                builder.UseSqlServer(configuration[Constants.ConnectionString]);
                 builder.EnableSensitiveDataLogging();
 
                 using MedicContext context = new MedicContext(builder.Options);
@@ -100,6 +100,8 @@ namespace Medic.FileImport
 
         private static void ReadCpFiles(IMappable mapper, DbContextOptionsBuilder<MedicContext> builder, string directoryPath)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
             CP.CPFile cpFile;
             CPFile cpFileEntity;
@@ -109,7 +111,7 @@ namespace Medic.FileImport
 
             foreach (string file in files)
             {
-                using StreamReader sr = new StreamReader(file, Encoding.UTF8);
+                using StreamReader sr = new StreamReader(file, Encoding.GetEncoding("windows-1251"));
                 cpFile = xmlSerializer.Deserialize(sr) as CP.CPFile;
                 
                 if (cpFile != default)
@@ -130,6 +132,8 @@ namespace Medic.FileImport
 
         private static void ReadCLPRFiles(IMappable mapper, DbContextOptionsBuilder<MedicContext> builder, string directoryPath)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
             CLPR.HospitalPractice clprFile;
             HospitalPractice hospitalPracticeEntity;
@@ -139,7 +143,7 @@ namespace Medic.FileImport
 
             foreach (string file in files)
             {
-                using StreamReader sr = new StreamReader(file, Encoding.UTF8);
+                using StreamReader sr = new StreamReader(file, Encoding.GetEncoding("windows-1251"));
 
                 clprFile = xmlSerializer.Deserialize(sr) as CLPR.HospitalPractice;
 

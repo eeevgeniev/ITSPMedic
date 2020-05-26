@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Medic.Services.Helpers
+namespace Medic.Services.Base
 {
-    internal sealed class DateTimeHelper
+    public abstract class DateTimeBaseHelper
     {
-        internal (DateTime startDate, DateTime endDate) CalculateYearsBoundsByAges(int age)
+        protected (DateTime startDate, DateTime endDate) CalculateYearsBoundsByAges(int age)
         {
             DateTime startDate = new DateTime(DateTime.Now.Year - age, DateTime.Now.Month, DateTime.Now.Day).AddYears(-1);
             DateTime endDate = new DateTime(DateTime.Now.Year - age, DateTime.Now.Month, DateTime.Now.Day);
@@ -12,7 +12,7 @@ namespace Medic.Services.Helpers
             return (startDate, endDate);
         }
 
-        internal DateTime CalculateYearBoundByAge(int age) => 
+        protected DateTime CalculateYearBoundByAge(int age) =>
             new DateTime(DateTime.Now.Year - age, DateTime.Now.Month, DateTime.Now.Day);
     }
 }

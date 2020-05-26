@@ -1,4 +1,7 @@
-﻿namespace Medic.App.Infrastructure
+﻿using Medic.AppModels.HealthRegions;
+using Medic.AppModels.Sexes;
+
+namespace Medic.App.Infrastructure
 {
     internal class MedicConstants
     {
@@ -9,5 +12,11 @@
         internal const string AdministratorName = "administratorName";
         internal const string AdministratorEmail = "administratorEmail";
         internal const string AdministratorPassword = "administratorPassword";
+        internal const string SexKeyName = nameof(SexOption);
+        internal const string HealthRegionsKeyName = nameof(HealthRegionOption);
+        internal const string PatientsCount = "PatientsCount";
+        internal const string InsCount = "InsCount";
+        internal const string OutsCount = "OutsCount";
+        internal const string UsedDrugs = "UsedDrugs";
     }
 }

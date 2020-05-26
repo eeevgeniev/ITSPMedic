@@ -36,83 +36,35 @@ namespace Medic.Services
                 .SingleOrDefaultAsync(o => o.Id == id);
         }
 
-        public async Task<List<OutPreviewViewModel>> GetOutsAsync(OutSearch search, int startIndex, int count)
+        public async Task<List<OutPreviewViewModel>> GetOutsAsync(
+            IWhereBuilder<Out> outBuilder, 
+            IHelperBuilder<Out> helperBuilder, 
+            int startIndex)
         {
-            return await GetQueryable(MedicContext.Outs, search)
+            if (outBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(outBuilder));
+            }
+
+            if (helperBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(helperBuilder));
+            }
+            
+            return await helperBuilder.BuildQuery(outBuilder.Where(MedicContext.Outs).Skip(startIndex))
                 .ProjectTo<OutPreviewViewModel>(Configuration)
-                .Skip(startIndex)
-                .Take(count)
                 .ToListAsync();
         }
 
-        public async Task<int> GetOutsCountAsync(OutSearch search)
+        public async Task<int> GetOutsCountAsync(IWhereBuilder<Out> outBuilder)
         {
-            return await GetQueryable(MedicContext.Outs, search)
-                .CountAsync();
-        }
-
-        private IQueryable<Out> GetQueryable(IQueryable<Out> outQuery, OutSearch search)
-        {
-            if (search != default)
+            if (outBuilder == default)
             {
-                DateTimeHelper dateTimeHelper = new DateTimeHelper();
-                
-                if (!string.IsNullOrWhiteSpace(search.MainOutDiagnose))
-                {
-                    outQuery = outQuery.Where(o => EF.Functions.Like(o.OutMainDiagnose.Primary.Code, search.MainOutDiagnose));
-                }
-
-                if (search.Sex != default)
-                {
-                    outQuery = outQuery.Where(o => o.Patient.SexId == search.Sex);
-                }
-
-                if (search.CountOfAdditionalOutDiagnoses != default)
-                {
-                    outQuery = outQuery.Where(o => o.OutDiagnoses.Count == search.CountOfAdditionalOutDiagnoses);
-                }
-
-                if (!string.IsNullOrEmpty(search.SendDiagnose))
-                {
-                    outQuery = outQuery.Where(o => EF.Functions.Like(o.SendDiagnose.Primary.Code, search.SendDiagnose));
-                }
-
-                if (search.CountOfAdditionalSendDiagnoses != default)
-                {
-                    int number = (int)search.CountOfAdditionalSendDiagnoses;
-
-                    outQuery = outQuery.Where(o => o.Diagnoses.Count == number);
-                }
-
-                if (!string.IsNullOrWhiteSpace(search.UsedDrug))
-                {
-                    outQuery = outQuery.Where(o => EF.Functions.Like(o.UsedDrug.Code, search.UsedDrug));
-                }
-
-                if (search.HealthRegion != default)
-                {
-                    outQuery = outQuery.Where(i => i.PatientHRegionId == search.HealthRegion);
-                }
-
-                if (search.Age != default)
-                {
-                    (DateTime startDate, DateTime endDate) = dateTimeHelper.CalculateYearsBoundsByAges((int)search.Age);
-
-                    outQuery = outQuery.Where(i => startDate < i.Patient.BirthDate && i.Patient.BirthDate <= endDate);
-                }
-
-                if (search.Age == default && search.OlderThan != default)
-                {
-                    outQuery = outQuery.Where(i => i.Patient.BirthDate <= dateTimeHelper.CalculateYearBoundByAge((int)search.OlderThan));
-                }
-
-                if (search.Age == default && search.YoungerThan != default)
-                {
-                    outQuery = outQuery.Where(i => i.Patient.BirthDate >= dateTimeHelper.CalculateYearBoundByAge((int)search.YoungerThan));
-                }
+                throw new ArgumentNullException(nameof(outBuilder));
             }
 
-            return outQuery;
+            return await outBuilder.Where(MedicContext.Outs)
+                .CountAsync();
         }
     }
 }

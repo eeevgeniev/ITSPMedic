@@ -5,7 +5,6 @@ using Medic.AppModels.Sexes;
 using Medic.Contexts;
 using Medic.Entities;
 using Medic.Services.Contracts;
-using Medic.Services.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -37,22 +36,36 @@ namespace Medic.Services
                 .SingleOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<List<PatientPreviewViewModel>> GetPatientsByQueryAsync(PatientSearch patientSearch, int startIndex, int length)
+        public async Task<List<PatientPreviewViewModel>> GetPatientsByQueryAsync(
+            IWhereBuilder<Patient> patientBuilder,
+            IHelperBuilder<Patient> helperBuilder,
+            int startIndex)
         {
-            IQueryable<Patient> patientsQueryable = GetQueryable(MedicContext.Patients, patientSearch);
+            if (patientBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(patientBuilder));
+            }
 
-            return await patientsQueryable
+            if (helperBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(helperBuilder));
+            }
+
+            return await helperBuilder.BuildQuery(patientBuilder.Where(MedicContext.Patients).Skip(startIndex))
                 .ProjectTo<PatientPreviewViewModel>(Configuration)
-                .Skip(startIndex)
-                .Take(length)
                 .ToListAsync();
         }
 
-        public async Task<int> GetPatientsCountAsync(PatientSearch patientSearch)
+        public async Task<int> GetPatientsCountAsync(IWhereBuilder<Patient> patientBuilder)
         {
-            IQueryable<Patient> patientsQueryable = GetQueryable(MedicContext.Patients, patientSearch);
+            if (patientBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(patientBuilder));
+            }
 
-            return await patientsQueryable.CountAsync();
+            return await patientBuilder
+                .Where(MedicContext.Patients)
+                .CountAsync();
         }
 
         public async Task<List<SexOption>> GetSexOptionsAsync()
@@ -60,45 +73,6 @@ namespace Medic.Services
             return await MedicContext.Sexes
                 .ProjectTo<SexOption>(Configuration)
                 .ToListAsync();
-        }
-
-        private IQueryable<Patient> GetQueryable(IQueryable<Patient> patientsQueryable, PatientSearch patientSearch)
-        {
-            if (patientSearch != default)
-            {
-                DateTimeHelper dateTimeHelper = new DateTimeHelper();
-
-                if (!string.IsNullOrWhiteSpace(patientSearch.IdentityNumber))
-                {
-                    patientsQueryable = patientsQueryable.Where(p => EF.Functions.Like(p.IdentityNumber, patientSearch.IdentityNumber));
-                }
-
-                if (patientSearch.Age != default)
-                {
-                    (DateTime startDate, DateTime endDate) = dateTimeHelper.CalculateYearsBoundsByAges((int)patientSearch.Age);
-
-                    patientsQueryable = patientsQueryable.Where(p => startDate < p.BirthDate && p.BirthDate <= endDate);
-                }
-
-                if (patientSearch.Age == default && patientSearch.OlderThan != default)
-                {
-                    patientsQueryable = patientsQueryable.Where(p => p.BirthDate <= dateTimeHelper.CalculateYearBoundByAge((int)patientSearch.OlderThan));
-                }
-
-                if (patientSearch.Age == default && patientSearch.YoungerThan != default)
-                {
-                    patientsQueryable = patientsQueryable.Where(p => p.BirthDate >= dateTimeHelper.CalculateYearBoundByAge((int)patientSearch.YoungerThan));
-                }
-
-                if (patientSearch.Sex != default)
-                {
-                    int sex = (int)patientSearch.Sex;
-
-                    patientsQueryable = patientsQueryable.Where(p => p.Sex.Id == sex);
-                }
-            }
-
-            return patientsQueryable;
         }
     }
 }

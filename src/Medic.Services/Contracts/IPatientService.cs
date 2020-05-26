@@ -1,5 +1,6 @@
 ﻿using Medic.AppModels.Patients;
 using Medic.AppModels.Sexes;
+using Medic.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,9 +10,12 @@ namespace Medic.Services.Contracts
     {
         Task<PatientViewModel> GetPatientAsync(int id);
 
-        Task<List<PatientPreviewViewModel>> GetPatientsByQueryAsync(PatientSearch patientSearch, int startIndex, int length);
+        Task<List<PatientPreviewViewModel>> GetPatientsByQueryAsync(
+            IWhereBuilder<Patient> patientBuilder, 
+            IHelperBuilder<Patient> helperBuilder, 
+            int startIndex);
 
-        Task<int> GetPatientsCountAsync(PatientSearch search);
+        Task<int> GetPatientsCountAsync(IWhereBuilder<Patient> patientBuilder);
 
         Task<List<SexOption>> GetSexOptionsAsync();
     }

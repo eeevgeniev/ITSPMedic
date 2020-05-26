@@ -32,7 +32,6 @@ namespace Medic.App.Controllers
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
-        
         public async Task<IActionResult> PathProcedure(int id)
         {
             try
@@ -68,7 +67,7 @@ namespace Medic.App.Controllers
             }
             catch (Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,

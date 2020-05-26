@@ -1,4 +1,5 @@
 ﻿using Medic.App.Controllers.Base;
+using Medic.App.Infrastructure;
 using Medic.App.Models.Patients;
 using Medic.AppModels.Patients;
 using Medic.AppModels.Sexes;
@@ -7,6 +8,7 @@ using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.Resources;
 using Medic.Services.Contracts;
+using Medic.Services.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -37,37 +39,62 @@ namespace Medic.App.Controllers
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
         
-        public async Task<IActionResult> Index(PatientSearch search = default, int page = 1)
+        public async Task<IActionResult> Index(PatientSearch search, int page = 1)
         {
             try
             {
-                int startIndex = page > 0 ? (page - 1) * 10 : 0;
-                string key = $"{nameof(PatientPageIndexModel)} - {startIndex} - {search?.ToString() ?? string.Empty}";
+                int patientsToTake = (int)search.Length;
+                
+                int startIndex = page > 0 ? (page - 1) * patientsToTake : 0;
 
-                if (!MedicCache.TryGetValue(key, out PatientPageIndexModel patientPageIndexModel))
+                string patientsKey = $"{nameof(PatientPreviewViewModel)} - {startIndex} - {search?.ToString() ?? string.Empty}";
+                string patientsCountKey = $"{MedicConstants.PatientsCount} - {(search != default ? search.ToString() : default)}";
+
+                List<PatientPreviewViewModel> patientsModel;
+                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
+
+                PatientWhereBuilder patientWhereBuilder = new PatientWhereBuilder(search);
+
+                if (!MedicCache.TryGetValue(patientsKey, out patientsModel))
                 {
-                    patientPageIndexModel = new PatientPageIndexModel()
-                    {
-                        Patients = await PatientService.GetPatientsByQueryAsync(search, startIndex, 10),
-                        Count = await PatientService.GetPatientsCountAsync(search),
-                        CurrentPage = page,
-                        Title = PatientLocalization.Get("PatientSearch"),
-                        Search = search,
-                        Description = PatientLocalization.Get("PatientSearch"),
-                        Keywords = PatientLocalization.Get("PatientSearchMetaData"),
-                        Sexes = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } }
-                    };
+                    PatientHelperBuilder helperBuilder = new PatientHelperBuilder(search);
 
-                    patientPageIndexModel.Sexes.AddRange(await PatientService.GetSexOptionsAsync());
+                    patientsModel = await PatientService.GetPatientsByQueryAsync(patientWhereBuilder, helperBuilder, startIndex);
 
-                    MedicCache.Set(key, patientPageIndexModel);
+                    MedicCache.Set(patientsKey, patientsModel);
                 }
 
-                return View(patientPageIndexModel);
+                if (!MedicCache.TryGetValue(patientsCountKey, out int patientsCount))
+                {
+                    patientsCount = await PatientService.GetPatientsCountAsync(patientWhereBuilder);
+
+                    MedicCache.Set(patientsCountKey, patientsCount);
+                }
+
+                if (!MedicCache.TryGetValue(MedicConstants.SexKeyName, out List<SexOption> options))
+                {
+                    options = await PatientService.GetSexOptionsAsync();
+
+                    MedicCache.Set(MedicConstants.SexKeyName, options);
+                }
+
+                sexOptions.AddRange(options);
+
+                return View(new PatientPageIndexModel()
+                {
+                    Patients = patientsModel,
+                    Count = patientsCount,
+                    CurrentPage = page,
+                    Title = PatientLocalization.Get("PatientSearch"),
+                    Search = search,
+                    Description = PatientLocalization.Get("PatientSearch"),
+                    Keywords = PatientLocalization.Get("PatientSearchMetaData"),
+                    Sexes = sexOptions
+                });
             }
             catch (Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,
@@ -84,31 +111,37 @@ namespace Medic.App.Controllers
         {
             try
             {
-                if (id > 0)
+                PatientViewModel model;
+                string error;
+                
+                if (id < 1)
                 {
-                    string key = $"{nameof(PateintPagePatientModel)} - {id}";
+                    model = default;
+                    error = MedicDataLocalization.Get("InvalidId");
+                }
+                else
+                {
+                    string key = $"{nameof(PatientViewModel)} - {id}";
 
-                    if (!MedicCache.TryGetValue(key, out PateintPagePatientModel pateintPagePatientModel))
+                    if (!MedicCache.TryGetValue(key, out model))
                     {
-                        pateintPagePatientModel = new PateintPagePatientModel()
-                        {
-                            Patient = await PatientService.GetPatientAsync(id),
-                            Title = PatientLocalization.Get("PatientData"),
-                            Description = PatientLocalization.Get("PatientData"),
-                            Keywords = PatientLocalization.Get("PatientViewMetaData"),
-                        };
+                        model = await PatientService.GetPatientAsync(id);
 
-                        MedicCache.Set(key, pateintPagePatientModel);
+                        MedicCache.Set(key, model);
                     }
-                    
-                    return View(pateintPagePatientModel);
                 }
 
-                return RedirectToAction(nameof(PatientController.Index), GetControllerName(nameof(PatientController)));
+                return View(new PateintPagePatientModel()
+                {
+                    Patient = model,
+                    Title = PatientLocalization.Get("PatientData"),
+                    Description = PatientLocalization.Get("PatientData"),
+                    Keywords = PatientLocalization.Get("PatientViewMetaData"),
+                });
             }
             catch (Exception ex)
             {
-                await MedicLoggerService.SaveAsync(new Log()
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
                 {
                     Message = ex.Message,
                     InnerExceptionMessage = ex?.InnerException?.Message ?? null,
