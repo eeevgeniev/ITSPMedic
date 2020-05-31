@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Medic.AppModels.PlannedProcedures;
 using Medic.Contexts;
+using Medic.Entities;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,6 +29,37 @@ namespace Medic.Services
             return await MedicContext.PlannedProcedures
                 .ProjectTo<PlannedProcedureViewModel>(Configuration)
                 .SingleOrDefaultAsync(pp => pp.Id == id);
+        }
+
+        public async Task<List<PlannedProcedurePreviewViewModel>> GetPlannedProceduresAsync(
+            IWhereBuilder<PlannedProcedure> plannedProcedureBuilder, 
+            IHelperBuilder<PlannedProcedure> helperBuilder, 
+            int startIndex)
+        {
+            if (plannedProcedureBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(plannedProcedureBuilder));
+            }
+
+            if (helperBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(helperBuilder));
+            }
+
+            return await helperBuilder.BuildQuery(plannedProcedureBuilder.Where(MedicContext.PlannedProcedures).Skip(startIndex))
+                .ProjectTo<PlannedProcedurePreviewViewModel>(Configuration)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetPlannedProceduresCountAsync(IWhereBuilder<PlannedProcedure> plannedProcedureBuilder)
+        {
+            if (plannedProcedureBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(plannedProcedureBuilder));
+            }
+            
+            return await plannedProcedureBuilder.Where(MedicContext.PlannedProcedures)
+                .CountAsync(); 
         }
     }
 }

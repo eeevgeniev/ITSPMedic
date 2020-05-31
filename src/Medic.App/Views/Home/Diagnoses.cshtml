@@ -7,7 +7,7 @@
 
 <article>
     <header class="text-center">
-        <h2>@medicDataLocalization.Get("Summary")</h2>
+        <h2>@medicDataLocalization.Get("Summary") : @Model.TotalResults @medicDataLocalization.Get("Results")</h2>
     </header>
     <section>
         <header class="text-center">
@@ -30,6 +30,21 @@
                         <div class="col-sm-2">@diagnose.Count</div>
                     </div>
                 }
+
+                <hr />
+                <footer class="mt-sm-3">
+                    <pager page-count="@Model.TotalPages"
+                           current-page="@Model.CurrentPage"
+                           controller-name="@MedicBaseController.GetName(nameof(HomeController))"
+                           additional-properties="@null"
+                           action-name="@nameof(HomeController.Diagnoses)"
+                           nav-class-names="btn-toolbar"
+                           ul-class-names="pagination"
+                           li-class-names="page-item"
+                           li-selected-class-names="page-item active"
+                           anchor-class-names="page-link">
+                    </pager>
+                </footer>
             }
             else
             {

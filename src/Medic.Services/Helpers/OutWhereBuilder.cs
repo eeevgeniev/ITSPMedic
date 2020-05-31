@@ -65,24 +65,24 @@ namespace Medic.Services.Helpers
 
             if (OutSearch.HealthRegion != default)
             {
-                queryable = queryable.Where(i => i.PatientHRegionId == OutSearch.HealthRegion);
+                queryable = queryable.Where(o => o.PatientHRegionId == OutSearch.HealthRegion);
             }
 
             if (OutSearch.Age != default)
             {
                 (DateTime startDate, DateTime endDate) = CalculateYearsBoundsByAges((int)OutSearch.Age);
 
-                queryable = queryable.Where(i => startDate < i.Patient.BirthDate && i.Patient.BirthDate <= endDate);
+                queryable = queryable.Where(o => startDate < o.Patient.BirthDate && o.Patient.BirthDate <= endDate);
             }
 
             if (OutSearch.Age == default && OutSearch.OlderThan != default)
             {
-                queryable = queryable.Where(i => i.Patient.BirthDate <= CalculateYearBoundByAge((int)OutSearch.OlderThan));
+                queryable = queryable.Where(o => o.Patient.BirthDate <= CalculateYearBoundByAge((int)OutSearch.OlderThan));
             }
 
             if (OutSearch.Age == default && OutSearch.YoungerThan != default)
             {
-                queryable = queryable.Where(i => i.Patient.BirthDate >= CalculateYearBoundByAge((int)OutSearch.YoungerThan));
+                queryable = queryable.Where(o => o.Patient.BirthDate >= CalculateYearBoundByAge((int)OutSearch.YoungerThan));
             }
 
             return queryable;

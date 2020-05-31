@@ -2,9 +2,12 @@
 using AutoMapper.QueryableExtensions;
 using Medic.AppModels.DispObservations;
 using Medic.Contexts;
+using Medic.Entities;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Medic.Services
@@ -30,6 +33,37 @@ namespace Medic.Services
             return await MedicContext.DispObservations
                 .ProjectTo<DispObservationViewModel>(Configuration)
                 .SingleOrDefaultAsync(disp => disp.Id == id);
+        }
+
+        public async Task<List<DispObservationPreviewViewModel>> GetDispObservationsAsync(
+            IWhereBuilder<DispObservation> dispObservationBuilder, 
+            IHelperBuilder<DispObservation> helperBuilder, 
+            int startIndex)
+        {
+            if (dispObservationBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(dispObservationBuilder));
+            }
+
+            if (helperBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(helperBuilder));
+            }
+
+            return await helperBuilder.BuildQuery(dispObservationBuilder.Where(MedicContext.DispObservations.Skip(startIndex)))
+                .ProjectTo<DispObservationPreviewViewModel>(Configuration)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetDispObservationsCountAsync(IWhereBuilder<DispObservation> dispObservationBuilder)
+        {
+            if (dispObservationBuilder == default)
+            {
+                throw new ArgumentNullException(nameof(dispObservationBuilder));
+            }
+
+            return await dispObservationBuilder.Where(MedicContext.DispObservations)
+                .CountAsync();
         }
     }
 }

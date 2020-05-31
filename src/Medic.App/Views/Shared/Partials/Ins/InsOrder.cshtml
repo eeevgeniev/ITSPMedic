@@ -5,37 +5,37 @@
 
 @inject MedicDataLocalization medicDataLocalization
 
-@{ 
+@{
     Type inOrderEnum = typeof(InOrderEnum);
     Type orderDirectionEnum = typeof(OrderDirectionEnum);
     Type pageLengthEnum = typeof(PageLengthEnum);
 }
 
-    <form asp-controller="@MedicBaseController.GetName(nameof(InController))"
-          asp-action="@nameof(InController.Index)"
-          method="get"
-          class="form-inline float-sm-right">
-        <div class="form-group mr-sm-3">
-            <label class="mr-sm-3" asp-for="@Model.Order"></label>
-            <select class="form-control" asp-for="@Model.Order"
-                    asp-items="Enum.GetValues(inOrderEnum).Cast<int>().Select(v => new SelectListItem() { Value = v.ToString(), Text = medicDataLocalization.Get(Enum.GetName(inOrderEnum, v)), Selected = (InOrderEnum)v == Model.Order})"></select>
-        </div>
-        <div class="form-group mr-sm-3">
-            <label class="mr-sm-3" asp-for="@Model.Direction"></label>
-            <select class="form-control" asp-for="@Model.Direction"
-                    asp-items="Enum.GetValues(orderDirectionEnum).Cast<int>().Select(v => new SelectListItem() { Value = v.ToString(), Text = medicDataLocalization.Get(Enum.GetName(orderDirectionEnum, v)), Selected = (OrderDirectionEnum)v == Model.Direction })"></select>
-        </div>
-        <div class="form-group mr-sm-3">
-            <label class="mr-sm-3" asp-for="@Model.Length"></label>
-            <select class="form-control" asp-for="@Model.Length"
-                    asp-items="@Enum.GetValues(pageLengthEnum).Cast<int>().Select(v => new SelectListItem() { Value = v.ToString(), Text = v.ToString(), Selected = (PageLengthEnum)v == Model.Length })"></select>
-        </div>
-        <input type="hidden" asp-for="@Model.MainDiagnose" />
-        <input type="hidden" asp-for="@Model.CountOfAdditionalDiagnoses" />
-        <input type="hidden" asp-for="@Model.Sex" />
-        <input type="hidden" asp-for="@Model.HealthRegion" />
-        <input type="hidden" asp-for="@Model.Age" />
-        <input type="hidden" asp-for="@Model.OlderThan" />
-        <input type="hidden" asp-for="@Model.YoungerThan" />
-        <input class="btn btn-dark" type="submit" value="@medicDataLocalization.Get("Update")" />
-    </form>
+<form asp-controller="@MedicBaseController.GetName(nameof(InController))"
+      asp-action="@nameof(InController.Index)"
+      method="get"
+      class="form-inline float-sm-right">
+    <div class="form-group mr-sm-3">
+        <label class="mr-sm-3" asp-for="@Model.Order"></label>
+        <select class="form-control" asp-for="@Model.Order"
+                asp-items="Enum.GetValues(inOrderEnum).Cast<int>().Select(v => new SelectListItem() { Value = v.ToString(), Text = medicDataLocalization.Get(Enum.GetName(inOrderEnum, v)), Selected = (InOrderEnum)v == Model.Order})"></select>
+    </div>
+    <div class="form-group mr-sm-3">
+        <label class="mr-sm-3" asp-for="@Model.Direction"></label>
+        <select class="form-control" asp-for="@Model.Direction"
+                asp-items="Enum.GetValues(orderDirectionEnum).Cast<int>().Select(v => new SelectListItem() { Value = v.ToString(), Text = medicDataLocalization.Get(Enum.GetName(orderDirectionEnum, v)), Selected = (OrderDirectionEnum)v == Model.Direction })"></select>
+    </div>
+    <div class="form-group mr-sm-3">
+        <label class="mr-sm-3" asp-for="@Model.Length"></label>
+        <select class="form-control" asp-for="@Model.Length"
+                asp-items="@Enum.GetValues(pageLengthEnum).Cast<int>().Select(v => new SelectListItem() { Value = v.ToString(), Text = v.ToString(), Selected = (PageLengthEnum)v == Model.Length })"></select>
+    </div>
+    <input type="hidden" asp-for="@Model.MainDiagnose" />
+    <input type="hidden" asp-for="@Model.CountOfAdditionalDiagnoses" />
+    <input type="hidden" asp-for="@Model.Sex" />
+    <input type="hidden" asp-for="@Model.HealthRegion" />
+    <input type="hidden" asp-for="@Model.Age" />
+    <input type="hidden" asp-for="@Model.OlderThan" />
+    <input type="hidden" asp-for="@Model.YoungerThan" />
+    <input class="btn btn-dark" type="submit" value="@medicDataLocalization.Get("Update")" />
+</form>

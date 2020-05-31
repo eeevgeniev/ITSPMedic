@@ -74,6 +74,8 @@ namespace Medic.App.AppServices
             services.AddTransient<ICommissionAprService, CommissionAprService>();
             services.AddTransient<IDispObservationService, DispObservationService>();
             services.AddTransient<IPlannedProcedureService, PlannedProcedureService>();
+            services.AddTransient<IClinicUsedDrugsService, ClinicUsedDrugsService>();
+            services.AddTransient<IDrugProtocolService, DrugProtocolService>();
 
             services.AddTransient<PatientLocalization>();
             services.AddTransient<MedicDataLocalization>();

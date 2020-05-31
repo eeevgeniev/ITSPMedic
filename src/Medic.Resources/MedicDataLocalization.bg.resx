@@ -126,6 +126,9 @@
   <data name="AddDiag" xml:space="preserve">
     <value>Add diag</value>
   </data>
+  <data name="AddDiagCodes" xml:space="preserve">
+    <value>Допълнителни кодове</value>
+  </data>
   <data name="AdditionalDiagnoses" xml:space="preserve">
     <value>Допълнителни диагнози</value>
   </data>
@@ -150,6 +153,9 @@
   <data name="APr05" xml:space="preserve">
     <value>APr05</value>
   </data>
+  <data name="APr05sImuno" xml:space="preserve">
+    <value>APr05s imuno</value>
+  </data>
   <data name="APr38" xml:space="preserve">
     <value>APr38</value>
   </data>
@@ -166,10 +172,10 @@
     <value>Възходящ ред</value>
   </data>
   <data name="ATCCode" xml:space="preserve">
-    <value>ATC code</value>
+    <value>ATC код</value>
   </data>
   <data name="ATCName" xml:space="preserve">
-    <value>ATC name</value>
+    <value>ATC име</value>
   </data>
   <data name="AverageQuantity" xml:space="preserve">
     <value>Средно използвано количество</value>
@@ -243,8 +249,14 @@
   <data name="CommissionAprs" xml:space="preserve">
     <value>Commission aprs</value>
   </data>
+  <data name="CommissionAprsSummary" xml:space="preserve">
+    <value>Commission aprs, мкб, пациенти</value>
+  </data>
   <data name="CommissionAprSummary" xml:space="preserve">
     <value>Commission apr, пациент, мкб</value>
+  </data>
+  <data name="CommissionAprsView" xml:space="preserve">
+    <value>Commission aprs преглед</value>
   </data>
   <data name="CommissionAprView" xml:space="preserve">
     <value>CommissionApr преглед</value>
@@ -315,11 +327,17 @@
   <data name="Diag" xml:space="preserve">
     <value>Diag</value>
   </data>
+  <data name="DiagCode" xml:space="preserve">
+    <value>Код на диагноза</value>
+  </data>
   <data name="DiagDate" xml:space="preserve">
     <value>Diag дата</value>
   </data>
   <data name="Diagnose" xml:space="preserve">
     <value>Диагноза</value>
+  </data>
+  <data name="DiagnoseCode" xml:space="preserve">
+    <value>Код на диагноза</value>
   </data>
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Дата на диагноза</value>
@@ -360,8 +378,14 @@
   <data name="DispObservations" xml:space="preserve">
     <value>Disp observations</value>
   </data>
+  <data name="DispObservationsSummary" xml:space="preserve">
+    <value>Disp observations, мкб, пациенти</value>
+  </data>
   <data name="DispObservationSummary" xml:space="preserve">
     <value>Disp observation, пациент, мкб</value>
+  </data>
+  <data name="DispObservationsView" xml:space="preserve">
+    <value>Disp observations преглед</value>
   </data>
   <data name="DispObservationView" xml:space="preserve">
     <value>Преглед на Disp observation</value>
@@ -392,6 +416,9 @@
   </data>
   <data name="DrugProtocols" xml:space="preserve">
     <value>Протокол за лекарство</value>
+  </data>
+  <data name="DrugProtocolsATCNames" xml:space="preserve">
+    <value>ATC имена от протоколи за лекарства</value>
   </data>
   <data name="DrugQuantity" xml:space="preserve">
     <value>Количество на лекатството</value>
@@ -425,6 +452,12 @@
   </data>
   <data name="FirstMainDiag" xml:space="preserve">
     <value>Първа основна диагноза</value>
+  </data>
+  <data name="FirstMainDiagCode" xml:space="preserve">
+    <value>Код на първата основна диагноза</value>
+  </data>
+  <data name="FirstMainDiagName" xml:space="preserve">
+    <value>Име на първата основна диагноза</value>
   </data>
   <data name="FirstVisitDate" xml:space="preserve">
     <value>Дата на първото посещение</value>
@@ -498,8 +531,14 @@
   <data name="InClinicProcedures" xml:space="preserve">
     <value>Процедури в клиниката</value>
   </data>
+  <data name="InClinicProceduresSummary" xml:space="preserve">
+    <value>Процедури в клиниката, мкб, пациенти</value>
+  </data>
   <data name="InClinicProcedureSummary" xml:space="preserve">
     <value>Пациент, процедура в клиниката, мкб</value>
+  </data>
+  <data name="InClinicProceduresView" xml:space="preserve">
+    <value>Преглед на процедури в клиниката</value>
   </data>
   <data name="IndividualDose" xml:space="preserve">
     <value>Индивидуална доза</value>
@@ -563,6 +602,12 @@
   </data>
   <data name="MainDiag" xml:space="preserve">
     <value>Основна diag</value>
+  </data>
+  <data name="MainDiagCode" xml:space="preserve">
+    <value>Код на основната диагноза</value>
+  </data>
+  <data name="MainDiagName" xml:space="preserve">
+    <value>Име на основната диагноза</value>
   </data>
   <data name="MDICode" xml:space="preserve">
     <value>MDI код</value>
@@ -684,8 +729,14 @@
   <data name="PathProcedures" xml:space="preserve">
     <value>Процедури по пътека</value>
   </data>
+  <data name="PathProceduresSummary" xml:space="preserve">
+    <value>Процедури по пътека, мкб, пациенти</value>
+  </data>
   <data name="PathProcedureSummary" xml:space="preserve">
     <value>Процедура по пътека, пациент, мкб</value>
+  </data>
+  <data name="PathProceduresView" xml:space="preserve">
+    <value>Преглед на процедури по пътека</value>
   </data>
   <data name="Patient" xml:space="preserve">
     <value>Пациент</value>
@@ -695,6 +746,12 @@
   </data>
   <data name="PatientHRegion" xml:space="preserve">
     <value>Здравен регион</value>
+  </data>
+  <data name="Patients" xml:space="preserve">
+    <value>Пациенти</value>
+  </data>
+  <data name="PatientsSummary" xml:space="preserve">
+    <value>Пациенти, мкб, процедури</value>
   </data>
   <data name="PatientStatus" xml:space="preserve">
     <value>Статус на пациента</value>
@@ -717,8 +774,14 @@
   <data name="PlannedProcedures" xml:space="preserve">
     <value>Планирани процедури</value>
   </data>
+  <data name="PlannedProceduresSummary" xml:space="preserve">
+    <value>Планирани процедури, мкб, пациенти</value>
+  </data>
   <data name="PlannedProcedureSummary" xml:space="preserve">
     <value>Планирана процедура, пациент, мкб</value>
+  </data>
+  <data name="PlannedProceduresView" xml:space="preserve">
+    <value>Преглед на планирани процедури</value>
   </data>
   <data name="PlannedProcedureView" xml:space="preserve">
     <value>Преглед на планирана процедура</value>
@@ -765,6 +828,12 @@
   <data name="ProtocolDrugTherapies" xml:space="preserve">
     <value>Протоколи от лечения с лекарства</value>
   </data>
+  <data name="ProtocolDrugTherapiesSummary" xml:space="preserve">
+    <value>Протоколи от лечения с лекарства, мкб, пациенти</value>
+  </data>
+  <data name="ProtocolDrugTherapiesView" xml:space="preserve">
+    <value>Преглед на протоколи от лечения с лекарства</value>
+  </data>
   <data name="ProtocolDrugTherapyView" xml:space="preserve">
     <value>Преглед на протокол на терапия с лекарства</value>
   </data>
@@ -783,6 +852,9 @@
   <data name="Regimen" xml:space="preserve">
     <value>Regimen</value>
   </data>
+  <data name="Results" xml:space="preserve">
+    <value>резултати</value>
+  </data>
   <data name="SampleProtocol" xml:space="preserve">
     <value>Sample protocol</value>
   </data>
@@ -791,6 +863,12 @@
   </data>
   <data name="SecondMainDiag" xml:space="preserve">
     <value>Втора основна диагноза</value>
+  </data>
+  <data name="SecondMainDiagCode" xml:space="preserve">
+    <value>Код на втората основна диагноза</value>
+  </data>
+  <data name="SecondMainDiagName" xml:space="preserve">
+    <value>Име на втората основна диагноза</value>
   </data>
   <data name="SendApr" xml:space="preserve">
     <value>Send apr</value>
@@ -915,11 +993,32 @@
   <data name="View" xml:space="preserve">
     <value>Преглед</value>
   </data>
+  <data name="ViewCommissionApr" xml:space="preserve">
+    <value>Преглед на commission apr</value>
+  </data>
+  <data name="ViewDispObservation" xml:space="preserve">
+    <value>Преглед на disp observation</value>
+  </data>
   <data name="ViewIn" xml:space="preserve">
     <value>Преглед на приема</value>
   </data>
+  <data name="ViewInClinicProcedure" xml:space="preserve">
+    <value>Преглед на процедура в клиниката</value>
+  </data>
+  <data name="ViewOut" xml:space="preserve">
+    <value>Преглед на изписване</value>
+  </data>
+  <data name="ViewPathProcedure" xml:space="preserve">
+    <value>Преглед на процедура по пътека</value>
+  </data>
   <data name="ViewPatient" xml:space="preserve">
     <value>Преглед на пациента</value>
+  </data>
+  <data name="ViewPlannedProcedure" xml:space="preserve">
+    <value>Преглед на планирана процедура</value>
+  </data>
+  <data name="ViewProtocolDrugTherapy" xml:space="preserve">
+    <value>Преглед на протокол от лечения с лекарства</value>
   </data>
   <data name="VisitDocumentName" xml:space="preserve">
     <value>Име на документа за посещение</value>

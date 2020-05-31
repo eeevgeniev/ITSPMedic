@@ -42,6 +42,12 @@ namespace Medic.Entities
             expression.CreateMap<DispObservation, DispObservationViewModel>()
                 .ForMember(dovm => dovm.PatientBranch, config => config.MapFrom(disp => disp.PatientBranch != default && disp.PatientBranch.HealthRegion != default ? disp.PatientBranch.HealthRegion.Name : default))
                 .ForMember(dovm => dovm.PatientHRegion, config => config.MapFrom(disp => disp.PatientHRegion != default ? disp.PatientHRegion.Name : default));
+
+            expression.CreateMap<DispObservation, DispObservationPreviewViewModel>()
+                .ForMember(dovm => dovm.FirstMainDiagCode, config => config.MapFrom(disp => disp.FirstMainDiag != default && disp.FirstMainDiag.MKB != default ? disp.FirstMainDiag.MKB.Code : default))
+                .ForMember(dovm => dovm.FirstMainDiagName, config => config.MapFrom(disp => disp.FirstMainDiag != default && disp.FirstMainDiag.MKB != default ? disp.FirstMainDiag.MKB.Name : default))
+                .ForMember(dovm => dovm.SecondMainDiagCode, config => config.MapFrom(disp => disp.SecondMainDiag != default && disp.SecondMainDiag.MKB != default ? disp.SecondMainDiag.MKB.Code : default))
+                .ForMember(dovm => dovm.SecondMainDiagName, config => config.MapFrom(disp => disp.SecondMainDiag != default && disp.SecondMainDiag.MKB != default ? disp.SecondMainDiag.MKB.Name : default));
         }
     }
 }

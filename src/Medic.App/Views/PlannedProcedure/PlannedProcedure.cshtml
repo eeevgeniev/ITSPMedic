@@ -5,7 +5,8 @@
 {
     <article>
         <header>
-            <h1>@($"{medicDataLocalization.Get("PlannedProcedureView")} - {Model.PlannedProcedure.UniqueIdentifier}")</h1>
+            <h2 class="text-center">@($"{medicDataLocalization.Get("PlannedProcedureView")} - {Model.PlannedProcedure.UniqueIdentifier}")</h2>
+            <h4 class="text-center text-info">@Model.Keywords</h4>
         </header>
         <h2 class="text-center">@medicDataLocalization.Get("Patient")</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.PlannedProcedure.Patient" />

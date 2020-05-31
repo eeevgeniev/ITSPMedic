@@ -14,6 +14,7 @@
                 string name = $"{Model.Patient.FirstName} {Model.Patient.SecondName} {Model.Patient.LastName}".Replace("  ", " ");
             }
             <h2 class="text-center">@(string.IsNullOrWhiteSpace(name) ? patientLocalization.Get("NotSpecified") : name)</h2>
+            <h4 class="text-center text-info">@Model.Keywords</h4>
             <div>
                 <div class="row">
                     <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("BirthDate")</div>

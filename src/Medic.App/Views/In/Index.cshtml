@@ -1,14 +1,11 @@
 ﻿@using Medic.AppModels.Ins
-@inject MedicDataLocalization medicDataLocalization
 
 @model InPageIndexModel
 
+@inject MedicDataLocalization medicDataLocalization
+
 @{
     ViewData["Title"] = Model.Title;
-
-    int pageLength = (int)Model.Search.Length;
-
-    int pagesCount = Model.TotalCount % pageLength != 0 ? (Model.TotalCount / pageLength) + 1 : Model.TotalCount / pageLength;
 
     Dictionary<string, string> paramsByName = Model.Search != default ?
         Model.Search.BuildQuery(default) : new Dictionary<string, string>();
@@ -19,7 +16,8 @@
 
 <article>
     <header>
-        <h2>@medicDataLocalization.Get("InsView"): @Model.TotalCount</h2>
+        <h2 class="text-center">@medicDataLocalization.Get("InsView"): @Model.TotalResults @medicDataLocalization.Get("Results")</h2>
+        <h4 class="text-center text-info">@Model.Keywords</h4>
     </header>
     <section>
         <partial name="~/Views/Shared/Partials/Ins/InsSerach.cshtml" model="@Model.Search" view-data="@ViewData" />
@@ -62,7 +60,7 @@
                 }
             </div>
             <footer>
-                <pager page-count="@pagesCount"
+                <pager page-count="@Model.TotalPages"
                        current-page="@Model.CurrentPage"
                        controller-name="@MedicBaseController.GetName(nameof(InController))"
                        action-name="@nameof(InController.Index)"

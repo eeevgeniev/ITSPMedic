@@ -27,7 +27,7 @@ namespace Medic.Services
                     .ToListAsync();
         }
 
-        public async Task<List<UsedDrugsSummaryStatistic>> UsedDrugsSummaryAsync()
+        public async Task<List<UsedDrugsSummaryStatistic>> UsedDrugsSummaryAsync(int startIndex, int take)
         {
             return await MedicContext.Outs
                 .Include(o => o.UsedDrug)
@@ -62,7 +62,45 @@ namespace Medic.Services
                 })
                 .OrderBy(v => v.UsedDrugCode)
                 .ThenByDescending(v => v.TotalUses)
+                .Skip(startIndex)
+                .Take(take)
                 .ToListAsync();
+        }
+
+        public async Task<int> UsedDrugsSummaryCountAsync()
+        {
+            return await MedicContext.Outs
+                .Include(o => o.UsedDrug)
+                .Include(o => o.SendDiagnose)
+                    .ThenInclude(sd => sd.Primary)
+                .Include(o => o.OutMainDiagnose)
+                    .ThenInclude(d => d.Primary)
+                .Where(o => o.UsedDrugId != default)
+                .GroupBy(o => new
+                {
+                    UsedDrugCode = o.UsedDrug.Code,
+                    SendDignoseCode = o.SendDiagnose.Primary.Code,
+                    SendDiagnoseName = o.SendDiagnose.Primary.Name,
+                    OutDiagnoseCode = o.OutMainDiagnose.Primary.Code,
+                    OutDiagnoseName = o.OutMainDiagnose.Primary.Name
+                },
+                    o => new
+                    {
+                        o.UsedDrug.Quantity,
+                        o.UsedDrug.Cost
+                    })
+                .Select((v) => new UsedDrugsSummaryStatistic()
+                {
+                    UsedDrugCode = v.Key.UsedDrugCode,
+                    SendDiagnoseName = v.Key.SendDiagnoseName,
+                    SendDignoseCode = v.Key.SendDignoseCode,
+                    OutDiagnoseName = v.Key.OutDiagnoseName,
+                    OutDiagnoseCode = v.Key.OutDiagnoseCode,
+                    TotalUses = v.Count(),
+                    AverageQuantity = v.Average(v => v.Quantity),
+                    TotalCosts = v.Sum(v => v.Cost)
+                })
+                .CountAsync();
         }
     }
 }

@@ -1,0 +1,82 @@
+﻿@model PlannedProcedurePageIndexModel
+
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+
+    Dictionary<string, string> paramsByName = Model.Search != default ?
+        Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+
+    ViewData[Constants.Sexes] = Model.Sexes;
+    ViewData[Constants.HealthRegions] = Model.HealthRegions;
+}
+
+<article>
+    <header>
+        <h2 class="text-center">@medicDataLocalization.Get("PlannedProceduresView"): @Model.TotalResults @medicDataLocalization.Get("Results")</h2>
+        <h4 class="text-center text-info">@Model.Keywords</h4>
+    </header>
+    <section>
+        <partial name="~/Views/Shared/Partials/PlannedProcedures/PlannedProcedureSearch.cshtml" model="@Model.Search" view-data="@ViewData" />
+    </section>
+    <section class="mt-sm-1 clearfix">
+        <partial name="~/Views/Shared/Partials/PlannedProcedures/PlannedProcedureOrder.cshtml" model="@Model.Search" />
+    </section>
+    <section class="mt-sm-1">
+        @if (Model.PlannedProcedures != default && Model.PlannedProcedures.Count > 0)
+        {
+            <div>
+                <div class="row">
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("SendDate")</div>
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("SendDiagnoseCode")</div>
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("SendDiagnoseName")</div>
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("DiagnoseCode")</div>
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("DiagnoseName")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPlannedProcedure")</div>
+                </div>
+                @foreach (PlannedProcedurePreviewViewModel currentPlannedProcedure in Model.PlannedProcedures)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-2">@currentPlannedProcedure.SendDate.ToShortDateString()</div>
+                        <div class="col-sm-2">@currentPlannedProcedure.SendDiagnoseCode</div>
+                        <div class="col-sm-2">@currentPlannedProcedure.SendDiagnoseName</div>
+                        <div class="col-sm-2">@currentPlannedProcedure.DiagnoseCode</div>
+                        <div class="col-sm-2">@currentPlannedProcedure.DiagnoseName</div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
+                               asp-action="@nameof(PatientController.Patient)"
+                               asp-route-id="@currentPlannedProcedure.PatientId" class="btn btn-info">@medicDataLocalization.Get("View")</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(PlannedProcedureController))"
+                               asp-action="@nameof(PlannedProcedureController.PlannedProcedure)"
+                               asp-route-id="@currentPlannedProcedure.Id"
+                               class="btn btn-default">@medicDataLocalization.Get("View")</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <footer>
+                <pager page-count="@Model.TotalPages"
+                       current-page="@Model.CurrentPage"
+                       controller-name="@MedicBaseController.GetName(nameof(PlannedProcedureController))"
+                       action-name="@nameof(PlannedProcedureController.Index)"
+                       additional-properties="@paramsByName"
+                       nav-class-names="btn-toolbar"
+                       ul-class-names="pagination"
+                       li-class-names="page-item"
+                       li-selected-class-names="page-item active"
+                       anchor-class-names="page-link">
+
+                </pager>
+            </footer>
+        }
+        else
+        {
+            <div class="text-center text-info font-weight-bold">@medicDataLocalization.Get("NoResults")</div>
+        }
+    </section>
+</article>

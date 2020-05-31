@@ -26,7 +26,7 @@ using System.Threading.Tasks;
 namespace Medic.App.Controllers
 {
     [Authorize]
-    public class HomeController : MedicBaseController
+    public class HomeController : PageBasedController
     {
         private readonly ICPFileService CPFileService;
         private readonly IDiagnoseService DiagnoseService;
@@ -116,25 +116,38 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Diags()
+        public async Task<IActionResult> Diags(int page = 1)
         {
             try
             {
-                string key = nameof(DiagMKBSummaryViewModel);
+                int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
+
+                string key = $"{nameof(DiagMKBSummaryViewModel)} - {startIndex}";
+                string countKey = $"{nameof(DiagMKBSummaryViewModel)} - count";
 
                 if (!MedicCache.TryGetValue(key, out List<DiagMKBSummaryViewModel> model))
                 {
-                    model = await DiagService.GetMKBSummaryAsync();
+                    model = await DiagService.GetMKBSummaryAsync(startIndex, MedicConstants.SummaryPageLength);
 
                     MedicCache.Set(key, model);
                 }
-                
+
+                if (!MedicCache.TryGetValue(countKey, out int diagsCount))
+                {
+                    diagsCount = await DiagService.GetMKBSummaryCountAsync();
+
+                    MedicCache.Set(countKey, diagsCount);
+                }
+
                 return View(new HomePageDiagModel()
                 {
                     DiagMKBSummaryViewModels = model,
                     Title = MedicDataLocalization.Get("Diags"),
                     Description = MedicDataLocalization.Get("Diags"),
-                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
+                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords"),
+                    CurrentPage = page,
+                    TotalPages = base.TotalPages(MedicConstants.SummaryPageLength, diagsCount),
+                    TotalResults = diagsCount
                 });
             }
             catch (Exception ex)
@@ -152,17 +165,27 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Diagnoses()
+        public async Task<IActionResult> Diagnoses(int page = 1)
         {
             try
             {
-                string key = nameof(DiagnoseMKBSummaryViewModel);
+                int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
+
+                string key = $"{nameof(DiagnoseMKBSummaryViewModel)} - {startIndex}";
+                string countKey = $"{nameof(DiagnoseMKBSummaryViewModel)} - count";
 
                 if (!MedicCache.TryGetValue(key, out List<DiagnoseMKBSummaryViewModel> model))
                 {
-                    model = await DiagnoseService.MKBSummaryAsync();
+                    model = await DiagnoseService.MKBSummaryAsync(startIndex, MedicConstants.SummaryPageLength);
 
                     MedicCache.Set(key, model);
+                }
+
+                if (!MedicCache.TryGetValue(countKey, out int diagnosesCount))
+                {
+                    diagnosesCount = await DiagnoseService.GetMKBSummaryCountAsync();
+
+                    MedicCache.Set(countKey, diagnosesCount);
                 }
 
                 return View(new HomePageDiagnoseModel()
@@ -171,6 +194,9 @@ namespace Medic.App.Controllers
                     Title = MedicDataLocalization.Get("Diagnoses"),
                     Description = MedicDataLocalization.Get("Diagnoses"),
                     Keywords = MedicDataLocalization.Get("SummaryInformationKeywords"),
+                    CurrentPage = page,
+                    TotalPages = base.TotalPages(MedicConstants.SummaryPageLength, diagnosesCount),
+                    TotalResults = diagnosesCount
                 });
             }
             catch (Exception ex)
@@ -188,17 +214,27 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> UsedDrugs()
+        public async Task<IActionResult> UsedDrugs(int page = 1)
         {
             try
             {
-                string key = nameof(UsedDrugsSummaryStatistic);
+                int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
+
+                string key = $"{nameof(UsedDrugsSummaryStatistic)} - {startIndex}";
+                string keyCount = $"{nameof(UsedDrugsSummaryStatistic)} - count";
 
                 if (!MedicCache.TryGetValue(key, out List<UsedDrugsSummaryStatistic> model))
                 {
-                    model = await UsedDrugService.UsedDrugsSummaryAsync();
+                    model = await UsedDrugService.UsedDrugsSummaryAsync(startIndex, MedicConstants.SummaryPageLength);
 
                     MedicCache.Set(key, model);
+                }
+
+                if (!MedicCache.TryGetValue(keyCount, out int usedDrugsCount))
+                {
+                    usedDrugsCount = await UsedDrugService.UsedDrugsSummaryCountAsync();
+
+                    MedicCache.Set(key, usedDrugsCount);
                 }
 
                 return View(new HomePageUsedDrugsModel()
@@ -207,6 +243,9 @@ namespace Medic.App.Controllers
                     Title = MedicDataLocalization.Get("UsedDrug"),
                     Description = MedicDataLocalization.Get("UsedDrugs"),
                     Keywords = MedicDataLocalization.Get("UsedDrugsInformationKeywords"),
+                    CurrentPage = page,
+                    TotalPages = base.TotalPages(MedicConstants.SummaryPageLength, usedDrugsCount),
+                    TotalResults = usedDrugsCount
                 });
             }
             catch (Exception ex)

@@ -35,6 +35,12 @@
                             <div class="dropdown-menu">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(OutController))" asp-action="@nameof(OutController.Index)">@generalLocalization.Get("Outs")</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(InController))" asp-action="@nameof(InController.Index)">@generalLocalization.Get("Ins")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(ProtocolDrugTherapyController))" asp-action="@nameof(ProtocolDrugTherapyController.Index)">@generalLocalization.Get("ProtocolDrugTherapies")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(InClinicProcedureController))" asp-action="@nameof(InClinicProcedureController.Index)">@generalLocalization.Get("InClinicProcedures")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PathProcedureController))" asp-action="@nameof(PathProcedureController.Index)">@generalLocalization.Get("PathProcedures")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(CommissionAprController))" asp-action="@nameof(CommissionAprController.Index)">@generalLocalization.Get("CommissionAprs")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(DispObservationController))" asp-action="@nameof(DispObservationController.Index)">@generalLocalization.Get("DispObservations")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PlannedProcedureController))" asp-action="@nameof(PlannedProcedureController.Index)">@generalLocalization.Get("PlannedProcedure")</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PatientController))" asp-action="@nameof(PatientController.Index)">@generalLocalization.Get("Patients")</a>
                             </div>
                         </li>

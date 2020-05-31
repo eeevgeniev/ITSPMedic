@@ -7,15 +7,11 @@ using System.Collections.Generic;
 
 namespace Medic.App.Models.Outs
 {
-    public class OutPageIndexModel : BasePageModel
+    public class OutPageIndexModel : BasePageSummaryModel
     {
         public OutSearch Search { get; set; }
 
         public List<OutPreviewViewModel> Outs { get; set; }
-
-        public int CurrentPage { get; set; }
-
-        public int TotalCount { get; set; }
 
         public List<SexOption> Sexes { get; set; }
 

@@ -123,6 +123,9 @@
   <data name="ACHICode" xml:space="preserve">
     <value>ACHI код</value>
   </data>
+  <data name="AddDiagCodes" xml:space="preserve">
+    <value>Допълнителни кодове</value>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>Адрес</value>
   </data>
@@ -147,6 +150,9 @@
   <data name="ApplicationWay" xml:space="preserve">
     <value>Начин на приложение</value>
   </data>
+  <data name="APr05sImuno" xml:space="preserve">
+    <value>APr05s imuno</value>
+  </data>
   <data name="AprCode" xml:space="preserve">
     <value>Apr код</value>
   </data>
@@ -160,10 +166,10 @@
     <value>Възходящ ред</value>
   </data>
   <data name="ATCCode" xml:space="preserve">
-    <value>ATC code</value>
+    <value>ATC код</value>
   </data>
   <data name="ATCName" xml:space="preserve">
-    <value>ATC name</value>
+    <value>ATC име</value>
   </data>
   <data name="AverageQuantity" xml:space="preserve">
     <value>Средно използвано количество</value>
@@ -309,8 +315,14 @@
   <data name="Diag" xml:space="preserve">
     <value>Diag</value>
   </data>
+  <data name="DiagCode" xml:space="preserve">
+    <value>Код на диагноза</value>
+  </data>
   <data name="DiagDate" xml:space="preserve">
     <value>Diag дата</value>
+  </data>
+  <data name="DiagnoseCode" xml:space="preserve">
+    <value>Код на диагноза</value>
   </data>
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Дата на диагноза</value>
@@ -357,6 +369,9 @@
   <data name="DrugProtocols" xml:space="preserve">
     <value>Протокол за лекарство</value>
   </data>
+  <data name="DrugProtocolsATCNames" xml:space="preserve">
+    <value>ATC имена от протоколи за лекарства</value>
+  </data>
   <data name="DrugQuantity" xml:space="preserve">
     <value>Количество на лекатството</value>
   </data>
@@ -383,6 +398,12 @@
   </data>
   <data name="FairCondition" xml:space="preserve">
     <value>Fair condition</value>
+  </data>
+  <data name="FirstMainDiagCode" xml:space="preserve">
+    <value>Код на първата основна диагноза</value>
+  </data>
+  <data name="FirstMainDiagName" xml:space="preserve">
+    <value>Име на първата основна диагноза</value>
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>Първо име</value>
@@ -497,6 +518,12 @@
   </data>
   <data name="Length" xml:space="preserve">
     <value>Дължина</value>
+  </data>
+  <data name="MainDiagCode" xml:space="preserve">
+    <value>Код на основната диагноза</value>
+  </data>
+  <data name="MainDiagName" xml:space="preserve">
+    <value>Име на основната диагноза</value>
   </data>
   <data name="MainDiagnose" xml:space="preserve">
     <value>Основна диагноза</value>
@@ -728,6 +755,12 @@
   </data>
   <data name="Scheme" xml:space="preserve">
     <value>Схема</value>
+  </data>
+  <data name="SecondMainDiagCode" xml:space="preserve">
+    <value>Код на втората основна диагноза</value>
+  </data>
+  <data name="SecondMainDiagName" xml:space="preserve">
+    <value>Име на втората основна диагноза</value>
   </data>
   <data name="SecondName" xml:space="preserve">
     <value>Бащино име</value>

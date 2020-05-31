@@ -40,6 +40,12 @@ namespace Medic.Entities
             expression.CreateMap<PlannedProcedure, PlannedProcedureViewModel>()
                 .ForMember(ppvm => ppvm.PatientBranch, config => config.MapFrom(pp => pp.PatientBranch != default && pp.PatientBranch.HealthRegion != default ? pp.PatientBranch.HealthRegion.Name : default))
                 .ForMember(ppvm => ppvm.PatientHRegion, config => config.MapFrom(pp => pp.PatientHRegion != default ? pp.PatientHRegion.Name : default));
+
+            expression.CreateMap<PlannedProcedure, PlannedProcedurePreviewViewModel>()
+                .ForMember(pppvm => pppvm.DiagnoseCode, config => config.MapFrom(pp => pp.Diagnose != default && pp.Diagnose.Primary != default ? pp.Diagnose.Primary.Code : default))
+                .ForMember(pppvm => pppvm.DiagnoseName, config => config.MapFrom(pp => pp.Diagnose != default && pp.Diagnose.Primary != default ? pp.Diagnose.Primary.Name : default))
+                .ForMember(pppvm => pppvm.SendDiagnoseCode, config => config.MapFrom(pp => pp.SendDiagnose != default && pp.SendDiagnose.Primary != default ? pp.SendDiagnose.Primary.Code : default))
+                .ForMember(pppvm => pppvm.SendDiagnoseName, config => config.MapFrom(pp => pp.SendDiagnose != default && pp.SendDiagnose.Primary != default ? pp.SendDiagnose.Primary.Name : default));
         }
     }
 }

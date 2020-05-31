@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Medic.App.Models.Home
 {
-    public class HomePageDiagModel : BasePageModel
+    public class HomePageDiagModel : BasePageSummaryModel
     {
         public List<DiagMKBSummaryViewModel> DiagMKBSummaryViewModels { get; set; }
     }

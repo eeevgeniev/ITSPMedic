@@ -1,0 +1,84 @@
+﻿@using Medic.AppModels.CommissionAprs
+
+@model CommissionAprPageIndexModel
+
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+
+    Dictionary<string, string> paramsByName = Model.Search != default ?
+        Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+
+    ViewData[Constants.Sexes] = Model.Sexes;
+    ViewData[Constants.HealthRegions] = Model.HealthRegions;
+}
+
+<article>
+    <header>
+        <h2 class="text-center">@medicDataLocalization.Get("CommissionAprsView"): @Model.TotalResults @medicDataLocalization.Get("Results")</h2>
+        <h4 class="text-center text-info">@Model.Keywords</h4>
+    </header>
+    <section>
+        <partial name="~/Views/Shared/Partials/CommissionAprs/CommissionAprsSearch.cshtml" model="@Model.Search" view-data="@ViewData" />
+    </section>
+    <section class="mt-sm-1 clearfix">
+        <partial name="~/Views/Shared/Partials/CommissionAprs/CommissionAprsOrder.cshtml" model="@Model.Search" />
+    </section>
+    <section class="mt-sm-1">
+        @if (Model.CommissionAprs != default && Model.CommissionAprs.Count > 0)
+        {
+            <div>
+                <div class="row">
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("SendDate")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("MainDiagCode")</div>
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("MainDiagName")</div>
+                    <div class="col-sm-3 font-weight-bold">@medicDataLocalization.Get("APr05sImuno")</div>
+                    <div class="col-sm-3 font-weight-bold">@medicDataLocalization.Get("AddDiagCodes")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewCommissionApr")</div>
+                </div>
+                @foreach (CommissionAprPreviewViewModel currentCommissionApr in Model.CommissionAprs)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-1">@currentCommissionApr.SendDate.ToShortDateString()</div>
+                        <div class="col-sm-1">@currentCommissionApr.MainDiagCode</div>
+                        <div class="col-sm-2">@currentCommissionApr.MainDiagName</div>
+                        <div class="col-sm-3">@currentCommissionApr.APr05sImuno</div>
+                        <div class="col-sm-3">@string.Join(", ", currentCommissionApr.AddDiagCodes)</div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
+                               asp-action="@nameof(PatientController.Patient)"
+                               asp-route-id="@currentCommissionApr.PatientId" class="btn btn-info">@medicDataLocalization.Get("View")</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(CommissionAprController))"
+                               asp-action="@nameof(CommissionAprController.CommissionApr)"
+                               asp-route-id="@currentCommissionApr.Id"
+                               class="btn btn-default">@medicDataLocalization.Get("View")</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <footer>
+                <pager page-count="@Model.TotalPages"
+                       current-page="@Model.CurrentPage"
+                       controller-name="@MedicBaseController.GetName(nameof(CommissionAprController))"
+                       action-name="@nameof(CommissionAprController.Index)"
+                       additional-properties="@paramsByName"
+                       nav-class-names="btn-toolbar"
+                       ul-class-names="pagination"
+                       li-class-names="page-item"
+                       li-selected-class-names="page-item active"
+                       anchor-class-names="page-link">
+
+                </pager>
+            </footer>
+        }
+        else
+        {
+            <div class="text-center text-info font-weight-bold">@medicDataLocalization.Get("NoResults")</div>
+        }
+    </section>
+</article>

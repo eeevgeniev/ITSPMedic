@@ -52,6 +52,13 @@ namespace Medic.Entities
             expression.CreateMap<PathProcedure, PathProcedureViewModel>()
                 .ForMember(ppvm => ppvm.PatientBranch, config => config.MapFrom(pp => pp.PatientBranch != default && pp.PatientBranch.HealthRegion != default ? pp.PatientBranch.HealthRegion.Name : default))
                 .ForMember(ppvm => ppvm.PatientHRegion, config => config.MapFrom(pp => pp.PatientHRegion != default ? pp.PatientHRegion.Name : default));
+
+            expression.CreateMap<PathProcedure, PathProcedurePreviewViewModel>()
+                .ForMember(pppvm => pppvm.FirstMainDiagCode, config => config.MapFrom(pp => pp.FirstMainDiag != default && pp.FirstMainDiag.MKB != default ? pp.FirstMainDiag.MKB.Code : default))
+                .ForMember(pppvm => pppvm.FirstMainDiagName, config => config.MapFrom(pp => pp.FirstMainDiag != default && pp.FirstMainDiag.MKB != default ? pp.FirstMainDiag.MKB.Name : default))
+                .ForMember(pppvm => pppvm.SecondMainDiagCode, config => config.MapFrom(pp => pp.SecondMainDiag != default && pp.SecondMainDiag.MKB != default ? pp.SecondMainDiag.MKB.Code : default))
+                .ForMember(pppvm => pppvm.SecondMainDiagName, config => config.MapFrom(pp => pp.SecondMainDiag != default && pp.SecondMainDiag.MKB != default ? pp.SecondMainDiag.MKB.Name : default))
+                .ForMember(pppvm => pppvm.UsedDrugCode, config => config.MapFrom(pp => pp.UsedDrug != default ? pp.UsedDrug.DrugCode : default));
         }
     }
 }

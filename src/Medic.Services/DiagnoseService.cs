@@ -18,10 +18,28 @@ namespace Medic.Services
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
         }
 
-        public async Task<List<DiagnoseMKBSummaryViewModel>> MKBSummaryAsync()
+        public async Task<int> GetMKBSummaryCountAsync()
         {
             return await MedicContext.Diagnoses
-                .Where(d => d.MainInId != null || d.OutId != null)
+                .Where(d => d.In != default || d.SendOut != default || 
+                    d.OutDead != default || d.OutMain != default || 
+                    d.PlannedProcedure != default || d.SendPlannedProcedure != default)
+                .GroupBy(d => new { d.Primary.Code, d.Primary.Name })
+                .Select(g => new DiagnoseMKBSummaryViewModel()
+                {
+                    Code = g.Key.Code,
+                    Name = g.Key.Name,
+                    Count = g.Count()
+                })
+                .CountAsync();
+        }
+
+        public async Task<List<DiagnoseMKBSummaryViewModel>> MKBSummaryAsync(int startIndex, int take)
+        {
+            return await MedicContext.Diagnoses
+                .Where(d => d.In != default || d.SendOut != default ||
+                    d.OutDead != default || d.OutMain != default ||
+                    d.PlannedProcedure != default || d.SendPlannedProcedure != default)
                 .GroupBy(d => new { d.Primary.Code, d.Primary.Name })
                 .Select(g => new DiagnoseMKBSummaryViewModel()
                 {
@@ -30,6 +48,8 @@ namespace Medic.Services
                     Count = g.Count()
                 })
                 .OrderByDescending(d => d.Count)
+                .Skip(startIndex)
+                .Take(take)
                 .ToListAsync();
         }
     }

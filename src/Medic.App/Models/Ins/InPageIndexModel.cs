@@ -6,15 +6,11 @@ using System.Collections.Generic;
 
 namespace Medic.App.Models.Ins
 {
-    public class InPageIndexModel : BasePageModel
+    public class InPageIndexModel : BasePageSummaryModel
     {
         public InsSearch Search { get; set; }
 
         public List<InPreviewViewModel> Ins { get; set; }
-
-        public int CurrentPage { get; set; }
-
-        public int TotalCount { get; set; }
 
         public List<HealthRegionOption> HealthRegions { get; set; }
 

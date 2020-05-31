@@ -73,6 +73,11 @@ namespace Medic.Entities
                 .ForMember(pdtvm => pdtvm.PatientBranch, config => config.MapFrom(pdt => pdt.PatientBranch != default && pdt.PatientBranch.HealthRegion != default ? pdt.PatientBranch.HealthRegion.Name : default))
                 .ForMember(pdtvm => pdtvm.PatientHRegion, config => config.MapFrom(pdt => pdt.PatientHRegion != default ? pdt.PatientHRegion.Name : default))
                 .ForMember(pdtvm => pdtvm.CPFile, config => config.MapFrom(pdt => pdt.CPFile != default && pdt.CPFile.FileType != default ? pdt.CPFile.FileType.Name : default));
+
+            expression.CreateMap<ProtocolDrugTherapy, ProtocolDrugTherapyPreviewViewModel>()
+                .ForMember(pdtpvm => pdtpvm.DiagnoseCode, config => config.MapFrom(pdt => pdt.Diag != default && pdt.Diag.MKB != default ? pdt.Diag.MKB.Code : default))
+                .ForMember(pdtpvm => pdtpvm.DiagnoseName, config => config.MapFrom(pdt => pdt.Diag != default && pdt.Diag.MKB != default ? pdt.Diag.MKB.Name : default))
+                .ForMember(pdtpvm => pdtpvm.DrugProtocolsATCNames, config => config.MapFrom(pdt => pdt.DrugProtocols.Select(dp => dp.ATCName)));
         }
     }
 }

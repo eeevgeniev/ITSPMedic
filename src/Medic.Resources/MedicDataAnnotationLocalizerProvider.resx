@@ -123,6 +123,9 @@
   <data name="ACHICode" xml:space="preserve">
     <value>ACHI Code</value>
   </data>
+  <data name="AddDiagCodes" xml:space="preserve">
+    <value>Additional diag codes</value>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="ApplicationWay" xml:space="preserve">
     <value>Application way</value>
+  </data>
+  <data name="APr05sImuno" xml:space="preserve">
+    <value>APr05s imuno</value>
   </data>
   <data name="AprCode" xml:space="preserve">
     <value>Apr code</value>
@@ -309,8 +315,14 @@
   <data name="Diag" xml:space="preserve">
     <value>Diag</value>
   </data>
+  <data name="DiagCode" xml:space="preserve">
+    <value>Diag code</value>
+  </data>
   <data name="DiagDate" xml:space="preserve">
     <value>Diag date</value>
+  </data>
+  <data name="DiagnoseCode" xml:space="preserve">
+    <value>Diagnose code</value>
   </data>
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Diagnose date</value>
@@ -357,6 +369,9 @@
   <data name="DrugProtocols" xml:space="preserve">
     <value>Drug protocols</value>
   </data>
+  <data name="DrugProtocolsATCNames" xml:space="preserve">
+    <value>ATC names of drug protocols </value>
+  </data>
   <data name="DrugQuantity" xml:space="preserve">
     <value>Drug quantity</value>
   </data>
@@ -383,6 +398,12 @@
   </data>
   <data name="FairCondition" xml:space="preserve">
     <value>Fair condition</value>
+  </data>
+  <data name="FirstMainDiagCode" xml:space="preserve">
+    <value>First main diag code</value>
+  </data>
+  <data name="FirstMainDiagName" xml:space="preserve">
+    <value>First main diag name</value>
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>First name</value>
@@ -497,6 +518,12 @@
   </data>
   <data name="Length" xml:space="preserve">
     <value>Length</value>
+  </data>
+  <data name="MainDiagCode" xml:space="preserve">
+    <value>Main diag code</value>
+  </data>
+  <data name="MainDiagName" xml:space="preserve">
+    <value>Main diag name</value>
   </data>
   <data name="MainDiagnose" xml:space="preserve">
     <value>Main diagnose</value>
@@ -728,6 +755,12 @@
   </data>
   <data name="Scheme" xml:space="preserve">
     <value>Scheme</value>
+  </data>
+  <data name="SecondMainDiagCode" xml:space="preserve">
+    <value>Second main diag code</value>
+  </data>
+  <data name="SecondMainDiagName" xml:space="preserve">
+    <value>Second main diag name</value>
   </data>
   <data name="SecondName" xml:space="preserve">
     <value>Second name</value>

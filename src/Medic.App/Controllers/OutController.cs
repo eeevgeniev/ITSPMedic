@@ -20,14 +20,11 @@ using System.Threading.Tasks;
 namespace Medic.App.Controllers
 {
     [Authorize]
-    public class OutController : MedicBaseController
+    public class OutController : LookupsBaseController
     {
         private readonly IOutService OutService;
-        private readonly IPatientService PatientService;
         private readonly IUsedDrugService UsedDrugService;
-        private readonly IHealthRegionService HealthRegionService;
         private readonly MedicDataLocalization MedicDataLocalization;
-        private readonly ICacheable MedicCache;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public OutController(IOutService outService, 
@@ -37,13 +34,11 @@ namespace Medic.App.Controllers
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
+            : base (patientService, healthRegionService, medicCache)
         {
             OutService = outService ?? throw new ArgumentNullException(nameof(outService));
-            PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
             UsedDrugService = usedDrugService ?? throw new ArgumentNullException(nameof(usedDrugService));
-            HealthRegionService = healthRegionService ?? throw new ArgumentNullException(nameof(healthRegionService));
             MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
-            MedicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
@@ -52,7 +47,7 @@ namespace Medic.App.Controllers
             try
             {
                 int pageLength = (int)search.Length;
-                int startIndex = page > 0 ? (page - 1) * pageLength : 0;
+                int startIndex = base.GetStartIndex(pageLength, page);
                 OutWhereBuilder outWhereBuilder = new OutWhereBuilder(search);
 
                 string searchParams = search != default ? search.ToString() : default;
@@ -61,41 +56,27 @@ namespace Medic.App.Controllers
                 
                 List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
                 List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<UsedDrugCodeOption> usedDrugs = new List<UsedDrugCodeOption>() { new UsedDrugCodeOption() { Key = string.Empty, Code = MedicDataLocalization.Get("NoSelection") } };
+                List<UsedDrugCodeOption> usedDrugs = new List<UsedDrugCodeOption>() { new UsedDrugCodeOption() { Key = null, Code = MedicDataLocalization.Get("NoSelection") } };
 
-                if (!MedicCache.TryGetValue(outsKey, out List<OutPreviewViewModel> outs))
+                if (!base.MedicCache.TryGetValue(outsKey, out List<OutPreviewViewModel> outs))
                 {
                     OutHelperBuilder outHelperBuilder = new OutHelperBuilder(search);
 
                     outs = await OutService.GetOutsAsync(outWhereBuilder, outHelperBuilder, startIndex);
 
-                    MedicCache.Set(outsKey, outs);
+                    base.MedicCache.Set(outsKey, outs);
                 }
 
-                if (!MedicCache.TryGetValue(outsCountKey, out int outsCount))
+                if (!base.MedicCache.TryGetValue(outsCountKey, out int outsCount))
                 {
                     outsCount = await OutService.GetOutsCountAsync(outWhereBuilder);
 
-                    MedicCache.Set(outsCountKey, outsCount);
+                    base.MedicCache.Set(outsCountKey, outsCount);
                 }
 
-                if (!MedicCache.TryGetValue(MedicConstants.SexKeyName, out List<SexOption> sexes))
-                {
-                    sexes = await PatientService.GetSexOptionsAsync();
+                sexOptions.AddRange(await base.GetSexes());
 
-                    MedicCache.Set(MedicConstants.SexKeyName, sexes);
-                }
-
-                sexOptions.AddRange(sexes);
-
-                if (!MedicCache.TryGetValue(MedicConstants.HealthRegionsKeyName, out List<HealthRegionOption> regions))
-                {
-                    regions = await HealthRegionService.GetHealthRegionsAsync();
-
-                    MedicCache.Set(MedicConstants.HealthRegionsKeyName, regions);
-                }
-
-                healthRegions.AddRange(regions);
+                healthRegions.AddRange(await base.GetHelathRegions());
 
                 if (!MedicCache.TryGetValue(MedicConstants.UsedDrugs, out List<UsedDrugCodeOption> drugs))
                 {
@@ -114,7 +95,8 @@ namespace Medic.App.Controllers
                     Keywords = MedicDataLocalization.Get("OutsSummary"),
                     Search = search,
                     CurrentPage = page,
-                    TotalCount = outsCount,
+                    TotalPages = base.TotalPages(pageLength, outsCount),
+                    TotalResults = outsCount,
                     Sexes = sexOptions,
                     UsedDrugCodes = usedDrugs,
                     HealthRegions = healthRegions
@@ -151,11 +133,11 @@ namespace Medic.App.Controllers
                 {
                     string key = $"{nameof(OutViewModel)} - {id}";
 
-                    if (!MedicCache.TryGetValue(key, out model))
+                    if (!base.MedicCache.TryGetValue(key, out model))
                     {
                         model = await OutService.GetOutAsyns(id);
 
-                        MedicCache.Set(key, model);
+                        base.MedicCache.Set(key, model);
                     }
 
                     return View(new OutPageOutModel()

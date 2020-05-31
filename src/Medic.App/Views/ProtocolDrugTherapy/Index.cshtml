@@ -1,0 +1,85 @@
+﻿@using Medic.AppModels.ProtocolDrugTherapies
+
+@model ProtocolDrugTherapyPageIndexModel
+
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+
+    Dictionary<string, string> paramsByName = Model.Search != default ?
+        Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+
+    ViewData[Constants.Sexes] = Model.Sexes;
+    ViewData[Constants.HealthRegions] = Model.HealthRegions;
+    ViewData[Constants.ATCNames] = Model.ATCNames;
+}
+
+<article>
+    <header>
+        <h2 class="text-center">@medicDataLocalization.Get("ProtocolDrugTherapiesView"): @Model.TotalResults @medicDataLocalization.Get("Results")</h2>
+        <h4 class="text-center text-info">@Model.Keywords</h4>
+    </header>
+    <section>
+        <partial name="~/Views/Shared/Partials/ProtocolDrugTherapies/ProtocolDrugTherapiesSearch.cshtml" model="@Model.Search" view-data="@ViewData" />
+    </section>
+    <section class="mt-sm-1 clearfix">
+        <partial name="~/Views/Shared/Partials/ProtocolDrugTherapies/ProtocolDrugTherapiesOrder.cshtml" model="@Model.Search" />
+    </section>
+    <section class="mt-sm-1">
+        @if (Model.ProtocolDrugTherapies != default && Model.ProtocolDrugTherapies.Count > 0)
+        {
+            <div>
+                <div class="row">
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ProtocolDate")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("DecisionDate")</div>
+                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("DiagnoseCode")</div>
+                    <div class="col-sm-3 font-weight-bold">@medicDataLocalization.Get("DiagnoseName")</div>
+                    <div class="col-sm-3 font-weight-bold">@medicDataLocalization.Get("DrugProtocolsATCNames")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
+                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewProtocolDrugTherapy")</div>
+                </div>
+                @foreach (ProtocolDrugTherapyPreviewViewModel currentProtocolDrugTherapy in Model.ProtocolDrugTherapies)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-1">@currentProtocolDrugTherapy.ProtocolDate.ToShortDateString()</div>
+                        <div class="col-sm-1">@currentProtocolDrugTherapy.DecisionDate.ToShortDateString()</div>
+                        <div class="col-sm-2">@currentProtocolDrugTherapy.DiagnoseCode</div>
+                        <div class="col-sm-3">@currentProtocolDrugTherapy.DiagnoseName</div>
+                        <div class="col-sm-3">@string.Join(", ", currentProtocolDrugTherapy.DrugProtocolsATCNames)</div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
+                               asp-action="@nameof(PatientController.Patient)"
+                               asp-route-id="@currentProtocolDrugTherapy.PatientId" class="btn btn-info">@medicDataLocalization.Get("View")</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(ProtocolDrugTherapyController))"
+                               asp-action="@nameof(ProtocolDrugTherapyController.ProtocolDrugTherapy)"
+                               asp-route-id="@currentProtocolDrugTherapy.Id"
+                               class="btn btn-default">@medicDataLocalization.Get("View")</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <footer>
+                <pager page-count="@Model.TotalPages"
+                       current-page="@Model.CurrentPage"
+                       controller-name="@MedicBaseController.GetName(nameof(ProtocolDrugTherapyController))"
+                       action-name="@nameof(ProtocolDrugTherapyController.Index)"
+                       additional-properties="@paramsByName"
+                       nav-class-names="btn-toolbar"
+                       ul-class-names="pagination"
+                       li-class-names="page-item"
+                       li-selected-class-names="page-item active"
+                       anchor-class-names="page-link">
+
+                </pager>
+            </footer>
+        }
+        else
+        {
+            <div class="text-center text-info font-weight-bold">@medicDataLocalization.Get("NoResults")</div>
+        }
+    </section>
+</article>

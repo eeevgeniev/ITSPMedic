@@ -46,6 +46,12 @@ namespace Medic.Entities
                 .ForMember(icpvm => icpvm.PatientBranch, config => config.MapFrom(icp => icp.PatientBranch == default && icp.PatientBranch.HealthRegion == default ? default : icp.PatientBranch.HealthRegion.Name))
                 .ForMember(icpvm => icpvm.PatientHealthRegion, config => config.MapFrom(icp => icp.PatientHealthRegion == default ? default : icp.PatientHealthRegion.Name))
                 .ForMember(icpvm => icpvm.PatientStatus, config => config.MapFrom(icp => icp.PatientStatus));
+
+            expression.CreateMap<InClinicProcedure, InClinicProcedurePreviewViewModel>()
+                .ForMember(icppvm => icppvm.FirstMainDiagCode, config => config.MapFrom(icp => icp.FirstMainDiag != default && icp.FirstMainDiag.MKB != default ? icp.FirstMainDiag.MKB.Code : default))
+                .ForMember(icppvm => icppvm.FirstMainDiagName, config => config.MapFrom(icp => icp.FirstMainDiag != default && icp.FirstMainDiag.MKB != default ? icp.FirstMainDiag.MKB.Name : default))
+                .ForMember(icppvm => icppvm.SecondMainDiagCode, config => config.MapFrom(icp => icp.SecondMainDiag != default && icp.SecondMainDiag.MKB != default ? icp.SecondMainDiag.MKB.Code : default))
+                .ForMember(icppvm => icppvm.SecondMainDiagName, config => config.MapFrom(icp => icp.SecondMainDiag != default && icp.SecondMainDiag.MKB != default ? icp.SecondMainDiag.MKB.Name : default));
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Medic.Services
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
         }
 
-        public async Task<List<DiagMKBSummaryViewModel>> GetMKBSummaryAsync()
+        public async Task<List<DiagMKBSummaryViewModel>> GetMKBSummaryAsync(int startIndex, int take)
         {
             return await MedicContext.Diags
                 .GroupBy(d => new { d.MKB.Code, d.MKB.Name })
@@ -29,7 +29,22 @@ namespace Medic.Services
                     Count = g.Count()
                 })
                 .OrderByDescending(d => d.Count)
+                .Skip(startIndex)
+                .Take(take)
                 .ToListAsync();
+        }
+
+        public async Task<int> GetMKBSummaryCountAsync()
+        {
+            return await MedicContext.Diags
+                .GroupBy(d => new { d.MKB.Code, d.MKB.Name })
+                .Select(g => new DiagMKBSummaryViewModel()
+                {
+                    Code = g.Key.Code,
+                    Name = g.Key.Name,
+                    Count = g.Count()
+                })
+                .CountAsync();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Medic.App.Controllers
     [Authorize]
     public class AccountController : MedicBaseController
     {
-        private readonly UserManager<IdentityUser> UsermManager;
+        private readonly UserManager<IdentityUser> UserManager;
         private readonly SignInManager<IdentityUser> SignInManager;
         private readonly GeneralLocalization GeneralLocalization;
         private readonly IMedicLoggerService MedicLoggerService;
@@ -26,7 +26,7 @@ namespace Medic.App.Controllers
             GeneralLocalization generalLocalization,
             IMedicLoggerService medicLoggerService)
         {
-            UsermManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            UserManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
             SignInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
             GeneralLocalization = generalLocalization ?? throw new ArgumentNullException(nameof(generalLocalization));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));

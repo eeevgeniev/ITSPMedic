@@ -5,9 +5,6 @@
 
 @{
     ViewData["Title"] = Model.Title;
-    int pageLength = (int)Model.Search.Length;
-
-    int pagesCount = Model.TotalCount % pageLength != 0 ? (Model.TotalCount / pageLength) + 1 : Model.TotalCount / pageLength;
 
     Dictionary<string, string> paramsByName = Model.Search != default ?
         Model.Search.BuildQuery(default) : new Dictionary<string, string>();
@@ -19,7 +16,8 @@
 
     <article>
         <header>
-            <h2>@($"{medicDataLocalization.Get("OutsView")}: {@Model.TotalCount}")</h2>
+            <h2 class="text-center">@($"{medicDataLocalization.Get("OutsView")}: {@Model.TotalResults} {@medicDataLocalization.Get("Results")}")</h2>
+            <h4 class="text-center text-info">@Model.Keywords</h4>
         </header>
         <section>
             <partial name="~/Views/Shared/Partials/Outs/OutSearch.cshtml" model="@Model.Search" view-data="@ViewData" />
@@ -40,7 +38,7 @@
                         <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("SendDiagnoses")</div>
                         <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("UsedDrug")</div>
                         <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
-                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("View")</div>
+                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewOut")</div>
                     </div>
                     @foreach (OutPreviewViewModel currentOut in Model.Outs)
                     {
@@ -68,7 +66,7 @@
                     }
                 </div>
                 <footer>
-                    <pager page-count="@pagesCount"
+                    <pager page-count="@Model.TotalPages"
                            current-page="@Model.CurrentPage"
                            controller-name="@MedicBaseController.GetName(nameof(OutController))"
                            action-name="@nameof(OutController.Index)"

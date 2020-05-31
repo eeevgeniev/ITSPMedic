@@ -1,36 +1,108 @@
 ﻿using Medic.App.Controllers.Base;
+using Medic.App.Infrastructure;
 using Medic.App.Models.InClinicProcedures;
+using Medic.AppModels.HealthRegions;
 using Medic.AppModels.InClinicProcedures;
+using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.Resources;
 using Medic.Services.Contracts;
+using Medic.Services.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Medic.App.Controllers
 {
     [Authorize]
-    public class InClinicProcedureController : MedicBaseController
+    public class InClinicProcedureController : LookupsBaseController
     {
         private readonly IInClinicProcedureService InClinicProcedureService;
         private readonly MedicDataLocalization MedicDataLocalization;
-        private readonly ICacheable MedicCache;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public InClinicProcedureController(
             IInClinicProcedureService inClinicProcedureService,
+            IPatientService patientService,
+            IHealthRegionService healthRegionService,
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
+            : base (patientService, healthRegionService, medicCache)
         {
             InClinicProcedureService = inClinicProcedureService ?? throw new ArgumentNullException(nameof(inClinicProcedureService));
             MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
-            MedicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
+        }
+
+        public async Task<IActionResult> Index(InClinicProcedureSearch search, int page = 1)
+        {
+            try
+            {
+                int pageLength = (int)search.Length;
+                int startIndex = base.GetStartIndex(pageLength, page);
+                InClinicProcedureWhereBuilder inClinicProcedureWhereBuilder = new InClinicProcedureWhereBuilder(search);
+
+                string searchParams = search != default ? search.ToString() : default;
+                string inclinicProceduresKey = $"{nameof(InClinicProcedurePreviewViewModel)} - {startIndex} - {searchParams}";
+                string inclinicProceduresCountKey = $"{MedicConstants.InClinicProcedures} - {searchParams}";
+
+                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
+                List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
+
+                if (!base.MedicCache.TryGetValue(inclinicProceduresKey, out List<InClinicProcedurePreviewViewModel> inClinicProcedures))
+                {
+                    InClinicProcedureHelperBuilder helperBuilder = new InClinicProcedureHelperBuilder(search);
+
+                    inClinicProcedures = await InClinicProcedureService
+                        .GetInClinicProceduresAsync(inClinicProcedureWhereBuilder, helperBuilder, startIndex);
+
+                    base.MedicCache.Set(inclinicProceduresKey, inClinicProcedures);
+                }
+
+                if (!base.MedicCache.TryGetValue(inclinicProceduresCountKey, out int inClinicProceduresCount))
+                {
+                    inClinicProceduresCount = await InClinicProcedureService
+                        .GetInClinicProceduresCountAsync(inClinicProcedureWhereBuilder);
+
+                    base.MedicCache.Set(inclinicProceduresCountKey, inClinicProceduresCount);
+                }
+
+                sexOptions.AddRange(await base.GetSexes());
+
+                healthRegions.AddRange(await base.GetHelathRegions());
+
+                return View(new InClinicProcedurePageIndexModel()
+                {
+                    InClinicProcedures = inClinicProcedures,
+                    Title = MedicDataLocalization.Get("InClinicProcedures"),
+                    Description = MedicDataLocalization.Get("InClinicProcedures"),
+                    Keywords = MedicDataLocalization.Get("InClinicProceduresSummary"),
+                    Search = search,
+                    CurrentPage = page,
+                    TotalPages = base.TotalPages(pageLength, inClinicProceduresCount),
+                    TotalResults = inClinicProceduresCount,
+                    Sexes = sexOptions,
+                    HealthRegions = healthRegions
+                });
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw ex;
+            }
         }
 
         public async Task<IActionResult> InClinicProcedure(int id)
@@ -49,11 +121,11 @@ namespace Medic.App.Controllers
                 {
                     string key = $"{nameof(InClinicProcedureViewModel)} - {id}";
 
-                    if (!MedicCache.TryGetValue(key, out model))
+                    if (!base.MedicCache.TryGetValue(key, out model))
                     {
                         model = await InClinicProcedureService.GetInClinicProcedureAsync(id);
 
-                        MedicCache.Set(key, model);
+                        base.MedicCache.Set(key, model);
                     }
                 }
 

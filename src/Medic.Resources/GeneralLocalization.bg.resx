@@ -126,11 +126,17 @@
   <data name="Code" xml:space="preserve">
     <value>Код</value>
   </data>
+  <data name="CommissionAprs" xml:space="preserve">
+    <value>Commission aprs</value>
+  </data>
   <data name="DiagnosesSummary" xml:space="preserve">
     <value>Информация за диагнози</value>
   </data>
   <data name="DiagsSummary" xml:space="preserve">
     <value>Diags информация</value>
+  </data>
+  <data name="DispObservations" xml:space="preserve">
+    <value>Disp observations</value>
   </data>
   <data name="En" xml:space="preserve">
     <value>Англ</value>
@@ -140,6 +146,9 @@
   </data>
   <data name="Home" xml:space="preserve">
     <value>Начало</value>
+  </data>
+  <data name="InClinicProcedures" xml:space="preserve">
+    <value>Процедури в клиниката</value>
   </data>
   <data name="Inquires" xml:space="preserve">
     <value>Справки</value>
@@ -177,11 +186,20 @@
   <data name="Password" xml:space="preserve">
     <value>Парола</value>
   </data>
+  <data name="PathProcedures" xml:space="preserve">
+    <value>Процедури по пътека</value>
+  </data>
   <data name="Patients" xml:space="preserve">
     <value>Пациенти</value>
   </data>
+  <data name="PlannedProcedure" xml:space="preserve">
+    <value>Планирани процедури</value>
+  </data>
   <data name="Privacy" xml:space="preserve">
     <value>Условия за ползване</value>
+  </data>
+  <data name="ProtocolDrugTherapies" xml:space="preserve">
+    <value>Протоколи от лечения с лекарства</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Запомни ме</value>

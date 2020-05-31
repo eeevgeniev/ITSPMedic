@@ -17,7 +17,7 @@ namespace Medic.App.TagHelpers
         {
             Generator = generator ?? throw new ArgumentNullException(nameof(generator));
         }
-        
+
         public int PageCount { get; set; }
 
         public int CurrentPage { get; set; }
@@ -112,10 +112,9 @@ namespace Medic.App.TagHelpers
                 default,
                 default,
                 default,
-                new Dictionary<string, string>(AdditionalProperties)
-                {
-                    { nameof(page), pageNumber }
-                },
+                AdditionalProperties != default ?
+                new Dictionary<string, string>(AdditionalProperties) { { nameof(page), pageNumber } } :
+                new Dictionary<string, string>() { { nameof(page), pageNumber } },
                 new { @class = string.IsNullOrWhiteSpace(AnchorClassNames) ? string.Empty : AnchorClassNames });
 
             string liClass = string.IsNullOrWhiteSpace(className) ? string.Empty : $" class=\"{className}\"";

@@ -19,13 +19,10 @@ using System.Threading.Tasks;
 namespace Medic.App.Controllers
 {
     [Authorize]
-    public class InController : MedicBaseController
+    public class InController : LookupsBaseController
     {
         private readonly IInService InService;
-        private readonly IPatientService PatientService;
-        private readonly IHealthRegionService HealthRegionService;
         private readonly MedicDataLocalization MedicDataLocalization;
-        private readonly ICacheable MedicCache;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public InController(IInService inService, 
@@ -34,12 +31,10 @@ namespace Medic.App.Controllers
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
+            : base (patientService, healthRegionService, medicCache)
         {
             InService = inService ?? throw new ArgumentNullException(nameof(inService));
-            PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
-            HealthRegionService = healthRegionService ?? throw new ArgumentNullException(nameof(healthRegionService));
             MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(MedicBaseController));
-            MedicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
@@ -49,7 +44,7 @@ namespace Medic.App.Controllers
             try
             {
                 int pageLength = (int)search.Length;
-                int startIndex = page > 0 ? (page - 1) * pageLength : 0;
+                int startIndex = base.GetStartIndex(pageLength, page);
                 InWhereBuilder inWhereBuilder = new InWhereBuilder(search);
 
                 string searchParams = search != default ? search.ToString() : default;
@@ -59,39 +54,25 @@ namespace Medic.App.Controllers
                 List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
                 List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
 
-                if (!MedicCache.TryGetValue(insKey, out List<InPreviewViewModel> ins))
+                if (!base.MedicCache.TryGetValue(insKey, out List<InPreviewViewModel> ins))
                 {
                     InHelperBuilder helperBuilder = new InHelperBuilder(search);
 
                     ins = await InService.GetInsAsync(inWhereBuilder, helperBuilder, startIndex);
 
-                    MedicCache.Set(insKey, ins);
+                    base.MedicCache.Set(insKey, ins);
                 }
 
-                if (!MedicCache.TryGetValue(insCountKey, out int insCount))
+                if (!base.MedicCache.TryGetValue(insCountKey, out int insCount))
                 {
                     insCount = await InService.GetInsCountAsync(inWhereBuilder);
 
-                    MedicCache.Set(insCountKey, insCount);
+                    base.MedicCache.Set(insCountKey, insCount);
                 }
 
-                if (!MedicCache.TryGetValue(MedicConstants.SexKeyName, out List<SexOption> sexes))
-                {
-                    sexes = await PatientService.GetSexOptionsAsync();
+                sexOptions.AddRange(await base.GetSexes());
 
-                    MedicCache.Set(MedicConstants.SexKeyName, sexes);
-                }
-
-                sexOptions.AddRange(sexes);
-
-                if (!MedicCache.TryGetValue(MedicConstants.HealthRegionsKeyName, out List<HealthRegionOption> regions))
-                {
-                    regions = await HealthRegionService.GetHealthRegionsAsync();
-
-                    MedicCache.Set(MedicConstants.HealthRegionsKeyName, regions);
-                }
-
-                healthRegions.AddRange(regions);
+                healthRegions.AddRange(await base.GetHelathRegions());
 
                 return View(new InPageIndexModel()
                 {
@@ -101,7 +82,8 @@ namespace Medic.App.Controllers
                     Keywords = MedicDataLocalization.Get("InsSummary"),
                     Search = search,
                     CurrentPage = page,
-                    TotalCount = insCount,
+                    TotalPages = base.TotalPages(pageLength, insCount),
+                    TotalResults = insCount,
                     Sexes = sexOptions,
                     HealthRegions = healthRegions
                 });
@@ -137,11 +119,11 @@ namespace Medic.App.Controllers
                 {
                     string key = $"{nameof(InViewModel)} - {id}";
 
-                    if (!MedicCache.TryGetValue(key, out model))
+                    if (!base.MedicCache.TryGetValue(key, out model))
                     {
                         model = await InService.GetInAsync(id);
 
-                        MedicCache.Set(key, model);
+                        base.MedicCache.Set(key, model);
                     }
 
                     return View(new InPageInModel()
