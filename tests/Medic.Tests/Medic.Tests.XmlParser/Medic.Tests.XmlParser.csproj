@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0-preview.4.20251.6" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Medic.Models">
+      <HintPath>..\..\..\src\Medic.Models\bin\Debug\netstandard2.1\Medic.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Medic.XMLImportHelper">
+      <HintPath>..\..\..\src\Medic.XMLImportHelper\bin\Debug\netstandard2.1\Medic.XMLImportHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Medic.XMLParser">
+      <HintPath>..\..\..\src\Medic.XMLParser\bin\Debug\netstandard2.1\Medic.XMLParser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Files\clpr.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\cp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
