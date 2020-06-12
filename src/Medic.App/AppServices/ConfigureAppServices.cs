@@ -2,7 +2,10 @@
 using Medic.Cache;
 using Medic.Cache.Contacts;
 using Medic.Contexts;
+using Medic.Contexts.Contracts;
 using Medic.Identity;
+using Medic.Import;
+using Medic.Import.Contracts;
 using Medic.Infrastructure;
 using Medic.Logs;
 using Medic.Logs.Contracts;
@@ -11,6 +14,10 @@ using Medic.Mappers.Contracts;
 using Medic.Resources;
 using Medic.Services;
 using Medic.Services.Contracts;
+using Medic.XMLImportHelper;
+using Medic.XMLImportHelper.Contracts;
+using Medic.XMLParser;
+using Medic.XMLParser.Contracts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using MC = Medic.App.Infrastructure;
+using Seeder = Medic.Contexts.Seeders;
 
 namespace Medic.App.AppServices
 {
@@ -49,6 +57,10 @@ namespace Medic.App.AppServices
                 options.UseSqlServer(configuration[Constants.IdentityConnectionString]);
             });
 
+            services.AddTransient<IMedicContext, MedicContext>();
+
+            services.AddTransient<IMedicContextSeeder, Seeder.MedicContextSeeder>();
+
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -73,9 +85,12 @@ namespace Medic.App.AppServices
             services.AddTransient<IProtocolDrugTherapyService, ProtocolDrugTherapyService>();
             services.AddTransient<ICommissionAprService, CommissionAprService>();
             services.AddTransient<IDispObservationService, DispObservationService>();
-            services.AddTransient<IPlannedProcedureService, PlannedProcedureService>();
+            services.AddTransient<IPlannedService, PlannedService>();
             services.AddTransient<IClinicUsedDrugsService, ClinicUsedDrugsService>();
             services.AddTransient<IDrugProtocolService, DrugProtocolService>();
+
+            services.AddTransient<IImportMedicFile, ImportMedicFile>();
+            services.AddTransient<IGetXmlParameters, GetXmlParameters>();
 
             services.AddTransient<PatientLocalization>();
             services.AddTransient<MedicDataLocalization>();
@@ -87,6 +102,8 @@ namespace Medic.App.AppServices
 
             services.AddSingleton<MapperConfiguration>(mapConfiguration.CreateConfiguration());
             services.AddSingleton<ICacheable>(new MedicCache());
+
+            services.AddTransient<IMedicXmlParser, DefaultMedicXmlParser>();
 
             services.AddDbContext<MedicLoggerContext>(options =>
             {
@@ -109,9 +126,11 @@ namespace Medic.App.AppServices
                     configuration[MC.MedicConstants.AdministratorPassword],
                     configuration[MC.MedicConstants.AdministratorEmail]
                 )
-            }).Wait();
+            });
 
             serviceProvider.GetRequiredService<MedicLoggerContext>().Database.EnsureCreated();
+
+            serviceProvider.GetRequiredService<IMedicContextSeeder>().Seed();
 
             return services;
         }

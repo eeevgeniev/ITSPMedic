@@ -25,11 +25,15 @@ namespace Medic.Entities
 
         public MKB Secondary { get; set; }
 
+        public int? SendInId { get; set; }
+
+        public In SendIn { get; set; }
+
+        public int? InId { get; set; }
+
         public In In { get; set; }
 
-        public int? MainInId { get; set; }
-
-        public In MainIn { get; set; }
+        public int? SendOutId { get; set; }
 
         public Out SendOut { get; set; }
 
@@ -45,8 +49,14 @@ namespace Medic.Entities
 
         public Out OutOut { get; set; }
 
-        public PlannedProcedure SendPlannedProcedure { get; set; }
+        public Redirected Redirected { get; set; }
 
-        public PlannedProcedure PlannedProcedure { get; set; }
+        public int? SendPlannedId { get; set; }
+
+        public Planned SendPlanned { get; set; }
+
+        public int? PlannedId { get; set; }
+
+        public Planned Planned { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Medic.Entities.Contracts;
 using Medic.Mappers.Contracts;
 using System;
+using System.Collections.Generic;
 
 namespace Medic.Entities
 {
@@ -20,5 +21,7 @@ namespace Medic.Entities
         public int? ChemotherapyPartId { get; set; }
 
         public ChemotherapyPart ChemotherapyPart { get; set; }
+
+        public ICollection<Marker> Markers { get; set; } = new HashSet<Marker>();
     }
 }

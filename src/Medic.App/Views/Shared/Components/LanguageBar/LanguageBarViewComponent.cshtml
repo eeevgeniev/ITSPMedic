@@ -5,9 +5,9 @@
     <a asp-controller="@MedicBaseController.GetName(nameof(HomeController))"
        asp-action="@nameof(HomeController.Language)"
        asp-route-lang="en"
-       class="@(string.Equals(Model, "en", StringComparison.OrdinalIgnoreCase) ? "btn-sm btn-success" : "btn-sm-dark btn-sm")">@generalLocalization.Get("En")</a>
+       class="@(string.Equals(Model, "en", StringComparison.OrdinalIgnoreCase) ? "btn-sm btn-success" : "btn-sm-dark btn-sm")">@Html.Raw(generalLocalization.Get("En"))</a>
     <a asp-controller="@MedicBaseController.GetName(nameof(HomeController))"
        asp-action="@nameof(HomeController.Language)"
        asp-route-lang="bg"
-       class="@(string.Equals(Model, "bg", StringComparison.OrdinalIgnoreCase) ? "btn-sm btn-success" : "btn-sm-dark btn-sm")">@generalLocalization.Get("Bg")</a>
+       class="@(string.Equals(Model, "bg", StringComparison.OrdinalIgnoreCase) ? "btn-sm btn-success" : "btn-sm-dark btn-sm")">@Html.Raw(generalLocalization.Get("Bg"))</a>
 </div>

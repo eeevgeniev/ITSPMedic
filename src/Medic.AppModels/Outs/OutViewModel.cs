@@ -31,13 +31,22 @@ namespace Medic.AppModels.Outs
         [Display(Name = nameof(SendDate))]
         public DateTime SendDate { get; set; }
 
-        public DiagnosePreviewViewModel SendDiagnose { get; set; }
+        public List<DiagnosePreviewViewModel> SendDiagnoses { get; set; }
 
         [Display(Name = nameof(SendUrgency))]
         public int SendUrgency { get; set; }
 
         [Display(Name = nameof(SendClinicalPath))]
         public double SendClinicalPath { get; set; }
+
+        [Display(Name = nameof(SendAPr))]
+        public int? SendAPr { get; set; }
+        
+        [Display(Name = nameof(PlannedNumber))]
+        public int PlannedNumber { get; set; }
+
+        [Display(Name = nameof(InAPr))]
+        public int? InAPr { get; set; }
 
         [Display(Name = nameof(UniqueIdentifier))]
         public string UniqueIdentifier { get; set; }
@@ -129,7 +138,7 @@ namespace Medic.AppModels.Outs
 
         public List<DiagnosePreviewViewModel> OutDiagnoses { get; set; }
 
-        public UsedDrugSummaryViewModel UsedDrug { get; set; }
+        public List<UsedDrugSummaryViewModel> UsedDrugs { get; set; }
 
         public List<ProcedureSummaryViewModel> Procedures { get; set; }
 

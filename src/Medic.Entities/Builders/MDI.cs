@@ -12,7 +12,9 @@ namespace Medic.Entities
 
                 b.HasIndex(model => model.DispObservationId).IsUnique(false);
 
-                b.Property(model => model.MDIName).HasMaxLength(100);
+                b.Property(model => model.MDIName).HasMaxLength(200);
+
+                b.Property(model => model.ACHIcode).HasMaxLength(12);
 
                 b.Property(model => model.MDICode).HasColumnType("decimal(15,4)");
             });

@@ -1,8 +1,13 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Medic.AppModels.CeasedClinicals;
+using Medic.AppModels.Diags;
+using Medic.AppModels.HealthcarePractitioners;
 using Medic.AppModels.InClinicProcedures;
-using Medic.Contexts;
+using Medic.AppModels.Patients;
+using Medic.Contexts.Contracts;
 using Medic.Entities;
+using Medic.Services.Base;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,16 +17,10 @@ using System.Threading.Tasks;
 
 namespace Medic.Services
 {
-    public class InClinicProcedureService : IInClinicProcedureService
+    public class InClinicProcedureService : BaseServiceHelper, IInClinicProcedureService
     {
-        private readonly MedicContext MedicContext;
-        private readonly MapperConfiguration Configuration;
-
-        public InClinicProcedureService(MedicContext medicContext, MapperConfiguration configuration)
-        {
-            MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
-            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-        }
+        public InClinicProcedureService(IMedicContext medicContext, MapperConfiguration configuration)
+            : base (medicContext, configuration) { }
 
         public async Task<InClinicProcedureViewModel> GetInClinicProcedureAsync(int id)
         {
@@ -29,10 +28,58 @@ namespace Medic.Services
             {
                 throw new ArgumentException(nameof(id));
             }
-            
-            return await MedicContext.InClinicProcedures
-                .ProjectTo<InClinicProcedureViewModel>(Configuration)
-                .SingleOrDefaultAsync(icp => icp.Id == id);
+
+            return await Task<InClinicProcedureViewModel>.Run(() =>
+            {
+                InClinicProcedure inClinicProcedure = MedicContext.InClinicProcedures
+                    .Include(icp => icp.PatientBranch)
+                        .ThenInclude(pb => pb.HealthRegion)
+                    .Include(icp => icp.PatientHealthRegion)
+                    .SingleOrDefault(icp => icp.Id == id);
+
+                if (inClinicProcedure == default)
+                {
+                    return default;
+                }
+
+                PatientSummaryViewModel patient = base.GetPatient<PatientSummaryViewModel>(p => p.Id == inClinicProcedure.PatientId);
+
+                HealthcarePractitionerSummaryViewModel sender = 
+                    base.GetHealthcarePractitioner<HealthcarePractitionerSummaryViewModel>(hp => hp.Id == inClinicProcedure.SenderId);
+
+                CeasedClinicalViewModel ceasedClinical = base.GetCeasedClinical<CeasedClinicalViewModel>(cc => cc.Id == inClinicProcedure.CeasedClinicalPathId);
+
+                DiagPreviewViewModel firstMainDiag = base.GetDiag<DiagPreviewViewModel>(d => d.Id == inClinicProcedure.FirstMainDiagId);
+
+                DiagPreviewViewModel secondMainDiag = base.GetDiag<DiagPreviewViewModel>(d => d.Id == inClinicProcedure.SecondMainDiagId);
+
+                return new InClinicProcedureViewModel()
+                {
+                    Id = inClinicProcedure.Id,
+                    Patient = patient,
+                    PatientBranch = inClinicProcedure?.PatientBranch?.HealthRegion?.Name ?? default,
+                    PatientHealthRegion = inClinicProcedure.PatientHealthRegion.Name,
+                    Sender = sender,
+                    APrSend = inClinicProcedure.APrSend,
+                    TypeProcSend = inClinicProcedure.TypeProcSend,
+                    DateSend = inClinicProcedure.DateSend,
+                    CPrPriem = inClinicProcedure.CPrPriem,
+                    APrPriem = inClinicProcedure.APrPriem,
+                    TypeProcPriem = inClinicProcedure.TypeProcPriem,
+                    ProcRefuse = inClinicProcedure.ProcRefuse,
+                    CeasedClinicalPath = ceasedClinical,
+                    IZNumChild = inClinicProcedure.IZNumChild,
+                    IZYearChild = inClinicProcedure.IZYearChild,
+                    FirstVisitDate = inClinicProcedure.FirstVisitDate,
+                    PlanVisitDate = inClinicProcedure.PlanVisitDate,
+                    VisitDocumentUniqueIdentifier = inClinicProcedure.VisitDocumentUniqueIdentifier,
+                    VisitDocumentName = inClinicProcedure.VisitDocumentName,
+                    FirstMainDiag = firstMainDiag,
+                    SecondMainDiag = secondMainDiag,
+                    PatientStatus = inClinicProcedure.PatientStatus,
+                    NZOKPay = inClinicProcedure.NZOKPay
+                };
+            });
         }
 
         public async Task<List<InClinicProcedurePreviewViewModel>> GetInClinicProceduresAsync(

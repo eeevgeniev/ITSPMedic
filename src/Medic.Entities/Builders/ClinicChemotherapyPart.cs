@@ -10,12 +10,14 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
-                b.HasMany(model => model.Decisions)
-                    .WithOne(e => e.ClinicChemotherapyPart)
-                    .HasForeignKey(e => e.ClinicChemotherapyPartId);
+                b.HasOne(model => model.Decision)
+                    .WithOne(e => e.ClinicChemotherapyPartDecision)
+                    .HasForeignKey<ClinicChemotherapyPart>(model => model.DecisionId);
+
+                b.HasIndex(model => model.DecisionId).IsUnique(false);
 
                 b.HasOne(model => model.Evaluation)
-                    .WithOne(e => e.ClinicChemotherapyPartDecision)
+                    .WithOne(e => e.ClinicChemotherapyPart)
                     .HasForeignKey<ClinicChemotherapyPart>(model => model.EvalutionId);
 
                 b.HasIndex(model => model.EvalutionId).IsUnique(false);

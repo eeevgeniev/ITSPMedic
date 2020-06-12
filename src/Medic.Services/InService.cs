@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Medic.AppModels.Diagnoses;
+using Medic.AppModels.HealthcarePractitioners;
 using Medic.AppModels.Ins;
-using Medic.Contexts;
+using Medic.AppModels.Patients;
+using Medic.Contexts.Contracts;
 using Medic.Entities;
+using Medic.Services.Base;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,16 +16,10 @@ using System.Threading.Tasks;
 
 namespace Medic.Services
 {
-    public class InService : IInService
+    public class InService : BaseServiceHelper, IInService
     {
-        private readonly MedicContext MedicContext;
-        private readonly MapperConfiguration Configuration;
-
-        public InService(MedicContext medicContext, MapperConfiguration configuration)
-        {
-            MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
-            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-        }
+        public InService(IMedicContext medicContext, MapperConfiguration configuration)
+            : base (medicContext, configuration) {}
 
         public async Task<InViewModel> GetInAsync(int id)
         {
@@ -30,9 +28,69 @@ namespace Medic.Services
                 throw new ArgumentException(nameof(id));
             }
 
-            return await MedicContext.Ins
-                .ProjectTo<InViewModel>(Configuration)
-                .SingleOrDefaultAsync(i => i.Id == id);
+            return await Task<InViewModel>.Run(() =>
+            {
+                In inEntity = MedicContext.Ins
+                    .Include(i => i.PatientBranch)
+                        .ThenInclude(pb => pb.HealthRegion)
+                    .Include(i => i.PatientHRegion)
+                    .Include(i => i.CPFile)
+                        .ThenInclude(cp => cp.FileType)
+                    .SingleOrDefault(i => i.Id == id);
+
+                if (inEntity == default)
+                {
+                    return default;
+                }
+
+                PatientSummaryViewModel patient = MedicContext.Patients
+                    .ProjectTo<PatientSummaryViewModel>(Configuration)
+                    .SingleOrDefault(p => p.Id == inEntity.PatientId);
+
+                HealthcarePractitionerSummaryViewModel sender = MedicContext.HealthcarePractitioners
+                    .ProjectTo<HealthcarePractitionerSummaryViewModel>(Configuration)
+                    .SingleOrDefault(hp => hp.Id == inEntity.SenderId);
+
+                List<DiagnosePreviewViewModel> sendDiagnoses = base.GetDiagnoses<DiagnosePreviewViewModel>(d => d.SendInId == inEntity.Id);
+
+                List<DiagnosePreviewViewModel> diagnoses = base.GetDiagnoses<DiagnosePreviewViewModel>(d => d.InId == inEntity.Id);
+
+                return new InViewModel()
+                {
+                    Id = inEntity.Id,
+                    Patient = patient,
+                    PatientBranch = inEntity?.PatientBranch?.HealthRegion?.Name ?? default,
+                    PatientHRegion = inEntity.PatientHRegion.Name,
+                    Sender = sender,
+                    InType = inEntity.InType,
+                    SendDate = inEntity.SendDate,
+                    SendDiagnoses = sendDiagnoses,
+                    SendUrgency = inEntity.SendUrgency,
+                    SendApr = inEntity.SendApr,
+                    SendClinicalPath = inEntity.SendClinicalPath,
+                    UniqueIdentifier = inEntity.UniqueIdentifier,
+                    ExaminationDate = inEntity.ExaminationDate,
+                    PlannedNumber = inEntity.PlannedNumber,
+                    Diagnoses = diagnoses,
+                    Urgency = inEntity.Urgency,
+                    InApr = inEntity.InApr,
+                    ClinicalPath = inEntity.ClinicalPath,
+                    NZOKPay = inEntity.NZOKPay,
+                    InMedicalWard = inEntity.InMedicalWard,
+                    EntryDate = inEntity.EntryDate,
+                    Severity = inEntity.Severity,
+                    Delay = inEntity.Delay,
+                    Payer = inEntity.Payer,
+                    AgeInDays = inEntity.AgeInDays,
+                    WeightInGrams = inEntity.WeightInGrams,
+                    BirthWeight = inEntity.BirthWeight,
+                    MotherIZYear = inEntity.MotherIZYear,
+                    MotherIZNo = inEntity.MotherIZNo,
+                    IZYear = inEntity.IZYear,
+                    IZNo = inEntity.IZNo,
+                    CPFile = inEntity?.CPFile?.FileType?.Name ?? default
+                };
+            });
         }
 
         public async Task<List<InPreviewViewModel>> GetInsAsync(

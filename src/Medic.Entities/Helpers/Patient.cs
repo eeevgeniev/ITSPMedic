@@ -16,7 +16,9 @@ namespace Medic.Entities
             expression.CreateMap<Patient, CP.Patient>()
                 .ForMember(p => p.Sex, config => config.MapFrom(p => p.Sex == default ? -1 : p.Sex.Id - 1))
                 .ForMember(pp => pp.BirthDateAsString, config => config.Ignore())
-                .ForMember(pp => pp.DateToAsString, config => config.Ignore());
+                .ForMember(pp => pp.DateToAsString, config => config.Ignore())
+                .ForMember(pp => pp.DateFromAsString, config => config.Ignore())
+                .ForMember(pp => pp.DateIssueAsString, config => config.Ignore());
 
             expression.CreateMap<CP.Patient, Patient>()
                 .ForMember(p => p.Sex, config => config.MapFrom(p => new Sex() { Id = p.Sex + 1 }))
@@ -28,7 +30,7 @@ namespace Medic.Entities
                 .ForMember(p => p.ProtocolDrugTherapies, config => config.Ignore())
                 .ForMember(p => p.CommissionAprs, config => config.Ignore())
                 .ForMember(p => p.DispObservations, config => config.Ignore())
-                .ForMember(p => p.PlannedProcedures, config => config.Ignore())
+                .ForMember(p => p.Plannings, config => config.Ignore())
                 .ForMember(p => p.Id, config => config.Ignore());
 
             expression.CreateMap<Patient, PatientPreviewViewModel>();

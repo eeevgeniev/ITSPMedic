@@ -79,6 +79,9 @@ namespace Medic.Models.CP
             }
         }
 
+        [XmlElement(ElementName = "start_treatment")]
+        public DateTime? StartTreatment { get; set; }
+
         [XmlElement(ElementName = "Diag")]
         public Diag Diag { get; set; }
 
@@ -94,6 +97,7 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "Line_Therapy")]
         public int TherapyLine { get; set; }
 
+        [XmlElement(ElementName = "Scheme")]
         public string Scheme { get; set; }
 
         [XmlElement(ElementName = "Cycle_Count")]

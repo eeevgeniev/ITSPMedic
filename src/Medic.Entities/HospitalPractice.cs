@@ -40,6 +40,10 @@ namespace Medic.Entities
 
         public ICollection<ProtocolDrugTherapy> ProtocolDrugTherapies { get; set; } = new HashSet<ProtocolDrugTherapy>();
 
+        public ICollection<DrugResidue> DrugResidues { get; set; } = new HashSet<DrugResidue>();
+
         public ICollection<Transfer> Transfers { get; set; } = new HashSet<Transfer>();
+
+        public ICollection<DrugPack> DrugPacks { get; set; } = new HashSet<DrugPack>();
     }
 }

@@ -56,7 +56,7 @@ namespace Medic.Entities
 
         public HospitalPractice HospitalPractice { get; set; }
 
-        public ICollection<Diag> AddDiag { get; set; } = new HashSet<Diag>();
+        public ICollection<Diag> AddDiags { get; set; } = new HashSet<Diag>();
 
         public int? APr38Id { get; set; }
 

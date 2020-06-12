@@ -3,7 +3,6 @@ using Medic.Entities;
 using Medic.Import.Contracts;
 using Medic.Import.Rules;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,23 +85,23 @@ namespace Medic.Import
             cpFile.FileType = AddFileType(cpFile.FileType);
             cpFile.Practice = AddPractice(cpFile.Practice);
 
-            foreach (PlannedProcedure plannedProcedure in cpFile.PlannedProcedures)
+            foreach (Planned planned in cpFile.Plannings)
             {
-                plannedProcedure.Patient = AddPatient(plannedProcedure.Patient);
-                plannedProcedure.PatientBranch = AddPatientBarch(plannedProcedure.PatientBranch);
-                plannedProcedure.Sender = AddHealthcarePractitioner(plannedProcedure.Sender);
-                plannedProcedure.PatientHRegion = AddHealthRegion(plannedProcedure.PatientHRegion);
+                planned.Patient = AddPatient(planned.Patient);
+                planned.PatientBranch = AddPatientBarch(planned.PatientBranch);
+                planned.Sender = AddHealthcarePractitioner(planned.Sender);
+                planned.PatientHRegion = AddHealthRegion(planned.PatientHRegion);
 
-                if (plannedProcedure.Diagnose != default)
+                foreach(Diagnose diagnose in planned.Diagnoses)
                 {
-                    plannedProcedure.Diagnose.Primary = AddMKB(plannedProcedure.Diagnose.Primary);
-                    plannedProcedure.Diagnose.Secondary = AddMKB(plannedProcedure.Diagnose.Secondary);
+                    diagnose.Primary = AddMKB(diagnose.Primary);
+                    diagnose.Secondary = AddMKB(diagnose.Secondary);
                 }
 
-                if (plannedProcedure.SendDiagnose != default)
+                foreach (Diagnose diagnose in planned.SendDiagnoses)
                 {
-                    plannedProcedure.SendDiagnose.Primary = AddMKB(plannedProcedure.SendDiagnose.Primary);
-                    plannedProcedure.SendDiagnose.Secondary = AddMKB(plannedProcedure.SendDiagnose.Secondary);
+                    diagnose.Primary = AddMKB(diagnose.Primary);
+                    diagnose.Secondary = AddMKB(diagnose.Secondary);
                 }
             }
 
@@ -113,19 +112,16 @@ namespace Medic.Import
                 currentIn.Sender = AddHealthcarePractitioner(currentIn.Sender);
                 currentIn.PatientHRegion = AddHealthRegion(currentIn.PatientHRegion);
 
-                if (currentIn.SendDiagnose != default)
+                foreach (Diagnose diagnose in currentIn.SendDiagnoses)
                 {
-                    currentIn.SendDiagnose.Primary = AddMKB(currentIn.SendDiagnose.Primary);
-                    currentIn.SendDiagnose.Secondary = AddMKB(currentIn.SendDiagnose.Secondary);
+                    diagnose.Primary = AddMKB(diagnose.Primary);
+                    diagnose.Secondary = AddMKB(diagnose.Secondary);
                 }
 
                 foreach (Diagnose diagnose in currentIn.Diagnoses)
                 {
-                    if (diagnose != default)
-                    {
-                        diagnose.Primary = AddMKB(diagnose.Primary);
-                        diagnose.Secondary = AddMKB(diagnose.Secondary);
-                    }
+                    diagnose.Primary = AddMKB(diagnose.Primary);
+                    diagnose.Secondary = AddMKB(diagnose.Secondary);
                 }
             }
 
@@ -144,24 +140,16 @@ namespace Medic.Import
                     }
                 }
 
-                if (currentOut.Epicrisis != default)
-                {
-                    foreach (HealthcarePractitionerEpicrisis sender in currentOut.Epicrisis.HealthcarePractitionerEpicrisises)
-                    {
-                        sender.HealthcarePractitioner = AddHealthcarePractitioner(sender.HealthcarePractitioner);
-                    }
-                }
-
                 if (currentOut.OutMainDiagnose != default)
                 {
                     currentOut.OutMainDiagnose.Primary = AddMKB(currentOut.OutMainDiagnose.Primary);
                     currentOut.OutMainDiagnose.Secondary = AddMKB(currentOut.OutMainDiagnose.Secondary);
                 }
 
-                if (currentOut.SendDiagnose != default)
+                foreach (Diagnose diagnose in currentOut.SendDiagnoses)
                 {
-                    currentOut.SendDiagnose.Primary = AddMKB(currentOut.SendDiagnose.Primary);
-                    currentOut.SendDiagnose.Secondary = AddMKB(currentOut.SendDiagnose.Secondary);
+                    diagnose.Primary = AddMKB(diagnose.Primary);
+                    diagnose.Secondary = AddMKB(diagnose.Secondary);
                 }
 
                 if (currentOut.Dead != default)
@@ -221,10 +209,13 @@ namespace Medic.Import
                     protocolDrugTherapy.Diag.LinkDMKB = AddMKB(protocolDrugTherapy.Diag.LinkDMKB);
                 }
 
-                if (protocolDrugTherapy.ChemotherapyPart != default && protocolDrugTherapy.ChemotherapyPart.AddDiag != default)
+                if (protocolDrugTherapy.ChemotherapyPart != default)
                 {
-                    protocolDrugTherapy.ChemotherapyPart.AddDiag.MKB = AddMKB(protocolDrugTherapy.ChemotherapyPart.AddDiag.MKB);
-                    protocolDrugTherapy.ChemotherapyPart.AddDiag.LinkDMKB = AddMKB(protocolDrugTherapy.ChemotherapyPart.AddDiag.LinkDMKB);
+                    foreach (Diag diag in protocolDrugTherapy.ChemotherapyPart.AddDiags)
+                    {
+                        diag.MKB = AddMKB(diag.MKB);
+                        diag.LinkDMKB = AddMKB(diag.LinkDMKB);
+                    }
                 }
             }
 
@@ -366,7 +357,7 @@ namespace Medic.Import
                     commissionApr.MainDiag.LinkDMKB = AddMKB(commissionApr.MainDiag.LinkDMKB);
                 }
 
-                foreach (Diag diag in commissionApr.AddDiag)
+                foreach (Diag diag in commissionApr.AddDiags)
                 {
                     diag.MKB = AddMKB(diag.MKB);
                     diag.LinkDMKB = AddMKB(diag.LinkDMKB);
@@ -402,10 +393,13 @@ namespace Medic.Import
                     protocolDrugTherapy.Diag.LinkDMKB = AddMKB(protocolDrugTherapy.Diag.LinkDMKB);
                 }
 
-                if (protocolDrugTherapy.ChemotherapyPart != default && protocolDrugTherapy.ChemotherapyPart.AddDiag != default)
+                if (protocolDrugTherapy.ChemotherapyPart != default)
                 {
-                    protocolDrugTherapy.ChemotherapyPart.AddDiag.MKB = AddMKB(protocolDrugTherapy.ChemotherapyPart.AddDiag.MKB);
-                    protocolDrugTherapy.ChemotherapyPart.AddDiag.LinkDMKB = AddMKB(protocolDrugTherapy.ChemotherapyPart.AddDiag.LinkDMKB);
+                    foreach (Diag diag in protocolDrugTherapy.ChemotherapyPart.AddDiags)
+                    {
+                        diag.MKB = AddMKB(diag.MKB);
+                        diag.LinkDMKB = AddMKB(diag.LinkDMKB);
+                    }
                 }
             }
 

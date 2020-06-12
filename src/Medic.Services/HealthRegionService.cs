@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Medic.AppModels.HealthRegions;
-using Medic.Contexts;
+using Medic.Contexts.Contracts;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,10 +13,10 @@ namespace Medic.Services
 {
     public class HealthRegionService : IHealthRegionService
     {
-        private readonly MedicContext MedicContext;
+        private readonly IMedicContext MedicContext;
         private readonly MapperConfiguration Configuration;
 
-        public HealthRegionService(MedicContext medicContext, MapperConfiguration configuration)
+        public HealthRegionService(IMedicContext medicContext, MapperConfiguration configuration)
         {
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));

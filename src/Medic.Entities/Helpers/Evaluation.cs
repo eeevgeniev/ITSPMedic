@@ -17,21 +17,18 @@ namespace Medic.Entities
             expression.CreateMap<Evaluation, CP.PredMarker>();
 
             expression.CreateMap<CP.Evaluation, Evaluation>()
-                .ForMember(e => e.ClinicChemotherapyPartId, config => config.Ignore())
                 .ForMember(e => e.ClinicChemotherapyPart, config => config.Ignore())
-                .ForMember(e => e.ClinicHematologyPartId, config => config.Ignore())
                 .ForMember(e => e.ClinicHematologyPart, config => config.Ignore())
                 .ForMember(e => e.APr38s, config => config.Ignore())
                 .ForMember(e => e.ClinicChemotherapyPartDecision, config => config.Ignore())
                 .ForMember(e => e.ClinicHematologyPartDecision, config => config.Ignore())
                 .ForMember(e => e.ChemotherapyPart, config => config.Ignore())
                 .ForMember(e => e.HematologyPart, config => config.Ignore())
+                .ForMember(e => e.Markers, config => config.Ignore())
                 .ForMember(e => e.Id, config => config.Ignore());
 
             expression.CreateMap<CP.PredMarker, Evaluation>()
-                .ForMember(e => e.ClinicChemotherapyPartId, config => config.Ignore())
                 .ForMember(e => e.ClinicChemotherapyPart, config => config.Ignore())
-                .ForMember(e => e.ClinicHematologyPartId, config => config.Ignore())
                 .ForMember(e => e.ClinicHematologyPart, config => config.Ignore())
                 .ForMember(e => e.APr38s, config => config.Ignore())
                 .ForMember(e => e.ClinicChemotherapyPartDecision, config => config.Ignore())

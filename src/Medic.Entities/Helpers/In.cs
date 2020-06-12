@@ -19,6 +19,7 @@ namespace Medic.Entities
                 .ForMember(i => i.PatientHRegion, config => config.MapFrom(i => i.PatientHRegion == default ? default : i.PatientHRegion.Code))
                 .ForMember(i => i.SendDateAsString, config => config.Ignore())
                 .ForMember(i => i.ExaminationDateAsString, config => config.Ignore())
+                .ForMember(i => i.PlannedEntryDateAsString, config => config.Ignore())
                 .ForMember(i => i.EntryDateAsString, config => config.Ignore());
 
             expression.CreateMap<CP.In, In>()
@@ -30,18 +31,12 @@ namespace Medic.Entities
                 .ForMember(i => i.CPFileId, config => config.Ignore())
                 .ForMember(i => i.PatientId, config => config.Ignore())
                 .ForMember(i => i.SenderId, config => config.Ignore())
-                .ForMember(i => i.SendDiagnoseId, config => config.Ignore())
                 .ForMember(i => i.Id, config => config.Ignore());
 
-            expression.CreateMap<In, PatientInPreviewViewModel>()
-                .ForMember(pi => pi.MKBCode, config => config.MapFrom(i => i.SendDiagnose.Primary.Code ?? string.Empty))
-                .ForMember(pi => pi.MKBName, config => config.MapFrom(i => i.SendDiagnose.Primary.Name ?? string.Empty));
+            expression.CreateMap<In, PatientInPreviewViewModel>();
 
             expression.CreateMap<In, InPreviewViewModel>()
-                .ForMember(pvm => pvm.PatientId, config => config.MapFrom(i => i.Patient.Id))
-                .ForMember(pvm => pvm.SendDiagnoseCode, config => config.MapFrom(i => i.SendDiagnose.Primary.Code))
-                .ForMember(pvm => pvm.SendDiagnoseName, config => config.MapFrom(i => i.SendDiagnose.Primary.Name))
-                .ForMember(pvm => pvm.CodeDiagnoses, config => config.MapFrom(i => i.Diagnoses.Select(d => d.Primary.Code)));
+                .ForMember(pvm => pvm.PatientId, config => config.MapFrom(i => i.Patient.Id));
 
             expression.CreateMap<In, InViewModel>()
                 .ForMember(ivm => ivm.PatientBranch, config => config.MapFrom(i => i.PatientBranch != default && i.PatientBranch.HealthRegion != default ? i.PatientBranch.HealthRegion.Name : default))

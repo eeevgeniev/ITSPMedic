@@ -10,64 +10,64 @@
 {
     <article>
         <header>
-            <h2 class="text-center">@($"{medicDataLocalization.Get("InClinicProcedure")} - {@Model.InClinicProcedureViewModel.VisitDocumentUniqueIdentifier}")</h2>
+            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get("InClinicProcedure"))} - {@Model.InClinicProcedureViewModel.VisitDocumentUniqueIdentifier}")</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
         </header>
-        <h2 class="text-center">@medicDataLocalization.Get("Patient")</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get("Patient"))</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.InClinicProcedureViewModel.Patient" />
         <hr />
-        <h2 class="text-center">@medicDataLocalization.Get("Sender")</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get("Sender"))</h2>
         <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.InClinicProcedureViewModel.Sender" />
         <hr />
         <div>Send date: @Model.InClinicProcedureViewModel.DateSend.ToShortDateString()</div>
         <hr />
-        <h2 class="text-center">@medicDataLocalization.Get("FirstMainDiag")</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get("FirstMainDiag"))</h2>
         <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.InClinicProcedureViewModel.FirstMainDiag" />
         <hr />
-        <h2 class="text-center">@medicDataLocalization.Get("SecondMainDiag")</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get("SecondMainDiag"))</h2>
         <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.InClinicProcedureViewModel.SecondMainDiag" />
         <hr />
-        <h2 class="text-center">@medicDataLocalization.Get("CeasedClinicalPath")</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get("CeasedClinicalPath"))</h2>
         <hr />
-        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.InClinicProcedureViewModel.CeasedClinicalPath" />
+        <partial name="~/Views/Shared/Partials/CeasedClinicals/CeasedClinicalViewModel.cshtml" model="@Model.InClinicProcedureViewModel.CeasedClinicalPath" />
         <hr />
         <div class="row">
-            <div class="col-sm-4">@medicDataLocalization.Get("PatientBranch"): @Model.InClinicProcedureViewModel.PatientBranch</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("PatientHRegion"): @Model.InClinicProcedureViewModel.PatientHealthRegion</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("CPrSend"): @Model.InClinicProcedureViewModel.CPrSend</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("PatientBranch")): @Model.InClinicProcedureViewModel.PatientBranch</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("PatientHRegion")): @Model.InClinicProcedureViewModel.PatientHealthRegion</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("CPrSend")): @Model.InClinicProcedureViewModel.CPrSend</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@medicDataLocalization.Get("APrSend"): @Model.InClinicProcedureViewModel.APrSend</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("TypeProcSend"): @Model.InClinicProcedureViewModel.TypeProcSend</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("CPrPriem"): @Model.InClinicProcedureViewModel.CPrPriem</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("APrSend")): @Model.InClinicProcedureViewModel.APrSend</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("TypeProcSend")): @Model.InClinicProcedureViewModel.TypeProcSend</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("CPrPriem")): @Model.InClinicProcedureViewModel.CPrPriem</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@medicDataLocalization.Get("APrPriem"): @Model.InClinicProcedureViewModel.APrPriem</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("TypeProcPriem"): @Model.InClinicProcedureViewModel.TypeProcPriem</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("ProcRefuse"): @Model.InClinicProcedureViewModel.ProcRefuse</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("APrPriem")): @Model.InClinicProcedureViewModel.APrPriem</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("TypeProcPriem")): @Model.InClinicProcedureViewModel.TypeProcPriem</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ProcRefuse")): @Model.InClinicProcedureViewModel.ProcRefuse</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@medicDataLocalization.Get("IZNumChild"): @Model.InClinicProcedureViewModel.IZNumChild</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("IZYearChild"): @Model.InClinicProcedureViewModel.IZYearChild</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("PatientStatus"): @Model.InClinicProcedureViewModel.PatientStatus</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("IZNumChild")): @Model.InClinicProcedureViewModel.IZNumChild</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("IZYearChild")): @Model.InClinicProcedureViewModel.IZYearChild</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("PatientStatus")): @Model.InClinicProcedureViewModel.PatientStatus</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@medicDataLocalization.Get("FirstVisitDate"): @(Model.InClinicProcedureViewModel.FirstVisitDate == default ? default : ((DateTime)Model.InClinicProcedureViewModel.FirstVisitDate).ToShortDateString()))</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("PlanVisitDate"): @(Model.InClinicProcedureViewModel.PlanVisitDate == default ? default : ((DateTime)Model.InClinicProcedureViewModel.PlanVisitDate).ToShortDateString())</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("VisitDocumentUniqueIdentifier"): @Model.InClinicProcedureViewModel.VisitDocumentUniqueIdentifier</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("FirstVisitDate")): @(Model.InClinicProcedureViewModel.FirstVisitDate == default ? default : ((DateTime)Model.InClinicProcedureViewModel.FirstVisitDate).ToShortDateString()))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("PlanVisitDate")): @(Model.InClinicProcedureViewModel.PlanVisitDate == default ? default : ((DateTime)Model.InClinicProcedureViewModel.PlanVisitDate).ToShortDateString())</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("VisitDocumentUniqueIdentifier")): @Model.InClinicProcedureViewModel.VisitDocumentUniqueIdentifier</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@medicDataLocalization.Get("VisitDocumentName"): @Model.InClinicProcedureViewModel.VisitDocumentName</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("NZOKPay"): @Model.InClinicProcedureViewModel.NZOKPay</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("VisitDocumentName")): @Model.InClinicProcedureViewModel.VisitDocumentName</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("NZOKPay")): @Model.InClinicProcedureViewModel.NZOKPay</div>
         </div>
     </article>
 }
 else
 {
-    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
 }

@@ -27,7 +27,7 @@ namespace Medic.AppModels.Ins
         [Display(Name = nameof(SendDate))]
         public DateTime SendDate { get; set; }
 
-        public DiagnosePreviewViewModel SendDiagnose { get; set; }
+        public List<DiagnosePreviewViewModel> SendDiagnoses { get; set; }
 
         [Display(Name = nameof(SendUrgency))]
         public int SendUrgency { get; set; }
@@ -71,7 +71,7 @@ namespace Medic.AppModels.Ins
         public int Severity { get; set; }
 
         [Display(Name = nameof(Delay))]
-        public int Delay { get; set; }
+        public int? Delay { get; set; }
 
         [Display(Name = nameof(Payer))]
         public int Payer { get; set; }

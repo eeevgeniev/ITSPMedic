@@ -75,7 +75,7 @@ namespace Medic.Models.CLPR
         {
             get
             {
-                return _dispDate == default ? default : _dispDate.ToString("hh:mm:ss");
+                return _dispDate == default ? default : _dispDate.ToString("hh:mm");
             }
             set
             {
@@ -136,7 +136,14 @@ namespace Medic.Models.CLPR
 
         [XmlElement(ElementName = "Disp_Visit")]
         public int DispVisit { get; set; }
-        
+
+        [XmlElement(ElementName = "CodeSpec_Consult")]
+        public List<string> CodeSpecConsults { get; set; }
+
+
+        [XmlElement(ElementName = "VSD")]
+        public List<VSD> VSDs { get; set; }
+
         [XmlElement(ElementName = "MDI")]
         public List<MDI> MDIs { get; set; }
 

@@ -5,6 +5,7 @@ using CP = Medic.Models.CP;
 namespace Medic.Entities
 {
     public partial class AccompanyingDrug {
+        
         public AccompanyingDrug Copy()
         {
             return base.Copy<AccompanyingDrug>(this);

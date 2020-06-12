@@ -135,14 +135,14 @@
   <data name="AgeInDays" xml:space="preserve">
     <value>Age in days</value>
   </data>
-  <data name="AllDoneCost" xml:space="preserve">
-    <value>All done cost</value>
-  </data>
   <data name="AllDoneProcedures" xml:space="preserve">
     <value>All done procedures</value>
   </data>
   <data name="AllDose" xml:space="preserve">
     <value>All dose</value>
+  </data>
+  <data name="AllDrugCost" xml:space="preserve">
+    <value>All drug cost</value>
   </data>
   <data name="Anamnesa" xml:space="preserve">
     <value>Anamnesa</value>
@@ -229,7 +229,7 @@
     <value>Code HS</value>
   </data>
   <data name="CommissionAprsCount" xml:space="preserve">
-    <value>Commission aprs count</value>
+    <value>Apr commissions count</value>
   </data>
   <data name="Complications" xml:space="preserve">
     <value>Complications</value>

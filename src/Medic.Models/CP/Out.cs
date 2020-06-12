@@ -15,6 +15,7 @@ namespace Medic.Models.CP
         private DateTime _entryDate;
         private DateTime _outDate;
         private DateTime? _hLDateFrom;
+        private DateTime _plannedEntryDate;
 
         [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
@@ -52,13 +53,19 @@ namespace Medic.Models.CP
         }
 
         [XmlElement(ElementName = "sendDiagnose")]
-        public SendDiagnose SendDiagnose { get; set; }
+        public List<SendDiagnose> SendDiagnoses { get; set; }
 
         [XmlElement(ElementName = "sendUrgency")]
         public int SendUrgency { get; set; }
 
+        [XmlElement(ElementName = "sendPackageType")]
+        public int? SendPackageType { get; set; }
+
         [XmlElement(ElementName = "sendClinicalPath")]
         public double SendClinicalPath { get; set; }
+
+        [XmlElement(ElementName = "sendAPr")]
+        public int? SendAPr { get; set; }
 
         [XmlElement(ElementName = "uin")]
         public string UniqueIdentifier { get; set; }
@@ -83,14 +90,43 @@ namespace Medic.Models.CP
             }
         }
 
+        [XmlIgnore]
+        public DateTime PlannedEntryDate
+        {
+            get { return _plannedEntryDate; }
+            set { _plannedEntryDate = value; }
+        }
+
+        [XmlElement(ElementName = "plannedEntryDate")]
+        public string PlannedEntryDateAsString
+        {
+            get
+            {
+                return _plannedEntryDate == default ? default : _plannedEntryDate.ToString(DateFormat);
+            }
+            set
+            {
+                _plannedEntryDate = DateTime.Parse(value, CultureInfo.InvariantCulture);
+            }
+        }
+
+        [XmlElement(ElementName = "plannedNo")]
+        public int PlannedNumber { get; set; }
+
         [XmlElement(ElementName = "diagnose")]
         public List<Diagnose> Diagnoses { get; set; }
 
         [XmlElement(ElementName = "urgency")]
         public int Urgency { get; set; }
 
+        [XmlElement(ElementName = "packageType")]
+        public int? PackageType { get; set; }
+
         [XmlElement(ElementName = "clinicalPath")]
         public double ClinicalPath { get; set; }
+
+        [XmlElement(ElementName = "InAPr")]
+        public int? InAPr { get; set; }
 
         [XmlElement(ElementName = "NZOKPay")]
         public int NZOKPay { get; set; }
@@ -186,7 +222,14 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "BirthNum")]
         public int? BirthNumber { get; set; }
 
+        [XmlElement(ElementName = "BirthGestWeek")]
         public int? BirthGestWeek { get; set; }
+
+        [XmlElement(ElementName = "resign")]
+        public Resign Resign { get; set; }
+
+        [XmlElement(ElementName = "Redirected")]
+        public Redirected Redirected { get; set; }
 
         [XmlElement(ElementName = "outClinicalPath")]
         public double OutClinicalPath { get; set; }
@@ -200,14 +243,20 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "epicrisis")]
         public Epicrisis Epicrisis { get; set; }
 
+        [XmlElement(ElementName = "IZinDetail")]
+        public string IZinDetail { get; set; }
+
         [XmlElement(ElementName = "outMainDiag")]
         public OutMainDiagnose OutMainDiagnose { get; set; }
 
         [XmlElement(ElementName = "outDiags")]
         public List<OutDiagnose> OutDiagnoses { get; set; }
 
+        [XmlElement(ElementName = "Link_Media")]
+        public string LinkMedia { get; set; }
+
         [XmlElement(ElementName = "UsedDrug")]
-        public UsedDrug UsedDrug { get; set; }
+        public List<UsedDrug> UsedDrugs { get; set; }
 
         [XmlElement(ElementName = "Procedures")]
         public List<Procedure> Procedures { get; set; }
@@ -246,6 +295,10 @@ namespace Medic.Models.CP
 
         [XmlElement(ElementName = "Laparoscopic")]
         public int? Laparoscopic { get; set; }
+
+
+        [XmlElement(ElementName = "Pathologic_Finding")]
+        public int? PathologicFinding { get; set; }
 
         [XmlElement(ElementName = "EndCourse")]
         public int? EndCourse { get; set; }

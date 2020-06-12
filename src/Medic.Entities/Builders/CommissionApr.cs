@@ -46,7 +46,7 @@ namespace Medic.Entities
 
                 b.HasIndex(model => model.MainDiagId).IsUnique(false);
 
-                b.HasMany(model => model.AddDiag)
+                b.HasMany(model => model.AddDiags)
                     .WithOne(d => d.CommissionApr)
                     .HasForeignKey(d => d.CommissionAprId);
 

@@ -23,7 +23,6 @@ namespace Medic.App.Controllers
     {
         private readonly IProtocolDrugTherapyService ProtocolDrugTherapyService;
         private readonly IDrugProtocolService DrugProtocolService;
-        private readonly MedicDataLocalization MedicDataLocalization;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public ProtocolDrugTherapyController(
@@ -34,11 +33,10 @@ namespace Medic.App.Controllers
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
-            : base (patientService, healthRegionService, medicCache)
+            : base (patientService, healthRegionService, medicCache, medicDataLocalization)
         {
             ProtocolDrugTherapyService = protocolDrugTherapyService ?? throw new ArgumentNullException(nameof(protocolDrugTherapyService));
             DrugProtocolService = drugProtocolService ?? throw new ArgumentNullException(nameof(drugProtocolService));
-            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
@@ -54,10 +52,6 @@ namespace Medic.App.Controllers
                 string protocolDrugTherapiesKey = $"{nameof(ProtocolDrugTherapyPreviewViewModel)} - {startIndex} - {searchParams}";
                 string protocolDrugTherapiesCountKey = $"{MedicConstants.ProtocolDrugTherapies} - {searchParams}";
 
-                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<string> atcNames = new List<string>() { default };
-                
                 if (!base.MedicCache.TryGetValue(protocolDrugTherapiesKey, out List<ProtocolDrugTherapyPreviewViewModel> protocolDrugTherapies))
                 {
                     ProtocolDrugTherapyHelperBuilder helperBuilder = new ProtocolDrugTherapyHelperBuilder(search);
@@ -76,6 +70,8 @@ namespace Medic.App.Controllers
                     base.MedicCache.Set(protocolDrugTherapiesCountKey, protocolDrugTherapiesCount);
                 }
 
+                List<string> atcNames = new List<string>() { default };
+
                 if (!base.MedicCache.TryGetValue(MedicConstants.AtcNames, out List<string> addedAtcNames))
                 {
                     addedAtcNames = await DrugProtocolService.GetDrugProtocolATCNames();
@@ -87,9 +83,11 @@ namespace Medic.App.Controllers
 
                 atcNames.AddRange(addedAtcNames);
 
-                sexOptions.AddRange(await this.GetSexes());
+                List<SexOption> sexOptions = base.GetDefaultSexes();
+                sexOptions.AddRange(await base.GetSexesAsync());
 
-                healthRegions.AddRange(await this.GetHelathRegions());
+                List<HealthRegionOption> healthRegions = base.GetDefaultHealthRegions();
+                healthRegions.AddRange(await base.GetHealthRegionsAsync());
 
                 return View(new ProtocolDrugTherapyPageIndexModel()
                 {

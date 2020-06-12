@@ -5,16 +5,17 @@
 
 @if (Model != default)
 {
+    <hr/>
     <div class="row">
-        <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("BatchNumber")</div>
-        <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("QuantityPack")</div>
+        <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("BatchNumber")):</div>
+        <div class="col-sm-8">@Model.BatchNumber</div>
     </div>
     <div class="row">
-        <div class="col-sm-6">@Model.BatchNumber</div>
-        <div class="col-sm-6">@Model.QuantityPack</div>
+        <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("QuantityPack")):</div>
+        <div class="col-sm-8">@Model.QuantityPack</div>
     </div>
 }
 else
 {
-    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
 }

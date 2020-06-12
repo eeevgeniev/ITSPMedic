@@ -46,6 +46,12 @@ namespace Medic.Entities
 
                 b.HasIndex(model => model.CeasedClinicalPathId).IsUnique(false);
 
+                b.HasOne(model => model.CeasedOnly)
+                    .WithOne(co => co.CeasedOnlyPathProcedure)
+                    .HasForeignKey<PathProcedure>(model => model.CeasedOnlyId);
+
+                b.HasIndex(model => model.CeasedOnlyId).IsUnique(false);
+
                 b.HasOne(model => model.FirstMainDiag)
                     .WithOne(d => d.FirstPathProcedure)
                     .HasForeignKey<PathProcedure>(model => model.FirstMainDiagId);
@@ -61,12 +67,6 @@ namespace Medic.Entities
                 b.HasMany(model => model.DoneNewProcedures)
                     .WithOne(p => p.PathProcedure)
                     .HasForeignKey(p => p.PathProcedureId);
-
-                b.HasOne(model => model.UsedDrug)
-                    .WithOne(ud => ud.PathProcedure)
-                    .HasForeignKey<PathProcedure>(model => model.UsedDrugId);
-
-                b.HasIndex(model => model.UsedDrugId).IsUnique(false);
 
                 b.HasMany(model => model.ClinicProcedures)
                     .WithOne(cp => cp.PathProcedure)
@@ -84,7 +84,7 @@ namespace Medic.Entities
 
                 b.Property(model => model.VisitDocumentUniqueIdentifier).HasMaxLength(12);
 
-                b.Property(model => model.VisitDocumentName).HasMaxLength(100);
+                b.Property(model => model.VisitDocumentName).HasMaxLength(150);
 
                 b.Property(model => model.OutUniqueIdentifier).HasMaxLength(12);
 
@@ -92,11 +92,17 @@ namespace Medic.Entities
 
                 b.Property(model => model.APrSend).HasColumnType("decimal(15,4)");
 
-                b.Property(model => model.AllDoneCost).HasColumnType("decimal(15,4)");
+                b.Property(model => model.AllDrugCost).HasColumnType("decimal(15,4)");
 
                 b.Property(model => model.AllDoneProcedures).HasColumnType("decimal(15,4)");
 
                 b.Property(model => model.MedicalWard).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.BirthPractice).HasMaxLength(10);
+
+                b.Property(model => model.RedirectedClinicalPath).HasMaxLength(6);
+
+                b.Property(model => model.RedirectedProc).HasMaxLength(4);
             });
         }
     }

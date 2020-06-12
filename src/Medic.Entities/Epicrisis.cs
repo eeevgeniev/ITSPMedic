@@ -46,6 +46,6 @@ namespace Medic.Entities
 
         public Out Out { get; set; } 
 
-        public ICollection<HealthcarePractitionerEpicrisis> HealthcarePractitionerEpicrisises { get; set; } = new HashSet<HealthcarePractitionerEpicrisis>();
+        public string DoctorsNames { get; set; }
     }
 }

@@ -22,7 +22,6 @@ namespace Medic.App.Controllers
     public class InClinicProcedureController : LookupsBaseController
     {
         private readonly IInClinicProcedureService InClinicProcedureService;
-        private readonly MedicDataLocalization MedicDataLocalization;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public InClinicProcedureController(
@@ -32,10 +31,9 @@ namespace Medic.App.Controllers
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
-            : base (patientService, healthRegionService, medicCache)
+            : base (patientService, healthRegionService, medicCache, medicDataLocalization)
         {
             InClinicProcedureService = inClinicProcedureService ?? throw new ArgumentNullException(nameof(inClinicProcedureService));
-            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
@@ -50,9 +48,6 @@ namespace Medic.App.Controllers
                 string searchParams = search != default ? search.ToString() : default;
                 string inclinicProceduresKey = $"{nameof(InClinicProcedurePreviewViewModel)} - {startIndex} - {searchParams}";
                 string inclinicProceduresCountKey = $"{MedicConstants.InClinicProcedures} - {searchParams}";
-
-                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
 
                 if (!base.MedicCache.TryGetValue(inclinicProceduresKey, out List<InClinicProcedurePreviewViewModel> inClinicProcedures))
                 {
@@ -72,9 +67,11 @@ namespace Medic.App.Controllers
                     base.MedicCache.Set(inclinicProceduresCountKey, inClinicProceduresCount);
                 }
 
-                sexOptions.AddRange(await base.GetSexes());
+                List<SexOption> sexOptions = base.GetDefaultSexes();
+                sexOptions.AddRange(await base.GetSexesAsync());
 
-                healthRegions.AddRange(await base.GetHelathRegions());
+                List<HealthRegionOption> healthRegions = base.GetDefaultHealthRegions();
+                healthRegions.AddRange(await base.GetHealthRegionsAsync());
 
                 return View(new InClinicProcedurePageIndexModel()
                 {

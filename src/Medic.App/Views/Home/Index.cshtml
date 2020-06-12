@@ -7,16 +7,32 @@
 
 <article>
     <header class="text-center">
-        <h2>@medicDataLocalization.Get("Information")</h2>
-        <h4>@($"{medicDataLocalization.Get("TotalPatients")}: {Model.PatientCount}")</h4>
+        <h1>@Html.Raw(medicDataLocalization.Get("Information"))</h1>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("TotalPatients"))}: {Model.PatientCount}")</h4>
+        <h2 class="mt-sm-5 text-center">@Html.Raw(medicDataLocalization.Get("CPFilesSummary"))</h2>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("Plannings"))}: {Model.PlanningsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("Ins"))}: {Model.InsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("Outs"))}: {Model.OutsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("ProtocolDrugTherapies"))}: {Model.ProtocolDrugTherapiesCPCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("PatientTransfers"))}: {Model.PatientTransfersCPCount()}")</h4>
+        <h2 class="mt-sm-5 text-center">@Html.Raw(medicDataLocalization.Get("HospitalPracticesSummary"))</h2>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("InClinicProcedures"))}: {Model.InClinicProceduresCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("PathProcedures"))}: {Model.PathProceduresCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("DispObservations"))}: {Model.DispObservationsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("CommissionAprs"))}: {Model.CommissionAprsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("ProtocolDrugTherapies"))}: {Model.ProtocolDrugTherapiesHPCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get("PatientTransfers"))}: {Model.PatientTransfersHPCount()}")</h4>
     </header>
     <section>
+        <header class="mt-sm-5 text-center">
+            <h2>@Html.Raw(medicDataLocalization.Get("MonthSummaries"))</h2>
+        </header>
         <section>
             <header class="text-center">
-                <h4>@medicDataLocalization.Get("CPFilesSummary")</h4>
+                <h4>@Html.Raw(medicDataLocalization.Get("CPFilesSummary"))</h4>
             </header>
             <div>
-                <canvas id="cp-planned-procedures">
+                <canvas id="cp-plannings">
                 </canvas>
             </div>
             <div>
@@ -38,7 +54,7 @@
         </section>
         <section>
             <header class="text-center">
-                <h4>@medicDataLocalization.Get("HospitalPracticesSummary")</h4>
+                <h4>@Html.Raw(medicDataLocalization.Get("HospitalPracticesSummary"))</h4>
             </header>
             <div>
                 <canvas id="hospital-practice-clinic-procedures">
@@ -70,11 +86,11 @@
 
 @section Scripts {
     <environment names="Development">
-        <script src="~/lib/chartjs/Chart.js"></script>
-        <script src="~/js/chart.js"></script>
+        <script defer src="~/lib/chartjs/Chart.js"></script>
+        <script defer src="~/js/chart.js"></script>
     </environment>
     <environment names="Production">
-        <script src="~/lib/chartjs/Chart.min.js"></script>
+        <script defer src="~/lib/chartjs/Chart.min.js"></script>
     </environment>
     <script>
         (function () {
@@ -84,7 +100,7 @@
                 var labelsCP = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.DateFrom.ToString("MM-yyyy"))));
                 var labelsHP = @Html.Raw(Json.Serialize(Model.HospitalPracticeSummaryViewModels.Select(cp => cp.DateFrom.ToString("MM-yyyy"))));
 
-                var plannedProcedures = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.PlannedProceduresCount)));
+                var plannings = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.PlanningsCount)));
                 var ins = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.InsCount)));
                 var outs = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.OutsCount)));
                 var protocolDrugTherapies = @Html.Raw(Json.Serialize(Model.CPFileSummaryViewModels.Select(cp => cp.ProtocolDrugTherapiesCount)));
@@ -101,8 +117,8 @@
                     labels: labelsCP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("PlannedProcedures"))',
-                            data: plannedProcedures,
+                            label: '@Html.Raw(medicDataLocalization.Get("Plannings"))',
+                            data: plannings,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
                             fill: false,
@@ -262,7 +278,7 @@
                     ]
                 };
 
-                LineChart(document.querySelector('#cp-planned-procedures'), ppData, generateOptions('@Html.Raw(medicDataLocalization.Get("PlannedProcedures"))'));
+                LineChart(document.querySelector('#cp-plannings'), ppData, generateOptions('@Html.Raw(medicDataLocalization.Get("Plannings"))'));
                 LineChart(document.querySelector('#cp-ins'), insData, generateOptions('@Html.Raw(medicDataLocalization.Get("Ins"))'));
                 LineChart(document.querySelector('#cp-outs'), outsData, generateOptions('@Html.Raw(medicDataLocalization.Get("Outs"))'));
                 LineChart(document.querySelector('#cp-protocol-drug-therapies'), protocolDrugTherapiesData, generateOptions('@Html.Raw(medicDataLocalization.Get("ProtocolDrugTherapies"))'));

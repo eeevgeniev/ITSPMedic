@@ -13,10 +13,6 @@ namespace Medic.Entities
                 b.HasMany(model => model.Choices)
                     .WithOne(c => c.Evaluation)
                     .HasForeignKey(c => c.EvaluationId);
-
-                b.HasIndex(model => model.ClinicChemotherapyPartId).IsUnique(false);
-
-                b.HasIndex(model => model.ClinicHematologyPartId).IsUnique(false);
             });
         }
     }

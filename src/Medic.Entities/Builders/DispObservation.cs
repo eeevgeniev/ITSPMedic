@@ -56,11 +56,15 @@ namespace Medic.Entities
 
                 b.Property(model => model.AprCode).HasMaxLength(10);
 
-                b.Property(model => model.Anamnesa).HasMaxLength(4000);
+                b.Property(model => model.Anamnesa).HasMaxLength(5000);
 
                 b.Property(model => model.HState).HasMaxLength(3000);
 
                 b.Property(model => model.Therapy).HasMaxLength(1000);
+
+                b.Property(model => model.FirstCodeSpecConsult).HasMaxLength(5);
+
+                b.Property(model => model.SecondCodeSpecConsult).HasMaxLength(5);
             });
         }
     }

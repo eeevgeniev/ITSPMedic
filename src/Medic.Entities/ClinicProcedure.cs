@@ -2,6 +2,7 @@
 using Medic.Entities.Contracts;
 using Medic.Mappers.Contracts;
 using System;
+using System.Collections.Generic;
 
 namespace Medic.Entities
 {
@@ -24,5 +25,11 @@ namespace Medic.Entities
         public int? PathProcedureId { get; set; }
         
         public PathProcedure PathProcedure { get; set; }
+
+        public int? InClinicProcedureId { get; set; }
+        
+        public InClinicProcedure InClinicProcedure { get; set; }
+
+        public ICollection<Implant> Implants { get; set; } = new HashSet<Implant>();
     }
 }

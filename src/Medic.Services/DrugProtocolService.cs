@@ -1,4 +1,4 @@
-﻿using Medic.Contexts;
+﻿using Medic.Contexts.Contracts;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,9 +10,9 @@ namespace Medic.Services
 {
     public class DrugProtocolService : IDrugProtocolService
     {
-        private readonly MedicContext MedicContext;
+        private readonly IMedicContext MedicContext;
 
-        public DrugProtocolService(MedicContext medicContext)
+        public DrugProtocolService(IMedicContext medicContext)
         {
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
         }

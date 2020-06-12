@@ -1,6 +1,5 @@
 ﻿using Medic.AppModels.CPFiles;
-using Medic.Contexts;
-using Medic.Entities;
+using Medic.Contexts.Contracts;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,9 +11,9 @@ namespace Medic.Services
 {
     public class CPFileService : ICPFileService
     {
-        private readonly MedicContext MedicContext;
+        private readonly IMedicContext MedicContext;
 
-        public CPFileService(MedicContext medicContext)
+        public CPFileService(IMedicContext medicContext)
         {
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
         }
@@ -39,7 +38,7 @@ namespace Medic.Services
                         current.InsCount += model.InsCount;
                         current.OutsCount += model.OutsCount;
                         current.PatientTransfersCount += model.PatientTransfersCount;
-                        current.PlannedProceduresCount += model.PlannedProceduresCount;
+                        current.PlanningsCount += model.PlanningsCount;
                         current.ProtocolDrugTherapiesCount += model.ProtocolDrugTherapiesCount;
                     }
                     else
@@ -50,7 +49,7 @@ namespace Medic.Services
                             InsCount = model.InsCount,
                             OutsCount = model.OutsCount,
                             PatientTransfersCount = model.PatientTransfersCount,
-                            PlannedProceduresCount = model.PlannedProceduresCount,
+                            PlanningsCount = model.PlanningsCount,
                             ProtocolDrugTherapiesCount = model.ProtocolDrugTherapiesCount
                         };
 
@@ -68,7 +67,7 @@ namespace Medic.Services
                     .Include(cp => cp.Ins)
                     .Include(cp => cp.Outs)
                     .Include(cp => cp.Transfers)
-                    .Include(cp => cp.PlannedProcedures)
+                    .Include(cp => cp.Plannings)
                     .Include(cp => cp.ProtocolDrugTherapies)
                 .Select(cp => new CPFileSummaryViewModel()
                 {
@@ -76,7 +75,7 @@ namespace Medic.Services
                     InsCount = cp.Ins.Count,
                     OutsCount = cp.Outs.Count,
                     PatientTransfersCount = cp.Transfers.Count,
-                    PlannedProceduresCount = cp.PlannedProcedures.Count,
+                    PlanningsCount = cp.Plannings.Count,
                     ProtocolDrugTherapiesCount = cp.ProtocolDrugTherapies.Count
                 })
                 .OrderBy(cp => cp.DateFrom)

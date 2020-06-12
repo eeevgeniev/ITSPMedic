@@ -50,6 +50,8 @@
     <ProjectReference Include="..\Medic.Models\Medic.Models.csproj" />
     <ProjectReference Include="..\Medic.Resources\Medic.Resources.csproj" />
     <ProjectReference Include="..\Medic.Services\Medic.Services.csproj" />
+    <ProjectReference Include="..\Medic.XMLImportHelper\Medic.XMLImportHelper.csproj" />
+    <ProjectReference Include="..\Medic.XMLParser\Medic.XMLParser.csproj" />
   </ItemGroup>
 
   <ItemGroup>

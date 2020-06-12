@@ -17,11 +17,17 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "MainDiag1")]
         public Diag FirstMainDiag { get; set; }
 
-        [XmlElement(ElementName = "CashPatient")]
+        [XmlElement(ElementName = "MainDiag2")]
+        public Diag SecondMainDiag { get; set; }
+
+        [XmlElement(ElementName = "cashPatient")]
         public int CashPatient { get; set; }
 
         [XmlElement(ElementName = "clinicalProcedure")]
         public int ClinicalProcedure { get; set; }
+
+        [XmlElement(ElementName = "ambulatoryProcedure")]
+        public string AmbulatoryProcedure { get; set; }
 
         [XmlElement(ElementName = "clinicalPath")]
         public double ClinicalPath { get; set; }

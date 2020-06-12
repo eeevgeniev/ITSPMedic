@@ -79,9 +79,15 @@ namespace Medic.Models.CLPR
         public List<CommissionApr> CommissionAprs { get; set; }
 
         [XmlElement(ElementName = "Protocol_DrugTherapy")]
-        public List<ProtocolDrugTherapy> ProtocolDrugTherapies { get; set; } 
+        public List<ProtocolDrugTherapy> ProtocolDrugTherapies { get; set; }
+
+        [XmlElement(ElementName = "Drug_Residues")]
+        public List<DrugResidue> DrugResidues { get; set; }
 
         [XmlElement(ElementName = "PatientTransfers")]
         public PatientTransfer PatientTransfer { get; set; }
+
+        [XmlElement(ElementName = "Drug_Packs")]
+        public List<DrugPack> DrugPacks { get; set; }
     }
 }

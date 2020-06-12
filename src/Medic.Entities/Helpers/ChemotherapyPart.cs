@@ -17,7 +17,6 @@ namespace Medic.Entities
                     .ForMember(cp => cp.DiagnoseDateAsString, config => config.Ignore());
 
             expression.CreateMap<CP.ChemotherapyPart, ChemotherapyPart>()
-                   .ForMember(cp => cp.AddDiagId, config => config.Ignore())
                    .ForMember(cp => cp.HistologyId, config => config.Ignore())
                    .ForMember(cp => cp.EvaluationId, config => config.Ignore())
                    .ForMember(cp => cp.ProtocolDrugTherapy, config => config.Ignore())

@@ -34,15 +34,13 @@ namespace Medic.Entities
 
                 b.HasIndex(model => model.SenderId).IsUnique(false);
 
-                b.HasOne(model => model.SendDiagnose)
-                    .WithOne(d => d.In)
-                    .HasForeignKey<In>(model => model.SendDiagnoseId);
-
-                b.HasIndex(model => model.SendDiagnoseId).IsUnique(false);
+                b.HasMany(model => model.SendDiagnoses)
+                    .WithOne(d => d.SendIn)
+                    .HasForeignKey(d => d.SendInId);
 
                 b.HasMany(model => model.Diagnoses)
-                    .WithOne(d => d.MainIn)
-                    .HasForeignKey(d => d.MainInId);
+                    .WithOne(d => d.In)
+                    .HasForeignKey(d => d.InId);
 
                 b.HasIndex(model => model.CPFileId).IsUnique(false);
 

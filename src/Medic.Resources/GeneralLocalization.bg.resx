@@ -127,16 +127,19 @@
     <value>Код</value>
   </data>
   <data name="CommissionAprs" xml:space="preserve">
-    <value>Commission aprs</value>
+    <value>Комисии по Амб. проц. 05 и 38</value>
+  </data>
+  <data name="CPFile" xml:space="preserve">
+    <value>CP файл</value>
   </data>
   <data name="DiagnosesSummary" xml:space="preserve">
-    <value>Информация за диагнози</value>
+    <value>Информация за диагнози (приеми, изписания и планирани пациенти)</value>
   </data>
   <data name="DiagsSummary" xml:space="preserve">
-    <value>Diags информация</value>
+    <value>Информация за диагнози (без приеми, изписания и планирани пациенти)</value>
   </data>
   <data name="DispObservations" xml:space="preserve">
-    <value>Disp observations</value>
+    <value>Диспансерни наблюдения</value>
   </data>
   <data name="En" xml:space="preserve">
     <value>Англ</value>
@@ -147,14 +150,17 @@
   <data name="Home" xml:space="preserve">
     <value>Начало</value>
   </data>
+  <data name="HospitalPracticeFile" xml:space="preserve">
+    <value>Файл за практики в болницата</value>
+  </data>
   <data name="InClinicProcedures" xml:space="preserve">
-    <value>Процедури в клиниката</value>
+    <value>Пациенти с направления за кл. процедури</value>
   </data>
   <data name="Inquires" xml:space="preserve">
     <value>Справки</value>
   </data>
   <data name="Ins" xml:space="preserve">
-    <value>Приеми</value>
+    <value>Постъпили пациенти</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Вход</value>
@@ -178,7 +184,7 @@
     <value>Без избор</value>
   </data>
   <data name="Outs" xml:space="preserve">
-    <value>Изписвания</value>
+    <value>Изписани пациенти</value>
   </data>
   <data name="PageNotFound" xml:space="preserve">
     <value>Страницата не е намерена</value>
@@ -187,13 +193,13 @@
     <value>Парола</value>
   </data>
   <data name="PathProcedures" xml:space="preserve">
-    <value>Процедури по пътека</value>
+    <value>Направления за кл. процедури</value>
   </data>
   <data name="Patients" xml:space="preserve">
     <value>Пациенти</value>
   </data>
-  <data name="PlannedProcedure" xml:space="preserve">
-    <value>Планирани процедури</value>
+  <data name="Plannings" xml:space="preserve">
+    <value>Планирани пациенти</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Условия за ползване</value>
@@ -218,6 +224,9 @@
   </data>
   <data name="SiteTile" xml:space="preserve">
     <value>ИТУП Медик</value>
+  </data>
+  <data name="UploadFiles" xml:space="preserve">
+    <value>Качете файл</value>
   </data>
   <data name="UsedDrugs" xml:space="preserve">
     <value>Използвани лекарства</value>

@@ -4,8 +4,8 @@
 @if (Model != default && Model.Count > 0)
 {
     <div class="row">
-        <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("Name")</div>
-        <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("Sign")</div>
+        <div class="col-sm-6 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Name"))</div>
+        <div class="col-sm-6 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Sign"))</div>
     </div>
     @foreach (var maker in Model)
     {
@@ -18,5 +18,5 @@
 }
 else
 {
-    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
 }

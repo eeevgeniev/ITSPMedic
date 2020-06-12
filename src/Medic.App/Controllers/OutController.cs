@@ -24,7 +24,6 @@ namespace Medic.App.Controllers
     {
         private readonly IOutService OutService;
         private readonly IUsedDrugService UsedDrugService;
-        private readonly MedicDataLocalization MedicDataLocalization;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public OutController(IOutService outService, 
@@ -34,11 +33,10 @@ namespace Medic.App.Controllers
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
-            : base (patientService, healthRegionService, medicCache)
+            : base (patientService, healthRegionService, medicCache, medicDataLocalization)
         {
             OutService = outService ?? throw new ArgumentNullException(nameof(outService));
             UsedDrugService = usedDrugService ?? throw new ArgumentNullException(nameof(usedDrugService));
-            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
@@ -54,10 +52,6 @@ namespace Medic.App.Controllers
                 string outsKey = $"{nameof(OutPreviewViewModel)} - {startIndex} - {searchParams}";
                 string outsCountKey = $"{MedicConstants.OutsCount} - {searchParams}";
                 
-                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<UsedDrugCodeOption> usedDrugs = new List<UsedDrugCodeOption>() { new UsedDrugCodeOption() { Key = null, Code = MedicDataLocalization.Get("NoSelection") } };
-
                 if (!base.MedicCache.TryGetValue(outsKey, out List<OutPreviewViewModel> outs))
                 {
                     OutHelperBuilder outHelperBuilder = new OutHelperBuilder(search);
@@ -74,9 +68,14 @@ namespace Medic.App.Controllers
                     base.MedicCache.Set(outsCountKey, outsCount);
                 }
 
-                sexOptions.AddRange(await base.GetSexes());
+                List<SexOption> sexOptions = base.GetDefaultSexes();
+                sexOptions.AddRange(await base.GetSexesAsync());
 
-                healthRegions.AddRange(await base.GetHelathRegions());
+                List<HealthRegionOption> healthRegions = base.GetDefaultHealthRegions();
+                healthRegions.AddRange(await base.GetHealthRegionsAsync());
+
+                List<UsedDrugCodeOption> usedDrugs = new List<UsedDrugCodeOption>() { 
+                    new UsedDrugCodeOption() { Key = string.Empty, Code = MedicDataLocalization.Get("NoSelection") } };
 
                 if (!MedicCache.TryGetValue(MedicConstants.UsedDrugs, out List<UsedDrugCodeOption> drugs))
                 {

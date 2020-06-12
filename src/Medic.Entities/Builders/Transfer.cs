@@ -29,6 +29,8 @@ namespace Medic.Entities
                 b.Property(model => model.DischargeWard).HasColumnType("decimal(15,4)");
 
                 b.Property(model => model.TransferWard).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.AmbulatoryProcedure).HasMaxLength(4);
             });
         }
     }

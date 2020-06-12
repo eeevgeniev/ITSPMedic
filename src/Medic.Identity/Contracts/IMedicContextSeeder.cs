@@ -5,6 +5,6 @@ namespace Medic.Identity.Contracts
 {
     public interface IMedicContextSeeder
     {
-        Task Seed(List<(string username, string password, string email)> accounts);
+        void Seed(List<(string username, string password, string email)> accounts);
     }
 }

@@ -24,6 +24,10 @@ namespace Medic.Entities
 
         public DateTime? DateTo { get; set;}
 
+        public DateTime? DateFrom { get; set; }
+
+        public DateTime? DateIssue { get; set; }
+
         public string EhicC { get; set; }
 
         public string PersonalIdNumber { get; set; }
@@ -32,7 +36,13 @@ namespace Medic.Entities
 
         public string IdentityNumber { get; set; }
 
+        public string NAPNumber { get; set; }
+
         public DateTime BirthDate { get; set; }
+
+        public string LeadDocName { get; set; }
+
+        public string LNCH { get; set; }
 
         public int? SexId { get; set; }
 
@@ -60,6 +70,8 @@ namespace Medic.Entities
 
         public ICollection<DispObservation> DispObservations { get; set; } = new HashSet<DispObservation>();
 
-        public ICollection<PlannedProcedure> PlannedProcedures { get; set; } = new HashSet<PlannedProcedure>();
+        public ICollection<Planned> Plannings { get; set; } = new HashSet<Planned>();
+
+        public int? PersonType { get; set; }
     }
 }

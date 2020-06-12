@@ -1,6 +1,7 @@
 ﻿using Medic.App.Infrastructure;
 using Medic.AppModels.HealthRegions;
 using Medic.Cache.Contacts;
+using Medic.Resources;
 using Medic.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,14 @@ namespace Medic.App.Controllers.Base
 
         public LookupsBaseController(IPatientService patientService,
             IHealthRegionService healthRegionService,
-            ICacheable medicCache)
-            : base (patientService, medicCache)
+            ICacheable medicCache,
+            MedicDataLocalization medicDataLocalization)
+            : base (patientService, medicCache, medicDataLocalization)
         {
             HealthRegionService = healthRegionService ?? throw new ArgumentNullException(nameof(healthRegionService));
         }
 
-        protected virtual async Task<List<HealthRegionOption>> GetHelathRegions()
+        protected virtual async Task<List<HealthRegionOption>> GetHealthRegionsAsync()
         {
             if (!base.MedicCache.TryGetValue(MedicConstants.HealthRegionsKeyName, out List<HealthRegionOption> regions))
             {
@@ -31,5 +33,8 @@ namespace Medic.App.Controllers.Base
 
             return regions;
         }
+
+        protected virtual List<HealthRegionOption> GetDefaultHealthRegions() =>
+            new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
     }
 }

@@ -22,7 +22,6 @@ namespace Medic.App.Controllers
     public class InController : LookupsBaseController
     {
         private readonly IInService InService;
-        private readonly MedicDataLocalization MedicDataLocalization;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public InController(IInService inService, 
@@ -31,10 +30,9 @@ namespace Medic.App.Controllers
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
-            : base (patientService, healthRegionService, medicCache)
+            : base (patientService, healthRegionService, medicCache, medicDataLocalization)
         {
             InService = inService ?? throw new ArgumentNullException(nameof(inService));
-            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(MedicBaseController));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
@@ -51,9 +49,6 @@ namespace Medic.App.Controllers
                 string insKey = $"{nameof(InPreviewViewModel)} - {startIndex} - {searchParams}";
                 string insCountKey = $"{MedicConstants.InsCount} - {searchParams}";
                 
-                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-
                 if (!base.MedicCache.TryGetValue(insKey, out List<InPreviewViewModel> ins))
                 {
                     InHelperBuilder helperBuilder = new InHelperBuilder(search);
@@ -70,9 +65,11 @@ namespace Medic.App.Controllers
                     base.MedicCache.Set(insCountKey, insCount);
                 }
 
-                sexOptions.AddRange(await base.GetSexes());
+                List<SexOption> sexOptions = base.GetDefaultSexes();
+                sexOptions.AddRange(await base.GetSexesAsync());
 
-                healthRegions.AddRange(await base.GetHelathRegions());
+                List<HealthRegionOption> healthRegions = base.GetDefaultHealthRegions();
+                healthRegions.AddRange(await base.GetHealthRegionsAsync());
 
                 return View(new InPageIndexModel()
                 {

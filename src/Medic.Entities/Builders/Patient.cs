@@ -20,7 +20,9 @@ namespace Medic.Entities
 
                 b.Property(model => model.IdentityNumber).HasMaxLength(50);
 
-                b.Property(model => model.CountryCode).HasMaxLength(5);
+                b.Property(model => model.NAPNumber).HasMaxLength(50);
+
+                b.Property(model => model.CountryCode).HasMaxLength(50);
 
                 b.Property(model => model.InstitutionId).HasMaxLength(100);
 
@@ -40,7 +42,11 @@ namespace Medic.Entities
 
                 b.Property(model => model.LastName).HasMaxLength(50);
 
-                b.Property(model => model.Address).HasMaxLength(200);
+                b.Property(model => model.Address).HasMaxLength(250);
+
+                b.Property(model => model.LeadDocName).HasMaxLength(250);
+
+                b.Property(model => model.LNCH).HasMaxLength(50);
             });
         }
     }

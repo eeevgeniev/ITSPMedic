@@ -15,7 +15,8 @@
             dist: {
                 files: {
                     'Assets/Temp/chart-new.js': 'Assets/js/chart.js',
-                    'Assets/Temp/site-new.js': 'Assets/js/site.js'
+                    'Assets/Temp/site-new.js': 'Assets/js/site.js',
+                    'Assets/Temp/formreset.js': 'Assets/js/formreset.js'
                 }
             }
         },
@@ -27,15 +28,17 @@
         },
         uglify: {
             all: {
-                src: ['Assets/Temp/bundle.js'],
-                dest: 'wwwroot/bundle/bundle.min.js'
+                files: {
+                    'wwwroot/bundle/bundle.min.js': 'Assets/Temp/bundle.js',
+                    'wwwroot/js/formreset.min.js': 'Assets/Temp/formreset.js'
+                }
             }
         },
         copy: {
             main: {
                 files: [
                     { expand: true, src: ['Assets/css/site.css'], dest: 'wwwroot/css/', flatten: true },
-                    { expand: true, src: ['Assets/js/chart.js', 'Assets/js/site.js'], dest: 'wwwroot/js/', flatten: true }
+                    { expand: true, src: ['Assets/js/chart.js', 'Assets/js/site.js', 'Assets/js/formreset.js'], dest: 'wwwroot/js/', flatten: true }
                 ]
             }
         }

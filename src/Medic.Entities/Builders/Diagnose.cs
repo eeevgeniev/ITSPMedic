@@ -20,11 +20,19 @@ namespace Medic.Entities
                     .WithMany(mkb => mkb.SecondaryDiagnoses)
                     .HasForeignKey(model => model.SecondaryCode);
 
-                b.HasIndex(model => model.MainInId).IsUnique(false);
+                b.HasIndex(model => model.InId).IsUnique(false);
+
+                b.HasIndex(model => model.SendInId).IsUnique(false);
+
+                b.HasIndex(model => model.SendOutId).IsUnique(false);
 
                 b.HasIndex(model => model.OutId).IsUnique(false);
 
                 b.HasIndex(model => model.OutOutId).IsUnique(false);
+
+                b.HasIndex(model => model.SendPlannedId).IsUnique(false);
+
+                b.HasIndex(model => model.PlannedId).IsUnique(false);
 
                 b.HasIndex(model => model.SecondaryCode).IsUnique(false);
 

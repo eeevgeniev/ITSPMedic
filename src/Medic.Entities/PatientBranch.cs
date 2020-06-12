@@ -28,6 +28,6 @@ namespace Medic.Entities
 
         public ICollection<DispObservation> DispObservations { get; set; } = new HashSet<DispObservation>();
 
-        public ICollection<PlannedProcedure> PlannedProcedures { get; set; } = new HashSet<PlannedProcedure>();
+        public ICollection<Planned> Planned { get; set; } = new HashSet<Planned>();
     }
 }

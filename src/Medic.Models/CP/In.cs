@@ -13,6 +13,7 @@ namespace Medic.Models.CP
         private DateTime _sendDate;
         private DateTime _examinationDate;
         private DateTime _entryDate;
+        private DateTime? _plannedEntryDate;
 
         public Patient Patient { get; set; }
 
@@ -49,12 +50,15 @@ namespace Medic.Models.CP
         }
 
         [XmlElement(ElementName = "sendDiagnose")]
-        public SendDiagnose SendDiagnose { get; set; }
+        public List<SendDiagnose> SendDiagnoses { get; set; }
 
         [XmlElement(ElementName = "sendUrgency")]
         public int SendUrgency { get; set; }
 
-        [XmlElement(ElementName = "SendAPr")]
+        [XmlElement(ElementName = "sendPackageType")]
+        public int? SendPackageType { get; set; }
+
+        [XmlElement(ElementName = "sendAPr")]
         public int? SendApr { get; set; }
 
         [XmlElement(ElementName = "sendClinicalPath")]
@@ -83,6 +87,26 @@ namespace Medic.Models.CP
             }
         }
 
+        [XmlIgnore]
+        public DateTime? PlannedEntryDate
+        {
+            get { return _plannedEntryDate; }
+            set { _plannedEntryDate = value; }
+        }
+
+        [XmlElement(ElementName = "plannedEntryDate")]
+        public string PlannedEntryDateAsString
+        {
+            get
+            {
+                return _plannedEntryDate == default ? default : ((DateTime)_plannedEntryDate).ToString(DateFormat);
+            }
+            set
+            {
+                _plannedEntryDate = DateTime.Parse(value, CultureInfo.InvariantCulture);
+            }
+        }
+
         [XmlElement(ElementName = "plannedNo")]
         public int PlannedNumber { get; set; }
 
@@ -91,6 +115,9 @@ namespace Medic.Models.CP
 
         [XmlElement(ElementName = "urgency")]
         public int Urgency { get; set; }
+
+        [XmlElement(ElementName = "packageType")]
+        public int? PackageType { get; set; }
 
         [XmlElement(ElementName = "InAPr")]
         public int? InApr { get; set; }
@@ -128,7 +155,7 @@ namespace Medic.Models.CP
         public int Severity { get; set; }
 
         [XmlElement(ElementName = "delay")]
-        public int Delay { get; set; }
+        public int? Delay { get; set; }
 
         [XmlElement(ElementName = "payer")]
         public int Payer { get; set; }

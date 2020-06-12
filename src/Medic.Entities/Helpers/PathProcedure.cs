@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Medic.AppModels.PathProcedures;
+using System.Linq;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -41,8 +42,8 @@ namespace Medic.Entities
                 .ForMember(pp => pp.PatientId, config => config.Ignore())
                 .ForMember(pp => pp.SenderId, config => config.Ignore())
                 .ForMember(pp => pp.CeasedClinicalPathId, config => config.Ignore())
-                .ForMember(pp => pp.UsedDrugId, config => config.Ignore())
                 .ForMember(pp => pp.CeasedProcedureId, config => config.Ignore())
+                .ForMember(pp => pp.CeasedOnlyId, config => config.Ignore())
                 .ForMember(pp => pp.Id, config => config.Ignore());
 
             expression.CreateMap<PathProcedure, PatientPathProcedurePreviewViewModel>()
@@ -58,7 +59,7 @@ namespace Medic.Entities
                 .ForMember(pppvm => pppvm.FirstMainDiagName, config => config.MapFrom(pp => pp.FirstMainDiag != default && pp.FirstMainDiag.MKB != default ? pp.FirstMainDiag.MKB.Name : default))
                 .ForMember(pppvm => pppvm.SecondMainDiagCode, config => config.MapFrom(pp => pp.SecondMainDiag != default && pp.SecondMainDiag.MKB != default ? pp.SecondMainDiag.MKB.Code : default))
                 .ForMember(pppvm => pppvm.SecondMainDiagName, config => config.MapFrom(pp => pp.SecondMainDiag != default && pp.SecondMainDiag.MKB != default ? pp.SecondMainDiag.MKB.Name : default))
-                .ForMember(pppvm => pppvm.UsedDrugCode, config => config.MapFrom(pp => pp.UsedDrug != default ? pp.UsedDrug.DrugCode : default));
+                .ForMember(pppvm => pppvm.UsedDrugCodes, config => config.MapFrom(pp => pp.UsedDrugs.Select(cud => cud.DrugCode)));
         }
     }
 }

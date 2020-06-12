@@ -62,6 +62,8 @@ namespace Medic.Contexts.Seeders
 
         private List<T> GetElementsFromFile<T>(string path) where T : class
         {
+            string filePath = Path.GetFullPath(path);
+            
             if (!File.Exists(path))
             {
                 throw new FileNotFoundException(nameof(path));

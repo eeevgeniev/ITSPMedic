@@ -17,15 +17,13 @@ namespace Medic.Entities
 
         public ICollection<Choice> Choices { get; set; } = new HashSet<Choice>();
 
+        public ICollection<Marker> Markers { get; set; } = new HashSet<Marker>();
+
         public ChemotherapyPart ChemotherapyPart { get; set; }
 
         public HematologyPart HematologyPart { get; set; }
 
-        public int? ClinicChemotherapyPartId { get; set; }
-
         public ClinicChemotherapyPart ClinicChemotherapyPart { get; set; }
-
-        public int? ClinicHematologyPartId { get; set; }
 
         public ClinicHematologyPart ClinicHematologyPart { get; set; }
 

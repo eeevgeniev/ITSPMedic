@@ -21,5 +21,11 @@ namespace Medic.Models.CLPR
 
         [XmlElement(ElementName = "DoctorName")]
         public string DoctorName { get; set; }
+
+        [XmlElement(ElementName = "NZOKCode")]
+        public string NZOKCode { get; set; }
+
+        [XmlElement(ElementName = "UIN_Subst")]
+        public string UINSubst { get; set; }
     }
 }

@@ -7,12 +7,6 @@ namespace Medic.AppModels.UsedDrugs
         [Display(Name = nameof(UsedDrugCode))]
         public string UsedDrugCode { get; set; }
 
-        [Display(Name = nameof(SendDiagnoseName))]
-        public string SendDiagnoseName { get; set; }
-
-        [Display(Name = nameof(SendDignoseCode))]
-        public string SendDignoseCode { get; set; }
-
         [Display(Name = nameof(OutDiagnoseName))]
         public string OutDiagnoseName { get; set; }
 

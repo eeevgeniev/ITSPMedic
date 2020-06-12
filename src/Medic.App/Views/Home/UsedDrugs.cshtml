@@ -7,22 +7,20 @@
 
     <article>
         <header class="text-center">
-            <h2>@medicDataLocalization.Get("Summary") : @Model.TotalResults @medicDataLocalization.Get("Results")</h2>
+            <h2>@Html.Raw(medicDataLocalization.Get("Summary")) : @Model.TotalResults @Html.Raw(medicDataLocalization.Get("Results"))</h2>
         </header>
         <section>
             <header class="text-center">
-                <h4>@medicDataLocalization.Get("UsedDrugs")</h4>
+                <h4>@Html.Raw(medicDataLocalization.Get("UsedDrugs"))</h4>
             </header>
             <div>
                 <div class="row">
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("UsedDrugCode")</div>
-                    <div class="col-sm-3 font-weight-bold">@medicDataLocalization.Get("SendDiagnoseName")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("SendDignoseCode")</div>
-                    <div class="col-sm-3 font-weight-bold">@medicDataLocalization.Get("OutDiagnoseName")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutDiagnoseCode")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("TotalUses")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("AverageQuantity")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("TotalCosts")</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("UsedDrugCode"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("OutMainDiagnoseCode"))</div>
+                    <div class="col-sm-3 font-weight-bold">@Html.Raw(medicDataLocalization.Get("OutMainDiagnose"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("TotalUses"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("AverageQuantity"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("TotalCosts"))</div>
                 </div>
                 @if (Model.UsedDrugsSummary != default && Model.UsedDrugsSummary.Count > 0)
                 {
@@ -30,14 +28,12 @@
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-1">@usedDrug.UsedDrugCode</div>
-                            <div class="col-sm-3">@usedDrug.SendDiagnoseName</div>
-                            <div class="col-sm-1">@usedDrug.SendDignoseCode</div>
-                            <div class="col-sm-3">@usedDrug.OutDiagnoseName</div>
+                            <div class="col-sm-2">@usedDrug.UsedDrugCode</div>
                             <div class="col-sm-1">@usedDrug.OutDiagnoseCode</div>
-                            <div class="col-sm-1">@usedDrug.TotalUses</div>
-                            <div class="col-sm-1">@usedDrug.AverageQuantity.ToString("f4")</div>
-                            <div class="col-sm-1">@usedDrug.TotalCosts.ToString("f4")</div>
+                            <div class="col-sm-3">@usedDrug.OutDiagnoseName</div>
+                            <div class="col-sm-2">@usedDrug.TotalUses</div>
+                            <div class="col-sm-2">@usedDrug.AverageQuantity.ToString("f4")</div>
+                            <div class="col-sm-2">@usedDrug.TotalCosts.ToString("f4")</div>
                         </div>
                     }
 
@@ -58,7 +54,7 @@
                 }
                 else
                 {
-                    <div class="text-info text-center">@medicDataLocalization.Get("NoResults")</div>
+                    <div class="text-info text-center">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
                 }
             </div>
         </section>

@@ -10,10 +10,6 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
-                b.HasMany(model => model.HealthcarePractitionerEpicrisises)
-                    .WithOne(hpe => hpe.Epicrisis)
-                    .HasForeignKey(hpe => hpe.EpicrisisId);
-
                 b.Property(model => model.History).HasMaxLength(5000);
 
                 b.Property(model => model.FairCondition).HasMaxLength(5000);
@@ -41,6 +37,8 @@ namespace Medic.Entities
                 b.Property(model => model.GPRecommendations).HasMaxLength(5000);
 
                 b.Property(model => model.OtherDocuments).HasMaxLength(5000);
+
+                b.Property(model => model.DoctorsNames).HasMaxLength(5000);
             });
         }
     }

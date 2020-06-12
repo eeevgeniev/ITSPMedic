@@ -16,6 +16,9 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "Days")]
         public string Days { get; set; }
 
+        [XmlElement(ElementName = "Number_Days")]
+        public int? NumberOfDays { get; set; }
+
         [XmlElement(ElementName = "Application_Way")]
         public string ApplicationWay { get; set; }
 

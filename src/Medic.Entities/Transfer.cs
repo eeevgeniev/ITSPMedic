@@ -27,6 +27,8 @@ namespace Medic.Entities
 
         public double ClinicalPath { get; set; }
 
+        public string AmbulatoryProcedure { get; set; }
+
         public double DischargeWard { get; set; }
 
         public double TransferWard { get; set; }

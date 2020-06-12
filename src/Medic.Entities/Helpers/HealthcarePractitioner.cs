@@ -43,7 +43,6 @@ namespace Medic.Entities
                 .ForMember(hp => hp.SenderType, config => config.Ignore())
                 .ForMember(hp => hp.SenderTypeId, config => config.Ignore())
                 .ForMember(hp => hp.Name, config => config.Ignore())
-                .ForMember(hp => hp.HealthcarePractitionerEpicrisises, config => config.Ignore())
                 .ForMember(hp => hp.Ins, config => config.Ignore())
                 .ForMember(hp => hp.InClinicProcedures, config => config.Ignore())
                 .ForMember(hp => hp.Outs, config => config.Ignore())
@@ -57,7 +56,9 @@ namespace Medic.Entities
                 .ForMember(hp => hp.DispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoctorDispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoneProcedures, config => config.Ignore())
-                .ForMember(hp => hp.PlannedProcedures, config => config.Ignore())
+                .ForMember(hp => hp.Planned, config => config.Ignore())
+                .ForMember(hp => hp.NZOKCode, config => config.Ignore())
+                .ForMember(hp => hp.UINSubst, config => config.Ignore())
                 .ForMember(hp => hp.Id, config => config.Ignore());
 
             expression.CreateMap<CLPR.Sender, HealthcarePractitioner>()
@@ -68,8 +69,7 @@ namespace Medic.Entities
                 .ForMember(hp => hp.Name, config => config.MapFrom(s => s.DoctorName))
                 .ForMember(hp => hp.Speciality, config => config.Ignore())
                 .ForMember(hp => hp.SpecialityId, config => config.Ignore())
-                .ForMember(hp => hp.ClinicalPathNumber, config => config.Ignore())
-                .ForMember(hp => hp.HealthcarePractitionerEpicrisises, config => config.Ignore())
+                .ForMember(hp => hp.ClinicalNumber, config => config.Ignore())
                 .ForMember(hp => hp.Ins, config => config.Ignore())
                 .ForMember(hp => hp.InClinicProcedures, config => config.Ignore())
                 .ForMember(hp => hp.Outs, config => config.Ignore())
@@ -84,7 +84,7 @@ namespace Medic.Entities
                 .ForMember(hp => hp.DispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoctorDispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoneProcedures, config => config.Ignore())
-                .ForMember(hp => hp.PlannedProcedures, config => config.Ignore())
+                .ForMember(hp => hp.Planned, config => config.Ignore())
                 .ForMember(hp => hp.DeputyUniqueIdentifier, config => config.Ignore())
                 .ForMember(hp => hp.Id, config => config.Ignore());
 
@@ -96,8 +96,7 @@ namespace Medic.Entities
                 .ForMember(hp => hp.HealthRegionId, config => config.Ignore())
                 .ForMember(hp => hp.SenderType, config => config.Ignore())
                 .ForMember(hp => hp.SenderTypeId, config => config.Ignore())
-                .ForMember(hp => hp.ClinicalPathNumber, config => config.Ignore())
-                .ForMember(hp => hp.HealthcarePractitionerEpicrisises, config => config.Ignore())
+                .ForMember(hp => hp.ClinicalNumber, config => config.Ignore())
                 .ForMember(hp => hp.Ins, config => config.Ignore())
                 .ForMember(hp => hp.InClinicProcedures, config => config.Ignore())
                 .ForMember(hp => hp.Outs, config => config.Ignore())
@@ -112,8 +111,10 @@ namespace Medic.Entities
                 .ForMember(hp => hp.DispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoctorDispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoneProcedures, config => config.Ignore())
-                .ForMember(hp => hp.PlannedProcedures, config => config.Ignore())
+                .ForMember(hp => hp.Planned, config => config.Ignore())
                 .ForMember(hp => hp.DeputyUniqueIdentifier, config => config.Ignore())
+                .ForMember(hp => hp.NZOKCode, config => config.Ignore())
+                .ForMember(hp => hp.UINSubst, config => config.Ignore())
                 .ForMember(s => s.Id, config => config.Ignore());
 
             expression.CreateMap<CP.Member, HealthcarePractitioner>()
@@ -124,8 +125,7 @@ namespace Medic.Entities
                 .ForMember(hp => hp.HealthRegionId, config => config.Ignore())
                 .ForMember(hp => hp.SenderType, config => config.Ignore())
                 .ForMember(hp => hp.SenderTypeId, config => config.Ignore())
-                .ForMember(hp => hp.ClinicalPathNumber, config => config.Ignore())
-                .ForMember(hp => hp.HealthcarePractitionerEpicrisises, config => config.Ignore())
+                .ForMember(hp => hp.ClinicalNumber, config => config.Ignore())
                 .ForMember(hp => hp.Ins, config => config.Ignore())
                 .ForMember(hp => hp.InClinicProcedures, config => config.Ignore())
                 .ForMember(hp => hp.Outs, config => config.Ignore())
@@ -140,8 +140,10 @@ namespace Medic.Entities
                 .ForMember(hp => hp.DispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoctorDispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoneProcedures, config => config.Ignore())
-                .ForMember(hp => hp.PlannedProcedures, config => config.Ignore())
+                .ForMember(hp => hp.Planned, config => config.Ignore())
                 .ForMember(hp => hp.DeputyUniqueIdentifier, config => config.Ignore())
+                .ForMember(hp => hp.NZOKCode, config => config.Ignore())
+                .ForMember(hp => hp.UINSubst, config => config.Ignore())
                 .ForMember(hp => hp.Id, config => config.Ignore());
 
             expression.CreateMap<CLPR.Doctor, HealthcarePractitioner>()
@@ -152,8 +154,7 @@ namespace Medic.Entities
                 .ForMember(hp => hp.HealthRegionId, config => config.Ignore())
                 .ForMember(hp => hp.SenderType, config => config.Ignore())
                 .ForMember(hp => hp.SenderTypeId, config => config.Ignore())
-                .ForMember(hp => hp.ClinicalPathNumber, config => config.Ignore())
-                .ForMember(hp => hp.HealthcarePractitionerEpicrisises, config => config.Ignore())
+                .ForMember(hp => hp.ClinicalNumber, config => config.Ignore())
                 .ForMember(hp => hp.Ins, config => config.Ignore())
                 .ForMember(hp => hp.InClinicProcedures, config => config.Ignore())
                 .ForMember(hp => hp.Outs, config => config.Ignore())
@@ -168,8 +169,10 @@ namespace Medic.Entities
                 .ForMember(hp => hp.DispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoctorDispObservations, config => config.Ignore())
                 .ForMember(hp => hp.DoneProcedures, config => config.Ignore())
-                .ForMember(hp => hp.PlannedProcedures, config => config.Ignore())
+                .ForMember(hp => hp.Planned, config => config.Ignore())
                 .ForMember(hp => hp.DeputyUniqueIdentifier, config => config.Ignore())
+                .ForMember(hp => hp.NZOKCode, config => config.Ignore())
+                .ForMember(hp => hp.UINSubst, config => config.Ignore())
                 .ForMember(hp => hp.Id, config => config.Ignore());
 
             expression.CreateMap<HealthcarePractitioner, HealthcarePractitionerSummaryViewModel>()

@@ -40,6 +40,8 @@ namespace Medic.Entities
 
         public DateTime ProtocolDate { get; set; }
 
+        public DateTime? StartTreatment { get; set; }
+
         public int? DiagId { get; set; }
         
         public Diag Diag { get; set; }

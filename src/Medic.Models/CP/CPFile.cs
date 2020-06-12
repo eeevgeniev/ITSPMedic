@@ -57,7 +57,7 @@ namespace Medic.Models.CP
         }
 
         [XmlElement(ElementName = "Planned")]
-        public List<PlannedProcedure> PlannedProcedures { get; set; }
+        public List<Planned> Plannings { get; set; }
 
         [XmlElement(ElementName = "In")]
         public List<In> Ins { get; set; }
@@ -68,7 +68,13 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "Protocol_DrugTherapy")]
         public List<ProtocolDrugTherapy> ProtocolDrugTherapies { get; set; }
 
+        [XmlElement(ElementName = "Drug_Residues")]
+        public List<DrugResidue> DrugResidues { get; set; }
+
         [XmlElement(ElementName = "PatientTransfers")]
         public PatientTransfer PatientTransfer { get; set; }
+
+        [XmlElement(ElementName = "Drug_Packs")]
+        public List<DrugPack> DrugPacks { get; set; }
     }
 }

@@ -127,13 +127,16 @@
     <value>Code</value>
   </data>
   <data name="CommissionAprs" xml:space="preserve">
-    <value>Commission aprs</value>
+    <value>Apr commission</value>
+  </data>
+  <data name="CPFile" xml:space="preserve">
+    <value>CP file</value>
   </data>
   <data name="DiagnosesSummary" xml:space="preserve">
-    <value>Diagnoses summary</value>
+    <value>Diagnoses summary (only ins, outs, plannings)</value>
   </data>
   <data name="DiagsSummary" xml:space="preserve">
-    <value>Diags summary</value>
+    <value>Diagnoses summary (without in, outs and plannings)</value>
   </data>
   <data name="DispObservations" xml:space="preserve">
     <value>Disp observations</value>
@@ -146,6 +149,9 @@
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="HospitalPracticeFile" xml:space="preserve">
+    <value>Hospital practice file</value>
   </data>
   <data name="InClinicProcedures" xml:space="preserve">
     <value>In clinic procedures</value>
@@ -189,8 +195,8 @@
   <data name="Patients" xml:space="preserve">
     <value>Patients</value>
   </data>
-  <data name="PlannedProcedure" xml:space="preserve">
-    <value>Planned procedure</value>
+  <data name="Plannings" xml:space="preserve">
+    <value>Plannings</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>
@@ -215,6 +221,9 @@
   </data>
   <data name="SiteTile" xml:space="preserve">
     <value>ITSP Medic</value>
+  </data>
+  <data name="UploadFiles" xml:space="preserve">
+    <value>Upload files</value>
   </data>
   <data name="UsedDrugs" xml:space="preserve">
     <value>Used drugs</value>

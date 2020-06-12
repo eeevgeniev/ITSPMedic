@@ -38,11 +38,13 @@ namespace Medic.Entities
 
         public SpecialtyType Speciality { get; set; }
 
-        public int ClinicalPathNumber { get; set; }
+        public int ClinicalNumber { get; set; }
 
         public string Name { get; set; }
 
-        public ICollection<HealthcarePractitionerEpicrisis> HealthcarePractitionerEpicrisises { get; set; } = new HashSet<HealthcarePractitionerEpicrisis>();
+        public string NZOKCode { get; set; }
+
+        public string UINSubst { get; set; }
 
         public ICollection<In> Ins { get; set; } = new HashSet<In>();
 
@@ -68,6 +70,6 @@ namespace Medic.Entities
 
         public ICollection<DoneProcedure> DoneProcedures { get; set; } = new HashSet<DoneProcedure>();
 
-        public ICollection<PlannedProcedure> PlannedProcedures { get; set; } = new HashSet<PlannedProcedure>();
+        public ICollection<Planned> Planned { get; set; } = new HashSet<Planned>();
     }
 }

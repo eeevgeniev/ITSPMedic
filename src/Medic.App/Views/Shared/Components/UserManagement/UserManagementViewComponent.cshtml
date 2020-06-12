@@ -4,5 +4,5 @@
 @if (Model)
 {
     <a class="btn-sm mr-1"asp-controller="@MedicBaseController.GetName(nameof(AccountController))"
-       asp-action="@nameof(AccountController.Logout)">@generalLocalization.Get("Logout")</a>
+       asp-action="@nameof(AccountController.Logout)">@Html.Raw(generalLocalization.Get("Logout"))</a>
 }

@@ -34,23 +34,33 @@ namespace Medic.Entities
 
         public DateTime SendDate { get; set; }
 
-        public int? SendDiagnoseId { get; set; }
-
-        public Diagnose SendDiagnose { get; set; }
+        public ICollection<Diagnose> SendDiagnoses { get; set; } = new HashSet<Diagnose>();
 
         public int SendUrgency { get; set; }
 
+        public int? SendPackageType { get; set; }
+
         public double SendClinicalPath { get; set; }
+
+        public int? SendAPr { get; set; }
 
         public string UniqueIdentifier { get; set; }
 
         public DateTime ExaminationDate { get; set; }
 
+        public DateTime PlannedEntryDate { get; set; }
+
+        public int PlannedNumber { get; set; }
+
         public ICollection<Diagnose> Diagnoses { get; set; } = new HashSet<Diagnose>();
 
         public int Urgency { get; set; }
 
+        public int? PackageType { get; set; }
+
         public double ClinicalPath { get; set; }
+
+        public int? InAPr { get; set; }
 
         public int NZOKPay { get; set; }
 
@@ -96,6 +106,14 @@ namespace Medic.Entities
 
         public int? BirthGestWeek { get; set; }
 
+        public int? ResignId { get; set; }
+
+        public Resign Resign { get; set; }
+
+        public int? RedirectedId { get; set; }
+
+        public Redirected Redirected { get; set; }
+
         public double OutClinicalPath { get; set; }
 
         public string OutAPr { get; set; }
@@ -108,15 +126,17 @@ namespace Medic.Entities
 
         public Epicrisis Epicrisis { get; set; }
 
+        public string IZinDetail { get; set; }
+
         public int? OutMainDiagnoseId { get; set; }
 
         public Diagnose OutMainDiagnose { get; set; }
 
         public ICollection<Diagnose> OutDiagnoses { get; set; } = new HashSet<Diagnose>();
 
-        public int? UsedDrugId { get; set; }
+        public string LinkMedia { get; set; }
 
-        public UsedDrug UsedDrug { get; set; }
+        public ICollection<UsedDrug> UsedDrugs { get; set; } = new HashSet<UsedDrug>();
 
         public ICollection<Procedure> Procedures { get; set; } = new HashSet<Procedure>();
 
@@ -131,6 +151,8 @@ namespace Medic.Entities
         public int? StateAtDischarge { get; set; }
 
         public int? Laparoscopic { get; set; }
+
+        public int? PathologicFinding { get; set; }
 
         public int? EndCourse { get; set; }
 

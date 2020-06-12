@@ -25,7 +25,7 @@ namespace Medic.Identity
             RoleManager = roleManager ?? throw new ArgumentException(nameof(roleManager));
         }
 
-        public async Task Seed(List<(string username, string password, string email)> accounts)
+        public void Seed(List<(string username, string password, string email)> accounts)
         {
             MedicIdentityContext.Database.EnsureCreated();
 
@@ -41,7 +41,9 @@ namespace Medic.Identity
                     Name = "Administrator"
                 };
 
-                await RoleManager.CreateAsync(identityRole);
+                Task task = RoleManager.CreateAsync(identityRole);
+
+                task.Wait();
             }
 
             if (!UserManager.Users.Any())
@@ -61,16 +63,16 @@ namespace Medic.Identity
                         Email = email
                     };
 
-                    IdentityResult result = await UserManager.CreateAsync(identityUser, password);
+                    Task<IdentityResult> result = UserManager.CreateAsync(identityUser, password);
 
-                    if (!result.Succeeded)
+                    if (!result.Result.Succeeded)
                     {
                         throw new Exception($"{nameof(identityUser)} - {identityUser.UserName} - {identityUser.Email}");
                     }
 
-                    IdentityResult roleResult = await UserManager.AddToRoleAsync(identityUser, "Administrator");
+                    Task<IdentityResult> roleResult = UserManager.AddToRoleAsync(identityUser, "Administrator");
 
-                    if (!roleResult.Succeeded)
+                    if (!roleResult.Result.Succeeded)
                     {
                         throw new Exception($"Add role to {identityUser.UserName} - {identityUser.Email}");
                     }

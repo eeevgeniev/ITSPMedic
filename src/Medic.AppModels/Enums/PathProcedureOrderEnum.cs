@@ -9,7 +9,6 @@ namespace Medic.AppModels.Enums
         Default,
         DateSend,
         FirstMainDiagCode,
-        SecondMainDiagCode,
-        UsedDrugCode
+        SecondMainDiagCode
     }
 }

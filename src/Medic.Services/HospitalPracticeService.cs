@@ -1,20 +1,19 @@
 ﻿using Medic.AppModels.HospitalPractices;
-using Medic.Contexts;
+using Medic.Contexts.Contracts;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Medic.Services
 {
     public class HospitalPracticeService : IHospitalPracticeService
     {
-        private readonly MedicContext MedicContext;
+        private readonly IMedicContext MedicContext;
 
-        public HospitalPracticeService(MedicContext medicContext)
+        public HospitalPracticeService(IMedicContext medicContext)
         {
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
         }

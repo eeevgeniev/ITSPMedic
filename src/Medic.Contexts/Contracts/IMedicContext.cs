@@ -7,19 +7,43 @@ namespace Medic.Contexts.Contracts
     {
         DbSet<AccompanyingDrug> AccompanyingDrugs { get; set; }
 
-        DbSet<CeasedClinicalPath> CeasedClinicalPaths { get; set; }
+        DbSet<APr05> APr05s { get; set; }
+
+        DbSet<APr38> APr38s { get; set; }
+
+        DbSet<CeasedClinical> CeasedClinicals { get; set; }
 
         DbSet<ChemotherapyPart> ChemotherapyParts { get; set; }
 
         DbSet<Choice> Choices { get; set; }
 
-        DbSet<CPFile> CPFiles { get; set; }
+        DbSet<ClinicChemotherapyPart> ClinicChemotherapyParts { get; set; }
 
-        DbSet<Diagnose> Diagnoses { get; set; }
+        DbSet<ClinicHematologyPart> ClinicHematologyParts { get; set; }
+
+        DbSet<ClinicProcedure> ClinicProcedures { get; set; }
+
+        DbSet<ClinicUsedDrug> ClinicUsedDrugs { get; set; }
+
+        DbSet<CommissionApr> CommissionAprs { get; set; }
+
+        DbSet<CommissionAprHealthcarePractitioner> CommissionAprHealthcarePractitioner { get; set; }
+
+        DbSet<CPFile> CPFiles { get; set; }
 
         DbSet<Diag> Diags { get; set; }
 
+        DbSet<Diagnose> Diagnoses { get; set; }
+
+        DbSet<DispObservation> DispObservations { get; set; }
+
+        DbSet<DoneProcedure> DoneProcedures { get; set; }
+
+        DbSet<DrugPack> DrugPacks { get; set; }
+
         DbSet<DrugProtocol> DrugProtocols { get; set; }
+
+        DbSet<DrugResidue> DrugResidues { get; set; }
 
         DbSet<Epicrisis> Epicrises { get; set; }
 
@@ -29,32 +53,41 @@ namespace Medic.Contexts.Contracts
 
         DbSet<GenMarker> GenMarkers { get; set; }
 
-        DbSet<HealthcarePractitionerEpicrisis> HealthcarePractitionerEpicrisis { get; set; }
-
         DbSet<HealthcarePractitioner> HealthcarePractitioners { get; set; }
+
         DbSet<HealthRegion> HealthRegions { get; set; }
 
         DbSet<HematologyPart> HematologyParts { get; set; }
+
+        DbSet<HistologicalResult> HistologicalResults { get; set; }
 
         DbSet<Histology> Histologies { get; set; }
 
         DbSet<HospitalPractice> HospitalPractices { get; set; }
 
+        DbSet<Implant> Implants { get; set; }
+
         DbSet<ImplantProductType> ImplantProductTypes { get; set; }
 
-        DbSet<Implant> Implants { get; set; }
+        DbSet<In> Ins { get; set; }
 
         DbSet<InClinicProcedure> InClinicProcedures { get; set; }
 
-        DbSet<In> Ins { get; set; }
+        DbSet<Marker> Markers { get; set; }
+
+        DbSet<MDI> MDIs { get; set; }
+
+        DbSet<MKB> MKBs { get; set; }
 
         DbSet<Out> Outs { get; set; }
 
         DbSet<PathProcedure> PathProcedures { get; set; }
 
+        DbSet<Patient> Patients { get; set; }
+
         DbSet<PatientBranch> PatientBranches { get; set; }
 
-        DbSet<Patient> Patients { get; set; }
+        DbSet<Planned> Plannings { get; set; }
 
         DbSet<Practice> Practices { get; set; }
 
@@ -66,6 +99,10 @@ namespace Medic.Contexts.Contracts
 
         DbSet<Provider> Providers { get; set; }
 
+        DbSet<Redirected> Redirects { get; set; }
+
+        DbSet<Resign> Resigners { get; set; }
+
         DbSet<SenderType> SenderTypes { get; set; }
 
         DbSet<Sex> Sexes { get; set; }
@@ -74,6 +111,12 @@ namespace Medic.Contexts.Contracts
 
         DbSet<TherapyType> TherapyTypes { get; set; }
 
-        public DbSet<Transfer> Transfers { get; set; }
+        DbSet<Transfer> Transfers { get; set; }
+
+        DbSet<UsedDrug> UsedDrugs { get; set; }
+
+        DbSet<VersionCode> VersionCodes { get; set; }
+
+        DbSet<VSD> VSDs { get; set; }
     }
 }

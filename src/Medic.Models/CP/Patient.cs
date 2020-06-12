@@ -9,7 +9,9 @@ namespace Medic.Models.CP
         private const string DateFormat = "yyyy-MM-dd";
 
         private DateTime _birthDate;
-        public DateTime? _dateTo;
+        private DateTime? _dateTo;
+        private DateTime? _dateFrom;
+        private DateTime? _dateIssue;
 
         [XmlElement(ElementName = "COUNTRYCODE")]
         public string CountryCode { get; set; }
@@ -43,6 +45,46 @@ namespace Medic.Models.CP
             }
         }
 
+        [XmlIgnore]
+        public DateTime? DateFrom
+        {
+            get { return _dateFrom; }
+            set { _dateFrom = value; }
+        }
+
+        [XmlElement(ElementName = "DateFrom")]
+        public string DateFromAsString
+        {
+            get
+            {
+                return _dateFrom == default ? default : ((DateTime)_dateFrom).ToString(DateFormat);
+            }
+            set
+            {
+                _dateFrom = DateTime.Parse(value, CultureInfo.InvariantCulture);
+            }
+        }
+
+        [XmlIgnore]
+        public DateTime? DateIssue
+        {
+            get { return _dateIssue; }
+            set { _dateIssue = value; }
+        }
+
+        [XmlElement(ElementName = "DateIssue")]
+        public string DateIssueAsString
+        {
+            get
+            {
+                return _dateIssue == default ? default : ((DateTime)_dateIssue).ToString(DateFormat);
+            }
+            set
+            {
+                _dateIssue = DateTime.Parse(value, CultureInfo.InvariantCulture);
+            }
+        }
+
         [XmlElement(ElementName = "EHIC_No")]
         public string EhicC { get; set; }
 
@@ -54,6 +96,9 @@ namespace Medic.Models.CP
 
         [XmlElement(ElementName = "EGN")]
         public string IdentityNumber { get; set; }
+
+        [XmlElement(ElementName = "SS_No")]
+        public string NAPNumber { get; set; }
 
         [XmlIgnore]
         public DateTime BirthDate
@@ -75,6 +120,9 @@ namespace Medic.Models.CP
             }
         }
 
+        [XmlElement(ElementName = "Lead_Doc_Name")]
+        public string LeadDocName { get; set; }
+
         [XmlElement(ElementName = "Sex")]
         public int Sex { get; set; }
 
@@ -89,5 +137,11 @@ namespace Medic.Models.CP
 
         [XmlElement(ElementName = "Address")]
         public string Address { get; set; }
+
+        [XmlElement(ElementName = "LNCH")]
+        public string LNCH { get; set; }
+
+        [XmlElement(ElementName = "personType")]
+        public int? PersonType { get; set; }
     }
 }

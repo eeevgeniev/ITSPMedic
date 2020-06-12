@@ -34,11 +34,11 @@ namespace Medic.Entities
 
         public DateTime SendDate { get; set; }
 
-        public int? SendDiagnoseId { get; set; }
-
-        public Diagnose SendDiagnose { get; set; }
+        public ICollection<Diagnose> SendDiagnoses { get; set; } = new HashSet<Diagnose>();
 
         public int SendUrgency { get; set; }
+
+        public int? SendPackageType { get; set; }
 
         public int? SendApr { get; set; }
 
@@ -48,11 +48,15 @@ namespace Medic.Entities
 
         public DateTime ExaminationDate { get; set; }
 
+        public DateTime? PlannedEntryDate { get; set; }
+
         public int PlannedNumber { get; set; }
 
         public ICollection<Diagnose> Diagnoses { get; set; } = new HashSet<Diagnose>();
 
         public int Urgency { get; set; }
+
+        public int? PackageType { get; set; }
 
         public int? InApr { get; set; }
 
@@ -66,7 +70,7 @@ namespace Medic.Entities
 
         public int Severity { get; set; }
 
-        public int Delay { get; set; }
+        public int? Delay { get; set; }
 
         public int Payer { get; set; }
 

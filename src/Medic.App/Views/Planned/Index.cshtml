@@ -1,0 +1,88 @@
+﻿@model PlannedPageIndexModel
+
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+
+    Dictionary<string, string> paramsByName = Model.Search != default ?
+        Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+
+    ViewData[Constants.Sexes] = Model.Sexes;
+    ViewData[Constants.HealthRegions] = Model.HealthRegions;
+}
+
+<article>
+    <header>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get("PlanningsView")): @Model.TotalResults @Html.Raw(medicDataLocalization.Get("Results"))</h2>
+        <h4 class="text-center text-info">@Model.Keywords</h4>
+    </header>
+    <section>
+        <partial name="~/Views/Shared/Partials/Plannings/PlannedSearch.cshtml" model="@Model.Search" view-data="@ViewData" />
+    </section>
+    <section class="mt-sm-1 clearfix">
+        <partial name="~/Views/Shared/Partials/Plannings/PlannedOrder.cshtml" model="@Model.Search" />
+    </section>
+    <section class="mt-sm-1">
+        @if (Model.Plannings != default && Model.Plannings.Count > 0)
+        {
+            <div>
+                <div class="row">
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("SendDate"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("UniqueIdentifier"))</div>
+                    <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("SendDiagnoses"))</div>
+                    <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Diagnoses"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewPatient"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewPlannedProcedure"))</div>
+                </div>
+                @foreach (PlannedPreviewViewModel currentPlanned in Model.Plannings)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-1">@currentPlanned.SendDate.ToShortDateString()</div>
+                        <div class="col-sm-1">@currentPlanned.UniqueIdentifier</div>
+                        <div class="col-sm-4">@string.Join(", ", currentPlanned.SendDiagnoses)</div>
+                        <div class="col-sm-4">@string.Join(", ", currentPlanned.Diagnoses)</div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
+                               asp-action="@nameof(PatientController.Patient)"
+                               asp-route-id="@currentPlanned.PatientId" class="btn btn-info">@Html.Raw(medicDataLocalization.Get("View"))</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(PlannedController))"
+                               asp-action="@nameof(PlannedController.Planned)"
+                               asp-route-id="@currentPlanned.Id"
+                               class="btn btn-secondary">@Html.Raw(medicDataLocalization.Get("View"))</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <footer>
+                <pager page-count="@Model.TotalPages"
+                       current-page="@Model.CurrentPage"
+                       controller-name="@MedicBaseController.GetName(nameof(PlannedController))"
+                       action-name="@nameof(PlannedController.Index)"
+                       additional-properties="@paramsByName"
+                       nav-class-names="btn-toolbar"
+                       ul-class-names="pagination"
+                       li-class-names="page-item"
+                       li-selected-class-names="page-item active"
+                       anchor-class-names="page-link">
+
+                </pager>
+            </footer>
+        }
+        else
+        {
+            <div class="text-center text-info font-weight-bold">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+        }
+    </section>
+</article>
+@section Scripts {
+    <environment names="Development">
+        <script defer src="~/js/formreset.js"></script>
+    </environment>
+    <environment names="Production">
+        <script defer src="~/js/formreset.min.js"></script>
+    </environment>
+}

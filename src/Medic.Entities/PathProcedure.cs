@@ -36,6 +36,8 @@ namespace Medic.Entities
 
         public int TypeProcSend { get; set; }
 
+        public int? SendPackageType { get; set; }
+
         public DateTime DateSend { get; set; }
 
         public double? CPrPriem { get; set; }
@@ -44,17 +46,29 @@ namespace Medic.Entities
 
         public decimal MedicalWard { get; set; }
 
+        public string BirthPractice { get; set; }
+
+        public int? BirthNumber { get; set; }
+
+        public int? BirthGestWeek { get; set; }
+
         public int TypeProcPriem { get; set; }
+
+        public int? PackageType { get; set; }
 
         public int ProcRefuse { get; set; }
 
         public int? CeasedProcedureId { get; set; }
 
-        public CeasedClinicalPath CeasedProcedure { get; set; }
+        public CeasedClinical CeasedProcedure { get; set; }
 
         public int? CeasedClinicalPathId { get; set; }
 
-        public CeasedClinicalPath CeasedClinicalPath { get; set; }
+        public CeasedClinical CeasedClinicalPath { get; set; }
+
+        public int? CeasedOnlyId { get; set; }
+
+        public CeasedClinical CeasedOnly { get; set; }
 
         public string IZNumChild { get; set; }
 
@@ -63,6 +77,8 @@ namespace Medic.Entities
         public DateTime? FirstVisitDate { get; set; }
 
         public DateTime? DatePlanPriem { get; set; }
+
+        public int? PlannedNumber { get; set; }
 
         public string VisitDocumentUniqueIdentifier { get; set; }
 
@@ -82,9 +98,7 @@ namespace Medic.Entities
 
         public ICollection<Procedure> DoneNewProcedures { get; set; } = new HashSet<Procedure>();
 
-        public int? UsedDrugId { get; set; }
-
-        public ClinicUsedDrug UsedDrug { get; set; }
+        public ICollection<ClinicUsedDrug> UsedDrugs { get; set; } = new HashSet<ClinicUsedDrug>();
 
         public ICollection<ClinicProcedure> ClinicProcedures { get; set; } = new HashSet<ClinicProcedure>();
 
@@ -92,9 +106,17 @@ namespace Medic.Entities
 
         public decimal AllDoneProcedures { get; set; }
 
-        public decimal AllDoneCost { get; set; }
+        public int? AllDays { get; set; }
+
+        public decimal AllDrugCost { get; set; }
+
+        public string RedirectedClinicalPath { get; set; }
 
         public int PatientStatus { get; set; }
+
+        public string RedirectedProc { get; set; }
+
+        public int? EndCourse { get; set; }
 
         public string OutUniqueIdentifier { get; set; }
 

@@ -26,14 +26,10 @@ namespace Medic.Cache
             };
         }
 
-        public void Set(string key, object value)
-        {
-            MemoryCache.Set(key, value, options);
-        }
+        public void Clear() => MemoryCache.Compact(100);
 
-        public bool TryGetValue<T>(string key, out T value)
-        {
-            return MemoryCache.TryGetValue(key, out value);
-        }
+        public void Set(string key, object value) => MemoryCache.Set(key, value, options);
+
+        public bool TryGetValue<T>(string key, out T value) => MemoryCache.TryGetValue(key, out value);
     }
 }

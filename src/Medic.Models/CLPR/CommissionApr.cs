@@ -77,6 +77,7 @@ namespace Medic.Models.CLPR
             }
         }
 
+        [XmlElement(ElementName = "Chairman")]
         public Chairman Chairman { get; set; }
 
         [XmlElement(ElementName = "Members")]
@@ -86,7 +87,7 @@ namespace Medic.Models.CLPR
         public Diag MainDiag { get; set; }
 
         [XmlElement(ElementName = "AddDiag")]
-        public List<Diag> AddDiag { get; set; }
+        public List<Diag> AddDiags { get; set; }
 
         [XmlElement(ElementName = "APr38")]
         public APr38 APr38 { get; set; }

@@ -29,9 +29,9 @@ namespace Medic.Services.Helpers
                 return queryable;
             }
 
-            if (!string.IsNullOrEmpty(InsSearch.MainDiagnose))
+            if (!string.IsNullOrEmpty(InsSearch.SendDiagnose))
             {
-                queryable = queryable.Where(i => EF.Functions.Like(i.SendDiagnose.Primary.Code, InsSearch.MainDiagnose));
+                queryable = queryable.Where(i => i.SendDiagnoses.Any(d => EF.Functions.Like(d.PrimaryCode, InsSearch.SendDiagnose)));
             }
 
             if (InsSearch.Sex != default)

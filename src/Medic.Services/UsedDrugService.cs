@@ -1,5 +1,5 @@
 ﻿using Medic.AppModels.UsedDrugs;
-using Medic.Contexts;
+using Medic.Contexts.Contracts;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,9 +11,9 @@ namespace Medic.Services
 {
     public class UsedDrugService : IUsedDrugService
     {
-        private readonly MedicContext MedicContext;
+        private readonly IMedicContext MedicContext;
 
-        public UsedDrugService(MedicContext medicContext)
+        public UsedDrugService(IMedicContext medicContext)
         {
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
         }
@@ -30,30 +30,25 @@ namespace Medic.Services
         public async Task<List<UsedDrugsSummaryStatistic>> UsedDrugsSummaryAsync(int startIndex, int take)
         {
             return await MedicContext.Outs
-                .Include(o => o.UsedDrug)
-                .Include(o => o.SendDiagnose)
-                    .ThenInclude(sd => sd.Primary)
+                .Include(o => o.UsedDrugs)
                 .Include(o => o.OutMainDiagnose)
                     .ThenInclude(d => d.Primary)
-                .Where(o => o.UsedDrugId != default)
-                .GroupBy(o => new
-                    {
-                        UsedDrugCode = o.UsedDrug.Code,
-                        SendDignoseCode = o.SendDiagnose.Primary.Code,
-                        SendDiagnoseName = o.SendDiagnose.Primary.Name,
-                        OutDiagnoseCode = o.OutMainDiagnose.Primary.Code,
-                        OutDiagnoseName = o.OutMainDiagnose.Primary.Name
-                    },
-                    o => new
-                    {
-                        o.UsedDrug.Quantity,
-                        o.UsedDrug.Cost
-                    })
+                .Where(o => o.UsedDrugs.Any(ud => ud.OutId == o.Id))
+                .SelectMany(o => o.UsedDrugs)
+                .GroupBy(ud => new
+                {
+                    UsedDrugCode = ud.Code,
+                    OutDiagnoseCode = ud.Out.OutMainDiagnose.Primary.Code,
+                    OutDiagnoseName = ud.Out.OutMainDiagnose.Primary.Name
+                },
+                ud => new
+                {
+                    ud.Quantity,
+                    ud.Cost
+                })
                 .Select((v) => new UsedDrugsSummaryStatistic()
                 {
                     UsedDrugCode = v.Key.UsedDrugCode,
-                    SendDiagnoseName = v.Key.SendDiagnoseName,
-                    SendDignoseCode = v.Key.SendDignoseCode,
                     OutDiagnoseName = v.Key.OutDiagnoseName,
                     OutDiagnoseCode = v.Key.OutDiagnoseCode,
                     TotalUses = v.Count(),
@@ -70,30 +65,27 @@ namespace Medic.Services
         public async Task<int> UsedDrugsSummaryCountAsync()
         {
             return await MedicContext.Outs
-                .Include(o => o.UsedDrug)
-                .Include(o => o.SendDiagnose)
+                .Include(o => o.UsedDrugs)
+                .Include(o => o.SendDiagnoses)
                     .ThenInclude(sd => sd.Primary)
                 .Include(o => o.OutMainDiagnose)
                     .ThenInclude(d => d.Primary)
-                .Where(o => o.UsedDrugId != default)
-                .GroupBy(o => new
+                .Where(o => o.UsedDrugs.Any(ud => ud.OutId == o.Id))
+                .SelectMany(o => o.UsedDrugs)
+                .GroupBy(ud => new
                 {
-                    UsedDrugCode = o.UsedDrug.Code,
-                    SendDignoseCode = o.SendDiagnose.Primary.Code,
-                    SendDiagnoseName = o.SendDiagnose.Primary.Name,
-                    OutDiagnoseCode = o.OutMainDiagnose.Primary.Code,
-                    OutDiagnoseName = o.OutMainDiagnose.Primary.Name
+                    UsedDrugCode = ud.Code,
+                    OutDiagnoseCode = ud.Out.OutMainDiagnose.Primary.Code,
+                    OutDiagnoseName = ud.Out.OutMainDiagnose.Primary.Name
                 },
-                    o => new
-                    {
-                        o.UsedDrug.Quantity,
-                        o.UsedDrug.Cost
-                    })
+                ud => new
+                {
+                    ud.Quantity,
+                    ud.Cost
+                })
                 .Select((v) => new UsedDrugsSummaryStatistic()
                 {
                     UsedDrugCode = v.Key.UsedDrugCode,
-                    SendDiagnoseName = v.Key.SendDiagnoseName,
-                    SendDignoseCode = v.Key.SendDignoseCode,
                     OutDiagnoseName = v.Key.OutDiagnoseName,
                     OutDiagnoseCode = v.Key.OutDiagnoseCode,
                     TotalUses = v.Count(),

@@ -1,0 +1,17 @@
+﻿@model CeasedClinicalViewModel
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default)
+{
+    <div>
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("Code")): @Model.Code</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("IZMedicalWard")): @Model.IZMedicalWard</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("IZYearMedicalWard")): @Model.IZYearMedicalWard</div>
+        </div>
+    </div>
+}
+else
+{
+<div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+}

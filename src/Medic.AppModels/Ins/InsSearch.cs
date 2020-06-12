@@ -7,8 +7,8 @@ namespace Medic.AppModels.Ins
 {
     public class InsSearch : IQueryStringBuilder
     {
-        [Display(Name = nameof(MainDiagnose))]
-        public string MainDiagnose { get; set; }
+        [Display(Name = nameof(SendDiagnose))]
+        public string SendDiagnose { get; set; }
 
         [Display(Name = nameof(CountOfAdditionalDiagnoses))]
         public int? CountOfAdditionalDiagnoses { get; set; }
@@ -41,9 +41,9 @@ namespace Medic.AppModels.Ins
         {
             Dictionary<string, string> queryString = new Dictionary<string, string>();
 
-            if (!string.IsNullOrWhiteSpace(MainDiagnose))
+            if (!string.IsNullOrWhiteSpace(SendDiagnose))
             {
-                queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(MainDiagnose)}", MainDiagnose);
+                queryString.Add($"{(prefix != default ? $"{prefix}." : default)}{nameof(SendDiagnose)}", SendDiagnose);
             }
 
             if (CountOfAdditionalDiagnoses != default)
@@ -85,7 +85,7 @@ namespace Medic.AppModels.Ins
 
         public override string ToString()
         {
-            return $"{nameof(MainDiagnose)}:{MainDiagnose}&{nameof(CountOfAdditionalDiagnoses)}:{CountOfAdditionalDiagnoses}&{nameof(Sex)}:{Sex}" +
+            return $"{nameof(SendDiagnose)}:{SendDiagnose}&{nameof(CountOfAdditionalDiagnoses)}:{CountOfAdditionalDiagnoses}&{nameof(Sex)}:{Sex}" +
                 $"&{nameof(HealthRegion)}:{HealthRegion}&{nameof(Age)}:{Age}&{nameof(OlderThan)}:{OlderThan}&{nameof(YoungerThan)}:{YoungerThan}" + 
                 $"&{nameof(Order)}:{(int)Order}&{nameof(Direction)}:{(int)Direction}&{nameof(Length)}:{(int)Length}";
         }

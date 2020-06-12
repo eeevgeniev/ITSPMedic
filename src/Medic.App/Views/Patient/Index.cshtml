@@ -14,7 +14,7 @@
 
 <article>
     <header>
-        <h2 class="text-center">@($"{patientLocalization.Get("PatientSearch")} - {Model.TotalResults} {patientLocalization.Get("Results")}")</h2>
+        <h2 class="text-center">@($"{Html.Raw(patientLocalization.Get("PatientSearch"))} - {Model.TotalResults} {Html.Raw(patientLocalization.Get("Results"))}")</h2>
         <h4 class="text-center text-info">@Model.Keywords</h4>
     </header>
     <section>
@@ -27,31 +27,31 @@
         @if (hasResults)
         {
             <div class="row">
-                <div class="col-sm-3 font-weight-bold">@patientLocalization.Get("FirstName")</div>
-                <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("SecondName")</div>
-                <div class="col-sm-3 font-weight-bold">@patientLocalization.Get("LastName")</div>
-                <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("BirthDate")</div>
-                <div class="col-sm-2 font-weight-bold">@patientLocalization.Get("ViewPatient")</div>
+                <div class="col-sm-3 font-weight-bold">@Html.Raw(patientLocalization.Get("FirstName"))</div>
+                <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get("SecondName"))</div>
+                <div class="col-sm-3 font-weight-bold">@Html.Raw(patientLocalization.Get("LastName"))</div>
+                <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get("BirthDate"))</div>
+                <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get("ViewPatient"))</div>
             </div>
             @foreach (PatientPreviewViewModel patient in Model.Patients)
             {
                 <hr />
                 <div class="row">
-                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.FirstName) ? patientLocalization.Get("NotSpecified") : patient.FirstName)</div>
-                    <div class="col-sm-2">@(string.IsNullOrWhiteSpace(patient.SecondName) ? patientLocalization.Get("NotSpecified") : patient.SecondName)</div>
-                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.LastName) ? patientLocalization.Get("NotSpecified") : patient.LastName)</div>
+                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.FirstName) ? Html.Raw(patientLocalization.Get("NotSpecified")).ToString() : patient.FirstName)</div>
+                    <div class="col-sm-2">@(string.IsNullOrWhiteSpace(patient.SecondName) ? Html.Raw(patientLocalization.Get("NotSpecified")).ToString() : patient.SecondName)</div>
+                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.LastName) ? Html.Raw(patientLocalization.Get("NotSpecified")).ToString() : patient.LastName)</div>
                     <div class="col-sm-2">@(patient.BirthDate.ToShortDateString())</div>
                     <div class="col-sm-2">
                         <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                            asp-action="@nameof(PatientController.Patient)"
-                           asp-route-id="@(patient.Id)" class="btn btn-info">@patientLocalization.Get("View")</a>
+                           asp-route-id="@(patient.Id)" class="btn btn-info">@Html.Raw(patientLocalization.Get("View"))</a>
                     </div>
                 </div>
             }
         }
         else
         {
-            <div class="text-info font-weight-bold text-center">@patientLocalization.Get("NoPatients")</div>
+            <div class="text-info font-weight-bold text-center">@Html.Raw(patientLocalization.Get("NoPatients"))</div>
         }
     </section>
     @if (hasResults)
@@ -71,3 +71,11 @@
         </footer>
     }
 </article>
+@section Scripts {
+    <environment names="Development">
+        <script defer src="~/js/formreset.js"></script>
+    </environment>
+    <environment names="Production">
+        <script defer src="~/js/formreset.min.js"></script>
+    </environment>
+}

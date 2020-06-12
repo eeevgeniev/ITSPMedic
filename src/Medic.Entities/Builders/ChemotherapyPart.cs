@@ -10,11 +10,9 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
-                b.HasOne(model => model.AddDiag)
+                b.HasMany(model => model.AddDiags)
                     .WithOne(ad => ad.ChemotherapyPart)
-                    .HasForeignKey<ChemotherapyPart>(model => model.AddDiagId);
-
-                b.HasIndex(model => model.AddDiagId).IsUnique(false);
+                    .HasForeignKey(cp => cp.ChemotherapyPartId);
 
                 b.HasOne(model => model.Histology)
                     .WithMany(h => h.ChemotherapyParts)
@@ -32,11 +30,13 @@ namespace Medic.Entities
                     .WithOne(gm => gm.ChemotherapyPart)
                     .HasForeignKey(gm => gm.ChemotherapyPartId);
 
-                b.Property(model => model.ExpandDiagnose).HasMaxLength(300);
+                b.Property(model => model.ExpandDiagnose).HasMaxLength(4000);
 
                 b.Property(model => model.TNM).HasMaxLength(100);
 
-                b.Property(model => model.Staging).HasMaxLength(5);
+                b.Property(model => model.TargetAUC).HasColumnType("decimal(15,4)");
+
+                b.Property(model => model.Staging).HasMaxLength(20);
             });
         }
     }

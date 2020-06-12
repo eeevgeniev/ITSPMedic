@@ -23,6 +23,7 @@ namespace Medic.Entities
                 .ForMember(p => p.CPFiles, config => config.Ignore())
                 .ForMember(p => p.HealthcarePractitioners, config => config.Ignore())
                 .ForMember(p => p.HospitalPractices, config => config.Ignore())
+                .ForMember(p => p.Redirected, config => config.Ignore())
                 .ForMember(p => p.Id, config => config.Ignore());
 
             expression.CreateMap<Practice, PracticePreviewViewModel>()

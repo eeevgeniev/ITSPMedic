@@ -42,6 +42,12 @@ namespace Medic.Entities
 
         public int DispVisit { get; set; }
 
+        public string FirstCodeSpecConsult { get; set; }
+
+        public string SecondCodeSpecConsult { get; set; }
+
+        public ICollection<VSD> VSDs { get; set; } = new HashSet<VSD>();
+
         public ICollection<MDI> MDIs { get; set; } = new HashSet<MDI>();
 
         public int? MainDiagFirstId { get; set; } 

@@ -25,6 +25,8 @@ namespace Medic.Entities
                 .ForMember(i => i.Provider, config => config.MapFrom(i => new Provider() { Code = i.ProviderId, Name = i.Provider }))
                 .ForMember(i => i.ProviderId, config => config.Ignore())
                 .ForMember(i => i.Procedure, config => config.Ignore())
+                .ForMember(i => i.ClinicProcedure, config => config.Ignore())
+                .ForMember(i => i.ClinicProcedureId, config => config.Ignore())
                 .ForMember(i => i.Id, config => config.Ignore());
         }
     }

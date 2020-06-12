@@ -43,6 +43,8 @@ namespace Medic.Entities
 
         public VersionCode VersionCode { get; set; }
 
+        public int? PathProcedureId { get; set; }
+
         public PathProcedure PathProcedure { get; set; }
     }
 }

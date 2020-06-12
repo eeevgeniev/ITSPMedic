@@ -22,7 +22,6 @@ namespace Medic.App.Controllers
     public class DispObservationController : LookupsBaseController
     {
         private readonly IDispObservationService DispObservationService;
-        private readonly MedicDataLocalization MedicDataLocalization;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public DispObservationController(IDispObservationService dispObservationService,
@@ -31,10 +30,9 @@ namespace Medic.App.Controllers
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
-            : base (patientService, healthRegionService, medicCache)
+            : base (patientService, healthRegionService, medicCache, medicDataLocalization)
         {
             DispObservationService = dispObservationService ?? throw new ArgumentNullException(nameof(dispObservationService));
-            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(MedicBaseController));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
@@ -49,9 +47,6 @@ namespace Medic.App.Controllers
                 string searchParams = search != default ? search.ToString() : default;
                 string dispObservationsKey = $"{nameof(DispObservationPreviewViewModel)} - {startIndex} - {searchParams}";
                 string dispObservationsCountKey = $"{MedicConstants.DispObservations} - {searchParams}";
-
-                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
 
                 if (!base.MedicCache.TryGetValue(dispObservationsKey, out List<DispObservationPreviewViewModel> dispObservations))
                 {
@@ -71,9 +66,11 @@ namespace Medic.App.Controllers
                     base.MedicCache.Set(dispObservationsCountKey, dispObservationsCount);
                 }
 
-                sexOptions.AddRange(await base.GetSexes());
+                List<SexOption> sexOptions = base.GetDefaultSexes();
+                sexOptions.AddRange(await base.GetSexesAsync());
 
-                healthRegions.AddRange(await base.GetHelathRegions());
+                List<HealthRegionOption> healthRegions = base.GetDefaultHealthRegions();
+                healthRegions.AddRange(await base.GetHealthRegionsAsync());
 
                 return View(new DispObservationPageIndexModel()
                 {

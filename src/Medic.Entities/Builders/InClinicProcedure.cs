@@ -45,10 +45,23 @@ namespace Medic.Entities
                     .HasForeignKey<InClinicProcedure>(model => model.SecondMainDiagId);
 
                 b.HasOne(model => model.CeasedClinicalPath)
-                    .WithOne(ccp => ccp.InClinicProcedure)
+                    .WithOne(ccp => ccp.CeasedClinicalPathInClinicProcedure)
                     .HasForeignKey<InClinicProcedure>(model => model.CeasedClinicalPathId);
 
                 b.HasIndex(model => model.CeasedClinicalPathId).IsUnique(false);
+
+                b.HasOne(model => model.CeasedProcedure)
+                    .WithOne(ccp => ccp.CeasedProcedureInClinicProcedure)
+                    .HasForeignKey<InClinicProcedure>(model => model.CeasedProcedureId);
+
+                b.HasIndex(model => model.CeasedProcedureId).IsUnique(false);
+
+                b.HasOne(model => model.CeasedOnly)
+                    .WithOne(ccp => ccp.CeasedOnlyInClinicProcedure)
+                    .HasForeignKey<InClinicProcedure>(model => model.CeasedOnlyId);
+
+                
+                b.HasIndex(model => model.CeasedOnlyId).IsUnique(false);
 
                 b.HasIndex(model => model.HospitalPracticeId).IsUnique(false);
 
@@ -56,7 +69,7 @@ namespace Medic.Entities
 
                 b.Property(model => model.VisitDocumentUniqueIdentifier).HasMaxLength(12);
 
-                b.Property(model => model.VisitDocumentName).HasMaxLength(100);
+                b.Property(model => model.VisitDocumentName).HasMaxLength(200);
             });
         }
     }

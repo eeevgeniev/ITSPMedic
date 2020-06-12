@@ -19,6 +19,8 @@ namespace Medic.Entities
             expression.CreateMap<CLPR.ClinicProcedure, ClinicProcedure>()
                 .ForMember(cp => cp.PathProcedure, config => config.Ignore())
                 .ForMember(cp => cp.PathProcedureId, config => config.Ignore())
+                .ForMember(cp => cp.InClinicProcedureId, config => config.Ignore())
+                .ForMember(cp => cp.InClinicProcedure, config => config.Ignore())
                 .ForMember(cp => cp.Id, config => config.Ignore());
 
             expression.CreateMap<ClinicProcedure, ClinicProcedureViewModel>();

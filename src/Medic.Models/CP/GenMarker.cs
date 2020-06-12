@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Medic.Models.CP
 {
@@ -9,5 +10,8 @@ namespace Medic.Models.CP
 
         [XmlElement(ElementName = "Sign")]
         public int Sign { get; set; }
+
+        [XmlElement(ElementName = "Marker")]
+        public List<Marker> Markers { get; set; }
     }
 }

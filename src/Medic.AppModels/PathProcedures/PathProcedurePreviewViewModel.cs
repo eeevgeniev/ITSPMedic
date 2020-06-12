@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.PathProcedures
@@ -24,7 +25,7 @@ namespace Medic.AppModels.PathProcedures
         [Display(Name = nameof(SecondMainDiagName))]
         public string SecondMainDiagName { get; set; }
 
-        [Display(Name = nameof(UsedDrugCode))]
-        public string UsedDrugCode { get; set; }
+        [Display(Name = nameof(UsedDrugCodes))]
+        public List<string> UsedDrugCodes { get; set; }
     }
 }

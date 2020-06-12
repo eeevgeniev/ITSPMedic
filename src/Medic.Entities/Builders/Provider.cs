@@ -10,7 +10,7 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
-                b.Property(model => model.Name).HasMaxLength(50);
+                b.Property(model => model.Name).HasMaxLength(150);
             });
         }
     }

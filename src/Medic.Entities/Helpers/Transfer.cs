@@ -18,7 +18,6 @@ namespace Medic.Entities
             expression.CreateMap<CP.Transfer, Transfer>()
                 .ForMember(t => t.FirstMainDiagId, config => config.Ignore())
                 .ForMember(t => t.SecondMainDiagId, config => config.Ignore())
-                .ForMember(t => t.SecondMainDiag, config => config.Ignore())
                 .ForMember(t => t.CPFileId, config => config.Ignore())
                 .ForMember(t => t.CPFile, config => config.Ignore())
                 .ForMember(t => t.HospitalPracticeId, config => config.Ignore())

@@ -5,19 +5,19 @@
 {
     <div>
         <div class="row">
-            <div class="col-sm-4">@medicDataLocalization.Get("DiagnoseDate"): @Model.DiagnoseDate.ToString("g")</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("Staging"): @Model.Staging</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("Imuno"): @Model.Imuno</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DiagnoseDate")): @Model.DiagnoseDate.ToString("g")</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("Staging")): @Model.Staging</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("Imuno")): @Model.Imuno</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@medicDataLocalization.Get("Genetic"): @Model.Genetic</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("Sign"): @Model.Sign</div>
-            <div class="col-sm-4">@medicDataLocalization.Get("NZOKPay"): @Model.NZOKPay</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("Genetic")): @Model.Genetic</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("Sign")): @Model.Sign</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("NZOKPay")): @Model.NZOKPay</div>
         </div>
     </div>
 }
 else
 {
-    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
 }

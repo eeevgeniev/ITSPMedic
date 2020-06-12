@@ -22,7 +22,7 @@ namespace Medic.Contexts
 
         public DbSet<APr38> APr38s { get; set; }
 
-        public DbSet<CeasedClinicalPath> CeasedClinicalPaths { get; set; }
+        public DbSet<CeasedClinical> CeasedClinicals { get; set; }
 
         public DbSet<ChemotherapyPart> ChemotherapyParts { get; set; }
 
@@ -50,7 +50,11 @@ namespace Medic.Contexts
 
         public DbSet<DoneProcedure> DoneProcedures { get; set; }
 
+        public DbSet<DrugPack> DrugPacks { get; set; }
+
         public DbSet<DrugProtocol> DrugProtocols { get; set; }
+
+        public DbSet<DrugResidue> DrugResidues { get; set; }
 
         public DbSet<Epicrisis> Epicrises { get; set; }
 
@@ -61,8 +65,6 @@ namespace Medic.Contexts
         public DbSet<GenMarker> GenMarkers { get; set; }
 
         public DbSet<HealthcarePractitioner> HealthcarePractitioners { get; set; }
-
-        public DbSet<HealthcarePractitionerEpicrisis> HealthcarePractitionerEpicrisis { get; set; }
 
         public DbSet<HealthRegion> HealthRegions { get; set; }
 
@@ -82,6 +84,8 @@ namespace Medic.Contexts
 
         public DbSet<InClinicProcedure> InClinicProcedures { get; set; }
 
+        public DbSet<Marker> Markers { get; set; }
+
         public DbSet<MDI> MDIs { get; set; }
 
         public DbSet<MKB> MKBs { get; set; }
@@ -94,7 +98,7 @@ namespace Medic.Contexts
 
         public DbSet<PatientBranch> PatientBranches { get; set; }
 
-        public DbSet<PlannedProcedure> PlannedProcedures { get; set; }
+        public DbSet<Planned> Plannings { get; set; }
 
         public DbSet<Practice> Practices { get; set; }
 
@@ -105,6 +109,10 @@ namespace Medic.Contexts
         public DbSet<ProtocolDrugTherapyHealthPractitioner> ProtocolDrugTherapyHealthPractitioner { get; set; }
 
         public DbSet<Provider> Providers { get; set; }
+
+        public DbSet<Redirected> Redirects { get; set; }
+
+        public DbSet<Resign> Resigners { get; set; }
 
         public DbSet<SenderType> SenderTypes { get; set; }
 
@@ -119,6 +127,8 @@ namespace Medic.Contexts
         public DbSet<UsedDrug> UsedDrugs { get; set; }
 
         public DbSet<VersionCode> VersionCodes { get; set; }
+
+        public DbSet<VSD> VSDs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

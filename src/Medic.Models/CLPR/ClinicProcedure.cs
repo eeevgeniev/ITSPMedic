@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Medic.Models.CP;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Xml.Serialization;
 
@@ -36,5 +38,8 @@ namespace Medic.Models.CLPR
 
         [XmlElement(ElementName = "ACHIcode")]
         public string ACHIcode { get; set; }
+
+        [XmlElement(ElementName = "Implant")]
+        public List<Implant> Implants { get; set; }
     }
 }

@@ -18,5 +18,8 @@ namespace Medic.Models.CP
 
         [XmlElement(ElementName = "address", IsNullable = false)]
         public string Address { get; set; }
+
+        [XmlElement(ElementName = "NZOKCode")]
+        public string NZOKCode { get; set; }
     }
 }

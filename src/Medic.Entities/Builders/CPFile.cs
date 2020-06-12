@@ -38,9 +38,17 @@ namespace Medic.Entities
                     .WithOne(t => t.CPFile)
                     .HasForeignKey(t => t.CPFileId);
 
-                b.HasMany(model => model.PlannedProcedures)
+                b.HasMany(model => model.Plannings)
                     .WithOne(pp => pp.CPFile)
                     .HasForeignKey(pp => pp.CPFileId);
+
+                b.HasMany(model => model.DrugResidues)
+                    .WithOne(dr => dr.CPFile)
+                    .HasForeignKey(dr => dr.CPFileId);
+
+                b.HasMany(model => model.DrugPacks)
+                    .WithOne(dp => dp.CPFile)
+                    .HasForeignKey(dp => dp.CPFileId);
             });
         }
     }

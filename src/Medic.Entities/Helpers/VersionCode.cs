@@ -13,7 +13,8 @@ namespace Medic.Entities
 
         public void ConfigureTransformations(IMapperConfigurationExpression expression)
         {
-            expression.CreateMap<VersionCode, CLPR.VersionCode>();
+            expression.CreateMap<VersionCode, CLPR.VersionCode>()
+                .ForMember(vc => vc.ExpireDateAsString, config => config.Ignore());
 
             expression.CreateMap<CLPR.VersionCode, VersionCode>()
                 .ForMember(vc => vc.ClinicUsedDrug, config => config.Ignore())

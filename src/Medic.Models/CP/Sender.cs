@@ -16,6 +16,6 @@ namespace Medic.Models.CP
         public int? Speciality { get; set; }
 
         [XmlElement(ElementName = "NumNapr")]
-        public int ClinicalPathNumber { get; set; }
+        public int ClinicalNumber { get; set; }
     }
 }

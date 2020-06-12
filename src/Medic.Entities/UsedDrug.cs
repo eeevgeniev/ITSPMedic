@@ -39,6 +39,8 @@ namespace Medic.Entities
 
         public VersionCode VersionCode { get; set; }
 
+        public int OutId { get; set; }
+
         public Out Out { get; set; }
     }
 }

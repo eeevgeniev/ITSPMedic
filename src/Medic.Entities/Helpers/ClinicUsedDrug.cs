@@ -20,6 +20,7 @@ namespace Medic.Entities
 
             expression.CreateMap<CLPR.ClinicUsedDrug, ClinicUsedDrug>()
                 .ForMember(cud => cud.VersionCodeId, config => config.Ignore())
+                .ForMember(cud => cud.PathProcedureId, config => config.Ignore())
                 .ForMember(cud => cud.PathProcedure, config => config.Ignore())
                 .ForMember(cud => cud.Id, config => config.Ignore());
 

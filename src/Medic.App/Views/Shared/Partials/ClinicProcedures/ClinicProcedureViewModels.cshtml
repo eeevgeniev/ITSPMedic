@@ -1,0 +1,24 @@
+﻿@model List<ClinicProcedureViewModel>
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default && Model.Count > 0)
+{
+    foreach (var currentProcedure in Model)
+    {
+        <hr />
+        <div>
+            <div class="row">
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get("ProcedureName")): @currentProcedure.ProcedureName</div>
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get("ProcedureCode")): @currentProcedure.ProcedureCode</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get("ProcedureDate")): @currentProcedure.ProcedureDate.ToShortDateString()</div>
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get("ACHIcode")): @currentProcedure.ACHIcode</div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+}

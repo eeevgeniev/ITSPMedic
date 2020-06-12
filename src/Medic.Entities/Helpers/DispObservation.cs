@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Medic.AppModels.DispObservations;
-using System.ComponentModel;
+using System.Collections.Generic;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -17,6 +17,7 @@ namespace Medic.Entities
             expression.CreateMap<DispObservation, CLPR.DispObservation>()
                 .ForMember(disp => disp.PatientBranch, config => config.MapFrom(disp => disp.PatientBranch == default && disp.PatientBranch.HealthRegion == default ? default : disp.PatientBranch.HealthRegion.Code))
                 .ForMember(disp => disp.PatientHRegion, config => config.MapFrom(disp => disp.PatientHRegion == default ? default : disp.PatientHRegion.Code))
+                .ForMember(disp => disp.CodeSpecConsults, config => config.MapFrom(disp => disp.FirstCodeSpecConsult != default ? new List<string>() { disp.FirstCodeSpecConsult, disp.SecondCodeSpecConsult } : default))
                 .ForMember(disp => disp.DispDateAsString, config => config.Ignore())
                 .ForMember(disp => disp.DispTimeAsString, config => config.Ignore())
                 .ForMember(disp => disp.DiagDateAsString, config => config.Ignore())
@@ -33,6 +34,8 @@ namespace Medic.Entities
                 .ForMember(disp => disp.MainDiagSecondId, config => config.Ignore())
                 .ForMember(disp => disp.HospitalPracticeId, config => config.Ignore())
                 .ForMember(disp => disp.HospitalPractice, config => config.Ignore())
+                .ForMember(disp => disp.FirstCodeSpecConsult, config => config.MapFrom(disp => disp.CodeSpecConsults != default && disp.CodeSpecConsults.Count > 0 ? disp.CodeSpecConsults[0] : default))
+                .ForMember(disp => disp.SecondCodeSpecConsult, config => config.MapFrom(disp => disp.CodeSpecConsults != default && disp.CodeSpecConsults.Count > 1 ? disp.CodeSpecConsults[1] : default))
                 .ForMember(disp => disp.Id, config => config.Ignore());
 
             expression.CreateMap<DispObservation, PatientDispObservationPreviewViewModel>()

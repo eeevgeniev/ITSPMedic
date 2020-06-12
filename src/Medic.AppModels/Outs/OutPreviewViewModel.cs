@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.AppModels.Diagnoses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,6 +8,9 @@ namespace Medic.AppModels.Outs
     public class OutPreviewViewModel
     {
         public int Id { get; set; }
+
+        [Display(Name = nameof(UniqueIdentifier))]
+        public string UniqueIdentifier { get; set; }
 
         [Display(Name = nameof(OutDate))]
         public DateTime OutDate { get; set; }
@@ -19,16 +23,16 @@ namespace Medic.AppModels.Outs
 
         public int PatientId { get; set; }
 
-        [Display(Name = nameof(OutCodeDiagnoses))]
-        public List<string> OutCodeDiagnoses { get; set; }
-
-        [Display(Name = nameof(SendDiagnoseCode))]
-        public string SendDiagnoseCode { get; set; }
+        [Display(Name = nameof(SendDiagnoses))]
+        public List<DiagnosePreviewViewModel> SendDiagnoses { get; set; }
 
         [Display(Name = nameof(Diagnoses))]
-        public List<string> Diagnoses { get; set; }
+        public List<DiagnosePreviewViewModel> Diagnoses { get; set; }
 
-        [Display(Name = nameof(UsedDrugCode))]
-        public string UsedDrugCode { get; set; }
+        [Display(Name = nameof(OutDiagnoses))]
+        public List<DiagnosePreviewViewModel> OutDiagnoses { get; set; }
+
+        [Display(Name = nameof(UsedDrugCodes))]
+        public List<string> UsedDrugCodes { get; set; }
     }
 }

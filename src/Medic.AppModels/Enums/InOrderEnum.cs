@@ -7,8 +7,6 @@ namespace Medic.AppModels.Enums
         [Display(Name = nameof(Default))]
         Default,
         [Display(Name = nameof(EntryDate))]
-        EntryDate,
-        [Display(Name = nameof(SendDiagnoseCode))]
-        SendDiagnoseCode
+        EntryDate
     }
 }

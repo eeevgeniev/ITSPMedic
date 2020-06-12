@@ -18,9 +18,7 @@ namespace Medic.Entities
 
         public string ExpandDiagnose { get; set; }
 
-        public int? AddDiagId { get; set; }
-
-        public Diag AddDiag { get; set; }
+        public ICollection<Diag> AddDiags { get; set; } = new HashSet<Diag>();
 
         public int? HistologyId { get; set; }
 
@@ -30,7 +28,11 @@ namespace Medic.Entities
 
         public string Staging { get; set; }
 
+        public int? StagingNumber { get; set; }
+
         public string TNM { get; set; }
+
+        public decimal? TargetAUC { get; set; }
 
         public ICollection<GenMarker> GenMarkers { get; set; } = new HashSet<GenMarker>();
 
@@ -43,6 +45,8 @@ namespace Medic.Entities
         public int? EvaluationId { get; set; }
 
         public Evaluation Evaluation { get; set; }
+
+        public int? Status { get; set; }
 
         public int? ProtocolDrugTherapyId { get; set; }
 

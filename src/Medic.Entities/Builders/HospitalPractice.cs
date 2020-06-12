@@ -36,9 +36,17 @@ namespace Medic.Entities
                     .WithOne(pdt => pdt.HospitalPractice)
                     .HasForeignKey(pdt => pdt.HospitalPracticeId);
 
+                b.HasMany(model => model.DrugResidues)
+                    .WithOne(dr => dr.HospitalPractice)
+                    .HasForeignKey(dr => dr.HospitalPracticeId);
+
                 b.HasMany(model => model.Transfers)
                     .WithOne(t => t.HospitalPractice)
                     .HasForeignKey(t => t.HospitalPracticeId);
+
+                b.HasMany(model => model.DrugPacks)
+                    .WithOne(dp => dp.HospitalPractice)
+                    .HasForeignKey(dp => dp.HospitalPracticeId);
 
                 b.HasOne(model => model.Practice)
                     .WithMany(p => p.HospitalPractices)

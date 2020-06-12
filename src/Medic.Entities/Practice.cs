@@ -28,6 +28,10 @@ namespace Medic.Entities
 
         public string Address { get; set; }
 
+        public string NZOKCode { get; set; }
+
+        public Redirected Redirected { get; set; }
+
         public ICollection<CPFile> CPFiles { get; set; } = new HashSet<CPFile>();
 
         public ICollection<HospitalPractice> HospitalPractices { get; set; } = new HashSet<HospitalPractice>();

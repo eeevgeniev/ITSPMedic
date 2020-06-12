@@ -37,6 +37,9 @@ namespace Medic.Models.CLPR
         [XmlElement(ElementName = "TypeProc_Send")]
         public int TypeProcSend { get; set; }
 
+        [XmlElement(ElementName = "sendPackageType")]
+        public int? SendPackageType { get; set; }
+
         [XmlIgnore]
         public DateTime DateSend
         {
@@ -63,19 +66,35 @@ namespace Medic.Models.CLPR
         [XmlElement(ElementName = "APr_Priem")]
         public decimal? APrPriem { get; set; }
 
+        [XmlElement(ElementName = "MedicalWard")]
         public decimal MedicalWard { get; set; }
+
+        [XmlElement(ElementName = "BirthPractice")]
+        public string BirthPractice { get; set; }
+
+        [XmlElement(ElementName = "BirthNum")]
+        public int? BirthNumber { get; set; }
+
+        [XmlElement(ElementName = "BirthGestWeek")]
+        public int? BirthGestWeek { get; set; }
 
         [XmlElement(ElementName = "TypeProc_Priem")]
         public int TypeProcPriem { get; set; }
+
+        [XmlElement(ElementName = "PackageType")]
+        public int? PackageType { get; set; }
 
         [XmlElement(ElementName = "Proc_Refuse")]
         public int ProcRefuse { get; set; }
 
         [XmlElement(ElementName = "ceasedProc")]
-        public CeasedClinicalPath CeasedProcedure { get; set; }
+        public CeasedClinical CeasedProcedure { get; set; }
 
         [XmlElement(ElementName = "ceasedClinicalPath")]
-        public CeasedClinicalPath CeasedClinicalPath { get; set; }
+        public CeasedClinical CeasedClinicalPath { get; set; }
+
+        [XmlElement(ElementName = "ceasedOnly")]
+        public CeasedClinical CeasedOnly { get; set; }
 
         [XmlElement(ElementName = "IZNum_Child")]
         public string IZNumChild { get; set; }
@@ -122,6 +141,9 @@ namespace Medic.Models.CLPR
                 _datePlanPriem = DateTime.Parse(value, CultureInfo.InvariantCulture);
             }
         }
+
+        [XmlElement(ElementName = "plannedNo")]
+        public int? PlannedNumber { get; set; }
 
         [XmlElement(ElementName = "UIN_PriemDoc")]
         public string VisitDocumentUniqueIdentifier { get; set; }
@@ -179,7 +201,7 @@ namespace Medic.Models.CLPR
         public List<DoneNewProcedure> DoneNewProcedures { get; set; }
 
         [XmlElement(ElementName = "Used_Drug")]
-        public ClinicUsedDrug UsedDrug { get; set; }
+        public List<ClinicUsedDrug> UsedDrugs { get; set; }
 
         [XmlElement(ElementName = "Procedure")]
         public List<ClinicProcedure> ClinicProcedures { get; set; }
@@ -190,11 +212,24 @@ namespace Medic.Models.CLPR
         [XmlElement(ElementName = "All_Done_Proc")]
         public decimal AllDoneProcedures { get; set; }
 
-        [XmlElement(ElementName = "All_Done_Cost")]
-        public decimal AllDoneCost { get; set; }
+        [XmlElement(ElementName = "All_Days")]
+        public int? AllDays { get; set; }
+
+        [XmlElement(ElementName = "All_Drug_Cost")]
+        public decimal AllDrugCost { get; set; }
+
+
+        [XmlElement(ElementName = "redirectedClinicalPath")]
+        public string RedirectedClinicalPath { get; set; }
+
+        [XmlElement(ElementName = "redirectedProc")]
+        public string RedirectedProc { get; set; }
 
         [XmlElement(ElementName = "pacientStatus")]
         public int PatientStatus { get; set; }
+
+        [XmlElement(ElementName = "EndCourse11_12")]
+        public int? EndCourse { get; set; }
 
         [XmlElement(ElementName = "outUin")]
         public string OutUniqueIdentifier { get; set; }

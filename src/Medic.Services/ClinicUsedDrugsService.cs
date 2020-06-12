@@ -1,19 +1,18 @@
-﻿using Medic.Contexts;
+﻿using Medic.Contexts.Contracts;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Medic.Services
 {
     public class ClinicUsedDrugsService : IClinicUsedDrugsService
     {
-        private readonly MedicContext MedicContext;
+        private readonly IMedicContext MedicContext;
 
-        public ClinicUsedDrugsService(MedicContext medicContext)
+        public ClinicUsedDrugsService(IMedicContext medicContext)
         {
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
         }

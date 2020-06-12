@@ -24,7 +24,6 @@ namespace Medic.App.Controllers
     {
         private readonly IPathProcedureService PathProcedureService;
         private readonly IClinicUsedDrugsService ClinicUsedDrugsService;
-        private readonly MedicDataLocalization MedicDataLocalization;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public PathProcedureController(IPathProcedureService pathProcedureService,
@@ -34,11 +33,10 @@ namespace Medic.App.Controllers
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
-            : base (patientService, healthRegionService, medicCache)
+            : base (patientService, healthRegionService, medicCache, medicDataLocalization)
         {
             PathProcedureService = pathProcedureService ?? throw new ArgumentNullException(nameof(pathProcedureService));
             ClinicUsedDrugsService = clinicUsedDrugsService ?? throw new ArgumentNullException(nameof(clinicUsedDrugsService));
-            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
@@ -54,8 +52,6 @@ namespace Medic.App.Controllers
                 string pathProceduresKey = $"{nameof(PathProcedurePreviewViewModel)} - {startIndex} - {searchParams}";
                 string pathProceduresCountKey = $"{MedicConstants.PathProcedures} - {searchParams}";
 
-                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
                 List<string> usedDrugCodes = new List<string>() { default };
 
                 if (!base.MedicCache.TryGetValue(pathProceduresKey, out List<PathProcedurePreviewViewModel> pathProcedures))
@@ -76,9 +72,11 @@ namespace Medic.App.Controllers
                     base.MedicCache.Set(pathProceduresCountKey, pathProceduresCount);
                 }
 
-                sexOptions.AddRange(await base.GetSexes());
+                List<SexOption> sexOptions = base.GetDefaultSexes();
+                sexOptions.AddRange(await base.GetSexesAsync());
 
-                healthRegions.AddRange(await base.GetHelathRegions());
+                List<HealthRegionOption> healthRegions = base.GetDefaultHealthRegions();
+                healthRegions.AddRange(await base.GetHealthRegionsAsync());
 
                 if (!base.MedicCache.TryGetValue(MedicConstants.ClinicUsedDrugsCode, out List<string> usedDrugs))
                 {

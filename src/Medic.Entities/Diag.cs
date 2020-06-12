@@ -27,30 +27,32 @@ namespace Medic.Entities
 
         public MKB LinkDMKB { get; set; }
 
-        public ChemotherapyPart ChemotherapyPart { get; set; } //added
+        public int? ChemotherapyPartId { get; set; }
 
-        public InClinicProcedure FirstInClinicProcedure { get; set; } // added
+        public ChemotherapyPart ChemotherapyPart { get; set; }
 
-        public InClinicProcedure SecondInClinicProcedure { get; set; } // added
+        public InClinicProcedure FirstInClinicProcedure { get; set; } 
 
-        public PathProcedure FirstPathProcedure { get; set; } // added
+        public InClinicProcedure SecondInClinicProcedure { get; set; } 
 
-        public PathProcedure SecondPathProcedure { get; set; } // added
+        public PathProcedure FirstPathProcedure { get; set; } 
 
-        public ProtocolDrugTherapy ProtocolDrugTherapy { get; set; } // added
+        public PathProcedure SecondPathProcedure { get; set; } 
 
-        public CommissionApr CommissionAprMain { get; set; } // added
+        public ProtocolDrugTherapy ProtocolDrugTherapy { get; set; } 
+
+        public CommissionApr CommissionAprMain { get; set; } 
 
         public int? CommissionAprId { get; set; }
 
-        public CommissionApr CommissionApr { get; set; } // added
+        public CommissionApr CommissionApr { get; set; }
 
-        public DispObservation FirstDispObservation { get; set; } // added
+        public DispObservation FirstDispObservation { get; set; } 
 
-        public DispObservation SecondDispObservation { get; set; } // added
+        public DispObservation SecondDispObservation { get; set; } 
 
-        public Transfer FirstPatientTransfer { get; set; } // added
+        public Transfer FirstPatientTransfer { get; set; }
 
-        public Transfer SecondPatientTransfer { get; set; } // added
+        public Transfer SecondPatientTransfer { get; set; } 
     }
 }

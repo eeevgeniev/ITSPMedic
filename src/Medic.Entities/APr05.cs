@@ -21,6 +21,10 @@ namespace Medic.Entities
 
         public string Staging { get; set; }
 
+        public int? StagingNumber { get; set; }
+
+        public int PrognosticGroup { get; set; }
+
         public string Imuno { get; set; }
 
         public string Genetic { get; set; }

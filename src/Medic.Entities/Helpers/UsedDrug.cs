@@ -20,6 +20,7 @@ namespace Medic.Entities
 
             expression.CreateMap<CP.UsedDrug, UsedDrug>()
                 .ForMember(ud => ud.Out, config => config.Ignore())
+                .ForMember(ud => ud.OutId, config => config.Ignore())
                 .ForMember(ud => ud.Id, config => config.Ignore());
 
             expression.CreateMap<UsedDrug, UsedDrugSummaryViewModel>()

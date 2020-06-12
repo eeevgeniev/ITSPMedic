@@ -25,7 +25,7 @@ namespace Medic.App.Infrastructure
         internal const string ClinicUsedDrugsCode = "ClinicUsedDrugsCode";
         internal const string CommissionAprs = "CommissionAprs";
         internal const string DispObservations = "DispObservations";
-        internal const string PlannedProcedures = "PlannedProcedures";
+        internal const string Planned = "Planned";
         internal const string AtcNames = "AtcNames";
     }
 }

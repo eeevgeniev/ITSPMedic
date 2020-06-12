@@ -3,15 +3,15 @@
 
 @if (Model != default)
 {
+    <hr/>
     <div>
         <div class="row">
-            <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("NameHS")</div>
-            <div class="col-sm-6 font-weight-bold">@medicDataLocalization.Get("CodeHS")</div>
+            <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("NameHS")):</div>
+            <div class="col-sm-8">@Model.NameHS</div>
         </div>
-        <hr />
         <div class="row">
-            <div class="col-sm-6">@Model.NameHS</div>
-            <div class="col-sm-6">@Model.CodeHS</div>
+            <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("CodeHS")):</div>
+            <div class="col-sm-8">@Model.CodeHS</div>
         </div>
         <div>
             <partial name="~/Views/Shared/Partials/APr05s/APr05PreviewViewModel.cshtml" model="@Model.APr05" />
@@ -20,5 +20,5 @@
 }
 else
 {
-    <div class="text-center text-info">@medicDataLocalization.Get("NoResults")</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
 }

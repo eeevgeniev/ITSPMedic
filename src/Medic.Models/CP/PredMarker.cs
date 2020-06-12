@@ -7,5 +7,8 @@ namespace Medic.Models.CP
     {
         [XmlElement(ElementName = "Choise")]
         public List<Choice> Choices { get; set; }
+
+        [XmlElement(ElementName = "Marker")]
+        public List<Marker> Markers { get; set; }
     }
 }

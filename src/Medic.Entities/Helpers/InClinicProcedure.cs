@@ -36,6 +36,8 @@ namespace Medic.Entities
                 .ForMember(icp => icp.PatientId, config => config.Ignore())
                 .ForMember(icp => icp.SenderId, config => config.Ignore())
                 .ForMember(icp => icp.CeasedClinicalPathId, config => config.Ignore())
+                .ForMember(icp => icp.CeasedProcedureId, config => config.Ignore())
+                .ForMember(icp => icp.CeasedOnlyId, config => config.Ignore())
                 .ForMember(icp => icp.Id, config => config.Ignore());
 
             expression.CreateMap<InClinicProcedure, PatientInClinicProcedurePreviewViewModel>()

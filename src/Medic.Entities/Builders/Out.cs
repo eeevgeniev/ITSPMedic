@@ -34,11 +34,9 @@ namespace Medic.Entities
 
                 b.HasIndex(model => model.SenderId).IsUnique(false);
 
-                b.HasOne(model => model.SendDiagnose)
+                b.HasMany(model => model.SendDiagnoses)
                     .WithOne(d => d.SendOut)
-                    .HasForeignKey<Out>(model => model.SendDiagnoseId);
-
-                b.HasIndex(model => model.SendDiagnoseId).IsUnique(false);
+                    .HasForeignKey(d => d.SendOutId);
 
                 b.HasMany(model => model.Diagnoses)
                     .WithOne(d => d.Out)
@@ -76,11 +74,21 @@ namespace Medic.Entities
 
                 b.HasIndex(model => model.EpicrisisId).IsUnique(false);
 
-                b.HasOne(model => model.UsedDrug)
+                b.HasMany(model => model.UsedDrugs)
                     .WithOne(ud => ud.Out)
-                    .HasForeignKey<Out>(model => model.UsedDrugId);
+                    .HasForeignKey(ud => ud.OutId);
 
-                b.HasIndex(model => model.UsedDrugId).IsUnique(false);
+                b.HasOne(model => model.Resign)
+                    .WithOne(r => r.Out)
+                    .HasForeignKey<Out>(model => model.ResignId);
+
+                b.HasIndex(model => model.ResignId).IsUnique(false);
+
+                b.HasOne(model => model.Redirected)
+                    .WithOne(r => r.Out)
+                    .HasForeignKey<Out>(model => model.RedirectedId);
+
+                b.HasIndex(model => model.RedirectedId).IsUnique(false);
 
                 b.HasIndex(model => model.CPFileId).IsUnique(false);
 
@@ -96,11 +104,13 @@ namespace Medic.Entities
 
                 b.Property(model => model.HLNumber).HasMaxLength(12);
 
+                b.Property(model => model.IZinDetail).HasMaxLength(4000);
+
+                b.Property(model => model.LinkMedia).HasMaxLength(250);
+
                 b.Property(model => model.InMedicalWard).HasColumnType("decimal(15,4)");
 
                 b.Property(model => model.OutMedicalWard).HasColumnType("decimal(15,4)");
-
-
             });
         }
     }

@@ -14,74 +14,82 @@
     ViewData[Constants.UsedDrugs] = Model.UsedDrugCodes;
 }
 
-    <article>
-        <header>
-            <h2 class="text-center">@($"{medicDataLocalization.Get("OutsView")}: {@Model.TotalResults} {@medicDataLocalization.Get("Results")}")</h2>
-            <h4 class="text-center text-info">@Model.Keywords</h4>
-        </header>
-        <section>
-            <partial name="~/Views/Shared/Partials/Outs/OutSearch.cshtml" model="@Model.Search" view-data="@ViewData" />
-        </section>
-        <section class="mt-sm-1 clearfix">
-            <partial name="~/Views/Shared/Partials/Outs/OutOrder.cshtml" model="@Model.Search" />
-        </section>
-        <section class="mt-sm-1">
-            @if (Model.Outs != default && Model.Outs.Count > 0)
-            {
-                <div>
-                    <div class="row">
-                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutDate")</div>
-                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutMainDiagnoseCode")</div>
-                        <div class="col-sm-4 font-weight-bold">@medicDataLocalization.Get("OutDiagnoseName")</div>
-                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("OutDiagnoses")</div>
-                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("SendDiagnose")</div>
-                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("SendDiagnoses")</div>
-                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("UsedDrug")</div>
-                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
-                        <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewOut")</div>
-                    </div>
-                    @foreach (OutPreviewViewModel currentOut in Model.Outs)
-                    {
-                        <hr />
-                        <div class="row">
-                            <div class="col-sm-1">@currentOut.OutDate.ToShortDateString()</div>
-                            <div class="col-sm-1">@currentOut.OutMainDiagnoseCode</div>
-                            <div class="col-sm-4">@currentOut.OutMainDiagnoseName</div>
-                            <div class="col-sm-1">@string.Join(", ", currentOut.OutCodeDiagnoses)</div>
-                            <div class="col-sm-1">@currentOut.SendDiagnoseCode</div>
-                            <div class="col-sm-1">@string.Join(", ", currentOut.Diagnoses)</div>
-                            <div class="col-sm-1">@currentOut.UsedDrugCode</div>
-                            <div class="col-sm-1">
-                                <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
-                                   asp-action="@nameof(PatientController.Patient)"
-                                   asp-route-id="@currentOut.PatientId" class="btn btn-info">@medicDataLocalization.Get("View")</a>
-                            </div>
-                            <div class="col-sm-1">
-                                <a asp-controller="@MedicBaseController.GetName(nameof(OutController))"
-                                   asp-action="@nameof(OutController.Out)"
-                                   asp-route-id="@currentOut.Id"
-                                   class="btn btn-default">@medicDataLocalization.Get("View")</a>
-                            </div>
-                        </div>
-                    }
+<article>
+    <header>
+        <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get("OutsView"))}: {@Model.TotalResults} {@Html.Raw(medicDataLocalization.Get("Results"))}")</h2>
+        <h4 class="text-center text-info">@Model.Keywords</h4>
+    </header>
+    <section>
+        <partial name="~/Views/Shared/Partials/Outs/OutSearch.cshtml" model="@Model.Search" view-data="@ViewData" />
+    </section>
+    <section class="mt-sm-1 clearfix">
+        <partial name="~/Views/Shared/Partials/Outs/OutOrder.cshtml" model="@Model.Search" />
+    </section>
+    <section class="mt-sm-1">
+        @if (Model.Outs != default && Model.Outs.Count > 0)
+        {
+            <div>
+                <div class="row">
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("OutDate"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("UniqueIdentifier"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("OutMainDiagnoseCode"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("OutDiagnoseName"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("OutDiagnoses"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("SendDiagnoses"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("UsedDrug"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewPatient"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewOut"))</div>
                 </div>
-                <footer>
-                    <pager page-count="@Model.TotalPages"
-                           current-page="@Model.CurrentPage"
-                           controller-name="@MedicBaseController.GetName(nameof(OutController))"
-                           action-name="@nameof(OutController.Index)"
-                           additional-properties="@paramsByName"
-                           nav-class-names="btn-toolbar"
-                           ul-class-names="pagination"
-                           li-class-names="page-item"
-                           li-selected-class-names="page-item active"
-                           anchor-class-names="page-link">
-                    </pager>
-                </footer>
-            }
-            else
-            {
-                <span>@medicDataLocalization.Get("NoResults")</span>
-            }
-        </section>
-    </article>
+                @foreach (OutPreviewViewModel currentOut in Model.Outs)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-1">@currentOut.OutDate.ToShortDateString()</div>
+                        <div class="col-sm-1">@currentOut.UniqueIdentifier</div>
+                        <div class="col-sm-1">@currentOut.OutMainDiagnoseCode</div>
+                        <div class="col-sm-2">@currentOut.OutMainDiagnoseName</div>
+                        <div class="col-sm-2">@string.Join(", ", currentOut.OutDiagnoses)</div>
+                        <div class="col-sm-2">@string.Join(", ", currentOut.Diagnoses)</div>
+                        <div class="col-sm-1">@string.Join(", ", currentOut.UsedDrugCodes)</div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
+                               asp-action="@nameof(PatientController.Patient)"
+                               asp-route-id="@currentOut.PatientId" class="btn btn-info">@Html.Raw(medicDataLocalization.Get("View"))</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(OutController))"
+                               asp-action="@nameof(OutController.Out)"
+                               asp-route-id="@currentOut.Id"
+                               class="btn btn-secondary">@Html.Raw(medicDataLocalization.Get("View"))</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <footer>
+                <pager page-count="@Model.TotalPages"
+                       current-page="@Model.CurrentPage"
+                       controller-name="@MedicBaseController.GetName(nameof(OutController))"
+                       action-name="@nameof(OutController.Index)"
+                       additional-properties="@paramsByName"
+                       nav-class-names="btn-toolbar"
+                       ul-class-names="pagination"
+                       li-class-names="page-item"
+                       li-selected-class-names="page-item active"
+                       anchor-class-names="page-link">
+                </pager>
+            </footer>
+        }
+        else
+        {
+            <span>@Html.Raw(medicDataLocalization.Get("NoResults"))</span>
+        }
+    </section>
+</article>
+@section Scripts {
+    <environment names="Development">
+        <script defer src="~/js/formreset.js"></script>
+    </environment>
+    <environment names="Production">
+        <script defer src="~/js/formreset.min.js"></script>
+    </environment>
+}

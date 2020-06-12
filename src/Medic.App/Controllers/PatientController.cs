@@ -21,7 +21,6 @@ namespace Medic.App.Controllers
     public class PatientController : SexBaseController
     {
         private readonly PatientLocalization PatientLocalization;
-        private readonly MedicDataLocalization MedicDataLocalization;
         private readonly IMedicLoggerService MedicLoggerService;
 
         public PatientController(IPatientService patientService, 
@@ -29,10 +28,9 @@ namespace Medic.App.Controllers
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
             IMedicLoggerService medicLoggerService)
-            : base (patientService, medicCache)
+            : base (patientService, medicCache, medicDataLocalization)
         {
             PatientLocalization = patientLocalization ?? throw new ArgumentNullException(nameof(patientLocalization));
-            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
         
@@ -48,7 +46,6 @@ namespace Medic.App.Controllers
                 string patientsCountKey = $"{MedicConstants.PatientsCount} - {searchParams}";
 
                 List<PatientPreviewViewModel> patientsModel;
-                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
 
                 PatientWhereBuilder patientWhereBuilder = new PatientWhereBuilder(search);
 
@@ -68,7 +65,8 @@ namespace Medic.App.Controllers
                     base.MedicCache.Set(patientsCountKey, patientsCount);
                 }
 
-                sexOptions.AddRange(await base.GetSexes());
+                List<SexOption> sexOptions = base.GetDefaultSexes();
+                sexOptions.AddRange(await base.GetSexesAsync());
 
                 return View(new PatientPageIndexModel()
                 {

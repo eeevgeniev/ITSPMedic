@@ -35,6 +35,12 @@ namespace Medic.Models.CLPR
         [XmlElement(ElementName = "Staging")]
         public string Staging { get; set; }
 
+        [XmlElement(ElementName = "Staging_No")]
+        public int? StagingNumber { get; set; }
+
+        [XmlElement(ElementName = "Prognostic_Group")]
+        public int PrognosticGroup { get; set; }
+
         [XmlElement(ElementName = "Imuno")]
         public string Imuno { get; set; }
 

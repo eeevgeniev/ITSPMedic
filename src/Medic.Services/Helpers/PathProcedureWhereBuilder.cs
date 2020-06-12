@@ -41,7 +41,7 @@ namespace Medic.Services.Helpers
 
             if (!string.IsNullOrWhiteSpace(PathProcedureSearch.UsedDrugCode))
             {
-                queryable = queryable.Where(pp => EF.Functions.Like(pp.UsedDrug.DrugCode, PathProcedureSearch.UsedDrugCode));
+                queryable = queryable.Where(pp => pp.UsedDrugs.Any(ud => EF.Functions.Like(ud.DrugCode, PathProcedureSearch.UsedDrugCode)));
             }
 
             if (PathProcedureSearch.Sex != default)

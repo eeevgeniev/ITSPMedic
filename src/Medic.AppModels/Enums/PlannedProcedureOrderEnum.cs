@@ -2,15 +2,11 @@
 
 namespace Medic.AppModels.Enums
 {
-    public enum PlannedProcedureOrderEnum
+    public enum PlannedOrderEnum
     {
         [Display(Name = nameof(Default))]
         Default,
         [Display(Name = nameof(SendDate))]
-        SendDate,
-        [Display(Name = nameof(SendDiagnoseCode))]
-        SendDiagnoseCode,
-        [Display(Name = nameof(DiagnoseCode))]
-        DiagnoseCode
+        SendDate
     }
 }

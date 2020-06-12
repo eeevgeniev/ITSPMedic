@@ -23,6 +23,8 @@ namespace Medic.Entities
 
         public string Days { get; set; }
 
+        public int? NumberOfDays { get; set; }
+
         public string ApplicationWay { get; set; }
 
         public decimal StandartDose { get; set; }

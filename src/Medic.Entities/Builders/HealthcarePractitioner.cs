@@ -10,10 +10,6 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
-                b.HasMany(model => model.HealthcarePractitionerEpicrisises)
-                    .WithOne(hpe => hpe.HealthcarePractitioner)
-                    .HasForeignKey(hpe => hpe.HealthcarePractitionerId);
-
                 b.HasMany(model => model.ProtocolDrugTherapies)
                     .WithOne(pdthp => pdthp.HealthcarePractitioner)
                     .HasForeignKey(pdthp => pdthp.HealthcarePractitionerId);
@@ -50,7 +46,11 @@ namespace Medic.Entities
 
                 b.Property(model => model.DeputyUniqueIdentifier).HasMaxLength(12);
 
-                b.Property(model => model.Name).HasMaxLength(100);
+                b.Property(model => model.Name).HasMaxLength(150);
+
+                b.Property(model => model.NZOKCode).HasMaxLength(12);
+
+                b.Property(model => model.UINSubst).HasMaxLength(12);
             });
         }
     }

@@ -20,9 +20,15 @@ namespace Medic.Entities
                     .WithMany(p => p.Implants)
                     .HasForeignKey(model => model.ProviderId);
 
+                b.HasOne(model => model.ClinicProcedure)
+                    .WithMany(cp => cp.Implants)
+                    .HasForeignKey(model => model.ClinicProcedureId);
+
+                b.HasIndex(model => model.ClinicProcedureId).IsUnique(false);
+
                 b.HasIndex(model => model.ProviderId).IsUnique(false);
 
-                b.Property(model => model.TradeName).HasMaxLength(500);
+                b.Property(model => model.TradeName).HasMaxLength(600);
 
                 b.Property(model => model.ReferenceNumber).HasMaxLength(10);
 

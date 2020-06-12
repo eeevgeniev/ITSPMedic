@@ -48,7 +48,7 @@ namespace Medic.Services.Helpers
 
             if (!string.IsNullOrEmpty(OutSearch.SendDiagnose))
             {
-                queryable = queryable.Where(o => EF.Functions.Like(o.SendDiagnose.Primary.Code, OutSearch.SendDiagnose));
+                queryable = queryable.Where(o => o.SendDiagnoses.Any(d => EF.Functions.Like(d.PrimaryCode, OutSearch.SendDiagnose)));
             }
 
             if (OutSearch.CountOfAdditionalSendDiagnoses != default)
@@ -60,7 +60,7 @@ namespace Medic.Services.Helpers
 
             if (!string.IsNullOrWhiteSpace(OutSearch.UsedDrug))
             {
-                queryable = queryable.Where(o => EF.Functions.Like(o.UsedDrug.Code, OutSearch.UsedDrug));
+                queryable = queryable.Where(o => o.UsedDrugs.Any(ud => EF.Functions.Like(ud.Code, OutSearch.UsedDrug)));
             }
 
             if (OutSearch.HealthRegion != default)

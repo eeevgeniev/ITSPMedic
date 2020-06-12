@@ -40,10 +40,6 @@ namespace Medic.Services.Helpers
                     query = PathProcedureSearch.Direction == OrderDirectionEnum.Asc ?
                         query.OrderBy(pp => pp.SecondMainDiag.MKBCode) : query.OrderByDescending(pp => pp.SecondMainDiag.MKBCode);
                     break;
-                case PathProcedureOrderEnum.UsedDrugCode:
-                    query = PathProcedureSearch.Direction == OrderDirectionEnum.Asc ?
-                        query.OrderBy(pp => pp.UsedDrug.DrugCode) : query.OrderByDescending(pp => pp.UsedDrug.DrugCode);
-                    break;
                 case PathProcedureOrderEnum.DateSend:
                     query = PathProcedureSearch.Direction == OrderDirectionEnum.Asc ?
                         query.OrderBy(pp => pp.DateSend) : query.OrderByDescending(pp => pp.DateSend);

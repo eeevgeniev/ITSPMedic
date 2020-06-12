@@ -28,6 +28,12 @@ namespace Medic.Entities
 
                 b.Property(model => model.PracticeCodeProtocol).HasMaxLength(20);
 
+                b.HasOne(model => model.PathProcedure)
+                    .WithMany(pp => pp.UsedDrugs)
+                    .HasForeignKey(model => model.PathProcedureId);
+
+                b.HasIndex(model => model.PathProcedureId).IsUnique(false);
+
                 b.Property(model => model.DrugCost).HasColumnType("decimal(15,4)");
 
                 b.Property(model => model.DrugQuantity).HasColumnType("decimal(15,4)");

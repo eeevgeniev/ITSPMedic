@@ -1,0 +1,42 @@
+﻿@model List<ClinicUsedDrugViewModel>
+@inject MedicDataLocalization medicDataLocalization
+
+@if (Model != default && Model.Count > 0)
+{
+    foreach (ClinicUsedDrugViewModel currentDrug in Model)
+    {
+        <div>
+            <div class="row">
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugDate")): @currentDrug.DrugDate.ToString("d")</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugCode")): @currentDrug.DrugCode</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugName")): @currentDrug.DrugName</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugQuantity")): @currentDrug.DrugQuantity</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugCost")): @currentDrug.DrugCost</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ICDDrug")): @currentDrug.ICDDrug</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("UINPrescr")): @currentDrug.UINPrescr</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("NoPrescr")): @currentDrug.NoPrescr</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DatePrescr")): @(currentDrug.DatePrescr.ToString("d"))</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("PracticeCodeProtocol")): @currentDrug.PracticeCodeProtocol</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ProtocolNumber")): @currentDrug.ProtocolNumber</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ProtocolDate")): @currentDrug.ProtocolDate.ToString("d")</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ProtocolType")): @currentDrug.ProtocolType</div>
+            </div>
+            <div>
+                <div class="text-center font-weight-bold">@Html.Raw(medicDataLocalization.Get("VersionCode"))</div>
+                <partial name="~/Views/Shared/Partials/VersionCodes/VersionCodeViewModel.cshtml" model="@currentDrug.VersionCode" />
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+}

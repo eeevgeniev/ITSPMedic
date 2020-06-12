@@ -4,7 +4,7 @@ using Medic.AppModels.InClinicProcedures;
 using Medic.AppModels.Ins;
 using Medic.AppModels.Outs;
 using Medic.AppModels.PathProcedures;
-using Medic.AppModels.PlannedProcedures;
+using Medic.AppModels.Plannings;
 using Medic.AppModels.ProtocolDrugTherapies;
 using System;
 using System.Collections.Generic;
@@ -54,6 +54,6 @@ namespace Medic.AppModels.Patients
 
         public ICollection<PatientDispObservationPreviewViewModel> DispObservations { get; set; }
 
-        public ICollection<PatientPlannedProcedurePreviewViewModel> PlannedProcedures { get; set; }
+        public ICollection<PatientPlannedPreviewViewModel> Plannings { get; set; }
     }
 }

@@ -45,7 +45,7 @@ namespace Medic.AppModels.CommissionAprs
 
         public DiagPreviewViewModel MainDiag { get; set; }
 
-        public List<DiagPreviewViewModel> AddDiag { get; set; }
+        public List<DiagPreviewViewModel> AddDiags { get; set; }
 
         public APr38PreviewViewModel APr38 { get; set; }
 

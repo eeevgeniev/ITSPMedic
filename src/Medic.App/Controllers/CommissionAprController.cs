@@ -22,19 +22,17 @@ namespace Medic.App.Controllers
     public class CommissionAprController : LookupsBaseController
     {
         private readonly ICommissionAprService CommissionAprService;
-        private readonly MedicDataLocalization MedicDataLocalization;
-        private readonly IMedicLoggerService MedicLoggerService;
+        protected readonly IMedicLoggerService MedicLoggerService;
 
         public CommissionAprController(ICommissionAprService commissionAprService,
             IPatientService patientService,
             IHealthRegionService healthRegionService,
-            MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
+            MedicDataLocalization medicDataLocalization,
             IMedicLoggerService medicLoggerService)
-            : base (patientService, healthRegionService, medicCache)
+            : base (patientService, healthRegionService, medicCache, medicDataLocalization)
         {
             CommissionAprService = commissionAprService ?? throw new ArgumentNullException(nameof(commissionAprService));
-            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(MedicBaseController));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
         }
 
@@ -49,9 +47,6 @@ namespace Medic.App.Controllers
                 string searchParams = search != default ? search.ToString() : default;
                 string commissionAprsKey = $"{nameof(CommissionAprPreviewViewModel)} - {startIndex} - {searchParams}";
                 string commissionAprsCountKey = $"{MedicConstants.CommissionAprs} - {searchParams}";
-
-                List<SexOption> sexOptions = new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
-                List<HealthRegionOption> healthRegions = new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
 
                 if (!base.MedicCache.TryGetValue(commissionAprsKey, out List<CommissionAprPreviewViewModel> commissionAprs))
                 {
@@ -71,9 +66,11 @@ namespace Medic.App.Controllers
                     base.MedicCache.Set(commissionAprsCountKey, commissionAprsCount);
                 }
 
-                sexOptions.AddRange(await base.GetSexes());
+                List<SexOption> sexOptions = base.GetDefaultSexes();
+                sexOptions.AddRange(await base.GetSexesAsync());
 
-                healthRegions.AddRange(await base.GetHelathRegions());
+                List<HealthRegionOption> healthRegions = base.GetDefaultHealthRegions();
+                healthRegions.AddRange(await base.GetHealthRegionsAsync());
 
                 return View(new CommissionAprPageIndexModel()
                 {

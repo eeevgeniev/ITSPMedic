@@ -38,6 +38,7 @@ namespace Medic.Entities
                 .ForMember(d => d.SecondDispObservation, config => config.Ignore())
                 .ForMember(d => d.FirstPatientTransfer, config => config.Ignore())
                 .ForMember(d => d.SecondPatientTransfer, config => config.Ignore())
+                .ForMember(d => d.ChemotherapyPartId, config => config.Ignore())
                 .ForMember(d => d.Id, config => config.Ignore());
 
             expression.CreateMap<CP.AddDiag, Diag>()
@@ -59,6 +60,7 @@ namespace Medic.Entities
                 .ForMember(d => d.SecondDispObservation, config => config.Ignore())
                 .ForMember(d => d.FirstPatientTransfer, config => config.Ignore())
                 .ForMember(d => d.SecondPatientTransfer, config => config.Ignore())
+                .ForMember(d => d.ChemotherapyPartId, config => config.Ignore())
                 .ForMember(d => d.Id, config => config.Ignore());
 
             expression.CreateMap<Diag, DiagPreviewViewModel>()

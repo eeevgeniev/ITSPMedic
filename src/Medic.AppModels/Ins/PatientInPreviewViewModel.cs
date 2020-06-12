@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Medic.AppModels.Diagnoses;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.Ins
@@ -10,10 +12,6 @@ namespace Medic.AppModels.Ins
         [Display(Name = nameof(EntryDate))]
         public DateTime EntryDate { get; set; }
 
-        [Display(Name = nameof(MKBCode))]
-        public string MKBCode { get; set; }
-
-        [Display(Name = nameof(MKBName))]
-        public string MKBName { get; set; }
+        public List<DiagnosePreviewViewModel> SendDiagnoses { get; set; }
     }
 }

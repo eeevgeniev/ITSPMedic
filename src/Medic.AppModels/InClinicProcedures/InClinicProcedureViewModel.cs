@@ -1,4 +1,4 @@
-﻿using Medic.AppModels.CeasedClinicalPaths;
+﻿using Medic.AppModels.CeasedClinicals;
 using Medic.AppModels.Diags;
 using Medic.AppModels.HealthcarePractitioners;
 using Medic.AppModels.Patients;
@@ -45,7 +45,7 @@ namespace Medic.AppModels.InClinicProcedures
         [Display(Name = nameof(ProcRefuse))]
         public int ProcRefuse { get; set; }
 
-        public CeasedClinicalPathViewModel CeasedClinicalPath { get; set; }
+        public CeasedClinicalViewModel CeasedClinicalPath { get; set; }
 
         [Display(Name = nameof(IZNumChild))]
         public int? IZNumChild { get; set; }

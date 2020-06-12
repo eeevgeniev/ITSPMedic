@@ -36,7 +36,7 @@ namespace Medic.Models.CP
         public string ExpandDiagnose { get; set; }
 
         [XmlElement(ElementName = "AddDiag")]
-        public AddDiag AddDiag { get; set; }
+        public List<AddDiag> AddDiags { get; set; }
 
         [XmlElement(ElementName = "Histology")]
         public Histology Histology { get; set; }
@@ -47,8 +47,14 @@ namespace Medic.Models.CP
         [XmlElement(ElementName = "Staging")]
         public string Staging { get; set; }
 
+        [XmlElement(ElementName = "Staging_No")]
+        public int? StagingNumber { get; set; }
+
         [XmlElement(ElementName = "TNM")]
         public string TNM { get; set; }
+
+        [XmlElement(ElementName = "TargetAUC")]
+        public decimal? TargetAUC { get; set; }
 
         [XmlElement(ElementName = "Gen_Markers")]
         public List<GenMarker> GenMarkers { get; set; }
@@ -64,5 +70,8 @@ namespace Medic.Models.CP
 
         [XmlElement(ElementName = "Evaluation")]
         public Evaluation Evaluation { get; set; }
+
+        [XmlElement(ElementName = "Status")]
+        public int? Status { get; set; }
     }
 }

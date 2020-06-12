@@ -34,10 +34,6 @@ namespace Medic.Services.Helpers
                     query = InsSearch.Direction == OrderDirectionEnum.Asc ?
                         query.OrderBy(i => i.SendDate) : query.OrderByDescending(i => i.SendDate);
                     break;
-                case InOrderEnum.SendDiagnoseCode:
-                    query = InsSearch.Direction == OrderDirectionEnum.Asc ?
-                        query.OrderBy(i => i.SendDiagnose.PrimaryCode) : query.OrderByDescending(i => i.SendDiagnose.PrimaryCode);
-                    break;
                 default:
                     query = InsSearch.Direction == OrderDirectionEnum.Asc ?
                         query.OrderBy(i => i.Id) : query.OrderByDescending(i => i.Id);

@@ -17,6 +17,7 @@ namespace Medic.Entities
             expression.CreateMap<CLPR.ClinicHematologyPart, ClinicHematologyPart>()
                 .ForMember(chp => chp.EvalutionId, config => config.Ignore())
                 .ForMember(chp => chp.APr05s, config => config.Ignore())
+                .ForMember(chp => chp.DecisionId, config => config.Ignore())
                 .ForMember(chp => chp.Id, config => config.Ignore());
         }
     }

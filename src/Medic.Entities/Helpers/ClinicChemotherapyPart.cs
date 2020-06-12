@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Runtime.CompilerServices;
 using CLPR = Medic.Models.CLPR;
 
 namespace Medic.Entities
@@ -17,6 +18,7 @@ namespace Medic.Entities
             expression.CreateMap<CLPR.ClinicChemotherapyPart, ClinicChemotherapyPart>()
                 .ForMember(ccp => ccp.EvalutionId, config => config.Ignore())
                 .ForMember(ccp => ccp.APr05s, config => config.Ignore())
+                .ForMember(ccp => ccp.DecisionId, config => config.Ignore())
                 .ForMember(ccp => ccp.Id, config => config.Ignore());
         }
     }

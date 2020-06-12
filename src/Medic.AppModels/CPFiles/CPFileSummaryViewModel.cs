@@ -8,8 +8,8 @@ namespace Medic.AppModels.CPFiles
         [Display(Name = "DateFrom")]
         public DateTime DateFrom { get; set; }
 
-        [Display(Name = "PlannedProceduresCount")]
-        public int PlannedProceduresCount { get; set; }
+        [Display(Name = "PlanningsCount")]
+        public int PlanningsCount { get; set; }
 
         [Display(Name = "InsCount")]
         public int InsCount { get; set; }

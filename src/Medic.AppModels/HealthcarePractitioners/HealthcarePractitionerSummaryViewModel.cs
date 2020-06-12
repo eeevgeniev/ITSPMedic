@@ -4,6 +4,8 @@ namespace Medic.AppModels.HealthcarePractitioners
 {
     public class HealthcarePractitionerSummaryViewModel
     {
+        public int Id { get; set; }
+        
         [Display(Name = nameof(UniqueIdentifier))]
         public string UniqueIdentifier { get; set; }
 

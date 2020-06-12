@@ -18,7 +18,7 @@ namespace Medic.AppModels.ChemotherapyParts
         [Display(Name = nameof(ExpandDiagnose))]
         public string ExpandDiagnose { get; set; }
 
-        public DiagPreviewViewModel AddDiag { get; set; }
+        public List<DiagPreviewViewModel> AddDiags { get; set; }
 
         public HistologyPreviewViewModel Histology { get; set; }
 

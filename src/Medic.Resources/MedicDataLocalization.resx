@@ -141,8 +141,14 @@
   <data name="AgeInDays" xml:space="preserve">
     <value>AgeInDays</value>
   </data>
+  <data name="AllDoneProcedures" xml:space="preserve">
+    <value>All done procedures</value>
+  </data>
   <data name="AllDose" xml:space="preserve">
     <value>All dose</value>
+  </data>
+  <data name="AllDrugCost" xml:space="preserve">
+    <value>All drug cost</value>
   </data>
   <data name="Anamnesa" xml:space="preserve">
     <value>Anamnesa</value>
@@ -210,8 +216,8 @@
   <data name="CeasedClinicalPath" xml:space="preserve">
     <value>Ceased clinical path</value>
   </data>
-  <data name="CeasedClinicalPathc" xml:space="preserve">
-    <value>Прекратена клинична пътека</value>
+  <data name="CeasedOnly" xml:space="preserve">
+    <value>Ceased only</value>
   </data>
   <data name="CeasedProcedure" xml:space="preserve">
     <value>Ceased procedure</value>
@@ -244,22 +250,22 @@
     <value>Code HS</value>
   </data>
   <data name="CommissionApr" xml:space="preserve">
-    <value>Commission apr</value>
+    <value>Apr commission</value>
   </data>
   <data name="CommissionAprs" xml:space="preserve">
-    <value>Commission aprs</value>
+    <value>Apr commissions</value>
   </data>
   <data name="CommissionAprsSummary" xml:space="preserve">
-    <value>Commission aprs, mkb, patients</value>
+    <value>Apr commission, mkb, patients</value>
   </data>
   <data name="CommissionAprSummary" xml:space="preserve">
-    <value>Commission apr, patient, mkb</value>
+    <value>Apr commissions, patient, mkb</value>
   </data>
   <data name="CommissionAprsView" xml:space="preserve">
-    <value>Commission aprs view</value>
+    <value>Apr commissions view</value>
   </data>
   <data name="CommissionAprView" xml:space="preserve">
-    <value>CommissionApr view</value>
+    <value>Apr commission view</value>
   </data>
   <data name="Complications" xml:space="preserve">
     <value>Complications</value>
@@ -279,6 +285,9 @@
   <data name="CPFilesSummary" xml:space="preserve">
     <value>CP files summary</value>
   </data>
+  <data name="CPFileSummary" xml:space="preserve">
+    <value>Upload new CP file</value>
+  </data>
   <data name="CPrPriem" xml:space="preserve">
     <value>CPr priem</value>
   </data>
@@ -297,8 +306,17 @@
   <data name="DateOfSurgery" xml:space="preserve">
     <value>Date of surgery</value>
   </data>
+  <data name="DatePlanPriem" xml:space="preserve">
+    <value>Date plan priem</value>
+  </data>
   <data name="DatePrescr" xml:space="preserve">
     <value>Date Prescr</value>
+  </data>
+  <data name="DateProcedureBegins" xml:space="preserve">
+    <value>Date procedure begins</value>
+  </data>
+  <data name="DateProcedureEnd" xml:space="preserve">
+    <value>Date procedure end</value>
   </data>
   <data name="DateSend" xml:space="preserve">
     <value>Date send</value>
@@ -325,13 +343,13 @@
     <value>Descending</value>
   </data>
   <data name="Diag" xml:space="preserve">
-    <value>Diag</value>
+    <value>Diagnose</value>
   </data>
   <data name="DiagCode" xml:space="preserve">
-    <value>Diag code</value>
+    <value>Diagnose code</value>
   </data>
   <data name="DiagDate" xml:space="preserve">
-    <value>Diag date</value>
+    <value>Diagnose date</value>
   </data>
   <data name="Diagnose" xml:space="preserve">
     <value>Diagnose</value>
@@ -346,10 +364,10 @@
     <value>Diagnoses</value>
   </data>
   <data name="DiagnoseSummaryTitle" xml:space="preserve">
-    <value>Diagnose MKB summary by MKB code</value>
+    <value>Diagnoses summary (only ins, outs, plannings)</value>
   </data>
   <data name="Diags" xml:space="preserve">
-    <value>Diags</value>
+    <value>Diagnoses summary (without in, outs and plannings)</value>
   </data>
   <data name="DiagSummaryTitle" xml:space="preserve">
     <value>Diag MKB summary by MKB code</value>
@@ -498,6 +516,12 @@
   <data name="HLTotalDays" xml:space="preserve">
     <value>HL total days</value>
   </data>
+  <data name="HospitalPracticeFile" xml:space="preserve">
+    <value>Hospital practice file</value>
+  </data>
+  <data name="HospitalPracticeFileSummary" xml:space="preserve">
+    <value>Upload hospital practice file</value>
+  </data>
   <data name="HospitalPracticesSummary" xml:space="preserve">
     <value>Hospital practices summary</value>
   </data>
@@ -567,6 +591,9 @@
   <data name="InType" xml:space="preserve">
     <value>InType</value>
   </data>
+  <data name="InvalidFile" xml:space="preserve">
+    <value>The file is invalid.</value>
+  </data>
   <data name="InvalidId" xml:space="preserve">
     <value>Invalid identifier error.</value>
   </data>
@@ -618,11 +645,17 @@
   <data name="MDIs" xml:space="preserve">
     <value>MDIs</value>
   </data>
+  <data name="MedicalWard" xml:space="preserve">
+    <value>Medical ward</value>
+  </data>
   <data name="MKBCode" xml:space="preserve">
     <value>MKB code</value>
   </data>
   <data name="MKBName" xml:space="preserve">
     <value>MKB name</value>
+  </data>
+  <data name="MonthSummaries" xml:space="preserve">
+    <value>Month сummaries</value>
   </data>
   <data name="MotherIZNo" xml:space="preserve">
     <value>MotherIZNo</value>
@@ -759,29 +792,29 @@
   <data name="Payer" xml:space="preserve">
     <value>Payer</value>
   </data>
+  <data name="Planned" xml:space="preserve">
+    <value>Planned</value>
+  </data>
   <data name="PlannedEntryDate" xml:space="preserve">
     <value>Planned entry date</value>
   </data>
   <data name="PlannedNumber" xml:space="preserve">
     <value>Planned number</value>
   </data>
-  <data name="PlannedProcedure" xml:space="preserve">
-    <value>Planned procedure</value>
+  <data name="PlannedSummary" xml:space="preserve">
+    <value>Planned, patient, mkb</value>
   </data>
-  <data name="PlannedProcedures" xml:space="preserve">
-    <value>Planned procedures</value>
+  <data name="PlannedView" xml:space="preserve">
+    <value>Planned view</value>
   </data>
-  <data name="PlannedProceduresSummary" xml:space="preserve">
-    <value>Planned procedures, mkb, patients</value>
+  <data name="Plannings" xml:space="preserve">
+    <value>Plannings</value>
   </data>
-  <data name="PlannedProcedureSummary" xml:space="preserve">
-    <value>Planned procedure, patient, mkb</value>
+  <data name="PlanningsSummary" xml:space="preserve">
+    <value>Plannings, mkb, patients</value>
   </data>
-  <data name="PlannedProceduresView" xml:space="preserve">
-    <value>Planned procedures view</value>
-  </data>
-  <data name="PlannedProcedureView" xml:space="preserve">
-    <value>Planned procedure view</value>
+  <data name="PlanningsView" xml:space="preserve">
+    <value>Plannings view</value>
   </data>
   <data name="PlanVisitDate" xml:space="preserve">
     <value>Plan visit date</value>
@@ -948,6 +981,9 @@
   <data name="TotalCosts" xml:space="preserve">
     <value>Total costs</value>
   </data>
+  <data name="TotalCount" xml:space="preserve">
+    <value>Total count</value>
+  </data>
   <data name="TotalPatients" xml:space="preserve">
     <value>Patients count</value>
   </data>
@@ -969,6 +1005,9 @@
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="UploadFiles" xml:space="preserve">
+    <value>Upload files</value>
+  </data>
   <data name="Urgency" xml:space="preserve">
     <value>Urgency</value>
   </data>
@@ -977,6 +1016,9 @@
   </data>
   <data name="UsedDrugCode" xml:space="preserve">
     <value>Used drug code</value>
+  </data>
+  <data name="UsedDrugCodes" xml:space="preserve">
+    <value>Used drug codes</value>
   </data>
   <data name="UsedDrugs" xml:space="preserve">
     <value>Used drugs</value>
@@ -1027,6 +1069,6 @@
     <value>Weight</value>
   </data>
   <data name="WeightInGrams" xml:space="preserve">
-    <value>WeightInGrams</value>
+    <value>Weight in grams</value>
   </data>
 </root>

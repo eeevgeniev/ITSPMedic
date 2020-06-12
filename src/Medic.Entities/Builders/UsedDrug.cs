@@ -10,6 +10,8 @@ namespace Medic.Entities
             {
                 b.HasKey(model => model.Id);
 
+                b.HasIndex(model => model.OutId).IsUnique(false);
+
                 b.Property(model => model.Code).HasMaxLength(10);
 
                 b.Property(model => model.ICDDrug).HasMaxLength(10);

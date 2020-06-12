@@ -9,10 +9,6 @@ namespace Medic.AppModels.Enums
         [Display(Name = nameof(OutDate))]
         OutDate,
         [Display(Name = nameof(OutMainDiagnoseCode))]
-        OutMainDiagnoseCode,
-        [Display(Name = nameof(SendDiagnoseCode))]
-        SendDiagnoseCode,
-        [Display(Name = nameof(UsedDrugCode))]
-        UsedDrugCode
+        OutMainDiagnoseCode
     }
 }

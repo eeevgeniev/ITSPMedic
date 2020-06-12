@@ -15,6 +15,14 @@ namespace Medic.Entities
 
         public string BatchNumber { get; set; }
 
+        public string ProductCode { get; set; }
+
+        public DateTime? ExpireDate { get; set; }
+
+        public string SerialNumber { get; set; }
+
+        public string DataMatrix { get; set; }
+
         public decimal QuantityPack { get; set; }
 
         public ClinicUsedDrug ClinicUsedDrug { get; set; }

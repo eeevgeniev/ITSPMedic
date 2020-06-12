@@ -1,5 +1,5 @@
 ﻿using Medic.AppModels.Diags;
-using Medic.Contexts;
+using Medic.Contexts.Contracts;
 using Medic.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,9 +11,9 @@ namespace Medic.Services
 {
     public class DiagService : IDiagService
     {
-        private readonly MedicContext MedicContext;
+        private readonly IMedicContext MedicContext;
 
-        public DiagService(MedicContext medicContext)
+        public DiagService(IMedicContext medicContext)
         {
             MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
         }

@@ -1,0 +1,28 @@
+﻿@using Medic.App.Models.FileUploads
+
+@model FileUploadPageHospitalPractice
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.Error))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.Error
+    </div>
+}
+<div class="container">
+    <article>
+        <header>
+            <h2>@Model.Title</h2>
+            <h4>@Model.Keywords</h4>
+        </header>
+        <form asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.HospitalPractice)"
+              method="post" enctype="multipart/form-data"
+              asp-antiforgery="true">
+            <input class="btn btn-danger" type="file" id="HopsitalPracticeFormFile" name="HopsitalPracticeFormFile" />
+            <input class="btn btn-primary" type="submit" value="Sumbit" />
+        </form>
+    </article>
+</div>

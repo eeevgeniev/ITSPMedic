@@ -1,4 +1,4 @@
-﻿using Medic.AppModels.CeasedClinicalPaths;
+﻿using Medic.AppModels.CeasedClinicals;
 using Medic.AppModels.ClinicProcedures;
 using Medic.AppModels.ClinicUsedDrugs;
 using Medic.AppModels.Diags;
@@ -53,9 +53,9 @@ namespace Medic.AppModels.PathProcedures
         [Display(Name = nameof(ProcRefuse))]
         public int ProcRefuse { get; set; }
 
-        public CeasedClinicalPathViewModel CeasedProcedure { get; set; }
+        public CeasedClinicalViewModel CeasedProcedure { get; set; }
 
-        public CeasedClinicalPathViewModel CeasedClinicalPath { get; set; }
+        public CeasedClinicalViewModel CeasedClinicalPath { get; set; }
 
         [Display(Name = nameof(IZNumChild))]
         public string IZNumChild { get; set; }
@@ -87,7 +87,7 @@ namespace Medic.AppModels.PathProcedures
 
         public List<ProcedureSummaryViewModel> DoneNewProcedures { get; set; }
 
-        public ClinicUsedDrugViewModel UsedDrug { get; set; }
+        public List<ClinicUsedDrugViewModel> UsedDrugs { get; set; }
 
         public List<ClinicProcedureViewModel> ClinicProcedures { get; set; }
 
@@ -96,8 +96,8 @@ namespace Medic.AppModels.PathProcedures
         [Display(Name = nameof(AllDoneProcedures))]
         public decimal AllDoneProcedures { get; set; }
 
-        [Display(Name = nameof(AllDoneCost))]
-        public decimal AllDoneCost { get; set; }
+        [Display(Name = nameof(AllDrugCost))]
+        public decimal AllDrugCost { get; set; }
 
         [Display(Name = nameof(PatientStatus))]
         public int PatientStatus { get; set; }

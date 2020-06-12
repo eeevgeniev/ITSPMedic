@@ -16,7 +16,7 @@
 
 <article>
     <header>
-        <h2 class="text-center">@medicDataLocalization.Get("InsView"): @Model.TotalResults @medicDataLocalization.Get("Results")</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get("InsView")): @Model.TotalResults @Html.Raw(medicDataLocalization.Get("Results"))</h2>
         <h4 class="text-center text-info">@Model.Keywords</h4>
     </header>
     <section>
@@ -30,31 +30,31 @@
         {
             <div>
                 <div class="row">
-                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("EntryDate")</div>
-                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("SendDiagnoseCode")</div>
-                    <div class="col-sm-4 font-weight-bold">@medicDataLocalization.Get("SendDiagnoseName")</div>
-                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("AdditionalDiagnoses")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewIn")</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("EntryDate"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("UniqueIdentifier"))</div>
+                    <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("SendDiagnoses"))</div>
+                    <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Diagnoses"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewPatient"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewIn"))</div>
                 </div>
                 @foreach (InPreviewViewModel currentIn in Model.Ins)
                 {
                     <hr />
                     <div class="row">
-                        <div class="col-sm-2">@currentIn.EntryDate.ToShortDateString()</div>
-                        <div class="col-sm-2">@currentIn.SendDiagnoseCode</div>
-                        <div class="col-sm-4">@currentIn.SendDiagnoseName</div>
-                        <div class="col-sm-2">@string.Join(", ", currentIn.CodeDiagnoses)</div>
+                        <div class="col-sm-1">@currentIn.EntryDate.ToShortDateString()</div>
+                        <div class="col-sm-1">@currentIn.UniqueIdentifier</div>
+                        <div class="col-sm-4">@string.Join(", ", currentIn.SendDiagnoses)</div>
+                        <div class="col-sm-4">@string.Join(", ", currentIn.Diagnoses)</div>
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                                asp-action="@nameof(PatientController.Patient)"
-                               asp-route-id="@currentIn.PatientId" class="btn btn-info">@medicDataLocalization.Get("View")</a>
+                               asp-route-id="@currentIn.PatientId" class="btn btn-info">@Html.Raw(medicDataLocalization.Get("View"))</a>
                         </div>
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(InController))"
                                asp-action="@nameof(InController.In)"
                                asp-route-id="@currentIn.Id"
-                               class="btn btn-default">@medicDataLocalization.Get("View")</a>
+                               class="btn btn-secondary">@Html.Raw(medicDataLocalization.Get("View"))</a>
                         </div>
                     </div>
                 }
@@ -76,7 +76,15 @@
         }
         else
         {
-            <div class="text-center text-info font-weight-bold">@medicDataLocalization.Get("NoResults")</div>
+            <div class="text-center text-info font-weight-bold">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
         }
     </section>
 </article>
+@section Scripts {
+    <environment names="Development">
+        <script defer src="~/js/formreset.js"></script>
+    </environment>
+    <environment names="Production">
+        <script defer src="~/js/formreset.min.js"></script>
+    </environment>
+}

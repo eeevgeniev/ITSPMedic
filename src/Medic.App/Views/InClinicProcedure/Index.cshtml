@@ -14,7 +14,7 @@
 
 <article>
     <header>
-        <h2 class="text-center">@medicDataLocalization.Get("InClinicProceduresView"): @Model.TotalResults @medicDataLocalization.Get("Results")</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get("InClinicProceduresView")): @Model.TotalResults @Html.Raw(medicDataLocalization.Get("Results"))</h2>
         <h4 class="text-center text-info">@Model.Keywords</h4>
     </header>
     <section>
@@ -28,13 +28,13 @@
         {
             <div>
                 <div class="row">
-                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("DateSend")</div>
-                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("FirstMainDiagCode")</div>
-                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("FirstMainDiagName")</div>
-                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("SecondMainDiagCode")</div>
-                    <div class="col-sm-2 font-weight-bold">@medicDataLocalization.Get("SecondMainDiagName")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewPatient")</div>
-                    <div class="col-sm-1 font-weight-bold">@medicDataLocalization.Get("ViewInClinicProcedure")</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("DateSend"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("FirstMainDiagCode"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("FirstMainDiagName"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("SecondMainDiagCode"))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("SecondMainDiagName"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewPatient"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewInClinicProcedure"))</div>
                 </div>
                 @foreach (InClinicProcedurePreviewViewModel currentInClinicProcedure in Model.InClinicProcedures)
                 {
@@ -48,13 +48,13 @@
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                                asp-action="@nameof(PatientController.Patient)"
-                               asp-route-id="@currentInClinicProcedure.PatientId" class="btn btn-info">@medicDataLocalization.Get("View")</a>
+                               asp-route-id="@currentInClinicProcedure.PatientId" class="btn btn-info">@Html.Raw(medicDataLocalization.Get("View"))</a>
                         </div>
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(InClinicProcedureController))"
                                asp-action="@nameof(InClinicProcedureController.InClinicProcedure)"
                                asp-route-id="@currentInClinicProcedure.Id"
-                               class="btn btn-default">@medicDataLocalization.Get("View")</a>
+                               class="btn btn-secondary">@Html.Raw(medicDataLocalization.Get("View"))</a>
                         </div>
                     </div>
                 }
@@ -76,7 +76,15 @@
         }
         else
         {
-            <div class="text-center text-info font-weight-bold">@medicDataLocalization.Get("NoResults")</div>
+            <div class="text-center text-info font-weight-bold">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
         }
     </section>
 </article>
+@section Scripts {
+    <environment names="Development">
+        <script defer src="~/js/formreset.js"></script>
+    </environment>
+    <environment names="Production">
+        <script defer src="~/js/formreset.min.js"></script>
+    </environment>
+}

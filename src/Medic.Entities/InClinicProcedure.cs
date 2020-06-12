@@ -2,6 +2,7 @@
 using Medic.Entities.Contracts;
 using Medic.Mappers.Contracts;
 using System;
+using System.Collections.Generic;
 
 namespace Medic.Entities
 {
@@ -35,6 +36,8 @@ namespace Medic.Entities
 
         public int TypeProcSend { get; set; }
 
+        public int? SendPackageType { get; set; }
+
         public DateTime DateSend { get; set; }
 
         public double? CPrPriem { get; set; }
@@ -43,11 +46,21 @@ namespace Medic.Entities
 
         public int TypeProcPriem { get; set; }
 
+        public int? PackageType { get; set; }
+
         public int ProcRefuse { get; set; }
 
         public int? CeasedClinicalPathId { get; set; }
 
-        public CeasedClinicalPath CeasedClinicalPath { get; set; }
+        public CeasedClinical CeasedClinicalPath { get; set; }
+
+        public int? CeasedProcedureId { get; set; }
+
+        public CeasedClinical CeasedProcedure { get; set; }
+
+        public int? CeasedOnlyId { get; set; }
+
+        public CeasedClinical CeasedOnly { get; set; }
 
         public int? IZNumChild { get; set; }
 
@@ -56,6 +69,8 @@ namespace Medic.Entities
         public DateTime? FirstVisitDate { get; set; }
 
         public DateTime? PlanVisitDate { get; set; }
+
+        public int? PlannedNumber { get; set; }
 
         public string VisitDocumentUniqueIdentifier { get; set; }
 
@@ -68,6 +83,8 @@ namespace Medic.Entities
         public int? SecondMainDiagId { get; set; }
 
         public Diag SecondMainDiag { get; set; }
+
+        public ICollection<ClinicProcedure> Procedures { get; set; } = new HashSet<ClinicProcedure>();
 
         public int PatientStatus { get; set; }
 

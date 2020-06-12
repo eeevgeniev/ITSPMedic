@@ -22,7 +22,9 @@ namespace Medic.Entities
 
         public Evaluation Evaluation { get; set; }
 
-        public ICollection<Evaluation> Decisions { get; set; } = new HashSet<Evaluation>();
+        public int? DecisionId { get; set; }
+
+        public Evaluation Decision { get; set; }
 
         public ICollection<APr05> APr05s { get; set; } = new HashSet<APr05>();
     }

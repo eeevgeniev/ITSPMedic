@@ -15,7 +15,9 @@ namespace Medic.Entities
 
         public string MDIName { get; set; }
 
-        public decimal MDICode { get; set; }
+        public decimal? MDICode { get; set; }
+
+        public string ACHIcode { get; set; }
 
         public int DispObservationId { get; set; }
 

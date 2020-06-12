@@ -46,5 +46,9 @@ namespace Medic.Entities
         public decimal TotalAmount { get; set; }
 
         public Procedure Procedure { get; set; }
+
+        public int? ClinicProcedureId { get; set; }
+        
+        public ClinicProcedure ClinicProcedure { get; set; }
     }
 }

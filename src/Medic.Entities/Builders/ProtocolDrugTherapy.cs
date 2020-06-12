@@ -72,7 +72,7 @@ namespace Medic.Entities
 
                 b.Property(model => model.PracticeCodeProtocol).HasMaxLength(12);
 
-                b.Property(model => model.Scheme).HasMaxLength(50);
+                b.Property(model => model.Scheme).HasMaxLength(4000);
             });
         }
     }
