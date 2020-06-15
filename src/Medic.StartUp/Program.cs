@@ -50,16 +50,6 @@ namespace Medic.FileImport
                 string cpDirectory, clprDirectory;
                 bool doesCpDirectoryExist = true, doesCLPRDirectoryExist = true;
 
-                CP.CPFile test1 = new CP.CPFile();
-                CLPR.HospitalPractice test2 = new CLPR.HospitalPractice();
-
-                XmlSerializer test1p = new XmlSerializer(test1.GetType());
-                XmlSerializer test2p = new XmlSerializer(test2.GetType());
-
-                test1p.Serialize(new StreamWriter(@"C:\Users\Emo\Desktop\cpfile.xml"), test1);
-                test2p.Serialize(new StreamWriter(@"C:\Users\Emo\Desktop\clpr.xml"), test2);
-                return;
-
                 while (true)
                 {
                     Console.WriteLine("Enter directory for CP files");
