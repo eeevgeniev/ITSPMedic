@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.Logs", "Medic.Logs\Me
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.XMLImportHelper", "Medic.XMLImportHelper\Medic.XMLImportHelper.csproj", "{E9C8FD1D-A28A-4001-8AAA-8EADA0B6EB52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medic.XMLParser", "Medic.XMLParser\Medic.XMLParser.csproj", "{BD0B81FB-3F84-4443-A3FF-9D65826AB435}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.XMLParser", "Medic.XMLParser\Medic.XMLParser.csproj", "{BD0B81FB-3F84-4443-A3FF-9D65826AB435}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medic.EHR", "Medic.EHR\Medic.EHR.csproj", "{4022A723-CCA2-448B-8D6F-05270FACD3A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{BD0B81FB-3F84-4443-A3FF-9D65826AB435}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD0B81FB-3F84-4443-A3FF-9D65826AB435}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD0B81FB-3F84-4443-A3FF-9D65826AB435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4022A723-CCA2-448B-8D6F-05270FACD3A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4022A723-CCA2-448B-8D6F-05270FACD3A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4022A723-CCA2-448B-8D6F-05270FACD3A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4022A723-CCA2-448B-8D6F-05270FACD3A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
