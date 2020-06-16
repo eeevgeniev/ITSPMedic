@@ -1,26 +1,27 @@
-﻿using Medic.EHR.Primitives;
+﻿using Medic.EHR.Infrastructure;
+using Medic.EHR.Primitives;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Complexes
 {
     public class Attachment : EHRString
     {
-        [XmlElement(ElementName = "description")]
+        [XmlElement(ElementName = Constants.Description)]
         public SimpleText Description { get; set; }
 
-        [XmlElement(ElementName = "media_type")]
+        [XmlElement(ElementName = Constants.MediaType)]
         public CodedSimple MediaType { get; set; }
 
-        [XmlElement(ElementName = "reference")]
+        [XmlElement(ElementName = Constants.Reference)]
         public URI Reference { get; set; }
 
-        [XmlElement(ElementName = "integrity_check_algorithm")]
-        public CodedSimple IntegrityCheckAlgoritm { get; set; }
+        [XmlElement(ElementName = Constants.IntegrityCheckAlgorithm)]
+        public CodedSimple IntegrityCheckAlgorithm { get; set; }
 
-        [XmlElement(ElementName = "thumbnail")]
+        [XmlElement(ElementName = Constants.Thumbnail)]
         public Attachment Thumbnail { get; set; }
 
-        [XmlElement(ElementName = "integrityCheck")]
+        [XmlElement(ElementName = Constants.IntegrityCheck)]
         public string IntegrityCheck { get; set; }
     }
 }

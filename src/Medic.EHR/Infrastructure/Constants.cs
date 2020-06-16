@@ -1,0 +1,72 @@
+﻿namespace Medic.EHR.Infrastructure
+{
+    internal class Constants
+    {
+        internal const string Value = "value";
+        internal const string Language = "language";
+        internal const string OriginalText = "original_text";
+        internal const string Code = "code";
+        internal const string CodeSystem = "code_system";
+        internal const string DisplayName = "display_name";
+        internal const string Description = "description";
+        internal const string MediaType = "media_type";
+        internal const string Reference = "reference";
+        internal const string IntegrityCheckAlgorithm = "integrity_check_algorithm";
+        internal const string Thumbnail = "thumbnail";
+        internal const string IntegrityCheck = "integrityCheck";
+        internal const string Unit = "unit";
+        internal const string Root = "root";
+        internal const string Extension = "extension";
+        internal const string IdentifierName = "identifier_name";
+        internal const string EhrSystem = "ehr_system";
+        internal const string EhrId = "ehr_id";
+        internal const string TimeCreated = "time_created";
+        internal const string AuthorisingParty = "authorising_party";
+        internal const string AccessPolicyIds = "access_policy_id";
+        internal const string Components = "components";
+        internal const string Demographics = "demographics";
+        internal const string RmId = "rm_id";
+        internal const string RcId = "rc_id";
+        internal const string PreviousVersion = "previous_version";
+        internal const string VersionSetId = "version_set_id";
+        internal const string VersionStatus = "version_status";
+        internal const string ReasonForRevision = "reason_for_revision";
+        internal const string Audits = "audits";
+        internal const string ArchetypeId = "archetype_id";
+        internal const string Links = "links";
+        internal const string Attestations = "attestations";
+        internal const string Committer = "committer";
+        internal const string AuditEventId = "audit_event_id";
+        internal const string AuditEventActionCode = "audit_event_action_code";
+        internal const string AuditEventTimeStamp = "audit_event_timestamp";
+        internal const string AuditSourceId = "audit_source_id";
+        internal const string TargetComponent = "target_component";
+        internal const string Time = "time";
+        internal const string Proof = "proof";
+        internal const string AttestedView = "attested_view";
+        internal const string ReasonForAttestation = "reason_for_attestation";
+        internal const string Attester = "attester";
+        internal const string AttestationMeans = "attestation_means";
+        internal const string LinkDescription = "link_description";
+        internal const string Target = "target";
+        internal const string Source = "source";
+        internal const string TargetSystem = "target_system";
+        internal const string TargetInformationType = "target_information_type";
+        internal const string StructureComponents = "structure_components";
+        internal const string SubjectOfCare = "subject_of_care";
+        internal const string SubFolders = "sub_folders";
+        internal const string Compositions = "compositions";
+        internal const string Composer = "composer";
+        internal const string PolicyIds = "policy_ids";
+        internal const string Content = "content";
+        internal const string Sensitivity = "sensitivity";
+        internal const string Members = "members";
+        internal const string SubjectOfInformationCategory = "subject_of_information_category";
+        internal const string InformationProvider = "information_provider";
+        internal const string Items = "items";
+        internal const string DemographicItems = "demographic_items";
+        internal const string Emphasis = "emphasis";
+        internal const string Parts = "parts";
+        internal const string Entities = "entities";
+    }
+}

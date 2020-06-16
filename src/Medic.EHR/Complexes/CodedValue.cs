@@ -1,4 +1,5 @@
-﻿using Medic.EHR.Primitives.Base;
+﻿using Medic.EHR.Infrastructure;
+using Medic.EHR.Primitives.Base;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Complexes
@@ -8,13 +9,13 @@ namespace Medic.EHR.Complexes
         [XmlElement(ElementName = "original_text")]
         public SimpleText OriginalText { get; set; }
 
-        [XmlElement(ElementName = "code")]
+        [XmlAttribute(AttributeName = Constants.Code)]
         public string Code { get; set; }
 
-        [XmlElement(ElementName = "code_system")]
+        [XmlAttribute(AttributeName = Constants.CodeSystem)]
         public string CodeSystem { get; set; }
 
-        [XmlElement(ElementName = "display_name")]
+        [XmlAttribute(AttributeName = Constants.DisplayName)]
         public string DisplayName { get; set; }
     }
 }

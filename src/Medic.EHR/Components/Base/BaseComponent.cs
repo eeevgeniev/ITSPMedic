@@ -1,4 +1,5 @@
 ﻿using Medic.EHR.Complexes;
+using Medic.EHR.Infrastructure;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -6,22 +7,22 @@ namespace Medic.EHR.Components.Base
 {
     public abstract class BaseComponent<T>
     {
-        [XmlElement(ElementName = "rc_id")]
+        [XmlElement(ElementName = Constants.RcId)]
         public InstanceIdentifier<T> RcId { get; set; }
 
-        [XmlElement(ElementName = "previous_version")]
+        [XmlElement(ElementName = Constants.PreviousVersion)]
         public InstanceIdentifier<T> PreviousVersion { get; set; }
 
-        [XmlElement(ElementName = "version_set_id")]
+        [XmlElement(ElementName = Constants.VersionSetId)]
         public InstanceIdentifier<T> VersionSetId { get; set; }
 
-        [XmlElement(ElementName = "version_status")]
+        [XmlElement(ElementName = Constants.VersionStatus)]
         public CodedValue<T> VersionStatus { get; set; }
 
-        [XmlElement(ElementName = "reason_for_revision")]
+        [XmlElement(ElementName = Constants.ReasonForRevision)]
         public CodedValue<T> ReasonForRevision { get; set; }
 
-        [XmlElement(ElementName = "audits")]
+        [XmlElement(ElementName = Constants.Audits)]
         public List<AuditInfo<T>> Audits { get; set; }
     }
 }

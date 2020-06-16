@@ -1,17 +1,18 @@
-﻿using Medic.EHR.Primitives.Base;
+﻿using Medic.EHR.Infrastructure;
+using Medic.EHR.Primitives.Base;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Complexes
 {
     public class InstanceIdentifier<T> : EHRDataValue<T>
     {
-        [XmlElement(ElementName = "root")]
+        [XmlAttribute(AttributeName = Constants.Root)]
         public string Root { get; set; }
 
-        [XmlElement(ElementName = "extension")]
+        [XmlAttribute(AttributeName = Constants.Extension)]
         public string Extension { get; set; }
 
-        [XmlElement(ElementName = "identifier_name")]
+        [XmlAttribute(AttributeName = Constants.IdentifierName)]
         public string IdentifierName { get; set; }
     }
 }

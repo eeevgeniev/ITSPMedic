@@ -1,11 +1,12 @@
-﻿using Medic.EHR.Primitives;
+﻿using Medic.EHR.Infrastructure;
+using Medic.EHR.Primitives;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Complexes
 {
     public class URI : EHRString
     {
-        [XmlElement(ElementName = "description")]
+        [XmlAttribute(AttributeName = Constants.Description)]
         public string Description { get; set; }
     }
 }
