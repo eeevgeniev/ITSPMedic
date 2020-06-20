@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.InClinicProcedures
@@ -7,13 +8,13 @@ namespace Medic.AppModels.InClinicProcedures
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(PlanVisitDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PlanVisitDate)]
         public DateTime? PlanVisitDate { get; set; }
 
-        [Display(Name = nameof(MKBCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MKBCode)]
         public string MKBCode { get; set; }
 
-        [Display(Name = nameof(MKBName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MKBName)]
         public string MKBName { get; set; }
     }
 }

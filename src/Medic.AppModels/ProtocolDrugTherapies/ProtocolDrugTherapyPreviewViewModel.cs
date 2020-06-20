@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -10,19 +11,19 @@ namespace Medic.AppModels.ProtocolDrugTherapies
 
         public int PatientId { get; set; }
 
-        [Display(Name = nameof(DecisionDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DecisionDate)]
         public DateTime DecisionDate { get; set; }
 
-        [Display(Name = nameof(ProtocolDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProtocolDate)]
         public DateTime ProtocolDate { get; set; }
 
-        [Display(Name = nameof(DiagnoseCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DiagnoseCode)]
         public string DiagnoseCode { get; set; }
 
-        [Display(Name = nameof(DiagnoseName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DiagnoseName)]
         public string DiagnoseName { get; set; }
 
-        [Display(Name = nameof(DrugProtocolsATCNames))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DrugProtocolsATCNames)]
         public List<string> DrugProtocolsATCNames { get; set; } 
     }
 }

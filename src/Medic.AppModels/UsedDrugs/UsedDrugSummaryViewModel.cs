@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.UsedDrugs
@@ -7,46 +8,46 @@ namespace Medic.AppModels.UsedDrugs
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(Date))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Date)]
         public DateTime Date { get; set; }
 
-        [Display(Name = nameof(Code))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Code)]
         public string Code { get; set; }
 
-        [Display(Name = nameof(Quantity))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Quantity)]
         public decimal Quantity { get; set; }
 
-        [Display(Name = nameof(Cost))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Cost)]
         public decimal Cost { get; set; }
 
-        [Display(Name = nameof(ICDDrug))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ICDDrug)]
         public string ICDDrug { get; set; }
 
-        [Display(Name = nameof(UINPrescr))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.UINPrescr)]
         public string UINPrescr { get; set; }
 
-        [Display(Name = nameof(NoPrescr))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.NoPrescr)]
         public string NoPrescr { get; set; }
 
-        [Display(Name = nameof(DatePrescr))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DatePrescr)]
         public DateTime? DatePrescr { get; set; }
 
-        [Display(Name = nameof(PracticeCodeProtocol))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PracticeCodeProtocol)]
         public string PracticeCodeProtocol { get; set; }
 
-        [Display(Name = nameof(ProtocolNumber))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProtocolNumber)]
         public int ProtocolNumber { get; set; }
 
-        [Display(Name = nameof(ProtocolDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProtocolDate)]
         public DateTime ProtocolDate { get; set; }
 
-        [Display(Name = nameof(ProtocolType))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProtocolType)]
         public int ProtocolType { get; set; }
 
-        [Display(Name = nameof(BatchNumber))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.BatchNumber)]
         public string BatchNumber { get; set; }
 
-        [Display(Name = nameof(QuantityPack))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.QuantityPack)]
         public decimal QuantityPack { get; set; }
     }
 }

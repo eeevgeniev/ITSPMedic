@@ -1,6 +1,7 @@
 ﻿using Medic.AppModels.Diagnoses;
 using Medic.AppModels.HealthcarePractitioners;
 using Medic.AppModels.Patients;
+using Medic.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,49 +14,49 @@ namespace Medic.AppModels.Plannings
 
         public PatientSummaryViewModel Patient { get; set; }
 
-        [Display(Name = nameof(PatientBranch))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientBranch)]
         public string PatientBranch { get; set; }
 
-        [Display(Name = nameof(PatientHRegion))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientHRegion)]
         public string PatientHRegion { get; set; }
 
-        [Display(Name = nameof(InType))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.InType)]
         public int InType { get; set; }
 
         public HealthcarePractitionerSummaryViewModel Sender { get; set; }
 
-        [Display(Name = nameof(SendDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendDate)]
         public DateTime SendDate { get; set; }
 
         public List<DiagnosePreviewViewModel> SendDiagnoses { get; set; }
 
-        [Display(Name = nameof(SendUrgency))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendUrgency)]
         public int SendUrgency { get; set; }
 
-        [Display(Name = nameof(SendClinicalPath))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendClinicalPath)]
         public double? SendClinicalPath { get; set; }
 
-        [Display(Name = nameof(UniqueIdentifier))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.UniqueIdentifier)]
         public string UniqueIdentifier { get; set; }
 
-        [Display(Name = nameof(ExaminationDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ExaminationDate)]
         public DateTime ExaminationDate { get; set; }
 
-        [Display(Name = nameof(PlannedEntryDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PlannedEntryDate)]
         public DateTime PlannedEntryDate { get; set; }
 
-        [Display(Name = nameof(PlannedNumber))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PlannedNumber)]
         public int PlannedNumber { get; set; }
 
         public List<DiagnosePreviewViewModel> Diagnoses { get; set; }
 
-        [Display(Name = nameof(Urgency))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Urgency)]
         public int Urgency { get; set; }
 
-        [Display(Name = nameof(ClinicalPath))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ClinicalPath)]
         public double? ClinicalPath { get; set; }
 
-        [Display(Name = nameof(NZOKPay))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.NZOKPay)]
         public int NZOKPay { get; set; }
     }
 }

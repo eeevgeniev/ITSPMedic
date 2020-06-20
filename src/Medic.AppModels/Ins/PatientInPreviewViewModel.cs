@@ -1,4 +1,5 @@
 ﻿using Medic.AppModels.Diagnoses;
+using Medic.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,7 @@ namespace Medic.AppModels.Ins
     {
         public int Id { get; set; }
         
-        [Display(Name = nameof(EntryDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.EntryDate)]
         public DateTime EntryDate { get; set; }
 
         public List<DiagnosePreviewViewModel> SendDiagnoses { get; set; }

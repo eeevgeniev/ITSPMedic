@@ -1,5 +1,6 @@
 ﻿using Medic.AppModels.Contracts;
 using Medic.AppModels.Enums;
+using Medic.Resources;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,43 +8,43 @@ namespace Medic.AppModels.Outs
 {
     public class OutSearch : IQueryStringBuilder
     {
-        [Display(Name = nameof(MainOutDiagnose))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MainOutDiagnose)]
         public string MainOutDiagnose { get; set; }
 
-        [Display(Name = nameof(CountOfAdditionalOutDiagnoses))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.CountOfAdditionalOutDiagnoses)]
         public int? CountOfAdditionalOutDiagnoses { get; set; }
 
-        [Display(Name = nameof(Sex))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Sex)]
         public int? Sex { get; set; }
 
-        [Display(Name = nameof(SendDiagnose))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendDiagnose)]
         public string SendDiagnose { get; set; }
 
-        [Display(Name = nameof(CountOfAdditionalSendDiagnoses))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.CountOfAdditionalSendDiagnoses)]
         public int? CountOfAdditionalSendDiagnoses { get; set; }
 
-        [Display(Name = nameof(HealthRegion))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.HealthRegion)]
         public int? HealthRegion { get; set; }
 
-        [Display(Name = nameof(UsedDrug))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.UsedDrug)]
         public string UsedDrug { get; set; }
 
-        [Display(Name = nameof(Age))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Age)]
         public int? Age { get; set; }
 
-        [Display(Name = nameof(OlderThan))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OlderThan)]
         public int? OlderThan { get; set; }
 
-        [Display(Name = nameof(YoungerThan))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.YoungerThan)]
         public int? YoungerThan { get; set; }
 
-        [Display(Name = nameof(Order))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Order)]
         public OutOrderEnum Order { get; set; }
 
-        [Display(Name = nameof(Direction))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Direction)]
         public OrderDirectionEnum Direction { get; set; }
 
-        [Display(Name = nameof(Length))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Length)]
         public PageLengthEnum Length { get; set; } = PageLengthEnum.SmallLength;
 
         public Dictionary<string, string> BuildQuery(string prefix)

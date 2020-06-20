@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Medic.AppModels.Outs
 {
@@ -9,13 +8,13 @@ namespace Medic.AppModels.Outs
     {
         public int Id { get; set; }
         
-        [Display(Name = nameof(OutDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutDate)]
         public DateTime OutDate { get; set; }
 
-        [Display(Name = nameof(MKBCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MKBCode)]
         public string MKBCode { get; set; }
 
-        [Display(Name = nameof(MKBName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MKBName)]
         public string MKBName { get; set; }
     }
 }

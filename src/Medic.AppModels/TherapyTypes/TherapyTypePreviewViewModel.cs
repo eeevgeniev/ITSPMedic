@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -9,10 +10,10 @@ namespace Medic.AppModels.TherapyTypes
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(Code))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Code)]
         public int Code { get; set; }
 
-        [Display(Name = nameof(Name))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Name)]
         public string Name { get; set; }
     }
 }

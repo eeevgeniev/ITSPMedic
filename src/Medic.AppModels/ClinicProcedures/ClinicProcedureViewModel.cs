@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.ClinicProcedures
@@ -7,16 +8,16 @@ namespace Medic.AppModels.ClinicProcedures
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(ProcedureName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProcedureName)]
         public string ProcedureName { get; set; }
 
-        [Display(Name = nameof(ProcedureCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProcedureCode)]
         public decimal ProcedureCode { get; set; }
 
-        [Display(Name = nameof(ProcedureDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProcedureDate)]
         public DateTime ProcedureDate { get; set; }
 
-        [Display(Name = nameof(ACHIcode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ACHICode)]
         public string ACHIcode { get; set; }
     }
 }

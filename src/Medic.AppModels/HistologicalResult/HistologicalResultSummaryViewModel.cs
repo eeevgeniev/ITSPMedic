@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.HistologicalResult
@@ -7,13 +8,13 @@ namespace Medic.AppModels.HistologicalResult
     {
         public int Id { get; set; }
         
-        [Display(Name = nameof(Code))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Code)]
         public decimal Code { get; set; }
 
-        [Display(Name = nameof(Date))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Date)]
         public DateTime Date { get; set; }
 
-        [Display(Name = nameof(Note))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Notes)]
         public string Note { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.Procedures
@@ -7,55 +8,55 @@ namespace Medic.AppModels.Procedures
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(Date))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Date)]
         public DateTime Date { get; set; }
 
-        [Display(Name = nameof(Code))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Code)]
         public decimal Code { get; set; }
 
-        [Display(Name = nameof(ACHICode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ACHICode)]
         public string ACHICode { get; set; }
 
-        [Display(Name = nameof(OutHospital))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutHospital)]
         public int? OutHospital { get; set; }
 
-        [Display(Name = nameof(ImplantReferenceNumber))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ImplantReferenceNumber)]
         public string ImplantReferenceNumber { get; set; }
 
-        [Display(Name = nameof(ImplantManufacturer))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ImplantManufacturer)]
         public string ImplantManufacturer { get; set; }
 
-        [Display(Name = nameof(ImplantCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ImplantCode)]
         public string ImplantCode { get; set; }
 
-        [Display(Name = nameof(BedDays))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.BedDays)]
         public int? BedDays { get; set; }
 
-        [Display(Name = nameof(HLDateFrom))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.HLDateFrom)]
         public DateTime? HLDateFrom { get; set; }
 
-        [Display(Name = nameof(HLNumber))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.HLNumber)]
         public string HLNumber { get; set; }
 
-        [Display(Name = nameof(HLTotalDays))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.HLTotalDays)]
         public int? HLTotalDays { get; set; }
 
-        [Display(Name = nameof(StateAtDischarge))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.StateAtDischarge)]
         public int? StateAtDischarge { get; set; }
 
-        [Display(Name = nameof(Laparoscopic))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Laparoscopic)]
         public int? Laparoscopic { get; set; }
 
-        [Display(Name = nameof(PathologicFinding))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PathologicFinding)]
         public int? PathologicFinding { get; set; }
 
-        [Display(Name = nameof(EndCourse))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.EndCourse)]
         public int? EndCourse { get; set; }
 
-        [Display(Name = nameof(SendAPr))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendApr)]
         public string SendAPr { get; set; }
 
-        [Display(Name = nameof(InAPr))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.InApr)]
         public string InAPr { get; set; }
     }
 }

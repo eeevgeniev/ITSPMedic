@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Medic.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.HealthRegions
 {
@@ -6,7 +7,7 @@ namespace Medic.AppModels.HealthRegions
     {
         public int? Id { get; set; }
 
-        [Display(Name = nameof(Name))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Name)]
         public string Name { get; set; }
     }
 }

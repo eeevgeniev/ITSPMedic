@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Medic.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.CeasedClinicals
 {
@@ -6,13 +7,13 @@ namespace Medic.AppModels.CeasedClinicals
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(Code))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Code)]
         public string Code { get; set; }
 
-        [Display(Name = nameof(IZMedicalWard))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.IZMedicalWard)]
         public int IZMedicalWard { get; set; }
 
-        [Display(Name = nameof(IZMedicalWard))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.IZMedicalWard)]
         public int IZYearMedicalWard { get; set; }
     }
 }

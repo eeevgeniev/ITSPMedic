@@ -5,6 +5,7 @@ using Medic.AppModels.HistologicalResult;
 using Medic.AppModels.Patients;
 using Medic.AppModels.Procedures;
 using Medic.AppModels.UsedDrugs;
+using Medic.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,117 +18,117 @@ namespace Medic.AppModels.Outs
 
         public PatientSummaryViewModel Patient { get; set; }
 
-        [Display(Name = nameof(PatientBranch))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientBranch)]
         public string PatientBranch { get; set; }
 
-        [Display(Name = nameof(PatientHRegion))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientHRegion)]
         public string PatientHRegion { get; set; }
 
-        [Display(Name = nameof(InType))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.InType)]
         public int InType { get; set; }
 
         public HealthcarePractitionerSummaryViewModel Sender { get; set; }
 
-        [Display(Name = nameof(SendDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendDate)]
         public DateTime SendDate { get; set; }
 
         public List<DiagnosePreviewViewModel> SendDiagnoses { get; set; }
 
-        [Display(Name = nameof(SendUrgency))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendUrgency)]
         public int SendUrgency { get; set; }
 
-        [Display(Name = nameof(SendClinicalPath))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendClinicalPath)]
         public double SendClinicalPath { get; set; }
 
-        [Display(Name = nameof(SendAPr))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendApr)]
         public int? SendAPr { get; set; }
         
-        [Display(Name = nameof(PlannedNumber))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PlannedNumber)]
         public int PlannedNumber { get; set; }
 
-        [Display(Name = nameof(InAPr))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.InApr)]
         public int? InAPr { get; set; }
 
-        [Display(Name = nameof(UniqueIdentifier))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.UniqueIdentifier)]
         public string UniqueIdentifier { get; set; }
 
-        [Display(Name = nameof(ExaminationDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ExaminationDate)]
         public DateTime ExaminationDate { get; set; }
 
         public List<DiagnosePreviewViewModel> Diagnoses { get; set; }
 
-        [Display(Name = nameof(Urgency))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Urgency)]
         public int Urgency { get; set; }
 
-        [Display(Name = nameof(ClinicalPath))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ClinicalPath)]
         public double ClinicalPath { get; set; }
 
-        [Display(Name = nameof(NZOKPay))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.NZOKPay)]
         public int NZOKPay { get; set; }
 
-        [Display(Name = nameof(InMedicalWard))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.InMedicalWard)]
         public decimal InMedicalWard { get; set; }
 
-        [Display(Name = nameof(EntryDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.EntryDate)]
         public DateTime EntryDate { get; set; }
 
-        [Display(Name = nameof(Severity))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Severity)]
         public int Severity { get; set; }
 
-        [Display(Name = nameof(Delay))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Delay)]
         public int Delay { get; set; }
 
-        [Display(Name = nameof(Payer))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Payer)]
         public int Payer { get; set; }
 
-        [Display(Name = nameof(AgeInDays))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.AgeInDays)]
         public int? AgeInDays { get; set; }
 
-        [Display(Name = nameof(WeightInGrams))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.WeightInGrams)]
         public int? WeightInGrams { get; set; }
 
-        [Display(Name = nameof(BirthWeight))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.BirthWeight)]
         public int? BirthWeight { get; set; }
 
-        [Display(Name = nameof(MotherIZYear))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MotherIZYear)]
         public int? MotherIZYear { get; set; }
 
-        [Display(Name = nameof(MotherIZNo))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MotherIZNo)]
         public int? MotherIZNo { get; set; }
 
-        [Display(Name = nameof(IZYear))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.IZYear)]
         public int? IZYear { get; set; }
 
-        [Display(Name = nameof(IZNo))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.IZNo)]
         public int? IZNo { get; set; }
 
-        [Display(Name = nameof(OutMedicalWard))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutMedicalWard)]
         public decimal OutMedicalWard { get; set; }
 
-        [Display(Name = nameof(OutUniqueIdentifier))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutUniqueIdentifier)]
         public string OutUniqueIdentifier { get; set; }
 
-        [Display(Name = nameof(OutDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutDate)]
         public DateTime OutDate { get; set; }
 
-        [Display(Name = nameof(OutType))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutType)]
         public int OutType { get; set; }
 
         public DiagnosePreviewViewModel Dead { get; set; }
 
-        [Display(Name = nameof(BirthPractice))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.BirthPractice)]
         public string BirthPractice { get; set; }
 
-        [Display(Name = nameof(BirthNumber))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.BirthNumber)]
         public int? BirthNumber { get; set; }
 
-        [Display(Name = nameof(BirthGestWeek))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.BirthGestWeek)]
         public int? BirthGestWeek { get; set; }
 
-        [Display(Name = nameof(OutClinicalPath))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutClinicalPath)]
         public double OutClinicalPath { get; set; }
 
-        [Display(Name = nameof(OutAPr))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutAPr)]
         public string OutAPr { get; set; }
 
         public HistologicalResultSummaryViewModel HistologicalResult { get; set; }
@@ -142,28 +143,28 @@ namespace Medic.AppModels.Outs
 
         public List<ProcedureSummaryViewModel> Procedures { get; set; }
 
-        [Display(Name = nameof(BedDays))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.BedDays)]
         public int? BedDays { get; set; }
 
-        [Display(Name = nameof(HLDateFrom))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.HLDateFrom)]
         public DateTime? HLDateFrom { get; set; }
 
-        [Display(Name = nameof(HLNumber))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.HLNumber)]
         public string HLNumber { get; set; }
 
-        [Display(Name = nameof(HLTotalDays))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.HLTotalDays)]
         public int? HLTotalDays { get; set; }
 
-        [Display(Name = nameof(StateAtDischarge))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.StateAtDischarge)]
         public int? StateAtDischarge { get; set; }
 
-        [Display(Name = nameof(Laparoscopic))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Laparoscopic)]
         public int? Laparoscopic { get; set; }
 
-        [Display(Name = nameof(EndCourse))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.EndCourse)]
         public int? EndCourse { get; set; }
 
-        [Display(Name = nameof(CPFile))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.CPFile)]
         public string CPFile { get; set; }
     }
 }

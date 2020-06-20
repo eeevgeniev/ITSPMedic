@@ -195,6 +195,7 @@ namespace Medic.Resources
         public const string PlannedEntryDate = nameof(PlannedEntryDate);
         public const string PlannedNumber = nameof(PlannedNumber);
         public const string PlannedProceduresCount = nameof(PlannedProceduresCount);
+        public const string PlanningsCount = nameof(PlanningsCount);
         public const string PlanVisitDate = nameof(PlanVisitDate);
         public const string PostoperativeStatus = nameof(PostoperativeStatus);
         public const string Practice = nameof(Practice);
@@ -262,6 +263,10 @@ namespace Medic.Resources
         public const string Weight = nameof(Weight);
         public const string WeightInGrams = nameof(WeightInGrams);
         public const string YoungerThan = nameof(YoungerThan);
+        public const string SendDiagnoses = nameof(SendDiagnoses);
+        public const string OutDiagnoses  = nameof(OutDiagnoses);
+        public const string UsedDrugCodes = nameof(UsedDrugCodes);
+        public const string DiagnoseName = nameof(DiagnoseName);
 
         public IStringLocalizer Build(IStringLocalizerFactory factory)
         {

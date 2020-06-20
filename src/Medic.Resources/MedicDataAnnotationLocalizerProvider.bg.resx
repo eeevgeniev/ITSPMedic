@@ -327,6 +327,9 @@
   <data name="DiagnoseDate" xml:space="preserve">
     <value>Дата на диагноза</value>
   </data>
+  <data name="DiagnoseName" xml:space="preserve">
+    <value>Име на диагноза</value>
+  </data>
   <data name="Diagnoses" xml:space="preserve">
     <value>Диагнози</value>
   </data>
@@ -624,6 +627,9 @@
   <data name="OutDiagnoseName" xml:space="preserve">
     <value>Име на диагнозата при изписване</value>
   </data>
+  <data name="OutDiagnoses" xml:space="preserve">
+    <value>Диагнози при изписване</value>
+  </data>
   <data name="OutHospital" xml:space="preserve">
     <value>Изписване от болница</value>
   </data>
@@ -683,6 +689,9 @@
   </data>
   <data name="PlannedProceduresCount" xml:space="preserve">
     <value>Брой на планираните процедури</value>
+  </data>
+  <data name="PlanningsCount" xml:space="preserve">
+    <value>Брой на планираните пациенти</value>
   </data>
   <data name="PlanVisitDate" xml:space="preserve">
     <value>Дата на планираното посещение</value>
@@ -783,6 +792,9 @@
   <data name="SendDiagnoseName" xml:space="preserve">
     <value>Име на изпратената диагноза</value>
   </data>
+  <data name="SendDiagnoses" xml:space="preserve">
+    <value>Изпратени диагнози</value>
+  </data>
   <data name="SendDignoseCode" xml:space="preserve">
     <value>Код на изпратената диагноза</value>
   </data>
@@ -863,6 +875,9 @@
   </data>
   <data name="UsedDrugCode" xml:space="preserve">
     <value>Код на използваното лекарство</value>
+  </data>
+  <data name="UsedDrugCodes" xml:space="preserve">
+    <value>Кодове на използвани лекарства</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Потребителско име</value>

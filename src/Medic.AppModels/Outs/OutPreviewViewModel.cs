@@ -1,4 +1,5 @@
 ﻿using Medic.AppModels.Diagnoses;
+using Medic.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,30 +10,30 @@ namespace Medic.AppModels.Outs
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(UniqueIdentifier))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.UniqueIdentifier)]
         public string UniqueIdentifier { get; set; }
 
-        [Display(Name = nameof(OutDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutDate)]
         public DateTime OutDate { get; set; }
 
-        [Display(Name = nameof(OutMainDiagnoseCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutMainDiagnoseCode)]
         public string OutMainDiagnoseCode { get; set; }
 
-        [Display(Name = nameof(OutMainDiagnoseName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutMainDiagnoseName)]
         public string OutMainDiagnoseName { get; set; }
 
         public int PatientId { get; set; }
 
-        [Display(Name = nameof(SendDiagnoses))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendDiagnoses)]
         public List<DiagnosePreviewViewModel> SendDiagnoses { get; set; }
 
-        [Display(Name = nameof(Diagnoses))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Diagnoses)]
         public List<DiagnosePreviewViewModel> Diagnoses { get; set; }
 
-        [Display(Name = nameof(OutDiagnoses))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutDiagnoses)]
         public List<DiagnosePreviewViewModel> OutDiagnoses { get; set; }
 
-        [Display(Name = nameof(UsedDrugCodes))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.UsedDrugCodes)]
         public List<string> UsedDrugCodes { get; set; }
     }
 }

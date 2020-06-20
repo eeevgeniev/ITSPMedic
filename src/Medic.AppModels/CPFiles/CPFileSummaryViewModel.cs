@@ -1,26 +1,27 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.CPFiles
 {
     public class CPFileSummaryViewModel
     {
-        [Display(Name = "DateFrom")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DateFrom)]
         public DateTime DateFrom { get; set; }
 
-        [Display(Name = "PlanningsCount")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PlanningsCount)]
         public int PlanningsCount { get; set; }
 
-        [Display(Name = "InsCount")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.InsCount)]
         public int InsCount { get; set; }
 
-        [Display(Name = "OutsCount")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutsCount)]
         public int OutsCount { get; set; }
 
-        [Display(Name = "ProtocolDrugTherapiesCount")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProtocolDrugTherapiesCount)]
         public int ProtocolDrugTherapiesCount { get; set; }
 
-        [Display(Name = "PatientTransfersCount")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientTransfersCount)]
         public int PatientTransfersCount { get; set; }
     }
 }

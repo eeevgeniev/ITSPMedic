@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,19 +13,19 @@ namespace Medic.AppModels.CommissionAprs
 
         public int PatientId { get; set; }
 
-        [Display(Name = nameof(SendDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendDate)]
         public DateTime SendDate { get; set; }
 
-        [Display(Name = nameof(MainDiagCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MainDiagCode)]
         public string MainDiagCode { get; set; }
 
-        [Display(Name = nameof(MainDiagName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MainDiagName)]
         public string MainDiagName { get; set; }
 
-        [Display(Name = nameof(AddDiagCodes))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.AddDiagCodes)]
         public List<String> AddDiagCodes { get; set; }
 
-        [Display(Name = nameof(APr05sImuno))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.APr05sImuno)]
         public string APr05sImuno 
         { 
             get { return _imuno; }

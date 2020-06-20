@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.APr05s
@@ -7,22 +8,22 @@ namespace Medic.AppModels.APr05s
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(DiagnoseDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DiagnoseDate)]
         public DateTime DiagnoseDate { get; set; }
 
-        [Display(Name = nameof(Staging))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Staging)]
         public string Staging { get; set; }
 
-        [Display(Name = nameof(Imuno))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Imuno)]
         public string Imuno { get; set; }
 
-        [Display(Name = nameof(Genetic))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Genetic)]
         public string Genetic { get; set; }
 
-        [Display(Name = nameof(Sign))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Sign)]
         public string Sign { get; set; }
 
-        [Display(Name = nameof(NZOKPay))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.NZOKPay)]
         public int NZOKPay { get; set; }
     }
 }

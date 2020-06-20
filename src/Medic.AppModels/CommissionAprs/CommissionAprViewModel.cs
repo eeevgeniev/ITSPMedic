@@ -3,6 +3,7 @@ using Medic.AppModels.APr38s;
 using Medic.AppModels.Diags;
 using Medic.AppModels.HealthcarePractitioners;
 using Medic.AppModels.Patients;
+using Medic.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,30 +16,30 @@ namespace Medic.AppModels.CommissionAprs
 
         public PatientSummaryViewModel Patient { get; set; }
 
-        [Display(Name = nameof(PatientBranch))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientBranch)]
         public string PatientBranch { get; set; }
 
-        [Display(Name = nameof(PatientHRegion))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientHRegion)]
         public string PatientHRegion { get; set; }
 
         public HealthcarePractitionerSummaryViewModel Sender { get; set; }
 
-        [Display(Name = nameof(AprSend))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.APrSend)]
         public double? AprSend { get; set; }
 
-        [Display(Name = nameof(SendDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendDate)]
         public DateTime SendDate { get; set; }
 
-        [Display(Name = nameof(AprPriem))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.APrPriem)]
         public double? AprPriem { get; set; }
 
-        [Display(Name = nameof(SpecCommission))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SpecCommission)]
         public int SpecCommission { get; set; }
 
-        [Display(Name = nameof(NoDecision))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.NoDecision)]
         public int NoDecision { get; set; }
 
-        [Display(Name = nameof(DecisionDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DecisionDate)]
         public DateTime DecisionDate { get; set; }
 
         public HealthcarePractitionerSummaryViewModel Chairman { get; set; }
@@ -51,10 +52,10 @@ namespace Medic.AppModels.CommissionAprs
 
         public APr05PreviewViewModel APr05 { get; set; }
 
-        [Display(Name = nameof(Sign))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Sign)]
         public int Sign { get; set; }
 
-        [Display(Name = nameof(NZOKPay))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.NZOKPay)]
         public int NZOKPay { get; set; }
     }
 }

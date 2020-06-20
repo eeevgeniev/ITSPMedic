@@ -1,5 +1,6 @@
 ﻿using Medic.AppModels.Contracts;
 using Medic.AppModels.Enums;
+using Medic.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,28 +12,28 @@ namespace Medic.AppModels.Patients
     /// </summary>
     public class PatientSearch : IQueryStringBuilder
     {
-        [Display(Name = nameof(IdentityNumber))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.IdentityNumber)]
         public string IdentityNumber { get; set; }
 
-        [Display(Name = nameof(Age))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Age)]
         public int? Age { get; set; }
 
-        [Display(Name = nameof(YoungerThan))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.YoungerThan)]
         public int? YoungerThan { get; set; }
 
-        [Display(Name = nameof(OlderThan))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OlderThan)]
         public int? OlderThan { get; set; }
 
-        [Display(Name = nameof(Sex))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Sex)]
         public int? Sex { get; set; }
 
-        [Display(Name = nameof(Order))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Order)]
         public PatientOrderEnum Order { get; set; }
 
-        [Display(Name = nameof(Length))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Length)]
         public PageLengthEnum Length { get; set; } = PageLengthEnum.SmallLength;
 
-        [Display(Name = nameof(Direction))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Direction)]
         public OrderDirectionEnum Direction { get; set; }
 
         public Dictionary<string, string> BuildQuery(string prefix)

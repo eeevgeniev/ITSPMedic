@@ -1,29 +1,30 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.HospitalPractices
 {
     public class HospitalPracticeSummaryViewModel
     {
-        [Display(Name = nameof(DateFrom))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DateFrom)]
         public DateTime DateFrom { get; set; }
 
-        [Display(Name = nameof(InClinicProceduresCount))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.InClinicProceduresCount)]
         public int InClinicProceduresCount { get; set; }
 
-        [Display(Name = nameof(PathProceduresCount))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PathProceduresCount)]
         public int PathProceduresCount { get; set; }
 
-        [Display(Name = nameof(DispObservationsCount))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DispObservationsCount)]
         public int DispObservationsCount { get; set; }
 
-        [Display(Name = nameof(CommissionAprsCount))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.CommissionAprsCount)]
         public int CommissionAprsCount { get; set; }
 
-        [Display(Name = nameof(ProtocolDrugTherapiesCount))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProtocolDrugTherapiesCount)]
         public int ProtocolDrugTherapiesCount { get; set; }
 
-        [Display(Name = nameof(PatientTransfersCount))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientTransfersCount)]
         public int PatientTransfersCount { get; set; }
     }
 }
