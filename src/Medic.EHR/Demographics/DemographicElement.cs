@@ -1,12 +1,14 @@
 ﻿using Medic.EHR.Demographics.Base;
 using Medic.EHR.Primitives.Base;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Demographics
 {
-    public class DemographicElement<T> : DemographicItem<T>
+    [Serializable]
+    public class DemographicElement : DemographicItem
     {
         [XmlElement(ElementName = "value")]
-        public EHRDataValue<T> DataValue { get; set; }
+        public EHRDataValue DataValue { get; set; }
     }
 }

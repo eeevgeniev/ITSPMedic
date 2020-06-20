@@ -1,8 +1,14 @@
-﻿using Medic.EHR.Primitives.Base;
+﻿using Medic.EHR.Infrastructure;
+using Medic.EHR.Primitives.Base;
+using System;
+using System.Xml.Serialization;
 
 namespace Medic.EHR.Primitives
 {
-    public class EHRReal : EHRDataValue<double>
+    [Serializable]
+    public class EHRReal : EHRDataValue
     {
+        [XmlAttribute(AttributeName = Constants.Value)]
+        public double Value { get; set; }
     }
 }

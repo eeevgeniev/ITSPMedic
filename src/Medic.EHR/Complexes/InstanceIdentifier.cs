@@ -1,10 +1,12 @@
 ﻿using Medic.EHR.Infrastructure;
 using Medic.EHR.Primitives.Base;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Complexes
 {
-    public class InstanceIdentifier<T> : EHRDataValue<T>
+    [Serializable]
+    public class InstanceIdentifier : EHRDataValue
     {
         [XmlAttribute(AttributeName = Constants.Root)]
         public string Root { get; set; }

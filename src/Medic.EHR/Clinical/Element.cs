@@ -1,13 +1,15 @@
 ﻿using Medic.EHR.Clinical.Base;
 using Medic.EHR.Infrastructure;
 using Medic.EHR.Primitives.Base;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Clinical
 {
-    public class Element<T> : Item<T>
+    [Serializable]
+    public class Element : Item
     {
         [XmlElement(ElementName = Constants.Value)]
-        public EHRDataValue<T> Value { get; set; }
+        public EHRDataValue Value { get; set; }
     }
 }

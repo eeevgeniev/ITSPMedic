@@ -1,8 +1,10 @@
-﻿using Medic.EHR.Components;
+﻿using Medic.EHR.Components.Base;
+using System;
 
 namespace Medic.EHR.Demographics.Base
 {
-    public abstract class DemographicItem<T> : StructureComponent<T>
+    [Serializable]
+    public abstract class DemographicItem : StructureComponent
     {
 
     }

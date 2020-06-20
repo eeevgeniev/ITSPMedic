@@ -68,5 +68,6 @@
         internal const string Emphasis = "emphasis";
         internal const string Parts = "parts";
         internal const string Entities = "entities";
+        internal const string EhrExtract = "EHR_EXTRACT";
     }
 }

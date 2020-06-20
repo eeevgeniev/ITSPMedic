@@ -1,19 +1,21 @@
 ﻿using Medic.EHR.Complexes;
 using Medic.EHR.Components.Base;
 using Medic.EHR.Infrastructure;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Components
 {
-    public class Link<T> : BaseComponent<T>
+    [Serializable]
+    public class Link : BaseComponent
     {
         [XmlElement(ElementName = Constants.LinkDescription)]
-        public CodedValue<T> LinkDescription { get; set; }
+        public CodedValue LinkDescription { get; set; }
 
         [XmlElement(ElementName = Constants.Target)]
-        public InstanceIdentifier<T> Target { get; set; }
+        public InstanceIdentifier Target { get; set; }
 
         [XmlElement(ElementName = Constants.Source)]
-        public InstanceIdentifier<T> Source { get; set; }
+        public InstanceIdentifier Source { get; set; }
     }
 }

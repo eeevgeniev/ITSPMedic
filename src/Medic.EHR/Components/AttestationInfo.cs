@@ -2,14 +2,16 @@
 using Medic.EHR.Components.Base;
 using Medic.EHR.Infrastructure;
 using Medic.EHR.Primitives;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Components
 {
-    public class AttestationInfo<T> : BaseComponent<T>
+    [Serializable]
+    public class AttestationInfo : BaseComponent
     {
         [XmlElement(ElementName = Constants.TargetComponent)]
-        public InstanceIdentifier<T> TargetComponent { get; set; }
+        public InstanceIdentifier TargetComponent { get; set; }
 
         [XmlElement(ElementName = Constants.Time)]
         public EHRTime Time { get; set; }
@@ -21,10 +23,10 @@ namespace Medic.EHR.Components
         public Attachment AttestedView { get; set; }
 
         [XmlElement(ElementName = Constants.ReasonForAttestation)]
-        public CodedValue<T> ReasonForAttestation { get; set; }
+        public CodedValue ReasonForAttestation { get; set; }
 
         [XmlElement(ElementName = Constants.Attester)]
-        public InstanceIdentifier<T> Attester { get; set; }
+        public InstanceIdentifier Attester { get; set; }
 
         [XmlElement(ElementName = Constants.AttestationMeans)]
         public CodedSimple AttestationMeans { get; set; }

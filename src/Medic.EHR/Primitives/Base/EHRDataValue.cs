@@ -1,11 +1,21 @@
-﻿using Medic.EHR.Infrastructure;
+﻿using Medic.EHR.Complexes;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Primitives.Base
 {
-    public abstract class EHRDataValue<T>
+    [Serializable]
+    [XmlInclude(typeof(EHRBoolean))]
+    [XmlInclude(typeof(EHRDate))]
+    [XmlInclude(typeof(EHRDateTime))]
+    [XmlInclude(typeof(EHRInteger))]
+    [XmlInclude(typeof(EHRPointInTime))]
+    [XmlInclude(typeof(EHRReal))]
+    [XmlInclude(typeof(EHRString))]
+    [XmlInclude(typeof(EHRTime))]
+    [XmlInclude(typeof(CodedValue))]
+    public abstract class EHRDataValue
     {
-        [XmlAttribute(AttributeName = Constants.Value)]
-        public T Value { get; set; }
+        
     }
 }

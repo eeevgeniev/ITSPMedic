@@ -1,5 +1,8 @@
-﻿namespace Medic.EHR.Primitives
+﻿using System;
+
+namespace Medic.EHR.Primitives
 {
+    [Serializable]
     public class EHRDateTime : EHRString
     {
     }

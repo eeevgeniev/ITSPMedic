@@ -1,20 +1,22 @@
 ﻿using Medic.EHR.Complexes;
-using Medic.EHR.Components;
+using Medic.EHR.Components.Base;
 using Medic.EHR.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Clinical
 {
-    public class Folder<T> : StructureComponent<T>
+    [Serializable]
+    public class Folder : StructureComponent
     {
         [XmlElement(ElementName = Constants.SubjectOfCare)]
-        public InstanceIdentifier<T> SubjectOfCare { get; set; }
+        public InstanceIdentifier SubjectOfCare { get; set; }
 
         [XmlElement(ElementName = Constants.SubFolders)]
-        public List<Folder<T>> SubFolders { get; set; }
+        public List<Folder> SubFolders { get; set; }
 
         [XmlElement(ElementName = Constants.Compositions)]
-        public List<Composition<T>> Compositions { get; set; }
+        public List<Composition> Compositions { get; set; }
     }
 }

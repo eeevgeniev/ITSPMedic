@@ -1,10 +1,12 @@
 ﻿using Medic.EHR.Infrastructure;
 using Medic.EHR.Primitives.Base;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Complexes
 {
-    public class CodedValue<T> : EHRDataValue<T>
+    [Serializable]
+    public class CodedValue : EHRDataValue
     {
         [XmlElement(ElementName = "original_text")]
         public SimpleText OriginalText { get; set; }

@@ -1,16 +1,18 @@
-﻿using Medic.EHR.Components;
+﻿using Medic.EHR.Components.Base;
 using Medic.EHR.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.Demographics
 {
-    public class DemographicFolder<T> : StructureComponent<T>
+    [Serializable]
+    public class DemographicFolder : StructureComponent
     {
         [XmlElement(ElementName = Constants.Entities)]
-        public List<DemographicEntity<T>> Entities { get; set; }
+        public List<DemographicEntity> Entities { get; set; }
 
         [XmlElement(ElementName = Constants.SubFolders)]
-        public List<DemographicFolder<T>> SubFolders { get; set; }
+        public List<DemographicFolder> SubFolders { get; set; }
     }
 }
