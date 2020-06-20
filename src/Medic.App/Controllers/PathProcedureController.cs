@@ -91,9 +91,9 @@ namespace Medic.App.Controllers
                 return View(new PathProcedurePageIndexModel()
                 {
                     PathProcedures = pathProcedures,
-                    Title = MedicDataLocalization.Get("PathProcedures"),
-                    Description = MedicDataLocalization.Get("PathProcedures"),
-                    Keywords = MedicDataLocalization.Get("PathProceduresSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.PathProcedures),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.PathProcedures),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.PathProceduresSummary),
                     Search = search,
                     CurrentPage = page,
                     TotalPages = base.TotalPages(pageLength, pathProceduresCount),
@@ -125,10 +125,10 @@ namespace Medic.App.Controllers
                 PathProcedureViewModel model;
                 string error = default;
                 
-                if (id < 0)
+                if (id < 1)
                 {
                     model = default;
-                    error = MedicDataLocalization.Get("InvalidId");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidId);
                 }
                 else
                 {
@@ -144,9 +144,9 @@ namespace Medic.App.Controllers
                 
                 return View(new PathProcedurePagePathProcedureModel()
                 {
-                    Title = MedicDataLocalization.Get("PathProcedure"),
-                    Description = MedicDataLocalization.Get("PathProcedure"),
-                    Keywords = MedicDataLocalization.Get("PathProcedureSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.PathProcedure),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.PathProcedure),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.PathProcedureSummary),
                     PathProcedureViewModel = model,
                     Error = error
                 });

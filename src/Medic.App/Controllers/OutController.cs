@@ -75,7 +75,7 @@ namespace Medic.App.Controllers
                 healthRegions.AddRange(await base.GetHealthRegionsAsync());
 
                 List<UsedDrugCodeOption> usedDrugs = new List<UsedDrugCodeOption>() { 
-                    new UsedDrugCodeOption() { Key = string.Empty, Code = MedicDataLocalization.Get("NoSelection") } };
+                    new UsedDrugCodeOption() { Key = string.Empty, Code = MedicDataLocalization.Get(MedicDataLocalization.NoSelection) } };
 
                 if (!MedicCache.TryGetValue(MedicConstants.UsedDrugs, out List<UsedDrugCodeOption> drugs))
                 {
@@ -89,9 +89,9 @@ namespace Medic.App.Controllers
                 return View(new OutPageIndexModel()
                 {
                     Outs = outs,
-                    Title = MedicDataLocalization.Get("OutsView"),
-                    Description = MedicDataLocalization.Get("OutsView"),
-                    Keywords = MedicDataLocalization.Get("OutsSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.OutsView),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.OutsView),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.OutsSummary),
                     Search = search,
                     CurrentPage = page,
                     TotalPages = base.TotalPages(pageLength, outsCount),
@@ -125,7 +125,7 @@ namespace Medic.App.Controllers
 
                 if (id < 1)
                 {
-                    error = MedicDataLocalization.Get("InvalidId"); ;
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidId);
                     model = default;
                 }
                 else
@@ -138,17 +138,16 @@ namespace Medic.App.Controllers
 
                         base.MedicCache.Set(key, model);
                     }
-
-                    return View(new OutPageOutModel()
-                    {
-                        Title = MedicDataLocalization.Get("OutView"),
-                        Description = MedicDataLocalization.Get("OutView"),
-                        Keywords = MedicDataLocalization.Get("OutSummary"),
-                        OutViewModel = model
-                    });
                 }
 
-                return RedirectToAction(nameof(OutController.Index), GetControllerName(nameof(OutController)));
+                return View(new OutPageOutModel()
+                {
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.OutView),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.OutView),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.OutSummary),
+                    OutViewModel = model,
+                    Error = error
+                });
             }
             catch (Exception ex)
             {

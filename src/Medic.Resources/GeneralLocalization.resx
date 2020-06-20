@@ -162,6 +162,9 @@
   <data name="Ins" xml:space="preserve">
     <value>Ins</value>
   </data>
+  <data name="InvalidTry" xml:space="preserve">
+    <value>Invalid password or username.</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>

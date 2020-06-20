@@ -420,9 +420,6 @@
   <data name="DoneProcedures" xml:space="preserve">
     <value>Извършени процедури</value>
   </data>
-  <data name="Drug Name" xml:space="preserve">
-    <value>Име на клекарството</value>
-  </data>
   <data name="DrugCode" xml:space="preserve">
     <value>Код на лекраството</value>
   </data>
@@ -431,6 +428,9 @@
   </data>
   <data name="DrugDate" xml:space="preserve">
     <value>Дата на използване на лекарство</value>
+  </data>
+  <data name="DrugName" xml:space="preserve">
+    <value>Име на клекарството</value>
   </data>
   <data name="DrugProtocols" xml:space="preserve">
     <value>Протокол за лекарство</value>
@@ -550,19 +550,19 @@
     <value>Aмбулаторна процедура</value>
   </data>
   <data name="InClinicProcedure" xml:space="preserve">
-    <value>Пациент с направление за кл. процедури</value>
+    <value>Започнала дейност по клинична</value>
   </data>
   <data name="InClinicProcedures" xml:space="preserve">
-    <value>Пациенти с направления за кл. процедури</value>
+    <value>Започнали дейности по клинични процедури</value>
   </data>
   <data name="InClinicProceduresSummary" xml:space="preserve">
-    <value>Пациенти с направления за кл. процедури, мкб, пациенти</value>
+    <value>Започнали дейности по клинични процедури, мкб, пациенти</value>
   </data>
   <data name="InClinicProcedureSummary" xml:space="preserve">
-    <value>Преглед на пациент с направление за кл. процедури</value>
+    <value>Започнала дейност по клинична, мкб, пациент</value>
   </data>
   <data name="InClinicProceduresView" xml:space="preserve">
-    <value>Преглед на пациенти с направление за кл. процедури</value>
+    <value>Преглед на започнали дейности по клинични процедури</value>
   </data>
   <data name="IndividualDose" xml:space="preserve">
     <value>Индивидуална доза</value>
@@ -754,19 +754,19 @@
     <value>Патологична находка</value>
   </data>
   <data name="PathProcedure" xml:space="preserve">
-    <value>Направление за кл. процедура</value>
+    <value>Извършена дейност по клинична процедура</value>
   </data>
   <data name="PathProcedures" xml:space="preserve">
-    <value>Направления за кл. процедури</value>
+    <value>Извършени дейности по клинични процедури</value>
   </data>
   <data name="PathProceduresSummary" xml:space="preserve">
-    <value>Направления за кл. процедури, мкб, пациенти</value>
+    <value>Извършени дейности по клинични процедури, мкб, пациенти</value>
   </data>
   <data name="PathProcedureSummary" xml:space="preserve">
-    <value>Направление за кл. процедура, пациент, мкб</value>
+    <value>Извършена дейност по клинична процедура, пациент, мкб</value>
   </data>
   <data name="PathProceduresView" xml:space="preserve">
-    <value>Преглед на направления за кл. процедура</value>
+    <value>Преглед на извършени дейности по клинични процедури</value>
   </data>
   <data name="Patient" xml:space="preserve">
     <value>Пациент</value>
@@ -849,9 +849,6 @@
   <data name="ProcRefuse" xml:space="preserve">
     <value>Отказ от извършване на процедура</value>
   </data>
-  <data name="Protocol Type" xml:space="preserve">
-    <value>Тип на протокола</value>
-  </data>
   <data name="ProtocolDate" xml:space="preserve">
     <value>Дата на протокола</value>
   </data>
@@ -867,8 +864,14 @@
   <data name="ProtocolDrugTherapyView" xml:space="preserve">
     <value>Преглед на протокол на терапия с лекарства</value>
   </data>
+  <data name="ProtocolDrugTherapyViewSummary" xml:space="preserve">
+    <value>Преглед на прокотол от лечения с лекарства, мкб, пациент</value>
+  </data>
   <data name="ProtocolNumber" xml:space="preserve">
     <value>Номер на протокола</value>
+  </data>
+  <data name="ProtocolType" xml:space="preserve">
+    <value>Тип на протокола</value>
   </data>
   <data name="Quantity" xml:space="preserve">
     <value>Количество</value>
@@ -1042,13 +1045,13 @@
     <value>Преглед на приема</value>
   </data>
   <data name="ViewInClinicProcedure" xml:space="preserve">
-    <value>Преглед на процедура в клиниката</value>
+    <value>Преглед на започнала дейност по клинична</value>
   </data>
   <data name="ViewOut" xml:space="preserve">
     <value>Преглед на изписване</value>
   </data>
   <data name="ViewPathProcedure" xml:space="preserve">
-    <value>Преглед на процедура по пътека</value>
+    <value>Преглед на извършена дейност по клинична процедура</value>
   </data>
   <data name="ViewPatient" xml:space="preserve">
     <value>Преглед на пациента</value>

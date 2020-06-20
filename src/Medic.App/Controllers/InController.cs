@@ -74,9 +74,9 @@ namespace Medic.App.Controllers
                 return View(new InPageIndexModel()
                 {
                     Ins = ins,
-                    Title = MedicDataLocalization.Get("InsView"),
-                    Description = MedicDataLocalization.Get("InsView"),
-                    Keywords = MedicDataLocalization.Get("InsSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.InsView),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.InsView),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.InsSummary),
                     Search = search,
                     CurrentPage = page,
                     TotalPages = base.TotalPages(pageLength, insCount),
@@ -110,7 +110,7 @@ namespace Medic.App.Controllers
                 if (id < 1)
                 {
                     model = default;
-                    error = MedicDataLocalization.Get("InvalidId");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidId);
                 }
                 else
                 {
@@ -122,17 +122,16 @@ namespace Medic.App.Controllers
 
                         base.MedicCache.Set(key, model);
                     }
-
-                    return View(new InPageInModel()
-                    {
-                        Title = MedicDataLocalization.Get("InView"),
-                        Description = MedicDataLocalization.Get("InView"),
-                        Keywords = MedicDataLocalization.Get("InSummary"),
-                        InViewModel = model
-                    });
                 }
 
-                return RedirectToAction(nameof(InController.Index), GetControllerName(nameof(InController)));
+                return View(new InPageInModel()
+                {
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.InView),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.InView),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.InSummary),
+                    InViewModel = model,
+                    Error = error
+                });
             }
             catch (Exception ex)
             {

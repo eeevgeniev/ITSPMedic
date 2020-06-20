@@ -420,9 +420,6 @@
   <data name="DoneProcedures" xml:space="preserve">
     <value>Done procedures</value>
   </data>
-  <data name="Drug Name" xml:space="preserve">
-    <value>Drug name</value>
-  </data>
   <data name="DrugCode" xml:space="preserve">
     <value>Drug code</value>
   </data>
@@ -431,6 +428,9 @@
   </data>
   <data name="DrugDate" xml:space="preserve">
     <value>Drug date</value>
+  </data>
+  <data name="DrugName" xml:space="preserve">
+    <value>Drug name</value>
   </data>
   <data name="DrugProtocols" xml:space="preserve">
     <value>Drug protocols</value>
@@ -849,9 +849,6 @@
   <data name="ProcRefuse" xml:space="preserve">
     <value>Proc refuse</value>
   </data>
-  <data name="Protocol Type" xml:space="preserve">
-    <value>Protocol type</value>
-  </data>
   <data name="ProtocolDate" xml:space="preserve">
     <value>Protocol date</value>
   </data>
@@ -867,8 +864,14 @@
   <data name="ProtocolDrugTherapyView" xml:space="preserve">
     <value>Protocol drug therapy view</value>
   </data>
+  <data name="ProtocolDrugTherapyViewSummary" xml:space="preserve">
+    <value>Protocol drug therapy, mkb, patient</value>
+  </data>
   <data name="ProtocolNumber" xml:space="preserve">
     <value>Protocol number</value>
+  </data>
+  <data name="ProtocolType" xml:space="preserve">
+    <value>Protocol type</value>
   </data>
   <data name="Quantity" xml:space="preserve">
     <value>Quantity</value>

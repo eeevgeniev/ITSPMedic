@@ -35,6 +35,6 @@ namespace Medic.App.Controllers.Base
         }
 
         protected virtual List<SexOption> GetDefaultSexes() =>
-            new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
+            new List<SexOption>() { new SexOption() { Id = null, Name = MedicDataLocalization.Get(MedicDataLocalization.NoSelection) } };
     }
 }

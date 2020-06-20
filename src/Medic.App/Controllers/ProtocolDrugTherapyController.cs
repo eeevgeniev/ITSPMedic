@@ -92,9 +92,9 @@ namespace Medic.App.Controllers
                 return View(new ProtocolDrugTherapyPageIndexModel()
                 {
                     ProtocolDrugTherapies = protocolDrugTherapies,
-                    Title = MedicDataLocalization.Get("ProtocolDrugTherapies"),
-                    Description = MedicDataLocalization.Get("ProtocolDrugTherapies"),
-                    Keywords = MedicDataLocalization.Get("ProtocolDrugTherapiesSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapies),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapies),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapiesSummary),
                     Search = search,
                     CurrentPage = page,
                     TotalPages = base.TotalPages(pageLength, protocolDrugTherapiesCount),
@@ -126,10 +126,10 @@ namespace Medic.App.Controllers
                 ProtocolDrugTherapyViewModel model;
                 string error = default;
 
-                if (id < 0)
+                if (id < 1)
                 {
                     model = default;
-                    error = MedicDataLocalization.Get("InvalidId");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidId);
                 }
                 else
                 {
@@ -145,9 +145,9 @@ namespace Medic.App.Controllers
 
                 return View(new ProtocolDrugTherapyPageProtocolDrugTherapyModel()
                 {
-                    Title = MedicDataLocalization.Get("ProtocolDrugTherapy"),
-                    Description = MedicDataLocalization.Get("ProtocolDrugTherapy"),
-                    Keywords = MedicDataLocalization.Get("ProtocolDrugTherapySummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapyView),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapyView),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapyViewSummary),
                     ProtocolDrugTherapy = model,
                     Error = error
                 });

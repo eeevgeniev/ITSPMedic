@@ -354,9 +354,6 @@
   <data name="DispVisit" xml:space="preserve">
     <value>Диспансерен преглед</value>
   </data>
-  <data name="Drug Name" xml:space="preserve">
-    <value>Име на клекарството</value>
-  </data>
   <data name="DrugCode" xml:space="preserve">
     <value>Код на лекраството</value>
   </data>
@@ -365,6 +362,9 @@
   </data>
   <data name="DrugDate" xml:space="preserve">
     <value>Дата на използване на лекарство</value>
+  </data>
+  <data name="DrugName" xml:space="preserve">
+    <value>Име на клекарството</value>
   </data>
   <data name="DrugProtocols" xml:space="preserve">
     <value>Протокол за лекарство</value>
@@ -469,7 +469,7 @@
     <value>Aмбулаторна процедура</value>
   </data>
   <data name="InClinicProceduresCount" xml:space="preserve">
-    <value>Брой на пациенти с направления за кл. процедури</value>
+    <value>Брой на започнала дейност по клинична</value>
   </data>
   <data name="IndividualDose" xml:space="preserve">
     <value>Индивидуална доза</value>
@@ -652,7 +652,7 @@
     <value>Патологична находка</value>
   </data>
   <data name="PathProceduresCount" xml:space="preserve">
-    <value>Брой на направления за кл. процедури</value>
+    <value>Брой на извършена дейноси по клинични процедури</value>
   </data>
   <data name="PatientBranch" xml:space="preserve">
     <value>Клон на пациента</value>

@@ -75,9 +75,9 @@ namespace Medic.App.Controllers
                 return View(new DispObservationPageIndexModel()
                 {
                     DispObservations = dispObservations,
-                    Title = MedicDataLocalization.Get("DispObservations"),
-                    Description = MedicDataLocalization.Get("DispObservations"),
-                    Keywords = MedicDataLocalization.Get("DispObservationsSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.DispObservations),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.DispObservations),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.DispObservationsSummary),
                     Search = search,
                     CurrentPage = page,
                     TotalPages = base.TotalPages(pageLength, dispObservationsCount),
@@ -108,10 +108,10 @@ namespace Medic.App.Controllers
                 DispObservationViewModel model;
                 string error = default;
 
-                if (id < 0)
+                if (id < 1)
                 {
                     model = default;
-                    error = MedicDataLocalization.Get("InvalidId");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidId);
                 }
                 else
                 {
@@ -127,9 +127,9 @@ namespace Medic.App.Controllers
 
                 return View(new DispObservationPageDispObservationModel()
                 {
-                    Title = MedicDataLocalization.Get("DispObservation"),
-                    Description = MedicDataLocalization.Get("DispObservation"),
-                    Keywords = MedicDataLocalization.Get("DispObservationSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.DispObservation),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.DispObservation),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.DispObservationSummary),
                     DispObservation = model,
                     Error = error
                 });

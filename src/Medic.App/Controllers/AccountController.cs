@@ -36,9 +36,9 @@ namespace Medic.App.Controllers
         [AllowAnonymous]
         public IActionResult Login(string returnUrl) => View(new AccountPageLoginModel()
         {
-            Title = GeneralLocalization.Get("Login"),
-            Description = GeneralLocalization.Get("Login"),
-            Keywords = GeneralLocalization.Get("Login"),
+            Title = GeneralLocalization.Get(GeneralLocalization.Login),
+            Description = GeneralLocalization.Get(GeneralLocalization.Login),
+            Keywords = GeneralLocalization.Get(GeneralLocalization.Login),
             LoginInputModel = new LoginInputModel() { ReturnUrl = returnUrl }
         });
 
@@ -53,9 +53,9 @@ namespace Medic.App.Controllers
                 {
                     return View(new AccountPageLoginModel()
                     {
-                        Title = GeneralLocalization.Get("Login"),
-                        Description = GeneralLocalization.Get("Login"),
-                        Keywords = GeneralLocalization.Get("Login"),
+                        Title = GeneralLocalization.Get(GeneralLocalization.Login),
+                        Description = GeneralLocalization.Get(GeneralLocalization.Login),
+                        Keywords = GeneralLocalization.Get(GeneralLocalization.Login),
                         LoginInputModel = model
                     });
                 }
@@ -64,13 +64,13 @@ namespace Medic.App.Controllers
 
                 if (!result.Succeeded)
                 {
-                    ModelState.AddModelError("invalidtry", "Invalid password or username");
+                    ModelState.AddModelError(string.Empty, GeneralLocalization.InvalidTry);
 
                     return View(new AccountPageLoginModel()
                     {
-                        Title = GeneralLocalization.Get("Login"),
-                        Description = GeneralLocalization.Get("Login"),
-                        Keywords = GeneralLocalization.Get("Login"),
+                        Title = GeneralLocalization.Get(GeneralLocalization.Login),
+                        Description = GeneralLocalization.Get(GeneralLocalization.Login),
+                        Keywords = GeneralLocalization.Get(GeneralLocalization.Login),
                         LoginInputModel = model
                     });
                 }

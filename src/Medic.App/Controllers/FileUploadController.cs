@@ -48,9 +48,9 @@ namespace Medic.App.Controllers
         [HttpGet]
         public IActionResult CPFile() => View(new FileUploadPageCPFile()
         {
-            Title = MedicDataLocalization.Get("CPFile"),
-            Description = MedicDataLocalization.Get("CPFile"),
-            Keywords = MedicDataLocalization.Get("CPFileSummary")
+            Title = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+            Description = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+            Keywords = MedicDataLocalization.Get(MedicDataLocalization.CPFileSummary)
         });
 
         [HttpPost]
@@ -59,36 +59,37 @@ namespace Medic.App.Controllers
         {
             try
             {
-                string error = string.Empty;
+                string error = default;
 
                 if (CpFileFormFile != default)
                 {
 
-                    CP.CPFile cpFileModel = MedicXmlParser.ParseXML<CP.CPFile>(CpFileFormFile.OpenReadStream());
+                    CP.CPFile cpFileModel = MedicXmlParser
+                        .ParseXML<CP.CPFile>(CpFileFormFile.OpenReadStream());
 
                     if (cpFileModel != default)
                     {
                         CPFile cpFileEntity = Mapper.Map<CPFile, CP.CPFile>(cpFileModel);
 
                         await Task.Run(() => ImportMedicFile.ImportCPFile(cpFileEntity));
+
+                        ClearCache();
                     }
                     else
                     {
-                        error = MedicDataLocalization.Get("InvalidFile");
+                        error = MedicDataLocalization.Get(MedicDataLocalization.InvalidFile);
                     }
                 }
                 else
                 {
-                    error = MedicDataLocalization.Get("InvalidFile");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidFile);
                 }
-
-                ClearCache();
 
                 return View(new FileUploadPageCPFile()
                 {
-                    Title = MedicDataLocalization.Get("CPFile"),
-                    Description = MedicDataLocalization.Get("CPFile"),
-                    Keywords = MedicDataLocalization.Get("CPFileSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.CPFileSummary),
                     Error = error
                 });
             }
@@ -105,10 +106,10 @@ namespace Medic.App.Controllers
 
                 return View(new FileUploadPageCPFile()
                 {
-                    Title = MedicDataLocalization.Get("CPFile"),
-                    Description = MedicDataLocalization.Get("CPFile"),
-                    Keywords = MedicDataLocalization.Get("CPFileSummary"),
-                    Error = MedicDataLocalization.Get("InvalidFile")
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.CPFileSummary),
+                    Error = MedicDataLocalization.Get(MedicDataLocalization.InvalidFile)
                 });
             }
             catch (InvalidOperationException invalOpEx)
@@ -124,10 +125,10 @@ namespace Medic.App.Controllers
 
                 return View(new FileUploadPageCPFile()
                 {
-                    Title = MedicDataLocalization.Get("CPFile"),
-                    Description = MedicDataLocalization.Get("CPFile"),
-                    Keywords = MedicDataLocalization.Get("CPFileSummary"),
-                    Error = MedicDataLocalization.Get("InvalidFile")
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.CPFileSummary),
+                    Error = MedicDataLocalization.Get(MedicDataLocalization.InvalidFile)
                 });
             }
             catch (Exception ex)
@@ -148,9 +149,9 @@ namespace Medic.App.Controllers
         [HttpGet]
         public IActionResult HospitalPractice() => View(new FileUploadPageHospitalPractice()
         {
-            Title = MedicDataLocalization.Get("HospitalPracticeFile"),
-            Description = MedicDataLocalization.Get("HospitalPracticeFile"),
-            Keywords = MedicDataLocalization.Get("HospitalPracticeFileSummary")
+            Title = MedicDataLocalization.Get(MedicDataLocalization.HospitalPracticeFile),
+            Description = MedicDataLocalization.Get(MedicDataLocalization.HospitalPracticeFile),
+            Keywords = MedicDataLocalization.Get(MedicDataLocalization.HospitalPracticeFileSummary)
         });
 
         [HttpPost]
@@ -163,31 +164,32 @@ namespace Medic.App.Controllers
 
                 if (HopsitalPracticeFormFile != default)
                 {
-                    CLPR.HospitalPractice hospitalPracticeModel = MedicXmlParser.ParseXML<CLPR.HospitalPractice>(HopsitalPracticeFormFile.OpenReadStream());
+                    CLPR.HospitalPractice hospitalPracticeModel = MedicXmlParser
+                        .ParseXML<CLPR.HospitalPractice>(HopsitalPracticeFormFile.OpenReadStream());
 
                     if (hospitalPracticeModel != default)
                     {
                         HospitalPractice hospitalPracticeEntity = Mapper.Map<HospitalPractice, CLPR.HospitalPractice>(hospitalPracticeModel);
 
                         await Task.Run(() => ImportMedicFile.ImportHospitalPractice(hospitalPracticeEntity));
+
+                        ClearCache();
                     }
                     else
                     {
-                        error = MedicDataLocalization.Get("InvalidFile");
+                        error = MedicDataLocalization.Get(MedicDataLocalization.InvalidFile);
                     }
                 }
                 else
                 {
-                    error = MedicDataLocalization.Get("InvalidFile");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidFile);
                 }
-
-                ClearCache();
 
                 return View(new FileUploadPageHospitalPractice()
                 {
-                    Title = MedicDataLocalization.Get("HospitalPracticeFile"),
-                    Description = MedicDataLocalization.Get("HospitalPracticeFile"),
-                    Keywords = MedicDataLocalization.Get("HospitalPracticeFileSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.HospitalPracticeFile),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.HospitalPracticeFile),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.HospitalPracticeFileSummary),
                     Error = error
                 });
             }
@@ -204,10 +206,10 @@ namespace Medic.App.Controllers
 
                 return View(new FileUploadPageHospitalPractice()
                 {
-                    Title = MedicDataLocalization.Get("CPFile"),
-                    Description = MedicDataLocalization.Get("CPFile"),
-                    Keywords = MedicDataLocalization.Get("CPFileSummary"),
-                    Error = MedicDataLocalization.Get("InvalidFile")
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.CPFile),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.CPFileSummary),
+                    Error = MedicDataLocalization.Get(MedicDataLocalization.InvalidFile)
                 });
             }
             catch (InvalidOperationException invalOpEx)
@@ -223,10 +225,10 @@ namespace Medic.App.Controllers
 
                 return View(new FileUploadPageHospitalPractice()
                 {
-                    Title = MedicDataLocalization.Get("HospitalPracticeFile"),
-                    Description = MedicDataLocalization.Get("HospitalPracticeFile"),
-                    Keywords = MedicDataLocalization.Get("HospitalPracticeFileSummary"),
-                    Error = MedicDataLocalization.Get("InvalidFile")
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.HospitalPracticeFile),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.HospitalPracticeFile),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.HospitalPracticeFileSummary),
+                    Error = MedicDataLocalization.Get(MedicDataLocalization.InvalidFile)
                 });
             }
             catch (Exception ex)

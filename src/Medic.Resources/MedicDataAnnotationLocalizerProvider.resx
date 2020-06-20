@@ -354,9 +354,6 @@
   <data name="DispVisit" xml:space="preserve">
     <value>Disp visit</value>
   </data>
-  <data name="Drug Name" xml:space="preserve">
-    <value>Drug name</value>
-  </data>
   <data name="DrugCode" xml:space="preserve">
     <value>Drug code</value>
   </data>
@@ -365,6 +362,9 @@
   </data>
   <data name="DrugDate" xml:space="preserve">
     <value>Drug date</value>
+  </data>
+  <data name="DrugName" xml:space="preserve">
+    <value>Drug name</value>
   </data>
   <data name="DrugProtocols" xml:space="preserve">
     <value>Drug protocols</value>
