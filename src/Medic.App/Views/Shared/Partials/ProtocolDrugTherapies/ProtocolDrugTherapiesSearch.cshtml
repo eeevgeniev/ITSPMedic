@@ -22,7 +22,7 @@
         </div>
         <div class="form-group col-sm-4">
             <label asp-for="@Model.ATCName"></label>
-            <select class="form-control" asp-for="@Model.ATCName" asp-items="@atcNames.Select(s => new SelectListItem(s != default ? s : Html.Raw(medicDataLocalization.Get("NoSelection")).ToString(), s != default ? s : "", string.Equals(s, Model.ATCName) ))"></select>
+            <select class="form-control" asp-for="@Model.ATCName" asp-items="@atcNames.Select(s => new SelectListItem(s != default ? s : Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoSelection)).ToString(), s != default ? s : "", string.Equals(s, Model.ATCName) ))"></select>
         </div>
         <div class="form-group col-sm-4">
             <label asp-for="@Model.Sex"></label>

@@ -5,40 +5,40 @@
 {
     <div>
         <div class="row">
-            <div class="col-sm-2">@Html.Raw(patientLocalization.Get("IdentityNumber")):</div>
+            <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.IdentityNumber)):</div>
             <div class="col-sm-10">@Model.IdentityNumber</div>
         </div>
         <div class="row">
-            <div class="col-sm-2">@Html.Raw(patientLocalization.Get("FirstName")):</div>
+            <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.FirstName)):</div>
             <div class="col-sm-10">@Model.FirstName</div>
         </div>
         <div class="row">
-            <div class="col-sm-2">@Html.Raw(patientLocalization.Get("SecondName")):</div>
+            <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.SecondName)):</div>
             <div class="col-sm-10">@Model.SecondName</div>
         </div>
         <div class="row">
-            <div class="col-sm-2">@Html.Raw(patientLocalization.Get("LastName")):</div>
+            <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.LastName)):</div>
             <div class="col-sm-10">@Model.LastName</div>
         </div>
         <div class="row">
-            <div class="col-sm-2">@Html.Raw(patientLocalization.Get("Sex")):</div>
+            <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.Sex)):</div>
             <div class="col-sm-10">@Model.Sex</div>
         </div>
         <div class="row">
-            <div class="col-sm-2">@Html.Raw(patientLocalization.Get("Address")):</div>
+            <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.Address)):</div>
             <div class="col-sm-10">@Model.Address</div>
         </div>
         <div class="row">
-            <div class="col-sm-2">@Html.Raw(patientLocalization.Get("BirthDate")):</div>
+            <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.BirthDate)):</div>
             <div class="col-sm-10">@Model.BirthDate.ToShortDateString()</div>
         </div>
         <div class="row">
-            <div class="col-sm-2">@Html.Raw(patientLocalization.Get("Notes")):</div>
+            <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.Notes)):</div>
             <div class="col-sm-10">@Model.Notes</div>
         </div>
     </div>
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(patientLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(patientLocalization.Get(PatientLocalization.NoResults))</div>
 }

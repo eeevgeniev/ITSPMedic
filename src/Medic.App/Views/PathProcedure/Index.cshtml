@@ -15,7 +15,7 @@
 
 <article>
     <header>
-        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get("PathProceduresView")): @Model.TotalResults @Html.Raw(medicDataLocalization.Get("Results"))</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathProceduresView)): @Model.TotalResults @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
         <h4 class="text-center text-info">@Model.Keywords</h4>
     </header>
     <section>
@@ -29,14 +29,14 @@
         {
             <div>
                 <div class="row">
-                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("DateSend"))</div>
-                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("FirstMainDiagCode"))</div>
-                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("FirstMainDiagName"))</div>
-                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("SecondMainDiagCode"))</div>
-                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("SecondMainDiagName"))</div>
-                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("UsedDrugCodes"))</div>
-                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewPatient"))</div>
-                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get("ViewPathProcedure"))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DateSend))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstMainDiagCode))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstMainDiagName))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SecondMainDiagCode))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SecondMainDiagName))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UsedDrugCodes))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ViewPatient))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ViewPathProcedure))</div>
                 </div>
                 @foreach (PathProcedurePreviewViewModel currentPathProcedure in Model.PathProcedures)
                 {
@@ -51,13 +51,13 @@
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                                asp-action="@nameof(PatientController.Patient)"
-                               asp-route-id="@currentPathProcedure.PatientId" class="btn btn-info">@Html.Raw(medicDataLocalization.Get("View"))</a>
+                               asp-route-id="@currentPathProcedure.PatientId" class="btn btn-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.View))</a>
                         </div>
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(PathProcedureController))"
                                asp-action="@nameof(PathProcedureController.PathProcedure)"
                                asp-route-id="@currentPathProcedure.Id"
-                               class="btn btn-secondary">@Html.Raw(medicDataLocalization.Get("View"))</a>
+                               class="btn btn-secondary">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.View))</a>
                         </div>
                     </div>
                 }
@@ -79,7 +79,7 @@
         }
         else
         {
-            <div class="text-center text-info font-weight-bold">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+            <div class="text-center text-info font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
         }
     </section>
 </article>

@@ -568,7 +568,7 @@
     <value>Name HS</value>
   </data>
   <data name="NoDecision" xml:space="preserve">
-    <value>No Decision</value>
+    <value>No decision</value>
   </data>
   <data name="NoPatients" xml:space="preserve">
     <value>No patients found.</value>
@@ -817,7 +817,7 @@
     <value>10</value>
   </data>
   <data name="SpecCommission" xml:space="preserve">
-    <value>Spec Commission</value>
+    <value>Spec commission</value>
   </data>
   <data name="Speciality" xml:space="preserve">
     <value>Speciality</value>

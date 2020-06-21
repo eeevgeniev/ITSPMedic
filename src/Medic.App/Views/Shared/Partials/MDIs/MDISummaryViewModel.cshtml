@@ -4,8 +4,8 @@
 @if (Model != default && Model.Count > 0)
 {
     <div class="row">
-        <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("MDICode"))</div>
-        <div class="col-sm-8 font-weight-bold">@Html.Raw(medicDataLocalization.Get("MDIName"))</div>
+        <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MDICode))</div>
+        <div class="col-sm-8 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MDIName))</div>
     </div>
 
     @foreach (var currentMdi in Model)
@@ -19,5 +19,5 @@
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

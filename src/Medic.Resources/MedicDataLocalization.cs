@@ -22,6 +22,7 @@ namespace Medic.Resources
         public const string APr05 = nameof(APr05);
         public const string APr05sImuno = nameof(APr05sImuno);
         public const string APr38 = nameof(APr38);
+        public const string APr38s = nameof(APr38s);
         public const string AprCode = nameof(AprCode);
         public const string APrPriem = nameof(APrPriem);
         public const string APrSend = nameof(APrSend);
@@ -86,6 +87,7 @@ namespace Medic.Resources
         public const string DiagDate = nameof(DiagDate);
         public const string Diagnose = nameof(Diagnose);
         public const string DiagnoseCode = nameof(DiagnoseCode);
+        public const string DiagnoseName = nameof(DiagnoseName);
         public const string DiagnoseDate = nameof(DiagnoseDate);
         public const string Diagnoses = nameof(Diagnoses);
         public const string DiagnoseSummaryTitle = nameof(DiagnoseSummaryTitle);
@@ -190,10 +192,12 @@ namespace Medic.Resources
         public const string MotherIZYear = nameof(MotherIZYear);
         public const string Name = nameof(Name);
         public const string NameHS = nameof(NameHS);
+        public const string NoDecision = nameof(NoDecision);
         public const string NoPrescr = nameof(NoPrescr);
         public const string NoResults = nameof(NoResults);
         public const string NormalLength = nameof(NormalLength);
         public const string NoSelection = nameof(NoSelection);
+        public const string Notes = nameof(Notes);
         public const string Number = nameof(Number);
         public const string NumberOfDecision = nameof(NumberOfDecision);
         public const string NumberOfProtocol = nameof(NumberOfProtocol);
@@ -282,6 +286,7 @@ namespace Medic.Resources
         public const string Sign = nameof(Sign);
         public const string SingleDose = nameof(SingleDose);
         public const string SmallLength = nameof(SmallLength);
+        public const string SpecCommission = nameof(SpecCommission);
         public const string Speciality = nameof(Speciality);
         public const string Staging = nameof(Staging);
         public const string StandartDose = nameof(StandartDose);

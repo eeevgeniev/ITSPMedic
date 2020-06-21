@@ -1,9 +1,9 @@
 ﻿@inject GeneralLocalization GeneralLocalization
 
 @{ 
-    ViewData["Title"] = GeneralLocalization.Get("AccessDenied");
+    ViewData["Title"] = GeneralLocalization.Get(GeneralLocalization.AccessDenied);
 }
 
 <article>
-    <p class="text-info text-center">@Html.Raw(GeneralLocalization.Get("AccessDenied"))</p>
+    <p class="text-info text-center">@Html.Raw(GeneralLocalization.Get(GeneralLocalization.AccessDenied))</p>
 </article>

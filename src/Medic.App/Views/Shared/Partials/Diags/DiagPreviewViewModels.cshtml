@@ -5,8 +5,8 @@
 {
     <div>
         <div class="row">
-            <div class="col-sm-2 font-weight-bold">@Html.Raw(generalLocalization.Get("Code"))</div>
-            <div class="col-sm-10 font-weight-bold">@Html.Raw(generalLocalization.Get("Name"))</div>
+            <div class="col-sm-2 font-weight-bold">@Html.Raw(generalLocalization.Get(GeneralLocalization.Code))</div>
+            <div class="col-sm-10 font-weight-bold">@Html.Raw(generalLocalization.Get(GeneralLocalization.Name))</div>
         </div>
         @foreach (var currentDiag in Model)
         {
@@ -20,5 +20,5 @@
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(generalLocalization.Get("NoData"))</div>
+    <div class="text-center text-info">@Html.Raw(generalLocalization.Get(GeneralLocalization.NoData))</div>
 }

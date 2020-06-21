@@ -5,35 +5,35 @@
 {
     <div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugDate")): @Model.DrugDate.ToString("d")</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugCode")): @Model.DrugCode</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugName")): @Model.DrugName</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugDate)): @Model.DrugDate.ToString("d")</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugCode)): @Model.DrugCode</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugName)): @Model.DrugName</div>
         </div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugQuantity")): @Model.DrugQuantity</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DrugCost")): @Model.DrugCost</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ICDDrug")): @Model.ICDDrug</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugQuantity)): @Model.DrugQuantity</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugCost)): @Model.DrugCost</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ICDDrug)): @Model.ICDDrug</div>
         </div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("UINPrescr")): @Model.UINPrescr</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("NoPrescr")): @Model.NoPrescr</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("DatePrescr")): @(Model.DatePrescr.ToString("d"))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UINPrescr)): @Model.UINPrescr</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoPrescr)): @Model.NoPrescr</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DatePrescr)): @(Model.DatePrescr.ToString("d"))</div>
         </div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("PracticeCodeProtocol")): @Model.PracticeCodeProtocol</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ProtocolNumber")): @Model.ProtocolNumber</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ProtocolDate")): @Model.ProtocolDate.ToString("d")</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PracticeCodeProtocol)): @Model.PracticeCodeProtocol</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolNumber)): @Model.ProtocolNumber</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDate)): @Model.ProtocolDate.ToString("d")</div>
         </div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ProtocolType")): @Model.ProtocolType</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolType)): @Model.ProtocolType</div>
         </div>
         <div>
-            <div class="text-center font-weight-bold">@Html.Raw(medicDataLocalization.Get("VersionCode"))</div>
+            <div class="text-center font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VersionCode))</div>
             <partial name="~/Views/Shared/Partials/VersionCodes/VersionCodeViewModel.cshtml" model="@Model.VersionCode" />
         </div>
     </div>
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

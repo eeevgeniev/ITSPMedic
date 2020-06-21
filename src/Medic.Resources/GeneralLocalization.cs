@@ -30,6 +30,7 @@ namespace Medic.Resources
         public const string NoData = nameof(NoData);
         public const string NoSelection = nameof(NoSelection);
         public const string Outs = nameof(Outs);
+        public const string PageNotFound = nameof(PageNotFound);
         public const string Password = nameof(Password);
         public const string PathProcedures = nameof(PathProcedures);
         public const string Patients = nameof(Patients);
