@@ -8,8 +8,6 @@ using Medic.Infrastructure;
 using Medic.Mappers;
 using Medic.Mappers.Contracts;
 using Medic.XMLImportHelper;
-using Medic.XMLImportHelper.Contracts;
-using Medic.XMLImportHelper.Enumerations;
 using Medic.XMLParser;
 using Medic.XMLParser.Contracts;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +15,6 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 using System.Text;
-using System.Xml.Serialization;
 using CLPR = Medic.Models.CLPR;
 using CP = Medic.Models.CP;
 
@@ -108,8 +105,6 @@ namespace Medic.FileImport
         private static void ReadCpFiles(IMappable mapper, DbContextOptionsBuilder<MedicContext> builder, string directoryPath)
         {
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
-            CP.CPFile cpFile;
-            CPFile cpFileEntity;
             IMedicXmlParser medicXmlParser = new DefaultMedicXmlParser(new GetXmlParameters());
 
             int counter = 1;
@@ -117,10 +112,10 @@ namespace Medic.FileImport
             foreach (string file in files)
             {
                 using FileStream sr = new FileStream(file, FileMode.Open, FileAccess.Read);
-                
-                cpFile = medicXmlParser.ParseXML<CP.CPFile>(sr);
 
-                cpFileEntity = mapper.Map<CPFile, CP.CPFile>(cpFile);
+                CP.CPFile cpFile = medicXmlParser.ParseXML<CP.CPFile>(sr);
+
+                CPFile cpFileEntity = mapper.Map<CPFile, CP.CPFile>(cpFile);
 
                 using MedicContext medicContext = new MedicContext(builder.Options);
                 using IImportMedicFile importMedicFile = new ImportMedicFile(medicContext);
@@ -128,16 +123,12 @@ namespace Medic.FileImport
                 importMedicFile.ImportCPFile(cpFileEntity);
 
                 Console.WriteLine($"{file} - imported, ({counter++}/{files.Length}).");
-                cpFileEntity = null;
-                cpFile = null;
             }
         }
 
         private static void ReadCLPRFiles(IMappable mapper, DbContextOptionsBuilder<MedicContext> builder, string directoryPath)
         {
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
-            CLPR.HospitalPractice clprFile;
-            HospitalPractice hospitalPracticeEntity;
             IMedicXmlParser medicXmlParser = new DefaultMedicXmlParser(new GetXmlParameters());
 
             int counter = 1;
@@ -145,10 +136,10 @@ namespace Medic.FileImport
             foreach (string file in files)
             {
                 using FileStream sr = new FileStream(file, FileMode.Open, FileAccess.Read);
-                
-                clprFile = medicXmlParser.ParseXML<CLPR.HospitalPractice>(sr);
 
-                hospitalPracticeEntity = mapper.Map<HospitalPractice, CLPR.HospitalPractice>(clprFile);
+                CLPR.HospitalPractice clprFile = medicXmlParser.ParseXML<CLPR.HospitalPractice>(sr);
+
+               HospitalPractice hospitalPracticeEntity = mapper.Map<HospitalPractice, CLPR.HospitalPractice>(clprFile);
 
                 using MedicContext medicContext = new MedicContext(builder.Options);
                 using IImportMedicFile importMedicFile = new ImportMedicFile(medicContext);
@@ -156,8 +147,6 @@ namespace Medic.FileImport
                 importMedicFile.ImportHospitalPractice(hospitalPracticeEntity);
 
                 Console.WriteLine($"{file} - imported, ({counter++}/{files.Length}).");
-                hospitalPracticeEntity = null;
-                clprFile = null;
             }
         }
     }

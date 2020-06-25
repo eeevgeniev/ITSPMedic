@@ -1,5 +1,7 @@
 ﻿using Medic.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Medic.Contexts.Contracts
 {
@@ -118,5 +120,11 @@ namespace Medic.Contexts.Contracts
         DbSet<VersionCode> VersionCodes { get; set; }
 
         DbSet<VSD> VSDs { get; set; }
+
+        int SaveChanges();
+
+        Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken);
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }
