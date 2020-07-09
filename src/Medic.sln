@@ -39,7 +39,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.XMLParser", "Medic.XM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.EHR", "Medic.EHR\Medic.EHR.csproj", "{4022A723-CCA2-448B-8D6F-05270FACD3A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medic.EHRBuilders", "Medic.EHRBuilders\Medic.EHRBuilders.csproj", "{FD380E20-BA04-4955-AC51-16A273264EC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.EHRBuilders", "Medic.EHRBuilders\Medic.EHRBuilders.csproj", "{FD380E20-BA04-4955-AC51-16A273264EC8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.Formatters", "Medic.Formatters\Medic.Formatters.csproj", "{E5DAA7C4-C2CB-4326-BD0B-6CCAF2E7616F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medic.ModelToEHR", "Medic.ModelToEHR\Medic.ModelToEHR.csproj", "{6D3D31D3-D354-4541-BAC2-AC758B8608F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +127,14 @@ Global
 		{FD380E20-BA04-4955-AC51-16A273264EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD380E20-BA04-4955-AC51-16A273264EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD380E20-BA04-4955-AC51-16A273264EC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5DAA7C4-C2CB-4326-BD0B-6CCAF2E7616F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5DAA7C4-C2CB-4326-BD0B-6CCAF2E7616F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5DAA7C4-C2CB-4326-BD0B-6CCAF2E7616F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5DAA7C4-C2CB-4326-BD0B-6CCAF2E7616F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D3D31D3-D354-4541-BAC2-AC758B8608F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D3D31D3-D354-4541-BAC2-AC758B8608F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D3D31D3-D354-4541-BAC2-AC758B8608F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D3D31D3-D354-4541-BAC2-AC758B8608F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

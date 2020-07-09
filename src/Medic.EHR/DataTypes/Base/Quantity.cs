@@ -1,5 +1,8 @@
-﻿namespace Medic.EHR.DataTypes.Base
+﻿using System;
+
+namespace Medic.EHR.DataTypes.Base
 {
+    [Serializable]
     public abstract class Quantity : DataValue
     {
     }

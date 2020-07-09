@@ -1,9 +1,11 @@
 ﻿using Medic.EHR.DataTypes;
 using Medic.EHR.Infrastructure;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.RM
 {
+    [Serializable]
     public class AuditInfo
     {
         [XmlElement(ElementName = Constants.EhrSystem)]

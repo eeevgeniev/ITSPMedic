@@ -1,5 +1,4 @@
 ﻿using Medic.EHR.DataTypes;
-using Medic.EHR.DataTypes.Base;
 using Medic.EHRBuilders.Base;
 using Medic.EHRBuilders.Contracts;
 using System;
@@ -29,7 +28,7 @@ namespace Medic.EHRBuilders
             return this;
         }
 
-        public override IDataValueBuilder AddNullFlavor(CS cs)
+        public IURIBuilder AddNullFlavor(CS cs)
         {
             _value.NullFlavor = cs;
 
@@ -64,7 +63,7 @@ namespace Medic.EHRBuilders
             return this;
         }
 
-        public override DataValue Build() => base.DeepCopy<URI>(_value);
+        public URI Build() => base.DeepClone<URI>(_value);
 
         public IURIBuilder Clear()
         {

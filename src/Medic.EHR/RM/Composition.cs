@@ -1,11 +1,13 @@
 ﻿using Medic.EHR.DataTypes;
 using Medic.EHR.Infrastructure;
 using Medic.EHR.RM.Base;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.RM
 {
+    [Serializable]
     public class Composition : RecordComponent
     {
         [XmlElement(ElementName = Constants.SessionTime)]
@@ -30,6 +32,6 @@ namespace Medic.EHR.RM
         public List<AttestationInfo> Attestations { get; set; }
 
         [XmlElement(ElementName = Constants.Content)]
-        public Content Content { get; set; }
+        public List<Content> Content { get; set; }
     }
 }

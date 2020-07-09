@@ -1,8 +1,9 @@
 ﻿using Medic.EHR.DataTypes;
+using System;
 
 namespace Medic.EHRBuilders.Contracts
 {
-    public interface IEDBuilder
+    public interface IEDBuilder : IDisposable
     {
         IEDBuilder AddMediaType(CS cs);
 
@@ -25,6 +26,10 @@ namespace Medic.EHRBuilders.Contracts
         IEDBuilder AddData(string data);
 
         IEDBuilder AddAlternateString(SimpleText simpleText);
+
+        IEDBuilder AddNullFlavor(CS cs);
+
+        ED Build();
 
         IEDBuilder Clear();
     }

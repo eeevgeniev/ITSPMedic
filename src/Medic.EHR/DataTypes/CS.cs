@@ -1,9 +1,12 @@
-﻿using Medic.EHR.Infrastructure;
+﻿using Medic.EHR.DataTypes.Base;
+using Medic.EHR.Infrastructure;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.DataTypes
 {
-    public class CS
+    [Serializable]
+    public class CS : DataValue
     {
         [XmlElement(ElementName = Constants.CodingScheme)]
         public OID CodingScheme { get; set; }

@@ -1,12 +1,11 @@
 ﻿using Medic.EHR.DataTypes;
-using Medic.EHR.DataTypes.Base;
 using Medic.EHRBuilders.Base;
 using Medic.EHRBuilders.Contracts;
 using System;
 
 namespace Medic.EHRBuilders
 {
-    public class BLBuilder : DataValueBuilder, IValueBuilder<bool>
+    public class BLBuilder : DataValueBuilder, IBLBuilder
     {
         private BL _value;
 
@@ -15,23 +14,23 @@ namespace Medic.EHRBuilders
             _value = base.ResetValue<BL>();
         }
 
-        public override IDataValueBuilder AddNullFlavor(CS cs)
+        public IBLBuilder AddNullFlavor(CS cs)
         {
             _value.NullFlavor = cs;
 
             return this;
         }
 
-        public IValueBuilder<bool> AddValue(bool value)
+        public IBLBuilder AddValue(bool value)
         {
             _value.Value = value;
 
             return this;
         }
 
-        public override DataValue Build() => base.DeepCopy<BL>(_value);
+        public BL Build() => base.DeepClone<BL>(_value);
 
-        public IValueBuilder<bool> Clear()
+        public IBLBuilder Clear()
         {
             _value = base.ResetValue<BL>();
 

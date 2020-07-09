@@ -119,5 +119,6 @@ namespace Medic.EHR.Infrastructure
         internal const string Parts = "parts";
         internal const string Folder = "FOLDER";
         internal const string Composition = "COMPOSITION";
+        internal const string CodedValue = "codedValue";
     }
 }

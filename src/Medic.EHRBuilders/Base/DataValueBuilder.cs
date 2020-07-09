@@ -1,23 +1,17 @@
-﻿using Medic.EHR.DataTypes;
-using Medic.EHR.DataTypes.Base;
-using Medic.EHRBuilders.Contracts;
+﻿using Medic.EHR.DataTypes.Base;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Medic.EHRBuilders.Base
 {
-    public abstract class DataValueBuilder : IDataValueBuilder
+    public abstract class DataValueBuilder
     {
         protected bool _isDisposed = false;
         
-        public abstract IDataValueBuilder AddNullFlavor(CS cs);
-
         public abstract void Dispose();
 
-        public abstract DataValue Build();
-
-        protected virtual T DeepCopy<T>(T value) where T : DataValue
+        protected virtual T DeepClone<T>(T value) where T : class
         {
             if (value == default)
             {
@@ -42,7 +36,7 @@ namespace Medic.EHRBuilders.Base
             throw new InvalidCastException(nameof(deepCopy));
         }
 
-        protected virtual T ResetValue<T>() where T : DataValue, new()
+        protected virtual T ResetValue<T>() where T : new()
         {
             return new T();
         }

@@ -1,6 +1,9 @@
-﻿namespace Medic.EHRBuilders.Contracts
+﻿using Medic.EHR.DataTypes;
+using System;
+
+namespace Medic.EHRBuilders.Contracts
 {
-    public interface IURIBuilder
+    public interface IURIBuilder : IDisposable
     {
         IURIBuilder AddValue(string value);
 
@@ -13,6 +16,10 @@
         IURIBuilder AddUriQuery(string uriQuery);
 
         IURIBuilder AddLiteral(string literal);
+
+        IURIBuilder AddNullFlavor(CS cs);
+
+        URI Build();
 
         IURIBuilder Clear();
     }

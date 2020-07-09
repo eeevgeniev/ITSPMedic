@@ -1,9 +1,12 @@
 ﻿using Medic.EHR.DataTypes;
 using Medic.EHR.Infrastructure;
+using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.RM
 {
+    [Serializable]
     public class AttestationInfo
     {
         [XmlElement(ElementName = Constants.Time)]
@@ -22,6 +25,6 @@ namespace Medic.EHR.RM
         public FunctionalRole Attester { get; set; }
 
         [XmlElement(ElementName = Constants.Target)]
-        public II Target { get; set; }
+        public List<II> Target { get; set; }
     }
 }

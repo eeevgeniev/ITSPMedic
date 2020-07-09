@@ -1,11 +1,13 @@
 ﻿using Medic.EHR.DataTypes;
 using Medic.EHR.DataTypes.Base;
 using Medic.EHR.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.RM.Base
 {
+    [Serializable]
     public abstract class RecordComponent
     {
         [XmlElement(ElementName = Constants.Name)]
@@ -24,7 +26,7 @@ namespace Medic.EHR.RM.Base
         public bool Synthesised { get; set; } = false;
 
         [XmlElement(ElementName = Constants.PolicyIds)]
-        public II PolicyIds { get; set; }
+        public List<II> PolicyIds { get; set; }
 
         [XmlElement(ElementName = Constants.Sensitivity)]
         public int? Sensitivity { get; set; }

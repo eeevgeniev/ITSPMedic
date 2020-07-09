@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 
 namespace Medic.EHR.DataTypes
 {
+    [Serializable]
     public class DATE : DataValue
     {
         [XmlElement(ElementName = Constants.Date)]

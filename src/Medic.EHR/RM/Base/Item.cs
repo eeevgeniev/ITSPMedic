@@ -1,9 +1,11 @@
 ﻿using Medic.EHR.DataTypes;
 using Medic.EHR.Infrastructure;
+using System;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.RM.Base
 {
+    [Serializable]
     public abstract class Item : RecordComponent
     {
         [XmlElement(ElementName = Constants.Emphasis)]

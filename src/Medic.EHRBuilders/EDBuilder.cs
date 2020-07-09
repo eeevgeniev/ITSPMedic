@@ -69,7 +69,7 @@ namespace Medic.EHRBuilders
             return this;
         }
 
-        public override IDataValueBuilder AddNullFlavor(CS cs)
+        public IEDBuilder AddNullFlavor(CS cs)
         {
             _value.NullFlavor = cs;
 
@@ -97,7 +97,7 @@ namespace Medic.EHRBuilders
             return this;
         }
 
-        public override DataValue Build() => base.DeepCopy<ED>(_value);
+        public ED Build() => base.DeepClone<ED>(_value);
 
         public IEDBuilder Clear()
         {

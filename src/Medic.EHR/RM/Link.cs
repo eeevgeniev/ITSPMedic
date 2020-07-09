@@ -2,11 +2,11 @@
 using Medic.EHR.Infrastructure;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace Medic.EHR.RM
 {
+    [Serializable]
     public class Link
     {
         [XmlElement(ElementName = Constants.Nature)]

@@ -6,7 +6,7 @@ using System;
 
 namespace Medic.EHRBuilders
 {
-    public class INTBuilder : DataValueBuilder, IValueBuilder<int>
+    public class INTBuilder : DataValueBuilder, IINTBuilder
     {
         private INT _value;
 
@@ -15,23 +15,23 @@ namespace Medic.EHRBuilders
             _value = base.ResetValue<INT>();
         }
         
-        public override IDataValueBuilder AddNullFlavor(CS cs)
+        public IINTBuilder AddNullFlavor(CS cs)
         {
             _value.NullFlavor = cs;
 
             return this;
         }
 
-        public IValueBuilder<int> AddValue(int value)
+        public IINTBuilder AddValue(int value)
         {
             _value.Value = value;
 
             return this;
         }
 
-        public override DataValue Build() => base.DeepCopy<INT>(_value);
+        public INT Build() => base.DeepClone<INT>(_value);
 
-        public IValueBuilder<int> Clear()
+        public IINTBuilder Clear()
         {
             _value = base.ResetValue<INT>();
 
