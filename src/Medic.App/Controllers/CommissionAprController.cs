@@ -75,9 +75,9 @@ namespace Medic.App.Controllers
                 return View(new CommissionAprPageIndexModel()
                 {
                     CommissionAprs = commissionAprs,
-                    Title = MedicDataLocalization.Get("CommissionAprs"),
-                    Description = MedicDataLocalization.Get("CommissionAprs"),
-                    Keywords = MedicDataLocalization.Get("CommissionAprsSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.CommissionAprs),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.CommissionAprs),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.CommissionAprsSummary),
                     Search = search,
                     CurrentPage = page,
                     TotalPages = base.TotalPages(pageLength, commissionAprsCount),
@@ -108,10 +108,10 @@ namespace Medic.App.Controllers
                 CommissionAprViewModel model;
                 string error = default;
 
-                if (id < 0)
+                if (id < 1)
                 {
                     model = default;
-                    error = MedicDataLocalization.Get("InvalidId");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidId);
                 }
                 else
                 {
@@ -127,9 +127,9 @@ namespace Medic.App.Controllers
 
                 return View(new CommissionAprPageCommissionAprModel()
                 {
-                    Title = MedicDataLocalization.Get("CommissionApr"),
-                    Description = MedicDataLocalization.Get("CommissionApr"),
-                    Keywords = MedicDataLocalization.Get("CommissionAprSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.CommissionApr),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.CommissionApr),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.CommissionAprSummary),
                     CommissionApr = model,
                     Error = error
                 });

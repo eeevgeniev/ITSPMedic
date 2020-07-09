@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Medic.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.Diags
 {
     public class DiagMKBSummaryViewModel
     {
-        [Display(Name = nameof(Name))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Name)]
         public string Name { get; set; }
 
         [Display(Name = nameof(Code))]

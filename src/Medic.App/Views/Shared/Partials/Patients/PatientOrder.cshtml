@@ -34,5 +34,5 @@
     <input type="hidden" asp-for="@Model.OlderThan" />
     <input type="hidden" asp-for="@Model.YoungerThan" />
     <input type="hidden" asp-for="@Model.Sex" />
-    <input class="btn btn-dark" type="submit" value="@Html.Raw(medicDataLocalization.Get("Update")).ToString()" />
+    <input class="btn btn-dark" type="submit" value="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Update)).ToString()" />
 </form>

@@ -2,6 +2,7 @@
 using Medic.AppModels.HealthcarePractitioners;
 using Medic.AppModels.MDIs;
 using Medic.AppModels.Patients;
+using Medic.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,30 +15,30 @@ namespace Medic.AppModels.DispObservations
 
         public PatientSummaryViewModel Patient { get; set; }
 
-        [Display(Name = nameof(PatientBranch))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientBranch)]
         public string PatientBranch { get; set; }
 
-        [Display(Name = nameof(PatientHRegion))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientHRegion)]
         public string PatientHRegion { get; set; }
 
         public HealthcarePractitionerSummaryViewModel Doctor { get; set; }
 
-        [Display(Name = nameof(DispNum))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DispNum)]
         public int DispNum { get; set; }
 
-        [Display(Name = nameof(DispDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DispDate)]
         public DateTime DispDate { get; set; }
 
-        [Display(Name = nameof(AprCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.AprCode)]
         public string AprCode { get; set; }
 
-        [Display(Name = nameof(DiagDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DiagDate)]
         public DateTime DiagDate { get; set; }
 
-        [Display(Name = nameof(DispanserDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DispanserDate)]
         public DateTime? DispanserDate { get; set; }
         
-        [Display(Name = nameof(DispVisit))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DispVisit)]
         public int DispVisit { get; set; }
 
         public List<MDISummaryViewModel> MDIs { get; set; }
@@ -46,19 +47,19 @@ namespace Medic.AppModels.DispObservations
 
         public DiagPreviewViewModel SecondMainDiag { get; set; }
 
-        [Display(Name = nameof(Anamnesa))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Anamnesa)]
         public string Anamnesa { get; set; }
 
-        [Display(Name = nameof(HState))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.HState)]
         public string HState { get; set; }
 
-        [Display(Name = nameof(Therapy))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Therapy)]
         public string Therapy { get; set; }
 
-        [Display(Name = nameof(Sign))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Sign)]
         public int Sign { get; set; }
 
-        [Display(Name = nameof(NZOKPay))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.NZOKPay)]
         public int NZOKPay { get; set; }
     }
 }

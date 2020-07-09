@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Medic.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.GenMarkers
 {
@@ -6,10 +7,10 @@ namespace Medic.AppModels.GenMarkers
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(Name))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Name)]
         public string Name { get; set; }
 
-        [Display(Name = nameof(Sign))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Sign)]
         public int Sign { get; set; }
     }
 }

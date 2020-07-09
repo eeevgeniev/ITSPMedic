@@ -75,9 +75,9 @@ namespace Medic.App.Controllers
                 return View(new PlannedPageIndexModel()
                 {
                     Plannings = plannings,
-                    Title = MedicDataLocalization.Get("Plannings"),
-                    Description = MedicDataLocalization.Get("Plannings"),
-                    Keywords = MedicDataLocalization.Get("PlanningsSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.Plannings),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.Plannings),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.PlanningsSummary),
                     Search = search,
                     CurrentPage = page,
                     TotalPages = base.TotalPages(pageLength, planningsCount),
@@ -108,10 +108,10 @@ namespace Medic.App.Controllers
                 PlannedViewModel model;
                 string error = default;
 
-                if (id < 0)
+                if (id < 1)
                 {
                     model = default;
-                    error = MedicDataLocalization.Get("InvalidId");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidId);
                 }
                 else
                 {
@@ -127,9 +127,9 @@ namespace Medic.App.Controllers
 
                 return View(new PlannedPagePlannedModel()
                 {
-                    Title = MedicDataLocalization.Get("Planned"),
-                    Description = MedicDataLocalization.Get("Planned"),
-                    Keywords = MedicDataLocalization.Get("PlannedSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.Planned),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.Planned),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.PlannedSummary),
                     Planned = model,
                     Error = error
                 });

@@ -35,6 +35,6 @@ namespace Medic.App.Controllers.Base
         }
 
         protected virtual List<HealthRegionOption> GetDefaultHealthRegions() =>
-            new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get("NoSelection") } };
+            new List<HealthRegionOption>() { new HealthRegionOption() { Id = null, Name = MedicDataLocalization.Get(MedicDataLocalization.NoSelection) } };
     }
 }

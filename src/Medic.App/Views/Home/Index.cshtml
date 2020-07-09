@@ -7,29 +7,29 @@
 
 <article>
     <header class="text-center">
-        <h1>@Html.Raw(medicDataLocalization.Get("Information"))</h1>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("TotalPatients"))}: {Model.PatientCount}")</h4>
-        <h2 class="mt-sm-5 text-center">@Html.Raw(medicDataLocalization.Get("CPFilesSummary"))</h2>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("Plannings"))}: {Model.PlanningsCount()}")</h4>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("Ins"))}: {Model.InsCount()}")</h4>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("Outs"))}: {Model.OutsCount()}")</h4>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("ProtocolDrugTherapies"))}: {Model.ProtocolDrugTherapiesCPCount()}")</h4>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("PatientTransfers"))}: {Model.PatientTransfersCPCount()}")</h4>
-        <h2 class="mt-sm-5 text-center">@Html.Raw(medicDataLocalization.Get("HospitalPracticesSummary"))</h2>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("InClinicProcedures"))}: {Model.InClinicProceduresCount()}")</h4>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("PathProcedures"))}: {Model.PathProceduresCount()}")</h4>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("DispObservations"))}: {Model.DispObservationsCount()}")</h4>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("CommissionAprs"))}: {Model.CommissionAprsCount()}")</h4>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("ProtocolDrugTherapies"))}: {Model.ProtocolDrugTherapiesHPCount()}")</h4>
-        <h4>@($"{Html.Raw(medicDataLocalization.Get("PatientTransfers"))}: {Model.PatientTransfersHPCount()}")</h4>
+        <h1>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Information))</h1>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TotalPatients))}: {Model.PatientCount}")</h4>
+        <h2 class="mt-sm-5 text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFilesSummary))</h2>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Plannings))}: {Model.PlanningsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Ins))}: {Model.InsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Outs))}: {Model.OutsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapies))}: {Model.ProtocolDrugTherapiesCPCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientTransfers))}: {Model.PatientTransfersCPCount()}")</h4>
+        <h2 class="mt-sm-5 text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HospitalPracticesSummary))</h2>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InClinicProcedures))}: {Model.InClinicProceduresCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathProcedures))}: {Model.PathProceduresCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispObservations))}: {Model.DispObservationsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CommissionAprs))}: {Model.CommissionAprsCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapies))}: {Model.ProtocolDrugTherapiesHPCount()}")</h4>
+        <h4>@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientTransfers))}: {Model.PatientTransfersHPCount()}")</h4>
     </header>
     <section>
         <header class="mt-sm-5 text-center">
-            <h2>@Html.Raw(medicDataLocalization.Get("MonthSummaries"))</h2>
+            <h2>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MonthSummaries))</h2>
         </header>
         <section>
             <header class="text-center">
-                <h4>@Html.Raw(medicDataLocalization.Get("CPFilesSummary"))</h4>
+                <h4>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFilesSummary))</h4>
             </header>
             <div>
                 <canvas id="cp-plannings">
@@ -54,7 +54,7 @@
         </section>
         <section>
             <header class="text-center">
-                <h4>@Html.Raw(medicDataLocalization.Get("HospitalPracticesSummary"))</h4>
+                <h4>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HospitalPracticesSummary))</h4>
             </header>
             <div>
                 <canvas id="hospital-practice-clinic-procedures">
@@ -117,7 +117,7 @@
                     labels: labelsCP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("Plannings"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Plannings))',
                             data: plannings,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -132,7 +132,7 @@
                     labels: labelsCP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("Ins"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Ins))',
                             data: ins,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -147,7 +147,7 @@
                     labels: labelsCP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("Outs"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Outs))',
                             data: outs,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -162,7 +162,7 @@
                     labels: labelsCP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("ProtocolDrugTherapies"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapies))',
                             data: protocolDrugTherapies,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -177,7 +177,7 @@
                     labels: labelsCP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("PatientTransfers"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientTransfers))',
                             data: patientTransfers,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -192,7 +192,7 @@
                     labels: labelsHP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("InClinicProcedures"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InClinicProcedures))',
                             data: inClinicProcedures,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -207,7 +207,7 @@
                     labels: labelsHP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("PathProcedures"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathProcedures))',
                             data: pathProcedures,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -222,7 +222,7 @@
                     labels: labelsHP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("DispObservations"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispObservations))',
                             data: dispObservations,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -237,7 +237,7 @@
                     labels: labelsHP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("CommissionAprs"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CommissionAprs))',
                             data: commissionAprs,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -252,7 +252,7 @@
                     labels: labelsHP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("ProtocolDrugTherapies"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapies))',
                             data: protocolDrugHPTherapies,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -267,7 +267,7 @@
                     labels: labelsHP,
                     datasets: [
                         {
-                            label: '@Html.Raw(medicDataLocalization.Get("PatientTransfers"))',
+                            label: '@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientTransfers))',
                             data: patientHPTransfers,
                             backgroundColor: "blue",
                             borderColor: "lightblue",
@@ -278,18 +278,18 @@
                     ]
                 };
 
-                LineChart(document.querySelector('#cp-plannings'), ppData, generateOptions('@Html.Raw(medicDataLocalization.Get("Plannings"))'));
-                LineChart(document.querySelector('#cp-ins'), insData, generateOptions('@Html.Raw(medicDataLocalization.Get("Ins"))'));
-                LineChart(document.querySelector('#cp-outs'), outsData, generateOptions('@Html.Raw(medicDataLocalization.Get("Outs"))'));
-                LineChart(document.querySelector('#cp-protocol-drug-therapies'), protocolDrugTherapiesData, generateOptions('@Html.Raw(medicDataLocalization.Get("ProtocolDrugTherapies"))'));
-                LineChart(document.querySelector('#cp-patient-transfers'), patientTransfersData, generateOptions('@Html.Raw(medicDataLocalization.Get("PatientTransfers"))'));
+                LineChart(document.querySelector('#cp-plannings'), ppData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Plannings))'));
+                LineChart(document.querySelector('#cp-ins'), insData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Ins))'));
+                LineChart(document.querySelector('#cp-outs'), outsData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Outs))'));
+                LineChart(document.querySelector('#cp-protocol-drug-therapies'), protocolDrugTherapiesData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapies))'));
+                LineChart(document.querySelector('#cp-patient-transfers'), patientTransfersData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientTransfers))'));
 
-                LineChart(document.querySelector('#hospital-practice-clinic-procedures'), inClinicProceduresData, generateOptions('@Html.Raw(medicDataLocalization.Get("InClinicProcedures"))'));
-                LineChart(document.querySelector('#hospital-practice-path-procedures'), pathProceduresData, generateOptions('@Html.Raw(medicDataLocalization.Get("PathProcedures"))'));
-                LineChart(document.querySelector('#hospital-practice-disp-observations'), dispObservationsData, generateOptions('@Html.Raw(medicDataLocalization.Get("DispObservations"))'));
-                LineChart(document.querySelector('#hospital-practice-commission-arps'), commissionAprsData, generateOptions('@Html.Raw(medicDataLocalization.Get("CommissionAprs"))'));
-                LineChart(document.querySelector('#hospital-practice-drug-therapiest'), protocolDrugTherapiesHPData, generateOptions('@Html.Raw(medicDataLocalization.Get("ProtocolDrugTherapies"))'));
-                LineChart(document.querySelector('#hospital-practice-patient-transfers'), patientTransfersHPData, generateOptions('@Html.Raw(medicDataLocalization.Get("PatientTransfers"))'));
+                LineChart(document.querySelector('#hospital-practice-clinic-procedures'), inClinicProceduresData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InClinicProcedures))'));
+                LineChart(document.querySelector('#hospital-practice-path-procedures'), pathProceduresData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathProcedures))'));
+                LineChart(document.querySelector('#hospital-practice-disp-observations'), dispObservationsData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispObservations))'));
+                LineChart(document.querySelector('#hospital-practice-commission-arps'), commissionAprsData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CommissionAprs))'));
+                LineChart(document.querySelector('#hospital-practice-drug-therapiest'), protocolDrugTherapiesHPData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapies))'));
+                LineChart(document.querySelector('#hospital-practice-patient-transfers'), patientTransfersHPData, generateOptions('@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientTransfers))'));
 
                 window.removeEventListener('load', showCharts);
 

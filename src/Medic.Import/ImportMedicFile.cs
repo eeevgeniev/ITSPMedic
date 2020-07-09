@@ -36,7 +36,7 @@ namespace Medic.Import
             _providers = new HashSet<Provider>(new ProviderComparer());
             _therapyTypes = new HashSet<TherapyType>(new TherapyTypeComparer());
             _patientBranches = new HashSet<PatientBranch>(new PatientBranchComparer());
-            _patients = new HashSet<Patient>(new PatientComparer());
+            _patients = new HashSet<Patient>();
             _healthcarePractitioners = new HashSet<HealthcarePractitioner>(new HealthcarePractitionerComparer());
             _practices = new HashSet<Practice>(new PracticeComparer());
             _fileTypes = new HashSet<FileType>(new FileTypeComparer());
@@ -54,7 +54,6 @@ namespace Medic.Import
                 _providers = null;
                 _therapyTypes = null;
                 _patientBranches = null;
-                _patients = null;
                 _healthcarePractitioners = null;
                 _practices = null;
                 _fileTypes = null;
@@ -63,6 +62,7 @@ namespace Medic.Import
                 _healthRegions = null;
                 _specialtyTypes = null;
                 _mkbs = null;
+                _patients = null;
 
                 _isDisposed = !_isDisposed;
                 GC.SuppressFinalize(this);
@@ -446,11 +446,22 @@ namespace Medic.Import
         {
             if (patient != default)
             {
-                if (!_patients.TryGetValue(patient, out Patient currentPatient))
-                {
-                    HashSet<Patient> patients = MedicContext.Patients.Where(p => p.IdentityNumber == patient.IdentityNumber).ToHashSet();
-                    currentPatient = patients.FirstOrDefault(p => DateTime.Equals(p.BirthDate, patient.BirthDate));
+                Patient currentPatient = _patients.FirstOrDefault(p =>
+                    (p.IdentityNumber != default && string.Equals(p.IdentityNumber, patient.IdentityNumber, StringComparison.OrdinalIgnoreCase)) ||
+                    (p.LNCH != default && string.Equals(p.LNCH, patient.LNCH, StringComparison.OrdinalIgnoreCase)) ||
+                    (p.NAPNumber != default && string.Equals(p.NAPNumber, patient.NAPNumber, StringComparison.OrdinalIgnoreCase)) ||
+                    (p.PersonalIdNumber != default && string.Equals(p.PersonalIdNumber, patient.PersonalIdNumber, StringComparison.OrdinalIgnoreCase)) ||
+                    (DateTime.Equals(p.BirthDate, patient.BirthDate) && patient.IdentityNumber == default && patient.LNCH == default && patient.NAPNumber == default && patient.PersonalIdNumber == default));
 
+                if (currentPatient == default)
+                {
+                    currentPatient = MedicContext.Patients.FirstOrDefault(p =>
+                    (p.IdentityNumber != default && EF.Functions.Like(p.IdentityNumber, patient.IdentityNumber)) ||
+                    (p.LNCH != default && EF.Functions.Like(p.LNCH, patient.LNCH)) ||
+                    (p.NAPNumber != default && EF.Functions.Like(p.NAPNumber, patient.NAPNumber)) ||
+                    (p.PersonalIdNumber != default && EF.Functions.Like(p.PersonalIdNumber, patient.PersonalIdNumber)) ||
+                    (DateTime.Equals(p.BirthDate, patient.BirthDate) && patient.IdentityNumber == default && patient.LNCH == default && patient.NAPNumber == default && patient.PersonalIdNumber == default));
+                    
                     if (currentPatient == default)
                     {
                         _patients.Add(patient);

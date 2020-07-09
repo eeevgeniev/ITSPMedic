@@ -7,17 +7,17 @@
 
 <article>
     <header class="text-center">
-        <h2>@Html.Raw(medicDataLocalization.Get("Summary")) : @Model.TotalResults @Html.Raw(medicDataLocalization.Get("Results"))</h2>
+        <h2>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Summary)) : @Model.TotalResults @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
     </header>
     <section>
         <header class="text-center">
-            <h4>@Html.Raw(medicDataLocalization.Get("DiagnoseSummaryTitle"))</h4>
+            <h4>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DiagnoseSummaryTitle))</h4>
         </header>
         <div>
             <div class="row">
-                <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("MKBCode"))</div>
-                <div class="col-sm-8 font-weight-bold">@Html.Raw(medicDataLocalization.Get("MKBName"))</div>
-                <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Count"))</div>
+                <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MKBCode))</div>
+                <div class="col-sm-8 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MKBName))</div>
+                <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Count))</div>
             </div>
             @if (Model.DiagnosesMKBSummaryViewModels != default && Model.DiagnosesMKBSummaryViewModels.Count > 0)
             {
@@ -48,7 +48,7 @@
             }
             else
             {
-                <div class="text-info text-center">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+                <div class="text-info text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
             }
         </div>
     </section>

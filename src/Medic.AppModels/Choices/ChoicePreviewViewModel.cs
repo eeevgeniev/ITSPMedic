@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Medic.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.Choices
 {
@@ -6,13 +7,13 @@ namespace Medic.AppModels.Choices
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(Number))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Number)]
         public int Number { get; set; }
 
-        [Display(Name = nameof(Checked))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Checked)]
         public int Checked { get; set; }
 
-        [Display(Name = nameof(Text))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Text)]
         public string Text { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Medic.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.HealthcarePractitioners
 {
@@ -6,16 +7,16 @@ namespace Medic.AppModels.HealthcarePractitioners
     {
         public int Id { get; set; }
         
-        [Display(Name = nameof(UniqueIdentifier))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.UniqueIdentifier)]
         public string UniqueIdentifier { get; set; }
 
-        [Display(Name = nameof(DeputyUniqueIdentifier))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DeputyUniqueIdentifier)]
         public string DeputyUniqueIdentifier { get; set; }
 
-        [Display(Name = nameof(Speciality))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Speciality)]
         public string Speciality { get; set; }
 
-        [Display(Name = nameof(Name))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Name)]
         public string Name { get; set; }
     }
 }

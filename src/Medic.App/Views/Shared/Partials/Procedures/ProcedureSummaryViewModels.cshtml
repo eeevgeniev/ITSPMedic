@@ -8,38 +8,38 @@
         <hr />
         <div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("Date")): @currentProcedure.Date.ToShortDateString()</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("Code")): @currentProcedure.Code</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ACHICode")): @currentProcedure.ACHICode</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Date)): @currentProcedure.Date.ToShortDateString()</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Code)): @currentProcedure.Code</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ACHICode)): @currentProcedure.ACHICode</div>
             </div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("OutHospital")): @currentProcedure.OutHospital</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ImplantReferenceNumber")): @currentProcedure.ImplantReferenceNumber</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ImplantManufacturer")): @currentProcedure.ImplantManufacturer</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutHospital)): @currentProcedure.OutHospital</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ImplantReferenceNumber)): @currentProcedure.ImplantReferenceNumber</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ImplantManufacturer)): @currentProcedure.ImplantManufacturer</div>
             </div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("ImplantCode")): @currentProcedure.ImplantCode</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("BedDays")): @currentProcedure.BedDays</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("HLDateFrom")): @(currentProcedure.HLDateFrom != default ? ((DateTime)currentProcedure.HLDateFrom).ToShortDateString() : default)</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ImplantCode)): @currentProcedure.ImplantCode</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BedDays)): @currentProcedure.BedDays</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HLDateFrom)): @(currentProcedure.HLDateFrom != default ? ((DateTime)currentProcedure.HLDateFrom).ToShortDateString() : default)</div>
             </div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("HLNumber")): @currentProcedure.HLNumber</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("HLTotalDays")): @currentProcedure.HLTotalDays</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("StateAtDischarge")): @currentProcedure.StateAtDischarge</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HLNumber)): @currentProcedure.HLNumber</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HLTotalDays)): @currentProcedure.HLTotalDays</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.StateAtDischarge)): @currentProcedure.StateAtDischarge</div>
             </div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("Laparoscopic")): @currentProcedure.Laparoscopic</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("PathologicFinding")): @currentProcedure.PathologicFinding</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("EndCourse")): @currentProcedure.EndCourse</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Laparoscopic)): @currentProcedure.Laparoscopic</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathologicFinding)): @currentProcedure.PathologicFinding</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.EndCourse)): @currentProcedure.EndCourse</div>
             </div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("SendApr")): @currentProcedure.SendAPr</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get("InApr")): @currentProcedure.InAPr</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendApr)): @currentProcedure.SendAPr</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InApr)): @currentProcedure.InAPr</div>
             </div>
         </div>
     }
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

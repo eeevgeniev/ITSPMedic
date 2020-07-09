@@ -5,9 +5,9 @@
 {
     <hr/>
     <div class="row">
-        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Code"))</div>
-        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Date"))</div>
-        <div class="col-sm-8 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Note"))</div>
+        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Code))</div>
+        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Date))</div>
+        <div class="col-sm-8 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Notes))</div>
     </div>
     <div class="row">
         <div class="col-sm-2">@Model.Code</div>
@@ -17,5 +17,5 @@
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

@@ -4,12 +4,12 @@
 @if (Model != default)
 {
     <div class="row">
-        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Branch"))</div>
-        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Number"))</div>
-        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Code"))</div>
-        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Name"))</div>
-        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("HealthRegion"))</div>
-        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get("Address"))</div>
+        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Branch))</div>
+        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Number))</div>
+        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Code))</div>
+        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Name))</div>
+        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HealthRegion))</div>
+        <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Address))</div>
     </div>
     <hr />
     <div class="row">
@@ -23,5 +23,5 @@
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

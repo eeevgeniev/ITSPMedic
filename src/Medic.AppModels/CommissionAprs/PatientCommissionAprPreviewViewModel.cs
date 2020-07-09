@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.CommissionAprs
@@ -7,13 +8,13 @@ namespace Medic.AppModels.CommissionAprs
     {
         public int Id { get; set; }
         
-        [Display(Name = "DecisionDate")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DecisionDate)]
         public DateTime DecisionDate { get; set; }
 
-        [Display(Name = "MKBCode")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MKBCode)]
         public string MKBCode { get; set; }
 
-        [Display(Name = "MKBName")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MKBName)]
         public string MKBName { get; set; }
     }
 }

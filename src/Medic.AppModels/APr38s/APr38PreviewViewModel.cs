@@ -1,4 +1,5 @@
 ﻿using Medic.AppModels.Evaluations;
+using Medic.Resources;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.APr38s
@@ -7,19 +8,19 @@ namespace Medic.AppModels.APr38s
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(Height))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Height)]
         public int Height { get; set; }
 
-        [Display(Name = nameof(Weight))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Weight)]
         public int Weight { get; set; }
 
-        [Display(Name = nameof(History))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.History)]
         public string History { get; set; }
 
-        [Display(Name = nameof(FairCondition))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.FairCondition)]
         public string FairCondition { get; set; }
 
-        [Display(Name = nameof(Therapy))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Therapy)]
         public string Therapy { get; set; }
 
         public EvaluationPreviewViewModel Decision { get; set; }

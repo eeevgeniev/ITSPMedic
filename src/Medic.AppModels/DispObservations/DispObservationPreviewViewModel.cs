@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.DispObservations
@@ -9,19 +10,19 @@ namespace Medic.AppModels.DispObservations
 
         public int PatientId { get; set; }
 
-        [Display(Name = nameof(DispDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DispDate)]
         public DateTime DispDate { get; set; }
 
-        [Display(Name = nameof(FirstMainDiagCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.FirstMainDiagCode)]
         public string FirstMainDiagCode { get; set; }
 
-        [Display(Name = nameof(FirstMainDiagName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.FirstMainDiagName)]
         public string FirstMainDiagName { get; set; }
 
-        [Display(Name = nameof(SecondMainDiagCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SecondMainDiagCode)]
         public string SecondMainDiagCode { get; set; }
 
-        [Display(Name = nameof(SecondMainDiagName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SecondMainDiagName)]
         public string SecondMainDiagName { get; set; }
     }
 }

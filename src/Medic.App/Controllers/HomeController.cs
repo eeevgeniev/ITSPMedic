@@ -96,9 +96,9 @@ namespace Medic.App.Controllers
                     CPFileSummaryViewModels = cpFiles,
                     HospitalPracticeSummaryViewModels = hospitalPractices,
                     PatientCount = patientsCount,
-                    Title = MedicDataLocalization.Get("SummaryInformation"),
-                    Description = MedicDataLocalization.Get("SummaryInformation"),
-                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords")
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.SummaryInformation),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.SummaryInformation),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.SummaryInformationKeywords)
                 });
             }
             catch(Exception ex)
@@ -142,9 +142,9 @@ namespace Medic.App.Controllers
                 return View(new HomePageDiagModel()
                 {
                     DiagMKBSummaryViewModels = model,
-                    Title = MedicDataLocalization.Get("Diags"),
-                    Description = MedicDataLocalization.Get("Diags"),
-                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.Diags),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.Diags),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.SummaryInformationKeywords),
                     CurrentPage = page,
                     TotalPages = base.TotalPages(MedicConstants.SummaryPageLength, diagsCount),
                     TotalResults = diagsCount
@@ -191,9 +191,9 @@ namespace Medic.App.Controllers
                 return View(new HomePageDiagnoseModel()
                 {
                     DiagnosesMKBSummaryViewModels = model,
-                    Title = MedicDataLocalization.Get("Diagnoses"),
-                    Description = MedicDataLocalization.Get("Diagnoses"),
-                    Keywords = MedicDataLocalization.Get("SummaryInformationKeywords"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.Diagnoses),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.Diagnoses),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.SummaryInformationKeywords),
                     CurrentPage = page,
                     TotalPages = base.TotalPages(MedicConstants.SummaryPageLength, diagnosesCount),
                     TotalResults = diagnosesCount
@@ -240,9 +240,9 @@ namespace Medic.App.Controllers
                 return View(new HomePageUsedDrugsModel()
                 {
                     UsedDrugsSummary = model,
-                    Title = MedicDataLocalization.Get("UsedDrug"),
-                    Description = MedicDataLocalization.Get("UsedDrugs"),
-                    Keywords = MedicDataLocalization.Get("UsedDrugsInformationKeywords"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.UsedDrug),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.UsedDrugs),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.UsedDrugsInformationKeywords),
                     CurrentPage = page,
                     TotalPages = base.TotalPages(MedicConstants.SummaryPageLength, usedDrugsCount),
                     TotalResults = usedDrugsCount

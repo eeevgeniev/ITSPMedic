@@ -6,11 +6,11 @@
     <hr/>
     <div>
         <div class="row">
-            <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("NameHS")):</div>
+            <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NameHS)):</div>
             <div class="col-sm-8">@Model.NameHS</div>
         </div>
         <div class="row">
-            <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get("CodeHS")):</div>
+            <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CodeHS)):</div>
             <div class="col-sm-8">@Model.CodeHS</div>
         </div>
         <div>
@@ -20,5 +20,5 @@
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

@@ -76,9 +76,9 @@ namespace Medic.App.Controllers
                 return View(new InClinicProcedurePageIndexModel()
                 {
                     InClinicProcedures = inClinicProcedures,
-                    Title = MedicDataLocalization.Get("InClinicProcedures"),
-                    Description = MedicDataLocalization.Get("InClinicProcedures"),
-                    Keywords = MedicDataLocalization.Get("InClinicProceduresSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.InClinicProcedures),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.InClinicProcedures),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.InClinicProceduresSummary),
                     Search = search,
                     CurrentPage = page,
                     TotalPages = base.TotalPages(pageLength, inClinicProceduresCount),
@@ -109,10 +109,10 @@ namespace Medic.App.Controllers
                 InClinicProcedureViewModel model;
                 string error = default;
                 
-                if (id < 0)
+                if (id < 1)
                 {
                     model = default;
-                    error = MedicDataLocalization.Get("InvalidId");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidId);
                 }
                 else
                 {
@@ -128,9 +128,9 @@ namespace Medic.App.Controllers
 
                 return View(new InClinicProcedurePageInClinicProcedureModel()
                 {
-                    Title = MedicDataLocalization.Get("InClinicProcedure"),
-                    Description = MedicDataLocalization.Get("InClinicProcedure"),
-                    Keywords = MedicDataLocalization.Get("InClinicProcedureSummary"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.InClinicProcedure),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.InClinicProcedure),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.InClinicProcedureSummary),
                     InClinicProcedureViewModel = model,
                     Error = error
                 });

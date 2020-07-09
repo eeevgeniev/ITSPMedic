@@ -5,32 +5,32 @@
 {
     <div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.Date))): @Model.Date.ToShortDateString()</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.Code))): @Model.Code</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Date)): @Model.Date.ToShortDateString()</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Code)): @Model.Code</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.Quantity))): @Model.Quantity</div>
         </div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.Cost))): @Model.Cost</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.ICDDrug))): @Model.ICDDrug</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.UINPrescr))): @Model.UINPrescr</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Cost)): @Model.Cost</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ICDDrug)): @Model.ICDDrug</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UINPrescr)): @Model.UINPrescr</div>
         </div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.NoPrescr))): @Model.NoPrescr</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.DatePrescr))): @(Model.DatePrescr != default ? ((DateTime)Model.DatePrescr).ToShortDateString() : default)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.PracticeCodeProtocol))): @Model.PracticeCodeProtocol</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoPrescr)): @Model.NoPrescr</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DatePrescr)): @(Model.DatePrescr != default ? ((DateTime)Model.DatePrescr).ToShortDateString() : default)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PracticeCodeProtocol)): @Model.PracticeCodeProtocol</div>
         </div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.ProtocolNumber))): @Model.ProtocolNumber</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.ProtocolDate))): @Model.ProtocolDate.ToShortDateString()</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.ProtocolType))): @Model.ProtocolType</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolNumber)): @Model.ProtocolNumber</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDate)): @Model.ProtocolDate.ToShortDateString()</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolType)): @Model.ProtocolType</div>
         </div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.BatchNumber))): @Model.BatchNumber</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(nameof(Model.QuantityPack))): @Model.QuantityPack</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BatchNumber)): @Model.BatchNumber</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.QuantityPack)): @Model.QuantityPack</div>
         </div>
     </div>
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

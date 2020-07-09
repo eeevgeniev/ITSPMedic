@@ -22,7 +22,7 @@
         <form asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.CPFile)"
               method="post" enctype="multipart/form-data"
               asp-antiforgery="true">
-            <input class="btn btn-danger" type="file" id="CpFileFormFile" name="CpFileFormFile" />
+            <input class="btn" type="file" id="CpFileFormFile" name="CpFileFormFile" />
             <input class="btn btn-primary" type="submit" value="Sumbit" />
         </form>
     </article>

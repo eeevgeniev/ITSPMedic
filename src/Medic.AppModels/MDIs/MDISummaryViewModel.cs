@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Medic.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.MDIs
 {
@@ -6,10 +7,10 @@ namespace Medic.AppModels.MDIs
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(MDIName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MDIName)]
         public string MDIName { get; set; }
 
-        [Display(Name = nameof(MDICode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MDICode)]
         public decimal MDICode { get; set; }
     }
 }

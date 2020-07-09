@@ -8,11 +8,11 @@
         <hr />
         <div>
             <div class="row">
-                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get("ProcedureStartDate")): @(currentProcedure.ProcedureStartDate == default ? default : ((DateTime)currentProcedure.ProcedureStartDate).ToShortDateString())</div>
-                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get("ProcedureEndDate")): @(currentProcedure.ProcedureEndDate == default ? default : ((DateTime)currentProcedure.ProcedureEndDate).ToShortDateString())</div>
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcedureStartDate)): @(currentProcedure.ProcedureStartDate == default ? default : ((DateTime)currentProcedure.ProcedureStartDate).ToShortDateString())</div>
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcedureEndDate)): @(currentProcedure.ProcedureEndDate == default ? default : ((DateTime)currentProcedure.ProcedureEndDate).ToShortDateString())</div>
             </div>
             <div>
-                <div class="text-center">@Html.Raw(medicDataLocalization.Get("Doctor"))</div>
+                <div class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Doctor))</div>
                 <div>
                     <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@currentProcedure.Doctor" />
                 </div>
@@ -22,5 +22,5 @@
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

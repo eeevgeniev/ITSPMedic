@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Medic.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.Practices
 {
@@ -6,22 +7,22 @@ namespace Medic.AppModels.Practices
     {
         public int Id { get; set; }
 
-        [Display(Name = nameof(Branch))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Branch)]
         public int Branch { get; set; }
 
-        [Display(Name = nameof(Number))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Number)]
         public string Number { get; set; }
 
-        [Display(Name = nameof(Code))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Code)]
         public string Code { get; set; }
 
-        [Display(Name = nameof(Name))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Name)]
         public string Name { get; set; }
 
-        [Display(Name = nameof(HealthRegion))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.HealthRegion)]
         public string HealthRegion { get; set; }
 
-        [Display(Name = nameof(Address))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Address)]
         public string Address { get; set; }
     }
 }

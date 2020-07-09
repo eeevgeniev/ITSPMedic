@@ -1,25 +1,26 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Medic.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.UsedDrugs
 {
     public class UsedDrugsSummaryStatistic
     {
-        [Display(Name = nameof(UsedDrugCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.UsedDrugCode)]
         public string UsedDrugCode { get; set; }
 
-        [Display(Name = nameof(OutDiagnoseName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutDiagnoseName)]
         public string OutDiagnoseName { get; set; }
 
-        [Display(Name = nameof(OutDiagnoseCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.OutDiagnoseCode)]
         public string OutDiagnoseCode { get; set; }
 
-        [Display(Name = nameof(TotalUses))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.TotalUses)]
         public int TotalUses { get; set; }
 
-        [Display(Name = nameof(AverageQuantity))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.AverageQuantity)]
         public decimal AverageQuantity { get; set; }
 
-        [Display(Name = nameof(TotalCosts))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.TotalCosts)]
         public decimal TotalCosts { get; set; }
     }
 }

@@ -45,11 +45,9 @@ namespace Medic.App.Controllers
                 string patientsKey = $"{nameof(PatientPreviewViewModel)} - {startIndex} - {searchParams}";
                 string patientsCountKey = $"{MedicConstants.PatientsCount} - {searchParams}";
 
-                List<PatientPreviewViewModel> patientsModel;
-
                 PatientWhereBuilder patientWhereBuilder = new PatientWhereBuilder(search);
 
-                if (!base.MedicCache.TryGetValue(patientsKey, out patientsModel))
+                if (!base.MedicCache.TryGetValue(patientsKey, out List<PatientPreviewViewModel> patientsModel))
                 {
                     PatientHelperBuilder helperBuilder = new PatientHelperBuilder(search);
 
@@ -74,10 +72,10 @@ namespace Medic.App.Controllers
                     TotalPages = base.TotalPages(pageLength, patientsCount),
                     TotalResults = patientsCount,
                     CurrentPage = page,
-                    Title = PatientLocalization.Get("Patients"),
+                    Title = MedicDataLocalization.Get(MedicDataLocalization.Patients),
                     Search = search,
-                    Description = PatientLocalization.Get("Patients"),
-                    Keywords = PatientLocalization.Get("PatientsSummary"),
+                    Description = MedicDataLocalization.Get(MedicDataLocalization.Patients),
+                    Keywords = MedicDataLocalization.Get(MedicDataLocalization.PatientsSummary),
                     Sexes = sexOptions
                 });
             }
@@ -106,7 +104,7 @@ namespace Medic.App.Controllers
                 if (id < 1)
                 {
                     model = default;
-                    error = MedicDataLocalization.Get("InvalidId");
+                    error = MedicDataLocalization.Get(MedicDataLocalization.InvalidId);
                 }
                 else
                 {
@@ -123,9 +121,9 @@ namespace Medic.App.Controllers
                 return View(new PateintPagePatientModel()
                 {
                     Patient = model,
-                    Title = PatientLocalization.Get("PatientData"),
-                    Description = PatientLocalization.Get("PatientData"),
-                    Keywords = PatientLocalization.Get("PatientViewMetaData"),
+                    Title = PatientLocalization.Get(PatientLocalization.PatientData),
+                    Description = PatientLocalization.Get(PatientLocalization.PatientData),
+                    Keywords = PatientLocalization.Get(PatientLocalization.PatientViewMetaData),
                 });
             }
             catch (Exception ex)

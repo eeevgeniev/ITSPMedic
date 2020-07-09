@@ -2,6 +2,7 @@
 using Medic.AppModels.Diags;
 using Medic.AppModels.HealthcarePractitioners;
 using Medic.AppModels.Patients;
+using Medic.Resources;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,66 +14,66 @@ namespace Medic.AppModels.InClinicProcedures
 
         public PatientSummaryViewModel Patient { get; set; }
 
-        [Display(Name = nameof(PatientBranch))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientBranch)]
         public string PatientBranch { get; set; }
 
-        [Display(Name = "PatientHRegion")]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientHRegion)]
         public string PatientHealthRegion { get; set; }
 
         public HealthcarePractitionerSummaryViewModel Sender { get; set; }
 
-        [Display(Name = nameof(CPrSend))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.CPrSend)]
         public double? CPrSend { get; set; }
 
-        [Display(Name = nameof(APrSend))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.APrSend)]
         public double? APrSend { get; set; }
 
-        [Display(Name = nameof(TypeProcSend))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.TypeProcSend)]
         public int TypeProcSend { get; set; }
 
-        [Display(Name = nameof(DateSend))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.DateSend)]
         public DateTime DateSend { get; set; }
 
-        [Display(Name = nameof(CPrPriem))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.CPrPriem)]
         public double? CPrPriem { get; set; }
 
-        [Display(Name = nameof(APrPriem))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.APrPriem)]
         public double? APrPriem { get; set; }
 
-        [Display(Name = nameof(TypeProcPriem))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.TypeProcPriem)]
         public int TypeProcPriem { get; set; }
 
-        [Display(Name = nameof(ProcRefuse))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProcRefuse)]
         public int ProcRefuse { get; set; }
 
         public CeasedClinicalViewModel CeasedClinicalPath { get; set; }
 
-        [Display(Name = nameof(IZNumChild))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.IZNumChild)]
         public int? IZNumChild { get; set; }
 
-        [Display(Name = nameof(IZYearChild))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.IZYearChild)]
         public int IZYearChild { get; set; }
 
-        [Display(Name = nameof(FirstVisitDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.FirstVisitDate)]
         public DateTime? FirstVisitDate { get; set; }
 
-        [Display(Name = nameof(PlanVisitDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PlanVisitDate)]
         public DateTime? PlanVisitDate { get; set; }
 
-        [Display(Name = nameof(VisitDocumentUniqueIdentifier))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.VisitDocumentUniqueIdentifier)]
         public string VisitDocumentUniqueIdentifier { get; set; }
 
-        [Display(Name = nameof(VisitDocumentName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.VisitDocumentName)]
         public string VisitDocumentName { get; set; }
 
         public DiagPreviewViewModel FirstMainDiag { get; set; }
 
         public DiagPreviewViewModel SecondMainDiag { get; set; }
 
-        [Display(Name = nameof(PatientStatus))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PatientStatus)]
         public int PatientStatus { get; set; }
 
-        [Display(Name = nameof(NZOKPay))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.NZOKPay)]
         public int NZOKPay { get; set; }
     }
 }

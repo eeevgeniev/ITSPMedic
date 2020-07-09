@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medic.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.ProtocolDrugTherapies
@@ -7,13 +8,13 @@ namespace Medic.AppModels.ProtocolDrugTherapies
     {
         public int Id { get; set; }
         
-        [Display(Name = nameof(ProtocolDate))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ProtocolDate)]
         public DateTime ProtocolDate { get; set; }
 
-        [Display(Name = nameof(MKBCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MKBCode)]
         public string MKBCode { get; set; }
 
-        [Display(Name = nameof(MKBName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.MKBName)]
         public string MKBName { get; set; }
     }
 }

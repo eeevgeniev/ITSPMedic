@@ -1,4 +1,5 @@
 ﻿using Medic.AppModels.TherapyTypes;
+using Medic.Resources;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.AccompanyingDrugs
@@ -9,16 +10,16 @@ namespace Medic.AppModels.AccompanyingDrugs
 
         public TherapyTypePreviewViewModel TherapyType { get; set; }
 
-        [Display(Name = nameof(ATCCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ATCCode)]
         public string ATCCode { get; set; }
 
-        [Display(Name = nameof(ATCName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ATCName)]
         public string ATCName { get; set; }
 
-        [Display(Name = nameof(SingleDose))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SingleDose)]
         public decimal SingleDose { get; set; }
 
-        [Display(Name = nameof(AllDose))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.AllDose)]
         public decimal AllDose { get; set; }
     }
 }

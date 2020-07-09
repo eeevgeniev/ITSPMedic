@@ -9,21 +9,21 @@
         <div>
             <partial name="~/Views/Shared/Partials/TherapyTypes/TherapyTypePreviewViewModel.cshtml" model="@currentDrugProtocol.TherapyType" />
             <div class="row">
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("ATCCode")): @currentDrugProtocol.ATCCode</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("ATCName")): @currentDrugProtocol.ATCName</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("Days")): @currentDrugProtocol.Days</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("ApplicationWay")): @currentDrugProtocol.ApplicationWay</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCCode)): @currentDrugProtocol.ATCCode</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCName)): @currentDrugProtocol.ATCName</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Days)): @currentDrugProtocol.Days</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ApplicationWay)): @currentDrugProtocol.ApplicationWay</div>
             </div>
             <div class="row">
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("StandartDose")): @currentDrugProtocol.StandartDose</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("IndividualDose")): @currentDrugProtocol.IndividualDose</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("CycleDose")): @currentDrugProtocol.CycleDose</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("AllDose")): @currentDrugProtocol.AllDose</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.StandartDose)): @currentDrugProtocol.StandartDose</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IndividualDose)): @currentDrugProtocol.IndividualDose</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CycleDose)): @currentDrugProtocol.CycleDose</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDose)): @currentDrugProtocol.AllDose</div>
             </div>
         </div>
     }
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

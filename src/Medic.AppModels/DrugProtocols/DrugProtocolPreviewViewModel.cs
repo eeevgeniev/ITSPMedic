@@ -1,4 +1,5 @@
 ﻿using Medic.AppModels.TherapyTypes;
+using Medic.Resources;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.AppModels.DrugProtocols
@@ -9,28 +10,28 @@ namespace Medic.AppModels.DrugProtocols
 
         public TherapyTypePreviewViewModel TherapyType { get; set; }
 
-        [Display(Name = nameof(ATCCode))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ATCCode)]
         public string ATCCode { get; set; }
 
-        [Display(Name = nameof(ATCName))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ATCName)]
         public string ATCName { get; set; }
 
-        [Display(Name = nameof(Days))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.Days)]
         public string Days { get; set; }
 
-        [Display(Name = nameof(ApplicationWay))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.ApplicationWay)]
         public string ApplicationWay { get; set; }
 
-        [Display(Name = nameof(StandartDose))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.StandartDose)]
         public decimal StandartDose { get; set; }
 
-        [Display(Name = nameof(IndividualDose))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.IndividualDose)]
         public decimal IndividualDose { get; set; }
 
-        [Display(Name = nameof(CycleDose))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.CycleDose)]
         public decimal CycleDose { get; set; }
 
-        [Display(Name = nameof(AllDose))]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.AllDose)]
         public decimal AllDose { get; set; }
     }
 }

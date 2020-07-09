@@ -154,13 +154,16 @@
     <value>Файл за практики в болницата</value>
   </data>
   <data name="InClinicProcedures" xml:space="preserve">
-    <value>Пациенти с направления за кл. процедури</value>
+    <value>Започнали дейности по клинични процедури</value>
   </data>
   <data name="Inquires" xml:space="preserve">
     <value>Справки</value>
   </data>
   <data name="Ins" xml:space="preserve">
     <value>Постъпили пациенти</value>
+  </data>
+  <data name="InvalidTry" xml:space="preserve">
+    <value>Невалидна парола или потребителско име.</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Вход</value>
@@ -193,7 +196,7 @@
     <value>Парола</value>
   </data>
   <data name="PathProcedures" xml:space="preserve">
-    <value>Направления за кл. процедури</value>
+    <value>Извършени дейности по клинични процедури</value>
   </data>
   <data name="Patients" xml:space="preserve">
     <value>Пациенти</value>

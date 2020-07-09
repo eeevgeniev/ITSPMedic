@@ -8,10 +8,10 @@
         <hr />
         <div>
             <div class="row">
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("ATCCode")): @currentAccProtocol.ATCCode</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("ATCName")): @currentAccProtocol.ATCName</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("SingleDose")): @currentAccProtocol.SingleDose</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get("AllDose")): @currentAccProtocol.AllDose</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCCode)): @currentAccProtocol.ATCCode</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCName)): @currentAccProtocol.ATCName</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SingleDose)): @currentAccProtocol.SingleDose</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDose)): @currentAccProtocol.AllDose</div>
             </div>
             <partial name="~/Views/Shared/Partials/TherapyTypes/TherapyTypePreviewViewModel.cshtml" model="@currentAccProtocol.TherapyType" />
         </div>
@@ -19,5 +19,5 @@
 }
 else
 {
-    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get("NoResults"))</div>
+    <div class="text-center text-info">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }
