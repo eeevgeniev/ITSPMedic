@@ -82,11 +82,11 @@ namespace Medic.Formatters
                     XmlAttributeAttribute xmlAttribute = property
                         .GetCustomAttribute<XmlAttributeAttribute>();
 
-                    if (xmlAttribute != default && !isDefault(model, property))
+                    if (xmlAttribute != default && !IsDefault(property.GetValue(model)))
                     {
                         writer.WriteStartAttribute(!string.IsNullOrWhiteSpace(xmlAttribute.AttributeName) ? xmlAttribute.AttributeName : property.Name);
 
-                        WriteValue(model, property, writer);
+                        WriteValue(property.GetValue(model), writer);
 
                         writer.WriteEndAttribute();
 
@@ -103,14 +103,14 @@ namespace Medic.Formatters
                 {
                     XmlElementAttribute xmlElementAttribute = property.GetCustomAttribute<XmlElementAttribute>();
 
-                    if (!isDefault(model, property))
+                    if (!IsDefault(property.GetValue(model)))
                     {
                         writer.WriteStartElement(
                         xmlElementAttribute != default && !string.IsNullOrWhiteSpace(xmlElementAttribute.ElementName) ?
                         xmlElementAttribute.ElementName :
                         property.Name);
 
-                        WriteValue(model, property, writer);
+                        WriteValue(property.GetValue(model), writer);
 
                         writer.WriteEndElement();
                     }
@@ -157,251 +157,136 @@ namespace Medic.Formatters
             }
         }
 
-        private void WriteValue(object model, PropertyInfo property, XmlWriter writer)
+        private void WriteValue(object value, XmlWriter writer)
         {
-            var a = property.GetValue(model);
+            if (value == null)
+            {
+                writer.WriteValue(null);
+            }
+            
+            Type valueType = value.GetType();
 
-            if (property.PropertyType == typeof(int))
+            if (valueType == typeof(int))
             {
-                writer.WriteValue((int)property.GetValue(model));
+                writer.WriteValue((int)value);
             }
-            else if (property.PropertyType == typeof(int?))
+            else if (valueType == typeof(uint))
             {
-                writer.WriteValue((int?)property.GetValue(model));
+                writer.WriteValue((uint)value);
             }
-            else if (property.PropertyType == typeof(uint))
+            else if (valueType == typeof(short))
             {
-                writer.WriteValue((uint)property.GetValue(model));
+                writer.WriteValue((short)value);
             }
-            else if (property.PropertyType == typeof(uint?))
+            else if (valueType == typeof(ushort))
             {
-                writer.WriteValue((uint?)property.GetValue(model));
+                writer.WriteValue((ushort)value);
             }
-            else if (property.PropertyType == typeof(short))
+            else if (valueType == typeof(byte))
             {
-                writer.WriteValue((short)property.GetValue(model));
+                writer.WriteValue((byte)value);
             }
-            else if (property.PropertyType == typeof(short?))
+            else if (valueType == typeof(sbyte))
             {
-                writer.WriteValue((short?)property.GetValue(model));
+                writer.WriteValue((sbyte)value);
             }
-            else if (property.PropertyType == typeof(ushort))
+            else if (valueType == typeof(long))
             {
-                writer.WriteValue((ushort)property.GetValue(model));
+                writer.WriteValue((long)value);
             }
-            else if (property.PropertyType == typeof(ushort?))
+            else if (valueType == typeof(ulong))
             {
-                writer.WriteValue((ushort?)property.GetValue(model));
+                writer.WriteValue((decimal)(ulong)value);
             }
-            else if (property.PropertyType == typeof(byte))
+            else if (valueType == typeof(decimal))
             {
-                writer.WriteValue((byte)property.GetValue(model));
+                writer.WriteValue((decimal)value);
             }
-            else if (property.PropertyType == typeof(byte?))
+            else if (valueType == typeof(float))
             {
-                writer.WriteValue((byte?)property.GetValue(model));
+                writer.WriteValue((float)value);
             }
-            else if (property.PropertyType == typeof(sbyte))
+            else if (valueType == typeof(double))
             {
-                writer.WriteValue((sbyte)property.GetValue(model));
+                writer.WriteValue((double)value);
             }
-            else if (property.PropertyType == typeof(sbyte?))
+            else if (valueType == typeof(bool))
             {
-                writer.WriteValue((sbyte?)property.GetValue(model));
+                writer.WriteValue((bool)value);
             }
-            else if (property.PropertyType == typeof(long))
+            else if (valueType == typeof(DateTime))
             {
-                writer.WriteValue((long)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(long?))
-            {
-                writer.WriteValue((long?)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(ulong))
-            {
-                writer.WriteValue((decimal)(ulong)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(ulong?))
-            {
-                writer.WriteValue((decimal?)(ulong?)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(decimal))
-            {
-                writer.WriteValue((decimal)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(decimal?))
-            {
-                writer.WriteValue((decimal?)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(float))
-            {
-                writer.WriteValue((float)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(float?))
-            {
-                writer.WriteValue((float?)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(double))
-            {
-                writer.WriteValue((double)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(double?))
-            {
-                writer.WriteValue((double?)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(bool))
-            {
-                writer.WriteValue((bool)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(bool?))
-            {
-                writer.WriteValue((bool?)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(DateTime))
-            {
-                writer.WriteValue((DateTime)property.GetValue(model));
-            }
-            else if (property.PropertyType == typeof(DateTime?))
-            {
-                writer.WriteValue((DateTime?)property.GetValue(model));
+                writer.WriteValue((DateTime)value);
             }
             else
             {
-                object value = property.GetValue(model);
-
-                if (value != null)
-                {
-                    writer.WriteValue(value.ToString());
-                }
-                else
-                {
-                    writer.WriteValue(null);
-                }
+                writer.WriteValue(value.ToString());
             }
         }
 
-        private bool isDefault(object model, PropertyInfo property)
+        private bool IsDefault(object value)
         {
-            var a = property.GetValue(model);
-
-            if (a == null)
+            if (value == null)
             {
                 return true;
             }
 
-            if (property.PropertyType == typeof(int))
+            Type valueType = value.GetType();
+
+            if (valueType == typeof(int))
             {
-                return (int)property.GetValue(model) == default;
+                return (int)value == default;
             }
-            else if (property.PropertyType == typeof(int?))
+            else if (valueType == typeof(uint))
             {
-                return (int?)property.GetValue(model) == default;
+                return (uint)value == default;
             }
-            else if (property.PropertyType == typeof(uint))
+            else if (valueType == typeof(short))
             {
-                return (uint)property.GetValue(model) == default;
+                return (short)value == default;
             }
-            else if (property.PropertyType == typeof(uint?))
+            else if (valueType == typeof(ushort))
             {
-                return (uint?)property.GetValue(model) == default;
+                return (ushort)value == default;
             }
-            else if (property.PropertyType == typeof(short))
+            else if (valueType == typeof(byte))
             {
-                return (short)property.GetValue(model) == default;
+                return (byte)value == default;
             }
-            else if (property.PropertyType == typeof(short?))
+            else if (valueType == typeof(sbyte))
             {
-                return (short?)property.GetValue(model) == default;
+                return (sbyte)value == default;
             }
-            else if (property.PropertyType == typeof(ushort))
+            else if (valueType == typeof(long))
             {
-                return (ushort)property.GetValue(model) == default;
+                return (long)value == default;
             }
-            else if (property.PropertyType == typeof(ushort?))
+            else if (valueType == typeof(ulong))
             {
-                return (ushort?)property.GetValue(model) == default;
+                return (decimal)(ulong)value == default;
             }
-            else if (property.PropertyType == typeof(byte))
+            else if (valueType == typeof(decimal))
             {
-                return (byte)property.GetValue(model) == default;
+                return (decimal)value == default;
             }
-            else if (property.PropertyType == typeof(byte?))
+            else if (valueType == typeof(float))
             {
-                return (byte?)property.GetValue(model) == default;
+                return (float)value == default;
             }
-            else if (property.PropertyType == typeof(sbyte))
+            else if (valueType == typeof(double))
             {
-                return (sbyte)property.GetValue(model) == default;
+                return (double)value == default;
             }
-            else if (property.PropertyType == typeof(sbyte?))
+            else if (valueType == typeof(bool))
             {
-                return (sbyte?)property.GetValue(model) == default;
+                return (bool)value == default;
             }
-            else if (property.PropertyType == typeof(long))
+            else if (valueType == typeof(DateTime))
             {
-                return (long)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(long?))
-            {
-                return (long?)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(ulong))
-            {
-                return (decimal)(ulong)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(ulong?))
-            {
-                return (decimal?)(ulong?)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(decimal))
-            {
-                return (decimal)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(decimal?))
-            {
-                return (decimal?)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(float))
-            {
-                return (float)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(float?))
-            {
-                return (float?)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(double))
-            {
-                return (double)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(double?))
-            {
-                return (double?)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(bool))
-            {
-                return (bool)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(bool?))
-            {
-                return (bool?)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(DateTime))
-            {
-                return (DateTime)property.GetValue(model) == default;
-            }
-            else if (property.PropertyType == typeof(DateTime?))
-            {
-                return (DateTime?)property.GetValue(model) == default;
+                return (DateTime)value == default;
             }
             else
             {
-                object value = property.GetValue(model);
-
-                if (value == null)
-                {
-                    return true;
-                }
-
                 return string.IsNullOrWhiteSpace(value.ToString());
             }
         }
