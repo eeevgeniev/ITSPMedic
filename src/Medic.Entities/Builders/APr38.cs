@@ -16,8 +16,6 @@ namespace Medic.Entities
 
                 b.HasIndex(model => model.DecisionId).IsUnique(false);
 
-                b.Property(model => model.History).HasMaxLength(5000);
-
                 b.Property(model => model.FairCondition).HasMaxLength(4000);
 
                 b.Property(model => model.Therapy).HasMaxLength(4000);

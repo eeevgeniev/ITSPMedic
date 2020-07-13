@@ -2,6 +2,9 @@
 using Medic.Contexts.Contracts;
 using Medic.Contexts.Seeders;
 using Medic.Entities;
+using Medic.FileImport.Contracts;
+using Medic.FileImport.Reader;
+using Medic.FileImport.Writer;
 using Medic.Import;
 using Medic.Import.Contracts;
 using Medic.Infrastructure;
@@ -22,6 +25,9 @@ namespace Medic.FileImport
 {
     class Program
     {
+        private static IReadable consoleReader = new ConsoleReader();
+        private static INotifiable consoleWriter = new ConsoleWriter();
+
         static void Main(string[] args)
         {
             try
@@ -49,10 +55,10 @@ namespace Medic.FileImport
 
                 while (true)
                 {
-                    Console.WriteLine("Enter directory for CP files");
-                    cpDirectory = Console.ReadLine();
-                    Console.WriteLine("Enter directory for CLPR files");
-                    clprDirectory = Console.ReadLine();
+                    consoleWriter.Notify("Enter directory for CP files");
+                    cpDirectory = consoleReader.Read();
+                    consoleWriter.Notify("Enter directory for CLPR files");
+                    clprDirectory = consoleReader.Read();
 
                     if (!string.IsNullOrWhiteSpace(cpDirectory))
                     {
@@ -64,7 +70,6 @@ namespace Medic.FileImport
                         doesCLPRDirectoryExist = Directory.Exists(clprDirectory);
                     }
 
-                    
                     if (doesCpDirectoryExist && doesCLPRDirectoryExist)
                     {
                         break;
@@ -73,14 +78,17 @@ namespace Medic.FileImport
                     {
                         if (!doesCpDirectoryExist)
                         {
-                            Console.WriteLine("CP directory does not exist.");
+                            consoleWriter.Notify("CP directory does not exist.");
                         }
 
                         if (!doesCLPRDirectoryExist)
                         {
-                            Console.WriteLine("CLPR directory does not exist.");
+                            consoleWriter.Notify("CLPR directory does not exist.");
                         }
                     }
+
+                    doesCpDirectoryExist = true;
+                    doesCLPRDirectoryExist = true;
                 }
 
                 if (!string.IsNullOrWhiteSpace(cpDirectory))
@@ -98,7 +106,7 @@ namespace Medic.FileImport
                 Console.WriteLine(ex.Message);
             }
 
-            Console.WriteLine("Press any key to exit.");
+            consoleWriter.Notify("Press any key to exit.");
             Console.ReadKey();
         }
 
@@ -122,7 +130,7 @@ namespace Medic.FileImport
 
                 importMedicFile.ImportCPFile(cpFileEntity);
 
-                Console.WriteLine($"{file} - imported, ({counter++}/{files.Length}).");
+                consoleWriter.Notify($"{file} - imported, ({counter++}/{files.Length}).");
             }
         }
 
@@ -146,7 +154,7 @@ namespace Medic.FileImport
 
                 importMedicFile.ImportHospitalPractice(hospitalPracticeEntity);
 
-                Console.WriteLine($"{file} - imported, ({counter++}/{files.Length}).");
+                consoleWriter.Notify($"{file} - imported, ({counter++}/{files.Length}).");
             }
         }
     }
