@@ -13,7 +13,7 @@ namespace Medic.AppModels.CeasedClinicals
         [Display(Name = MedicDataAnnotationLocalizerProvider.IZMedicalWard)]
         public int IZMedicalWard { get; set; }
 
-        [Display(Name = MedicDataAnnotationLocalizerProvider.IZMedicalWard)]
+        [Display(Name = MedicDataAnnotationLocalizerProvider.IZYearMedicalWard)]
         public int IZYearMedicalWard { get; set; }
     }
 }

@@ -1,214 +1,172 @@
-﻿using Medic.AppModels.Ins;
+﻿using Medic.AppModels.CommissionAprs;
+using Medic.AppModels.DispObservations;
+using Medic.AppModels.InClinicProcedures;
+using Medic.AppModels.Ins;
+using Medic.AppModels.Outs;
+using Medic.AppModels.PathProcedures;
+using Medic.AppModels.Patients;
+using Medic.AppModels.Plannings;
+using Medic.AppModels.ProtocolDrugTherapies;
 using Medic.EHR.RM;
 using Medic.EHRBuilders.Contracts;
-using Medic.ModelToEHR.Base;
 using Medic.ModelToEHR.Contracts;
+using Medic.ModelToEHR.Helpers;
 using System;
-using System.Linq;
 
 namespace Medic.ModelToEHR
 {
-    public class ToEHRConverter : ToEHRBaseConverter, IToEHRConverter
+    public class ToEHRConverter : IToEHRConverter
     {
-        public ToEHRConverter(IEHRManager ehrManager)
-            : base (ehrManager) {}
+        private readonly IEHRManager EhrManager;
 
-        public ReferenceModel Convert(InViewModel model)
+        private InToEHRConverter _inToEHRConverter;
+        private OutToEHRConverter _outToEHRConverter;
+        private PlannedToEHRConverter _plannedToEHRConverter;
+        private CommissionAprToEHRConverter _commissionAprToEHRConverter;
+        private DispObservationToEHRConverter _dispObservationToEHRConverter;
+        private InClinicProcedureToEHRConverter _inClinicProcedureToEHRConverter;
+        private PathProcedureToEHRConverter _pathProcedureToEHRConverter;
+        private ProtocolDrugTherapyToEHRConverter _protocolDrugTherapyToEHRConverter;
+        private PatientToEHRConverter _patientToEHRConverter;
+
+        public ToEHRConverter(IEHRManager ehrManager)
+        {
+            EhrManager = ehrManager ?? throw new ArgumentNullException(nameof(EhrManager));
+        }
+
+        public ReferenceModel Convert(InViewModel model, string name)
         {
             if (model == default)
             {
                 throw new ArgumentNullException(nameof(model));
             }
 
-            var entryInsBuilder = EhrManager.EntryBuilder;
-            
-            entryInsBuilder.AddItems(
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PatientBranch)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.PatientBranch).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PatientHRegion)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.PatientHRegion).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.InType)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.InType).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendDate)).Build())
-                    .AddValue(EhrManager.DATEBuilder.Clear().AddDate(model.SendDate).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendUrgency)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.SendUrgency).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendClinicalPath)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.SendClinicalPath).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.UniqueIdentifier)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.UniqueIdentifier).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.ExaminationDate)).Build())
-                    .AddValue(EhrManager.DATEBuilder.Clear().AddDate(model.ExaminationDate).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PlannedNumber)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.PlannedNumber).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Urgency)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.Urgency).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.ClinicalPath)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.ClinicalPath).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.NZOKPay)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.NZOKPay).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.InMedicalWard)).Build())
-                    .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.InMedicalWard).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.EntryDate)).Build())
-                    .AddValue(EhrManager.DATEBuilder.Clear().AddDate(model.EntryDate).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Severity)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.Severity).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Payer)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.Payer).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.CPFile)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.CPFile).Build()).Build()
-                );
-
-            if (model.SendApr != default)
+            if (_inToEHRConverter == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendApr)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.SendApr).Build())
-                        .Build());
+                _inToEHRConverter = new InToEHRConverter(EhrManager);
             }
 
-            if (model.InApr != default)
+            return _inToEHRConverter.Convert(model, name);
+        }
+
+        public ReferenceModel Convert(OutViewModel model, string name)
+        {
+            if (model == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.InApr)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.InApr).Build())
-                        .Build());
+                throw new ArgumentNullException(nameof(model));
             }
 
-            if (model.Delay != default)
+            if (_outToEHRConverter == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Delay)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.Delay).Build())
-                        .Build());
+                _outToEHRConverter = new OutToEHRConverter(EhrManager);
             }
 
-            if (model.AgeInDays != default)
+            return _outToEHRConverter.Convert(model, name);
+        }
+
+        public ReferenceModel Convert(PlannedViewModel model, string name)
+        {
+            if (model == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.AgeInDays)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.AgeInDays).Build())
-                        .Build());
+                throw new ArgumentNullException(nameof(model));
             }
 
-            if (model.WeightInGrams != default)
+            if (_plannedToEHRConverter == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.WeightInGrams)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.WeightInGrams).Build())
-                        .Build());
+                _plannedToEHRConverter = new PlannedToEHRConverter(EhrManager);
             }
 
-            if (model.BirthWeight != default)
+            return _plannedToEHRConverter.Convert(model, name);
+        }
+
+        public ReferenceModel Convert(CommissionAprViewModel model, string name)
+        {
+            if (model == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.BirthWeight)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.BirthWeight).Build())
-                        .Build());
+                throw new ArgumentNullException(nameof(model));
             }
 
-            if (model.MotherIZYear != default)
+            if (_commissionAprToEHRConverter == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.MotherIZYear)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.MotherIZYear).Build())
-                        .Build());
+                _commissionAprToEHRConverter = new CommissionAprToEHRConverter(EhrManager);
             }
 
-            if (model.MotherIZNo != default)
+            return _commissionAprToEHRConverter.Convert(model, name);
+        }
+
+        public ReferenceModel Convert(DispObservationViewModel model, string name)
+        {
+            if (model == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.MotherIZNo)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.MotherIZNo).Build())
-                        .Build());
+                throw new ArgumentNullException(nameof(model));
             }
 
-            if (model.IZYear != default)
+            if (_dispObservationToEHRConverter == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.IZYear)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.IZYear).Build())
-                        .Build());
+                _dispObservationToEHRConverter = new DispObservationToEHRConverter(EhrManager);
             }
 
-            if (model.IZNo != default)
+            return _dispObservationToEHRConverter.Convert(model, name);
+        }
+
+        public ReferenceModel Convert(InClinicProcedureViewModel model, string name)
+        {
+            if (model == default)
             {
-                entryInsBuilder.AddItems(
-                    EhrManager.ElementBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.IZNo)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.IZNo).Build())
-                        .Build());
+                throw new ArgumentNullException(nameof(model));
             }
 
-            Section inSection = EhrManager.SectionBuilder.Clear().AddMembers(entryInsBuilder.Build()).Build();
+            if (_inClinicProcedureToEHRConverter == default)
+            {
+                _inClinicProcedureToEHRConverter = new InClinicProcedureToEHRConverter(EhrManager);
+            }
 
-            Section patientSection = EhrManager.SectionBuilder.Clear()
-                .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Patient)).Build())
-                .AddMembers(base.CreatePatientEntry(model.Patient))
-                .Build();
+            return _inClinicProcedureToEHRConverter.Convert(model, name);
+        }
 
-            Section practitionerSection = EhrManager.SectionBuilder.Clear()
-                .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Sender)).Build())
-                .AddMembers(base.CreatePractitionerEntry(model.Sender))
-                .Build();
+        public ReferenceModel Convert(PathProcedureViewModel model, string name)
+        {
+            if (model == default)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
 
-            Section sendDiagnosesSection = EhrManager.SectionBuilder.Clear()
-                .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendDiagnoses)).Build())
-                .AddMembers(model.SendDiagnoses.Select(sd => base.CreateDiagnoseEntry(sd)).ToArray())
-                .Build();
+            if (_pathProcedureToEHRConverter == default)
+            {
+                _pathProcedureToEHRConverter = new PathProcedureToEHRConverter(EhrManager);
+            }
 
-            Section diagnosesSection = EhrManager.SectionBuilder.Clear()
-                .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Diagnoses)).Build())
-                .AddMembers(model.Diagnoses.Select(d => base.CreateDiagnoseEntry(d)).ToArray())
-                .Build();
+            return _pathProcedureToEHRConverter.Convert(model, name);
+        }
 
-            ReferenceModel referenceModel = EhrManager
-                .ReferenceModelBuilder
-                .AddComposition(
-                    EhrManager.CompositionBuilder
-                        .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText("In").Build())
-                        .AddContent(patientSection, practitionerSection, sendDiagnosesSection, diagnosesSection, inSection)
-                        .Build())
-                .Build();
+        public ReferenceModel Convert(ProtocolDrugTherapyViewModel model, string name)
+        {
+            if (model == default)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
 
-            return referenceModel;
+            if (_protocolDrugTherapyToEHRConverter == default)
+            {
+                _protocolDrugTherapyToEHRConverter = new ProtocolDrugTherapyToEHRConverter(EhrManager);
+            }
+
+            return _protocolDrugTherapyToEHRConverter.Convert(model, name);
+        }
+
+        public ReferenceModel Convert(PatientViewModel model, string name)
+        {
+            if (model == default)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            if (_patientToEHRConverter == default)
+            {
+                _patientToEHRConverter = new PatientToEHRConverter(EhrManager);
+            }
+
+            return _patientToEHRConverter.Convert(model, name);
         }
     }
 }

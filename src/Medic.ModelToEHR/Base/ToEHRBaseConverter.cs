@@ -1,12 +1,10 @@
 ﻿using Medic.AppModels.Diagnoses;
+using Medic.AppModels.Diags;
 using Medic.AppModels.HealthcarePractitioners;
 using Medic.AppModels.Patients;
 using Medic.EHR.RM;
-using Medic.EHR.RM.Base;
 using Medic.EHRBuilders.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Medic.ModelToEHR.Base
 {
@@ -158,6 +156,29 @@ namespace Medic.ModelToEHR.Base
                     .Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Code)).Build())
                     .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.Code).Build())
+                    .Build())
+                .Build();
+        }
+
+        protected Entry CreateDiagEntry(DiagPreviewViewModel model)
+        {
+            if (model == default)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            return EhrManager.EntryBuilder
+                .Clear()
+                .AddItems(
+                    EhrManager.ElementBuilder
+                    .Clear()
+                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Code)).Build())
+                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.Code).Build())
+                    .Build(),
+                    EhrManager.ElementBuilder
+                    .Clear()
+                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Name)).Build())
+                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.Name).Build())
                     .Build())
                 .Build();
         }
