@@ -11,6 +11,14 @@
         <header>
             <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapyView))</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
+            <span>
+                <a asp-controller="@ProtocolDrugTherapyController.GetName(nameof(ProtocolDrugTherapyController))"
+                   asp-action="@nameof(ProtocolDrugTherapyController.Xml)"
+                   asp-route-id="@Model.ProtocolDrugTherapy.Id">Xml</a>
+                <a asp-controller="@ProtocolDrugTherapyController.GetName(nameof(ProtocolDrugTherapyController))"
+                   asp-action="@nameof(ProtocolDrugTherapyController.Json)"
+                   asp-route-id="@Model.ProtocolDrugTherapy.Id">Json</a>
+            </span>
         </header>
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.ProtocolDrugTherapy.Patient" />
@@ -18,7 +26,7 @@
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Chairman))</h2>
         <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.ProtocolDrugTherapy.Chairman" />
         <hr />
-        <div>@Html.Raw(medicDataLocalization.Get("ProtocolDate")): @Model.ProtocolDrugTherapy.ProtocolDate.ToString("g")</div>
+        <div>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDate)): @Model.ProtocolDrugTherapy.ProtocolDate.ToString("g")</div>
         <hr />
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Diag))</h2>
         <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.ProtocolDrugTherapy.Diag" />

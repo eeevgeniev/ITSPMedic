@@ -79,16 +79,23 @@ namespace Medic.ModelToEHR.Helpers
                 .Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
 
-            compositionBuilder.AddContent(
+            if (model.Patient != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Patient)).Build())
                     .AddMembers(base.CreatePatientEntry(model.Patient))
-                    .Build(),
+                    .Build());
+            }
+
+            if (model.Sender != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Sender)).Build())
                     .AddMembers(base.CreatePractitionerEntry(model.Sender))
-                    .Build()
-                );
+                    .Build());
+            }
 
             if (model.SendDiagnoses != default && model.SendDiagnoses.Count > 0)
             {

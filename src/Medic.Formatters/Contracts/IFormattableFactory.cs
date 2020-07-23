@@ -3,5 +3,7 @@
     public interface IFormattableFactory
     {
         IDataFormattable CreateXMLFormatter();
+
+        IDataFormattable CreateJsonFormatter();
     }
 }

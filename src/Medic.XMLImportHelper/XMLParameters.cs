@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Medic.XMLImportHelper
+﻿namespace Medic.XMLImportHelper
 {
     public class XMLParameters
     {

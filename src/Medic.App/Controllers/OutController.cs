@@ -6,8 +6,11 @@ using Medic.AppModels.Outs;
 using Medic.AppModels.Sexes;
 using Medic.AppModels.UsedDrugs;
 using Medic.Cache.Contacts;
+using Medic.EHR.RM;
+using Medic.Formatters.Contracts;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
+using Medic.ModelToEHR.Contracts;
 using Medic.Resources;
 using Medic.Services.Contracts;
 using Medic.Services.Helpers;
@@ -25,6 +28,8 @@ namespace Medic.App.Controllers
         private readonly IOutService OutService;
         private readonly IUsedDrugService UsedDrugService;
         private readonly IMedicLoggerService MedicLoggerService;
+        private readonly IToEHRConverter ToEHRConverter;
+        private readonly IFormattableFactory FormattableFactory;
 
         public OutController(IOutService outService, 
             IPatientService patientService, 
@@ -32,12 +37,16 @@ namespace Medic.App.Controllers
             IHealthRegionService healthRegionService,
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
-            IMedicLoggerService medicLoggerService)
+            IMedicLoggerService medicLoggerService,
+            IToEHRConverter toEHRConverter,
+            IFormattableFactory formattableFactory)
             : base (patientService, healthRegionService, medicCache, medicDataLocalization)
         {
             OutService = outService ?? throw new ArgumentNullException(nameof(outService));
             UsedDrugService = usedDrugService ?? throw new ArgumentNullException(nameof(usedDrugService));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
+            ToEHRConverter = toEHRConverter ?? throw new ArgumentNullException(nameof(toEHRConverter));
+            FormattableFactory = formattableFactory ?? throw new ArgumentNullException(nameof(formattableFactory));
         }
 
         public async Task<IActionResult> Index(OutSearch search, int page = 1)
@@ -130,14 +139,7 @@ namespace Medic.App.Controllers
                 }
                 else
                 {
-                    string key = $"{nameof(OutViewModel)} - {id}";
-
-                    if (!base.MedicCache.TryGetValue(key, out model))
-                    {
-                        model = await OutService.GetOutAsyns(id);
-
-                        base.MedicCache.Set(key, model);
-                    }
+                    model = await GetModelById(id);
                 }
 
                 return View(new OutPageOutModel()
@@ -162,6 +164,108 @@ namespace Medic.App.Controllers
 
                 throw;
             }
+        }
+
+        public async Task<IActionResult> Xml(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    return RedirectToAction(nameof(HomeController.Index), this.GetControllerName(nameof(HomeController)));
+                }
+                else
+                {
+                    OutViewModel model = await GetModelById(id);
+
+                    if (model == default)
+                    {
+                        return BadRequest();
+                    }
+
+                    ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(OutViewModel));
+                    IDataFormattable xmlFormater = FormattableFactory.CreateXMLFormatter();
+
+                    return new ContentResult()
+                    {
+                        Content = await xmlFormater.FormatObject(referenceModel),
+                        ContentType = xmlFormater.MimeType,
+                        StatusCode = 200
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Json(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    return RedirectToAction(nameof(HomeController.Index), this.GetControllerName(nameof(HomeController)));
+                }
+                else
+                {
+                    OutViewModel model = await GetModelById(id);
+
+                    if (model == default)
+                    {
+                        return BadRequest();
+                    }
+
+                    ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(OutViewModel));
+                    IDataFormattable jsonFormater = FormattableFactory.CreateJsonFormatter();
+
+                    return new ContentResult()
+                    {
+                        Content = await jsonFormater.FormatObject(referenceModel),
+                        ContentType = jsonFormater.MimeType,
+                        StatusCode = 200
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        private async Task<OutViewModel> GetModelById(int id)
+        {
+            OutViewModel model;
+
+            string key = $"{nameof(OutViewModel)} - {id}";
+
+            if (!base.MedicCache.TryGetValue(key, out model))
+            {
+                model = await OutService.GetOutAsyns(id);
+
+                base.MedicCache.Set(key, model);
+            }
+
+            return model;
         }
     }
 }

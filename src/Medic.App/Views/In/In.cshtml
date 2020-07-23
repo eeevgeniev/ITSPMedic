@@ -11,6 +11,14 @@
         <header>
             <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InsView))} - {@Model.InViewModel.UniqueIdentifier}")</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
+            <span>
+                <a asp-controller="@InController.GetName(nameof(InController))"
+                   asp-action="@nameof(InController.Xml)"
+                   asp-route-id="@Model.InViewModel.Id">Xml</a>
+                <a asp-controller="@InController.GetName(nameof(InController))"
+                   asp-action="@nameof(InController.Json)"
+                   asp-route-id="@Model.InViewModel.Id">Json</a>
+            </span>
         </header>
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.InViewModel.Patient" />

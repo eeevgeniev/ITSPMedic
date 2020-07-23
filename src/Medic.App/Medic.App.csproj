@@ -40,7 +40,10 @@
     <ProjectReference Include="..\Medic.AppModels\Medic.AppModels.csproj" />
     <ProjectReference Include="..\Medic.Cache\Medic.Cache.csproj" />
     <ProjectReference Include="..\Medic.Contexts\Medic.Contexts.csproj" />
+    <ProjectReference Include="..\Medic.EHRBuilders\Medic.EHRBuilders.csproj" />
+    <ProjectReference Include="..\Medic.EHR\Medic.EHR.csproj" />
     <ProjectReference Include="..\Medic.Entities\Medic.Entities.csproj" />
+    <ProjectReference Include="..\Medic.Formatters\Medic.Formatters.csproj" />
     <ProjectReference Include="..\Medic.IdentityModels\Medic.IdentityModels.csproj" />
     <ProjectReference Include="..\Medic.Identity\Medic.Identity.csproj" />
     <ProjectReference Include="..\Medic.Import\Medic.Import.csproj" />
@@ -48,6 +51,7 @@
     <ProjectReference Include="..\Medic.Logs\Medic.Logs.csproj" />
     <ProjectReference Include="..\Medic.Mappers\Medic.Mappers.csproj" />
     <ProjectReference Include="..\Medic.Models\Medic.Models.csproj" />
+    <ProjectReference Include="..\Medic.ModelToEHR\Medic.ModelToEHR.csproj" />
     <ProjectReference Include="..\Medic.Resources\Medic.Resources.csproj" />
     <ProjectReference Include="..\Medic.Services\Medic.Services.csproj" />
     <ProjectReference Include="..\Medic.XMLImportHelper\Medic.XMLImportHelper.csproj" />

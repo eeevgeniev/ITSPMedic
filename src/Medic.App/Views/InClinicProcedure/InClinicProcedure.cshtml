@@ -1,7 +1,6 @@
 ﻿@model InClinicProcedurePageInClinicProcedureModel
 @inject MedicDataLocalization medicDataLocalization
 
-
 @{
     ViewData["Title"] = Model.Title;
 }
@@ -12,6 +11,14 @@
         <header>
             <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InClinicProcedure))} - {@Model.InClinicProcedureViewModel.VisitDocumentUniqueIdentifier}")</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
+            <span>
+                <a asp-controller="@InClinicProcedureController.GetName(nameof(InClinicProcedureController))"
+                   asp-action="@nameof(InClinicProcedureController.Xml)"
+                   asp-route-id="@Model.InClinicProcedureViewModel.Id">Xml</a>
+                <a asp-controller="@InClinicProcedureController.GetName(nameof(InClinicProcedureController))"
+                   asp-action="@nameof(InClinicProcedureController.Json)"
+                   asp-route-id="@Model.InClinicProcedureViewModel.Id">Json</a>
+            </span>
         </header>
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.InClinicProcedureViewModel.Patient" />

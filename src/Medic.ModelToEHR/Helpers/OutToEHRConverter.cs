@@ -290,16 +290,24 @@ namespace Medic.ModelToEHR.Helpers
                 .Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
 
-            compositionBuilder.AddContent(
+            if (model.Patient != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Patient)).Build())
                     .AddMembers(base.CreatePatientEntry(model.Patient))
-                    .Build(),
+                    .Build());
+            }
+
+            if (model.Sender != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Sender)).Build())
                     .AddMembers(base.CreatePractitionerEntry(model.Sender))
                     .Build());
-
+            }
+            
             if (model.SendDiagnoses != default && model.SendDiagnoses.Count > 0)
             {
                 compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear()
@@ -316,15 +324,23 @@ namespace Medic.ModelToEHR.Helpers
                 .Build());
             }
 
-            compositionBuilder.AddContent(
+            if (model.Dead != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Dead)).Build())
                     .AddMembers(base.CreateDiagnoseEntry(model.Dead))
-                    .Build(),
+                    .Build());
+            }
+
+            if (model.OutMainDiagnose != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.OutMainDiagnose)).Build())
                     .AddMembers(base.CreateDiagnoseEntry(model.OutMainDiagnose))
                     .Build());
+            }
 
             if (model.OutDiagnoses != default && model.OutDiagnoses.Count > 0)
             {
@@ -335,16 +351,23 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            compositionBuilder.AddContent(
+            if (model.HistologicalResult != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.HistologicalResult)).Build())
                     .AddMembers(CreateHistologicalResultEntry(model.HistologicalResult))
-                    .Build(),
+                    .Build());
+            }
+
+            if (model.Epicrisis != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.HistologicalResult)).Build())
+                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Epicrisis)).Build())
                     .AddMembers(CreateEpicrisisEntry(model.Epicrisis))
-                    .Build()
-                );
+                    .Build());
+            }
 
             if (model.UsedDrugs != default && model.UsedDrugs.Count > 0)
             {
@@ -352,8 +375,7 @@ namespace Medic.ModelToEHR.Helpers
                     EhrManager.SectionBuilder.Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.HistologicalResult)).Build())
                         .AddMembers(model.UsedDrugs.Where(ud => ud != default).Select(ud => CreateUsedDrugEntry(ud)).ToArray())
-                        .Build()
-                    );
+                        .Build());
             }
 
             if (model.Procedures != default && model.Procedures.Count > 0)

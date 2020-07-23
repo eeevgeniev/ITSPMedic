@@ -5,8 +5,11 @@ using Medic.AppModels.HealthRegions;
 using Medic.AppModels.ProtocolDrugTherapies;
 using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
+using Medic.EHR.RM;
+using Medic.Formatters.Contracts;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
+using Medic.ModelToEHR.Contracts;
 using Medic.Resources;
 using Medic.Services.Contracts;
 using Medic.Services.Helpers;
@@ -24,6 +27,8 @@ namespace Medic.App.Controllers
         private readonly IProtocolDrugTherapyService ProtocolDrugTherapyService;
         private readonly IDrugProtocolService DrugProtocolService;
         private readonly IMedicLoggerService MedicLoggerService;
+        private readonly IToEHRConverter ToEHRConverter;
+        private readonly IFormattableFactory FormattableFactory;
 
         public ProtocolDrugTherapyController(
             IProtocolDrugTherapyService protocolDrugTherapyService,
@@ -32,12 +37,16 @@ namespace Medic.App.Controllers
             IHealthRegionService healthRegionService,
             MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
-            IMedicLoggerService medicLoggerService)
+            IMedicLoggerService medicLoggerService,
+            IToEHRConverter toEHRConverter,
+            IFormattableFactory formattableFactory)
             : base (patientService, healthRegionService, medicCache, medicDataLocalization)
         {
             ProtocolDrugTherapyService = protocolDrugTherapyService ?? throw new ArgumentNullException(nameof(protocolDrugTherapyService));
             DrugProtocolService = drugProtocolService ?? throw new ArgumentNullException(nameof(drugProtocolService));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
+            ToEHRConverter = toEHRConverter ?? throw new ArgumentNullException(nameof(toEHRConverter));
+            FormattableFactory = formattableFactory ?? throw new ArgumentNullException(nameof(formattableFactory));
         }
 
         public async Task<IActionResult> Index(ProtocolDrugTherapySearch search, int page = 1)
@@ -133,14 +142,7 @@ namespace Medic.App.Controllers
                 }
                 else
                 {
-                    string key = $"{nameof(ProtocolDrugTherapyViewModel)} - {id}";
-
-                    if (!base.MedicCache.TryGetValue(key, out model))
-                    {
-                        model = await ProtocolDrugTherapyService.GetProtocolDrugTherapyAsync(id);
-
-                        base.MedicCache.Set(key, model);
-                    }
+                    model = await GetModelById(id);
                 }
 
                 return View(new ProtocolDrugTherapyPageProtocolDrugTherapyModel()
@@ -165,6 +167,108 @@ namespace Medic.App.Controllers
 
                 throw;
             }
+        }
+
+        public async Task<IActionResult> Xml(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    return RedirectToAction(nameof(HomeController.Index), this.GetControllerName(nameof(HomeController)));
+                }
+                else
+                {
+                    ProtocolDrugTherapyViewModel model = await GetModelById(id);
+
+                    if (model == default)
+                    {
+                        return BadRequest();
+                    }
+
+                    ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(ProtocolDrugTherapyViewModel));
+                    IDataFormattable xmlFormater = FormattableFactory.CreateXMLFormatter();
+
+                    return new ContentResult()
+                    {
+                        Content = await xmlFormater.FormatObject(referenceModel),
+                        ContentType = xmlFormater.MimeType,
+                        StatusCode = 200
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Json(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    return RedirectToAction(nameof(HomeController.Index), this.GetControllerName(nameof(HomeController)));
+                }
+                else
+                {
+                    ProtocolDrugTherapyViewModel model = await GetModelById(id);
+
+                    if (model == default)
+                    {
+                        return BadRequest();
+                    }
+
+                    ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(ProtocolDrugTherapyViewModel));
+                    IDataFormattable jsonFormater = FormattableFactory.CreateJsonFormatter();
+
+                    return new ContentResult()
+                    {
+                        Content = await jsonFormater.FormatObject(referenceModel),
+                        ContentType = jsonFormater.MimeType,
+                        StatusCode = 200
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        private async Task<ProtocolDrugTherapyViewModel> GetModelById(int id)
+        {
+            ProtocolDrugTherapyViewModel model;
+
+            string key = $"{nameof(ProtocolDrugTherapyViewModel)} - {id}";
+
+            if (!base.MedicCache.TryGetValue(key, out model))
+            {
+                model = await ProtocolDrugTherapyService.GetProtocolDrugTherapyAsync(id);
+
+                base.MedicCache.Set(key, model);
+            }
+
+            return model;
         }
     }
 }

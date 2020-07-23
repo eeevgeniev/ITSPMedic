@@ -1,4 +1,4 @@
-﻿@model PateintPagePatientModel
+﻿@model PatientPagePatientModel
 @inject PatientLocalization patientLocalization
 @inject MedicDataLocalization medicDataLocalization
 
@@ -15,6 +15,14 @@
             }
             <h2 class="text-center">@(string.IsNullOrWhiteSpace(name) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : name)</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
+            <span>
+                <a asp-controller="@PatientController.GetName(nameof(PatientController))"
+                   asp-action="@nameof(PatientController.Xml)"
+                   asp-route-id="@Model.Patient.Id">Xml</a>
+                <a asp-controller="@PatientController.GetName(nameof(PatientController))"
+                   asp-action="@nameof(PatientController.Json)"
+                   asp-route-id="@Model.Patient.Id">Json</a>
+            </span>
             <div>
                 <div class="row">
                     <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get(PatientLocalization.BirthDate))</div>

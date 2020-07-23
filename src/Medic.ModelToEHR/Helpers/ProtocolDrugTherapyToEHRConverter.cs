@@ -77,16 +77,23 @@ namespace Medic.ModelToEHR.Helpers
                 .Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
 
-            compositionBuilder.AddContent(
+            if (model.Patient != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Patient)).Build())
                     .AddMembers(base.CreatePatientEntry(model.Patient))
-                    .Build(),
+                    .Build());
+            }
+
+            if (model.Chairman != default)
+            {
+                compositionBuilder.AddContent(
                 EhrManager.SectionBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Chairman)).Build())
                     .AddMembers(base.CreatePractitionerEntry(model.Chairman))
-                    .Build()
-                );
+                    .Build());
+            }
 
             if (model.Diag != default)
             {

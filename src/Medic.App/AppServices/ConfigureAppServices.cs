@@ -3,6 +3,10 @@ using Medic.Cache;
 using Medic.Cache.Contacts;
 using Medic.Contexts;
 using Medic.Contexts.Contracts;
+using Medic.EHRBuilders.Contracts;
+using Medic.EHRBuilders.Managers;
+using Medic.Formatters;
+using Medic.Formatters.Contracts;
 using Medic.Identity;
 using Medic.Import;
 using Medic.Import.Contracts;
@@ -11,6 +15,8 @@ using Medic.Logs;
 using Medic.Logs.Contracts;
 using Medic.Mappers;
 using Medic.Mappers.Contracts;
+using Medic.ModelToEHR;
+using Medic.ModelToEHR.Contracts;
 using Medic.Resources;
 using Medic.Services;
 using Medic.Services.Contracts;
@@ -104,6 +110,12 @@ namespace Medic.App.AppServices
             services.AddSingleton<ICacheable>(new MedicCache());
 
             services.AddTransient<IMedicXmlParser, DefaultMedicXmlParser>();
+
+            services.AddTransient<IEHRManager, EHRManager>();
+
+            services.AddTransient<IToEHRConverter, ToEHRConverter>();
+
+            services.AddTransient<IFormattableFactory, FormatterFactory>();
 
             services.AddDbContext<MedicLoggerContext>(options =>
             {

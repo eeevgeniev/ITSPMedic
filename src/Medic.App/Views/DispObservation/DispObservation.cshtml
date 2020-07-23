@@ -11,6 +11,14 @@
         <header>
             <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispObservationView))</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
+            <span>
+                <a asp-controller="@DispObservationController.GetName(nameof(DispObservationController))"
+                   asp-action="@nameof(DispObservationController.Xml)"
+                   asp-route-id="@Model.DispObservation.Id">Xml</a>
+                <a asp-controller="@DispObservationController.GetName(nameof(DispObservationController))"
+                   asp-action="@nameof(DispObservationController.Json)"
+                   asp-route-id="@Model.DispObservation.Id">Json</a>
+            </span>
         </header>
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.DispObservation.Patient" />

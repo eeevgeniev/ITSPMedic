@@ -11,6 +11,14 @@
         <header>
             <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathProcedure))} - {@Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier}")</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
+            <span>
+                <a asp-controller="@PathProcedureController.GetName(nameof(PathProcedureController))"
+                   asp-action="@nameof(PathProcedureController.Xml)"
+                   asp-route-id="@Model.PathProcedureViewModel.Id">Xml</a>
+                <a asp-controller="@PathProcedureController.GetName(nameof(PathProcedureController))"
+                   asp-action="@nameof(PathProcedureController.Json)"
+                   asp-route-id="@Model.PathProcedureViewModel.Id">Json</a>
+            </span>
         </header>
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.PathProcedureViewModel.Patient" />

@@ -226,69 +226,71 @@ namespace Medic.Formatters
 
         private bool IsDefault(object value)
         {
-            if (value == null)
-            {
-                return true;
-            }
+            return value == null;
+            
+            //if (value == null)
+            //{
+            //    return true;
+            //}
 
-            Type valueType = value.GetType();
+            //Type valueType = value.GetType();
 
-            if (valueType == typeof(int))
-            {
-                return (int)value == default;
-            }
-            else if (valueType == typeof(uint))
-            {
-                return (uint)value == default;
-            }
-            else if (valueType == typeof(short))
-            {
-                return (short)value == default;
-            }
-            else if (valueType == typeof(ushort))
-            {
-                return (ushort)value == default;
-            }
-            else if (valueType == typeof(byte))
-            {
-                return (byte)value == default;
-            }
-            else if (valueType == typeof(sbyte))
-            {
-                return (sbyte)value == default;
-            }
-            else if (valueType == typeof(long))
-            {
-                return (long)value == default;
-            }
-            else if (valueType == typeof(ulong))
-            {
-                return (decimal)(ulong)value == default;
-            }
-            else if (valueType == typeof(decimal))
-            {
-                return (decimal)value == default;
-            }
-            else if (valueType == typeof(float))
-            {
-                return (float)value == default;
-            }
-            else if (valueType == typeof(double))
-            {
-                return (double)value == default;
-            }
-            else if (valueType == typeof(bool))
-            {
-                return (bool)value == default;
-            }
-            else if (valueType == typeof(DateTime))
-            {
-                return (DateTime)value == default;
-            }
-            else
-            {
-                return string.IsNullOrWhiteSpace(value.ToString());
-            }
+            //if (valueType == typeof(int))
+            //{
+            //    return (int)value == default;
+            //}
+            //else if (valueType == typeof(uint))
+            //{
+            //    return (uint)value == default;
+            //}
+            //else if (valueType == typeof(short))
+            //{
+            //    return (short)value == default;
+            //}
+            //else if (valueType == typeof(ushort))
+            //{
+            //    return (ushort)value == default;
+            //}
+            //else if (valueType == typeof(byte))
+            //{
+            //    return (byte)value == default;
+            //}
+            //else if (valueType == typeof(sbyte))
+            //{
+            //    return (sbyte)value == default;
+            //}
+            //else if (valueType == typeof(long))
+            //{
+            //    return (long)value == default;
+            //}
+            //else if (valueType == typeof(ulong))
+            //{
+            //    return (decimal)(ulong)value == default;
+            //}
+            //else if (valueType == typeof(decimal))
+            //{
+            //    return (decimal)value == default;
+            //}
+            //else if (valueType == typeof(float))
+            //{
+            //    return (float)value == default;
+            //}
+            //else if (valueType == typeof(double))
+            //{
+            //    return (double)value == default;
+            //}
+            //else if (valueType == typeof(bool))
+            //{
+            //    return (bool)value == default;
+            //}
+            //else if (valueType == typeof(DateTime))
+            //{
+            //    return (DateTime)value == default;
+            //}
+            //else
+            //{
+            //    return string.IsNullOrWhiteSpace(value.ToString());
+            //}
         }
     }
 }
