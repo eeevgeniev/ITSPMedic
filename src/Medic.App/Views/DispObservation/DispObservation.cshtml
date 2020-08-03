@@ -11,14 +11,24 @@
         <header>
             <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispObservationView))</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
-            <span>
+            <section class="text-right">
                 <a asp-controller="@DispObservationController.GetName(nameof(DispObservationController))"
                    asp-action="@nameof(DispObservationController.Xml)"
-                   asp-route-id="@Model.DispObservation.Id">Xml</a>
+                   asp-route-id="@Model.DispObservation.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/xml.jpg" class="export-image" alt="Html.Raw(medicDataLocalization.Get(@MedicDataLocalization.ExportAsXml))" />
+                </a>
                 <a asp-controller="@DispObservationController.GetName(nameof(DispObservationController))"
                    asp-action="@nameof(DispObservationController.Json)"
-                   asp-route-id="@Model.DispObservation.Id">Json</a>
-            </span>
+                   asp-route-id="@Model.DispObservation.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="Html.Raw(medicDataLocalization.Get(@MedicDataLocalization.ExportAsJson))" />
+                </a>
+            </section>
         </header>
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.DispObservation.Patient" />
@@ -38,7 +48,7 @@
         <partial name="~/Views/Shared/Partials/MDIs/MDISummaryViewModel.cshtml" model="@Model.DispObservation.MDIs" />
         <hr />
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AdditionalInformation))</h2>
-        <hr/>
+        <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientBranch)): @Model.DispObservation.PatientBranch</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientHRegion)): @Model.DispObservation.PatientHRegion</div>

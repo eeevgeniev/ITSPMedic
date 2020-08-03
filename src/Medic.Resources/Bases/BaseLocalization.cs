@@ -6,7 +6,7 @@ namespace Medic.Resources.Bases
 {
     public abstract class BaseLocalization : ILocalizationService
     {
-        protected readonly IStringLocalizer StringLocalizer;
+        private readonly IStringLocalizer _stringLocalizer;
 
         public BaseLocalization(IStringLocalizerFactory factory, string name)
         {
@@ -20,8 +20,10 @@ namespace Medic.Resources.Bases
                 throw new ArgumentException(nameof(name));
             }
 
-            StringLocalizer = factory.Create(name, this.GetType().Assembly.GetName().Name);
+            _stringLocalizer = factory.Create(name, this.GetType().Assembly.GetName().Name);
         }
+
+        protected IStringLocalizer StringLocalizer => _stringLocalizer;
 
         public abstract string Get(string name);
     }

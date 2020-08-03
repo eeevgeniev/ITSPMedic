@@ -1,5 +1,4 @@
-﻿using Medic.EHR.DataTypes.Base;
-using System;
+﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 

@@ -1,6 +1,6 @@
 ﻿namespace Medic.XMLImportHelper.Enumerations
 {
-    public enum FileTypeEnumeration
+    public enum FileTypeEnums
     {
         CpFile,
         HOSP_Practice

@@ -471,6 +471,15 @@
   <data name="ExpandDiagnose" xml:space="preserve">
     <value>Разширена диагноза</value>
   </data>
+  <data name="ExportAsExcel" xml:space="preserve">
+    <value>Експортирай като excel</value>
+  </data>
+  <data name="ExportAsJson" xml:space="preserve">
+    <value>Експортирай като json</value>
+  </data>
+  <data name="ExportAsXml" xml:space="preserve">
+    <value>Експортирай като xml</value>
+  </data>
   <data name="FairCondition" xml:space="preserve">
     <value>Обективно състояние</value>
   </data>

@@ -6,6 +6,7 @@ using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
 using Medic.EHR.RM;
 using Medic.Formatters.Contracts;
+using Medic.Formatters.Enums;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.ModelToEHR.Contracts;
@@ -47,23 +48,13 @@ namespace Medic.App.Controllers
         {
             try
             {
-                int pageLength = (int)search.Length;
-                int startIndex = base.GetStartIndex(pageLength, page);
                 string searchParams = search != default ? search.ToString() : default;
-
-                string patientsKey = $"{nameof(PatientPreviewViewModel)} - {startIndex} - {searchParams}";
-                string patientsCountKey = $"{MedicConstants.PatientsCount} - {searchParams}";
 
                 PatientWhereBuilder patientWhereBuilder = new PatientWhereBuilder(search);
 
-                if (!base.MedicCache.TryGetValue(patientsKey, out List<PatientPreviewViewModel> patientsModel))
-                {
-                    PatientHelperBuilder helperBuilder = new PatientHelperBuilder(search);
+                List<PatientPreviewViewModel> patientsModel = await GetPage(search, patientWhereBuilder, searchParams, page);
 
-                    patientsModel = await PatientService.GetPatientsByQueryAsync(patientWhereBuilder, helperBuilder, startIndex);
-
-                    base.MedicCache.Set(patientsKey, patientsModel);
-                }
+                string patientsCountKey = $"{MedicConstants.PatientsCount} - {searchParams}";
 
                 if (!base.MedicCache.TryGetValue(patientsCountKey, out int patientsCount))
                 {
@@ -73,12 +64,13 @@ namespace Medic.App.Controllers
                 }
 
                 List<SexOption> sexOptions = base.GetDefaultSexes();
+                
                 sexOptions.AddRange(await base.GetSexesAsync());
 
                 return View(new PatientPageIndexModel()
                 {
                     Patients = patientsModel,
-                    TotalPages = base.TotalPages(pageLength, patientsCount),
+                    TotalPages = base.TotalPages((int)search.Length, patientsCount),
                     TotalResults = patientsCount,
                     CurrentPage = page,
                     Title = MedicDataLocalization.Get(MedicDataLocalization.Patients),
@@ -161,14 +153,8 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(PatientViewModel));
-                    IDataFormattable xmlFormater = FormattableFactory.CreateXMLFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await xmlFormater.FormatObject(referenceModel),
-                        ContentType = xmlFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
                 }
             }
             catch (Exception ex)
@@ -204,15 +190,41 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(PatientViewModel));
-                    IDataFormattable jsonFormater = FormattableFactory.CreateJsonFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await jsonFormater.FormatObject(referenceModel),
-                        ContentType = jsonFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
                 }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Excel(PatientSearch search, int page = 1)
+        {
+            try
+            {
+                PatientWhereBuilder patientWhereBuilder = new PatientWhereBuilder(search);
+
+                string searchParams = search != default ? search.ToString() : default;
+
+                List<PatientPreviewViewModel> patientsModel = await GetPage(search, patientWhereBuilder, searchParams, page);
+
+                if (patientsModel == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<PatientPreviewViewModel>(patientsModel, MedicDataLocalization.Patients, FormattableFactory);
             }
             catch (Exception ex)
             {
@@ -243,6 +255,25 @@ namespace Medic.App.Controllers
             }
 
             return model;
+        }
+
+        private async Task<List<PatientPreviewViewModel>> GetPage(PatientSearch search, PatientWhereBuilder patientWhereBuilder, string searchParams, int page)
+        {
+            int pageLength = (int)search.Length;
+            int startIndex = base.GetStartIndex(pageLength, page);
+
+            string patientsKey = $"{nameof(PatientPreviewViewModel)} - {startIndex} - {searchParams}";
+
+            if (!base.MedicCache.TryGetValue(patientsKey, out List<PatientPreviewViewModel> patientsModel))
+            {
+                PatientHelperBuilder helperBuilder = new PatientHelperBuilder(search);
+
+                patientsModel = await PatientService.GetPatientsByQueryAsync(patientWhereBuilder, helperBuilder, startIndex);
+
+                base.MedicCache.Set(patientsKey, patientsModel);
+            }
+
+            return patientsModel;
         }
     }
 }

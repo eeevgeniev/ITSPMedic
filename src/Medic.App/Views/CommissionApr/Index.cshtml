@@ -7,8 +7,8 @@
 @{
     ViewData["Title"] = Model.Title;
 
-    Dictionary<string, string> paramsByName = Model.Search != default ?
-        Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+    Dictionary<string, string> paramsByName = Model.Search != default ? Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+    Dictionary<string, string> excelByName = new Dictionary<string, string>(paramsByName);
 
     ViewData[Constants.Sexes] = Model.Sexes;
     ViewData[Constants.HealthRegions] = Model.HealthRegions;
@@ -18,6 +18,17 @@
     <header>
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CommissionAprsView)): @Model.TotalResults @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
         <h4 class="text-center text-info">@Model.Keywords</h4>
+        <section class="text-right">
+            <a asp-controller="@CommissionAprController.GetName(nameof(CommissionAprController))" 
+               asp-action="@nameof(CommissionAprController.Excel)" 
+               asp-all-route-data="@excelByName"
+               asp-route-page="@Model.CurrentPage" 
+               download
+               title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))"
+               class="export-anchor">
+                <img asp-append-version="true" src="~/images/excel.jpg" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))" class="export-image" />
+            </a>
+        </section>
     </header>
     <section>
         <partial name="~/Views/Shared/Partials/CommissionAprs/CommissionAprsSearch.cshtml" model="@Model.Search" view-data="@ViewData" />

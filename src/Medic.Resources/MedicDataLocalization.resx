@@ -471,6 +471,15 @@
   <data name="ExpandDiagnose" xml:space="preserve">
     <value>Expand diagnose</value>
   </data>
+  <data name="ExportAsExcel" xml:space="preserve">
+    <value>Export as excel</value>
+  </data>
+  <data name="ExportAsJson" xml:space="preserve">
+    <value>Export as json</value>
+  </data>
+  <data name="ExportAsXml" xml:space="preserve">
+    <value>Export as xml</value>
+  </data>
   <data name="FairCondition" xml:space="preserve">
     <value>Fair condition</value>
   </data>

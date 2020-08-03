@@ -15,14 +15,24 @@
             }
             <h2 class="text-center">@(string.IsNullOrWhiteSpace(name) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : name)</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
-            <span>
+            <section class="text-right">
                 <a asp-controller="@PatientController.GetName(nameof(PatientController))"
                    asp-action="@nameof(PatientController.Xml)"
-                   asp-route-id="@Model.Patient.Id">Xml</a>
+                   asp-route-id="@Model.Patient.Id"
+                   download
+                   title="@MedicDataLocalization.ExportAsXml"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/xml.jpg" class="export-image" alt="@MedicDataLocalization.ExportAsXml" />
+                </a>
                 <a asp-controller="@PatientController.GetName(nameof(PatientController))"
                    asp-action="@nameof(PatientController.Json)"
-                   asp-route-id="@Model.Patient.Id">Json</a>
-            </span>
+                   asp-route-id="@Model.Patient.Id"
+                   download
+                   title="@MedicDataLocalization.ExportAsJson"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="@MedicDataLocalization.ExportAsJson" />
+                </a>
+            </section>
             <div>
                 <div class="row">
                     <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get(PatientLocalization.BirthDate))</div>

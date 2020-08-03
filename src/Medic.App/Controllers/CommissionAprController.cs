@@ -7,6 +7,7 @@ using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
 using Medic.EHR.RM;
 using Medic.Formatters.Contracts;
+using Medic.Formatters.Enums;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.ModelToEHR.Contracts;
@@ -49,28 +50,18 @@ namespace Medic.App.Controllers
         {
             try
             {
-                int pageLength = (int)search.Length;
-                int startIndex = base.GetStartIndex(pageLength, page);
-                CommissionAprWhereBuilder protocolDrugTherapyWhereBuilder = new CommissionAprWhereBuilder(search);
+                CommissionAprWhereBuilder commissionAprWhereBuilder = new CommissionAprWhereBuilder(search);
 
                 string searchParams = search != default ? search.ToString() : default;
-                string commissionAprsKey = $"{nameof(CommissionAprPreviewViewModel)} - {startIndex} - {searchParams}";
+
+                List<CommissionAprPreviewViewModel> commissionAprs = await GetPage(search, commissionAprWhereBuilder, searchParams, page);
+
                 string commissionAprsCountKey = $"{MedicConstants.CommissionAprs} - {searchParams}";
-
-                if (!base.MedicCache.TryGetValue(commissionAprsKey, out List<CommissionAprPreviewViewModel> commissionAprs))
-                {
-                    CommissionAprHelperBuilder helperBuilder = new CommissionAprHelperBuilder(search);
-
-                    commissionAprs = await CommissionAprService
-                        .GetCommissionAprsAsync(protocolDrugTherapyWhereBuilder, helperBuilder, startIndex);
-
-                    base.MedicCache.Set(commissionAprsKey, commissionAprs);
-                }
 
                 if (!base.MedicCache.TryGetValue(commissionAprsCountKey, out int commissionAprsCount))
                 {
                     commissionAprsCount = await CommissionAprService
-                        .GetCommissionAprsCountAsync(protocolDrugTherapyWhereBuilder);
+                        .GetCommissionAprsCountAsync(commissionAprWhereBuilder);
 
                     base.MedicCache.Set(commissionAprsCountKey, commissionAprsCount);
                 }
@@ -89,7 +80,7 @@ namespace Medic.App.Controllers
                     Keywords = MedicDataLocalization.Get(MedicDataLocalization.CommissionAprsSummary),
                     Search = search,
                     CurrentPage = page,
-                    TotalPages = base.TotalPages(pageLength, commissionAprsCount),
+                    TotalPages = base.TotalPages((int)search.Length, commissionAprsCount),
                     TotalResults = commissionAprsCount,
                     Sexes = sexOptions,
                     HealthRegions = healthRegions
@@ -157,7 +148,7 @@ namespace Medic.App.Controllers
             {
                 if (id < 1)
                 {
-                    return RedirectToAction(nameof(HomeController.Index), this.GetControllerName(nameof(HomeController)));
+                    return BadRequest();
                 }
                 else
                 {
@@ -169,14 +160,8 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(CommissionAprViewModel));
-                    IDataFormattable xmlFormatter = FormattableFactory.CreateXMLFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await xmlFormatter.FormatObject(referenceModel),
-                        ContentType = xmlFormatter.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
                 }
             }
             catch (Exception ex)
@@ -200,7 +185,7 @@ namespace Medic.App.Controllers
             {
                 if (id < 1)
                 {
-                    return RedirectToAction(nameof(HomeController.Index), this.GetControllerName(nameof(HomeController)));
+                    return BadRequest();
                 }
                 else
                 {
@@ -212,15 +197,41 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(CommissionAprViewModel));
-                    IDataFormattable jsonFormatter = FormattableFactory.CreateJsonFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await jsonFormatter.FormatObject(referenceModel),
-                        ContentType = jsonFormatter.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
                 }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Excel(CommissionAprSearch search, int page = 1)
+        {
+            try
+            {
+                CommissionAprWhereBuilder commissionAprWhereBuilder = new CommissionAprWhereBuilder(search);
+
+                string searchParams = search != default ? search.ToString() : default;
+
+                List<CommissionAprPreviewViewModel> commissionAprs = await GetPage(search, commissionAprWhereBuilder, searchParams, page);
+
+                if (commissionAprs == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<CommissionAprPreviewViewModel>(commissionAprs, MedicDataLocalization.CommissionAprs, FormattableFactory);
             }
             catch (Exception ex)
             {
@@ -251,6 +262,26 @@ namespace Medic.App.Controllers
             }
 
             return model;
+        }
+
+        private async Task<List<CommissionAprPreviewViewModel>> GetPage(CommissionAprSearch search, CommissionAprWhereBuilder commissionAprWhereBuilder, string searchParams,  int page)
+        {
+            int pageLength = (int)search.Length;
+            int startIndex = base.GetStartIndex(pageLength, page);
+
+            string commissionAprsKey = $"{nameof(CommissionAprPreviewViewModel)} - {startIndex} - {searchParams}";
+
+            if (!base.MedicCache.TryGetValue(commissionAprsKey, out List<CommissionAprPreviewViewModel> commissionAprs))
+            {
+                CommissionAprHelperBuilder helperBuilder = new CommissionAprHelperBuilder(search);
+
+                commissionAprs = await CommissionAprService
+                    .GetCommissionAprsAsync(commissionAprWhereBuilder, helperBuilder, startIndex);
+
+                base.MedicCache.Set(commissionAprsKey, commissionAprs);
+            }
+
+            return commissionAprs;
         }
     }
 }

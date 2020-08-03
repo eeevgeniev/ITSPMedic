@@ -1,13 +1,14 @@
 ﻿@model PatientPageIndexModel
 @inject PatientLocalization patientLocalization
+@inject MedicDataLocalization medicDataLocalization
 
 @{
     ViewData["Title"] = Model.Title;
 
     bool hasResults = Model.Patients != default && Model.Patients.Count > 0;
 
-    Dictionary<string, string> paramsByName = Model.Search != default ?
-        Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+    Dictionary<string, string> paramsByName = Model.Search != default ? Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+    Dictionary<string, string> excelByName = new Dictionary<string, string>(paramsByName);
 
     ViewData[Constants.Sexes] = Model.Sexes;
 }
@@ -16,6 +17,17 @@
     <header>
         <h2 class="text-center">@($"{Html.Raw(patientLocalization.Get(PatientLocalization.PatientSearch))} - {Model.TotalResults} {Html.Raw(patientLocalization.Get(PatientLocalization.Results))}")</h2>
         <h4 class="text-center text-info">@Model.Keywords</h4>
+        <section class="text-right">
+            <a asp-controller="@DispObservationController.GetName(nameof(DispObservationController))"
+               asp-action="@nameof(DispObservationController.Excel)"
+               asp-all-route-data="@excelByName"
+               asp-route-page="@Model.CurrentPage"
+               download
+               title="@Html.Raw(patientLocalization.Get(MedicDataLocalization.ExportAsExcel))"
+               class="export-anchor">
+                <img asp-append-version="true" src="~/images/excel.jpg" alt="@Html.Raw(patientLocalization.Get(MedicDataLocalization.ExportAsExcel))" class="export-image" />
+            </a>
+        </section>
     </header>
     <section>
         <partial name="~/Views/Shared/Partials/Patients/PatientSearch.cshtml" model="@Model.Search" view-data="@ViewData" />
@@ -24,6 +36,9 @@
         <partial name="~/Views/Shared/Partials/Patients/PatientOrder.cshtml" model="@Model.Search" />
     </section>
     <section>
+        <a asp-controller="@PatientController.GetName(nameof(PatientController))" asp-action="@nameof(PatientController.Excel)" asp-route-page="1" asp-all-route-data="@paramsByName">Excel</a>
+    </section>
+    <section class="mt-sm-1">
         @if (hasResults)
         {
             <div class="row">

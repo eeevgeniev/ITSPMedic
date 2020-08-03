@@ -7,6 +7,7 @@ using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
 using Medic.EHR.RM;
 using Medic.Formatters.Contracts;
+using Medic.Formatters.Enums;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.ModelToEHR.Contracts;
@@ -17,7 +18,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Medic.App.Controllers
@@ -53,25 +53,13 @@ namespace Medic.App.Controllers
         {
             try
             {
-                int pageLength = (int)search.Length;
-                int startIndex = base.GetStartIndex(pageLength, page);
                 PathProcedureWhereBuilder pathProcedureWhereBuilder = new PathProcedureWhereBuilder(search);
 
                 string searchParams = search != default ? search.ToString() : default;
-                string pathProceduresKey = $"{nameof(PathProcedurePreviewViewModel)} - {startIndex} - {searchParams}";
+                
+                List<PathProcedurePreviewViewModel> pathProcedures = await GetPage(search, pathProcedureWhereBuilder, searchParams, page);
+
                 string pathProceduresCountKey = $"{MedicConstants.PathProcedures} - {searchParams}";
-
-                List<string> usedDrugCodes = new List<string>() { default };
-
-                if (!base.MedicCache.TryGetValue(pathProceduresKey, out List<PathProcedurePreviewViewModel> pathProcedures))
-                {
-                    PathProcedureHelperBuilder helperBuilder = new PathProcedureHelperBuilder(search);
-
-                    pathProcedures = await PathProcedureService
-                        .GetPathProceduresAsync(pathProcedureWhereBuilder, helperBuilder, startIndex);
-
-                    base.MedicCache.Set(pathProceduresKey, pathProcedures);
-                }
 
                 if (!base.MedicCache.TryGetValue(pathProceduresCountKey, out int pathProceduresCount))
                 {
@@ -95,6 +83,8 @@ namespace Medic.App.Controllers
                     base.MedicCache.Set(MedicConstants.ClinicUsedDrugsCode, usedDrugs);
                 }
 
+                List<string> usedDrugCodes = new List<string>() { default };
+
                 usedDrugCodes.AddRange(usedDrugs);
 
                 return View(new PathProcedurePageIndexModel()
@@ -105,7 +95,7 @@ namespace Medic.App.Controllers
                     Keywords = MedicDataLocalization.Get(MedicDataLocalization.PathProceduresSummary),
                     Search = search,
                     CurrentPage = page,
-                    TotalPages = base.TotalPages(pageLength, pathProceduresCount),
+                    TotalPages = base.TotalPages((int)search.Length, pathProceduresCount),
                     TotalResults = pathProceduresCount,
                     Sexes = sexOptions,
                     HealthRegions = healthRegions,
@@ -186,14 +176,8 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(PathProcedureViewModel));
-                    IDataFormattable xmlFormater = FormattableFactory.CreateXMLFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await xmlFormater.FormatObject(referenceModel),
-                        ContentType = xmlFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
                 }
             }
             catch (Exception ex)
@@ -229,15 +213,41 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(PathProcedureViewModel));
-                    IDataFormattable jsonFormater = FormattableFactory.CreateJsonFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await jsonFormater.FormatObject(referenceModel),
-                        ContentType = jsonFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
                 }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Excel(PathProcedureSearch search, int page = 1)
+        {
+            try
+            {
+                PathProcedureWhereBuilder pathProcedureWhereBuilder = new PathProcedureWhereBuilder(search);
+
+                string searchParams = search != default ? search.ToString() : default;
+
+                List<PathProcedurePreviewViewModel> pathProcedures = await GetPage(search, pathProcedureWhereBuilder, searchParams, page);
+
+                if (pathProcedures == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<PathProcedurePreviewViewModel>(pathProcedures, MedicDataLocalization.PathProcedures, FormattableFactory);
             }
             catch (Exception ex)
             {
@@ -268,6 +278,26 @@ namespace Medic.App.Controllers
             }
 
             return model;
+        }
+
+        private async Task<List<PathProcedurePreviewViewModel>> GetPage(PathProcedureSearch search, PathProcedureWhereBuilder pathProcedureWhereBuilder, string searchParams, int page)
+        {
+            int pageLength = (int)search.Length;
+            int startIndex = base.GetStartIndex(pageLength, page);
+
+            string pathProceduresKey = $"{nameof(PathProcedurePreviewViewModel)} - {startIndex} - {searchParams}";
+
+            if (!base.MedicCache.TryGetValue(pathProceduresKey, out List<PathProcedurePreviewViewModel> pathProcedures))
+            {
+                PathProcedureHelperBuilder helperBuilder = new PathProcedureHelperBuilder(search);
+
+                pathProcedures = await PathProcedureService
+                    .GetPathProceduresAsync(pathProcedureWhereBuilder, helperBuilder, startIndex);
+
+                base.MedicCache.Set(pathProceduresKey, pathProcedures);
+            }
+
+            return pathProcedures;
         }
     }
 }

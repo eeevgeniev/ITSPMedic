@@ -1,17 +1,62 @@
 ﻿using Medic.Formatters.Contracts;
+using Medic.Formatters.Enums;
+using Medic.Formatters.Implementors;
+using System;
+using System.IO;
 
 namespace Medic.Formatters
 {
     public sealed class FormatterFactory : IFormattableFactory
     {
-        public IDataFormattable CreateJsonFormatter()
+        private bool _isDisposed = false;
+        
+        private JsonFormatter _jsonFormatter;
+        private XMLFormatter _xMLFormatter;
+
+        public IExcelFormattable CreateExcelFormatter(Stream stream)
         {
-            return new JsonFormatter();
+            if (stream == default)
+            {
+                throw new ArgumentNullException(nameof(stream));
+            }
+            
+            return new ExcelFormatter(stream);
         }
 
-        public IDataFormattable CreateXMLFormatter()
+        public IDataFormattable CreateFormatter(FormatterEnum formatter)
         {
-            return new XMLFormatter();
+            switch (formatter)
+            {
+                case FormatterEnum.Json:
+                    if (_jsonFormatter == default)
+                    {
+                        _jsonFormatter = new JsonFormatter();
+                    }
+
+                    return _jsonFormatter;
+                case FormatterEnum.XML:
+                    if (_xMLFormatter == default)
+                    {
+                        _xMLFormatter = new XMLFormatter();
+                    }
+
+                    return _xMLFormatter;
+                default:
+                    throw new InvalidOperationException();
+            }
+        }
+
+        public void Dispose()
+        {
+            if (!_isDisposed)
+            {
+                _jsonFormatter = null;
+                _xMLFormatter = null;
+
+                GC.SuppressFinalize(this);
+
+                _isDisposed = !_isDisposed;
+            }
         }
     }
 }

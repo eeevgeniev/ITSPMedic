@@ -11,7 +11,7 @@ namespace Medic.App.Controllers.Base
 {
     public abstract class LookupsBaseController : SexBaseController
     {
-        protected readonly IHealthRegionService HealthRegionService;
+        private readonly IHealthRegionService _healthRegionService;
 
         public LookupsBaseController(IPatientService patientService,
             IHealthRegionService healthRegionService,
@@ -19,8 +19,10 @@ namespace Medic.App.Controllers.Base
             MedicDataLocalization medicDataLocalization)
             : base (patientService, medicCache, medicDataLocalization)
         {
-            HealthRegionService = healthRegionService ?? throw new ArgumentNullException(nameof(healthRegionService));
+            _healthRegionService = healthRegionService ?? throw new ArgumentNullException(nameof(healthRegionService));
         }
+
+        protected IHealthRegionService HealthRegionService => _healthRegionService;
 
         protected virtual async Task<List<HealthRegionOption>> GetHealthRegionsAsync()
         {

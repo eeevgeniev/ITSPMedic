@@ -7,6 +7,7 @@ using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
 using Medic.EHR.RM;
 using Medic.Formatters.Contracts;
+using Medic.Formatters.Enums;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.ModelToEHR.Contracts;
@@ -50,23 +51,13 @@ namespace Medic.App.Controllers
         {
             try
             {
-                int pageLength = (int)search.Length;
-                int startIndex = base.GetStartIndex(pageLength, page);
                 InClinicProcedureWhereBuilder inClinicProcedureWhereBuilder = new InClinicProcedureWhereBuilder(search);
 
                 string searchParams = search != default ? search.ToString() : default;
-                string inclinicProceduresKey = $"{nameof(InClinicProcedurePreviewViewModel)} - {startIndex} - {searchParams}";
+                
                 string inclinicProceduresCountKey = $"{MedicConstants.InClinicProcedures} - {searchParams}";
 
-                if (!base.MedicCache.TryGetValue(inclinicProceduresKey, out List<InClinicProcedurePreviewViewModel> inClinicProcedures))
-                {
-                    InClinicProcedureHelperBuilder helperBuilder = new InClinicProcedureHelperBuilder(search);
-
-                    inClinicProcedures = await InClinicProcedureService
-                        .GetInClinicProceduresAsync(inClinicProcedureWhereBuilder, helperBuilder, startIndex);
-
-                    base.MedicCache.Set(inclinicProceduresKey, inClinicProcedures);
-                }
+                List<InClinicProcedurePreviewViewModel> inClinicProcedures = await GetPage(search, inClinicProcedureWhereBuilder, searchParams, page);
 
                 if (!base.MedicCache.TryGetValue(inclinicProceduresCountKey, out int inClinicProceduresCount))
                 {
@@ -90,7 +81,7 @@ namespace Medic.App.Controllers
                     Keywords = MedicDataLocalization.Get(MedicDataLocalization.InClinicProceduresSummary),
                     Search = search,
                     CurrentPage = page,
-                    TotalPages = base.TotalPages(pageLength, inClinicProceduresCount),
+                    TotalPages = base.TotalPages((int)search.Length, inClinicProceduresCount),
                     TotalResults = inClinicProceduresCount,
                     Sexes = sexOptions,
                     HealthRegions = healthRegions
@@ -170,14 +161,8 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(InClinicProcedureViewModel));
-                    IDataFormattable xmlFormater = FormattableFactory.CreateXMLFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await xmlFormater.FormatObject(referenceModel),
-                        ContentType = xmlFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
                 }
             }
             catch (Exception ex)
@@ -213,15 +198,41 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(InClinicProcedureViewModel));
-                    IDataFormattable jsonFormater = FormattableFactory.CreateJsonFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await jsonFormater.FormatObject(referenceModel),
-                        ContentType = jsonFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
                 }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Excel(InClinicProcedureSearch search, int page = 1)
+        {
+            try
+            {
+                InClinicProcedureWhereBuilder inClinicProcedureWhereBuilder = new InClinicProcedureWhereBuilder(search);
+
+                string searchParams = search != default ? search.ToString() : default;
+
+                List<InClinicProcedurePreviewViewModel> inClinicProcedures = await GetPage(search, inClinicProcedureWhereBuilder, searchParams, page);
+
+                if (inClinicProcedures == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<InClinicProcedurePreviewViewModel>(inClinicProcedures, MedicDataLocalization.InClinicProcedures, FormattableFactory);
             }
             catch (Exception ex)
             {
@@ -252,6 +263,26 @@ namespace Medic.App.Controllers
             }
 
             return model;
+        }
+
+        private async Task<List<InClinicProcedurePreviewViewModel>> GetPage(InClinicProcedureSearch search, InClinicProcedureWhereBuilder inClinicProcedureWhereBuilder, string searchParams, int page)
+        {
+            int pageLength = (int)search.Length;
+            int startIndex = base.GetStartIndex(pageLength, page);
+
+            string inclinicProceduresKey = $"{nameof(InClinicProcedurePreviewViewModel)} - {startIndex} - {searchParams}";
+
+            if (!base.MedicCache.TryGetValue(inclinicProceduresKey, out List<InClinicProcedurePreviewViewModel> inClinicProcedures))
+            {
+                InClinicProcedureHelperBuilder helperBuilder = new InClinicProcedureHelperBuilder(search);
+
+                inClinicProcedures = await InClinicProcedureService
+                    .GetInClinicProceduresAsync(inClinicProcedureWhereBuilder, helperBuilder, startIndex);
+
+                base.MedicCache.Set(inclinicProceduresKey, inClinicProcedures);
+            }
+
+            return inClinicProcedures;
         }
     }
 }

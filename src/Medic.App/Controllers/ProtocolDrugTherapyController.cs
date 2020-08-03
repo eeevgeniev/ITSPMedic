@@ -7,6 +7,7 @@ using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
 using Medic.EHR.RM;
 using Medic.Formatters.Contracts;
+using Medic.Formatters.Enums;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.ModelToEHR.Contracts;
@@ -53,23 +54,13 @@ namespace Medic.App.Controllers
         {
             try
             {
-                int pageLength = (int)search.Length;
-                int startIndex = base.GetStartIndex(pageLength, page);
                 ProtocolDrugTherapyWhereBuilder protocolDrugTherapyWhereBuilder = new ProtocolDrugTherapyWhereBuilder(search);
 
                 string searchParams = search != default ? search.ToString() : default;
-                string protocolDrugTherapiesKey = $"{nameof(ProtocolDrugTherapyPreviewViewModel)} - {startIndex} - {searchParams}";
+                
+                List<ProtocolDrugTherapyPreviewViewModel> protocolDrugTherapies = await GetPage(search, protocolDrugTherapyWhereBuilder, searchParams, page);
+
                 string protocolDrugTherapiesCountKey = $"{MedicConstants.ProtocolDrugTherapies} - {searchParams}";
-
-                if (!base.MedicCache.TryGetValue(protocolDrugTherapiesKey, out List<ProtocolDrugTherapyPreviewViewModel> protocolDrugTherapies))
-                {
-                    ProtocolDrugTherapyHelperBuilder helperBuilder = new ProtocolDrugTherapyHelperBuilder(search);
-
-                    protocolDrugTherapies = await ProtocolDrugTherapyService
-                        .GetProtocolDrugTherapiesAsync(protocolDrugTherapyWhereBuilder, helperBuilder, startIndex);
-
-                    base.MedicCache.Set(protocolDrugTherapiesKey, protocolDrugTherapies);
-                }
 
                 if (!base.MedicCache.TryGetValue(protocolDrugTherapiesCountKey, out int protocolDrugTherapiesCount))
                 {
@@ -106,7 +97,7 @@ namespace Medic.App.Controllers
                     Keywords = MedicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapiesSummary),
                     Search = search,
                     CurrentPage = page,
-                    TotalPages = base.TotalPages(pageLength, protocolDrugTherapiesCount),
+                    TotalPages = base.TotalPages((int)search.Length, protocolDrugTherapiesCount),
                     TotalResults = protocolDrugTherapiesCount,
                     Sexes = sexOptions,
                     HealthRegions = healthRegions,
@@ -187,14 +178,8 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(ProtocolDrugTherapyViewModel));
-                    IDataFormattable xmlFormater = FormattableFactory.CreateXMLFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await xmlFormater.FormatObject(referenceModel),
-                        ContentType = xmlFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
                 }
             }
             catch (Exception ex)
@@ -230,15 +215,41 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(ProtocolDrugTherapyViewModel));
-                    IDataFormattable jsonFormater = FormattableFactory.CreateJsonFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await jsonFormater.FormatObject(referenceModel),
-                        ContentType = jsonFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
                 }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Excel(ProtocolDrugTherapySearch search, int page = 1)
+        {
+            try
+            {
+                ProtocolDrugTherapyWhereBuilder protocolDrugTherapyWhereBuilder = new ProtocolDrugTherapyWhereBuilder(search);
+
+                string searchParams = search != default ? search.ToString() : default;
+
+                List<ProtocolDrugTherapyPreviewViewModel> protocolDrugTherapies = await GetPage(search, protocolDrugTherapyWhereBuilder, searchParams, page);
+
+                if (protocolDrugTherapies == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<ProtocolDrugTherapyPreviewViewModel>(protocolDrugTherapies, MedicDataLocalization.ProtocolDrugTherapies, FormattableFactory);
             }
             catch (Exception ex)
             {
@@ -269,6 +280,26 @@ namespace Medic.App.Controllers
             }
 
             return model;
+        }
+
+        private async Task<List<ProtocolDrugTherapyPreviewViewModel>> GetPage(ProtocolDrugTherapySearch search, ProtocolDrugTherapyWhereBuilder protocolDrugTherapyWhereBuilder, string searchParams, int page)
+        {
+            int pageLength = (int)search.Length;
+            int startIndex = base.GetStartIndex(pageLength, page);
+
+            string protocolDrugTherapiesKey = $"{nameof(ProtocolDrugTherapyPreviewViewModel)} - {startIndex} - {searchParams}";
+
+            if (!base.MedicCache.TryGetValue(protocolDrugTherapiesKey, out List<ProtocolDrugTherapyPreviewViewModel> protocolDrugTherapies))
+            {
+                ProtocolDrugTherapyHelperBuilder helperBuilder = new ProtocolDrugTherapyHelperBuilder(search);
+
+                protocolDrugTherapies = await ProtocolDrugTherapyService
+                    .GetProtocolDrugTherapiesAsync(protocolDrugTherapyWhereBuilder, helperBuilder, startIndex);
+
+                base.MedicCache.Set(protocolDrugTherapiesKey, protocolDrugTherapies);
+            }
+
+            return protocolDrugTherapies;
         }
     }
 }

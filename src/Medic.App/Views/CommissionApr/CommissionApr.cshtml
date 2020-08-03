@@ -11,14 +11,24 @@
         <header>
             <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CommissionAprView))</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
-            <span>
+            <section class="text-right">
                 <a asp-controller="@CommissionAprController.GetName(nameof(CommissionAprController))"
                    asp-action="@nameof(CommissionAprController.Xml)"
-                   asp-route-id="@Model.CommissionApr.Id">Xml</a>
+                   asp-route-id="@Model.CommissionApr.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/xml.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))" />
+                </a>
                 <a asp-controller="@CommissionAprController.GetName(nameof(CommissionAprController))"
                    asp-action="@nameof(CommissionAprController.Json)"
-                   asp-route-id="@Model.CommissionApr.Id">Json</a>
-            </span>
+                   asp-route-id="@Model.CommissionApr.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="Html.Raw(medicDataLocalization.Get(@MedicDataLocalization.ExportAsJson))" />
+                </a>
+            </section>
         </header>
         <h2 class="text-center">@Html.Raw(@medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.CommissionApr.Patient" />
@@ -66,5 +76,5 @@
 }
 else
 {
-<div class="text-center text-info">Html.Raw(@medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
+    <div class="text-center text-info">Html.Raw(@medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
 }

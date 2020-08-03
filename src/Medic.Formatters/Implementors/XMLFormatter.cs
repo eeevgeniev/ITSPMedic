@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Medic.Formatters
+namespace Medic.Formatters.Implementors
 {
     public class XMLFormatter : IDataFormattable
     {
@@ -23,20 +22,23 @@ namespace Medic.Formatters
 
         public string MimeType => "text/xml";
 
-        public async Task<string> FormatObject(object model)
+        public async Task<Stream> FormatObject(object model, Stream stream)
         {
+            if (stream == default)
+            {
+                throw new ArgumentNullException(nameof(stream));
+            }
+            
             if (model == default)
             {
                 return default;
             }
 
-            return await Task<string>.Run(() =>
+            return await Task<Stream>.Run(() =>
             {
                 XmlWriterSettings xmlWriterSettings = Indent != false ? new XmlWriterSettings() { Indent = Indent } : null;
 
-                using MemoryStream memoryStream = new MemoryStream();
-
-                using XmlWriter writer = XmlWriter.Create(memoryStream, xmlWriterSettings);
+                using XmlWriter writer = XmlWriter.Create(stream, xmlWriterSettings);
 
                 Type modelType = model.GetType();
 
@@ -49,7 +51,7 @@ namespace Medic.Formatters
                 writer.WriteEndElement();
                 writer.Flush();
 
-                return Encoding.UTF8.GetString(memoryStream.ToArray());
+                return stream;
             });
         }
 
@@ -227,70 +229,6 @@ namespace Medic.Formatters
         private bool IsDefault(object value)
         {
             return value == null;
-            
-            //if (value == null)
-            //{
-            //    return true;
-            //}
-
-            //Type valueType = value.GetType();
-
-            //if (valueType == typeof(int))
-            //{
-            //    return (int)value == default;
-            //}
-            //else if (valueType == typeof(uint))
-            //{
-            //    return (uint)value == default;
-            //}
-            //else if (valueType == typeof(short))
-            //{
-            //    return (short)value == default;
-            //}
-            //else if (valueType == typeof(ushort))
-            //{
-            //    return (ushort)value == default;
-            //}
-            //else if (valueType == typeof(byte))
-            //{
-            //    return (byte)value == default;
-            //}
-            //else if (valueType == typeof(sbyte))
-            //{
-            //    return (sbyte)value == default;
-            //}
-            //else if (valueType == typeof(long))
-            //{
-            //    return (long)value == default;
-            //}
-            //else if (valueType == typeof(ulong))
-            //{
-            //    return (decimal)(ulong)value == default;
-            //}
-            //else if (valueType == typeof(decimal))
-            //{
-            //    return (decimal)value == default;
-            //}
-            //else if (valueType == typeof(float))
-            //{
-            //    return (float)value == default;
-            //}
-            //else if (valueType == typeof(double))
-            //{
-            //    return (double)value == default;
-            //}
-            //else if (valueType == typeof(bool))
-            //{
-            //    return (bool)value == default;
-            //}
-            //else if (valueType == typeof(DateTime))
-            //{
-            //    return (DateTime)value == default;
-            //}
-            //else
-            //{
-            //    return string.IsNullOrWhiteSpace(value.ToString());
-            //}
         }
     }
 }

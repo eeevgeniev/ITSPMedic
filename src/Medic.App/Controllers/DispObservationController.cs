@@ -7,6 +7,7 @@ using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
 using Medic.EHR.RM;
 using Medic.Formatters.Contracts;
+using Medic.Formatters.Enums;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.ModelToEHR.Contracts;
@@ -49,28 +50,18 @@ namespace Medic.App.Controllers
         {
             try
             {
-                int pageLength = (int)search.Length;
-                int startIndex = base.GetStartIndex(pageLength, page);
-                DispObservationWhereBuilder pathProcedureWhereBuilder = new DispObservationWhereBuilder(search);
+                DispObservationWhereBuilder dispObservationWhereBuilder = new DispObservationWhereBuilder(search);
 
                 string searchParams = search != default ? search.ToString() : default;
-                string dispObservationsKey = $"{nameof(DispObservationPreviewViewModel)} - {startIndex} - {searchParams}";
+
+                List<DispObservationPreviewViewModel> dispObservations = await GetPage(search, dispObservationWhereBuilder, searchParams, page);
+
                 string dispObservationsCountKey = $"{MedicConstants.DispObservations} - {searchParams}";
-
-                if (!base.MedicCache.TryGetValue(dispObservationsKey, out List<DispObservationPreviewViewModel> dispObservations))
-                {
-                    DispObservationHelperBuilder helperBuilder = new DispObservationHelperBuilder(search);
-
-                    dispObservations = await DispObservationService
-                        .GetDispObservationsAsync(pathProcedureWhereBuilder, helperBuilder, startIndex);
-
-                    base.MedicCache.Set(dispObservationsKey, dispObservations);
-                }
 
                 if (!base.MedicCache.TryGetValue(dispObservationsCountKey, out int dispObservationsCount))
                 {
                     dispObservationsCount = await DispObservationService
-                        .GetDispObservationsCountAsync(pathProcedureWhereBuilder);
+                        .GetDispObservationsCountAsync(dispObservationWhereBuilder);
 
                     base.MedicCache.Set(dispObservationsCountKey, dispObservationsCount);
                 }
@@ -89,7 +80,7 @@ namespace Medic.App.Controllers
                     Keywords = MedicDataLocalization.Get(MedicDataLocalization.DispObservationsSummary),
                     Search = search,
                     CurrentPage = page,
-                    TotalPages = base.TotalPages(pageLength, dispObservationsCount),
+                    TotalPages = base.TotalPages((int)search.Length, dispObservationsCount),
                     TotalResults = dispObservationsCount,
                     Sexes = sexOptions,
                     HealthRegions = healthRegions
@@ -169,14 +160,8 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(DispObservationViewModel));
-                    IDataFormattable xmlFormater = FormattableFactory.CreateXMLFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await xmlFormater.FormatObject(referenceModel),
-                        ContentType = xmlFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
                 }
             }
             catch (Exception ex)
@@ -212,15 +197,41 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(DispObservationViewModel));
-                    IDataFormattable jsonFormater = FormattableFactory.CreateJsonFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await jsonFormater.FormatObject(referenceModel),
-                        ContentType = jsonFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
                 }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Excel(DispObservationSearch search, int page = 1)
+        {
+            try
+            {
+                DispObservationWhereBuilder dispObservationWhereBuilder = new DispObservationWhereBuilder(search);
+
+                string searchParams = search != default ? search.ToString() : default;
+
+                List<DispObservationPreviewViewModel> dispObservations = await GetPage(search, dispObservationWhereBuilder, searchParams, page);
+
+                if (dispObservations == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<DispObservationPreviewViewModel>(dispObservations, MedicDataLocalization.DispObservations, FormattableFactory);
             }
             catch (Exception ex)
             {
@@ -251,6 +262,26 @@ namespace Medic.App.Controllers
             }
 
             return model;
+        }
+
+        private async Task<List<DispObservationPreviewViewModel>> GetPage(DispObservationSearch search, DispObservationWhereBuilder dispObservationWhereBuilder, string searchParams, int page)
+        {
+            int pageLength = (int)search.Length;
+            int startIndex = base.GetStartIndex(pageLength, page);
+
+            string dispObservationsKey = $"{nameof(DispObservationPreviewViewModel)} - {startIndex} - {searchParams}";
+
+            if (!base.MedicCache.TryGetValue(dispObservationsKey, out List<DispObservationPreviewViewModel> dispObservations))
+            {
+                DispObservationHelperBuilder helperBuilder = new DispObservationHelperBuilder(search);
+
+                dispObservations = await DispObservationService
+                    .GetDispObservationsAsync(dispObservationWhereBuilder, helperBuilder, startIndex);
+
+                base.MedicCache.Set(dispObservationsKey, dispObservations);
+            }
+
+            return dispObservations;
         }
     }
 }

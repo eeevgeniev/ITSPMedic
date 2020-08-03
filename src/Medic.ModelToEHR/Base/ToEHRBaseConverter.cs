@@ -10,12 +10,14 @@ namespace Medic.ModelToEHR.Base
 {
     public abstract class ToEHRBaseConverter
     {
-        protected readonly IEHRManager EhrManager;
+        private readonly IEHRManager _ehrManager;
 
         public ToEHRBaseConverter(IEHRManager ehrManager)
         {
-            EhrManager = ehrManager ?? throw new ArgumentNullException(nameof(ehrManager));
+            _ehrManager = ehrManager ?? throw new ArgumentNullException(nameof(ehrManager));
         }
+
+        protected IEHRManager EhrManager => _ehrManager;
 
         protected Entry CreatePatientEntry(PatientSummaryViewModel model)
         {

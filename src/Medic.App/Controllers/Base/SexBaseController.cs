@@ -11,16 +11,22 @@ namespace Medic.App.Controllers.Base
 {
     public abstract class SexBaseController : PageBasedController
     {
-        protected readonly IPatientService PatientService;
-        protected readonly ICacheable MedicCache;
-        protected readonly MedicDataLocalization MedicDataLocalization;
+        private readonly IPatientService _patientService;
+        private readonly ICacheable _medicCache;
+        private readonly MedicDataLocalization _medicDataLocalization;
 
         public SexBaseController(IPatientService patientService, ICacheable medicCache, MedicDataLocalization medicDataLocalization)
         {
-            PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
-            MedicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
-            MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(MedicBaseController));
+            _patientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
+            _medicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
+            _medicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
         }
+
+        protected IPatientService PatientService => _patientService;
+        
+        protected ICacheable MedicCache => _medicCache;
+        
+        protected MedicDataLocalization MedicDataLocalization => _medicDataLocalization;
 
         protected virtual async Task<List<SexOption>> GetSexesAsync()
         {

@@ -7,8 +7,8 @@
 @{
     ViewData["Title"] = Model.Title;
 
-    Dictionary<string, string> paramsByName = Model.Search != default ?
-        Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+    Dictionary<string, string> paramsByName = Model.Search != default ? Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+    Dictionary<string, string> excelByName = new Dictionary<string, string>(paramsByName);
 
     ViewData[Constants.Sexes] = Model.Sexes;
     ViewData[Constants.HealthRegions] = Model.HealthRegions;
@@ -19,6 +19,17 @@
     <header>
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapiesView)): @Model.TotalResults @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
         <h4 class="text-center text-info">@Model.Keywords</h4>
+        <section class="text-right">
+            <a asp-controller="@ProtocolDrugTherapyController.GetName(nameof(ProtocolDrugTherapyController))"
+               asp-action="@nameof(ProtocolDrugTherapyController.Excel)"
+               asp-all-route-data="@excelByName"
+               asp-route-page="@Model.CurrentPage"
+               download
+               title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))"
+               class="export-anchor">
+                <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))" />
+            </a>
+        </section>
     </header>
     <section>
         <partial name="~/Views/Shared/Partials/ProtocolDrugTherapies/ProtocolDrugTherapiesSearch.cshtml" model="@Model.Search" view-data="@ViewData" />

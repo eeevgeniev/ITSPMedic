@@ -8,6 +8,7 @@ using Medic.AppModels.UsedDrugs;
 using Medic.Cache.Contacts;
 using Medic.EHR.RM;
 using Medic.Formatters.Contracts;
+using Medic.Formatters.Enums;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.ModelToEHR.Contracts;
@@ -53,22 +54,13 @@ namespace Medic.App.Controllers
         {
             try
             {
-                int pageLength = (int)search.Length;
-                int startIndex = base.GetStartIndex(pageLength, page);
                 OutWhereBuilder outWhereBuilder = new OutWhereBuilder(search);
 
                 string searchParams = search != default ? search.ToString() : default;
-                string outsKey = $"{nameof(OutPreviewViewModel)} - {startIndex} - {searchParams}";
-                string outsCountKey = $"{MedicConstants.OutsCount} - {searchParams}";
                 
-                if (!base.MedicCache.TryGetValue(outsKey, out List<OutPreviewViewModel> outs))
-                {
-                    OutHelperBuilder outHelperBuilder = new OutHelperBuilder(search);
+                string outsCountKey = $"{MedicConstants.OutsCount} - {searchParams}";
 
-                    outs = await OutService.GetOutsAsync(outWhereBuilder, outHelperBuilder, startIndex);
-
-                    base.MedicCache.Set(outsKey, outs);
-                }
+                List<OutPreviewViewModel> outs = await GetPage(search, outWhereBuilder, searchParams, page);
 
                 if (!base.MedicCache.TryGetValue(outsCountKey, out int outsCount))
                 {
@@ -103,7 +95,7 @@ namespace Medic.App.Controllers
                     Keywords = MedicDataLocalization.Get(MedicDataLocalization.OutsSummary),
                     Search = search,
                     CurrentPage = page,
-                    TotalPages = base.TotalPages(pageLength, outsCount),
+                    TotalPages = base.TotalPages((int)search.Length, outsCount),
                     TotalResults = outsCount,
                     Sexes = sexOptions,
                     UsedDrugCodes = usedDrugs,
@@ -184,14 +176,8 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(OutViewModel));
-                    IDataFormattable xmlFormater = FormattableFactory.CreateXMLFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await xmlFormater.FormatObject(referenceModel),
-                        ContentType = xmlFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
                 }
             }
             catch (Exception ex)
@@ -227,15 +213,41 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(OutViewModel));
-                    IDataFormattable jsonFormater = FormattableFactory.CreateJsonFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await jsonFormater.FormatObject(referenceModel),
-                        ContentType = jsonFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
                 }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Excel(OutSearch search, int page = 1)
+        {
+            try
+            {
+                OutWhereBuilder outWhereBuilder = new OutWhereBuilder(search);
+
+                string searchParams = search != default ? search.ToString() : default;
+
+                List<OutPreviewViewModel> outs = await GetPage(search, outWhereBuilder, searchParams, page);
+
+                if (outs == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<OutPreviewViewModel>(outs, MedicDataLocalization.Outs, FormattableFactory);
             }
             catch (Exception ex)
             {
@@ -266,6 +278,25 @@ namespace Medic.App.Controllers
             }
 
             return model;
+        }
+
+        private async Task<List<OutPreviewViewModel>> GetPage(OutSearch search, OutWhereBuilder outWhereBuilder, string searchParams, int page)
+        {
+            int pageLength = (int)search.Length;
+            int startIndex = base.GetStartIndex(pageLength, page);
+
+            string outsKey = $"{nameof(OutPreviewViewModel)} - {startIndex} - {searchParams}";
+
+            if (!base.MedicCache.TryGetValue(outsKey, out List<OutPreviewViewModel> outs))
+                {
+                OutHelperBuilder outHelperBuilder = new OutHelperBuilder(search);
+
+                outs = await OutService.GetOutsAsync(outWhereBuilder, outHelperBuilder, startIndex);
+
+                base.MedicCache.Set(outsKey, outs);
+            }
+
+            return outs;
         }
     }
 }

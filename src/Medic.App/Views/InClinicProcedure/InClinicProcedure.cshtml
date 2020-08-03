@@ -11,14 +11,24 @@
         <header>
             <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InClinicProcedure))} - {@Model.InClinicProcedureViewModel.VisitDocumentUniqueIdentifier}")</h2>
             <h4 class="text-center text-info">@Model.Keywords</h4>
-            <span>
+            <section class="text-right">
                 <a asp-controller="@InClinicProcedureController.GetName(nameof(InClinicProcedureController))"
                    asp-action="@nameof(InClinicProcedureController.Xml)"
-                   asp-route-id="@Model.InClinicProcedureViewModel.Id">Xml</a>
+                   asp-route-id="@Model.InClinicProcedureViewModel.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/xml.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))" />
+                </a>
                 <a asp-controller="@InClinicProcedureController.GetName(nameof(InClinicProcedureController))"
                    asp-action="@nameof(InClinicProcedureController.Json)"
-                   asp-route-id="@Model.InClinicProcedureViewModel.Id">Json</a>
-            </span>
+                   asp-route-id="@Model.InClinicProcedureViewModel.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))" />
+                </a>
+            </section>
         </header>
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
         <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.InClinicProcedureViewModel.Patient" />

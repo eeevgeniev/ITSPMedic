@@ -28,7 +28,7 @@ namespace Medic.XMLParser
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             XMLParameters xmlParameters = GetXmlParameters
-                        .GetParameters(stream, FileTypeEnumeration.CpFile);
+                        .GetParameters(stream, FileTypeEnums.CpFile);
 
             Encoding encoding = string.IsNullOrEmpty(xmlParameters.Encoding) ? Encoding.UTF8 : Encoding.GetEncoding(xmlParameters.Encoding);
             XmlSerializer xmlSerializer = string.IsNullOrEmpty(xmlParameters.Xmlns) ?

@@ -330,6 +330,9 @@ namespace Medic.Resources
         public const string VisitDocumentUniqueIdentifier = nameof(VisitDocumentUniqueIdentifier);
         public const string Weight = nameof(Weight);
         public const string WeightInGrams = nameof(WeightInGrams);
+        public const string ExportAsXml = nameof(ExportAsXml);
+        public const string ExportAsJson = nameof(ExportAsJson);
+        public const string ExportAsExcel = nameof(ExportAsExcel);
 
         public MedicDataLocalization(IStringLocalizerFactory factory)
             : base(factory, nameof(MedicDataLocalization)) { }

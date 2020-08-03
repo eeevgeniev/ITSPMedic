@@ -11,14 +11,18 @@ namespace Medic.Services.Base
 {
     public abstract class BaseServiceHelper
     {
-        protected readonly IMedicContext MedicContext;
-        protected readonly MapperConfiguration Configuration;
+        private readonly IMedicContext _medicContext;
+        private readonly MapperConfiguration _configuration;
 
         public BaseServiceHelper(IMedicContext medicContext, MapperConfiguration configuration)
         {
-            MedicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
-            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            _medicContext = medicContext ?? throw new ArgumentNullException(nameof(medicContext));
+            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
+
+        protected IMedicContext MedicContext => _medicContext;
+
+        protected MapperConfiguration Configuration => _configuration;
 
         protected virtual T GetPatient<T>(Expression<Func<Patient, bool>> predicate) =>
             MedicContext.Patients

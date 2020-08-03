@@ -8,7 +8,7 @@ namespace Medic.XMLImportHelper
 {
     public class GetXmlParameters : IGetXmlParameters
     {
-        public XMLParameters GetParameters(string filePath, FileTypeEnumeration fileType)
+        public XMLParameters GetParameters(string filePath, FileTypeEnums fileType)
         {
             if (!File.Exists(filePath))
             {
@@ -20,7 +20,7 @@ namespace Medic.XMLImportHelper
             return GetParameters(reader, fileType);
         }
 
-        public XMLParameters GetParameters(Stream stream, FileTypeEnumeration fileType)
+        public XMLParameters GetParameters(Stream stream, FileTypeEnums fileType)
         {
             if (stream == default)
             {

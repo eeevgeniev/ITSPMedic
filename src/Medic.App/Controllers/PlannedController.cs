@@ -7,6 +7,7 @@ using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
 using Medic.EHR.RM;
 using Medic.Formatters.Contracts;
+using Medic.Formatters.Enums;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.ModelToEHR.Contracts;
@@ -49,28 +50,18 @@ namespace Medic.App.Controllers
         {
             try
             {
-                int pageLength = (int)search.Length;
-                int startIndex = base.GetStartIndex(pageLength, page);
-                PlannedWhereBuilder pathProcedureWhereBuilder = new PlannedWhereBuilder(search);
+                PlannedWhereBuilder plannedWhereBuilder = new PlannedWhereBuilder(search);
 
                 string searchParams = search != default ? search.ToString() : default;
-                string plannedKey = $"{nameof(PlannedPreviewViewModel)} - {startIndex} - {searchParams}";
+                
+                List<PlannedPreviewViewModel> plannings = await GetPage(search, plannedWhereBuilder, searchParams, page);
+
                 string plannedCountKey = $"{MedicConstants.Planned} - {searchParams}";
-
-                if (!base.MedicCache.TryGetValue(plannedKey, out List<PlannedPreviewViewModel> plannings))
-                {
-                    PlannedHelperBuilder helperBuilder = new PlannedHelperBuilder(search);
-
-                    plannings = await PlannedService
-                        .GetPlanningsAsync(pathProcedureWhereBuilder, helperBuilder, startIndex);
-
-                    base.MedicCache.Set(plannedKey, plannings);
-                }
 
                 if (!base.MedicCache.TryGetValue(plannedCountKey, out int planningsCount))
                 {
                     planningsCount = await PlannedService
-                        .GetPlanningsCountAsync(pathProcedureWhereBuilder);
+                        .GetPlanningsCountAsync(plannedWhereBuilder);
 
                     base.MedicCache.Set(plannedCountKey, planningsCount);
                 }
@@ -89,7 +80,7 @@ namespace Medic.App.Controllers
                     Keywords = MedicDataLocalization.Get(MedicDataLocalization.PlanningsSummary),
                     Search = search,
                     CurrentPage = page,
-                    TotalPages = base.TotalPages(pageLength, planningsCount),
+                    TotalPages = base.TotalPages((int)search.Length, planningsCount),
                     TotalResults = planningsCount,
                     Sexes = sexOptions,
                     HealthRegions = healthRegions
@@ -169,14 +160,8 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(PlannedViewModel));
-                    IDataFormattable xmlFormater = FormattableFactory.CreateXMLFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await xmlFormater.FormatObject(referenceModel),
-                        ContentType = xmlFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
                 }
             }
             catch (Exception ex)
@@ -212,15 +197,41 @@ namespace Medic.App.Controllers
                     }
 
                     ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(PlannedViewModel));
-                    IDataFormattable jsonFormater = FormattableFactory.CreateJsonFormatter();
 
-                    return new ContentResult()
-                    {
-                        Content = await jsonFormater.FormatObject(referenceModel),
-                        ContentType = jsonFormater.MimeType,
-                        StatusCode = 200
-                    };
+                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
                 }
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Excel(PlannedSearch search, int page = 1)
+        {
+            try
+            {
+                PlannedWhereBuilder plannedWhereBuilder = new PlannedWhereBuilder(search);
+
+                string searchParams = search != default ? search.ToString() : default;
+
+                List<PlannedPreviewViewModel> plannings = await GetPage(search, plannedWhereBuilder, searchParams, page);
+
+                if (plannings == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<PlannedPreviewViewModel>(plannings, MedicDataLocalization.Plannings, FormattableFactory);
             }
             catch (Exception ex)
             {
@@ -251,6 +262,25 @@ namespace Medic.App.Controllers
             }
 
             return model;
+        }
+
+        private async Task<List<PlannedPreviewViewModel>> GetPage(PlannedSearch search, PlannedWhereBuilder plannedWhereBuilder, string searchParams, int page)
+        {
+            int pageLength = (int)search.Length;
+            int startIndex = base.GetStartIndex(pageLength, page);
+
+            string plannedKey = $"{nameof(PlannedPreviewViewModel)} - {startIndex} - {searchParams}";
+
+            if (!base.MedicCache.TryGetValue(plannedKey, out List<PlannedPreviewViewModel> plannings))
+            {
+                PlannedHelperBuilder helperBuilder = new PlannedHelperBuilder(search);
+
+                plannings = await PlannedService.GetPlanningsAsync(plannedWhereBuilder, helperBuilder, startIndex);
+
+                base.MedicCache.Set(plannedKey, plannings);
+            }
+
+            return plannings;
         }
     }
 }
