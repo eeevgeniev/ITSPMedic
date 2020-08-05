@@ -333,6 +333,13 @@ namespace Medic.Resources
         public const string ExportAsXml = nameof(ExportAsXml);
         public const string ExportAsJson = nameof(ExportAsJson);
         public const string ExportAsExcel = nameof(ExportAsExcel);
+        public const string UserCreation = nameof(UserCreation);
+        public const string RoleCreation = nameof(RoleCreation);
+        public const string Administrator = nameof(Administrator);
+        public const string Username = nameof(Username);
+        public const string Email = nameof(Email);
+        public const string Delete = nameof(Delete);
+        public const string CreateUser = nameof(CreateUser);
 
         public MedicDataLocalization(IStringLocalizerFactory factory)
             : base(factory, nameof(MedicDataLocalization)) { }

@@ -2,6 +2,7 @@
 using Medic.App.Models.FileUploads;
 using Medic.Cache.Contacts;
 using Medic.Entities;
+using Medic.Identity;
 using Medic.Import.Contracts;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
@@ -19,7 +20,7 @@ using CP = Medic.Models.CP;
 
 namespace Medic.App.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = MedicIdentityConstants.Administrator)]
     public class FileUploadController : MedicBaseController
     {
         private readonly IImportMedicFile ImportMedicFile;

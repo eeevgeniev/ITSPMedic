@@ -34,11 +34,11 @@ namespace Medic.Identity
                 throw new ArgumentException(nameof(accounts));
             }
 
-            if (!RoleManager.Roles.Any(r => EF.Functions.Like(r.Name, "Administrator")))
+            if (!RoleManager.Roles.Any(r => EF.Functions.Like(r.Name, MedicIdentityConstants.Administrator)))
             {
                 IdentityRole identityRole = new IdentityRole()
                 {
-                    Name = "Administrator"
+                    Name = MedicIdentityConstants.Administrator
                 };
 
                 Task task = RoleManager.CreateAsync(identityRole);
@@ -70,7 +70,7 @@ namespace Medic.Identity
                         throw new Exception($"{nameof(identityUser)} - {identityUser.UserName} - {identityUser.Email}");
                     }
 
-                    Task<IdentityResult> roleResult = UserManager.AddToRoleAsync(identityUser, "Administrator");
+                    Task<IdentityResult> roleResult = UserManager.AddToRoleAsync(identityUser, MedicIdentityConstants.Administrator);
 
                     if (!roleResult.Result.Succeeded)
                     {

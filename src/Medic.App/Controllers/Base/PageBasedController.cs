@@ -1,7 +1,4 @@
-﻿using Medic.Formatters.Contracts;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Medic.App.Controllers.Base
+﻿namespace Medic.App.Controllers.Base
 {
     public abstract class PageBasedController : FormatterBaseController
     {

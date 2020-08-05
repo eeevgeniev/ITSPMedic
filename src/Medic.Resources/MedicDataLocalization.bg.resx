@@ -138,6 +138,9 @@
   <data name="Address" xml:space="preserve">
     <value>Адрес</value>
   </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
   <data name="AgeInDays" xml:space="preserve">
     <value>Години в дни</value>
   </data>
@@ -297,6 +300,9 @@
   <data name="CPrSend" xml:space="preserve">
     <value>Код клинична процедура при изпращане на пациента</value>
   </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Създай потребител</value>
+  </data>
   <data name="CycleCount" xml:space="preserve">
     <value>Брой цикли (повторения)</value>
   </data>
@@ -338,6 +344,9 @@
   </data>
   <data name="Delay" xml:space="preserve">
     <value>Постъпване от началото на заболяването за спешни случаи</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Изтрий</value>
   </data>
   <data name="DeputyUniqueIdentifier" xml:space="preserve">
     <value>Уин лекар, заместващ(ако има)</value>
@@ -449,6 +458,9 @@
   </data>
   <data name="ECOG" xml:space="preserve">
     <value>ECOG</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Електронна поща</value>
   </data>
   <data name="EndCourse" xml:space="preserve">
     <value>End course</value>
@@ -909,6 +921,9 @@
   <data name="Results" xml:space="preserve">
     <value>резултати</value>
   </data>
+  <data name="RoleCreation" xml:space="preserve">
+    <value>Създаване на роля</value>
+  </data>
   <data name="SampleProtocol" xml:space="preserve">
     <value>Извадка от оперативния протокол</value>
   </data>
@@ -1052,6 +1067,12 @@
   </data>
   <data name="UsedDrugsInformationKeywords" xml:space="preserve">
     <value>Използвани лекарства, статистика, мкб</value>
+  </data>
+  <data name="UserCreation" xml:space="preserve">
+    <value>Създаване на потребител</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Потребителско име</value>
   </data>
   <data name="VersionCode" xml:space="preserve">
     <value>Код на версията</value>

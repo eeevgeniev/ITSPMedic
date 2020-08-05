@@ -138,6 +138,9 @@
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
   <data name="AgeInDays" xml:space="preserve">
     <value>AgeInDays</value>
   </data>
@@ -297,6 +300,9 @@
   <data name="CPrSend" xml:space="preserve">
     <value>CPr send</value>
   </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Create user</value>
+  </data>
   <data name="CycleCount" xml:space="preserve">
     <value>Cycle count</value>
   </data>
@@ -338,6 +344,9 @@
   </data>
   <data name="Delay" xml:space="preserve">
     <value>Delay</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
   <data name="DeputyUniqueIdentifier" xml:space="preserve">
     <value>Deputy unique identifier</value>
@@ -449,6 +458,9 @@
   </data>
   <data name="ECOG" xml:space="preserve">
     <value>ECOG</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="EndCourse" xml:space="preserve">
     <value>End course</value>
@@ -909,6 +921,9 @@
   <data name="Results" xml:space="preserve">
     <value>results</value>
   </data>
+  <data name="RoleCreation" xml:space="preserve">
+    <value>Role creation</value>
+  </data>
   <data name="SampleProtocol" xml:space="preserve">
     <value>Sample protocol</value>
   </data>
@@ -1052,6 +1067,12 @@
   </data>
   <data name="UsedDrugsInformationKeywords" xml:space="preserve">
     <value>Used drugs, mkb, statistic</value>
+  </data>
+  <data name="UserCreation" xml:space="preserve">
+    <value>User creation</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
   </data>
   <data name="VersionCode" xml:space="preserve">
     <value>Version code</value>

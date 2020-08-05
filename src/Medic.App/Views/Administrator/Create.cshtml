@@ -1,0 +1,47 @@
+﻿@using Medic.App.Models.Administrators.Models
+
+@model AdministratorPageCreateModel
+
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+
+    CreateUserInputModel user = Model.User;
+}
+
+<article>
+    <header>
+        <h2 class="text-center">@Html.Raw(Model.Title)</h2>
+        <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
+    </header>
+    <section>
+        <form asp-action="@nameof(AdministratorController.Create)"
+              asp-controller="@AdministratorController.GetName(nameof(AdministratorController))"
+              method="post"
+              asp-antiforgery="true"
+              style="margin: 0 auto;max-width: 500px">
+            <div class="form-group">
+                <label asp-for="@user.UserName"></label>
+                <input class="form-control" type="text" asp-for="@user.UserName" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@user.Email"></label>
+                <input class="form-control" type="text" asp-for="@user.Email" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@user.Password"></label>
+                <input class="form-control" type="password" asp-for="@user.Password" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@user.ConfirmPassword"></label>
+                <input class="form-control" type="password" asp-for="@user.ConfirmPassword" />
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" asp-for="@user.IsAdministrator" />
+                <label asp-for="@user.IsAdministrator"></label>
+            </div>
+            <input type="submit" class="btn btn-primary" />
+        </form>
+    </section>
+</article>

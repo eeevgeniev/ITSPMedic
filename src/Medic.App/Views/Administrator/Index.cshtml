@@ -1,0 +1,63 @@
+﻿@using Medic.App.Models.Administrators.Models
+
+@model AdministratorPageIndexModel
+
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<article>
+    <header>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CommissionAprsView)): @Model.TotalResults @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
+    </header>
+    <section>
+        <a asp-action="@nameof(AdministratorController.Create)" asp-controller="@AdministratorController.GetName(nameof(AdministratorController.Create))">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CreateUser))</a>
+    </section>
+    <section class="mt-sm-1">
+        @if (Model.Users != default && Model.Users.Count > 0)
+        {
+            <div>
+                <div class="row">
+                    <div class="col-sm-6 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Username))</div>
+                    <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Email))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Delete))</div>
+                </div>
+                @foreach (UserViewModel currentUser in Model.Users)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-6">@currentUser.Username</div>
+                        <div class="col-sm-4">@currentUser.Email</div>
+                        <div class="col-sm-2">
+                            <form asp-controller="@AdministratorController.GetName(nameof(AdministratorController))"
+                                  asp-action="@nameof(AdministratorController.Delete)"
+                                  method="delete"
+                                  asp-antiforgery="true">
+                                <input type="hidden" asp-for="@currentUser.Username" />
+                                <input type="submit" class="btn btn-danger" />
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+            <footer>
+                <pager page-count="@Model.TotalPages"
+                       current-page="@Model.CurrentPage"
+                       controller-name="@MedicBaseController.GetName(nameof(AdministratorController))"
+                       action-name="@nameof(AdministratorController.Index)"
+                       nav-class-names="btn-toolbar"
+                       ul-class-names="pagination"
+                       li-class-names="page-item"
+                       li-selected-class-names="page-item active"
+                       anchor-class-names="page-link">
+                </pager>
+            </footer>
+        }
+        else
+        {
+            <div class="text-center text-info font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
+        }
+    </section>
+</article>

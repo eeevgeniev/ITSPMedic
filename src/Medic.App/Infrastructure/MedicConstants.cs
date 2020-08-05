@@ -15,17 +15,18 @@ namespace Medic.App.Infrastructure
         internal const string AdministratorPassword = "administratorPassword";
         internal const string SexKeyName = nameof(SexOption);
         internal const string HealthRegionsKeyName = nameof(HealthRegionOption);
-        internal const string PatientsCount = "PatientsCount";
-        internal const string InsCount = "InsCount";
-        internal const string OutsCount = "OutsCount";
-        internal const string UsedDrugs = "UsedDrugs";
-        internal const string ProtocolDrugTherapies = "ProtocolDrugTherapies";
-        internal const string InClinicProcedures = "InClinicProcedures";
-        internal const string PathProcedures = "PathProcedures";
-        internal const string ClinicUsedDrugsCode = "ClinicUsedDrugsCode";
-        internal const string CommissionAprs = "CommissionAprs";
-        internal const string DispObservations = "DispObservations";
-        internal const string Planned = "Planned";
-        internal const string AtcNames = "AtcNames";
+        internal const string PatientsCount = nameof(PatientsCount);
+        internal const string InsCount = nameof(InsCount);
+        internal const string OutsCount = nameof(OutsCount);
+        internal const string UsedDrugs = nameof(UsedDrugs);
+        internal const string ProtocolDrugTherapies = nameof(ProtocolDrugTherapies);
+        internal const string InClinicProcedures = nameof(InClinicProcedures);
+        internal const string PathProcedures = nameof(PathProcedures);
+        internal const string ClinicUsedDrugsCode = nameof(ClinicUsedDrugsCode);
+        internal const string CommissionAprs = nameof(CommissionAprs);
+        internal const string DispObservations = nameof(DispObservations);
+        internal const string Planned = nameof(Planned);
+        internal const string AtcNames = nameof(AtcNames);
+        internal const string IdentityErrorSeparator = ", ";
     }
 }
