@@ -3,20 +3,20 @@
 @model FileUploadPageHospitalPractice
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[Constants.Title] = Model.Title;
 }
 
 @if (!string.IsNullOrWhiteSpace(Model.Error))
 {
     <div class="alert alert-danger" role="alert">
-        @Model.Error
+        @Html.Raw(Model.Error)
     </div>
 }
 <div class="container">
     <article>
         <header>
-            <h2>@Model.Title</h2>
-            <h4>@Model.Keywords</h4>
+            <h2>@Html.Raw(Model.Title)</h2>
+            <h4>@Html.Raw(Model.Keywords)</h4>
         </header>
         <form asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.HospitalPractice)"
               method="post" enctype="multipart/form-data"

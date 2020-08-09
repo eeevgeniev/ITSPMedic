@@ -6,19 +6,19 @@
     <div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Speciality)):</div>
-            <div class="col-sm-10">@Model.Speciality</div>
+            <div class="col-sm-10">@Html.Raw(Model.Speciality)</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Name)):</div>
-            <div class="col-sm-10">@Model.Name</div>
+            <div class="col-sm-10">@Html.Raw(Model.Name)</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UniqueIdentifier)):</div>
-            <div class="col-sm-10">@Model.UniqueIdentifier</div>
+            <div class="col-sm-10">@Html.Raw(Model.UniqueIdentifier)</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DeputyUniqueIdentifier)):</div>
-            <div class="col-sm-10">@Model.DeputyUniqueIdentifier</div>
+            <div class="col-sm-10">@Html.Raw(Model.DeputyUniqueIdentifier)</div>
         </div>
     </div>
 }

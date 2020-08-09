@@ -8,10 +8,10 @@
         <hr />
         <div>
             <div class="row">
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCCode)): @currentAccProtocol.ATCCode</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCName)): @currentAccProtocol.ATCName</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SingleDose)): @currentAccProtocol.SingleDose</div>
-                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDose)): @currentAccProtocol.AllDose</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCCode)): @Html.Raw(currentAccProtocol.ATCCode)</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCName)): @Html.Raw(currentAccProtocol.ATCName)</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SingleDose)): @Html.Raw(currentAccProtocol.SingleDose)</div>
+                <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDose)): @Html.Raw(currentAccProtocol.AllDose)</div>
             </div>
             <partial name="~/Views/Shared/Partials/TherapyTypes/TherapyTypePreviewViewModel.cshtml" model="@currentAccProtocol.TherapyType" />
         </div>

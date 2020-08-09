@@ -16,7 +16,7 @@
 
 <article>
     <header>
-        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CommissionAprsView)): @Model.TotalResults @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CommissionAprsView)): @Html.Raw(Model.TotalResults) @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
         <h4 class="text-center text-info">@Model.Keywords</h4>
         <section class="text-right">
             <a asp-controller="@CommissionAprController.GetName(nameof(CommissionAprController))" 
@@ -53,11 +53,11 @@
                 {
                     <hr />
                     <div class="row">
-                        <div class="col-sm-1">@currentCommissionApr.SendDate.ToShortDateString()</div>
-                        <div class="col-sm-1">@currentCommissionApr.MainDiagCode</div>
-                        <div class="col-sm-2">@currentCommissionApr.MainDiagName</div>
-                        <div class="col-sm-3">@currentCommissionApr.APr05sImuno</div>
-                        <div class="col-sm-3">@string.Join(", ", currentCommissionApr.AddDiagCodes)</div>
+                        <div class="col-sm-1">@Html.Raw(currentCommissionApr.SendDate.ToShortDateString())</div>
+                        <div class="col-sm-1">@Html.Raw(currentCommissionApr.MainDiagCode)</div>
+                        <div class="col-sm-2">@Html.Raw(currentCommissionApr.MainDiagName)</div>
+                        <div class="col-sm-3">@Html.Raw(currentCommissionApr.CutAPr05sImuno(Constants.CutLength))</div>
+                        <div class="col-sm-3">@Html.Raw(string.Join(", ", currentCommissionApr.AddDiagCodes))</div>
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                                asp-action="@nameof(PatientController.Patient)"

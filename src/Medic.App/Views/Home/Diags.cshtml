@@ -2,16 +2,16 @@
 @inject MedicDataLocalization medicDataLocalization
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[Constants.Title] = Model.Title;
 }
 
 <article>
     <header class="text-center">
-        <h2>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Summary)) : @Model.TotalResults @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
+        <h2>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Summary)) : @Html.Raw(Model.TotalResults) @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
     </header>
     <section>
         <header class="text-center">
-            <h4>@medicDataLocalization.Get("DiagSummaryTitle")</h4>
+            <h4>@medicDataLocalization.Get(MedicDataLocalization.DiagSummaryTitle)</h4>
         </header>
         <div>
             <div class="row">
@@ -25,9 +25,9 @@
                 {
                     <hr />
                     <div class="row">
-                        <div class="col-sm-2">@diag.Code</div>
-                        <div class="col-sm-8">@diag.Name</div>
-                        <div class="col-sm-2">@diag.Count</div>
+                        <div class="col-sm-2">@Html.Raw(diag.Code)</div>
+                        <div class="col-sm-8">@Html.Raw(diag.Name)</div>
+                        <div class="col-sm-2">@Html.Raw(diag.Count)</div>
                     </div>
                 }
 

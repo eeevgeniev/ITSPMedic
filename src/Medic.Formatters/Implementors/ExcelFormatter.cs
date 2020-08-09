@@ -90,12 +90,12 @@ namespace Medic.Formatters.Implementors
 
                     foreach (PropertyInfo property in properties)
                     {
+                        object propertyValue = property.GetValue(value);
+
                         Cell cell = new Cell()
                         {
-                            CellValue = new CellValue(property.GetValue(value)?.ToString() ?? string.Empty)
+                            CellValue = new CellValue(propertyValue?.ToString() ?? string.Empty)
                         };
-
-                        object propertyValue = property.GetValue(value);
 
                         if (propertyValue is long || propertyValue is double || propertyValue is decimal)
                         {

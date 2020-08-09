@@ -10,9 +10,9 @@
         <div class="col-sm-8 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Notes))</div>
     </div>
     <div class="row">
-        <div class="col-sm-2">@Model.Code</div>
-        <div class="col-sm-2">@Model.Date.ToShortDateString()</div>
-        <div class="col-sm-8">@Model.Note</div>
+        <div class="col-sm-2">@Html.Raw(Model.Code)</div>
+        <div class="col-sm-2">@Html.Raw(Model.Date.ToShortDateString())</div>
+        <div class="col-sm-8">@Html.Raw(Model.Note)</div>
     </div>
 }
 else

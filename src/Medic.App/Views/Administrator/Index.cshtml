@@ -5,15 +5,16 @@
 @inject MedicDataLocalization medicDataLocalization
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[Constants.Title] = Model.Title;
 }
 
 <article>
     <header>
-        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CommissionAprsView)): @Model.TotalResults @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Administrator))</h2>
     </header>
     <section>
-        <a asp-action="@nameof(AdministratorController.Create)" asp-controller="@AdministratorController.GetName(nameof(AdministratorController.Create))">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CreateUser))</a>
+        <a asp-action="@nameof(AdministratorController.Create)" 
+           asp-controller="@AdministratorController.GetName(nameof(AdministratorController.Create))">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CreateUser))</a>
     </section>
     <section class="mt-sm-1">
         @if (Model.Users != default && Model.Users.Count > 0)

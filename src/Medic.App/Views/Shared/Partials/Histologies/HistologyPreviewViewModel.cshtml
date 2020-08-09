@@ -7,11 +7,11 @@
     <div>
         <div class="row">
             <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NameHS)):</div>
-            <div class="col-sm-8">@Model.NameHS</div>
+            <div class="col-sm-8">@Html.Raw(Model.NameHS)</div>
         </div>
         <div class="row">
             <div class="col-sm-4 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CodeHS)):</div>
-            <div class="col-sm-8">@Model.CodeHS</div>
+            <div class="col-sm-8">@Html.Raw(Model.CodeHS)</div>
         </div>
         <div>
             <partial name="~/Views/Shared/Partials/APr05s/APr05PreviewViewModel.cshtml" model="@Model.APr05" />

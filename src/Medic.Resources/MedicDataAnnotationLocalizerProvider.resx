@@ -231,8 +231,14 @@
   <data name="CommissionAprsCount" xml:space="preserve">
     <value>Apr commissions count</value>
   </data>
+  <data name="ComparePasswords" xml:space="preserve">
+    <value>Password and confirm password don't match</value>
+  </data>
   <data name="Complications" xml:space="preserve">
     <value>Complications</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
   </data>
   <data name="Consultations" xml:space="preserve">
     <value>Consultations</value>
@@ -488,6 +494,9 @@
   </data>
   <data name="InType" xml:space="preserve">
     <value>In type</value>
+  </data>
+  <data name="IsAdministrator" xml:space="preserve">
+    <value>Is administrator</value>
   </data>
   <data name="IZMedicalWard" xml:space="preserve">
     <value>IZ Medical Ward</value>
@@ -749,6 +758,12 @@
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Remember me</value>
+  </data>
+  <data name="RequiredConfirmPassword" xml:space="preserve">
+    <value>Confirm password is required</value>
+  </data>
+  <data name="RequiredEmail" xml:space="preserve">
+    <value>Email is required</value>
   </data>
   <data name="RequiredPassword" xml:space="preserve">
     <value>Password is required.</value>

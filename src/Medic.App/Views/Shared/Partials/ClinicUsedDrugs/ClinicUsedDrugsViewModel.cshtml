@@ -7,27 +7,27 @@
     {
         <div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugDate)): @currentDrug.DrugDate.ToString("d")</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugCode)): @currentDrug.DrugCode</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugName)): @currentDrug.DrugName</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugDate)): @Html.Raw(currentDrug.DrugDate.ToString("d"))</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugCode)): @Html.Raw(currentDrug.DrugCode)</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugName)): @Html.Raw(currentDrug.DrugName)</div>
             </div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugQuantity)): @currentDrug.DrugQuantity</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugCost)): @currentDrug.DrugCost</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ICDDrug)): @currentDrug.ICDDrug</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugQuantity)): @Html.Raw(currentDrug.DrugQuantity)</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DrugCost)): @Html.Raw(currentDrug.DrugCost)</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ICDDrug)): @Html.Raw(currentDrug.ICDDrug)</div>
             </div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UINPrescr)): @currentDrug.UINPrescr</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoPrescr)): @currentDrug.NoPrescr</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DatePrescr)): @(currentDrug.DatePrescr.ToString("d"))</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UINPrescr)): @Html.Raw(currentDrug.UINPrescr)</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoPrescr)): @Html.Raw(currentDrug.NoPrescr)</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DatePrescr)): @Html.Raw((currentDrug.DatePrescr.ToString("d")))</div>
             </div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PracticeCodeProtocol)): @currentDrug.PracticeCodeProtocol</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolNumber)): @currentDrug.ProtocolNumber</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDate)): @currentDrug.ProtocolDate.ToString("d")</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PracticeCodeProtocol)): @Html.Raw(currentDrug.PracticeCodeProtocol)</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolNumber)): @Html.Raw(currentDrug.ProtocolNumber)</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDate)): @Html.Raw(currentDrug.ProtocolDate.ToString("d"))</div>
             </div>
             <div class="row">
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolType)): @currentDrug.ProtocolType</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolType)): @Html.Raw(currentDrug.ProtocolType)</div>
             </div>
             <div>
                 <div class="text-center font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VersionCode))</div>

@@ -3,7 +3,7 @@
 @inject MedicDataLocalization medicDataLocalization
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[Constants.Title] = Model.Title;
 
     bool hasResults = Model.Patients != default && Model.Patients.Count > 0;
 
@@ -15,8 +15,8 @@
 
 <article>
     <header>
-        <h2 class="text-center">@($"{Html.Raw(patientLocalization.Get(PatientLocalization.PatientSearch))} - {Model.TotalResults} {Html.Raw(patientLocalization.Get(PatientLocalization.Results))}")</h2>
-        <h4 class="text-center text-info">@Model.Keywords</h4>
+        <h2 class="text-center">@($"{Html.Raw(patientLocalization.Get(PatientLocalization.PatientSearch))} - {Html.Raw(Model.TotalResults)} {Html.Raw(patientLocalization.Get(PatientLocalization.Results))}")</h2>
+        <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
         <section class="text-right">
             <a asp-controller="@DispObservationController.GetName(nameof(DispObservationController))"
                asp-action="@nameof(DispObservationController.Excel)"
@@ -52,10 +52,10 @@
             {
                 <hr />
                 <div class="row">
-                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.FirstName) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : patient.FirstName)</div>
-                    <div class="col-sm-2">@(string.IsNullOrWhiteSpace(patient.SecondName) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : patient.SecondName)</div>
-                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.LastName) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : patient.LastName)</div>
-                    <div class="col-sm-2">@(patient.BirthDate.ToShortDateString())</div>
+                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.FirstName) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : Html.Raw(patient.FirstName).ToString())</div>
+                    <div class="col-sm-2">@(string.IsNullOrWhiteSpace(patient.SecondName) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : Html.Raw(patient.SecondName).ToString())</div>
+                    <div class="col-sm-3">@(string.IsNullOrWhiteSpace(patient.LastName) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : Html.Raw(patient.LastName).ToString())</div>
+                    <div class="col-sm-2">@Html.Raw(patient.BirthDate.ToShortDateString())</div>
                     <div class="col-sm-2">
                         <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                            asp-action="@nameof(PatientController.Patient)"

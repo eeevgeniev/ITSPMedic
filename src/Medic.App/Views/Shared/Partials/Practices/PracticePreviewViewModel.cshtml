@@ -13,12 +13,12 @@
     </div>
     <hr />
     <div class="row">
-        <div class="col-sm-2">@Model.Branch</div>
-        <div class="col-sm-2">@Model.Number</div>
-        <div class="col-sm-2">@Model.Code</div>
-        <div class="col-sm-2">@Model.Name</div>
-        <div class="col-sm-2">@Model.HealthRegion</div>
-        <div class="col-sm-2">@Model.Address</div>
+        <div class="col-sm-2">@Html.Raw(Model.Branch)</div>
+        <div class="col-sm-2">@Html.Raw(Model.Number)</div>
+        <div class="col-sm-2">@Html.Raw(Model.Code)</div>
+        <div class="col-sm-2">@Html.Raw(Model.Name)</div>
+        <div class="col-sm-2">@Html.Raw(Model.HealthRegion)</div>
+        <div class="col-sm-2">@Html.Raw(Model.Address)</div>
     </div>
 }
 else

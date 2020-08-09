@@ -2,7 +2,7 @@
 @inject MedicDataLocalization medicDataLocalization
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[Constants.Title] = Model.Title;
 }
 
 @if (Model.ProtocolDrugTherapy != default)
@@ -10,7 +10,7 @@
     <article>
         <header>
             <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapyView))</h2>
-            <h4 class="text-center text-info">@Model.Keywords</h4>
+            <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
             <section class="text-right">
                 <a asp-controller="@ProtocolDrugTherapyController.GetName(nameof(ProtocolDrugTherapyController))"
                    asp-action="@nameof(ProtocolDrugTherapyController.Xml)"
@@ -36,7 +36,7 @@
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Chairman))</h2>
         <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.ProtocolDrugTherapy.Chairman" />
         <hr />
-        <div>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDate)): @Model.ProtocolDrugTherapy.ProtocolDate.ToString("g")</div>
+        <div>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDate)): @Html.Raw(Model.ProtocolDrugTherapy.ProtocolDate.ToString("g"))</div>
         <hr />
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Diag))</h2>
         <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.ProtocolDrugTherapy.Diag" />
@@ -58,32 +58,32 @@
         <hr />
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AdditionalInformation))</h2>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientBranch)): @Model.ProtocolDrugTherapy.PatientBranch</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientHRegion)): @Model.ProtocolDrugTherapy.PatientHRegion</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NumberOfDecision)): @Model.ProtocolDrugTherapy.NumberOfDecision</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientBranch)): @Html.Raw(Model.ProtocolDrugTherapy.PatientBranch)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientHRegion)): @Html.Raw(Model.ProtocolDrugTherapy.PatientHRegion)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NumberOfDecision)): @Html.Raw(Model.ProtocolDrugTherapy.NumberOfDecision)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DecisionDate)): @Model.ProtocolDrugTherapy.DecisionDate.ToString("g")</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PracticeCodeProtocol)): @Model.ProtocolDrugTherapy.PracticeCodeProtocol</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NumberOfProtocol)): @Model.ProtocolDrugTherapy.NumberOfProtocol</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DecisionDate)): @Html.Raw(Model.ProtocolDrugTherapy.DecisionDate.ToString("g"))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PracticeCodeProtocol)): @Html.Raw(Model.ProtocolDrugTherapy.PracticeCodeProtocol)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NumberOfProtocol)): @Html.Raw(Model.ProtocolDrugTherapy.NumberOfProtocol)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Height)): @Model.ProtocolDrugTherapy.Height</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Weight)): @Model.ProtocolDrugTherapy.Weight</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BSA)): @Model.ProtocolDrugTherapy.BSA</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Height)): @Html.Raw(Model.ProtocolDrugTherapy.Height)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Weight)): @Html.Raw(Model.ProtocolDrugTherapy.Weight)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BSA)): @Html.Raw(Model.ProtocolDrugTherapy.BSA)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TherapyLine)): @Model.ProtocolDrugTherapy.TherapyLine</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Scheme)): @Model.ProtocolDrugTherapy.Scheme</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CycleCount)): @Model.ProtocolDrugTherapy.CycleCount</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TherapyLine)): @Html.Raw(Model.ProtocolDrugTherapy.TherapyLine)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Scheme)): @Html.Raw(Model.ProtocolDrugTherapy.Scheme)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CycleCount)): @Html.Raw(Model.ProtocolDrugTherapy.CycleCount)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Model.ProtocolDrugTherapy.Sign</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFile)): @Model.ProtocolDrugTherapy.CPFile</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Html.Raw(Model.ProtocolDrugTherapy.Sign)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFile)): @Html.Raw(Model.ProtocolDrugTherapy.CPFile)</div>
         </div>
     </article>
 }

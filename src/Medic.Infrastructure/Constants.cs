@@ -10,5 +10,6 @@
         public const string ClinicUsedDrugs = nameof(ClinicUsedDrugs);
         public const string ATCNames = nameof(ATCNames);
         public const string Title = nameof(Title);
+        public const int CutLength = 50;
     }
 }

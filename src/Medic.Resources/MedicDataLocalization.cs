@@ -340,6 +340,7 @@ namespace Medic.Resources
         public const string Email = nameof(Email);
         public const string Delete = nameof(Delete);
         public const string CreateUser = nameof(CreateUser);
+        public const string Decision = nameof(Decision);
 
         public MedicDataLocalization(IStringLocalizerFactory factory)
             : base(factory, nameof(MedicDataLocalization)) { }

@@ -5,9 +5,9 @@
 {
     <div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Code)): @Model.Code</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZMedicalWard)): @Model.IZMedicalWard</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYearMedicalWard)): @Model.IZYearMedicalWard</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Code)): @Html.Raw(Model.Code)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZMedicalWard)): @Html.Raw(Model.IZMedicalWard)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYearMedicalWard)): @Html.Raw(Model.IZYearMedicalWard)</div>
         </div>
     </div>
 }

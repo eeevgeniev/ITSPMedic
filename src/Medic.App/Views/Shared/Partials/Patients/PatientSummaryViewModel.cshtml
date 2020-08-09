@@ -6,35 +6,35 @@
     <div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.IdentityNumber)):</div>
-            <div class="col-sm-10">@Model.IdentityNumber</div>
+            <div class="col-sm-10">@Html.Raw(Model.IdentityNumber)</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.FirstName)):</div>
-            <div class="col-sm-10">@Model.FirstName</div>
+            <div class="col-sm-10">@Html.Raw(Model.FirstName)</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.SecondName)):</div>
-            <div class="col-sm-10">@Model.SecondName</div>
+            <div class="col-sm-10">@Html.Raw(Model.SecondName)</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.LastName)):</div>
-            <div class="col-sm-10">@Model.LastName</div>
+            <div class="col-sm-10">@Html.Raw(Model.LastName)</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.Sex)):</div>
-            <div class="col-sm-10">@Model.Sex</div>
+            <div class="col-sm-10">@Html.Raw(Model.Sex)</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.Address)):</div>
-            <div class="col-sm-10">@Model.Address</div>
+            <div class="col-sm-10">@Html.Raw(Model.Address)</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.BirthDate)):</div>
-            <div class="col-sm-10">@Model.BirthDate.ToShortDateString()</div>
+            <div class="col-sm-10">@Html.Raw(Model.BirthDate.ToShortDateString())</div>
         </div>
         <div class="row">
             <div class="col-sm-2">@Html.Raw(patientLocalization.Get(PatientLocalization.Notes)):</div>
-            <div class="col-sm-10">@Model.Notes</div>
+            <div class="col-sm-10">@Html.Raw(Model.Notes)</div>
         </div>
     </div>
 }

@@ -26,26 +26,21 @@ namespace Medic.AppModels.CommissionAprs
         public List<String> AddDiagCodes { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.APr05sImuno)]
-        public string APr05sImuno 
-        { 
-            get { return _imuno; }
-            set 
+        public string APr05sImuno { get; set; }
+
+        public string CutAPr05sImuno(int length)
+        {
+            if (string.IsNullOrWhiteSpace(APr05sImuno) || APr05sImuno.Length <= length)
             {
-                int length = 50;
-
-                if (string.IsNullOrWhiteSpace(value) || value.Length <= 50)
-                {
-                    _imuno = value;
-                    return;
-                }
-
-                while (char.IsLetterOrDigit(value[length]) && length > 30)
-                {
-                    length--;
-                }
-
-                _imuno = $"{value.Substring(0, length)}...";
+                return APr05sImuno;
             }
+
+            while (char.IsLetterOrDigit(APr05sImuno[length]) && length > 30)
+            {
+                length--;
+            }
+
+            return $"{APr05sImuno.Substring(0, length)}...";
         }
     }
 }

@@ -231,8 +231,14 @@
   <data name="CommissionAprsCount" xml:space="preserve">
     <value>Брой нa комисиите по Амб. проц. 05 и 38 </value>
   </data>
+  <data name="ComparePasswords" xml:space="preserve">
+    <value>Паролата и потвърдената парола не са еднакви</value>
+  </data>
   <data name="Complications" xml:space="preserve">
     <value>Усложнения</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Потвърди паролата</value>
   </data>
   <data name="Consultations" xml:space="preserve">
     <value>Консултации</value>
@@ -488,6 +494,9 @@
   </data>
   <data name="InType" xml:space="preserve">
     <value>Насочен за постъпване</value>
+  </data>
+  <data name="IsAdministrator" xml:space="preserve">
+    <value>Потребителят е администратор</value>
   </data>
   <data name="IZMedicalWard" xml:space="preserve">
     <value>ИЗ на пациента на клиничната пътека от която е приведен</value>
@@ -749,6 +758,12 @@
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Запомни ме</value>
+  </data>
+  <data name="RequiredConfirmPassword" xml:space="preserve">
+    <value>Потвърждението на потвърди паролата е задължително</value>
+  </data>
+  <data name="RequiredEmail" xml:space="preserve">
+    <value>Електронната поща е задължителна</value>
   </data>
   <data name="RequiredPassword" xml:space="preserve">
     <value>Паролата е задължителна.</value>

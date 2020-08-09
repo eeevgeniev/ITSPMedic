@@ -5,16 +5,16 @@
 {
     <div>
         <div class="row">
-            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DiagnoseDate)): @Model.DiagnoseDate.ToString("g")</div>
-            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExpandDiagnose)): @Model.ExpandDiagnose</div>
-            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ECOG)): @Model.ECOG</div>
-            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Staging)): @Model.Staging</div>
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DiagnoseDate)): @Html.Raw(Model.DiagnoseDate.ToString("g"))</div>
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExpandDiagnose)): @Html.Raw(Model.ExpandDiagnose)</div>
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ECOG)): @Html.Raw(Model.ECOG)</div>
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Staging)): @Html.Raw(Model.Staging)</div>
         </div>
         <div class="row">
-            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TNM)): @Model.TNM</div>
-            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TherapyType)): @Model.TherapyType</div>
-            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.EvalAfterCycle)): @Model.EvalAfterCycle</div>
-            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Interval)): @Model.Interval</div>
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TNM)): @Html.Raw(Model.TNM)</div>
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TherapyType)): @Html.Raw(Model.TherapyType)</div>
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.EvalAfterCycle)): @Html.Raw(Model.EvalAfterCycle)</div>
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Interval)): @Html.Raw(Model.Interval)</div>
         </div>
         <hr />
         <h6 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AddDiag))</h6>

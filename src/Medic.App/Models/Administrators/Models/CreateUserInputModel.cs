@@ -1,31 +1,32 @@
-﻿using System.ComponentModel;
+﻿using Medic.Resources;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Medic.App.Models.Administrators.Models
 {
     public class CreateUserInputModel
     {
-        [DisplayName(nameof(UserName))]
-        [Required(AllowEmptyStrings = false)]
+        [DisplayName(MedicDataAnnotationLocalizerProvider.UserName)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = MedicDataAnnotationLocalizerProvider.RequiredUserName)]
         public string UserName { get; set; }
 
-        [DisplayName(nameof(Email))]
-        [Required(AllowEmptyStrings = false)]
+        [DisplayName(MedicDataAnnotationLocalizerProvider.Email)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = MedicDataAnnotationLocalizerProvider.RequiredEmail)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [DisplayName(nameof(Password))]
-        [Required(AllowEmptyStrings = false)]
+        [DisplayName(MedicDataAnnotationLocalizerProvider.Password)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = MedicDataAnnotationLocalizerProvider.RequiredPassword)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [DisplayName(nameof(ConfirmPassword))]
-        [Required(AllowEmptyStrings = false)]
+        [DisplayName(MedicDataAnnotationLocalizerProvider.ConfirmPassword)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = MedicDataAnnotationLocalizerProvider.RequiredConfirmPassword)]
         [DataType(DataType.Password)]
-        [Compare(nameof(Password))]
+        [Compare(nameof(Password), ErrorMessage = MedicDataAnnotationLocalizerProvider.ComparePasswords)]
         public string ConfirmPassword { get; set; }
 
-        [DisplayName(nameof(IsAdministrator))]
+        [DisplayName(MedicDataAnnotationLocalizerProvider.IsAdministrator)]
         public bool IsAdministrator { get; set; } = false;
     }
 }

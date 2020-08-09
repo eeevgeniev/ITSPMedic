@@ -8,12 +8,12 @@
         <hr />
         <div>
             <div class="row">
-                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcedureName)): @currentProcedure.ProcedureName</div>
-                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcedureCode)): @currentProcedure.ProcedureCode</div>
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcedureName)): @Html.Raw(currentProcedure.ProcedureName)</div>
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcedureCode)): @Html.Raw(currentProcedure.ProcedureCode)</div>
             </div>
             <div class="row">
-                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcedureDate)): @currentProcedure.ProcedureDate.ToShortDateString()</div>
-                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ACHICode)): @currentProcedure.ACHIcode</div>
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcedureDate)): @Html.Raw(currentProcedure.ProcedureDate.ToShortDateString())</div>
+                <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ACHICode)): @Html.Raw(currentProcedure.ACHIcode)</div>
             </div>
         </div>
     }

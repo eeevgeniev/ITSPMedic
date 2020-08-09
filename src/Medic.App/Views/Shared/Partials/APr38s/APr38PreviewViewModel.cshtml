@@ -5,17 +5,17 @@
 {
     <div>
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Height)): @Model.Height</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Weight)): @Model.Weight</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.History)): @Model.History</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Height)): @Html.Raw(Model.Height)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Weight)): @Html.Raw(Model.Weight)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.History)): @Html.Raw(Model.History)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FairCondition)): @Model.FairCondition</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Therapy)): @Model.Therapy</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FairCondition)): @Html.Raw(Model.FairCondition)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Therapy)): @Html.Raw(Model.Therapy)</div>
         </div>
-        <h6 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Evaluation))</h6>
-        <partial name="~/Views/Shared/Partials/Evaluations/EvaluationPreviewViewModel.cshtml" model="@Model.Decision" />
+        <h6 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Decision))</h6>
+        <partial name="~/Views/Shared/Partials/Evaluations/EvaluationPreviewViewModel.cshtml" model="@Html.Raw(Model.Decision)" />
     </div>
 }
 else

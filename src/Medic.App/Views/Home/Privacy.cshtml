@@ -1,5 +1,9 @@
 ﻿@inject GeneralLocalization generalLocalization
 
+@{ 
+    ViewData[Constants.Title] = GeneralLocalization.Privacy;
+}
+
 <article>
     <header>
         <h2>@Html.Raw(generalLocalization.Get(GeneralLocalization.Privacy))</h2>

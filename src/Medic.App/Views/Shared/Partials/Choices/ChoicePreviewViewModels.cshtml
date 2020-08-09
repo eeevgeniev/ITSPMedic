@@ -12,9 +12,9 @@
     {
         <hr />
         <div class="row">
-            <div class="col-sm-4">@currentChoice.Number</div>
-            <div class="col-sm-4">@currentChoice.Checked</div>
-            <div class="col-sm-4">@currentChoice.Text</div>
+            <div class="col-sm-4">@Html.Raw(currentChoice.Number)</div>
+            <div class="col-sm-4">@Html.Raw(currentChoice.Checked)</div>
+            <div class="col-sm-4">@Html.Raw(currentChoice.Text)</div>
         </div>
     }
 }

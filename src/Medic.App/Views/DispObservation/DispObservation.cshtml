@@ -2,7 +2,7 @@
 @inject MedicDataLocalization medicDataLocalization
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[Constants.Title] = Model.Title;
 }
 
 @if (Model.DispObservation != default)
@@ -10,7 +10,7 @@
     <article>
         <header>
             <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispObservationView))</h2>
-            <h4 class="text-center text-info">@Model.Keywords</h4>
+            <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
             <section class="text-right">
                 <a asp-controller="@DispObservationController.GetName(nameof(DispObservationController))"
                    asp-action="@nameof(DispObservationController.Xml)"
@@ -36,7 +36,7 @@
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Doctor))</h2>
         <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.DispObservation.Doctor" />
         <hr />
-        <div>@Html.Raw(medicDataLocalization.Get("DispDate")): @Model.DispObservation.DispDate.ToShortDateString()</div>
+        <div>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispDate)): @Html.Raw(Model.DispObservation.DispDate.ToShortDateString())</div>
         <hr />
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstMainDiag))</h2>
         <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.DispObservation.FirstMainDiag" />
@@ -50,27 +50,27 @@
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AdditionalInformation))</h2>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientBranch)): @Model.DispObservation.PatientBranch</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientHRegion)): @Model.DispObservation.PatientHRegion</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispNum)): @Model.DispObservation.DispNum</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientBranch)): @Html.Raw(Model.DispObservation.PatientBranch)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientHRegion)): @Html.Raw(Model.DispObservation.PatientHRegion)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispNum)): @Html.Raw(Model.DispObservation.DispNum)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispDate)): @Model.DispObservation.DispDate.ToString("g")</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AprCode)): @Model.DispObservation.AprCode</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DiagDate)): @Model.DispObservation.DiagDate.ToString("g")</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispDate)): @Html.Raw(Model.DispObservation.DispDate.ToString("g"))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AprCode)): @Html.Raw(Model.DispObservation.AprCode)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DiagDate)): @Html.Raw(Model.DispObservation.DiagDate.ToString("g"))</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispanserDate)): @(Model.DispObservation.DispanserDate != default ? ((DateTime)Model.DispObservation.DispanserDate).ToString("g") : default)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispVisit)): @Model.DispObservation.DispVisit</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Anamnesa)): @Model.DispObservation.Anamnesa</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispanserDate)): @Html.Raw(Model.DispObservation.DispanserDate != default ? ((DateTime)Model.DispObservation.DispanserDate).ToString("g") : default)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispVisit)): @Html.Raw(Model.DispObservation.DispVisit)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Anamnesa)): @Html.Raw(Model.DispObservation.Anamnesa)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HState)): @Model.DispObservation.HState</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Therapy)): @Model.DispObservation.Therapy</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Model.DispObservation.Sign</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HState)): @Html.Raw(Model.DispObservation.HState)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Therapy)): @Html.Raw(Model.DispObservation.Therapy)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Html.Raw(Model.DispObservation.Sign)</div>
         </div>
         <hr />
         <div class="row">

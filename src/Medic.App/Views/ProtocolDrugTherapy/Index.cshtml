@@ -5,7 +5,7 @@
 @inject MedicDataLocalization medicDataLocalization
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[Constants.Title] = Model.Title;
 
     Dictionary<string, string> paramsByName = Model.Search != default ? Model.Search.BuildQuery(default) : new Dictionary<string, string>();
     Dictionary<string, string> excelByName = new Dictionary<string, string>(paramsByName);
@@ -17,8 +17,8 @@
 
 <article>
     <header>
-        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapiesView)): @Model.TotalResults @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
-        <h4 class="text-center text-info">@Model.Keywords</h4>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDrugTherapiesView)): @Html.Raw(Model.TotalResults) @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
+        <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
         <section class="text-right">
             <a asp-controller="@ProtocolDrugTherapyController.GetName(nameof(ProtocolDrugTherapyController))"
                asp-action="@nameof(ProtocolDrugTherapyController.Excel)"
@@ -54,11 +54,11 @@
                 {
                     <hr />
                     <div class="row">
-                        <div class="col-sm-1">@currentProtocolDrugTherapy.ProtocolDate.ToShortDateString()</div>
-                        <div class="col-sm-1">@currentProtocolDrugTherapy.DecisionDate.ToShortDateString()</div>
-                        <div class="col-sm-2">@currentProtocolDrugTherapy.DiagnoseCode</div>
-                        <div class="col-sm-3">@currentProtocolDrugTherapy.DiagnoseName</div>
-                        <div class="col-sm-3">@string.Join(", ", currentProtocolDrugTherapy.DrugProtocolsATCNames)</div>
+                        <div class="col-sm-1">@Html.Raw(currentProtocolDrugTherapy.ProtocolDate.ToShortDateString())</div>
+                        <div class="col-sm-1">@Html.Raw(currentProtocolDrugTherapy.DecisionDate.ToShortDateString())</div>
+                        <div class="col-sm-2">@Html.Raw(currentProtocolDrugTherapy.DiagnoseCode)</div>
+                        <div class="col-sm-3">@Html.Raw(currentProtocolDrugTherapy.DiagnoseName)</div>
+                        <div class="col-sm-3">@Html.Raw(string.Join(", ", currentProtocolDrugTherapy.DrugProtocolsATCNames))</div>
                         <div class="col-sm-1">
                             <a asp-controller="@MedicBaseController.GetName(nameof(PatientController))"
                                asp-action="@nameof(PatientController.Patient)"

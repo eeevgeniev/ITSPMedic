@@ -336,6 +336,9 @@
   <data name="Dead" xml:space="preserve">
     <value>Dead</value>
   </data>
+  <data name="Decision" xml:space="preserve">
+    <value>Decision</value>
+  </data>
   <data name="DecisionDate" xml:space="preserve">
     <value>Decision date</value>
   </data>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
+    <title>@ViewData[Constants.Title]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -13,7 +13,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@generalLocalization.Get("SiteTile")</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">@Html.Raw(generalLocalization.Get(GeneralLocalization.SiteTile))</a>
             </div>
         </nav>
     </header>
@@ -25,7 +25,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - @(generalLocalization.Get("SiteTile")) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - @(Html.Raw(generalLocalization.Get(GeneralLocalization.SiteTile))) - <a asp-controller="@HomeController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Privacy)">@Html.Raw(generalLocalization.Get(GeneralLocalization.Privacy))</a>
         </div>
     </footer>
     <environment names="Development">

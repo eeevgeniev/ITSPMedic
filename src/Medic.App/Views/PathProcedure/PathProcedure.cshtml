@@ -2,15 +2,15 @@
 @inject MedicDataLocalization medicDataLocalization
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[Constants.Title] = Model.Title;
 }
 
 @if (Model.PathProcedureViewModel != default)
 {
     <article>
         <header>
-            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathProcedure))} - {@Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier}")</h2>
-            <h4 class="text-center text-info">@Model.Keywords</h4>
+            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathProcedure))} - {@Html.Raw(Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier)}")</h2>
+            <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
             <section class="text-right">
                 <a asp-controller="@PathProcedureController.GetName(nameof(PathProcedureController))"
                    asp-action="@nameof(PathProcedureController.Xml)"
@@ -36,7 +36,7 @@
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sender))</h2>
         <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.PathProcedureViewModel.Sender" />
         <hr />
-        <div>Send date: @Model.PathProcedureViewModel.DateSend.ToShortDateString()</div>
+        <div>@Html.Raw(MedicDataLocalization.DateSend): @Html.Raw(Model.PathProcedureViewModel.DateSend.ToShortDateString())</div>
         <hr />
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstMainDiag))</h2>
         <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.PathProcedureViewModel.FirstMainDiag" />
@@ -67,51 +67,51 @@
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AdditionalInformation))</h2>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientBranch)): @Model.PathProcedureViewModel.PatientBranch</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientHRegion)): @Model.PathProcedureViewModel.PatientHRegion</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPrSend)): @Model.PathProcedureViewModel.CPrSend</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientBranch)): @Html.Raw(Model.PathProcedureViewModel.PatientBranch)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientHRegion)): @Html.Raw(Model.PathProcedureViewModel.PatientHRegion)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPrSend)): @Html.Raw(Model.PathProcedureViewModel.CPrSend)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.APrSend)): @Model.PathProcedureViewModel.APrSend</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcSend)): @Model.PathProcedureViewModel.TypeProcSend</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPrPriem)): @Model.PathProcedureViewModel.CPrPriem</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.APrSend)): @Html.Raw(Model.PathProcedureViewModel.APrSend)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcSend)): @Html.Raw(Model.PathProcedureViewModel.TypeProcSend)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPrPriem)): @Html.Raw(Model.PathProcedureViewModel.CPrPriem)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.APrPriem)): @Model.PathProcedureViewModel.APrPriem</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MedicalWard)): @Model.PathProcedureViewModel.MedicalWard</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcPriem)): @Model.PathProcedureViewModel.TypeProcPriem</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.APrPriem)): @Html.Raw(Model.PathProcedureViewModel.APrPriem)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MedicalWard)): @Html.Raw(Model.PathProcedureViewModel.MedicalWard)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcPriem)): @Html.Raw(Model.PathProcedureViewModel.TypeProcPriem)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcRefuse)): @Model.PathProcedureViewModel.ProcRefuse</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZNumChild)): @Model.PathProcedureViewModel.IZNumChild</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYearChild)): @Model.PathProcedureViewModel.IZYearChild</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcRefuse)): @Html.Raw(Model.PathProcedureViewModel.ProcRefuse)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZNumChild)): @Html.Raw(Model.PathProcedureViewModel.IZNumChild)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYearChild)): @Html.Raw(Model.PathProcedureViewModel.IZYearChild)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstVisitDate)): @(Model.PathProcedureViewModel.FirstVisitDate == default ? default : ((DateTime)Model.PathProcedureViewModel.FirstVisitDate).ToShortDateString())</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DatePlanPriem)): @(Model.PathProcedureViewModel.DatePlanPriem == default ? default : ((DateTime)Model.PathProcedureViewModel.DatePlanPriem).ToShortDateString())</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentUniqueIdentifier)): @Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstVisitDate)): @Html.Raw((Model.PathProcedureViewModel.FirstVisitDate == default ? default : ((DateTime)Model.PathProcedureViewModel.FirstVisitDate).ToShortDateString()))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DatePlanPriem)): @Html.Raw((Model.PathProcedureViewModel.DatePlanPriem == default ? default : ((DateTime)Model.PathProcedureViewModel.DatePlanPriem).ToShortDateString()))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentUniqueIdentifier)): @Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentName)): @Model.PathProcedureViewModel.VisitDocumentName</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DateProcedureBegins)): @(Model.PathProcedureViewModel.DateProcedureBegins == default ? default : ((DateTime)Model.PathProcedureViewModel.DateProcedureBegins).ToShortDateString())</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DateProcedureEnd)): @(Model.PathProcedureViewModel.DateProcedureEnd == default ? default : ((DateTime)Model.PathProcedureViewModel.DateProcedureEnd).ToShortDateString())</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentName)): @Html.Raw(Model.PathProcedureViewModel.VisitDocumentName)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DateProcedureBegins)): @Html.Raw((Model.PathProcedureViewModel.DateProcedureBegins == default ? default : ((DateTime)Model.PathProcedureViewModel.DateProcedureBegins).ToShortDateString()))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DateProcedureEnd)): @Html.Raw((Model.PathProcedureViewModel.DateProcedureEnd == default ? default : ((DateTime)Model.PathProcedureViewModel.DateProcedureEnd).ToShortDateString()))</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDoneProcedures)): @Model.PathProcedureViewModel.AllDoneProcedures</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDrugCost)): @Model.PathProcedureViewModel.AllDrugCost</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientStatus)): @Model.PathProcedureViewModel.PatientStatus</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDoneProcedures)): @Html.Raw(Model.PathProcedureViewModel.AllDoneProcedures)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDrugCost)): @Html.Raw(Model.PathProcedureViewModel.AllDrugCost)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientStatus)): @Html.Raw(Model.PathProcedureViewModel.PatientStatus)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutUniqueIdentifier)): @Model.PathProcedureViewModel.OutUniqueIdentifier</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Model.PathProcedureViewModel.Sign</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Model.PathProcedureViewModel.NZOKPay</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutUniqueIdentifier)): @Html.Raw(Model.PathProcedureViewModel.OutUniqueIdentifier)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Html.Raw(Model.PathProcedureViewModel.Sign)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(Model.PathProcedureViewModel.NZOKPay)</div>
         </div>
     </article>
 }

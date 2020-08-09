@@ -336,6 +336,9 @@
   <data name="Dead" xml:space="preserve">
     <value>Смърт</value>
   </data>
+  <data name="Decision" xml:space="preserve">
+    <value>Решение</value>
+  </data>
   <data name="DecisionDate" xml:space="preserve">
     <value>Дата на решението</value>
   </data>

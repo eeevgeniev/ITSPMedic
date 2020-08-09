@@ -10,7 +10,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,26 +24,29 @@ namespace Medic.App.Controllers
         private readonly UserManager<IdentityUser> UserManager;
         private readonly IMedicLoggerService MedicLoggerService;
         private readonly MedicDataLocalization MedicDataLocalization;
+        private readonly string DefaultAdministratorName;
+
+        private const int Length = 20;
 
         public AdministratorController(UserManager<IdentityUser> userManager,
             IMedicLoggerService medicLoggerService,
-            MedicDataLocalization medicDataLocalization)
+            MedicDataLocalization medicDataLocalization,
+            IConfiguration configuration)
         {
             UserManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
             MedicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
+            DefaultAdministratorName = configuration[MedicConstants.AdministratorName];
         }
 
         public async Task<IActionResult> Index(int page = 1)
         {
             try
             {
-                int length = 20;
-
                 AdministratorPageIndexModel administratorPageIndexModel = await Task.Run(() =>
                 {
                     int totalCount = UserManager.Users.Count();
-                    int startIndex = base.GetStartIndex(length, page);
+                    int startIndex = base.GetStartIndex(Length, page);
 
                     return new AdministratorPageIndexModel()
                     {
@@ -50,14 +55,9 @@ namespace Medic.App.Controllers
                         Description = default,
                         Keywords = default,
                         CurrentPage = page,
-                        TotalPages = base.TotalPages(length, totalCount),
+                        TotalPages = base.TotalPages(Length, totalCount),
                         TotalResults = totalCount,
-                        Users = UserManager.Users
-                            // to do exclude default admin user
-                            .Select(u => new UserViewModel() { Id = u.Id, Username = u.UserName, Email = u.Email })
-                            .Skip(startIndex)
-                            .Take(length)
-                            .ToList()
+                        Users = this.GetUsers(startIndex, Length)
                     };
                 });
 
@@ -168,7 +168,10 @@ namespace Medic.App.Controllers
         {
             try
             {
-                //to do exclude the default admin user
+                if (string.Equals(username, DefaultAdministratorName))
+                {
+                    return RedirectToAction(nameof(AdministratorController.Index), GetName(nameof(AdministratorController)), new { page });
+                }
 
                 IdentityUser user = UserManager.Users.FirstOrDefault(u => EF.Functions.Like(u.UserName, username));
 
@@ -178,8 +181,22 @@ namespace Medic.App.Controllers
 
                     if (!deleteResult.Succeeded)
                     {
-                        // to do change
-                        return RedirectToAction(nameof(AdministratorController.Index), GetName(nameof(AdministratorController)), new { page });
+                        int totalCount = UserManager.Users.Count();
+                        int startIndex = base.GetStartIndex(Length, page);
+
+                        AdministratorPageIndexModel pageModel = new AdministratorPageIndexModel()
+                        {
+                            Title = MedicDataLocalization.Administrator,
+                            Error = string.Join(MedicConstants.IdentityErrorSeparator, deleteResult.Errors.Select(dr => dr.Description)),
+                            Description = default,
+                            Keywords = default,
+                            CurrentPage = page,
+                            TotalPages = base.TotalPages(Length, totalCount),
+                            TotalResults = totalCount,
+                            Users = GetUsers(startIndex, Length)
+                        };
+
+                        return View("~/Views/Administration/Index.cshtml", pageModel);
                     }
                 }
 
@@ -199,5 +216,13 @@ namespace Medic.App.Controllers
                 throw;
             }
         }
+
+        private List<UserViewModel> GetUsers(int startIndex, int length) =>
+            UserManager.Users
+                .Where(u => !EF.Functions.Like(u.UserName, DefaultAdministratorName))
+                .Select(u => new UserViewModel() { Id = u.Id, Username = u.UserName, Email = u.Email })
+                .Skip(startIndex)
+                .Take(length)
+                .ToList();
     }
 }

@@ -3,7 +3,7 @@
 @inject MedicDataLocalization medicDataLocalization
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[Constants.Title] = Model.Title;
 }
 
 @if (Model.Patient != default)
@@ -13,8 +13,8 @@
             @{
                 string name = $"{Model.Patient.FirstName} {Model.Patient.SecondName} {Model.Patient.LastName}".Replace("  ", " ");
             }
-            <h2 class="text-center">@(string.IsNullOrWhiteSpace(name) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : name)</h2>
-            <h4 class="text-center text-info">@Model.Keywords</h4>
+            <h2 class="text-center">@(string.IsNullOrWhiteSpace(name) ? Html.Raw(patientLocalization.Get(PatientLocalization.NotSpecified)).ToString() : Html.Raw(name).ToString())</h2>
+            <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
             <section class="text-right">
                 <a asp-controller="@PatientController.GetName(nameof(PatientController))"
                    asp-action="@nameof(PatientController.Xml)"
@@ -36,24 +36,24 @@
             <div>
                 <div class="row">
                     <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get(PatientLocalization.BirthDate))</div>
-                    <div class="col-sm-10">@Model.Patient.BirthDate.ToShortDateString()</div>
+                    <div class="col-sm-10">@Html.Raw(Model.Patient.BirthDate.ToShortDateString())</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get(PatientLocalization.IdentityNumber))</div>
-                    <div class="col-sm-10">@Model.Patient.IdentityNumber</div>
+                    <div class="col-sm-10">@Html.Raw(Model.Patient.IdentityNumber)</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get(PatientLocalization.Address))</div>
-                    <div class="col-sm-10">@Model.Patient.Address</div>
+                    <div class="col-sm-10">@Html.Raw(Model.Patient.Address)</div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get(PatientLocalization.Sex))</div>
-                    <div class="col-sm-10">@Model.Patient.Sex</div>
+                    <div class="col-sm-10">@Html.Raw(Model.Patient.Sex)</div>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-sm-2 font-weight-bold">@Html.Raw(patientLocalization.Get(PatientLocalization.Notes))</div>
-                    <div class="col-sm-10"><p>@(Model.Patient.Notes ?? Html.Raw(patientLocalization.Get(PatientLocalization.NoResults)).ToString())</p></div>
+                    <div class="col-sm-10"><p>@Html.Raw(Model.Patient.Notes ?? Html.Raw(patientLocalization.Get(PatientLocalization.NoResults)).ToString())</p></div>
                 </div>
             </div>
         </header>
@@ -75,9 +75,9 @@
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentIn.EntryDate.ToString("g")</div>
-                            <div class="col-sm-2">@(currentIn.SendDiagnoses.Count > 0 ? currentIn.SendDiagnoses[0].Code : default)</div>
-                            <div class="col-sm-6">@(currentIn.SendDiagnoses.Count > 0 ? currentIn.SendDiagnoses[0].Name : default)</div>
+                            <div class="col-sm-2">@Html.Raw(currentIn.EntryDate.ToString("g"))</div>
+                            <div class="col-sm-2">@Html.Raw((currentIn.SendDiagnoses.Count > 0 ? currentIn.SendDiagnoses[0].Code : default))</div>
+                            <div class="col-sm-6">@Html.Raw((currentIn.SendDiagnoses.Count > 0 ? currentIn.SendDiagnoses[0].Name : default))</div>
                             <div class="col-sm-2">
                                 <a asp-controller="@MedicBaseController.GetName(nameof(InController))"
                                    asp-action="@nameof(InController.In)"
@@ -109,9 +109,9 @@
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@(currentProcedure.PlanVisitDate != default ? ((DateTime)currentProcedure.PlanVisitDate).ToString("g") : default)</div>
-                            <div class="col-sm-2">@currentProcedure.MKBCode</div>
-                            <div class="col-sm-6">@currentProcedure.MKBName</div>
+                            <div class="col-sm-2">@Html.Raw((currentProcedure.PlanVisitDate != default ? ((DateTime)currentProcedure.PlanVisitDate).ToString("g") : default))</div>
+                            <div class="col-sm-2">@Html.Raw(currentProcedure.MKBCode)</div>
+                            <div class="col-sm-6">@Html.Raw(currentProcedure.MKBName)</div>
                             <div class="col-sm-2">
                                 <a asp-controller="@MedicBaseController.GetName(nameof(InClinicProcedureController))"
                                    asp-action="@nameof(InClinicProcedureController.InClinicProcedure)"
@@ -143,9 +143,9 @@
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentOut.OutDate.ToString("g")</div>
-                            <div class="col-sm-2">@currentOut.MKBCode</div>
-                            <div class="col-sm-6">@currentOut.MKBName</div>
+                            <div class="col-sm-2">@Html.Raw(currentOut.OutDate.ToString("g"))</div>
+                            <div class="col-sm-2">@Html.Raw(currentOut.MKBCode)</div>
+                            <div class="col-sm-6">@Html.Raw(currentOut.MKBName)</div>
                             <div class="col-sm-2">
                                 <a asp-controller="@MedicBaseController.GetName(nameof(OutController))"
                                    asp-action="@nameof(OutController.Out)"
@@ -177,9 +177,9 @@
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentPathProcedure.DateSend.ToString("g")</div>
-                            <div class="col-sm-2">@currentPathProcedure.MKBCode</div>
-                            <div class="col-sm-6">@currentPathProcedure.MKBName</div>
+                            <div class="col-sm-2">@Html.Raw(currentPathProcedure.DateSend.ToString("g"))</div>
+                            <div class="col-sm-2">@Html.Raw(currentPathProcedure.MKBCode)</div>
+                            <div class="col-sm-6">@Html.Raw(currentPathProcedure.MKBName)</div>
                             <div class="col-sm-2">
                                 <a asp-controller="@MedicBaseController.GetName(nameof(PathProcedureController))"
                                    asp-action="@nameof(PathProcedureController.PathProcedure)"
@@ -211,9 +211,9 @@
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentProtocolDrugTherapy.ProtocolDate.ToString("g")</div>
-                            <div class="col-sm-2">@currentProtocolDrugTherapy.MKBCode</div>
-                            <div class="col-sm-6">@currentProtocolDrugTherapy.MKBName</div>
+                            <div class="col-sm-2">@Html.Raw(currentProtocolDrugTherapy.ProtocolDate.ToString("g"))</div>
+                            <div class="col-sm-2">@Html.Raw(currentProtocolDrugTherapy.MKBCode)</div>
+                            <div class="col-sm-6">@Html.Raw(currentProtocolDrugTherapy.MKBName)</div>
                             <div class="col-sm-2">
                                 <a asp-controller="@MedicBaseController.GetName(nameof(ProtocolDrugTherapyController))"
                                    asp-action="@nameof(ProtocolDrugTherapyController.ProtocolDrugTherapy)"
@@ -245,9 +245,9 @@
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentCommissionApr.DecisionDate.ToString("g")</div>
-                            <div class="col-sm-2">@currentCommissionApr.MKBCode</div>
-                            <div class="col-sm-6">@currentCommissionApr.MKBName</div>
+                            <div class="col-sm-2">@Html.Raw(currentCommissionApr.DecisionDate.ToString("g"))</div>
+                            <div class="col-sm-2">@Html.Raw(currentCommissionApr.MKBCode)</div>
+                            <div class="col-sm-6">@Html.Raw(currentCommissionApr.MKBName)</div>
                             <div class="col-sm-2">
                                 <a asp-controller="@MedicBaseController.GetName(nameof(CommissionAprController))"
                                    asp-action="@nameof(CommissionAprController.CommissionApr)"
@@ -279,9 +279,9 @@
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentDispObservation.DispDate.ToString("g")</div>
-                            <div class="col-sm-2">@currentDispObservation.MKBCode</div>
-                            <div class="col-sm-6">@currentDispObservation.MKBName</div>
+                            <div class="col-sm-2">@Html.Raw(currentDispObservation.DispDate.ToString("g"))</div>
+                            <div class="col-sm-2">@Html.Raw(currentDispObservation.MKBCode)</div>
+                            <div class="col-sm-6">@Html.Raw(currentDispObservation.MKBName)</div>
                             <div class="col-sm-2">
                                 <a asp-controller="@MedicBaseController.GetName(nameof(DispObservationController))"
                                    asp-action="@nameof(DispObservationController.DispObservation)"
@@ -313,9 +313,9 @@
                     {
                         <hr />
                         <div class="row">
-                            <div class="col-sm-2">@currentPlanned.ExaminationDate.ToString("g")</div>
-                            <div class="col-sm-2">@(currentPlanned.Diagnoses.Count > 0 ? currentPlanned.Diagnoses[0].Code : default)</div>
-                            <div class="col-sm-6">@(currentPlanned.Diagnoses.Count > 0 ? currentPlanned.Diagnoses[0].Name : default)</div>
+                            <div class="col-sm-2">@Html.Raw(currentPlanned.ExaminationDate.ToString("g"))</div>
+                            <div class="col-sm-2">@Html.Raw(currentPlanned.Diagnoses.Count > 0 ? currentPlanned.Diagnoses[0].Code : default)</div>
+                            <div class="col-sm-6">@Html.Raw(currentPlanned.Diagnoses.Count > 0 ? currentPlanned.Diagnoses[0].Name : default)</div>
                             <div class="col-sm-2">
                                 <a asp-controller="@MedicBaseController.GetName(nameof(PlannedController))"
                                    asp-action="@nameof(PlannedController.Planned)"

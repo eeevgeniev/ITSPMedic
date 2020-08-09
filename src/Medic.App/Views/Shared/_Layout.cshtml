@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
+    <title>@ViewData[Constants.Title]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <environment names="Development">
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="false" />
@@ -18,7 +18,9 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@generalLocalization.Get("SiteTile")</a>
+                <a class="navbar-brand"
+                   asp-controller="Home" 
+                   asp-action="Index">@Html.Raw(generalLocalization.Get(GeneralLocalization.SiteTile))</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,41 +28,43 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Index)">@generalLocalization.Get("Home")</a>
+                            <a class="nav-link text-dark"
+                               asp-controller="@MedicBaseController.GetName(nameof(HomeController))"
+                               asp-action="@nameof(HomeController.Index)">Html.Raw(@Html.Raw(generalLocalization.Get(GeneralLocalization.Home)))</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                                href="#" role="button"
-                               aria-haspopup="true" aria-expanded="false">@generalLocalization.Get("Search")</a>
+                               aria-haspopup="true" aria-expanded="false">@Html.Raw(generalLocalization.Get(GeneralLocalization.Search))</a>
                             <div class="dropdown-menu">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(OutController))" asp-action="@nameof(OutController.Index)">@generalLocalization.Get("Outs")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(InController))" asp-action="@nameof(InController.Index)">@generalLocalization.Get("Ins")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(ProtocolDrugTherapyController))" asp-action="@nameof(ProtocolDrugTherapyController.Index)">@generalLocalization.Get("ProtocolDrugTherapies")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(InClinicProcedureController))" asp-action="@nameof(InClinicProcedureController.Index)">@generalLocalization.Get("InClinicProcedures")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PathProcedureController))" asp-action="@nameof(PathProcedureController.Index)">@generalLocalization.Get("PathProcedures")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(CommissionAprController))" asp-action="@nameof(CommissionAprController.Index)">@generalLocalization.Get("CommissionAprs")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(DispObservationController))" asp-action="@nameof(DispObservationController.Index)">@generalLocalization.Get("DispObservations")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PlannedController))" asp-action="@nameof(PlannedController.Index)">@generalLocalization.Get("Plannings")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(PatientController))" asp-action="@nameof(PatientController.Index)">@generalLocalization.Get("Patients")</a>
+                                <a class="nav-link text-dark" asp-controller="@MedicBaseController.GetName(nameof(OutController))" asp-action="@nameof(OutController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.Outs))</a>
+                                <a class="nav-link text-dark" asp-controller="@MedicBaseController.GetName(nameof(InController))" asp-action="@nameof(InController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.Ins))</a>
+                                <a class="nav-link text-dark" asp-controller="@MedicBaseController.GetName(nameof(ProtocolDrugTherapyController))" asp-action="@nameof(ProtocolDrugTherapyController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.ProtocolDrugTherapies))</a>
+                                <a class="nav-link text-dark" asp-controller="@MedicBaseController.GetName(nameof(InClinicProcedureController))" asp-action="@nameof(InClinicProcedureController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.InClinicProcedures))</a>
+                                <a class="nav-link text-dark" asp-controller="@MedicBaseController.GetName(nameof(PathProcedureController))" asp-action="@nameof(PathProcedureController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.PathProcedures))</a>
+                                <a class="nav-link text-dark" asp-controller="@MedicBaseController.GetName(nameof(CommissionAprController))" asp-action="@nameof(CommissionAprController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.CommissionAprs))</a>
+                                <a class="nav-link text-dark" asp-controller="@MedicBaseController.GetName(nameof(DispObservationController))" asp-action="@nameof(DispObservationController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.DispObservations))</a>
+                                <a class="nav-link text-dark" asp-controller="@MedicBaseController.GetName(nameof(PlannedController))" asp-action="@nameof(PlannedController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.Plannings))</a>
+                                <a class="nav-link text-dark" asp-controller="@MedicBaseController.GetName(nameof(PatientController))" asp-action="@nameof(PatientController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.Patients))</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                                href="#" role="button"
-                               aria-haspopup="true" aria-expanded="false">@generalLocalization.Get("Inquires")</a>
+                               aria-haspopup="true" aria-expanded="false">@Html.Raw(generalLocalization.Get(GeneralLocalization.Inquires))</a>
                             <div class="dropdown-menu">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diags)">@generalLocalization.Get("DiagsSummary")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diagnoses)">@generalLocalization.Get("DiagnosesSummary")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.UsedDrugs)">@generalLocalization.Get("UsedDrugs")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diags)">@Html.Raw(generalLocalization.Get(GeneralLocalization.DiagsSummary))</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.Diagnoses)">@Html.Raw(generalLocalization.Get(GeneralLocalization.DiagnosesSummary))</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.UsedDrugs)">@Html.Raw(generalLocalization.Get(GeneralLocalization.UsedDrugs))</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                                href="#" role="button"
-                               aria-haspopup="true" aria-expanded="false">@generalLocalization.Get("UploadFiles")</a>
+                               aria-haspopup="true" aria-expanded="false">@Html.Raw(generalLocalization.Get(GeneralLocalization.UploadFiles))</a>
                             <div class="dropdown-menu">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.CPFile)">@generalLocalization.Get("CPFile")</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.HospitalPractice)">@generalLocalization.Get("HospitalPracticeFile")</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.CPFile)">@Html.Raw(generalLocalization.Get(GeneralLocalization.CPFile))</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.HospitalPractice)">@Html.Raw(generalLocalization.Get(GeneralLocalization.HospitalPracticeFile))</a>
                             </div>
                         </li>
                     </ul>
@@ -78,7 +82,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - @(generalLocalization.Get("SiteTile")) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - @(Html.Raw(generalLocalization.Get(GeneralLocalization.SiteTile))) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <environment names="Development">
