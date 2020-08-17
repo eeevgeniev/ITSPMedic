@@ -40,7 +40,7 @@ namespace Medic.Entities
 
         public int? SendPackageType { get; set; }
 
-        public double SendClinicalPath { get; set; }
+        public double? SendClinicalPath { get; set; }
 
         public int? SendAPr { get; set; }
 
@@ -48,7 +48,7 @@ namespace Medic.Entities
 
         public DateTime ExaminationDate { get; set; }
 
-        public DateTime PlannedEntryDate { get; set; }
+        public DateTime? PlannedEntryDate { get; set; }
 
         public int PlannedNumber { get; set; }
 
@@ -58,7 +58,7 @@ namespace Medic.Entities
 
         public int? PackageType { get; set; }
 
-        public double ClinicalPath { get; set; }
+        public double? ClinicalPath { get; set; }
 
         public int? InAPr { get; set; }
 
@@ -68,9 +68,9 @@ namespace Medic.Entities
 
         public DateTime EntryDate { get; set; }
 
-        public int Severity { get; set; }
+        public int? Severity { get; set; }
 
-        public int Delay { get; set; }
+        public int? Delay { get; set; }
 
         public int Payer { get; set; }
 

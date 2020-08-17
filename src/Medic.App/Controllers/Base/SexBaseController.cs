@@ -9,25 +9,22 @@ using System.Threading.Tasks;
 
 namespace Medic.App.Controllers.Base
 {
-    public abstract class SexBaseController : PageBasedController
+    public abstract class SexBaseController : FormatterBaseController
     {
         private readonly IPatientService _patientService;
         private readonly ICacheable _medicCache;
-        private readonly MedicDataLocalization _medicDataLocalization;
 
         public SexBaseController(IPatientService patientService, ICacheable medicCache, MedicDataLocalization medicDataLocalization)
+            : base (medicDataLocalization)
         {
             _patientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
             _medicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
-            _medicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
         }
 
         protected IPatientService PatientService => _patientService;
         
         protected ICacheable MedicCache => _medicCache;
         
-        protected MedicDataLocalization MedicDataLocalization => _medicDataLocalization;
-
         protected virtual async Task<List<SexOption>> GetSexesAsync()
         {
             if (!MedicCache.TryGetValue(MedicConstants.SexKeyName, out List<SexOption> sexes))

@@ -15,7 +15,7 @@ namespace Medic.Models.CP
         private DateTime _entryDate;
         private DateTime _outDate;
         private DateTime? _hLDateFrom;
-        private DateTime _plannedEntryDate;
+        private DateTime? _plannedEntryDate;
 
         [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
@@ -62,7 +62,7 @@ namespace Medic.Models.CP
         public int? SendPackageType { get; set; }
 
         [XmlElement(ElementName = "sendClinicalPath")]
-        public double SendClinicalPath { get; set; }
+        public double? SendClinicalPath { get; set; }
 
         [XmlElement(ElementName = "sendAPr")]
         public int? SendAPr { get; set; }
@@ -91,7 +91,7 @@ namespace Medic.Models.CP
         }
 
         [XmlIgnore]
-        public DateTime PlannedEntryDate
+        public DateTime? PlannedEntryDate
         {
             get { return _plannedEntryDate; }
             set { _plannedEntryDate = value; }
@@ -102,7 +102,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                return _plannedEntryDate == default ? default : _plannedEntryDate.ToString(DateFormat);
+                return _plannedEntryDate == default ? default : ((DateTime)_plannedEntryDate).ToString(DateFormat);
             }
             set
             {
@@ -123,7 +123,7 @@ namespace Medic.Models.CP
         public int? PackageType { get; set; }
 
         [XmlElement(ElementName = "clinicalPath")]
-        public double ClinicalPath { get; set; }
+        public double? ClinicalPath { get; set; }
 
         [XmlElement(ElementName = "InAPr")]
         public int? InAPr { get; set; }
@@ -155,10 +155,10 @@ namespace Medic.Models.CP
         }
 
         [XmlElement(ElementName = "severity")]
-        public int Severity { get; set; }
+        public int? Severity { get; set; }
 
         [XmlElement(ElementName = "delay")]
-        public int Delay { get; set; }
+        public int? Delay { get; set; }
 
         [XmlElement(ElementName = "payer")]
         public int Payer { get; set; }

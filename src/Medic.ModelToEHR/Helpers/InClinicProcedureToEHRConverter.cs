@@ -9,7 +9,7 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class InClinicProcedureToEHRConverter : ToEHRBaseConverter
     {
-        public InClinicProcedureToEHRConverter(IEHRManager ehrManager) 
+        internal InClinicProcedureToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) { }
 
         internal ReferenceModel Convert(InClinicProcedureViewModel model, string name)

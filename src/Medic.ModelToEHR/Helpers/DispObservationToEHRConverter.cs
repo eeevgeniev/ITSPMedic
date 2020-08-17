@@ -10,7 +10,7 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class DispObservationToEHRConverter : ToEHRBaseConverter
     {
-        public DispObservationToEHRConverter(IEHRManager ehrManager) 
+        internal DispObservationToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) {}
 
         internal ReferenceModel Convert(DispObservationViewModel model, string name)

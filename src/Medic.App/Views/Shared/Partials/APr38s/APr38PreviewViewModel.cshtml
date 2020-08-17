@@ -15,7 +15,7 @@
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Therapy)): @Html.Raw(Model.Therapy)</div>
         </div>
         <h6 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Decision))</h6>
-        <partial name="~/Views/Shared/Partials/Evaluations/EvaluationPreviewViewModel.cshtml" model="@Html.Raw(Model.Decision)" />
+        <partial name="~/Views/Shared/Partials/Evaluations/EvaluationPreviewViewModel.cshtml" model="@Model.Decision" />
     </div>
 }
 else

@@ -34,10 +34,10 @@ namespace Medic.AppModels.Ins
         public int SendUrgency { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendApr)]
-        public int? SendApr { get; set; }
+        public int? SendAPr { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendClinicalPath)]
-        public string SendClinicalPath { get; set; }
+        public double? SendClinicalPath { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.UniqueIdentifier)]
         public string UniqueIdentifier { get; set; }
@@ -53,11 +53,17 @@ namespace Medic.AppModels.Ins
         [Display(Name = MedicDataAnnotationLocalizerProvider.Urgency)]
         public int Urgency { get; set; }
 
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PackageType)]
+        public int? PackageType { get; set; }
+
         [Display(Name = MedicDataAnnotationLocalizerProvider.InApr)]
-        public int? InApr { get; set; }
+        public int? InAPr { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.ClinicalPath)]
-        public string ClinicalPath { get; set; }
+        public double? ClinicalPath { get; set; }
+
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendPackageType)]
+        public int? SendPackageType { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.NZOKPay)]
         public int NZOKPay { get; set; }

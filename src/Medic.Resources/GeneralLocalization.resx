@@ -120,6 +120,12 @@
   <data name="AccessDenied" xml:space="preserve">
     <value>Access denied</value>
   </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
   <data name="Bg" xml:space="preserve">
     <value>Bg</value>
   </data>
@@ -165,6 +171,9 @@
   <data name="InvalidTry" xml:space="preserve">
     <value>Invalid password or username.</value>
   </data>
+  <data name="InvalidUser" xml:space="preserve">
+    <value>Invalid user</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
@@ -191,6 +200,9 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PasswordUpdateError" xml:space="preserve">
+    <value>There was an error, password is not changed</value>
   </data>
   <data name="PathProcedures" xml:space="preserve">
     <value>Path procedures</value>
@@ -230,6 +242,9 @@
   </data>
   <data name="UsedDrugs" xml:space="preserve">
     <value>Used drugs</value>
+  </data>
+  <data name="UserManagement" xml:space="preserve">
+    <value>User management</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>

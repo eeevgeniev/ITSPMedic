@@ -267,15 +267,21 @@ namespace Medic.Resources
         public const string OutDiagnoses  = nameof(OutDiagnoses);
         public const string UsedDrugCodes = nameof(UsedDrugCodes);
         public const string DiagnoseName = nameof(DiagnoseName);
-
-        public const string UserName = nameof(UserName);
-        public const string RequiredUserName = nameof(RequiredUserName);
         public const string Email = nameof(Email);
         public const string RequiredEmail = nameof(RequiredEmail);
         public const string ConfirmPassword = nameof(ConfirmPassword);
         public const string RequiredConfirmPassword = nameof(RequiredConfirmPassword);
         public const string ComparePasswords = nameof(ComparePasswords);
         public const string IsAdministrator = nameof(IsAdministrator);
+        public const string CurrentPassword = nameof(CurrentPassword);
+        public const string RequiredCurrentPassword = nameof(RequiredCurrentPassword);
+        public const string NewPassword = nameof(NewPassword);
+        public const string RequiredNewPassword = nameof(RequiredNewPassword);
+        public const string ConfirmNewPassword = nameof(ConfirmNewPassword);
+        public const string RequiredConfirmNewPassword = nameof(RequiredConfirmNewPassword);
+        public const string CompareConfirmNewPassword = nameof(CompareConfirmNewPassword);
+        public const string PackageType = nameof(PackageType);
+        public const string SendPackageType = nameof(SendPackageType);
 
         public IStringLocalizer Build(IStringLocalizerFactory factory)
         {

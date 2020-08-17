@@ -231,11 +231,17 @@
   <data name="CommissionAprsCount" xml:space="preserve">
     <value>Брой нa комисиите по Амб. проц. 05 и 38 </value>
   </data>
+  <data name="CompareConfirmNewPassword" xml:space="preserve">
+    <value>Новата и потвърждаващата парола не са еднакви</value>
+  </data>
   <data name="ComparePasswords" xml:space="preserve">
     <value>Паролата и потвърдената парола не са еднакви</value>
   </data>
   <data name="Complications" xml:space="preserve">
     <value>Усложнения</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Потвърди новата парола</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Потвърди паролата</value>
@@ -266,6 +272,9 @@
   </data>
   <data name="CPrSend" xml:space="preserve">
     <value>Код клинична процедура при изпращане на пациента</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Текуща парола</value>
   </data>
   <data name="CycleCount" xml:space="preserve">
     <value>Доза за цикъл</value>
@@ -386,6 +395,9 @@
   </data>
   <data name="ECOG" xml:space="preserve">
     <value>ECOG</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Електронна поща</value>
   </data>
   <data name="EndCourse" xml:space="preserve">
     <value>End course</value>
@@ -576,6 +588,9 @@
   <data name="NameHS" xml:space="preserve">
     <value>Име хистология</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Нова парола</value>
+  </data>
   <data name="NoDecision" xml:space="preserve">
     <value>Номер решение на комисията</value>
   </data>
@@ -659,6 +674,9 @@
   </data>
   <data name="OutUniqueIdentifier" xml:space="preserve">
     <value>Уникален номер при изписване</value>
+  </data>
+  <data name="PackageType" xml:space="preserve">
+    <value>Тип на пакета</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Парола</value>
@@ -759,11 +777,20 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Запомни ме</value>
   </data>
+  <data name="RequiredConfirmNewPassword" xml:space="preserve">
+    <value>Потвърди новата парола е задължителна</value>
+  </data>
   <data name="RequiredConfirmPassword" xml:space="preserve">
     <value>Потвърждението на потвърди паролата е задължително</value>
   </data>
+  <data name="RequiredCurrentPassword" xml:space="preserve">
+    <value>Текущата парала е задължителна</value>
+  </data>
   <data name="RequiredEmail" xml:space="preserve">
     <value>Електронната поща е задължителна</value>
+  </data>
+  <data name="RequiredNewPassword" xml:space="preserve">
+    <value>Новата парола е задължителна</value>
   </data>
   <data name="RequiredPassword" xml:space="preserve">
     <value>Паролата е задължителна.</value>
@@ -812,6 +839,9 @@
   </data>
   <data name="SendDignoseCode" xml:space="preserve">
     <value>Код на изпратената диагноза</value>
+  </data>
+  <data name="SendPackageType" xml:space="preserve">
+    <value>Тип на изпратения пакет</value>
   </data>
   <data name="SendUrgency" xml:space="preserve">
     <value>Спешност на изпращането</value>

@@ -2,6 +2,8 @@
 
 @model FileUploadPageHospitalPractice
 
+@inject MedicDataLocalization medicDataLocalization;
+
 @{
     ViewData[Constants.Title] = Model.Title;
 }
@@ -21,8 +23,8 @@
         <form asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.HospitalPractice)"
               method="post" enctype="multipart/form-data"
               asp-antiforgery="true">
-            <input class="btn" type="file" id="HopsitalPracticeFormFile" name="HopsitalPracticeFormFile" />
-            <input class="btn btn-primary" type="submit" value="Sumbit" />
+            <input class="btn" type="file" id="HopsitalPracticeFormFile" name="HopsitalPracticeFormFile" value="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Browse))" />
+            <input class="btn btn-primary" type="submit" @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Upload)) />
         </form>
     </article>
 </div>

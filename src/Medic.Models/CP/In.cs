@@ -15,6 +15,7 @@ namespace Medic.Models.CP
         private DateTime _entryDate;
         private DateTime? _plannedEntryDate;
 
+        [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
 
         [XmlElement(ElementName = "patientBranch")]
@@ -59,10 +60,10 @@ namespace Medic.Models.CP
         public int? SendPackageType { get; set; }
 
         [XmlElement(ElementName = "sendAPr")]
-        public int? SendApr { get; set; }
+        public int? SendAPr { get; set; }
 
         [XmlElement(ElementName = "sendClinicalPath")]
-        public string SendClinicalPath { get; set; }
+        public double? SendClinicalPath { get; set; }
 
         [XmlElement(ElementName = "uin")]
         public string UniqueIdentifier { get; set; }
@@ -120,10 +121,10 @@ namespace Medic.Models.CP
         public int? PackageType { get; set; }
 
         [XmlElement(ElementName = "InAPr")]
-        public int? InApr { get; set; }
+        public int? InAPr { get; set; }
 
         [XmlElement(ElementName = "clinicalPath")]
-        public string ClinicalPath { get; set; }
+        public double? ClinicalPath { get; set; }
 
         [XmlElement(ElementName = "NZOKPay")]
         public int NZOKPay { get; set; }

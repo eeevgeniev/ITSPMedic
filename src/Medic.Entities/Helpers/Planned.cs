@@ -35,7 +35,8 @@ namespace Medic.Entities
 
             expression.CreateMap<Planned, PlannedViewModel>()
                 .ForMember(ppvm => ppvm.PatientBranch, config => config.MapFrom(pp => pp.PatientBranch != default && pp.PatientBranch.HealthRegion != default ? pp.PatientBranch.HealthRegion.Name : default))
-                .ForMember(ppvm => ppvm.PatientHRegion, config => config.MapFrom(pp => pp.PatientHRegion != default ? pp.PatientHRegion.Name : default));
+                .ForMember(ppvm => ppvm.PatientHRegion, config => config.MapFrom(pp => pp.PatientHRegion != default ? pp.PatientHRegion.Name : default))
+                .ForMember(ppvm => ppvm.CPFile, config => config.MapFrom(pp => pp.CPFile != default && pp.CPFile.FileType != default ? pp.CPFile.FileType.Name : default));
 
             expression.CreateMap<Planned, PlannedPreviewViewModel>();
         }

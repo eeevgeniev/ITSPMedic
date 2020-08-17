@@ -1,5 +1,6 @@
 ﻿using Medic.App.Controllers.Base;
 using Medic.App.Models.Account;
+using Medic.App.Models.Users.Models;
 using Medic.IdentityModels;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
@@ -104,6 +105,79 @@ namespace Medic.App.Controllers
                 await SignInManager.SignOutAsync();
 
                 return RedirectToAction(nameof(HomeController.Index), GetControllerName(nameof(HomeController)));
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Password() => View(new AccountPagePasswordModel
+        {
+            Title = GeneralLocalization.Get(GeneralLocalization.Password),
+            Description = GeneralLocalization.Get(GeneralLocalization.Password),
+            Keywords = GeneralLocalization.Get(GeneralLocalization.Password),
+            ChangePassword = new ChangePassword()
+        });
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Password(ChangePassword model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(new AccountPagePasswordModel
+                    {
+                        Title = GeneralLocalization.Get(GeneralLocalization.Password),
+                        Description = GeneralLocalization.Get(GeneralLocalization.Password),
+                        Keywords = GeneralLocalization.Get(GeneralLocalization.Password),
+                        ChangePassword = model
+                    });
+                }
+
+                IdentityUser user = await UserManager.GetUserAsync(this.HttpContext.User);
+
+                if (user == default)
+                {
+                    ModelState.AddModelError(string.Empty, GeneralLocalization.Get(GeneralLocalization.InvalidUser));
+
+                    return View(new AccountPagePasswordModel
+                    {
+                        Title = GeneralLocalization.Get(GeneralLocalization.Password),
+                        Description = GeneralLocalization.Get(GeneralLocalization.Password),
+                        Keywords = GeneralLocalization.Get(GeneralLocalization.Password),
+                        ChangePassword = model
+                    });
+                }
+
+                IdentityResult passwordResult = await UserManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+
+                if (!passwordResult.Succeeded)
+                {
+                    ModelState.AddModelError(string.Empty, GeneralLocalization.Get(GeneralLocalization.PasswordUpdateError));
+
+                    return View(new AccountPagePasswordModel
+                    {
+                        Title = GeneralLocalization.Get(GeneralLocalization.Password),
+                        Description = GeneralLocalization.Get(GeneralLocalization.Password),
+                        Keywords = GeneralLocalization.Get(GeneralLocalization.Password),
+                        ChangePassword = model
+                    });
+                }
+
+                return RedirectToAction(nameof(HomeController.Index), AccountController.GetName(nameof(AccountController)));
             }
             catch (Exception ex)
             {

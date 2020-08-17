@@ -13,7 +13,7 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class PathProcedureToEHRConverter : ToEHRBaseConverter
     {
-        public PathProcedureToEHRConverter(IEHRManager ehrManager) 
+        internal PathProcedureToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) {}
 
         internal ReferenceModel Convert(PathProcedureViewModel model, string name)

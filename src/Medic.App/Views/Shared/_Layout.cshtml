@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData[Constants.Title]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="icon" href="~/images/su-logo.ico" asp-append-version="true" />
     <environment names="Development">
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="false" />
     </environment>
@@ -18,9 +19,13 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+
                 <a class="navbar-brand"
-                   asp-controller="Home" 
-                   asp-action="Index">@Html.Raw(generalLocalization.Get(GeneralLocalization.SiteTile))</a>
+                   asp-controller="Home"
+                   asp-action="Index">
+                    <img src="~/images/su-logo.png" asp-append-version="true" class="d-inline-block align-top navbar-brand-image">
+                    @Html.Raw(generalLocalization.Get(GeneralLocalization.SiteTile))
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,7 +35,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark"
                                asp-controller="@MedicBaseController.GetName(nameof(HomeController))"
-                               asp-action="@nameof(HomeController.Index)">Html.Raw(@Html.Raw(generalLocalization.Get(GeneralLocalization.Home)))</a>
+                               asp-action="@nameof(HomeController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.Home))</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -58,15 +63,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(HomeController))" asp-action="@nameof(HomeController.UsedDrugs)">@Html.Raw(generalLocalization.Get(GeneralLocalization.UsedDrugs))</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown"
-                               href="#" role="button"
-                               aria-haspopup="true" aria-expanded="false">@Html.Raw(generalLocalization.Get(GeneralLocalization.UploadFiles))</a>
-                            <div class="dropdown-menu">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.CPFile)">@Html.Raw(generalLocalization.Get(GeneralLocalization.CPFile))</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.HospitalPractice)">@Html.Raw(generalLocalization.Get(GeneralLocalization.HospitalPracticeFile))</a>
-                            </div>
-                        </li>
+                        <vc:administrator></vc:administrator>
                     </ul>
                 </div>
                 <vc:user-management></vc:user-management>
@@ -74,15 +71,18 @@
             </div>
         </nav>
     </header>
-    <div class="m-sm-5">
+    <div class="m-lg-5">
+        <div class="text-left">
+            <img src="~/images/su-logo.png" asp-append-version="true">
+            <img src="~/images/fmi-logo-bg.png" asp-append-version="true" />
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - @(Html.Raw(generalLocalization.Get(GeneralLocalization.SiteTile))) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - @(Html.Raw(generalLocalization.Get(GeneralLocalization.SiteTile))) - <a asp-area="" asp-controller="Home" asp-action="Privacy">@Html.Raw(generalLocalization.Get(GeneralLocalization.Privacy))</a>
         </div>
     </footer>
     <environment names="Development">
@@ -91,8 +91,8 @@
         <script src="~/js/site.js" asp-append-version="false"></script>
     </environment>
     <environment names="Production">
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
         <script src="~/bundle/bundle.min.js" asp-append-version="true"></script>
     </environment>
     @RenderSection("Scripts", required: false)

@@ -2,7 +2,9 @@
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Medic.Formatters.Contracts;
+using Medic.Resources.Contracts;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -20,13 +22,15 @@ namespace Medic.Formatters.Implementors
         private readonly SheetData SheetData;
         private readonly Sheets Sheets;
 
-        private Stream _stream;
+        private readonly Stream Stream;
+        private readonly ILocalizationService Localization;
 
         private uint _sheetId = 1;
 
-        public ExcelFormatter(Stream stream)
+        public ExcelFormatter(Stream stream, ILocalizationService localization)
         {
-            _stream = stream ?? throw new ArgumentNullException(nameof(stream));
+            Stream = stream ?? throw new ArgumentNullException(nameof(stream));
+            Localization = localization ?? throw new ArgumentNullException(nameof(localization));
 
             _spreadsheetDocument = SpreadsheetDocument.Create(stream, SpreadsheetDocumentType.Workbook);
 
@@ -76,13 +80,15 @@ namespace Medic.Formatters.Implementors
                     headerRow.AppendChild(new Cell()
                     {
                         DataType = CellValues.String,
-                        CellValue = new CellValue(property.Name)
+                        CellValue = new CellValue(Localization.Get(property.Name))
                     });
                 }
 
                 SheetData.AppendChild(headerRow);
 
                 WorkbookPart.Workbook.Save();
+
+                Type stringType = typeof(string);
 
                 foreach (T value in model)
                 {
@@ -92,12 +98,27 @@ namespace Medic.Formatters.Implementors
                     {
                         object propertyValue = property.GetValue(value);
 
+                        if (propertyValue is IEnumerable enumerable && propertyValue.GetType() != stringType)
+                        {
+                            string tempResult = string.Empty;
+
+                            foreach (object childResult in enumerable)
+                            {
+                                if (childResult != null)
+                                {
+                                    tempResult += $"{childResult}, ";
+                                }
+                            }
+
+                            propertyValue = tempResult.Length > 0 ? tempResult.Substring(0, tempResult.Length - 2) : tempResult;
+                        }
+
                         Cell cell = new Cell()
                         {
                             CellValue = new CellValue(propertyValue?.ToString() ?? string.Empty)
                         };
 
-                        if (propertyValue is long || propertyValue is double || propertyValue is decimal)
+                        if (propertyValue is long || propertyValue is ulong || propertyValue is double || propertyValue is decimal)
                         {
                             cell.DataType = CellValues.Number;
                         }
@@ -141,7 +162,7 @@ namespace Medic.Formatters.Implementors
         {
             _spreadsheetDocument.Close();
 
-            return _stream;
+            return Stream;
         }
     }
 }

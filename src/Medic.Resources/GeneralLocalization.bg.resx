@@ -120,6 +120,12 @@
   <data name="AccessDenied" xml:space="preserve">
     <value>Достъпа е отказан</value>
   </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Администриране</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
   <data name="Bg" xml:space="preserve">
     <value>Бг</value>
   </data>
@@ -165,6 +171,9 @@
   <data name="InvalidTry" xml:space="preserve">
     <value>Невалидна парола или потребителско име.</value>
   </data>
+  <data name="InvalidUser" xml:space="preserve">
+    <value>Невалиден потребител</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Вход</value>
   </data>
@@ -194,6 +203,9 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Парола</value>
+  </data>
+  <data name="PasswordUpdateError" xml:space="preserve">
+    <value>Възникна грешка при обновяване на паролата, тя не е променена</value>
   </data>
   <data name="PathProcedures" xml:space="preserve">
     <value>Извършени дейности по клинични процедури</value>
@@ -233,6 +245,9 @@
   </data>
   <data name="UsedDrugs" xml:space="preserve">
     <value>Използвани лекарства</value>
+  </data>
+  <data name="UserManagement" xml:space="preserve">
+    <value>Управление на потребителите</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Потребителско име</value>

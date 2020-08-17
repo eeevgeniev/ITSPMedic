@@ -12,7 +12,7 @@ namespace Medic.ModelToEHR.Base
     {
         private readonly IEHRManager _ehrManager;
 
-        public ToEHRBaseConverter(IEHRManager ehrManager)
+        internal ToEHRBaseConverter(IEHRManager ehrManager)
         {
             _ehrManager = ehrManager ?? throw new ArgumentNullException(nameof(ehrManager));
         }

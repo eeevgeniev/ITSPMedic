@@ -216,6 +216,9 @@
   <data name="Branch" xml:space="preserve">
     <value>Branch</value>
   </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
   <data name="BSA" xml:space="preserve">
     <value>BSA</value>
   </data>
@@ -561,6 +564,9 @@
   <data name="ICDDrug" xml:space="preserve">
     <value>ICD Drug</value>
   </data>
+  <data name="Id" xml:space="preserve">
+    <value>Identification id</value>
+  </data>
   <data name="IdentityNumber" xml:space="preserve">
     <value>Identity number</value>
   </data>
@@ -762,6 +768,9 @@
   <data name="OutMainDiagnoseCode" xml:space="preserve">
     <value>Out main diagnose code</value>
   </data>
+  <data name="OutMainDiagnoseName" xml:space="preserve">
+    <value>Out main diagnose name</value>
+  </data>
   <data name="OutMedicalWard" xml:space="preserve">
     <value>Out medical ward</value>
   </data>
@@ -785,6 +794,9 @@
   </data>
   <data name="OutView" xml:space="preserve">
     <value>View out </value>
+  </data>
+  <data name="PackageType" xml:space="preserve">
+    <value>Package type</value>
   </data>
   <data name="PathologicFinding" xml:space="preserve">
     <value>Pathologic finding</value>
@@ -812,6 +824,9 @@
   </data>
   <data name="PatientHRegion" xml:space="preserve">
     <value>Patient HRegion</value>
+  </data>
+  <data name="PatientId" xml:space="preserve">
+    <value>Patient identification id</value>
   </data>
   <data name="Patients" xml:space="preserve">
     <value>Patients</value>
@@ -921,6 +936,9 @@
   <data name="Regimen" xml:space="preserve">
     <value>Regimen</value>
   </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
   <data name="Results" xml:space="preserve">
     <value>results</value>
   </data>
@@ -932,6 +950,9 @@
   </data>
   <data name="Scheme" xml:space="preserve">
     <value>Scheme</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="SecondMainDiag" xml:space="preserve">
     <value>Second main diag</value>
@@ -968,6 +989,9 @@
   </data>
   <data name="Sender" xml:space="preserve">
     <value>Sender</value>
+  </data>
+  <data name="SendPackageType" xml:space="preserve">
+    <value>Send package type</value>
   </data>
   <data name="SendUrgency" xml:space="preserve">
     <value>Send urgency</value>
@@ -1049,6 +1073,9 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Upload</value>
   </data>
   <data name="UploadFiles" xml:space="preserve">
     <value>Upload files</value>

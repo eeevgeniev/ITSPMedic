@@ -1,4 +1,5 @@
 ﻿using Medic.Formatters.Contracts;
+using Medic.Formatters.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -42,13 +43,34 @@ namespace Medic.Formatters.Implementors
 
                 Type modelType = model.GetType();
 
-                XmlRootAttribute xmlRootAttribute = modelType.GetCustomAttribute<XmlRootAttribute>();
+                if (!(model is IEnumerable enumerable) || modelType == typeof(string))
+                {
+                    XmlRootAttribute xmlRootAttribute = modelType.GetCustomAttribute<XmlRootAttribute>();
 
-                writer.WriteStartElement(xmlRootAttribute != default ? xmlRootAttribute.ElementName : modelType.Name);
+                    writer.WriteStartElement(xmlRootAttribute != default ? xmlRootAttribute.ElementName : modelType.GetNameWithoutGeneric());
 
-                WritePropertiesToXml(model, writer);
+                    WritePropertiesToXml(model, writer);
+                }
+                else
+                {
+                    writer.WriteStartElement(modelType.GetNameWithoutGeneric());
 
-                writer.WriteEndElement();
+                    foreach (object current in enumerable)
+                    {
+                        Type currentType = current.GetType();
+
+                        XmlRootAttribute xmlRootAttribute = currentType.GetCustomAttribute<XmlRootAttribute>();
+
+                        writer.WriteStartElement(xmlRootAttribute != default ? xmlRootAttribute.ElementName : currentType.GetNameWithoutGeneric());
+
+                        WritePropertiesToXml(current, writer);
+
+                        writer.WriteEndElement();
+                    }
+
+                    writer.WriteEndElement();
+                }
+
                 writer.Flush();
 
                 return stream;

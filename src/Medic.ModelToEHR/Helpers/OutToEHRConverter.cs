@@ -13,7 +13,7 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class OutToEHRConverter : ToEHRBaseConverter
     {
-        internal OutToEHRConverter(IEHRManager ehrManager) 
+        internal OutToEHRConverter(IEHRManager ehrManager)
             : base(ehrManager) { }
 
         internal ReferenceModel Convert(OutViewModel model, string name)
@@ -42,9 +42,6 @@ namespace Medic.ModelToEHR.Helpers
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendUrgency)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.SendUrgency).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendClinicalPath)).Build())
-                    .AddValue(EhrManager.REALBuilder.Clear().AddValue(model.SendClinicalPath).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PlannedNumber)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.PlannedNumber).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
@@ -60,9 +57,6 @@ namespace Medic.ModelToEHR.Helpers
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Urgency)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.Urgency).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.ClinicalPath)).Build())
-                    .AddValue(EhrManager.REALBuilder.Clear().AddValue(model.ClinicalPath).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.NZOKPay)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.NZOKPay).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
@@ -71,9 +65,6 @@ namespace Medic.ModelToEHR.Helpers
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.EntryDate)).Build())
                     .AddValue(EhrManager.DATEBuilder.Clear().AddDate(model.EntryDate).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Severity)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.Severity).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Payer)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.Payer).Build()).Build(),
@@ -106,6 +97,26 @@ namespace Medic.ModelToEHR.Helpers
                     .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.CPFile).Build()).Build()
                 );
 
+            if (model.SendClinicalPath != default)
+            {
+                entryOutBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendClinicalPath)).Build())
+                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.SendClinicalPath).Build())
+                        .Build());
+            }
+
+            if (model.ClinicalPath != default)
+            {
+                entryOutBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.ClinicalPath)).Build())
+                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.ClinicalPath).Build())
+                        .Build());
+            }
+
             if (model.SendAPr != default)
             {
                 entryOutBuilder.AddItems(
@@ -124,6 +135,15 @@ namespace Medic.ModelToEHR.Helpers
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.InAPr)).Build())
                         .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.InAPr).Build())
                         .Build());
+            }
+
+            if (model.Severity != default)
+            {
+                entryOutBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                    .Clear()
+                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Severity)).Build())
+                    .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.Severity).Build()).Build());
             }
 
             if (model.Delay != default)
@@ -286,6 +306,26 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
+            if (model.PackageType != default)
+            {
+                entryOutBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PackageType)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.PackageType).Build())
+                        .Build());
+            }
+
+            if (model.SendPackageType != default)
+            {
+                entryOutBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendPackageType)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.SendPackageType).Build())
+                        .Build());
+            }
+
             ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder
                 .Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
@@ -307,7 +347,7 @@ namespace Medic.ModelToEHR.Helpers
                     .AddMembers(base.CreatePractitionerEntry(model.Sender))
                     .Build());
             }
-            
+
             if (model.SendDiagnoses != default && model.SendDiagnoses.Count > 0)
             {
                 compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear()

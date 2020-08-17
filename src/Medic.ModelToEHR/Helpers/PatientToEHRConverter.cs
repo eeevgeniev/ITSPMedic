@@ -18,7 +18,7 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class PatientToEHRConverter : ToEHRBaseConverter
     {
-        public PatientToEHRConverter(IEHRManager ehrManager)
+        internal PatientToEHRConverter(IEHRManager ehrManager)
             : base(ehrManager) { }
 
         internal ReferenceModel Convert(PatientViewModel model, string name)

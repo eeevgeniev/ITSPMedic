@@ -38,9 +38,6 @@ namespace Medic.ModelToEHR.Helpers
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendUrgency)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.SendUrgency).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendClinicalPath)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.SendClinicalPath).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.UniqueIdentifier)).Build())
                     .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.UniqueIdentifier).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
@@ -52,9 +49,6 @@ namespace Medic.ModelToEHR.Helpers
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Urgency)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.Urgency).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.ClinicalPath)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.ClinicalPath).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.NZOKPay)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.NZOKPay).Build()).Build(),
@@ -75,23 +69,43 @@ namespace Medic.ModelToEHR.Helpers
                     .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.CPFile).Build()).Build()
                 );
 
-            if (model.SendApr != default)
+            if (model.SendClinicalPath != default)
             {
                 entryInsBuilder.AddItems(
                     EhrManager.ElementBuilder
                         .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendApr)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.SendApr).Build())
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendClinicalPath)).Build())
+                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.SendClinicalPath).Build())
                         .Build());
             }
 
-            if (model.InApr != default)
+            if (model.ClinicalPath != default)
             {
                 entryInsBuilder.AddItems(
                     EhrManager.ElementBuilder
                         .Clear()
-                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.InApr)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.InApr).Build())
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.ClinicalPath)).Build())
+                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.ClinicalPath).Build())
+                        .Build());
+            }
+
+            if (model.SendAPr != default)
+            {
+                entryInsBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendAPr)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.SendAPr).Build())
+                        .Build());
+            }
+
+            if (model.InAPr != default)
+            {
+                entryInsBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.InAPr)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.InAPr).Build())
                         .Build());
             }
 
@@ -175,8 +189,27 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder
-                .Clear()
+            if (model.PackageType != default)
+            {
+                entryInsBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PackageType)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.PackageType).Build())
+                        .Build());
+            }
+
+            if (model.SendPackageType != default)
+            {
+                entryInsBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendPackageType)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.SendPackageType).Build())
+                        .Build());
+            }
+
+            ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder.Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
 
             if (model.Patient != default)

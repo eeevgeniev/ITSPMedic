@@ -33,8 +33,14 @@ namespace Medic.AppModels.Plannings
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendUrgency)]
         public int SendUrgency { get; set; }
 
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendPackageType)]
+        public int? SendPackageType { get; set; }
+
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendClinicalPath)]
         public double? SendClinicalPath { get; set; }
+
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendApr)]
+        public int? SendAPr { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.UniqueIdentifier)]
         public string UniqueIdentifier { get; set; }
@@ -43,7 +49,7 @@ namespace Medic.AppModels.Plannings
         public DateTime ExaminationDate { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.PlannedEntryDate)]
-        public DateTime PlannedEntryDate { get; set; }
+        public DateTime? PlannedEntryDate { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.PlannedNumber)]
         public int PlannedNumber { get; set; }
@@ -53,10 +59,19 @@ namespace Medic.AppModels.Plannings
         [Display(Name = MedicDataAnnotationLocalizerProvider.Urgency)]
         public int Urgency { get; set; }
 
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PackageType)]
+        public int? PackageType { get; set; }
+
         [Display(Name = MedicDataAnnotationLocalizerProvider.ClinicalPath)]
         public double? ClinicalPath { get; set; }
 
+        [Display(Name = MedicDataAnnotationLocalizerProvider.InApr)]
+        public int? InAPr { get; set; }
+
         [Display(Name = MedicDataAnnotationLocalizerProvider.NZOKPay)]
         public int NZOKPay { get; set; }
+
+        [Display(Name = MedicDataAnnotationLocalizerProvider.CPFile)]
+        public string CPFile { get; set; }
     }
 }

@@ -13,8 +13,10 @@ namespace Medic.Contexts
     /// </summary>
     public class MedicContext : DbContext, IMedicContext
     {
+        private const string DbScheme = "mdc";
+        
         public MedicContext(DbContextOptions<MedicContext> options)
-            : base(options) { }
+            : base(options) {}
 
         public DbSet<AccompanyingDrug> AccompanyingDrugs { get; set; }
 
@@ -132,6 +134,8 @@ namespace Medic.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema(DbScheme);
+
             Type modelBuilderType = typeof(IModelBuilder);
 
             Type contextType = this.GetType();

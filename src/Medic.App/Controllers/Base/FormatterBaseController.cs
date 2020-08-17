@@ -1,5 +1,6 @@
 ﻿using Medic.EHR.RM;
 using Medic.Formatters.Contracts;
+using Medic.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,17 @@ using System.Threading.Tasks;
 
 namespace Medic.App.Controllers.Base
 {
-    public abstract class FormatterBaseController : MedicBaseController
+    public abstract class FormatterBaseController : PageBasedController
     {
+        private readonly MedicDataLocalization _medicDataLocalization;
+
+        public FormatterBaseController(MedicDataLocalization medicDataLocalization)
+        {
+            _medicDataLocalization = medicDataLocalization ?? throw new ArgumentNullException(nameof(medicDataLocalization));
+        }
+
+        protected MedicDataLocalization MedicDataLocalization => _medicDataLocalization;
+
         protected virtual async Task<IActionResult> FormatModel(ReferenceModel model, IDataFormattable formatter)
         {
             if (formatter == default)
@@ -43,7 +53,7 @@ namespace Medic.App.Controllers.Base
 
             MemoryStream memoryStream = new MemoryStream();
 
-            IExcelFormattable excelFormatter = formatFactory.CreateExcelFormatter(memoryStream);
+            IExcelFormattable excelFormatter = formatFactory.CreateExcelFormatter(memoryStream, MedicDataLocalization);
 
             await excelFormatter.AddSheet<T>(model, sheetName);
             memoryStream = (MemoryStream)excelFormatter.Save();

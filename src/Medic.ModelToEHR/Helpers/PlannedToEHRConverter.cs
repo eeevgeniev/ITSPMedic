@@ -9,10 +9,10 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class PlannedToEHRConverter : ToEHRBaseConverter
     {
-        public PlannedToEHRConverter(IEHRManager ehrManager) 
+        internal PlannedToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) { }
 
-        public ReferenceModel Convert(PlannedViewModel model, string name)
+        internal ReferenceModel Convert(PlannedViewModel model, string name)
         {
             if (model == default)
             {
@@ -51,8 +51,51 @@ namespace Medic.ModelToEHR.Helpers
                         .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.Urgency).Build()).Build(),
                     EhrManager.ElementBuilder.Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.NZOKPay)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.NZOKPay).Build()).Build()
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.NZOKPay).Build()).Build(),
+                    EhrManager.ElementBuilder.Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.CPFile)).Build())
+                        .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.CPFile).Build()).Build()
                 );
+
+            if (model.SendAPr != default)
+            {
+                entryPlannedBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendAPr)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.SendAPr).Build())
+                        .Build());
+            }
+
+            if (model.InAPr != default)
+            {
+                entryPlannedBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.InAPr)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.InAPr).Build())
+                        .Build());
+            }
+
+            if (model.PackageType != default)
+            {
+                entryPlannedBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PackageType)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.PackageType).Build())
+                        .Build());
+            }
+
+            if (model.SendPackageType != default)
+            {
+                entryPlannedBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendPackageType)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.SendPackageType).Build())
+                        .Build());
+            }
 
             if ( model.SendClinicalPath != default)
             {

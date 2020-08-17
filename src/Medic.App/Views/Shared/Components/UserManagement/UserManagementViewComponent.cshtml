@@ -3,6 +3,8 @@
 
 @if (Model)
 {
-    <a class="btn-sm mr-1"asp-controller="@MedicBaseController.GetName(nameof(AccountController))"
+    <a class="btn-sm mr-1" asp-controller="@MedicBaseController.GetName(nameof(AccountController))"
        asp-action="@nameof(AccountController.Logout)">@Html.Raw(generalLocalization.Get(GeneralLocalization.Logout))</a>
+    <a class="btn-sm mr-1" asp-controller="@MedicBaseController.GetName(nameof(AccountController))"
+       asp-action="@nameof(AccountController.Password)">@Html.Raw(generalLocalization.Get(GeneralLocalization.Password))</a>
 }

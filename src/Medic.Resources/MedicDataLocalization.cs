@@ -341,6 +341,15 @@ namespace Medic.Resources
         public const string Delete = nameof(Delete);
         public const string CreateUser = nameof(CreateUser);
         public const string Decision = nameof(Decision);
+        public const string PackageType = nameof(PackageType);
+        public const string SendPackageType = nameof(SendPackageType);
+        public const string OutMainDiagnoseName = nameof(OutMainDiagnoseName);
+        public const string Id = nameof(Id);
+        public const string PatientId = nameof(PatientId);
+        public const string Upload = nameof(Upload);
+        public const string Browse = nameof(Browse);
+        public const string Search = nameof(Search);
+        public const string Reset = nameof(Reset);
 
         public MedicDataLocalization(IStringLocalizerFactory factory)
             : base(factory, nameof(MedicDataLocalization)) { }

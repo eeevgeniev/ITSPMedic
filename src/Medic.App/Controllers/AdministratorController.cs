@@ -81,7 +81,7 @@ namespace Medic.App.Controllers
         [HttpGet]
         public IActionResult Create() => View(new AdministratorPageCreateModel()
         {
-            Title = MedicDataLocalization.CreateUser,
+            Title = MedicDataLocalization.Get(MedicDataLocalization.CreateUser),
             Error = default,
             Description = default,
             Keywords = default,
@@ -95,12 +95,19 @@ namespace Medic.App.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(model);
+                    return View(new AdministratorPageCreateModel()
+                    {
+                        Title = MedicDataLocalization.Get(MedicDataLocalization.CreateUser),
+                        Error = default,
+                        Description = default,
+                        Keywords = default,
+                        User = model
+                    });
                 }
 
                 IdentityUser user = new IdentityUser()
                 {
-                    UserName = model.UserName,
+                    UserName = model.Username,
                     Email = model.Email
                 };
 
@@ -116,7 +123,7 @@ namespace Medic.App.Controllers
 
                     return View(new AdministratorPageCreateModel()
                     {
-                        Title = MedicDataLocalization.CreateUser,
+                        Title = MedicDataLocalization.Get(MedicDataLocalization.CreateUser),
                         Error = error,
                         Description = default,
                         Keywords = default,
@@ -136,7 +143,7 @@ namespace Medic.App.Controllers
 
                         return View(new AdministratorPageCreateModel()
                         {
-                            Title = MedicDataLocalization.CreateUser,
+                            Title = MedicDataLocalization.Get(MedicDataLocalization.CreateUser),
                             Error = error,
                             Description = default,
                             Keywords = default,
@@ -162,7 +169,7 @@ namespace Medic.App.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string username, int page = 1)
         {

@@ -231,11 +231,17 @@
   <data name="CommissionAprsCount" xml:space="preserve">
     <value>Apr commissions count</value>
   </data>
+  <data name="CompareConfirmNewPassword" xml:space="preserve">
+    <value>Confirm new password and new password don't match</value>
+  </data>
   <data name="ComparePasswords" xml:space="preserve">
     <value>Password and confirm password don't match</value>
   </data>
   <data name="Complications" xml:space="preserve">
     <value>Complications</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm new password</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm password</value>
@@ -266,6 +272,9 @@
   </data>
   <data name="CPrSend" xml:space="preserve">
     <value>CPr send</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current password</value>
   </data>
   <data name="CycleCount" xml:space="preserve">
     <value>Cycle count</value>
@@ -386,6 +395,9 @@
   </data>
   <data name="ECOG" xml:space="preserve">
     <value>ECOG</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="EndCourse" xml:space="preserve">
     <value>End course</value>
@@ -576,6 +588,9 @@
   <data name="NameHS" xml:space="preserve">
     <value>Name HS</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
   <data name="NoDecision" xml:space="preserve">
     <value>No decision</value>
   </data>
@@ -659,6 +674,9 @@
   </data>
   <data name="OutUniqueIdentifier" xml:space="preserve">
     <value>Out unique identifier</value>
+  </data>
+  <data name="PackageType" xml:space="preserve">
+    <value>Package type</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -759,11 +777,20 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Remember me</value>
   </data>
+  <data name="RequiredConfirmNewPassword" xml:space="preserve">
+    <value>Confirm new password is required</value>
+  </data>
   <data name="RequiredConfirmPassword" xml:space="preserve">
     <value>Confirm password is required</value>
   </data>
+  <data name="RequiredCurrentPassword" xml:space="preserve">
+    <value>Current password is required</value>
+  </data>
   <data name="RequiredEmail" xml:space="preserve">
     <value>Email is required</value>
+  </data>
+  <data name="RequiredNewPassword" xml:space="preserve">
+    <value>New password is required</value>
   </data>
   <data name="RequiredPassword" xml:space="preserve">
     <value>Password is required.</value>
@@ -812,6 +839,9 @@
   </data>
   <data name="SendDignoseCode" xml:space="preserve">
     <value>Send dignose code</value>
+  </data>
+  <data name="SendPackageType" xml:space="preserve">
+    <value>Send package type</value>
   </data>
   <data name="SendUrgency" xml:space="preserve">
     <value>Send urgency</value>

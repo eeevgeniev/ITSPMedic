@@ -12,7 +12,7 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class CommissionAprToEHRConverter : ToEHRBaseConverter
     {
-        public CommissionAprToEHRConverter(IEHRManager ehrManager) 
+        internal CommissionAprToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) { }
 
         internal ReferenceModel Convert(CommissionAprViewModel model, string name)

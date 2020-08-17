@@ -1,0 +1,17 @@
+﻿@model bool
+
+@inject GeneralLocalization generalLocalization
+
+@if (Model)
+{
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+           href="#" role="button"
+           aria-haspopup="true" aria-expanded="false">@Html.Raw(generalLocalization.Get(GeneralLocalization.Administration))</a>
+        <div class="dropdown-menu">
+            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(AdministratorController))" asp-action="@nameof(AdministratorController.Index)">@Html.Raw(generalLocalization.Get(GeneralLocalization.UserManagement))</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.CPFile)">@Html.Raw(generalLocalization.Get(GeneralLocalization.UploadFiles)) - @Html.Raw(generalLocalization.Get(GeneralLocalization.CPFile))</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="@MedicBaseController.GetName(nameof(FileUploadController))" asp-action="@nameof(FileUploadController.HospitalPractice)">@Html.Raw(generalLocalization.Get(GeneralLocalization.UploadFiles)) - @Html.Raw(generalLocalization.Get(GeneralLocalization.HospitalPracticeFile))</a>
+        </div>
+    </li>
+}

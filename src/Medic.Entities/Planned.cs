@@ -48,7 +48,7 @@ namespace Medic.Entities
 
         public DateTime ExaminationDate { get; set; }
 
-        public DateTime PlannedEntryDate { get; set; }
+        public DateTime? PlannedEntryDate { get; set; }
 
         public int PlannedNumber { get; set; }
 

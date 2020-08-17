@@ -38,7 +38,7 @@ namespace Medic.AppModels.Outs
         public int SendUrgency { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendClinicalPath)]
-        public double SendClinicalPath { get; set; }
+        public double? SendClinicalPath { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendApr)]
         public int? SendAPr { get; set; }
@@ -55,13 +55,22 @@ namespace Medic.AppModels.Outs
         [Display(Name = MedicDataAnnotationLocalizerProvider.ExaminationDate)]
         public DateTime ExaminationDate { get; set; }
 
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PlannedEntryDate)]
+        public DateTime? PlannedEntryDate { get; set; }
+
         public List<DiagnosePreviewViewModel> Diagnoses { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.Urgency)]
         public int Urgency { get; set; }
 
+        [Display(Name = MedicDataAnnotationLocalizerProvider.PackageType)]
+        public int? PackageType { get; set; }
+
         [Display(Name = MedicDataAnnotationLocalizerProvider.ClinicalPath)]
-        public double ClinicalPath { get; set; }
+        public double? ClinicalPath { get; set; }
+
+        [Display(Name = MedicDataAnnotationLocalizerProvider.SendPackageType)]
+        public int? SendPackageType { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.NZOKPay)]
         public int NZOKPay { get; set; }
@@ -73,10 +82,10 @@ namespace Medic.AppModels.Outs
         public DateTime EntryDate { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.Severity)]
-        public int Severity { get; set; }
+        public int? Severity { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.Delay)]
-        public int Delay { get; set; }
+        public int? Delay { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.Payer)]
         public int Payer { get; set; }

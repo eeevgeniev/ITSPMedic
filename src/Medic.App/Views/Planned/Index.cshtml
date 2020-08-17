@@ -24,7 +24,7 @@
                download
                title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))"
                class="export-anchor">
-                <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))" />
+                <img asp-append-version="true" src="~/images/excel.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))" />
             </a>
         </section>
     </header>
@@ -94,6 +94,6 @@
         <script defer src="~/js/formreset.js"></script>
     </environment>
     <environment names="Production">
-        <script defer src="~/js/formreset.min.js"></script>
+        <script defer src="~/js/formreset.min.js" asp-append-version="true"></script>
     </environment>
 }

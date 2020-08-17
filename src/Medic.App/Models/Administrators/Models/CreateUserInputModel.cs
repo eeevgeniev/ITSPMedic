@@ -6,9 +6,9 @@ namespace Medic.App.Models.Administrators.Models
 {
     public class CreateUserInputModel
     {
-        [DisplayName(MedicDataAnnotationLocalizerProvider.UserName)]
-        [Required(AllowEmptyStrings = false, ErrorMessage = MedicDataAnnotationLocalizerProvider.RequiredUserName)]
-        public string UserName { get; set; }
+        [DisplayName(MedicDataAnnotationLocalizerProvider.Username)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = MedicDataAnnotationLocalizerProvider.RequiredUsername)]
+        public string Username { get; set; }
 
         [DisplayName(MedicDataAnnotationLocalizerProvider.Email)]
         [Required(AllowEmptyStrings = false, ErrorMessage = MedicDataAnnotationLocalizerProvider.RequiredEmail)]
@@ -16,7 +16,7 @@ namespace Medic.App.Models.Administrators.Models
         public string Email { get; set; }
 
         [DisplayName(MedicDataAnnotationLocalizerProvider.Password)]
-        [Required(AllowEmptyStrings = false, ErrorMessage = MedicDataAnnotationLocalizerProvider.RequiredPassword)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = MedicDataAnnotationLocalizerProvider.RequiredPassword )]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

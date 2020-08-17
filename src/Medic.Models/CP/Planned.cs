@@ -11,7 +11,7 @@ namespace Medic.Models.CP
 
         private DateTime _sendDate;
         private DateTime _examinationDate;
-        private DateTime _plannedEntryDate;
+        private DateTime? _plannedEntryDate;
 
         [XmlElement(ElementName = "Patient")]
         public Patient Patient { get; set; }
@@ -87,7 +87,7 @@ namespace Medic.Models.CP
         }
 
         [XmlIgnore]
-        public DateTime PlannedEntryDate
+        public DateTime? PlannedEntryDate
         {
             get { return _plannedEntryDate; }
             set { _plannedEntryDate = value; }
@@ -98,7 +98,7 @@ namespace Medic.Models.CP
         {
             get
             {
-                return _plannedEntryDate == default ? default : _plannedEntryDate.ToString(DateFormat);
+                return _plannedEntryDate == default ? default : ((DateTime)_plannedEntryDate).ToString(DateFormat);
             }
             set
             {

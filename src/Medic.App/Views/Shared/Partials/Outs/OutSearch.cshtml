@@ -5,6 +5,8 @@
 
 @model OutSearch
 
+@inject MedicDataLocalization medicDataLocalization
+
 @{
     List<SexOption> sexes = ViewData[Constants.Sexes] as List<SexOption>;
     List<HealthRegionOption> healthRegions = ViewData[Constants.HealthRegions] as List<HealthRegionOption>;
@@ -65,6 +67,6 @@
     <input type="hidden" asp-for="@Model.Order" />
     <input type="hidden" asp-for="@Model.Direction" />
     <input type="hidden" asp-for="@Model.Length" />
-    <input type="submit" class="btn btn-primary" value="Search" />
-    <input type="reset" class="btn btn-dark" value="Reset" />
+    <input type="submit" class="btn btn-primary" value="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Search))" />
+    <input type="reset" class="btn btn-dark" value="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Reset))" />
 </form>

@@ -72,10 +72,20 @@ body {
 
 .export-anchor, .export-anchor:hover {
     text-decoration: none;
+    opacity: 0.5;
 }
 
 .export-image {
     max-width: 50px;
     max-height: 100%;
     margin-left: .5rem;
+}
+
+.navbar-brand {
+    min-width: 5rem;
+}
+
+.navbar-brand-image {
+    width: 20px;
+    max-height: 100%;
 }

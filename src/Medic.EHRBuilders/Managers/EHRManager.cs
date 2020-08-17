@@ -1,13 +1,14 @@
-﻿using Medic.EHR.DataTypes;
-using Medic.EHR.RM;
-using Medic.EHRBuilders.Contracts;
+﻿using Medic.EHRBuilders.Contracts;
 using System;
+using System.Threading;
 
 namespace Medic.EHRBuilders.Managers
 {
     public class EHRManager : IEHRManager
     {
         private bool _isDisposed = false;
+
+        private ReaderWriterLockSlim _locker = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
 
         private IAttestationInfoBuilder _attestationInfoBuilder;
         private IAuditInfoBuilder _auditInfoBuilder;
@@ -51,12 +52,21 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_attestationInfoBuilder != default)
+                if (_attestationInfoBuilder == default)
                 {
+                    _locker.EnterWriteLock();
+
+                    if (_attestationInfoBuilder == default)
+                    {
+                        _attestationInfoBuilder = new AttestationInfoBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+
                     return _attestationInfoBuilder;
                 }
 
-                _attestationInfoBuilder = new AttestationInfoBuilder();
+                
 
                 return _attestationInfoBuilder;
             }
@@ -68,10 +78,16 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_auditInfoBuilder != default)
                 {
-                    return _auditInfoBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _auditInfoBuilder = new AuditInfoBuilder();
+                    if (_auditInfoBuilder != default)
+                    {
+                        _auditInfoBuilder = new AuditInfoBuilder();
+                        
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _auditInfoBuilder;
             }
@@ -83,10 +99,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_BLBuilder != default)
                 {
-                    return _BLBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _BLBuilder = new BLBuilder();
+                    if (_BLBuilder != default)
+                    {
+                        _BLBuilder = new BLBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _BLBuilder;
             }
@@ -98,10 +119,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_CDBuilder != default)
                 {
-                    return _CDBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _CDBuilder = new CDBuilder();
+                    if (_CDBuilder != default)
+                    {
+                        _CDBuilder = new CDBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _CDBuilder;
             }
@@ -113,10 +139,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_CEBuilder != default)
                 {
-                    return _CEBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _CEBuilder = new CEBuilder();
+                    if (_CEBuilder != default)
+                    {
+                        _CEBuilder = new CEBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _CEBuilder;
             }
@@ -128,10 +159,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_clusterBuilder != default)
                 {
-                    return _clusterBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _clusterBuilder = new ClusterBuilder();
+                    if (_clusterBuilder != default)
+                    {
+                        _clusterBuilder = new ClusterBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _clusterBuilder;
             }
@@ -143,10 +179,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_codedTextBuilder != default)
                 {
-                    return _codedTextBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _codedTextBuilder = new CodedTextBuilder();
+                    if (_codedTextBuilder != default)
+                    {
+                        _codedTextBuilder = new CodedTextBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _codedTextBuilder;
             }
@@ -159,10 +200,15 @@ namespace Medic.EHRBuilders.Managers
 
                 if (_compositionBuilder != default)
                 {
-                    return _compositionBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _compositionBuilder = new CompositionBuilder();
+                    if (_compositionBuilder != default)
+                    {
+                        _compositionBuilder = new CompositionBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _compositionBuilder;
             }
@@ -174,10 +220,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_CRBuilder != default)
                 {
-                    return _CRBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _CRBuilder = new CRBuilder();
+                    if (_CRBuilder != default)
+                    {
+                        _CRBuilder = new CRBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _CRBuilder;
             }
@@ -189,10 +240,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_CSBuilder != default)
                 {
-                    return _CSBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _CSBuilder = new CSBuilder();
+                    if (_CSBuilder != default)
+                    {
+                        _CSBuilder = new CSBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _CSBuilder;
             }
@@ -204,10 +260,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_CVBuilder != default)
                 {
-                    return _CVBuilder;
+                    _locker.EnterWriteLock();
+                    
+                    if (_CVBuilder != default)
+                    {
+                        _CVBuilder = new CVBuilder();
+                    }
+                    
+                    _locker.ExitWriteLock();
                 }
-
-                _CVBuilder = new CVBuilder();
 
                 return _CVBuilder;
             }
@@ -219,10 +280,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_DATEBuilder != default)
                 {
-                    return _DATEBuilder;
-                }
+                    _locker.EnterWriteLock();
+                    
+                    if (_DATEBuilder != default)
+                    {
+                        _DATEBuilder = new DATEBuilder();
+                    }
 
-                _DATEBuilder = new DATEBuilder();
+                    _locker.ExitWriteLock();
+                }
 
                 return _DATEBuilder;
             }
@@ -234,10 +300,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_durationBuilder != default)
                 {
-                    return _durationBuilder;
-                }
+                    _locker.EnterWriteLock();
+                    
+                    if (_durationBuilder != default)
+                    {
+                        _durationBuilder = new DurationBuilder();
+                    }
 
-                _durationBuilder = new DurationBuilder();
+                    _locker.ExitWriteLock();
+                }
 
                 return _durationBuilder;
             }
@@ -249,10 +320,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_EDBuilder != default)
                 {
-                    return _EDBuilder;
-                }
+                    _locker.EnterWriteLock();
+                    
+                    if (_EDBuilder != default)
+                    {
+                        _EDBuilder = new EDBuilder();
+                    }
 
-                _EDBuilder = new EDBuilder();
+                    _locker.ExitWriteLock();
+                }
 
                 return _EDBuilder;
             }
@@ -264,10 +340,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_EIVLBuilder != default)
                 {
-                    return _EIVLBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _EIVLBuilder = new EIVLBuilder();
+                    if (_EIVLBuilder != default)
+                    {
+                        _EIVLBuilder = new EIVLBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _EIVLBuilder;
             }
@@ -279,10 +360,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_elementBuilder != default)
                 {
-                    return _elementBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _elementBuilder = new ElementBuilder();
+                    if (_elementBuilder != default)
+                    {
+                        _elementBuilder = new ElementBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _elementBuilder;
             }
@@ -294,10 +380,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_entryBuilder != default)
                 {
-                    return _entryBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _entryBuilder = new EntryBuilder();
+                    if (_entryBuilder != default)
+                    {
+                        _entryBuilder = new EntryBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _entryBuilder;
             }
@@ -309,10 +400,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_folderBuilder != default)
                 {
-                    return _folderBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _folderBuilder = new FolderBuilder();
+                    if (_folderBuilder != default)
+                    {
+                        _folderBuilder = new FolderBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _folderBuilder;
             }
@@ -324,10 +420,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_functionalRoleBuilder != default)
                 {
-                    return _functionalRoleBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _functionalRoleBuilder = new FunctionalRoleBuilder();
+                    if (_functionalRoleBuilder != default)
+                    {
+                        _functionalRoleBuilder = new FunctionalRoleBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _functionalRoleBuilder;
             }
@@ -339,10 +440,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_IIBuilder != default)
                 {
-                    return _IIBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _IIBuilder = new IIBuilder();
+                    if (_IIBuilder != default)
+                    {
+                        _IIBuilder = new IIBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _IIBuilder;
             }
@@ -354,10 +460,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_INTBuilder != default)
                 {
-                    return _INTBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _INTBuilder = new INTBuilder();
+                    if (_INTBuilder != default)
+                    {
+                        _INTBuilder = new INTBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _INTBuilder;
             }
@@ -369,10 +480,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_IVLBuilder != default)
                 {
-                    return _IVLBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _IVLBuilder = new IVLBuilder();
+                    if (_IVLBuilder != default)
+                    {
+                        _IVLBuilder = new IVLBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _IVLBuilder;
             }
@@ -384,10 +500,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_IVLPQBuilder != default)
                 {
-                    return _IVLPQBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _IVLPQBuilder = new IVLPQBuilder();
+                    if (_IVLPQBuilder != default)
+                    {
+                        _IVLPQBuilder = new IVLPQBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return IVLPQBuilder;
             }
@@ -399,10 +520,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_IVLTSBuilder != default)
                 {
-                    return _IVLTSBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _IVLTSBuilder = new IVLTSBuilder();
+                    if (_IVLTSBuilder != default)
+                    {
+                        _IVLTSBuilder = new IVLTSBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _IVLTSBuilder;
             }
@@ -414,10 +540,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_linkBuilder != default)
                 {
-                    return _linkBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _linkBuilder = new LinkBuilder();
+                    if (_linkBuilder != default)
+                    {
+                        _linkBuilder = new LinkBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _linkBuilder;
             }
@@ -429,10 +560,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_OIDBuilder != default)
                 {
-                    return _OIDBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _OIDBuilder = new OIDBuilder();
+                    if (_OIDBuilder != default)
+                    {
+                        _OIDBuilder = new OIDBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _OIDBuilder;
             }
@@ -444,10 +580,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_ORDBulder != default)
                 {
-                    return _ORDBulder;
-                }
+                    _locker.EnterWriteLock();
+                    
+                    if (_ORDBulder != default)
+                    {
+                        _ORDBulder = new ORDBulder();
+                    }
 
-                _ORDBulder = new ORDBulder();
+                    _locker.ExitWriteLock();
+                }
 
                 return _ORDBulder;
             }
@@ -459,10 +600,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_PIVLBuilder != default)
                 {
-                    return _PIVLBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _PIVLBuilder = new PIVLBuilder();
+                    if (_PIVLBuilder != default)
+                    {
+                        _PIVLBuilder = new PIVLBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _PIVLBuilder;
             }
@@ -474,10 +620,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_PQBuilder != default)
                 {
-                    return _PQBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _PQBuilder = new PQBuilder();
+                    if (_PQBuilder != default)
+                    {
+                        _PQBuilder = new PQBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _PQBuilder;
             }
@@ -489,10 +640,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_REALBuilder != default)
                 {
-                    return _REALBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _REALBuilder = new REALBuilder();
+                    if (_REALBuilder != default)
+                    {
+                        _REALBuilder = new REALBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _REALBuilder;
             }
@@ -504,10 +660,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_referenceModelBuilder != default)
                 {
-                    return _referenceModelBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _referenceModelBuilder = new ReferenceModelBuilder();
+                    if (_referenceModelBuilder != default)
+                    {
+                        _referenceModelBuilder = new ReferenceModelBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _referenceModelBuilder;
             }
@@ -519,10 +680,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_relatedPartyBuilder != default)
                 {
-                    return _relatedPartyBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _relatedPartyBuilder = new RelatedPartyBuilder();
+                    if (_relatedPartyBuilder != default)
+                    {
+                        _relatedPartyBuilder = new RelatedPartyBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _relatedPartyBuilder;
             }
@@ -534,10 +700,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_RTOBuilder != default)
                 {
-                    return _RTOBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _RTOBuilder = new RTOBuilder();
+                    if (_RTOBuilder != default)
+                    {
+                        _RTOBuilder = new RTOBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _RTOBuilder;
             }
@@ -549,10 +720,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_sectionBuilder != default)
                 {
-                    return _sectionBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _sectionBuilder = new SectionBuilder();
+                    if (_sectionBuilder != default)
+                    {
+                        _sectionBuilder = new SectionBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _sectionBuilder;
             }
@@ -564,10 +740,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_simpleTextBuilder != default)
                 {
-                    return _simpleTextBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _simpleTextBuilder = new SimpleTextBuilder();
+                    if (_simpleTextBuilder != default)
+                    {
+                        _simpleTextBuilder = new SimpleTextBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _simpleTextBuilder;
             }
@@ -579,10 +760,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_TSBuilder != default)
                 {
-                    return _TSBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _TSBuilder = new TSBuilder();
+                    if (_TSBuilder != default)
+                    {
+                        _TSBuilder = new TSBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _TSBuilder;
             }
@@ -594,10 +780,15 @@ namespace Medic.EHRBuilders.Managers
             {
                 if (_URIBuilder != default)
                 {
-                    return _URIBuilder;
-                }
+                    _locker.EnterWriteLock();
 
-                _URIBuilder = new URIBuilder();
+                    if (_URIBuilder != default)
+                    {
+                        _URIBuilder = new URIBuilder();
+                    }
+
+                    _locker.ExitWriteLock();
+                }
 
                 return _URIBuilder;
             }
@@ -643,6 +834,8 @@ namespace Medic.EHRBuilders.Managers
                 _simpleTextBuilder?.Dispose();
                 _TSBuilder?.Dispose();
                 _URIBuilder?.Dispose();
+                
+                _locker?.Dispose();
 
                 GC.SuppressFinalize(this);
                 _isDisposed = !_isDisposed;

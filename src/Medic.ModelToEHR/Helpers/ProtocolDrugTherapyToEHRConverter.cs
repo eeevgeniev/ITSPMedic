@@ -18,7 +18,7 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class ProtocolDrugTherapyToEHRConverter : ToEHRBaseConverter
     {
-        public ProtocolDrugTherapyToEHRConverter(IEHRManager ehrManager) 
+        internal ProtocolDrugTherapyToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) {}
 
         internal ReferenceModel Convert(ProtocolDrugTherapyViewModel model, string name)

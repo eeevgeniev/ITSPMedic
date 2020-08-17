@@ -1,4 +1,5 @@
 ﻿using Medic.Formatters.Enums;
+using Medic.Resources.Contracts;
 using System;
 using System.IO;
 
@@ -8,6 +9,6 @@ namespace Medic.Formatters.Contracts
     {
         IDataFormattable CreateFormatter(FormatterEnum formatter);
 
-        IExcelFormattable CreateExcelFormatter(Stream stream);
+        IExcelFormattable CreateExcelFormatter(Stream stream, ILocalizationService localization);
     }
 }

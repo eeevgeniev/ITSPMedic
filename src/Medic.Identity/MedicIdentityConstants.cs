@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Medic.Identity
+﻿namespace Medic.Identity
 {
     public class MedicIdentityConstants
     {

@@ -46,6 +46,11 @@ namespace Medic.Resources
         public const string UploadFiles = nameof(UploadFiles);
         public const string UsedDrugs = nameof(UsedDrugs);
         public const string Username = nameof(Username);
+        public const string Administrator = nameof(Administrator);
+        public const string Administration = nameof(Administration);
+        public const string UserManagement = nameof(UserManagement);
+        public const string InvalidUser = nameof(InvalidUser);
+        public const string PasswordUpdateError = nameof(PasswordUpdateError);
 
         public GeneralLocalization(IStringLocalizerFactory factory)
             : base(factory, nameof(GeneralLocalization)) { }

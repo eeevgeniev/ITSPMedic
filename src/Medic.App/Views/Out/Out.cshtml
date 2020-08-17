@@ -80,67 +80,72 @@
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExaminationDate)): @Html.Raw(Model.OutViewModel.ExaminationDate.ToShortDateString())</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExaminationDate)): @Html.Raw(Model.OutViewModel.PlannedEntryDate == default ? default : ((DateTime)Model.OutViewModel.PlannedEntryDate).ToShortDateString())</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Urgency)): @Html.Raw(Model.OutViewModel.Urgency)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalPath)): @Html.Raw(Model.OutViewModel.ClinicalPath)</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalPath)): @Html.Raw(Model.OutViewModel.ClinicalPath)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(Model.OutViewModel.NZOKPay)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InMedicalWard)): @Html.Raw(Model.OutViewModel.InMedicalWard)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.EntryDate)): @Html.Raw(Model.OutViewModel.EntryDate.ToShortDateString())</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.EntryDate)): @Html.Raw(Model.OutViewModel.EntryDate.ToShortDateString())</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Severity)): @Html.Raw(Model.OutViewModel.Severity)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Delay)): @Html.Raw(Model.OutViewModel.Delay)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Payer)): @Html.Raw(Model.OutViewModel.Payer)</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Payer)): @Html.Raw(Model.OutViewModel.Payer)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AgeInDays)): @Html.Raw(Model.OutViewModel.AgeInDays)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.WeightInGrams)): @Html.Raw(Model.OutViewModel.WeightInGrams)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BirthWeight)): @Html.Raw(Model.OutViewModel.BirthWeight)</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BirthWeight)): @Html.Raw(Model.OutViewModel.BirthWeight)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MotherIZYear)): @Html.Raw(Model.OutViewModel.MotherIZYear)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MotherIZNo)): @Html.Raw(Model.OutViewModel.MotherIZNo)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYear)): @Html.Raw(Model.OutViewModel.IZYear)</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYear)): @Html.Raw(Model.OutViewModel.IZYear)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZNo)): @Html.Raw(Model.OutViewModel.IZNo)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutMedicalWard)): @Html.Raw(Model.OutViewModel.OutMedicalWard)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutUniqueIdentifier)): @Html.Raw(Model.OutViewModel.OutUniqueIdentifier)</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutUniqueIdentifier)): @Html.Raw(Model.OutViewModel.OutUniqueIdentifier)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutDate)): @Html.Raw(Model.OutViewModel.OutDate.ToShortDateString())</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutType)): @Html.Raw(Model.OutViewModel.OutType)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BirthPractice)): @Html.Raw(Model.OutViewModel.BirthPractice)</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BirthPractice)): @Html.Raw(Model.OutViewModel.BirthPractice)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BirthNumber)): @Html.Raw(Model.OutViewModel.BirthNumber)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BirthGestWeek)): @Html.Raw(Model.OutViewModel.BirthGestWeek)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutClinicalPath)): @Html.Raw(Model.OutViewModel.OutClinicalPath)</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutClinicalPath)): @Html.Raw(Model.OutViewModel.OutClinicalPath)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutAPr)): @Html.Raw(Model.OutViewModel.OutAPr)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BedDays)): @Html.Raw(Model.OutViewModel.BedDays)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HLDateFrom)): @Html.Raw((Model.OutViewModel.HLDateFrom != default ? ((DateTime)Model.OutViewModel.HLDateFrom).ToShortDateString() : default)))</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HLDateFrom)): @Html.Raw((Model.OutViewModel.HLDateFrom != default ? ((DateTime)Model.OutViewModel.HLDateFrom).ToShortDateString() : default)))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HLNumber)): @Html.Raw(Model.OutViewModel.HLNumber)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HLTotalDays)): @Html.Raw(Model.OutViewModel.HLTotalDays)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.StateAtDischarge)): @Html.Raw(Model.OutViewModel.StateAtDischarge)</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.StateAtDischarge)): @Html.Raw(Model.OutViewModel.StateAtDischarge)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Laparoscopic)): @Html.Raw(Model.OutViewModel.Laparoscopic)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.EndCourse)): @Html.Raw(Model.OutViewModel.EndCourse)</div>
+        </div>
+        <div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PackageType)): @Html.Raw(Model.OutViewModel.PackageType)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendPackageType)): @Html.Raw(Model.OutViewModel.SendPackageType)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFile)): @Html.Raw(Model.OutViewModel.CPFile)</div>
         </div>
     </article>

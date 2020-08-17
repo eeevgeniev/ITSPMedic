@@ -216,6 +216,9 @@
   <data name="Branch" xml:space="preserve">
     <value>РЗОК</value>
   </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Преглед</value>
+  </data>
   <data name="BSA" xml:space="preserve">
     <value>Teгло в кг</value>
   </data>
@@ -561,6 +564,9 @@
   <data name="ICDDrug" xml:space="preserve">
     <value>Лекар, предписал лекарството</value>
   </data>
+  <data name="Id" xml:space="preserve">
+    <value>Идентификатор</value>
+  </data>
   <data name="IdentityNumber" xml:space="preserve">
     <value>ЕГН</value>
   </data>
@@ -762,6 +768,9 @@
   <data name="OutMainDiagnoseCode" xml:space="preserve">
     <value>Код на основната диагноза при изписване</value>
   </data>
+  <data name="OutMainDiagnoseName" xml:space="preserve">
+    <value>Име на основната диагноза при изписване</value>
+  </data>
   <data name="OutMedicalWard" xml:space="preserve">
     <value>Клиника/отделение при отписване пациентът</value>
   </data>
@@ -785,6 +794,9 @@
   </data>
   <data name="OutView" xml:space="preserve">
     <value>Преглед на изписване на пациент</value>
+  </data>
+  <data name="PackageType" xml:space="preserve">
+    <value>Тип на пакета</value>
   </data>
   <data name="PathologicFinding" xml:space="preserve">
     <value>Патологична находка</value>
@@ -812,6 +824,9 @@
   </data>
   <data name="PatientHRegion" xml:space="preserve">
     <value>Здравен регион</value>
+  </data>
+  <data name="PatientId" xml:space="preserve">
+    <value>Идентификатор на пациент</value>
   </data>
   <data name="Patients" xml:space="preserve">
     <value>Пациенти</value>
@@ -921,6 +936,9 @@
   <data name="Regimen" xml:space="preserve">
     <value>Терапевтична схема</value>
   </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Изчисти</value>
+  </data>
   <data name="Results" xml:space="preserve">
     <value>резултати</value>
   </data>
@@ -932,6 +950,9 @@
   </data>
   <data name="Scheme" xml:space="preserve">
     <value>Схема</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Търси</value>
   </data>
   <data name="SecondMainDiag" xml:space="preserve">
     <value>Втора основна диагноза</value>
@@ -968,6 +989,9 @@
   </data>
   <data name="Sender" xml:space="preserve">
     <value>Изпращащ</value>
+  </data>
+  <data name="SendPackageType" xml:space="preserve">
+    <value>Тип на изпратения пакет</value>
   </data>
   <data name="SendUrgency" xml:space="preserve">
     <value>Спешност на изпращането</value>
@@ -1049,6 +1073,9 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Обнови</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Качи</value>
   </data>
   <data name="UploadFiles" xml:space="preserve">
     <value>Качете фаил</value>

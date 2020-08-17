@@ -14,7 +14,7 @@
     </header>
     <section>
         <a asp-action="@nameof(AdministratorController.Create)" 
-           asp-controller="@AdministratorController.GetName(nameof(AdministratorController.Create))">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CreateUser))</a>
+           asp-controller="@AdministratorController.GetName(nameof(AdministratorController))">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CreateUser))</a>
     </section>
     <section class="mt-sm-1">
         @if (Model.Users != default && Model.Users.Count > 0)
@@ -34,10 +34,11 @@
                         <div class="col-sm-2">
                             <form asp-controller="@AdministratorController.GetName(nameof(AdministratorController))"
                                   asp-action="@nameof(AdministratorController.Delete)"
-                                  method="delete"
+                                  method="post"
                                   asp-antiforgery="true">
-                                <input type="hidden" asp-for="@currentUser.Username" />
-                                <input type="submit" class="btn btn-danger" />
+                                <input type="hidden" name="username" value="@currentUser.Username" />
+                                <input type="hidden" name="page" value="@Model.CurrentPage" />
+                                <input type="submit" class="btn btn-danger" value="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Delete))" />
                             </form>
                         </div>
                     </div>
