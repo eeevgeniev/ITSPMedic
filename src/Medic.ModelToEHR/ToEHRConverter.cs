@@ -12,12 +12,17 @@ using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Contracts;
 using Medic.ModelToEHR.Helpers;
 using System;
+using System.Threading;
 
 namespace Medic.ModelToEHR
 {
-    public class ToEHRConverter : IToEHRConverter
+    public class ToEHRConverter : IToEHRConverter, IDisposable
     {
+        private ReaderWriterLockSlim _locker = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+
         private readonly IEHRManager EhrManager;
+
+        private bool _isDisposed = false;
 
         private InToEHRConverter _inToEHRConverter;
         private OutToEHRConverter _outToEHRConverter;
@@ -43,7 +48,14 @@ namespace Medic.ModelToEHR
 
             if (_inToEHRConverter == default)
             {
-                _inToEHRConverter = new InToEHRConverter(EhrManager);
+                _locker.EnterWriteLock();
+
+                if (_inToEHRConverter == default)
+                {
+                    _inToEHRConverter = new InToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
             }
 
             return _inToEHRConverter.Convert(model, name);
@@ -58,7 +70,14 @@ namespace Medic.ModelToEHR
 
             if (_outToEHRConverter == default)
             {
-                _outToEHRConverter = new OutToEHRConverter(EhrManager);
+                _locker.EnterWriteLock();
+
+                if (_outToEHRConverter == default)
+                {
+                    _outToEHRConverter = new OutToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
             }
 
             return _outToEHRConverter.Convert(model, name);
@@ -73,7 +92,14 @@ namespace Medic.ModelToEHR
 
             if (_plannedToEHRConverter == default)
             {
-                _plannedToEHRConverter = new PlannedToEHRConverter(EhrManager);
+                _locker.EnterWriteLock();
+
+                if (_plannedToEHRConverter == default)
+                {
+                    _plannedToEHRConverter = new PlannedToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
             }
 
             return _plannedToEHRConverter.Convert(model, name);
@@ -88,7 +114,14 @@ namespace Medic.ModelToEHR
 
             if (_commissionAprToEHRConverter == default)
             {
-                _commissionAprToEHRConverter = new CommissionAprToEHRConverter(EhrManager);
+                _locker.EnterWriteLock();
+
+                if (_commissionAprToEHRConverter == default)
+                {
+                    _commissionAprToEHRConverter = new CommissionAprToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
             }
 
             return _commissionAprToEHRConverter.Convert(model, name);
@@ -103,7 +136,14 @@ namespace Medic.ModelToEHR
 
             if (_dispObservationToEHRConverter == default)
             {
-                _dispObservationToEHRConverter = new DispObservationToEHRConverter(EhrManager);
+                _locker.EnterWriteLock();
+
+                if (_dispObservationToEHRConverter == default)
+                {
+                    _dispObservationToEHRConverter = new DispObservationToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
             }
 
             return _dispObservationToEHRConverter.Convert(model, name);
@@ -118,7 +158,14 @@ namespace Medic.ModelToEHR
 
             if (_inClinicProcedureToEHRConverter == default)
             {
-                _inClinicProcedureToEHRConverter = new InClinicProcedureToEHRConverter(EhrManager);
+                _locker.EnterWriteLock();
+
+                if (_inClinicProcedureToEHRConverter == default)
+                {
+                    _inClinicProcedureToEHRConverter = new InClinicProcedureToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
             }
 
             return _inClinicProcedureToEHRConverter.Convert(model, name);
@@ -133,7 +180,14 @@ namespace Medic.ModelToEHR
 
             if (_pathProcedureToEHRConverter == default)
             {
-                _pathProcedureToEHRConverter = new PathProcedureToEHRConverter(EhrManager);
+                _locker.EnterWriteLock();
+
+                if (_pathProcedureToEHRConverter == default)
+                {
+                    _pathProcedureToEHRConverter = new PathProcedureToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
             }
 
             return _pathProcedureToEHRConverter.Convert(model, name);
@@ -148,7 +202,14 @@ namespace Medic.ModelToEHR
 
             if (_protocolDrugTherapyToEHRConverter == default)
             {
-                _protocolDrugTherapyToEHRConverter = new ProtocolDrugTherapyToEHRConverter(EhrManager);
+                _locker.EnterWriteLock();
+
+                if (_protocolDrugTherapyToEHRConverter == default)
+                {
+                    _protocolDrugTherapyToEHRConverter = new ProtocolDrugTherapyToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
             }
 
             return _protocolDrugTherapyToEHRConverter.Convert(model, name);
@@ -163,10 +224,39 @@ namespace Medic.ModelToEHR
 
             if (_patientToEHRConverter == default)
             {
-                _patientToEHRConverter = new PatientToEHRConverter(EhrManager);
+                _locker.EnterWriteLock();
+
+                if (_patientToEHRConverter == default)
+                {
+                    _patientToEHRConverter = new PatientToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
             }
 
             return _patientToEHRConverter.Convert(model, name);
+        }
+
+        public void Dispose()
+        {
+            if (!_isDisposed)
+            {
+                _locker.Dispose();
+
+                _inToEHRConverter = null;
+                _outToEHRConverter = null;
+                _plannedToEHRConverter = null;
+                _commissionAprToEHRConverter = null;
+                _dispObservationToEHRConverter = null;
+                _inClinicProcedureToEHRConverter = null;
+                _pathProcedureToEHRConverter = null;
+                _protocolDrugTherapyToEHRConverter = null;
+                _patientToEHRConverter = null;
+
+                _isDisposed = !_isDisposed;
+
+                GC.SuppressFinalize(this);
+            }
         }
     }
 }

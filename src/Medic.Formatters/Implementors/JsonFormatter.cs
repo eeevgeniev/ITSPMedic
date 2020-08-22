@@ -25,7 +25,11 @@ namespace Medic.Formatters.Implementors
 
                 JsonSerializer jsonSerializer = JsonSerializer.Create(jsonSerializerSettings);
 
-                jsonSerializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), model);
+                JsonTextWriter jsonTextWriter = new JsonTextWriter(new StreamWriter(stream));
+
+                jsonSerializer.Serialize(jsonTextWriter, model);
+
+                jsonTextWriter.Flush();
 
                 return stream;
             });

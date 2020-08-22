@@ -76,11 +76,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_auditInfoBuilder != default)
+                if (_auditInfoBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_auditInfoBuilder != default)
+                    if (_auditInfoBuilder == default)
                     {
                         _auditInfoBuilder = new AuditInfoBuilder();
                         
@@ -97,11 +97,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_BLBuilder != default)
+                if (_BLBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_BLBuilder != default)
+                    if (_BLBuilder == default)
                     {
                         _BLBuilder = new BLBuilder();
                     }
@@ -117,11 +117,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_CDBuilder != default)
+                if (_CDBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_CDBuilder != default)
+                    if (_CDBuilder == default)
                     {
                         _CDBuilder = new CDBuilder();
                     }
@@ -137,11 +137,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_CEBuilder != default)
+                if (_CEBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_CEBuilder != default)
+                    if (_CEBuilder == default)
                     {
                         _CEBuilder = new CEBuilder();
                     }
@@ -157,11 +157,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_clusterBuilder != default)
+                if (_clusterBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_clusterBuilder != default)
+                    if (_clusterBuilder == default)
                     {
                         _clusterBuilder = new ClusterBuilder();
                     }
@@ -177,11 +177,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_codedTextBuilder != default)
+                if (_codedTextBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_codedTextBuilder != default)
+                    if (_codedTextBuilder == default)
                     {
                         _codedTextBuilder = new CodedTextBuilder();
                     }
@@ -198,11 +198,11 @@ namespace Medic.EHRBuilders.Managers
             get
             {
 
-                if (_compositionBuilder != default)
+                if (_compositionBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_compositionBuilder != default)
+                    if (_compositionBuilder == default)
                     {
                         _compositionBuilder = new CompositionBuilder();
                     }
@@ -218,11 +218,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_CRBuilder != default)
+                if (_CRBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_CRBuilder != default)
+                    if (_CRBuilder == default)
                     {
                         _CRBuilder = new CRBuilder();
                     }
@@ -238,11 +238,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_CSBuilder != default)
+                if (_CSBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_CSBuilder != default)
+                    if (_CSBuilder == default)
                     {
                         _CSBuilder = new CSBuilder();
                     }
@@ -258,11 +258,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_CVBuilder != default)
+                if (_CVBuilder == default)
                 {
                     _locker.EnterWriteLock();
                     
-                    if (_CVBuilder != default)
+                    if (_CVBuilder == default)
                     {
                         _CVBuilder = new CVBuilder();
                     }
@@ -278,11 +278,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_DATEBuilder != default)
+                if (_DATEBuilder == default)
                 {
                     _locker.EnterWriteLock();
                     
-                    if (_DATEBuilder != default)
+                    if (_DATEBuilder == default)
                     {
                         _DATEBuilder = new DATEBuilder();
                     }
@@ -298,11 +298,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_durationBuilder != default)
+                if (_durationBuilder == default)
                 {
                     _locker.EnterWriteLock();
                     
-                    if (_durationBuilder != default)
+                    if (_durationBuilder == default)
                     {
                         _durationBuilder = new DurationBuilder();
                     }
@@ -318,11 +318,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_EDBuilder != default)
+                if (_EDBuilder == default)
                 {
                     _locker.EnterWriteLock();
                     
-                    if (_EDBuilder != default)
+                    if (_EDBuilder == default)
                     {
                         _EDBuilder = new EDBuilder();
                     }
@@ -338,11 +338,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_EIVLBuilder != default)
+                if (_EIVLBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_EIVLBuilder != default)
+                    if (_EIVLBuilder == default)
                     {
                         _EIVLBuilder = new EIVLBuilder();
                     }
@@ -358,11 +358,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_elementBuilder != default)
+                if (_elementBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_elementBuilder != default)
+                    if (_elementBuilder == default)
                     {
                         _elementBuilder = new ElementBuilder();
                     }
@@ -378,11 +378,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_entryBuilder != default)
+                if (_entryBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_entryBuilder != default)
+                    if (_entryBuilder == default)
                     {
                         _entryBuilder = new EntryBuilder();
                     }
@@ -398,11 +398,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_folderBuilder != default)
+                if (_folderBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_folderBuilder != default)
+                    if (_folderBuilder == default)
                     {
                         _folderBuilder = new FolderBuilder();
                     }
@@ -418,11 +418,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_functionalRoleBuilder != default)
+                if (_functionalRoleBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_functionalRoleBuilder != default)
+                    if (_functionalRoleBuilder == default)
                     {
                         _functionalRoleBuilder = new FunctionalRoleBuilder();
                     }
@@ -438,11 +438,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_IIBuilder != default)
+                if (_IIBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_IIBuilder != default)
+                    if (_IIBuilder == default)
                     {
                         _IIBuilder = new IIBuilder();
                     }
@@ -458,11 +458,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_INTBuilder != default)
+                if (_INTBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_INTBuilder != default)
+                    if (_INTBuilder == default)
                     {
                         _INTBuilder = new INTBuilder();
                     }
@@ -478,11 +478,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_IVLBuilder != default)
+                if (_IVLBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_IVLBuilder != default)
+                    if (_IVLBuilder == default)
                     {
                         _IVLBuilder = new IVLBuilder();
                     }
@@ -498,11 +498,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_IVLPQBuilder != default)
+                if (_IVLPQBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_IVLPQBuilder != default)
+                    if (_IVLPQBuilder == default)
                     {
                         _IVLPQBuilder = new IVLPQBuilder();
                     }
@@ -518,11 +518,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_IVLTSBuilder != default)
+                if (_IVLTSBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_IVLTSBuilder != default)
+                    if (_IVLTSBuilder == default)
                     {
                         _IVLTSBuilder = new IVLTSBuilder();
                     }
@@ -538,11 +538,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_linkBuilder != default)
+                if (_linkBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_linkBuilder != default)
+                    if (_linkBuilder == default)
                     {
                         _linkBuilder = new LinkBuilder();
                     }
@@ -558,11 +558,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_OIDBuilder != default)
+                if (_OIDBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_OIDBuilder != default)
+                    if (_OIDBuilder == default)
                     {
                         _OIDBuilder = new OIDBuilder();
                     }
@@ -578,11 +578,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_ORDBulder != default)
+                if (_ORDBulder == default)
                 {
                     _locker.EnterWriteLock();
                     
-                    if (_ORDBulder != default)
+                    if (_ORDBulder == default)
                     {
                         _ORDBulder = new ORDBulder();
                     }
@@ -598,11 +598,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_PIVLBuilder != default)
+                if (_PIVLBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_PIVLBuilder != default)
+                    if (_PIVLBuilder == default)
                     {
                         _PIVLBuilder = new PIVLBuilder();
                     }
@@ -618,11 +618,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_PQBuilder != default)
+                if (_PQBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_PQBuilder != default)
+                    if (_PQBuilder == default)
                     {
                         _PQBuilder = new PQBuilder();
                     }
@@ -638,11 +638,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_REALBuilder != default)
+                if (_REALBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_REALBuilder != default)
+                    if (_REALBuilder == default)
                     {
                         _REALBuilder = new REALBuilder();
                     }
@@ -658,11 +658,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_referenceModelBuilder != default)
+                if (_referenceModelBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_referenceModelBuilder != default)
+                    if (_referenceModelBuilder == default)
                     {
                         _referenceModelBuilder = new ReferenceModelBuilder();
                     }
@@ -678,11 +678,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_relatedPartyBuilder != default)
+                if (_relatedPartyBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_relatedPartyBuilder != default)
+                    if (_relatedPartyBuilder == default)
                     {
                         _relatedPartyBuilder = new RelatedPartyBuilder();
                     }
@@ -698,11 +698,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_RTOBuilder != default)
+                if (_RTOBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_RTOBuilder != default)
+                    if (_RTOBuilder == default)
                     {
                         _RTOBuilder = new RTOBuilder();
                     }
@@ -718,11 +718,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_sectionBuilder != default)
+                if (_sectionBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_sectionBuilder != default)
+                    if (_sectionBuilder == default)
                     {
                         _sectionBuilder = new SectionBuilder();
                     }
@@ -738,11 +738,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_simpleTextBuilder != default)
+                if (_simpleTextBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_simpleTextBuilder != default)
+                    if (_simpleTextBuilder == default)
                     {
                         _simpleTextBuilder = new SimpleTextBuilder();
                     }
@@ -758,11 +758,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_TSBuilder != default)
+                if (_TSBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_TSBuilder != default)
+                    if (_TSBuilder == default)
                     {
                         _TSBuilder = new TSBuilder();
                     }
@@ -778,11 +778,11 @@ namespace Medic.EHRBuilders.Managers
         {
             get
             {
-                if (_URIBuilder != default)
+                if (_URIBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_URIBuilder != default)
+                    if (_URIBuilder == default)
                     {
                         _URIBuilder = new URIBuilder();
                     }
