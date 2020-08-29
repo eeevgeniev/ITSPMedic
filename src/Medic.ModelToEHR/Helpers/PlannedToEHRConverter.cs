@@ -1,5 +1,6 @@
 ﻿using Medic.AppModels.Plannings;
-using Medic.EHR.RM;
+using Medic.EHR.Extracts;
+using Medic.EHR.RM.Base;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Base;
 using System;
@@ -9,10 +10,10 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class PlannedToEHRConverter : ToEHRBaseConverter
     {
-        internal PlannedToEHRConverter(IEHRManager ehrManager) 
+        internal PlannedToEHRConverter(IEHRManager ehrManager)
             : base(ehrManager) { }
 
-        internal ReferenceModel Convert(PlannedViewModel model, string name)
+        internal EhrExtract Convert(PlannedViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -97,30 +98,35 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            if ( model.SendClinicalPath != default)
+            if (model.SendClinicalPath != default)
             {
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendClinicalPath)).Build())
-                    .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.SendClinicalPath).Build()).Build();
+                entryPlannedBuilder.AddItems(
+                    EhrManager.ElementBuilder.Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendClinicalPath)).Build())
+                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.SendClinicalPath).Build()).Build());
             }
 
             if (model.PlannedEntryDate != default)
             {
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PlannedEntryDate)).Build())
-                    .AddValue(EhrManager.DATEBuilder.Clear().AddDate((DateTime)model.PlannedEntryDate).Build()).Build();
+                entryPlannedBuilder.AddItems(
+                    EhrManager.ElementBuilder.Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PlannedEntryDate)).Build())
+                        .AddValue(EhrManager.DATEBuilder.Clear().AddDate((DateTime)model.PlannedEntryDate).Build()).Build());
             }
 
             if (model.ClinicalPath != default)
             {
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.ClinicalPath)).Build())
-                    .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.ClinicalPath).Build()).Build();
+                entryPlannedBuilder.AddItems(
+                    EhrManager.ElementBuilder.Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.ClinicalPath)).Build())
+                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.ClinicalPath).Build()).Build());
             }
 
             ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder
                 .Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
+
+            Content entryContent = entryPlannedBuilder.Build();
 
             if (model.Patient != default)
             {
@@ -158,14 +164,17 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(entryPlannedBuilder.Build()).Build());
+            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(entryContent).Build());
 
-            ReferenceModel referenceModel = EhrManager
-                .ReferenceModelBuilder
+            EhrExtract ehrExtractModel = EhrManager
+                .EhrExtractModelBuilder
+                .AddEhrSystem(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(systemId)).Build())
+                .AddSubjectOfCare(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(model.Patient.IdentityNumber)).Build())
+                .AddTimeCreated(EhrManager.TSBuilder.Clear().AddTime(DateTime.Now).Build())
                 .AddComposition(compositionBuilder.Build())
                 .Build();
 
-            return referenceModel;
+            return ehrExtractModel;
         }
     }
 }

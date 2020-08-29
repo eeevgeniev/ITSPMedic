@@ -7,28 +7,28 @@ using Medic.AppModels.PathProcedures;
 using Medic.AppModels.Patients;
 using Medic.AppModels.Plannings;
 using Medic.AppModels.ProtocolDrugTherapies;
-using Medic.EHR.RM;
+using Medic.EHR.Extracts;
 
 namespace Medic.ModelToEHR.Contracts
 {
     public interface IToEHRConverter
     {
-        ReferenceModel Convert(InViewModel model, string name);
+        EhrExtract Convert(InViewModel model, string name, string systemId);
 
-        ReferenceModel Convert(OutViewModel model, string name);
+        EhrExtract Convert(OutViewModel model, string name, string systemId);
 
-        ReferenceModel Convert(PlannedViewModel model, string name);
+        EhrExtract Convert(PlannedViewModel model, string name, string systemId);
 
-        ReferenceModel Convert(CommissionAprViewModel model, string name);
+        EhrExtract Convert(CommissionAprViewModel model, string name, string systemId);
 
-        ReferenceModel Convert(DispObservationViewModel model, string name);
+        EhrExtract Convert(DispObservationViewModel model, string name, string systemId);
 
-        ReferenceModel Convert(InClinicProcedureViewModel model, string name);
+        EhrExtract Convert(InClinicProcedureViewModel model, string name, string systemId);
 
-        ReferenceModel Convert(PathProcedureViewModel model, string name);
+        EhrExtract Convert(PathProcedureViewModel model, string name, string systemId);
 
-        ReferenceModel Convert(ProtocolDrugTherapyViewModel model, string name);
+        EhrExtract Convert(ProtocolDrugTherapyViewModel model, string name, string systemId);
 
-        ReferenceModel Convert(PatientViewModel model, string name);
+        EhrExtract Convert(PatientViewModel model, string name, string systemId);
     }
 }

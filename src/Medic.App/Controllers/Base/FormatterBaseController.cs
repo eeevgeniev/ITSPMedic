@@ -1,4 +1,4 @@
-﻿using Medic.EHR.RM;
+﻿using Medic.EHR.Extracts;
 using Medic.Formatters.Contracts;
 using Medic.Resources;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +20,7 @@ namespace Medic.App.Controllers.Base
 
         protected MedicDataLocalization MedicDataLocalization => _medicDataLocalization;
 
-        protected virtual async Task<IActionResult> FormatModel(ReferenceModel model, IDataFormattable formatter)
+        protected virtual async Task<IActionResult> FormatModel(EhrExtract model, IDataFormattable formatter)
         {
             if (formatter == default)
             {

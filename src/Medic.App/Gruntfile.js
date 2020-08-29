@@ -16,7 +16,8 @@
                 files: {
                     'Assets/Temp/chart-new.js': 'Assets/js/chart.js',
                     'Assets/Temp/site-new.js': 'Assets/js/site.js',
-                    'Assets/Temp/formreset.js': 'Assets/js/formreset.js'
+                    'Assets/Temp/formreset.js': 'Assets/js/formreset.js',
+                    'Assets/Temp/warn-window.js': 'Assets/js/warn-window.js'
                 }
             }
         },
@@ -30,7 +31,8 @@
             all: {
                 files: {
                     'wwwroot/bundle/bundle.min.js': 'Assets/Temp/bundle.js',
-                    'wwwroot/js/formreset.min.js': 'Assets/Temp/formreset.js'
+                    'wwwroot/js/formreset.min.js': 'Assets/Temp/formreset.js',
+                    'wwwroot/js/warn-window.min.js': 'Assets/Temp/warn-window.js'
                 }
             }
         },

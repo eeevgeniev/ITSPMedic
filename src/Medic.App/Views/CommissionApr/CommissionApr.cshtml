@@ -39,7 +39,7 @@
         <h2 class="text-center">@Html.Raw(@medicDataLocalization.Get(MedicDataLocalization.Sender))</h2>
         <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.CommissionApr.Sender" />
         <hr />
-        <div>Html.Raw(@medicDataLocalization.Get(MedicDataLocalization.DateSend)): @Model.CommissionApr.SendDate.ToShortDateString()</div>
+        <div>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DateSend)): @Model.CommissionApr.SendDate.ToShortDateString()</div>
         <hr />
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MainDiag))</h2>
         <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.CommissionApr.MainDiag" />

@@ -65,7 +65,7 @@ namespace Medic.App.Controllers
 
                 if (!result.Succeeded)
                 {
-                    ModelState.AddModelError(string.Empty, GeneralLocalization.InvalidTry);
+                    ModelState.AddModelError(string.Empty, GeneralLocalization.Get(GeneralLocalization.InvalidTry));
 
                     return View(new AccountPageLoginModel()
                     {
@@ -177,7 +177,7 @@ namespace Medic.App.Controllers
                     });
                 }
 
-                return RedirectToAction(nameof(HomeController.Index), AccountController.GetName(nameof(AccountController)));
+                return RedirectToAction(nameof(HomeController.Index), HomeController.GetName(nameof(HomeController)));
             }
             catch (Exception ex)
             {

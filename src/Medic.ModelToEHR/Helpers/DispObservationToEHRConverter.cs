@@ -1,6 +1,8 @@
 ﻿using Medic.AppModels.DispObservations;
 using Medic.AppModels.MDIs;
+using Medic.EHR.Extracts;
 using Medic.EHR.RM;
+using Medic.EHR.RM.Base;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Base;
 using System;
@@ -13,7 +15,7 @@ namespace Medic.ModelToEHR.Helpers
         internal DispObservationToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) {}
 
-        internal ReferenceModel Convert(DispObservationViewModel model, string name)
+        internal EhrExtract Convert(DispObservationViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -71,6 +73,8 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
+            Content dispObservationContent = entryDispObservationBuilder.Build();
+
             ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder
                 .Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
@@ -120,14 +124,17 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(entryDispObservationBuilder.Build()).Build());
+            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(dispObservationContent).Build());
 
-            ReferenceModel referenceModel = EhrManager
-                .ReferenceModelBuilder
+            EhrExtract ehrExtractModel = EhrManager
+                .EhrExtractModelBuilder
+                .AddEhrSystem(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(systemId)).Build())
+                .AddSubjectOfCare(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(model.Patient.IdentityNumber)).Build())
+                .AddTimeCreated(EhrManager.TSBuilder.Clear().AddTime(DateTime.Now).Build())
                 .AddComposition(compositionBuilder.Build())
                 .Build();
 
-            return referenceModel;
+            return ehrExtractModel;
         }
 
         private Entry CreateMDIsEntry(MDISummaryViewModel model)

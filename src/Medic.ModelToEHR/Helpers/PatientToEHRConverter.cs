@@ -8,7 +8,9 @@ using Medic.AppModels.PathProcedures;
 using Medic.AppModels.Patients;
 using Medic.AppModels.Plannings;
 using Medic.AppModels.ProtocolDrugTherapies;
+using Medic.EHR.Extracts;
 using Medic.EHR.RM;
+using Medic.EHR.RM.Base;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Base;
 using System;
@@ -21,7 +23,7 @@ namespace Medic.ModelToEHR.Helpers
         internal PatientToEHRConverter(IEHRManager ehrManager)
             : base(ehrManager) { }
 
-        internal ReferenceModel Convert(PatientViewModel model, string name)
+        internal EhrExtract Convert(PatientViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -99,12 +101,13 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
+            Content patientBuilderContent = entryPatientBuilder.Build();
+
             ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder
                 .Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
 
-
-            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(entryPatientBuilder.Build()).Build());
+            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(patientBuilderContent).Build());
 
             if (model.Ins != default && model.Ins.Count > 0)
             {
@@ -178,12 +181,15 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            ReferenceModel referenceModel = EhrManager
-                .ReferenceModelBuilder
+            EhrExtract ehrExtractModel = EhrManager
+                .EhrExtractModelBuilder
+                .AddEhrSystem(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(systemId)).Build())
+                .AddSubjectOfCare(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(model.IdentityNumber)).Build())
+                .AddTimeCreated(EhrManager.TSBuilder.Clear().AddTime(DateTime.Now).Build())
                 .AddComposition(compositionBuilder.Build())
                 .Build();
 
-            return referenceModel;
+            return ehrExtractModel;
         }
 
         private Entry CreateInEntry(PatientInPreviewViewModel model)

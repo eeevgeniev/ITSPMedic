@@ -1,5 +1,6 @@
 ﻿using Medic.AppModels.Ins;
-using Medic.EHR.RM;
+using Medic.EHR.Extracts;
+using Medic.EHR.RM.Base;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Base;
 using System;
@@ -12,7 +13,7 @@ namespace Medic.ModelToEHR.Helpers
         internal InToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) {}
 
-        internal ReferenceModel Convert(InViewModel model, string name)
+        internal EhrExtract Convert(InViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -209,6 +210,8 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
+            Content insContent = entryInsBuilder.Build();
+
             ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder.Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
 
@@ -248,14 +251,17 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(entryInsBuilder.Build()).Build());
+            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(insContent).Build());
 
-            ReferenceModel referenceModel = EhrManager
-                .ReferenceModelBuilder
+            EhrExtract ehrExtractModel = EhrManager
+                .EhrExtractModelBuilder
+                .AddEhrSystem(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(systemId)).Build())
+                .AddSubjectOfCare(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(model.Patient.IdentityNumber)).Build())
+                .AddTimeCreated(EhrManager.TSBuilder.Clear().AddTime(DateTime.Now).Build())
                 .AddComposition(compositionBuilder.Build())
                 .Build();
 
-            return referenceModel;
+            return ehrExtractModel;
         }
     }
 }

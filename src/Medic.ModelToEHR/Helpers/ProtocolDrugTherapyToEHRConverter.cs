@@ -8,7 +8,9 @@ using Medic.AppModels.HematologyParts;
 using Medic.AppModels.Histologies;
 using Medic.AppModels.Practices;
 using Medic.AppModels.ProtocolDrugTherapies;
+using Medic.EHR.Extracts;
 using Medic.EHR.RM;
+using Medic.EHR.RM.Base;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Base;
 using System;
@@ -21,7 +23,7 @@ namespace Medic.ModelToEHR.Helpers
         internal ProtocolDrugTherapyToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) {}
 
-        internal ReferenceModel Convert(ProtocolDrugTherapyViewModel model, string name)
+        internal EhrExtract Convert(ProtocolDrugTherapyViewModel model, string name, string systemId)
         {
             IEntryBuilder entryProtocolDrugTherapyBuilder = EhrManager.EntryBuilder;
 
@@ -72,6 +74,8 @@ namespace Medic.ModelToEHR.Helpers
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.CPFile)).Build())
                     .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.CPFile).Build()).Build()
                 );
+
+            Content protocolDrugTherapyContent = entryProtocolDrugTherapyBuilder.Build();
 
             ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder
                 .Clear()
@@ -149,14 +153,17 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(entryProtocolDrugTherapyBuilder.Build()).Build());
+            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(protocolDrugTherapyContent).Build());
 
-            ReferenceModel referenceModel = EhrManager
-                .ReferenceModelBuilder
+            EhrExtract ehrExtractModel = EhrManager
+                .EhrExtractModelBuilder
+                .AddEhrSystem(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(systemId)).Build())
+                .AddSubjectOfCare(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(model.Patient.IdentityNumber)).Build())
+                .AddTimeCreated(EhrManager.TSBuilder.Clear().AddTime(DateTime.Now).Build())
                 .AddComposition(compositionBuilder.Build())
                 .Build();
 
-            return referenceModel;
+            return ehrExtractModel;
         }
 
         private Entry CreatePracticeEntry(PracticePreviewViewModel model)

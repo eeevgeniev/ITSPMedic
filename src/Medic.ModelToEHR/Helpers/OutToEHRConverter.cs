@@ -3,7 +3,9 @@ using Medic.AppModels.HistologicalResult;
 using Medic.AppModels.Outs;
 using Medic.AppModels.Procedures;
 using Medic.AppModels.UsedDrugs;
+using Medic.EHR.Extracts;
 using Medic.EHR.RM;
+using Medic.EHR.RM.Base;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Base;
 using System;
@@ -16,7 +18,7 @@ namespace Medic.ModelToEHR.Helpers
         internal OutToEHRConverter(IEHRManager ehrManager)
             : base(ehrManager) { }
 
-        internal ReferenceModel Convert(OutViewModel model, string name)
+        internal EhrExtract Convert(OutViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -326,6 +328,8 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
+            Content outContent = entryOutBuilder.Build();
+
             ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder
                 .Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
@@ -427,14 +431,17 @@ namespace Medic.ModelToEHR.Helpers
                     .Build());
             }
 
-            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(entryOutBuilder.Build()).Build());
+            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(outContent).Build());
 
-            ReferenceModel referenceModel = EhrManager
-                .ReferenceModelBuilder
+            EhrExtract ehrExtractModel = EhrManager
+                .EhrExtractModelBuilder
+                .AddEhrSystem(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(systemId)).Build())
+                .AddSubjectOfCare(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(model.Patient.IdentityNumber)).Build())
+                .AddTimeCreated(EhrManager.TSBuilder.Clear().AddTime(DateTime.Now).Build())
                 .AddComposition(compositionBuilder.Build())
                 .Build();
 
-            return referenceModel;
+            return ehrExtractModel;
         }
 
         private Entry CreateHistologicalResultEntry(HistologicalResultSummaryViewModel model)
@@ -655,16 +662,29 @@ namespace Medic.ModelToEHR.Helpers
                     EhrManager.ElementBuilder.Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.HLNumber)).Build())
                         .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.HLNumber).Build())
-                        .Build(),
-                    EhrManager.ElementBuilder.Clear()
+                        .Build()
+                    
+                );
+
+            if (!string.IsNullOrWhiteSpace(model.SendAPr))
+            {
+                createHistologicalBuilder = EhrManager.EntryBuilder.Clear()
+                .AddItems(
+                EhrManager.ElementBuilder.Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.SendAPr)).Build())
                         .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.SendAPr).Build())
-                        .Build(),
-                    EhrManager.ElementBuilder.Clear()
+                        .Build());
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.InAPr))
+            {
+                createHistologicalBuilder = EhrManager.EntryBuilder.Clear()
+                .AddItems(
+                EhrManager.ElementBuilder.Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.InAPr)).Build())
                         .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.InAPr).Build())
-                        .Build()
-                );
+                        .Build());
+            }
 
             if (model.OutHospital != default)
             {

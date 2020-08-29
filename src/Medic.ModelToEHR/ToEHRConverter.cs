@@ -7,7 +7,7 @@ using Medic.AppModels.PathProcedures;
 using Medic.AppModels.Patients;
 using Medic.AppModels.Plannings;
 using Medic.AppModels.ProtocolDrugTherapies;
-using Medic.EHR.RM;
+using Medic.EHR.Extracts;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Contracts;
 using Medic.ModelToEHR.Helpers;
@@ -39,7 +39,7 @@ namespace Medic.ModelToEHR
             EhrManager = ehrManager ?? throw new ArgumentNullException(nameof(EhrManager));
         }
 
-        public ReferenceModel Convert(InViewModel model, string name)
+        public EhrExtract Convert(InViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -58,10 +58,10 @@ namespace Medic.ModelToEHR
                 _locker.ExitWriteLock();
             }
 
-            return _inToEHRConverter.Convert(model, name);
+            return _inToEHRConverter.Convert(model, name, systemId);
         }
 
-        public ReferenceModel Convert(OutViewModel model, string name)
+        public EhrExtract Convert(OutViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -80,10 +80,10 @@ namespace Medic.ModelToEHR
                 _locker.ExitWriteLock();
             }
 
-            return _outToEHRConverter.Convert(model, name);
+            return _outToEHRConverter.Convert(model, name, systemId);
         }
 
-        public ReferenceModel Convert(PlannedViewModel model, string name)
+        public EhrExtract Convert(PlannedViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -102,10 +102,10 @@ namespace Medic.ModelToEHR
                 _locker.ExitWriteLock();
             }
 
-            return _plannedToEHRConverter.Convert(model, name);
+            return _plannedToEHRConverter.Convert(model, name, systemId);
         }
 
-        public ReferenceModel Convert(CommissionAprViewModel model, string name)
+        public EhrExtract Convert(CommissionAprViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -124,10 +124,10 @@ namespace Medic.ModelToEHR
                 _locker.ExitWriteLock();
             }
 
-            return _commissionAprToEHRConverter.Convert(model, name);
+            return _commissionAprToEHRConverter.Convert(model, name, systemId);
         }
 
-        public ReferenceModel Convert(DispObservationViewModel model, string name)
+        public EhrExtract Convert(DispObservationViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -146,10 +146,10 @@ namespace Medic.ModelToEHR
                 _locker.ExitWriteLock();
             }
 
-            return _dispObservationToEHRConverter.Convert(model, name);
+            return _dispObservationToEHRConverter.Convert(model, name, systemId);
         }
 
-        public ReferenceModel Convert(InClinicProcedureViewModel model, string name)
+        public EhrExtract Convert(InClinicProcedureViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -168,10 +168,10 @@ namespace Medic.ModelToEHR
                 _locker.ExitWriteLock();
             }
 
-            return _inClinicProcedureToEHRConverter.Convert(model, name);
+            return _inClinicProcedureToEHRConverter.Convert(model, name, systemId);
         }
 
-        public ReferenceModel Convert(PathProcedureViewModel model, string name)
+        public EhrExtract Convert(PathProcedureViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -190,10 +190,10 @@ namespace Medic.ModelToEHR
                 _locker.ExitWriteLock();
             }
 
-            return _pathProcedureToEHRConverter.Convert(model, name);
+            return _pathProcedureToEHRConverter.Convert(model, name, systemId);
         }
 
-        public ReferenceModel Convert(ProtocolDrugTherapyViewModel model, string name)
+        public EhrExtract Convert(ProtocolDrugTherapyViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -212,10 +212,10 @@ namespace Medic.ModelToEHR
                 _locker.ExitWriteLock();
             }
 
-            return _protocolDrugTherapyToEHRConverter.Convert(model, name);
+            return _protocolDrugTherapyToEHRConverter.Convert(model, name, systemId);
         }
 
-        public ReferenceModel Convert(PatientViewModel model, string name)
+        public EhrExtract Convert(PatientViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -234,7 +234,7 @@ namespace Medic.ModelToEHR
                 _locker.ExitWriteLock();
             }
 
-            return _patientToEHRConverter.Convert(model, name);
+            return _patientToEHRConverter.Convert(model, name, systemId);
         }
 
         public void Dispose()

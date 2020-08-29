@@ -2,7 +2,9 @@
 using Medic.AppModels.APr38s;
 using Medic.AppModels.Choices;
 using Medic.AppModels.CommissionAprs;
+using Medic.EHR.Extracts;
 using Medic.EHR.RM;
+using Medic.EHR.RM.Base;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Base;
 using System;
@@ -15,7 +17,7 @@ namespace Medic.ModelToEHR.Helpers
         internal CommissionAprToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) { }
 
-        internal ReferenceModel Convert(CommissionAprViewModel model, string name)
+        internal EhrExtract Convert(CommissionAprViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -70,6 +72,8 @@ namespace Medic.ModelToEHR.Helpers
                         .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.AprPriem).Build())
                         .Build());
             }
+
+            Content commissionAprContent = entryCommissionAprBuilder.Build();
 
             ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder
                 .Clear()
@@ -129,14 +133,17 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(entryCommissionAprBuilder.Build()).Build());
+            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(commissionAprContent).Build());
 
-            ReferenceModel referenceModel = EhrManager
-                .ReferenceModelBuilder
+            EhrExtract ehrExtractModel = EhrManager
+                .EhrExtractModelBuilder
+                .AddEhrSystem(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(systemId)).Build())
+                .AddSubjectOfCare(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(model.Patient.IdentityNumber)).Build())
+                .AddTimeCreated(EhrManager.TSBuilder.Clear().AddTime(DateTime.Now).Build())
                 .AddComposition(compositionBuilder.Build())
                 .Build();
 
-            return referenceModel;
+            return ehrExtractModel;
         }
 
         private Entry CreateAPr05PreviewViewModelEntry(APr05PreviewViewModel model)

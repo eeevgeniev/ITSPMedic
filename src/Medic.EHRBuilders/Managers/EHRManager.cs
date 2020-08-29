@@ -40,7 +40,7 @@ namespace Medic.EHRBuilders.Managers
         private IPIVLBuilder _PIVLBuilder;
         private IPQBuilder _PQBuilder;
         private IREALBuilder _REALBuilder;
-        private IReferenceModelBuilder _referenceModelBuilder;
+        private IEhrExtractModelBuilder _ehrExtractModelBuilder;
         private IRelatedPartyBuilder _relatedPartyBuilder;
         private IRTOBuilder _RTOBuilder;
         private ISectionBuilder _sectionBuilder;
@@ -654,23 +654,23 @@ namespace Medic.EHRBuilders.Managers
             }
         }
 
-        public IReferenceModelBuilder ReferenceModelBuilder
+        public IEhrExtractModelBuilder EhrExtractModelBuilder
         {
             get
             {
-                if (_referenceModelBuilder == default)
+                if (_ehrExtractModelBuilder == default)
                 {
                     _locker.EnterWriteLock();
 
-                    if (_referenceModelBuilder == default)
+                    if (_ehrExtractModelBuilder == default)
                     {
-                        _referenceModelBuilder = new ReferenceModelBuilder();
+                        _ehrExtractModelBuilder = new EhrExtractModelBuilder();
                     }
 
                     _locker.ExitWriteLock();
                 }
 
-                return _referenceModelBuilder;
+                return _ehrExtractModelBuilder;
             }
         }
 
@@ -827,7 +827,7 @@ namespace Medic.EHRBuilders.Managers
                 _PIVLBuilder?.Dispose();
                 _PQBuilder?.Dispose();
                 _REALBuilder?.Dispose();
-                _referenceModelBuilder?.Dispose();
+                _ehrExtractModelBuilder?.Dispose();
                 _relatedPartyBuilder?.Dispose();
                 _RTOBuilder?.Dispose();
                 _sectionBuilder?.Dispose();

@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Medic.EHR.Infrastructure
+﻿namespace Medic.EHR.Infrastructure
 {
     internal class Constants
     {
@@ -120,5 +118,27 @@ namespace Medic.EHR.Infrastructure
         internal const string Folder = "FOLDER";
         internal const string Composition = "COMPOSITION";
         internal const string CodedValue = "codedValue";
+        internal const string EhrId = "ehr_id";
+        internal const string SubjectOfCare = "subject_of_care";
+        internal const string TimeCreated = "time_created";
+        internal const string AuthorisingParty = "authorising_party";
+        internal const string RmId = "rm_id";
+        internal const string Folders = "folders";
+        internal const string AllCompositions = "all_compositions";
+        internal const string EhrExtract = "EHR_EXTRACT";
+        internal const string Criteria = "EXTRACT_CRITERIA";
+        internal const string TimePeriod = "time_period";
+        internal const string MaxSensitivity = "max_sensitivity";
+        internal const string AllVersions = "all_versions";
+        internal const string MultimediaIncluded = "multimedia_included";
+        internal const string ArchetypeIds = "archetype_ids";
+        internal const string OtherConstraints = "other_constraints";
+        internal const string IdentifiedEntity = "IDENTIFIED_ENTITY";
+        internal const string ExtractId = "extract_id";
+        internal const string Id = "id";
+        internal const string Telecom = "telecom";
+        internal const string TelecomAddress = "telecom_address";
+        internal const string Use = "use";
+        internal const string ValidTimeTelecome = "valid_time";
     }
 }

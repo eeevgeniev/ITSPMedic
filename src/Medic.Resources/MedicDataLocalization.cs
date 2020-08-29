@@ -350,6 +350,7 @@ namespace Medic.Resources
         public const string Browse = nameof(Browse);
         public const string Search = nameof(Search);
         public const string Reset = nameof(Reset);
+        public const string DeleteUser = nameof(DeleteUser);
 
         public MedicDataLocalization(IStringLocalizerFactory factory)
             : base(factory, nameof(MedicDataLocalization)) { }

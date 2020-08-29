@@ -64,7 +64,7 @@ namespace Medic.EHRBuilders.Contracts
 
         IREALBuilder REALBuilder { get; }
 
-        IReferenceModelBuilder ReferenceModelBuilder { get; }
+        IEhrExtractModelBuilder EhrExtractModelBuilder { get; }
 
         IRelatedPartyBuilder RelatedPartyBuilder { get; }
 

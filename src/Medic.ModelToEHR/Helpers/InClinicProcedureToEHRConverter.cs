@@ -1,6 +1,8 @@
 ﻿using Medic.AppModels.CeasedClinicals;
 using Medic.AppModels.InClinicProcedures;
+using Medic.EHR.Extracts;
 using Medic.EHR.RM;
+using Medic.EHR.RM.Base;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Base;
 using System;
@@ -12,7 +14,7 @@ namespace Medic.ModelToEHR.Helpers
         internal InClinicProcedureToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) { }
 
-        internal ReferenceModel Convert(InClinicProcedureViewModel model, string name)
+        internal EhrExtract Convert(InClinicProcedureViewModel model, string name, string systemId)
         {
             if (model == default)
             {
@@ -128,6 +130,8 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
+            Content inClinicProcedureContent = entryInClinicProcedureBuilder.Build();
+
             ICompositionBuilder compositionBuilder = EhrManager.CompositionBuilder
                 .Clear()
                 .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(name).Build());
@@ -177,14 +181,17 @@ namespace Medic.ModelToEHR.Helpers
                         .Build());
             }
 
-            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(entryInClinicProcedureBuilder.Build()).Build());
+            compositionBuilder.AddContent(EhrManager.SectionBuilder.Clear().AddMembers(inClinicProcedureContent).Build());
 
-            ReferenceModel referenceModel = EhrManager
-                .ReferenceModelBuilder
+            EhrExtract ehrExtractModel = EhrManager
+                .EhrExtractModelBuilder
+                .AddEhrSystem(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(systemId)).Build())
+                .AddSubjectOfCare(EhrManager.IIBuilder.Clear().AddRoot(EhrManager.OIDBuilder.Build(model.Patient.IdentityNumber)).Build())
+                .AddTimeCreated(EhrManager.TSBuilder.Clear().AddTime(DateTime.Now).Build())
                 .AddComposition(compositionBuilder.Build())
                 .Build();
 
-            return referenceModel;
+            return ehrExtractModel;
         }
 
         private Entry CreateCeasedClinicalEntry(CeasedClinicalViewModel model)

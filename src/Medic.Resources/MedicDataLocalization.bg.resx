@@ -354,6 +354,9 @@
   <data name="Delete" xml:space="preserve">
     <value>Изтрий</value>
   </data>
+  <data name="DeleteUser" xml:space="preserve">
+    <value>Потвърдете изтриването на потребителя.</value>
+  </data>
   <data name="DeputyUniqueIdentifier" xml:space="preserve">
     <value>Уин лекар, заместващ(ако има)</value>
   </data>

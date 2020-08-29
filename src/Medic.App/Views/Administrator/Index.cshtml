@@ -13,7 +13,7 @@
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Administrator))</h2>
     </header>
     <section>
-        <a asp-action="@nameof(AdministratorController.Create)" 
+        <a asp-action="@nameof(AdministratorController.Create)"
            asp-controller="@AdministratorController.GetName(nameof(AdministratorController))">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CreateUser))</a>
     </section>
     <section class="mt-sm-1">
@@ -35,7 +35,8 @@
                             <form asp-controller="@AdministratorController.GetName(nameof(AdministratorController))"
                                   asp-action="@nameof(AdministratorController.Delete)"
                                   method="post"
-                                  asp-antiforgery="true">
+                                  asp-antiforgery="true"
+                                  class="delete-form">
                                 <input type="hidden" name="username" value="@currentUser.Username" />
                                 <input type="hidden" name="page" value="@Model.CurrentPage" />
                                 <input type="submit" class="btn btn-danger" value="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Delete))" />
@@ -63,3 +64,27 @@
         }
     </section>
 </article>
+
+@section Scripts {
+    <environment names="Development">
+        <script src="~/lib/jqueryui/jquery-ui.js"></script>
+        <script src="~/js/warn-window.js"></script>
+    </environment>
+    <environment names="Production">
+        <script src="~/lib/jqueryui/jquery-ui.min.js" asp-append-version="true"></script>
+        <script src="~/js/warn-window.min.js" asp-append-version="true"></script>
+    </environment>
+}
+
+@section Css {
+    <environment names="Development">
+        <link href="~/lib/jqueryui/jquery-ui.css" rel="stylesheet" />
+    </environment>
+    <environment names="Production">
+        <link href="~/lib/jqueryui/jquery-ui.min.js" asp-append-version="true" rel="stylesheet" />
+    </environment>
+}
+
+<div id="dialog-confirm" title="@medicDataLocalization.Get("DeleteUser")" style="display:none;">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>@medicDataLocalization.Get("DeleteUser")</p>
+</div>

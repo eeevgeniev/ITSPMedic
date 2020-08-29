@@ -36,7 +36,7 @@
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sender))</h2>
         <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.InClinicProcedureViewModel.Sender" />
         <hr />
-        <div>@Html.Raw(MedicDataLocalization.SendDate): @Html.Raw(Model.InClinicProcedureViewModel.DateSend.ToShortDateString()))</div>
+        <div>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendDate)): @Html.Raw(Model.InClinicProcedureViewModel.DateSend.ToShortDateString())</div>
         <hr />
         <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstMainDiag))</h2>
         <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.InClinicProcedureViewModel.FirstMainDiag" />

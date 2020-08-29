@@ -277,7 +277,7 @@ namespace Medic.App.Controllers
                         {
                             MaxAge = TimeSpan.FromDays(MedicConstants.LanguageCookieSpanInDays),
                             SameSite = SameSiteMode.Strict,
-                            HttpOnly = true
+                            HttpOnly = false
                         };
 
                         HttpContext.Response.Cookies.Append(MedicConstants.LanguageCookieName, language, options);

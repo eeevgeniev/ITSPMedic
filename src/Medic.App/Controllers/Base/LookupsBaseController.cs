@@ -1,8 +1,10 @@
 ﻿using Medic.App.Infrastructure;
 using Medic.AppModels.HealthRegions;
 using Medic.Cache.Contacts;
+using Medic.Formatters.Contracts;
 using Medic.Resources;
 using Medic.Services.Contracts;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

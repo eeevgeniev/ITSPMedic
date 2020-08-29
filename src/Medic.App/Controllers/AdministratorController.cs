@@ -175,7 +175,7 @@ namespace Medic.App.Controllers
         {
             try
             {
-                if (string.Equals(username, DefaultAdministratorName))
+                if (string.Equals(username, DefaultAdministratorName) || string.Equals(username, HttpContext.User.Identity.Name))
                 {
                     return RedirectToAction(nameof(AdministratorController.Index), GetName(nameof(AdministratorController)), new { page });
                 }
@@ -226,7 +226,7 @@ namespace Medic.App.Controllers
 
         private List<UserViewModel> GetUsers(int startIndex, int length) =>
             UserManager.Users
-                .Where(u => !EF.Functions.Like(u.UserName, DefaultAdministratorName))
+                .Where(u => !EF.Functions.Like(u.UserName, DefaultAdministratorName) && !EF.Functions.Like(u.UserName, HttpContext.User.Identity.Name))
                 .Select(u => new UserViewModel() { Id = u.Id, Username = u.UserName, Email = u.Email })
                 .Skip(startIndex)
                 .Take(length)

@@ -354,6 +354,9 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="DeleteUser" xml:space="preserve">
+    <value>Confirm delete user.</value>
+  </data>
   <data name="DeputyUniqueIdentifier" xml:space="preserve">
     <value>Deputy unique identifier</value>
   </data>

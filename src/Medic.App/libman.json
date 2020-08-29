@@ -15,6 +15,10 @@
       "provider": "cdnjs",
       "library": "Chart.js@2.9.3",
       "destination": "wwwroot/lib/chartjs"
+    },
+    {
+      "library": "jqueryui@1.12.1",
+      "destination": "wwwroot/lib/jqueryui/"
     }
   ]
 }

@@ -5,7 +5,7 @@ using Medic.AppModels.HealthRegions;
 using Medic.AppModels.ProtocolDrugTherapies;
 using Medic.AppModels.Sexes;
 using Medic.Cache.Contacts;
-using Medic.EHR.RM;
+using Medic.EHR.Extracts;
 using Medic.Formatters.Contracts;
 using Medic.Formatters.Enums;
 using Medic.Logs.Contracts;
@@ -177,9 +177,9 @@ namespace Medic.App.Controllers
                         return BadRequest();
                     }
 
-                    ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(ProtocolDrugTherapyViewModel));
+                    EhrExtract ehrExtractModel = ToEHRConverter.Convert(model, nameof(ProtocolDrugTherapyViewModel), MedicConstants.ItupMedic);
 
-                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
+                    return await base.FormatModel(ehrExtractModel, FormattableFactory.CreateFormatter(FormatterEnum.XML));
                 }
             }
             catch (Exception ex)
@@ -214,9 +214,9 @@ namespace Medic.App.Controllers
                         return BadRequest();
                     }
 
-                    ReferenceModel referenceModel = ToEHRConverter.Convert(model, nameof(ProtocolDrugTherapyViewModel));
+                    EhrExtract ehrExtractModel = ToEHRConverter.Convert(model, nameof(ProtocolDrugTherapyViewModel), MedicConstants.ItupMedic);
 
-                    return await base.FormatModel(referenceModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
+                    return await base.FormatModel(ehrExtractModel, FormattableFactory.CreateFormatter(FormatterEnum.Json));
                 }
             }
             catch (Exception ex)
