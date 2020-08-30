@@ -158,6 +158,11 @@ namespace Medic.ModelToEHR.Base
                     .Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Code)).Build())
                     .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.Code).Build())
+                    .Build(),
+                    EhrManager.ElementBuilder
+                    .Clear()
+                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Name)).Build())
+                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.Name).Build())
                     .Build())
                 .Build();
         }
