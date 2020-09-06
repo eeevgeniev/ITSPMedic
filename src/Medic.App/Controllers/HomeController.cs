@@ -8,6 +8,7 @@ using Medic.AppModels.Diags;
 using Medic.AppModels.HospitalPractices;
 using Medic.AppModels.UsedDrugs;
 using Medic.Cache.Contacts;
+using Medic.Formatters.Contracts;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.Resources;
@@ -26,7 +27,7 @@ using System.Threading.Tasks;
 namespace Medic.App.Controllers
 {
     [Authorize]
-    public class HomeController : PageBasedController
+    public class HomeController : FormatterBaseController
     {
         private readonly ICPFileService CPFileService;
         private readonly IDiagnoseService DiagnoseService;
@@ -35,9 +36,9 @@ namespace Medic.App.Controllers
         private readonly IPatientService PatientService;
         private readonly IUsedDrugService UsedDrugService;
         private readonly ILogger<HomeController> Logger;
-        private readonly MedicDataLocalization MedicDataLocalization;
         private readonly ICacheable MedicCache;
         private readonly IMedicLoggerService MedicLoggerService;
+        private readonly IFormattableFactory FormattableFactory;
 
         public HomeController(
             ICPFileService cpFileService,
@@ -47,9 +48,11 @@ namespace Medic.App.Controllers
             IPatientService patientService,
             IUsedDrugService usedDrugService,
             ILogger<HomeController> logger,
-            MedicDataLocalization мedicDataLocalization,
+            MedicDataLocalization medicDataLocalization,
             ICacheable medicCache,
-            IMedicLoggerService medicLoggerService)
+            IMedicLoggerService medicLoggerService,
+            IFormattableFactory formattableFactory)
+            : base (medicDataLocalization)
         {
             CPFileService = cpFileService ?? throw new ArgumentNullException(nameof(cpFileService));
             DiagnoseService = diagnoseService ?? throw new ArgumentNullException(nameof(diagnoseService));
@@ -58,9 +61,9 @@ namespace Medic.App.Controllers
             PatientService = patientService ?? throw new ArgumentNullException(nameof(patientService));
             UsedDrugService = usedDrugService ?? throw new ArgumentNullException(nameof(usedDrugService));
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            MedicDataLocalization = мedicDataLocalization ?? throw new ArgumentNullException(nameof(мedicDataLocalization));
             MedicCache = medicCache ?? throw new ArgumentNullException(nameof(medicCache));
             MedicLoggerService = medicLoggerService ?? throw new ArgumentNullException(nameof(medicLoggerService));
+            FormattableFactory = formattableFactory ?? throw new ArgumentNullException(nameof(formattableFactory));
         }
 
         public async Task<IActionResult> Index()
@@ -122,15 +125,9 @@ namespace Medic.App.Controllers
             {
                 int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
 
-                string key = $"{nameof(DiagMKBSummaryViewModel)} - {startIndex}";
                 string countKey = $"{nameof(DiagMKBSummaryViewModel)} - count";
 
-                if (!MedicCache.TryGetValue(key, out List<DiagMKBSummaryViewModel> model))
-                {
-                    model = await DiagService.GetMKBSummaryAsync(startIndex, MedicConstants.SummaryPageLength);
-
-                    MedicCache.Set(key, model);
-                }
+                List<DiagMKBSummaryViewModel> model = await GetDiags(startIndex, MedicConstants.SummaryPageLength);
 
                 if (!MedicCache.TryGetValue(countKey, out int diagsCount))
                 {
@@ -165,21 +162,45 @@ namespace Medic.App.Controllers
             }
         }
 
+        public async Task<IActionResult> DiagsAsExcel(int page = 1)
+        {
+            try
+            {
+                int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
+
+                List<DiagMKBSummaryViewModel> model = await GetDiags(startIndex, MedicConstants.SummaryPageLength);
+
+                if (model == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<DiagMKBSummaryViewModel>(model, MedicDataLocalization.Diags, FormattableFactory);
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
         public async Task<IActionResult> Diagnoses(int page = 1)
         {
             try
             {
                 int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
 
-                string key = $"{nameof(DiagnoseMKBSummaryViewModel)} - {startIndex}";
                 string countKey = $"{nameof(DiagnoseMKBSummaryViewModel)} - count";
 
-                if (!MedicCache.TryGetValue(key, out List<DiagnoseMKBSummaryViewModel> model))
-                {
-                    model = await DiagnoseService.MKBSummaryAsync(startIndex, MedicConstants.SummaryPageLength);
-
-                    MedicCache.Set(key, model);
-                }
+                List<DiagnoseMKBSummaryViewModel> model = await GetDiagnoses(startIndex, MedicConstants.SummaryPageLength);
 
                 if (!MedicCache.TryGetValue(countKey, out int diagnosesCount))
                 {
@@ -214,27 +235,51 @@ namespace Medic.App.Controllers
             }
         }
 
+        public async Task<IActionResult> DiagnosesAsExcel(int page = 1)
+        {
+            try
+            {
+                int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
+
+                List<DiagnoseMKBSummaryViewModel> model = await GetDiagnoses(startIndex, MedicConstants.SummaryPageLength);
+
+                if (model == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<DiagnoseMKBSummaryViewModel>(model, MedicDataLocalization.Diagnoses, FormattableFactory);
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
+            }
+        }
+
         public async Task<IActionResult> UsedDrugs(int page = 1)
         {
             try
             {
                 int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
 
-                string key = $"{nameof(UsedDrugsSummaryStatistic)} - {startIndex}";
                 string keyCount = $"{nameof(UsedDrugsSummaryStatistic)} - count";
 
-                if (!MedicCache.TryGetValue(key, out List<UsedDrugsSummaryStatistic> model))
-                {
-                    model = await UsedDrugService.UsedDrugsSummaryAsync(startIndex, MedicConstants.SummaryPageLength);
-
-                    MedicCache.Set(key, model);
-                }
+                List<UsedDrugsSummaryStatistic> model = await GetUsedDrugs(startIndex, MedicConstants.SummaryPageLength);
 
                 if (!MedicCache.TryGetValue(keyCount, out int usedDrugsCount))
                 {
                     usedDrugsCount = await UsedDrugService.UsedDrugsSummaryCountAsync();
 
-                    MedicCache.Set(key, usedDrugsCount);
+                    MedicCache.Set(keyCount, usedDrugsCount);
                 }
 
                 return View(new HomePageUsedDrugsModel()
@@ -260,6 +305,36 @@ namespace Medic.App.Controllers
                 });
 
                 throw ex;
+            }
+        }
+
+        public async Task<IActionResult> UsedDrugsAsExcel(int page = 1)
+        {
+            try
+            {
+                int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
+
+                List<UsedDrugsSummaryStatistic> model = await GetUsedDrugs(startIndex, MedicConstants.SummaryPageLength);
+
+                if (model == default)
+                {
+                    return BadRequest();
+                }
+
+                return await base.FormatModel<UsedDrugsSummaryStatistic>(model, MedicDataLocalization.Diagnoses, FormattableFactory);
+            }
+            catch (Exception ex)
+            {
+                Task<int> _ = MedicLoggerService.SaveAsync(new Log()
+                {
+                    Message = ex.Message,
+                    InnerExceptionMessage = ex?.InnerException?.Message ?? null,
+                    Source = ex.Source,
+                    StackTrace = ex.StackTrace,
+                    Date = DateTime.Now
+                });
+
+                throw;
             }
         }
 
@@ -311,11 +386,52 @@ namespace Medic.App.Controllers
             return View();
         }
 
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private async Task<List<DiagMKBSummaryViewModel>> GetDiags(int startIndex, int count)
+        {
+            string key = $"{nameof(DiagMKBSummaryViewModel)} - {startIndex}";
+
+            if (!MedicCache.TryGetValue(key, out List<DiagMKBSummaryViewModel> model))
+            {
+                model = await DiagService.GetMKBSummaryAsync(startIndex, count);
+
+                MedicCache.Set(key, model);
+            }
+
+            return model;
+        }
+
+        private async Task<List<DiagnoseMKBSummaryViewModel>> GetDiagnoses(int startIndex, int count)
+        {
+            string key = $"{nameof(DiagnoseMKBSummaryViewModel)} - {startIndex}";
+
+            if (!MedicCache.TryGetValue(key, out List<DiagnoseMKBSummaryViewModel> model))
+            {
+                model = await DiagnoseService.MKBSummaryAsync(startIndex, count);
+
+                MedicCache.Set(key, model);
+            }
+
+            return model;
+        }
+
+        private async Task<List<UsedDrugsSummaryStatistic>> GetUsedDrugs(int startIndex, int count)
+        {
+            string key = $"{nameof(UsedDrugsSummaryStatistic)} - {startIndex}";
+
+            if (!MedicCache.TryGetValue(key, out List<UsedDrugsSummaryStatistic> model))
+            {
+                model = await UsedDrugService.UsedDrugsSummaryAsync(startIndex, count);
+
+                MedicCache.Set(key, model);
+            }
+
+            return model;
         }
     }
 }

@@ -8,6 +8,16 @@
 <article>
     <header class="text-center">
         <h2>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Summary)) : @Html.Raw(Model.TotalResults) @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
+        <section class="text-right">
+            <a asp-controller="@InController.GetName(nameof(HomeController))"
+               asp-action="@nameof(HomeController.DiagnosesAsExcel)"
+               asp-route-page="@Model.CurrentPage"
+               download
+               title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))"
+               class="export-anchor">
+                <img asp-append-version="true" src="~/images/excel.jpg" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))" class="export-image" />
+            </a>
+        </section>
     </header>
     <section>
         <header class="text-center">

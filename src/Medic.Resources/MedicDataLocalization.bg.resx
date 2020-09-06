@@ -553,7 +553,7 @@
     <value>Болничен лист - брой дни</value>
   </data>
   <data name="HospitalPracticeFile" xml:space="preserve">
-    <value>Файл за практики в боницата</value>
+    <value>Файл за практики в болницата</value>
   </data>
   <data name="HospitalPracticeFileSummary" xml:space="preserve">
     <value>Качете нов файл за практики в болницата.</value>

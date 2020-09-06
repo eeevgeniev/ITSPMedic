@@ -5,57 +5,67 @@
     ViewData[Constants.Title] = Model.Title;
 }
 
-    <article>
-        <header class="text-center">
-            <h2>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Summary)) : @Html.Raw(Model.TotalResults) @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
-        </header>
-        <section>
-            <header class="text-center">
-                <h4>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UsedDrugs))</h4>
-            </header>
-            <div>
-                <div class="row">
-                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UsedDrugCode))</div>
-                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutMainDiagnoseCode))</div>
-                    <div class="col-sm-3 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutMainDiagnose))</div>
-                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TotalUses))</div>
-                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AverageQuantity))</div>
-                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TotalCosts))</div>
-                </div>
-                @if (Model.UsedDrugsSummary != default && Model.UsedDrugsSummary.Count > 0)
-                {
-                    foreach (var usedDrug in Model.UsedDrugsSummary)
-                    {
-                        <hr />
-                        <div class="row">
-                            <div class="col-sm-2">@Html.Raw(usedDrug.UsedDrugCode)</div>
-                            <div class="col-sm-1">@Html.Raw(usedDrug.OutDiagnoseCode)</div>
-                            <div class="col-sm-3">@Html.Raw(usedDrug.OutDiagnoseName)</div>
-                            <div class="col-sm-2">@Html.Raw(usedDrug.TotalUses)</div>
-                            <div class="col-sm-2">@Html.Raw(usedDrug.AverageQuantity.ToString("f4"))</div>
-                            <div class="col-sm-2">@Html.Raw(usedDrug.TotalCosts.ToString("f4"))</div>
-                        </div>
-                    }
-
-                    <hr />
-                    <footer class="mt-sm-3">
-                        <pager page-count="@Model.TotalPages"
-                               current-page="@Model.CurrentPage"
-                               controller-name="@MedicBaseController.GetName(nameof(HomeController))"
-                               additional-properties="@null"
-                               action-name="@nameof(HomeController.UsedDrugs)"
-                               nav-class-names="btn-toolbar"
-                               ul-class-names="pagination"
-                               li-class-names="page-item"
-                               li-selected-class-names="page-item active"
-                               anchor-class-names="page-link">
-                        </pager>
-                    </footer>
-                }
-                else
-                {
-                    <div class="text-info text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
-                }
-            </div>
+<article>
+    <header class="text-center">
+        <h2>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Summary)) : @Html.Raw(Model.TotalResults) @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
+        <section class="text-right">
+            <a asp-controller="@InController.GetName(nameof(HomeController))"
+               asp-action="@nameof(HomeController.UsedDrugsAsExcel)"
+               asp-route-page="@Model.CurrentPage"
+               download
+               title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))"
+               class="export-anchor">
+                <img asp-append-version="true" src="~/images/excel.jpg" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))" class="export-image" />
+            </a>
         </section>
-    </article>
+    </header>
+    <section>
+        <header class="text-center">
+            <h4>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UsedDrugs))</h4>
+        </header>
+        <div>
+            <div class="row">
+                <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UsedDrugCode))</div>
+                <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutMainDiagnoseCode))</div>
+                <div class="col-sm-3 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutMainDiagnose))</div>
+                <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TotalUses))</div>
+                <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AverageQuantity))</div>
+                <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TotalCosts))</div>
+            </div>
+            @if (Model.UsedDrugsSummary != default && Model.UsedDrugsSummary.Count > 0)
+            {
+                foreach (var usedDrug in Model.UsedDrugsSummary)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-2">@Html.Raw(usedDrug.UsedDrugCode)</div>
+                        <div class="col-sm-1">@Html.Raw(usedDrug.OutDiagnoseCode)</div>
+                        <div class="col-sm-3">@Html.Raw(usedDrug.OutDiagnoseName)</div>
+                        <div class="col-sm-2">@Html.Raw(usedDrug.TotalUses)</div>
+                        <div class="col-sm-2">@Html.Raw(usedDrug.AverageQuantity.ToString("f4"))</div>
+                        <div class="col-sm-2">@Html.Raw(usedDrug.TotalCosts.ToString("f4"))</div>
+                    </div>
+                }
+
+                <hr />
+                <footer class="mt-sm-3">
+                    <pager page-count="@Model.TotalPages"
+                           current-page="@Model.CurrentPage"
+                           controller-name="@MedicBaseController.GetName(nameof(HomeController))"
+                           additional-properties="@null"
+                           action-name="@nameof(HomeController.UsedDrugs)"
+                           nav-class-names="btn-toolbar"
+                           ul-class-names="pagination"
+                           li-class-names="page-item"
+                           li-selected-class-names="page-item active"
+                           anchor-class-names="page-link">
+                    </pager>
+                </footer>
+            }
+            else
+            {
+                <div class="text-info text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
+            }
+        </div>
+    </section>
+</article>
