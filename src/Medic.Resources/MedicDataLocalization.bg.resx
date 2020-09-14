@@ -223,7 +223,7 @@
     <value>Teгло в кг</value>
   </data>
   <data name="CeasedClinicalPath" xml:space="preserve">
-    <value>Ceased clinical path</value>
+    <value>Прекъсната клинична пътека</value>
   </data>
   <data name="CeasedOnly" xml:space="preserve">
     <value>Приведен от клинична процедура</value>
@@ -265,10 +265,10 @@
     <value>Комисиите по Амб. проц. 05 и 38</value>
   </data>
   <data name="CommissionAprsSummary" xml:space="preserve">
-    <value>Комисии по Амб. проц. 05 и 38, мкб, пациенти</value>
+    <value>Комисии по Амб. проц. 05 и 38, МКБ, пациенти</value>
   </data>
   <data name="CommissionAprSummary" xml:space="preserve">
-    <value>Комисия по Амб. проц. 05 и 38, пациент, мкб</value>
+    <value>Комисия по Амб. проц. 05 и 38, пациент, МКБ</value>
   </data>
   <data name="CommissionAprsView" xml:space="preserve">
     <value>Преглед на Комисии по Амб. проц. 05 и 38 </value>
@@ -388,13 +388,13 @@
     <value>Диагнози</value>
   </data>
   <data name="DiagnoseSummaryTitle" xml:space="preserve">
-    <value>Информация за диагнози по MKB код (приеми, изписания и планирани пациенти)</value>
+    <value>Информация за диагнози по МКБ код (приеми, изписания и планирани пациенти)</value>
   </data>
   <data name="Diags" xml:space="preserve">
     <value>Диагнози</value>
   </data>
   <data name="DiagSummaryTitle" xml:space="preserve">
-    <value>Информация за диагнози по MKB код (без приеми, изписания и планирани пациенти)</value>
+    <value>Информация за диагнози по МКБ код (без приеми, изписания и планирани пациенти)</value>
   </data>
   <data name="Direction" xml:space="preserve">
     <value>Ред</value>
@@ -421,10 +421,10 @@
     <value>Диспансерни наблюдения</value>
   </data>
   <data name="DispObservationsSummary" xml:space="preserve">
-    <value>Диспансерни наблюдения, мкб, пациенти</value>
+    <value>Диспансерни наблюдения, МКБ, пациенти</value>
   </data>
   <data name="DispObservationSummary" xml:space="preserve">
-    <value>Диспансерно наблюдение, пациент, мкб</value>
+    <value>Диспансерно наблюдение, пациент, МКБ</value>
   </data>
   <data name="DispObservationsView" xml:space="preserve">
     <value>Преглед на диспансерни наблюдения</value>
@@ -472,7 +472,7 @@
     <value>Електронна поща</value>
   </data>
   <data name="EndCourse" xml:space="preserve">
-    <value>End course</value>
+    <value>Край на курса за лечение</value>
   </data>
   <data name="EntryDate" xml:space="preserve">
     <value>Дата на постъпване</value>
@@ -781,7 +781,7 @@
     <value>Изписвания на пациенти</value>
   </data>
   <data name="OutsSummary" xml:space="preserve">
-    <value>Изписвания на пациенти, пациенти, мкб</value>
+    <value>Изписвания на пациенти, пациенти, МКБ</value>
   </data>
   <data name="OutSummary" xml:space="preserve">
     <value>Изписване на пациент, пациент, диагнози</value>
@@ -811,10 +811,10 @@
     <value>Извършени дейности по клинични процедури</value>
   </data>
   <data name="PathProceduresSummary" xml:space="preserve">
-    <value>Извършени дейности по клинични процедури, мкб, пациенти</value>
+    <value>Извършени дейности по клинични процедури, МКБ, пациенти</value>
   </data>
   <data name="PathProcedureSummary" xml:space="preserve">
-    <value>Извършена дейност по клинична процедура, пациент, мкб</value>
+    <value>Извършена дейност по клинична процедура, пациент, МКБ</value>
   </data>
   <data name="PathProceduresView" xml:space="preserve">
     <value>Преглед на извършени дейности по клинични процедури</value>
@@ -835,7 +835,7 @@
     <value>Пациенти</value>
   </data>
   <data name="PatientsSummary" xml:space="preserve">
-    <value>Пациенти, мкб, процедури</value>
+    <value>Пациенти, МКБ, процедури</value>
   </data>
   <data name="PatientStatus" xml:space="preserve">
     <value>Статус на пациента</value>
@@ -856,7 +856,7 @@
     <value>Планиран номер</value>
   </data>
   <data name="PlannedSummary" xml:space="preserve">
-    <value>Планиран пациент, пациент, мкб</value>
+    <value>Планиран пациент, пациент, МКБ</value>
   </data>
   <data name="PlannedView" xml:space="preserve">
     <value>Преглед на планиран пациент</value>
@@ -865,7 +865,7 @@
     <value>Планирани пациенти</value>
   </data>
   <data name="PlanningsSummary" xml:space="preserve">
-    <value>Планирани пациенти, мкб, пациенти</value>
+    <value>Планирани пациенти, МКБ, пациенти</value>
   </data>
   <data name="PlanningsView" xml:space="preserve">
     <value>Преглед на планирани пациенти</value>
@@ -910,7 +910,7 @@
     <value>Протоколи от лечения с лекарства</value>
   </data>
   <data name="ProtocolDrugTherapiesSummary" xml:space="preserve">
-    <value>Протоколи от лечения с лекарства, мкб, пациенти</value>
+    <value>Протоколи от лечения с лекарства, МКБ, пациенти</value>
   </data>
   <data name="ProtocolDrugTherapiesView" xml:space="preserve">
     <value>Преглед на протоколи от лечения с лекарства</value>
@@ -919,7 +919,7 @@
     <value>Преглед на протокол на терапия с лекарства</value>
   </data>
   <data name="ProtocolDrugTherapyViewSummary" xml:space="preserve">
-    <value>Преглед на прокотол от лечения с лекарства, мкб, пациент</value>
+    <value>Преглед на прокотол от лечения с лекарства, МКБ, пациент</value>
   </data>
   <data name="ProtocolNumber" xml:space="preserve">
     <value>Номер на протокола</value>
@@ -1099,7 +1099,7 @@
     <value>Използвани лекарства</value>
   </data>
   <data name="UsedDrugsInformationKeywords" xml:space="preserve">
-    <value>Използвани лекарства, статистика, мкб</value>
+    <value>Използвани лекарства, статистика, МКБ</value>
   </data>
   <data name="UserCreation" xml:space="preserve">
     <value>Създаване на потребител</value>
