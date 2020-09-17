@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.AppModels.AccompanyingDrugs.AccompanyingDrugPreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAIAAAAAAAAAAAAAAAAAgAAAAAAAAACABAAA=</HashCode>
+      <FileName>AccompanyingDrugs\AccompanyingDrugPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.APr05s.APr05PreviewViewModel" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAABAAAAAAAABACAAAAAABAAAAADAAAAA=</HashCode>
+      <FileName>APr05s\APr05PreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.APr38s.APr38PreviewViewModel" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAAAAAABAAAAAACAAAQAAAAACAAACAAA=</HashCode>
+      <FileName>APr38s\APr38PreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.CeasedClinicals.CeasedClinicalViewModel" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAgAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CeasedClinical\CeasedClinicalViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.ChemotherapyParts.ChemotherapyPartPreviewViewModel" Collapsed="true">
+    <Position X="15" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAQAAAAAAIAgAABASAgAQQQAAAAAACAAAAA=</HashCode>
+      <FileName>ChemotherapyParts\ChemotherapyPartPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Choices.ChoicePreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAACAAEAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Choices\ChoicePreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.ClinicProcedures.ClinicProcedureViewModel" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAIAAAAAAAgAAACAAAAAAAQA=</HashCode>
+      <FileName>ClinicProcedures\ClinicProcedureViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.ClinicUsedDrugs.ClinicUsedDrugViewModel" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAIAAACCAAAAAhBACAABABAAAAAAIgAAAASAA=</HashCode>
+      <FileName>ClinicUsedDrugs\ClinicUsedDrugViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.CommissionAprs.CommissionAprPreviewViewModel" Collapsed="true">
+    <Position X="12" Y="1.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAICIAAAAQAAACAAAAAAIAAAAAAAAAACAAIAAAAAAAE=</HashCode>
+      <FileName>CommissionAprs\CommissionAprPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.CommissionAprs.CommissionAprSearch" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAABAABBEEAGAAAABAAAAAAAAAAAIAAAAAgAA=</HashCode>
+      <FileName>CommissionAprs\CommissionAprSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.AppModels.CommissionAprs.CommissionAprViewModel" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>DAACAAAAAAAEIDAAAAEAAAAQAEAAAAQgCAQAABAICAA=</HashCode>
+      <FileName>CommissionAprs\CommissionAprViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.CommissionAprs.PatientCommissionAprPreviewViewModel" Collapsed="true">
+    <Position X="4.5" Y="2.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQAACAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>CommissionAprs\PatientCommissionAprPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.CPFiles.CPFileSummaryViewModel" Collapsed="true">
+    <Position X="12" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAEAAAAAAAAAAAgAAAAAAAAAABAAACAAAEAAA=</HashCode>
+      <FileName>CPFiles\CPFileSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Diagnoses.DiagnoseMKBSummaryViewModel" Collapsed="true">
+    <Position X="15.5" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Diagnoses\DiagnoseMKBSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Diagnoses.DiagnosePreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="4" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Diagnoses\DiagnosePreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Diags.DiagMKBSummaryViewModel" Collapsed="true">
+    <Position X="4" Y="4" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Diags\DiagMKBSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Diags.DiagPreviewViewModel" Collapsed="true">
+    <Position X="7.25" Y="4" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Diags\DiagPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.DispObservations.DispObservationPreviewViewModel" Collapsed="true">
+    <Position X="11.25" Y="4" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACgBAQAQAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEA=</HashCode>
+      <FileName>DispObservations\DispObservationPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.DispObservations.DispObservationSearch" Collapsed="true">
+    <Position X="14.75" Y="4" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAABAQABAABBEEAGAAAABAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>DispObservations\DispObservationSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.AppModels.DispObservations.DispObservationViewModel" Collapsed="true">
+    <Position X="0.5" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAQEABgQAEJAAAAAAQABAAQAAABAAFAACIA=</HashCode>
+      <FileName>DispObservations\DispObservationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.DispObservations.PatientDispObservationPreviewViewModel" Collapsed="true">
+    <Position X="4" Y="5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQAACAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>DispObservations\PatientDispObservationPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.DoneProcedures.DoneProcedureViewModel" Collapsed="true">
+    <Position X="8.25" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAAAAAAAAAgAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>DoneProcedures\DoneProcedureViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.DrugProtocols.DrugProtocolPreviewViewModel" Collapsed="true">
+    <Position X="11.75" Y="5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAgAAIAAAAAAAAAgAAAAAIAEAAAAQAAAACABAAA=</HashCode>
+      <FileName>DrugProtocols\DrugProtocolPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Epicrisises.EpicrisisSummaryViewModel" Collapsed="true">
+    <Position X="16" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAAAAAAIAAABAEAACAQACAgEAgAECAAACAQA=</HashCode>
+      <FileName>Epicrisises\EpicrisisSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Evaluations.EvaluationPreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="6" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Evaluations\EvaluationPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.GenMarkers.GenMarkerPreviewViewModel" Collapsed="true">
+    <Position X="4.75" Y="6" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAABAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GenMarkers\GenMarkerPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.HealthcarePractitioners.HealthcarePractitionerSummaryViewModel" Collapsed="true">
+    <Position X="8.5" Y="6" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAgAASAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>HealthcarePractitioners\HealthcarePractitionerSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.HealthRegions.HealthRegionOption" Collapsed="true">
+    <Position X="12.25" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HealthRegions\HealthRegionOption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.HematologyParts.HematologyPartPreviewViewModel" Collapsed="true">
+    <Position X="15.5" Y="6" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HematologyParts\HematologyPartPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.HistologicalResult.HistologicalResultSummaryViewModel" Collapsed="true">
+    <Position X="0.5" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAgAAAAAAAAAAABAAAAAAEAAAA=</HashCode>
+      <FileName>HistologicalResult\HistologicalResultSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Histologies.HistologyPreviewViewModel" Collapsed="true">
+    <Position X="4" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAACAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Histologies\HistologyPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.HospitalPractices.HospitalPracticeSummaryViewModel" Collapsed="true">
+    <Position X="7.5" Y="7" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAEAAAAAAAEAAQAAAAAAAAAAABAAAAACAEAAA=</HashCode>
+      <FileName>HospitalPractices\HospitalPracticeSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.InClinicProcedures.InClinicProcedurePreviewViewModel" Collapsed="true">
+    <Position X="11.5" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACgBAQAQAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>InClinicProcedures\InClinicProcedurePreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.InClinicProcedures.InClinicProcedureSearch" Collapsed="true">
+    <Position X="15" Y="7" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAABAQABAABBEEAGAAAABAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>InClinicProcedures\InClinicProcedureSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.AppModels.InClinicProcedures.InClinicProcedureViewModel" Collapsed="true">
+    <Position X="0.5" Y="8" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>BQADAAgAABAEAEAQAAIAAAQCAAgCAAAAAABAADgMCAE=</HashCode>
+      <FileName>InClinicProcedures\InClinicProcedureViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.InClinicProcedures.PatientInClinicProcedurePreviewViewModel" Collapsed="true">
+    <Position X="4.5" Y="8" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQQACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InClinicProcedures\PatientInClinicProcedurePreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Ins.InPreviewViewModel" Collapsed="true">
+    <Position X="8.5" Y="8" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAQACAAAAAAAgAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ins\InPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Ins.InsSearch" Collapsed="true">
+    <Position X="12.25" Y="8" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAQABAABBEEAGAAAABAAAAAAAAAAAEAAAAAgAA=</HashCode>
+      <FileName>Ins\InsSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.AppModels.Ins.InViewModel" Collapsed="true">
+    <Position X="15.75" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BBACEQEAAMA2AiACBAAgAACIAAAJAAAAIIAhABQKCJA=</HashCode>
+      <FileName>Ins\InViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Ins.PatientInPreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="9" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAACAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ins\PatientInPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.MDIs.MDISummaryViewModel" Collapsed="true">
+    <Position X="4.75" Y="9" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>MDIs\MDISummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Outs.OutPreviewViewModel" Collapsed="true">
+    <Position X="8.25" Y="9" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQEAEQACAAAAABAgAABAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Outs\OutPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Outs.OutSearch" Collapsed="true">
+    <Position X="11.25" Y="9" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AhEAAAAQABAABBEEAGBAAABAAAAAAAAACAAAAAAAgAA=</HashCode>
+      <FileName>Outs\OutSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.AppModels.Outs.OutViewModel" Collapsed="true">
+    <Position X="14.75" Y="9" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BBAiEQECJcA2AqASBBRgAACIwIAJEAAAMIIlDBQKCJE=</HashCode>
+      <FileName>Outs\OutViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Outs.PatientOutPreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="10" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAEAAAAAAAQAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Outs\PatientOutPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.PathProcedures.PathProcedurePreviewViewModel" Collapsed="true">
+    <Position X="3.75" Y="10" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACgBAQAQAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>PathProcedures\PathProcedurePreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.PathProcedures.PathProcedureSearch" Collapsed="true">
+    <Position X="7.5" Y="10" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAABAQABAABBEEAGAAAAhAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>PathProcedures\PathProcedureSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.AppModels.PathProcedures.PathProcedureViewModel" Collapsed="true">
+    <Position X="10.5" Y="10" Width="3" />
+    <TypeIdentifier>
+      <HashCode>BQgDAghGARAEAFAAAAJAAACCAAgCAAAAIARIADgMCAE=</HashCode>
+      <FileName>PathProcedures\PathProcedureViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.PathProcedures.PatientPathProcedurePreviewViewModel" Collapsed="true">
+    <Position X="14" Y="10" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQAACAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PathProcedures\PatientPathProcedurePreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Patients.PatientPreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="11" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAEgAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Patients\PatientPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Patients.PatientSearch" Collapsed="true">
+    <Position X="4" Y="11" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAABAABBAEAGAAAABAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Patients\PatientSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.AppModels.Patients.PatientSummaryViewModel" Collapsed="true">
+    <Position X="8" Y="11" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAiAGgAAAAABAAAAAAAAAQAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Patients\PatientSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Patients.PatientViewModel" Collapsed="true">
+    <Position X="11.25" Y="11" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAyAGgCAAAABAABAAAAAAQAgAAAAAACAAgAEAAAACg=</HashCode>
+      <FileName>Patients\PatientViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Plannings.PatientPlannedPreviewViewModel" Collapsed="true">
+    <Position X="15.25" Y="11" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Plannings\PatientPlannedPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Plannings.PlannedPreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="12" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAQACACAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Plannings\PlannedPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Plannings.PlannedSearch" Collapsed="true">
+    <Position X="4.5" Y="12" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAABAABBEEAGAAAABAAAAAAIAAAAgAAAAAgAA=</HashCode>
+      <FileName>Plannings\PlannedSearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.AppModels.Plannings.PlannedViewModel" Collapsed="true">
+    <Position X="8.5" Y="12" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BBACAQEAAIA2AiACAAAgAAAAAIAIAAAAAAAgABAKCBA=</HashCode>
+      <FileName>Plannings\PlannedViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Practices.PracticePreviewViewModel" Collapsed="true">
+    <Position X="11.75" Y="12" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAEAAEAgAAQAAAAAAAgCAAAAAAAAAAA=</HashCode>
+      <FileName>Practices\PracticePreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Procedures.ProcedureSummaryViewModel" Collapsed="true">
+    <Position X="15.25" Y="12" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAIEAgAIASsAAgAAAAgAAAAAABAAAEBAAIAAA=</HashCode>
+      <FileName>Procedures\ProcedureSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.ProtocolDrugTherapies.PatientProtocolDrugTherapyPreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="13" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQAACAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProtocolDrugTherapies\PatientProtocolDrugTherapyPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.ProtocolDrugTherapies.ProtocolDrugTherapyPreviewViewModel" Collapsed="true">
+    <Position X="4.75" Y="13" Width="3" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAQAAAAAAAAAAAACAAAAAAIAAAAAAACAACAA=</HashCode>
+      <FileName>ProtocolDrugTherapies\ProtocolDrugTherapyPreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.ProtocolDrugTherapies.ProtocolDrugTherapySearch" Collapsed="true">
+    <Position X="8.25" Y="13" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAJAAFBEEAGAAAABAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>ProtocolDrugTherapies\ProtocolDrugTherapySearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.AppModels.ProtocolDrugTherapies.ProtocolDrugTherapyViewModel" Collapsed="true">
+    <Position X="11.25" Y="13" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>DBAGAAAADAQEABAAAAABACCkACAAIAAAABAACAQAKAA=</HashCode>
+      <FileName>ProtocolDrugTherapies\ProtocolDrugTherapyViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.Sexes.SexOption" Collapsed="true">
+    <Position X="14.5" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sexes\SexOption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.TherapyTypes.TherapyTypePreviewViewModel" Collapsed="true">
+    <Position X="0.5" Y="14" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TherapyTypes\TherapyTypePreviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.UsedDrugs.UsedDrugCodeOption" Collapsed="true">
+    <Position X="3.75" Y="14" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UsedDrugs\UsedDrugCodeOption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.UsedDrugs.UsedDrugsSummaryStatistic" Collapsed="true">
+    <Position X="6.25" Y="14" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAgAAAEAAAAAAAAEAAgAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>UsedDrugs\UsedDrugsSummaryStatistic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.UsedDrugs.UsedDrugSummaryViewModel" Collapsed="true">
+    <Position X="9.25" Y="14" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIAAACAAAAAAhABCAABAAAAABAAAggCAgSAA=</HashCode>
+      <FileName>UsedDrugs\UsedDrugSummaryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.AppModels.VersionCodes.VersionCodeViewModel" Collapsed="true">
+    <Position X="12.75" Y="14" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgAAA=</HashCode>
+      <FileName>VersionCodes\VersionCodeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Medic.AppModels.Contracts.IQueryStringBuilder" Collapsed="true">
+    <Position X="8.5" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IQueryStringBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Medic.AppModels.Enums.CommissionAprOrderEnum" Collapsed="true">
+    <Position X="0.75" Y="15" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAIAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Enums\CommissionAprOrderEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.DispObservationOrderEnum" Collapsed="true">
+    <Position X="3.75" Y="15" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Enums\DispObservationOrderEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.InClinicProcedureOrderEnum" Collapsed="true">
+    <Position X="6.75" Y="15" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAQAAAAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\InClinicProcedureOrderEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.InOrderEnum" Collapsed="true">
+    <Position X="9.75" Y="15" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\InOrderEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.OrderDirectionEnum" Collapsed="true">
+    <Position X="13" Y="15" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Enums\OrderDirectionEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.OutOrderEnum" Collapsed="true">
+    <Position X="16.25" Y="15" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Enums\OutOrderEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.PageLengthEnum" Collapsed="true">
+    <Position X="0.75" Y="16" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\PageLengthEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.PathProcedureOrderEnum" Collapsed="true">
+    <Position X="4" Y="16" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAQAAAAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\PathProcedureOrderEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.PatientOrderEnum" Collapsed="true">
+    <Position X="7.5" Y="16" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\PatientOrderEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.PlannedOrderEnum" Collapsed="true">
+    <Position X="10.75" Y="16" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\PlannedProcedureOrderEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Medic.AppModels.Enums.ProtocolDrugTherapyOrderEnum" Collapsed="true">
+    <Position X="14" Y="16" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIACAAAAAAIAAAAAAAAAACAA=</HashCode>
+      <FileName>Enums\ProtocolDrugTherapyOrderEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

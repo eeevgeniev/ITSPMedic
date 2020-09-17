@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.Resources.Bases.BaseLocalization">
+    <Position X="2" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAIAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bases\BaseLocalization.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Resources.GeneralLocalization" Collapsed="true">
+    <Position X="0.5" Y="3" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>ABJSAAEGIAAABUVBMQBiAIaApAUAARICBAgwUACgACA=</HashCode>
+      <FileName>GeneralLocalization.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Resources.MedicDataAnnotationLocalizerProvider" Collapsed="true">
+    <Position X="11.25" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>Tx92s3leP/c2Pv+QtfR19r/uyfgv+9sD+b83zPwv6fk=</HashCode>
+      <FileName>MedicDataAnnotationLocalizerProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Resources.MedicDataLocalization" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>X1//sz32P/c3Pv/Vvf9ldr3/yftve92b9L9/3fwva/k=</HashCode>
+      <FileName>MedicDataLocalization.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Resources.PatientLocalization" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AABgAGgQAQAABBBAAFAAAA4ACAABAAACAAAAAAAAgCg=</HashCode>
+      <FileName>PatientLocalization.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Medic.Resources.Contracts.ILocalizationService">
+    <Position X="9" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\ILocalizationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Resources.Contracts.IMedicDataAnnotationLocalizerProvider">
+    <Position X="5.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IMedicDataAnnotationLocalizerProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
