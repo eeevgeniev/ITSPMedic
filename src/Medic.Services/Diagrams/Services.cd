@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.Services.Base.BaseServiceHelper" Collapsed="true">
+    <Position X="10.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAA0AAAAEBAAAAQAAAAAAAAAAQAMAAAAgAEAAAAIACA=</HashCode>
+      <FileName>Base\BaseServiceHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Services.Base.DateTimeBaseHelper" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Base\DateTimeBaseHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Services.Helpers.CommissionAprHelperBuilder" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Helpers\CommissionAprHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.CommissionAprWhereBuilder" Collapsed="true">
+    <Position X="4" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Helpers\CommissionAprWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.DispObservationHelperBuilder" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\DispObservationHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.DispObservationWhereBuilder" Collapsed="true">
+    <Position X="3.75" Y="3" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\DispObservationWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.InClinicProcedureHelperBuilder" Collapsed="true">
+    <Position X="0.5" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\InClinicProcedureHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.InClinicProcedureWhereBuilder" Collapsed="true">
+    <Position X="3.75" Y="4" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\InClinicProcedureWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.InHelperBuilder" Collapsed="true">
+    <Position X="0.5" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\InHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.InWhereBuilder" Collapsed="true">
+    <Position X="3.75" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\InWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.OutHelperBuilder" Collapsed="true">
+    <Position X="0.5" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\OutHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.OutWhereBuilder" Collapsed="true">
+    <Position X="3.75" Y="6" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\OutWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.PathProcedureHelperBuilder" Collapsed="true">
+    <Position X="0.5" Y="7" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Helpers\PathProcedureHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.PathProcedureWhereBuilder" Collapsed="true">
+    <Position X="3.75" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Helpers\PathProcedureWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.PatientHelperBuilder" Collapsed="true">
+    <Position X="0.5" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\PatientHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.PatientWhereBuilder" Collapsed="true">
+    <Position X="3.75" Y="8" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\PatientWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.PlannedHelperBuilder" Collapsed="true">
+    <Position X="0.5" Y="9" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAEAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\PlannedHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.PlannedWhereBuilder" Collapsed="true">
+    <Position X="3.75" Y="9" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\PlannedWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.ProtocolDrugTherapyHelperBuilder" Collapsed="true">
+    <Position X="0.5" Y="10" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Helpers\ProtocolDrugTherapyHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.Helpers.ProtocolDrugTherapyWhereBuilder" Collapsed="true">
+    <Position X="3.75" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Helpers\ProtocolDrugTherapyWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.ClinicUsedDrugsService" Collapsed="true">
+    <Position X="7.75" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClinicUsedDrugsService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.CommissionAprService" Collapsed="true">
+    <Position X="10.5" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>CommissionAprService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.CPFileService" Collapsed="true">
+    <Position X="13.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CPFileService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.DiagnoseService" Collapsed="true">
+    <Position X="7.75" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAACAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>DiagnoseService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.DiagService" Collapsed="true">
+    <Position X="10.5" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAABAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>DiagService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.DispObservationService" Collapsed="true">
+    <Position X="13.25" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>DispObservationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.DrugProtocolService" Collapsed="true">
+    <Position X="7.75" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrugProtocolService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.HealthRegionService" Collapsed="true">
+    <Position X="10.75" Y="10" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAA=</HashCode>
+      <FileName>HealthRegionService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.HospitalPracticeService" Collapsed="true">
+    <Position X="13.5" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQIAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HospitalPracticeService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.InClinicProcedureService" Collapsed="true">
+    <Position X="7.75" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InClinicProcedureService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.InService" Collapsed="true">
+    <Position X="10.75" Y="11" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>InService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.OutService" Collapsed="true">
+    <Position X="13.5" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAgAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>OutService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.PathProcedureService" Collapsed="true">
+    <Position X="7.75" Y="12" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>PathProcedureService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.PatientService" Collapsed="true">
+    <Position X="10.75" Y="12" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAEAAAAABAAgAAAAAAAAgAAEAAAAAAA=</HashCode>
+      <FileName>PatientService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.PlannedService" Collapsed="true">
+    <Position X="13.5" Y="12" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>PlannedService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.ProtocolDrugTherapyService" Collapsed="true">
+    <Position X="7.5" Y="13.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAg=</HashCode>
+      <FileName>ProtocolDrugTherapyService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Services.UsedDrugService" Collapsed="true">
+    <Position X="10.5" Y="13.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAQAAAAAgAAAAAAAACAAAAAA=</HashCode>
+      <FileName>UsedDrugService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Medic.Services.Contracts.IClinicUsedDrugsService" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IClinicUsedDrugsService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.ICommissionAprService" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\ICommissionAprService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.ICPFileService" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\ICPFileService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IDiagnoseService" Collapsed="true">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Contracts\IDiagnoseService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IDiagService" Collapsed="true">
+    <Position X="9.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IDiagService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IDispObservationService" Collapsed="true">
+    <Position X="11.5" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IDispObservationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IDrugProtocolService" Collapsed="true">
+    <Position X="7.5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IDrugProtocolService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IHealthRegionService" Collapsed="true">
+    <Position X="10.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IHealthRegionService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IHelperBuilder&lt;T&gt;" Collapsed="true">
+    <Position X="12.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IHelperBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IHospitalPracticeService" Collapsed="true">
+    <Position X="7.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IHospitalPracticeService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IInClinicProcedureService" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IInClinicProcedureService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IInService" Collapsed="true">
+    <Position X="12.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IInService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IOutService" Collapsed="true">
+    <Position X="7.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAgAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Contracts\IOutService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IPathProcedureService" Collapsed="true">
+    <Position X="9.75" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Contracts\IPathProcedureService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IPatientService" Collapsed="true">
+    <Position X="12.5" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAABAAgAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Contracts\IPatientService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IPlannedService" Collapsed="true">
+    <Position X="7.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Contracts\IPlannedService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IProtocolDrugTherapyService" Collapsed="true">
+    <Position X="9.5" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAg=</HashCode>
+      <FileName>Contracts\IProtocolDrugTherapyService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IUsedDrugService" Collapsed="true">
+    <Position X="12.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAgAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Contracts\IUsedDrugService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Services.Contracts.IWhereBuilder&lt;T&gt;" Collapsed="true">
+    <Position X="7.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IWhereBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

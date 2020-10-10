@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.Entities.Bases.BaseEntity" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bases\BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.Entities.AccompanyingDrug" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAgIAAAAAAAAAAAAAAAgAgCQAAAAAABCABAAA=</HashCode>
+      <FileName>Builders\AccompanyingDrug.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.APr05" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAABgAAAABAAAAAAAAJASgAQAAgBAAAIBDAAAAk=</HashCode>
+      <FileName>Builders\APr05.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.APr38" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAhAAAAAAAAABAAAAAAiAAAQAAAAASBAACAAg=</HashCode>
+      <FileName>Builders\APr38.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.CeasedClinical" Collapsed="true">
+    <Position X="6.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASIAAAgAAAAEAAAEAgAAEAggAIAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Builders\CeasedClinical.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.ChemotherapyPart" Collapsed="true">
+    <Position X="8.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAEgAQAAAAIAIAgAAJQSggASQQAAAAIBCAAAAA=</HashCode>
+      <FileName>Builders\ChemotherapyPart.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Choice" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAgAAAAACAAEAAAAAQAgAAAAAAAAAADAAAAAA=</HashCode>
+      <FileName>Builders\Choice.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.ClinicChemotherapyPart" Collapsed="true">
+    <Position X="2.75" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAgAAAAAAAAAAAAAAQAggAAQAAACAQBAAAAAA=</HashCode>
+      <FileName>Builders\ClinicChemotherapyPart.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.ClinicHematologyPart" Collapsed="true">
+    <Position X="5.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAgAAAAAAAAAEAAAAQAgAAgQAAACAQBAAAAAA=</HashCode>
+      <FileName>Builders\ClinicHematologyPart.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.ClinicProcedure" Collapsed="true">
+    <Position X="8.25" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAGgAAAIAAAAAAAAIAAAgAIAgAAACAABAAEAQA=</HashCode>
+      <FileName>Builders\ClinicProcedure.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.ClinicUsedDrug" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAIAAoAAACCAAAAAhBACAAhAJAAAAAAIgBAAESAA=</HashCode>
+      <FileName>Builders\ClinicUsedDrug.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.CommissionApr" Collapsed="true">
+    <Position X="3.5" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>DAACAAQIgQAEIDAEABEAACAQAkABAAQgCAQEBBIICAQ=</HashCode>
+      <FileName>Builders\CommissionApr.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.CommissionAprHealthcarePractitioner" Collapsed="true">
+    <Position X="6.5" Y="4.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAgAAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAEg=</HashCode>
+      <FileName>Builders\CommissionAprHealthcarePractitioner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.CPFile" Collapsed="true">
+    <Position X="10" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASAgIAgAAAAAAAAAAAAQggggAAgBAAAAgABAAECCA=</HashCode>
+      <FileName>Builders\CPFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Diag" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAQAgBIQAAAQACAEAAAIAhAJCBCAAFAABCAAAAg=</HashCode>
+      <FileName>Builders\Diag.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Diagnose" Collapsed="true">
+    <Position X="3.5" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAyAAAAgDAAIQAAsAAAQAAAAgAQgIAAAAAChAKAAGA=</HashCode>
+      <FileName>Builders\Diagnose.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.DispObservation" Collapsed="true">
+    <Position X="6.5" Y="5.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BAACBQRIoQQEABgUAEJAACAAAwADAAQAAABABFIACIA=</HashCode>
+      <FileName>Builders\DispObservation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.DoneProcedure" Collapsed="true">
+    <Position X="9.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAgAAAAAAAAAAAAgAAAgAKAAQAAAAABAAEAAA=</HashCode>
+      <FileName>Builders\DoneProcedure.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.DrugPack" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ABICAAQAgAAAAAAAAAAABCAAAgEBAAAAIAIABAAgIAA=</HashCode>
+      <FileName>Builders\DrugPack.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.DrugProtocol" Collapsed="true">
+    <Position X="3.5" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAICAAgAgIAAAAAAAAAgAAAAAoAECQAAQAAABCABAAI=</HashCode>
+      <FileName>Builders\DrugProtocol.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.DrugResidue" Collapsed="true">
+    <Position X="6.75" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABIGAAQAgAAAACAAAAAAACAAAgEBAAAAAAIAhAAgIAA=</HashCode>
+      <FileName>Builders\DrugResidues.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Epicrisis" Collapsed="true">
+    <Position X="9.75" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAACAAgAgAAAAAIAAIBAEAACAwACAgEAgAECBAACAQA=</HashCode>
+      <FileName>Builders\Epicrisis.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Evaluation" Collapsed="true">
+    <Position X="0.5" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAgAQABAAABAkAAAAAAgAAAAAAAFAABAAAAAE=</HashCode>
+      <FileName>Builders\Evaluation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.FileType" Collapsed="true">
+    <Position X="3.5" Y="8" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAgQAgAAAAAAAAAAAAAQAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Builders\FileType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.GenMarker" Collapsed="true">
+    <Position X="6.75" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAABAAAAgAAAQAAgAAAACAABAABAAAAAA=</HashCode>
+      <FileName>Builders\GenMarker.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.HealthcarePractitioner" Collapsed="true">
+    <Position X="9.75" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABASAAGCgADABAEBAAAgQASgggIAgCAAIAAAlAADAiA=</HashCode>
+      <FileName>Builders\HealthcarePractitioner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.HealthRegion" Collapsed="true">
+    <Position X="0.5" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAASAAACgAAABAABAAAgQAQgggAAAAAgAAAAFAAAACA=</HashCode>
+      <FileName>Builders\HealthRegion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.HematologyPart" Collapsed="true">
+    <Position X="3.5" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAAAAEAAAAAAAAAgAACAAAAAAABAAAAAA=</HashCode>
+      <FileName>Builders\HematologyPart.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.HistologicalResult" Collapsed="true">
+    <Position X="5.75" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAgAAAAAAAAAAgAAAAAgAAAAABAAAABAEAAAA=</HashCode>
+      <FileName>Builders\HistologicalResult.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Histology" Collapsed="true">
+    <Position X="8.25" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAiAAAAACAAAAAAAAQAgAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Builders\Histology.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.HospitalPractice" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAASAgICgAAABAEBAAAAAQggAgAAgDAAAAAAFAAECAA=</HashCode>
+      <FileName>Builders\HospitalPractice.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Implant" Collapsed="true">
+    <Position X="3.25" Y="10.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAgCAAAQgQAUAAAwBAAwAACAAgMAABABACAAhAAAIIA=</HashCode>
+      <FileName>Builders\Implant.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.ImplantProductType" Collapsed="true">
+    <Position X="5.5" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAUgAAAAAAAAAAAAAQAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Builders\ImplantProductType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.In" Collapsed="true">
+    <Position X="8.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBACEQEIgcA2AiAGBAAgAACIAoAJAAAAIIIhBBQKCJA=</HashCode>
+      <FileName>Builders\In.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.InClinicProcedure" Collapsed="true">
+    <Position X="0.5" Y="11.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>TQAHAAwIgRAkAkASAAIAACQiAggDAAAAAABoDDgMCAE=</HashCode>
+      <FileName>Builders\InClinicProcedure.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Marker" Collapsed="true">
+    <Position X="3.25" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAgAAAABAAAEAAAAAQAgAAAAAAAAAIBQAAAAA=</HashCode>
+      <FileName>Builders\Marker.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.MDI" Collapsed="true">
+    <Position X="5.75" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAgAAgAAEAAAAAAAAAAgAAAgAAAAAQBAAAAAA=</HashCode>
+      <FileName>Builders\MDI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.MKB" Collapsed="true">
+    <Position X="8.25" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAQAAAAAAAAgAAUAAgAEAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Builders\MKB.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Out" Collapsed="true">
+    <Position X="0.5" Y="13" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BBAiEQFKpcC2AqAWBBxkAACIwoAbEIAAcIIlDBwKCJE=</HashCode>
+      <FileName>Builders\Out.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.PathProcedure" Collapsed="true">
+    <Position X="3.25" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>TQgHAgxOgVAEAlAWAAZAACCiAggDEAAAMARoDDgMCIk=</HashCode>
+      <FileName>Builders\PathProcedure.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Patient" Collapsed="true">
+    <Position X="5.75" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BCAyAGgCggAAJIABIAAAAARAggAAABACAIgQFgAEACk=</HashCode>
+      <FileName>Builders\Patient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.PatientBranch" Collapsed="true">
+    <Position X="8.25" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAASAAACgAAABAEBAAAAQAAAggAAACAAAAAAEAAAACA=</HashCode>
+      <FileName>Builders\PatientBranch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Planned" Collapsed="true">
+    <Position X="0.5" Y="14.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BBACAQEIgYA2AiAGAAAgAAAAAoAJAAAAAAIgBBAKCBA=</HashCode>
+      <FileName>Builders\Planned.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Practice" Collapsed="true">
+    <Position X="3.25" Y="14.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAACAgAAgAAAAAEAAEAgAAQAAgAAAKgiAAAAhAAAAAA=</HashCode>
+      <FileName>Builders\Practice.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Procedure" Collapsed="true">
+    <Position X="5.75" Y="14.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QBICAAIAoEAgAIASgAAgAAAAggAIAAABAAAEBAAMAAA=</HashCode>
+      <FileName>Builders\Procedure.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.ProtocolDrugTherapy" Collapsed="true">
+    <Position X="8.25" Y="14.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>DBAGAAQIjQQEABAEAAABACCkAiACogCAABIEDAYAaAA=</HashCode>
+      <FileName>Builders\ProtocolDrugTherapy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.ProtocolDrugTherapyHealthPractitioner" Collapsed="true">
+    <Position X="0.5" Y="15.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAgAAAAAAAAAAAAAAAAgAACQAAAAAAAAAAAEA=</HashCode>
+      <FileName>Builders\ProtocolDrugTherapyHealthPractitioner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Provider" Collapsed="true">
+    <Position X="4" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEgAAAAAAAAAAgAAQAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Builders\Provider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Redirected" Collapsed="true">
+    <Position X="6" Y="15.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAACAQAAgAAAAAAAAAAAAAAgAgAAkAAAAAAABAAAAAA=</HashCode>
+      <FileName>Builders\Redirected.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Resign" Collapsed="true">
+    <Position X="8.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAgiAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Builders\Resign.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.SenderType" Collapsed="true">
+    <Position X="0.5" Y="16.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAgAAAAAAAAAAgAAQAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Builders\SenderType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Sex" Collapsed="true">
+    <Position X="3.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAAAAAAAAAAAQAAgAAAAAABAAABAAAAAA=</HashCode>
+      <FileName>Builders\Sex.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.SpecialtyType" Collapsed="true">
+    <Position X="5.5" Y="16.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAgAAAAAAAAAAAAAQAAgAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Builders\SpecialtyType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.TherapyType" Collapsed="true">
+    <Position X="7.75" Y="16.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAgAAAAAAAAAAgAAQAAgAAAAAAAAAADAAAAAA=</HashCode>
+      <FileName>Builders\TherapyType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.Transfer" Collapsed="true">
+    <Position X="0.5" Y="18" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ADACgBWAgAACAAgCAAIAACAAQgAAAAAAAAJADAAAAIA=</HashCode>
+      <FileName>Builders\Transfer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.UsedDrug" Collapsed="true">
+    <Position X="3.25" Y="18" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAoAAACAAAgAAhABCAAhAAAAABAAAghAAASAA=</HashCode>
+      <FileName>Builders\UsedDrug.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.VersionCode" Collapsed="true">
+    <Position X="6" Y="18" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAggAAAAAAAAAAAAAAAAgEAAAAAAAAAFCAgIAA=</HashCode>
+      <FileName>Builders\VersionCode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Entities.VSD" Collapsed="true">
+    <Position X="8.25" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAgAAEAAAAAAAAAAgAAAggAEAAABAAAAAA=</HashCode>
+      <FileName>Builders\VSD.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Medic.Entities.Contracts.IModelBuilder" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IModelBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

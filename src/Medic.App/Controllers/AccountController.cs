@@ -1,6 +1,5 @@
 ﻿using Medic.App.Controllers.Base;
 using Medic.App.Models.Account;
-using Medic.App.Models.Users.Models;
 using Medic.IdentityModels;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;

@@ -7,8 +7,6 @@ namespace Medic.AppModels.CommissionAprs
 {
     public class CommissionAprPreviewViewModel
     {
-        private string _imuno;
-        
         public int Id { get; set; }
 
         public int PatientId { get; set; }

@@ -14,6 +14,6 @@ namespace Medic.Services.Contracts
 
         Task<int> GetOutsCountAsync(IWhereBuilder<Out> outBuilder);
 
-        Task<OutViewModel> GetOutAsyns(int id);
+        Task<OutViewModel> GetOutAsync(int id);
     }
 }

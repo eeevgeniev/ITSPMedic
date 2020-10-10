@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.Formatters.FormatterFactory">
+    <Position X="5.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAEAAAAAAAAACAAAgBCAAAgAAAAAAAAAA=</HashCode>
+      <FileName>FormatterFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Formatters.Implementors.ExcelFormatter">
+    <Position X="3" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIACICAAAIUgAAAAAACAEAAIAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementors\ExcelFormatter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Formatters.Implementors.JsonFormatter">
+    <Position X="0.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementors\JsonFormatter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Formatters.Implementors.XMLFormatter">
+    <Position X="0.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAACQAAAAAEBAQAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Implementors\XMLFormatter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Medic.Formatters.Contracts.IDataFormattable">
+    <Position X="0.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IDataFormattable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Formatters.Contracts.IExcelFormattable">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IExcelFormattable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Formatters.Contracts.IFormattableFactory">
+    <Position X="5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IFormattableFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

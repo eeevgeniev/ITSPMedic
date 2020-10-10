@@ -241,7 +241,7 @@
     <value>Необходимост от контролни прегледи в болницата след изписването</value>
   </data>
   <data name="ChemotherapyPart" xml:space="preserve">
-    <value>Химотерапия</value>
+    <value>Химиотерапия</value>
   </data>
   <data name="ClinicalExaminations" xml:space="preserve">
     <value>Клинични прегледи</value>
@@ -538,7 +538,7 @@
     <value>Хистологичен резултат</value>
   </data>
   <data name="Histology" xml:space="preserve">
-    <value>Хематология</value>
+    <value>Хистология</value>
   </data>
   <data name="History" xml:space="preserve">
     <value>История</value>

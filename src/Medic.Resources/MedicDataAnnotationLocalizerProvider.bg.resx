@@ -211,7 +211,7 @@
     <value>Необходимост от контролни прегледи в болницата след изписването</value>
   </data>
   <data name="ChemotherapyPart" xml:space="preserve">
-    <value>Химотерапия</value>
+    <value>Химиотерапия</value>
   </data>
   <data name="ClinicalExaminations" xml:space="preserve">
     <value>Клинични прегледи</value>

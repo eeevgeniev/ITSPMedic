@@ -123,6 +123,8 @@ namespace Medic.App.AppServices
                 options.UseSqlite($"Data Source={Path.Combine(environment.ContentRootPath, "Logs\\Logs.sqlite")}");
             });
 
+            services.AddTransient<IMedicLoggerContext, MedicLoggerContext>();
+
             services.AddTransient<IMedicLoggerService, MedicLoggerService>();
 
             ServiceProvider serviceProvider = services.BuildServiceProvider();

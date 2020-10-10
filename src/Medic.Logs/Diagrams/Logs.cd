@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.Logs.MedicLoggerContext">
+    <Position X="5.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MedicLoggerContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Logs.MedicLoggerService">
+    <Position X="3.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>MedicLoggerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Logs.Models.Log">
+    <Position X="1" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAgAAAgAAAAAAAAAAAAAAAAABAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Log.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Medic.Logs.Contracts.IMedicLoggerService">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IMedicLoggerService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.Logs.Contracts.IMedicLoggerContext">
+    <Position X="5.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IMedicLoggerContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

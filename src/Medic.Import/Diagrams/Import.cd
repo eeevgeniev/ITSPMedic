@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.Import.ImportMedicFile">
+    <Position X="0.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAIMAQCiACAIABIBACASCAEAggCQggAQAhAIBAAA=</HashCode>
+      <FileName>ImportMedicFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.FileTypeComparer" Collapsed="true">
+    <Position X="4" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\FileTypeComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.HealthcarePractitionerComparer" Collapsed="true">
+    <Position X="4" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\HealthcarePractitionerComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.HealthRegionComparer" Collapsed="true">
+    <Position X="4" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\HealthRegionComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.MKBComparer" Collapsed="true">
+    <Position X="4" Y="3.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\MKBComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.PatientBranchComparer" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\PatientBranchComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.PatientComparer" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\PatientComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.PracticeComparer" Collapsed="true">
+    <Position X="7.75" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\PracticeComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.ProviderComparer" Collapsed="true">
+    <Position X="7.75" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\ProviderComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.SenderTypeComparer" Collapsed="true">
+    <Position X="4.25" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\SenderTypeComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.SexComparer" Collapsed="true">
+    <Position X="7.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\SexComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.SpecialtyTypeComparer" Collapsed="true">
+    <Position X="4.25" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\SpecialtyTypeComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.Import.Rules.TherapyTypeComparer" Collapsed="true">
+    <Position X="7.75" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rules\TherapyTypeComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Medic.Import.Contracts.IImportMedicFile" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IImportMedicFile.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

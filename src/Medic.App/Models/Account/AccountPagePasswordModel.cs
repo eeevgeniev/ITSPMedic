@@ -1,5 +1,5 @@
 ﻿using Medic.App.Models.Bases;
-using Medic.App.Models.Users.Models;
+using Medic.IdentityModels;
 
 namespace Medic.App.Models.Account
 {

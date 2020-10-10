@@ -15,8 +15,6 @@ namespace Medic.ModelToEHR.Helpers
 {
     internal class PathProcedureToEHRConverter : ToEHRBaseConverter
     {
-        private object entryPatientBuilder;
-
         internal PathProcedureToEHRConverter(IEHRManager ehrManager) 
             : base(ehrManager) {}
 

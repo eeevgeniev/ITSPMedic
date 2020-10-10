@@ -7,17 +7,27 @@ namespace Medic.Logs
 {
     public class MedicLoggerService : IMedicLoggerService
     {
-        private readonly MedicLoggerContext MedicLoggerContext;
+        private readonly IMedicLoggerContext MedicLoggerContext;
 
-        public MedicLoggerService(MedicLoggerContext medicLoggerContext)
+        public MedicLoggerService(IMedicLoggerContext medicLoggerContext)
         {
             MedicLoggerContext = medicLoggerContext ?? throw new ArgumentNullException(nameof(medicLoggerContext));
         }
 
         public async Task<int> SaveAsync(Log model)
         {
-            await MedicLoggerContext.Logs.AddAsync(model);
-            return await MedicLoggerContext.SaveChangesAsync();
+            try
+            {
+                MedicLoggerContext.Logs.Add(model);
+
+                return await MedicLoggerContext.SaveChangesAsync(default);
+            }
+            catch
+            {
+
+            }
+
+            return -1;
         }
     }
 }

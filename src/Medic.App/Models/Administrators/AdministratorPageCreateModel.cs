@@ -1,5 +1,5 @@
-﻿using Medic.App.Models.Administrators.Models;
-using Medic.App.Models.Bases;
+﻿using Medic.App.Models.Bases;
+using Medic.IdentityModels;
 
 namespace Medic.App.Models.Administrators
 {

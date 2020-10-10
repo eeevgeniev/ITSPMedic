@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.EHR.DataTypes.Base.DataValue" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\Base\DataValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.Base.Quantity" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\Base\Quantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.Base.Text" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\Base\Text.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.BL" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DataTypes\BL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.CD" Collapsed="true">
+    <Position X="2.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\CD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.CE" Collapsed="true">
+    <Position X="2.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\CE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.CodedText" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\CodedText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.CR" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAEAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\CR.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.CS" Collapsed="true">
+    <Position X="2.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAIQA=</HashCode>
+      <FileName>DataTypes\CS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.CV" Collapsed="true">
+    <Position X="2.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\CV.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.DATE" Collapsed="true">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\DATE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.Duration" Collapsed="true">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQABACQAAAAAAAAAAAAAAAQAABAAAAAAA=</HashCode>
+      <FileName>DataTypes\Duration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.ED" Collapsed="true">
+    <Position X="2.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEIACACAAAgAgACAAACAAAAAAAABAAgAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\ED.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.EIVL" Collapsed="true">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>DataTypes\EIVL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.II" Collapsed="true">
+    <Position X="2.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAACAAAAAQAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\II.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.INT" Collapsed="true">
+    <Position X="2.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DataTypes\INT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.IVL" Collapsed="true">
+    <Position X="2.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAgEAAEAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\IVL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.IVLPQ" Collapsed="true">
+    <Position X="2.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAgEAAEAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\IVLPQ.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.IVLTS" Collapsed="true">
+    <Position X="2.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAgEAAEAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\IVLTS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.OID" Collapsed="true">
+    <Position X="7.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\OID.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.ORD" Collapsed="true">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAACAA=</HashCode>
+      <FileName>DataTypes\ORD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.PIVL" Collapsed="true">
+    <Position X="2.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAABAI=</HashCode>
+      <FileName>DataTypes\PIVL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.PQ" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAgAQAAEAA=</HashCode>
+      <FileName>DataTypes\PQ.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.REAL" Collapsed="true">
+    <Position X="2.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DataTypes\REAL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.RTO" Collapsed="true">
+    <Position X="5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\RTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.SimpleText" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataTypes\SimpleText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.TS" Collapsed="true">
+    <Position X="2.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>DataTypes\TS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.DataTypes.URI" Collapsed="true">
+    <Position X="2.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAAQAAAIAAAAAAAAEAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DataTypes\URI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.Demographics.IdentifiedEntity" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Demographics\Base\IdentifiedEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.Demographics.Telecom" Collapsed="true">
+    <Position X="9.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAEAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Demographics\Telecom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.Extracts.EhrExtract" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgBAEAAQIAAAAAAYAAAABAAAAAAAAAAAAAFAAAAAAA=</HashCode>
+      <FileName>Extracts\EhrExtract.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.Extracts.ExtractCriteria" Collapsed="true">
+    <Position X="11" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAABAAAAAAAAAAAAAAgAAAAAACU=</HashCode>
+      <FileName>Extracts\ExtractCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Base.Content" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RM\Base\Content.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Base.Item" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAACAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>RM\Base\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Base.RecordComponent" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACABAAIBAAAAAAAAAwAAAAAAEAACAAAAAAAAAQ=</HashCode>
+      <FileName>RM\Base\RecordComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.AttestationInfo" Collapsed="true">
+    <Position X="7" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAEAAAAIAAACAAAAAAAAAAAAAAEAAAAQA=</HashCode>
+      <FileName>RM\AttestationInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.AuditInfo" Collapsed="true">
+    <Position X="9" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAhAAAAAAAAAAAAAAJAAAAAAAAAAAACAAAQAAAA=</HashCode>
+      <FileName>RM\AuditInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Cluster" Collapsed="true">
+    <Position X="11.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RM\Cluster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Composition" Collapsed="true">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAEAgQCAAAAAAAgAAAABAAAAAAAAEAAAAA=</HashCode>
+      <FileName>RM\Composition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Element" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>RM\Element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Entry" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAEAQAAAQIAAAAAEAgAAAAAAAAAAEAA=</HashCode>
+      <FileName>RM\Entry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Folder" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAACAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RM\Folder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.FunctionalRole" Collapsed="true">
+    <Position X="11" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAABAAIAAQAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>RM\FunctionalRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Link" Collapsed="true">
+    <Position X="9" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAACAQABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RM\Link.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.RelatedParty" Collapsed="true">
+    <Position X="11" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>RM\RelatedParty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHR.RM.Section" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>RM\Section.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

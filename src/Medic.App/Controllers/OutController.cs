@@ -272,7 +272,7 @@ namespace Medic.App.Controllers
 
             if (!base.MedicCache.TryGetValue(key, out model))
             {
-                model = await OutService.GetOutAsyns(id);
+                model = await OutService.GetOutAsync(id);
 
                 base.MedicCache.Set(key, model);
             }
@@ -288,7 +288,8 @@ namespace Medic.App.Controllers
             string outsKey = $"{nameof(OutPreviewViewModel)} - {startIndex} - {searchParams}";
 
             if (!base.MedicCache.TryGetValue(outsKey, out List<OutPreviewViewModel> outs))
-                {
+            {
+                
                 OutHelperBuilder outHelperBuilder = new OutHelperBuilder(search);
 
                 outs = await OutService.GetOutsAsync(outWhereBuilder, outHelperBuilder, startIndex);

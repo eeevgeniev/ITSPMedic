@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.FileImport.Reader.ConsoleReader" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reader\ConsoleReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.FileImport.Writer.ConsoleWriter" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Writer\ConsoleWriter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.FileImport.Program" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAQCAAAAAAAAAAAABAAAQAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Medic.FileImport.Contracts.INotifiable" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\INotifiable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.FileImport.Contracts.IReadable" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IReadable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

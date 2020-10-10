@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Medic.App.Models.Users.Models
+namespace Medic.IdentityModels
 {
     public class ChangePassword
     {

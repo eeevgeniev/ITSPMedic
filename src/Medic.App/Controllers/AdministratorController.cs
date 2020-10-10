@@ -3,6 +3,7 @@ using Medic.App.Infrastructure;
 using Medic.App.Models.Administrators;
 using Medic.App.Models.Administrators.Models;
 using Medic.Identity;
+using Medic.IdentityModels;
 using Medic.Logs.Contracts;
 using Medic.Logs.Models;
 using Medic.Resources;

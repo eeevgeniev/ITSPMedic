@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.App.Models.Account.AccountPageLoginModel" Collapsed="true">
+    <Position X="0.75" Y="1.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\AccountPageLoginModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Account.AccountPagePasswordModel" Collapsed="true">
+    <Position X="0.75" Y="2.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\AccountPagePasswordModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Bases.BasePageModel" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAUAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\Bases\BasePageModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Bases.BasePageSummaryModel" Collapsed="true">
+    <Position X="5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAI=</HashCode>
+      <FileName>Models\Bases\BasePageSummaryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Administrators.AdministratorPageCreateModel" Collapsed="true">
+    <Position X="0.75" Y="3.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Administrators\AdministratorPageCreateModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Administrators.AdministratorPageIndexModel" Collapsed="true">
+    <Position X="5" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Administrators\AdministratorPageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.CommissionAprs.CommissionAprPageCommissionAprModel" Collapsed="true">
+    <Position X="0.75" Y="4.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\CommissionAprs\CommissionAprPageCommissionAprModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.CommissionAprs.CommissionAprPageIndexModel" Collapsed="true">
+    <Position X="5" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAEAAAAAAAAAAAAAAAAEAAgAAA=</HashCode>
+      <FileName>Models\CommissionAprs\CommissionAprPageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.DispObservations.DispObservationPageDispObservationModel" Collapsed="true">
+    <Position X="0.75" Y="5.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DispObservations\DispObservationPageDispObservationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.DispObservations.DispObservationPageIndexModel" Collapsed="true">
+    <Position X="5" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAABAAAAAAEAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\DispObservations\DispObservationPageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.FileUploads.FileUploadPageCPFile" Collapsed="true">
+    <Position X="0.75" Y="6.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FileUploads\FileUploadPageCPFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.FileUploads.FileUploadPageHospitalPractice" Collapsed="true">
+    <Position X="0.75" Y="7.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FileUploads\FileUploadPageHospitalPractice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Home.HomePageDiagModel" Collapsed="true">
+    <Position X="5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Home\HomePageDiagModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Home.HomePageDiagnoseModel" Collapsed="true">
+    <Position X="5" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Home\HomePageDiagnoseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Home.HomePageModel" Collapsed="true">
+    <Position X="0.75" Y="8.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAEAAAAAQAAAEAAQgAAgAIAAgAAAAAAiAyAAAAA=</HashCode>
+      <FileName>Models\Home\HomePageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Home.HomePageUsedDrugsModel" Collapsed="true">
+    <Position X="5" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Home\HomePageUsedDrugsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.InClinicProcedures.InClinicProcedurePageInClinicProcedureModel" Collapsed="true">
+    <Position X="0.75" Y="9.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\InClinicProcedures\InClinicProcedurePageInClinicProcedureModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.InClinicProcedures.InClinicProcedurePageIndexModel" Collapsed="true">
+    <Position X="5" Y="7.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAIAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\InClinicProcedures\InClinicProcedurePageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Ins.InPageIndexModel" Collapsed="true">
+    <Position X="5" Y="8.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgACA=</HashCode>
+      <FileName>Models\Ins\InPageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Ins.InPageInModel" Collapsed="true">
+    <Position X="0.75" Y="10.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Models\Ins\InPageInModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Outs.OutPageIndexModel" Collapsed="true">
+    <Position X="5" Y="9.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAEAABAgAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\Outs\OutPageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Outs.OutPageOutModel" Collapsed="true">
+    <Position X="0.75" Y="11.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Outs\OutPageOutModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.PathProcedures.PathProcedurePageIndexModel" Collapsed="true">
+    <Position X="5" Y="10.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAABAAAEAABAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\PathProcedures\PathProcedurePageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.PathProcedures.PathProcedurePagePathProcedureModel" Collapsed="true">
+    <Position X="0.75" Y="12.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\PathProcedures\PathProcedurePagePathProcedureModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Patients.PatientPageIndexModel" Collapsed="true">
+    <Position X="5" Y="11.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAAAAgAAA=</HashCode>
+      <FileName>Models\Patients\PatientPageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Patients.PatientPagePatientModel" Collapsed="true">
+    <Position X="0.75" Y="13.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Patients\PatientPagePatientModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Plannings.PlannedPageIndexModel" Collapsed="true">
+    <Position X="5" Y="12.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAEAAAAAAAAAAAAAAgAAAAgAAA=</HashCode>
+      <FileName>Models\Plannings\PlannedPageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.Plannings.PlannedPagePlannedModel" Collapsed="true">
+    <Position X="0.75" Y="14.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Plannings\PlannedPagePlannedModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.ProtocolDrugTherapy.ProtocolDrugTherapyPageIndexModel" Collapsed="true">
+    <Position X="5" Y="13.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAMAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\ProtocolDrugTherapy\ProtocolDrugTherapyPageIndexModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.ProtocolDrugTherapy.ProtocolDrugTherapyPageProtocolDrugTherapyModel" Collapsed="true">
+    <Position X="5" Y="14.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProtocolDrugTherapy\ProtocolDrugTherapyPageProtocolDrugTherapyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Models.ErrorViewModel" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ErrorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

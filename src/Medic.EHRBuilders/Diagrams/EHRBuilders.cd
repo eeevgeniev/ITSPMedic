@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.EHRBuilders.Managers.EHRManager" Collapsed="true">
+    <Position X="4.25" Y="11.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>YCARQCCASKIZ0AAiEAYqCEXPhHyhCAIQgAAIAAhi6cs=</HashCode>
+      <FileName>Managers\EHRManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.AttestationInfoBuilder" Collapsed="true">
+    <Position X="6.5" Y="11.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CBAAAAAAACAAAAAQAAACAAAAACAAgAEAQAAAAABAAAA=</HashCode>
+      <FileName>AttestationInfoBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.AuditInfoBuilder" Collapsed="true">
+    <Position X="1.5" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BBAAAAIAACAAgAQAAAACAQAAACAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>AuditInfoBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.BLBuilder" Collapsed="true">
+    <Position X="4" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAACAAAAAAAQAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>BLBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.CDBuilder" Collapsed="true">
+    <Position X="6.5" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AJCAAAQAACAAAAAAAQAAAAAAAAAAgABgAIAAACBAAAA=</HashCode>
+      <FileName>CDBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.CEBuilder" Collapsed="true">
+    <Position X="9" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AJCAAAQAACAAAAAAAQAAAAAAAAAAgABgAIAAAABAAAA=</HashCode>
+      <FileName>CEBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.ClusterBuilder" Collapsed="true">
+    <Position X="1.5" Y="14" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAgBAAACCIAAAAAwACAAAAAAAAgFEAAABAAABCAAQ=</HashCode>
+      <FileName>ClusterBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.CodedTextBuilder" Collapsed="true">
+    <Position X="4" Y="14" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABGAAAAAACAAAAAQCAAAAAAAAAAAgAQAAAAAAABAAAA=</HashCode>
+      <FileName>CodedTextBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.CompositionBuilder" Collapsed="true">
+    <Position X="6.75" Y="14" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABEAkBAAgCCIIAIMBgACAAAAAAAAgEEAAAAAAABABAQ=</HashCode>
+      <FileName>CompositionBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.CRBuilder" Collapsed="true">
+    <Position X="9.25" Y="14" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAACAAAAAAgAQAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>CRBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.CSBuilder" Collapsed="true">
+    <Position X="1.5" Y="15.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAQAACAAAAAAAAAAAAAAAAAAgABgAIAAAABAAAA=</HashCode>
+      <FileName>CSBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.CVBuilder" Collapsed="true">
+    <Position X="4" Y="15.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AJCAAAQAACAAAAAAAAAAAAAAAAAAgABgAIAAAABAAAA=</HashCode>
+      <FileName>CVBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.DATEBuilder" Collapsed="true">
+    <Position X="6.5" Y="15.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAACgAAAAAAAAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>DATEBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.DurationBuilder" Collapsed="true">
+    <Position X="9" Y="15.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABCCAAAgACAAAAAAAAAAAABAAAAAgAAAIAAAoABAAAA=</HashCode>
+      <FileName>DurationBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.EDBuilder" Collapsed="true">
+    <Position X="1.5" Y="16.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABGBAEAAAKAAAAAEGAAAAAQAAAAIgAAAAAAAAEBAAAA=</HashCode>
+      <FileName>EDBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.EhrExtractModelBuilder" Collapsed="true">
+    <Position X="4" Y="16.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABQAACAAACAAAAAAAAACAAAAAAAAgQAAAAAAAABAACA=</HashCode>
+      <FileName>EhrExtractModelBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.EIVLBuilder" Collapsed="true">
+    <Position X="6.75" Y="16.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAAGAAAABAAAAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>EIVLBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.ElementBuilder" Collapsed="true">
+    <Position X="9" Y="16.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAgBAAACCIAAAAAwACAAAAAAAAgFEAAABAAABAAAQ=</HashCode>
+      <FileName>ElementBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.EntryBuilder" Collapsed="true">
+    <Position X="1.5" Y="17.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABQAgBAAAGKIAAAAAiACAAAAIAgAgEEAAAAAAABABAQ=</HashCode>
+      <FileName>EntryBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.FolderBuilder" Collapsed="true">
+    <Position X="4" Y="17.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAgBAAACCYAAAEAgACAAAAAAAAgUEAAAAAAABABAQ=</HashCode>
+      <FileName>FolderBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.FunctionalRoleBuilder" Collapsed="true">
+    <Position X="6.75" Y="17.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAQACAAAACACAAAAAAAAAAAgAAAAEAACABAAAA=</HashCode>
+      <FileName>FunctionalRoleBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.IIBuilder" Collapsed="true">
+    <Position X="9" Y="17.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAACAAAAAAAgAAAQAAAAAAgAAAAEAAAABAAAg=</HashCode>
+      <FileName>IIBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.INTBuilder" Collapsed="true">
+    <Position X="1.5" Y="18.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAACAAAAAAAQAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>INTBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.IVLBuilder" Collapsed="true">
+    <Position X="4" Y="18.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABCAAEAAACAAAAAAAAEAAAAAEAAAgAACAAAEAABAAAA=</HashCode>
+      <FileName>IVLBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.IVLPQBuilder" Collapsed="true">
+    <Position X="6.75" Y="18.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABCAAEAAACAAAAAAAAEAAAAAEAAAgAACAAAEAABAAAA=</HashCode>
+      <FileName>IVLPQBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.IVLTSBuilder" Collapsed="true">
+    <Position X="9" Y="18.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABCAAEAAACAAAAAAAAEAAAAAEAAAgAACAAAEAABAAAA=</HashCode>
+      <FileName>IVLTSBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.LinkBuilder" Collapsed="true">
+    <Position X="1.5" Y="19.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAACAAAAAAgAAAAACAAAIAgAEAAAAAAABAAAA=</HashCode>
+      <FileName>LinkBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.OIDBuilder" Collapsed="true">
+    <Position X="4" Y="19.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OIDBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.ORDBulder" Collapsed="true">
+    <Position X="6.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAACAAAAAAAQAAAAAAAAAAgAAAAAAAAABBAAA=</HashCode>
+      <FileName>ORDBulder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.Base.DataValueBuilder" Collapsed="true">
+    <Position X="6" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAACAAIAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\DataValueBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.EHRBuilders.PIVLBuilder" Collapsed="true">
+    <Position X="8.5" Y="19.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABCQAAAAACAAAAAAAAAAAAAAAAEAgAAgAAAAAABAAAA=</HashCode>
+      <FileName>PIVLBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.PQBuilder" Collapsed="true">
+    <Position X="1.5" Y="20.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAACAAAAAAAQAAAAAAAAAAgAAKAIAAAABAAAA=</HashCode>
+      <FileName>PQBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.REALBuilder" Collapsed="true">
+    <Position X="4" Y="20.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAACAAAAAAAQAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>REALBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.RelatedPartyBuilder" Collapsed="true">
+    <Position X="6.5" Y="20.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CBAAAAAAACAAAAAgAAAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>RelatedPartyBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.RTOBuilder" Collapsed="true">
+    <Position X="8.75" Y="20.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAASAAAAAAAAAAAAAAAAEAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>RTOBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.SectionBuilder" Collapsed="true">
+    <Position X="1.25" Y="21.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAgBAAACCIAAAAAgACAAAAAAAAgEEAAAAAAABABAQ=</HashCode>
+      <FileName>SectionBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.SimpleTextBuilder" Collapsed="true">
+    <Position X="3.75" Y="21.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABGAAAAAACAAAAAACAAAAAAAAAAAgAQAAAAAAABAAAA=</HashCode>
+      <FileName>SimpleTextBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.TSBuilder" Collapsed="true">
+    <Position X="6.5" Y="21.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CBCAAAAAACAAAAAAAAAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>TSBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Medic.EHRBuilders.URIBuilder" Collapsed="true">
+    <Position X="9" Y="21.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAACAAIAAAAQAAAAgAAAAQgAAAAAAAIAJAAAA=</HashCode>
+      <FileName>URIBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Medic.EHRBuilders.Contracts.IAttestationInfoBuilder" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAQAAACAAAAACAAgAEAQAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IAttestationInfoBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IAuditInfoBuilder" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAIAAAAAgAQAAAACAQAAACAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IAuditInfoBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IBLBuilder" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAQAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IBLBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ICDBuilder" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AICAAAQAAAAAAAAAAQAAAAAAAAAAgABgAIAAACBAAAA=</HashCode>
+      <FileName>Contracts\ICDBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ICEBuilder" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AICAAAQAAAAAAAAAAQAAAAAAAAAAgABgAIAAAABAAAA=</HashCode>
+      <FileName>Contracts\ICEBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IClusterBuilder" Collapsed="true">
+    <Position X="3.25" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgBAAAACIAAAAAwACAAAAAAAAgFEAAABAAABCAAQ=</HashCode>
+      <FileName>Contracts\IClusterBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ICodedTextBuilder" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAGAAAAAAAAAAAAQCAAAAAAAAAAAgAQAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\ICodedTextBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ICompositionBuilder" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAkBAAgACIIAIMBgACAAAAAAAAgEEAAAAAAABABAQ=</HashCode>
+      <FileName>Contracts\ICompositionBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ICRBuilder" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAgAQAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\ICRBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ICSBuilder" Collapsed="true">
+    <Position X="3.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAQAAAAAAAAAAAAAAAAAAAAAgABgAIAAAABAAAA=</HashCode>
+      <FileName>Contracts\ICSBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ICVBuilder" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AICAAAQAAAAAAAAAAAAAAAAAAAAAgABgAIAAAABAAAA=</HashCode>
+      <FileName>Contracts\ICVBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IDATEBuilder" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IDATEBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IDurationBuilder" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAgAAAAAAAAAAAAAABAAAAAgAAAIAAAoABAAAA=</HashCode>
+      <FileName>Contracts\IDurationBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IEDBuilder" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAGBAEAAAIAAAAAEGAAAAAQAAAAIgAAAAAAAAEBAAAA=</HashCode>
+      <FileName>Contracts\IEDBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IEhrExtractModelBuilder" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAACAAAAAAAAAAAAACAAAAAAAAgQAAAAAAAABAACA=</HashCode>
+      <FileName>Contracts\IEhrExtractModelBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IEHRManager" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QCABQAAAAIIZgAACEAAqCAVDBGigAAAQAAAIAAgAQEE=</HashCode>
+      <FileName>Contracts\IEHRManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IEIVLBuilder" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAEAAAABAAAAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IEIVLBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IElementBuilder" Collapsed="true">
+    <Position X="3.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgBAAAACIAAAAAwACAAAAAAAAgFEAAABAAABAAAQ=</HashCode>
+      <FileName>Contracts\IElementBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IEntryBuilder" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAgBAAAEKIAAAAAiACAAAAIAgAgEEAAAAAAABABAQ=</HashCode>
+      <FileName>Contracts\IEntryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IFolderBuilder" Collapsed="true">
+    <Position X="8.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgBAAAACYAAAEAgACAAAAAAAAgUEAAAAAAABABAQ=</HashCode>
+      <FileName>Contracts\IFolderBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IFunctionalRoleBuilder" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAACACAAAAAAAAAAAgAAAAEAACABAAAA=</HashCode>
+      <FileName>Contracts\IFunctionalRoleBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IIIBuilder" Collapsed="true">
+    <Position X="3.25" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAgAAAQAAAAAAgAAAAEAAAABAAAg=</HashCode>
+      <FileName>Contracts\IIIBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IINTBuilder" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAQAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IINTBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IIVLBuilder" Collapsed="true">
+    <Position X="8.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAEAAAAAAAAAAAAEAAAAAEAAAgAACAAAEAABAAAA=</HashCode>
+      <FileName>Contracts\IIVLBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IIVLPQBuilder" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAEAAAAAAAAAAAAEAAAAAEAAAgAACAAAEAABAAAA=</HashCode>
+      <FileName>Contracts\IIVLPQBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IIVLTSBuilder" Collapsed="true">
+    <Position X="3.25" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAEAAAAAAAAAAAAEAAAAAEAAAgAACAAAEAABAAAA=</HashCode>
+      <FileName>Contracts\IIVLTSBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ILinkBuilder" Collapsed="true">
+    <Position X="6" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAACAAAIAgAEAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\ILinkBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IOIDBuilder" Collapsed="true">
+    <Position X="8.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IOIDBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IORDBulder" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAQAAAAAAAAAAgAAAAAAAAABBAAA=</HashCode>
+      <FileName>Contracts\IORDBulder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IPIVLBuilder" Collapsed="true">
+    <Position X="3.25" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACQAAAAAAAAAAAAAAAAAAAAAAEAgAAgAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IPIVLBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IPQBuilder" Collapsed="true">
+    <Position X="6" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAQAAAAAAAAAAgAAKAIAAAABAAAA=</HashCode>
+      <FileName>Contracts\IPQBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IREALBuilder" Collapsed="true">
+    <Position X="8.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAQAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IREALBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IRelatedPartyBuilder" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IRelatedPartyBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IRTOBuilder" Collapsed="true">
+    <Position X="3.25" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAQAAAAAAAAAAAAAAAAEAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\IRTOBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ISectionBuilder" Collapsed="true">
+    <Position X="6" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgBAAACCIAAAAAgACAAAAAAAAgEEAAAAAAABABAQ=</HashCode>
+      <FileName>Contracts\ISectionBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ISimpleTextBuilder" Collapsed="true">
+    <Position X="8.5" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAGAAAAAAAAAAAAACAAAAAAAAAAAgAQAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\ISimpleTextBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.ITSBuilder" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CACAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contracts\ITSBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Medic.EHRBuilders.Contracts.IURIBuilder" Collapsed="true">
+    <Position X="3" Y="9.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAIAAAAQAAAAgAAAAQgAAAAAAAIAJAAAA=</HashCode>
+      <FileName>Contracts\IURIBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

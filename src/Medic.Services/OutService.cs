@@ -25,7 +25,7 @@ namespace Medic.Services
         public OutService(IMedicContext medicContext, MapperConfiguration configuration)
             : base (medicContext, configuration){}
 
-        public async Task<OutViewModel> GetOutAsyns(int id)
+        public async Task<OutViewModel> GetOutAsync(int id)
         {
             if (id < 1)
             {

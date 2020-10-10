@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Medic.App.Controllers.Base.FormatterBaseController" Collapsed="true">
+    <Position X="0.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Controllers\Base\FormatterBaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.Base.LookupsBaseController" Collapsed="true">
+    <Position X="0.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgEAAAAAAIAgAAAAAAAAA=</HashCode>
+      <FileName>Controllers\Base\LookupsBaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.Base.MedicBaseController" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAABAA=</HashCode>
+      <FileName>Controllers\Base\MedicBaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.Base.PageBasedController" Collapsed="true">
+    <Position X="0.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\Base\PageBasedController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.Base.SexBaseController" Collapsed="true">
+    <Position X="0.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAACAAAAAAAIQAAAIAAACAAAA=</HashCode>
+      <FileName>Controllers\Base\SexBaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.AccountController" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAIAAAAAAAAAAgAAIAAAAAAAACAAIQAAAAQAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.AdministratorController" Collapsed="true">
+    <Position X="3.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>MAAAAAGAAAAAAAAAAAAAAABAAAEAAEAAAAEAAAAAQAA=</HashCode>
+      <FileName>Controllers\AdministratorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.CommissionAprController" Collapsed="true">
+    <Position X="3.5" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAACAAQBAAAAAAAAAAAAAAAAAAQAAAAQAEAAAAAQgg=</HashCode>
+      <FileName>Controllers\CommissionAprController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.DispObservationController" Collapsed="true">
+    <Position X="0.75" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAACAAABAAgAAAAAAAAAAAAAAAQAAIAQAEAAAAAQgg=</HashCode>
+      <FileName>Controllers\DispObservationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.FileUploadController" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAUAAAAEIAAACAAAACAAAAAAAAAAAAAACAAAQAA=</HashCode>
+      <FileName>Controllers\FileUploadController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.HomeController" Collapsed="true">
+    <Position X="3.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAEAAwAADhIAAQAAICBAACAAAAAIAQCAACEAAAAASAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.InClinicProcedureController" Collapsed="true">
+    <Position X="3.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAACAACBAAAAAAAAAAAAAAAAAAQBAAAQAEAAAAAQgg=</HashCode>
+      <FileName>Controllers\InClinicProcedureController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.InController" Collapsed="true">
+    <Position X="6.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAACAAABAAAAAAAAAAAQAAAAAAQAAAAQAEAAAAAQig=</HashCode>
+      <FileName>Controllers\InController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.OutController" Collapsed="true">
+    <Position X="6.25" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>UAAACAAABAAAAEAAAAAAAAAAAAAQAACAQAEAAAAAQgg=</HashCode>
+      <FileName>Controllers\OutController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.PathProcedureController" Collapsed="true">
+    <Position X="8.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAEACAAAFAAAAAAAAAAAAAAAAAAYAAAAQAEAAAAAQgg=</HashCode>
+      <FileName>Controllers\PathProcedureController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.PatientController" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAACAAABAAAAAAAAAAAAAAAAAAQAAAAQAEAAAAASgg=</HashCode>
+      <FileName>Controllers\PatientController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.PlannedController" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAACAAABAAAAAAAAAAAQAAAAAAQAAAAQAEAAACAQgg=</HashCode>
+      <FileName>Controllers\PlannedController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Medic.App.Controllers.ProtocolDrugTherapyController" Collapsed="true">
+    <Position X="5" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAACAAABAAAAAAAAAAAAEAAAABQCAAAQAEAAAAAQgg=</HashCode>
+      <FileName>Controllers\ProtocolDrugTherapyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

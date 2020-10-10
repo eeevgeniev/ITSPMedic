@@ -1,19 +1,18 @@
-﻿using Medic.Logs.Models;
+﻿using Medic.Logs.Contracts;
+using Medic.Logs.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Runtime.InteropServices;
 
 namespace Medic.Logs
 {
-    public class MedicLoggerContext : DbContext
+    public class MedicLoggerContext : DbContext, IMedicLoggerContext
     {
         public MedicLoggerContext(DbContextOptions<MedicLoggerContext> options)
-            : base (options)
+            : base(options)
         {
 
         }
 
-        public DbSet<Log> Logs { get; set; } 
+        public DbSet<Log> Logs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

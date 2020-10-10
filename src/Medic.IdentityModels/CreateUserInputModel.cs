@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Medic.App.Models.Administrators.Models
+namespace Medic.IdentityModels
 {
     public class CreateUserInputModel
     {
