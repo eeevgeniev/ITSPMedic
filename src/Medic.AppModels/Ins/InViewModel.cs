@@ -69,7 +69,7 @@ namespace Medic.AppModels.Ins
         public int NZOKPay { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.InMedicalWard)]
-        public decimal InMedicalWard { get; set; }
+        public string InMedicalWard { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.EntryDate)]
         public DateTime EntryDate { get; set; }

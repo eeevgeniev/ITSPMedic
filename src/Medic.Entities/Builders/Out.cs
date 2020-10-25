@@ -107,10 +107,6 @@ namespace Medic.Entities
                 b.Property(model => model.IZinDetail).HasMaxLength(4000);
 
                 b.Property(model => model.LinkMedia).HasMaxLength(250);
-
-                b.Property(model => model.InMedicalWard).HasColumnType("decimal(15,4)");
-
-                b.Property(model => model.OutMedicalWard).HasColumnType("decimal(15,4)");
             });
         }
     }

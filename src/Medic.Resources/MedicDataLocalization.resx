@@ -1072,7 +1072,7 @@
     <value>UIN Prescr</value>
   </data>
   <data name="UniqueIdentifier" xml:space="preserve">
-    <value>Unique identifier</value>
+    <value>Unique identifier of doctor</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>

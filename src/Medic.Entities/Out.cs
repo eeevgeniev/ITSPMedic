@@ -64,7 +64,7 @@ namespace Medic.Entities
 
         public int NZOKPay { get; set; }
 
-        public decimal InMedicalWard { get; set; }
+        public string InMedicalWard { get; set; }
 
         public DateTime EntryDate { get; set; }
 
@@ -88,7 +88,7 @@ namespace Medic.Entities
 
         public int? IZNo { get; set; }
 
-        public decimal OutMedicalWard { get; set; }
+        public string OutMedicalWard { get; set; }
 
         public string OutUniqueIdentifier { get; set; }
 

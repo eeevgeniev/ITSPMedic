@@ -526,7 +526,7 @@
     <value>Препоръки към ОПЛ на пациента</value>
   </data>
   <data name="HealthRegion" xml:space="preserve">
-    <value>Здравен регион</value>
+    <value>Здравен район</value>
   </data>
   <data name="Height" xml:space="preserve">
     <value>Височина</value>
@@ -1072,7 +1072,7 @@
     <value>Номер рецепта от болничната аптека</value>
   </data>
   <data name="UniqueIdentifier" xml:space="preserve">
-    <value>Уникален идентификатор</value>
+    <value>Уникалне номер на приемащият лекар</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Обнови</value>

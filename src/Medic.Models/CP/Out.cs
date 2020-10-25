@@ -132,7 +132,7 @@ namespace Medic.Models.CP
         public int NZOKPay { get; set; }
 
         [XmlElement(ElementName = "inMedicalWard")]
-        public decimal InMedicalWard { get; set; }
+        public string InMedicalWard { get; set; }
 
         [XmlIgnore]
         public DateTime EntryDate
@@ -185,7 +185,7 @@ namespace Medic.Models.CP
         public int? IZNo { get; set; }
 
         [XmlElement(ElementName = "outMedicalWard")]
-        public decimal OutMedicalWard { get; set; }
+        public string OutMedicalWard { get; set; }
 
         [XmlElement(ElementName = "outUin")]
         public string OutUniqueIdentifier { get; set; }

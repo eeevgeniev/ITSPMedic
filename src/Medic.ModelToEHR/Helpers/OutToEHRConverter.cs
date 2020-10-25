@@ -63,7 +63,7 @@ namespace Medic.ModelToEHR.Helpers
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.NZOKPay).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.InMedicalWard)).Build())
-                    .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.InMedicalWard).Build()).Build(),
+                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.InMedicalWard).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.EntryDate)).Build())
                     .AddValue(EhrManager.DATEBuilder.Clear().AddDate(model.EntryDate).Build()).Build(),
@@ -72,7 +72,7 @@ namespace Medic.ModelToEHR.Helpers
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.Payer).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.OutMedicalWard)).Build())
-                    .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.OutMedicalWard).Build()).Build(),
+                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.OutMedicalWard).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.OutUniqueIdentifier)).Build())
                     .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.OutUniqueIdentifier).Build()).Build(),
