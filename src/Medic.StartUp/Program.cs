@@ -36,6 +36,7 @@ namespace Medic.FileImport
 
                 ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
                 configurationBuilder.AddUserSecrets<Program>();
+                configurationBuilder.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json"));
 
                 IConfigurationRoot configuration = configurationBuilder.Build();
 
@@ -152,7 +153,7 @@ namespace Medic.FileImport
 
         private static void ReadCLPRFiles(IMappable mapper, DbContextOptionsBuilder<MedicContext> builder, string directoryPath)
         {
-            string invalidCLPRFileMessage = "Invalid CLPR file."
+            string invalidCLPRFileMessage = "Invalid CLPR file.";
 
 
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
