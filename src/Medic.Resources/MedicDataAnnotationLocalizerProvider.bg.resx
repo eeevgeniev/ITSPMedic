@@ -144,6 +144,9 @@
   <data name="AllDrugCost" xml:space="preserve">
     <value>Направени разходи по лекарство</value>
   </data>
+  <data name="AmbulatoryProcedure" xml:space="preserve">
+    <value>Амбулаторна процедура</value>
+  </data>
   <data name="Anamnesa" xml:space="preserve">
     <value>Анамнеза</value>
   </data>
@@ -201,6 +204,9 @@
   <data name="BSA" xml:space="preserve">
     <value>Teгло в кг</value>
   </data>
+  <data name="CashPatient" xml:space="preserve">
+    <value>Cash patient</value>
+  </data>
   <data name="Chairman" xml:space="preserve">
     <value>Председател</value>
   </data>
@@ -218,6 +224,9 @@
   </data>
   <data name="ClinicalPath" xml:space="preserve">
     <value>Клинична пътека</value>
+  </data>
+  <data name="ClinicalProcedure" xml:space="preserve">
+    <value>Клинична процедура</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>Код</value>
@@ -353,6 +362,9 @@
   </data>
   <data name="DischargeStatus" xml:space="preserve">
     <value>Изход от заболяването</value>
+  </data>
+  <data name="DischargeWard" xml:space="preserve">
+    <value>Discharge ward</value>
   </data>
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Настъпили усложнения</value>
@@ -514,6 +526,9 @@
     <value>ИЗ на пациента на клиничната пътека от която е приведен</value>
   </data>
   <data name="IZNo" xml:space="preserve">
+    <value>ИЗ номер</value>
+  </data>
+  <data name="IZNumber" xml:space="preserve">
     <value>ИЗ номер</value>
   </data>
   <data name="IZNumChild" xml:space="preserve">
@@ -896,6 +911,12 @@
   </data>
   <data name="TotalUses" xml:space="preserve">
     <value>Общ брой на прилагания</value>
+  </data>
+  <data name="TransferDateTime" xml:space="preserve">
+    <value>Дата на трансфера</value>
+  </data>
+  <data name="TransferWard" xml:space="preserve">
+    <value>Transfer ward</value>
   </data>
   <data name="TypeProcPriem" xml:space="preserve">
     <value>Тип на приема на пациента</value>
