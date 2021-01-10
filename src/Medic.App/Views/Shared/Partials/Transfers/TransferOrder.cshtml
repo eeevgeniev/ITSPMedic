@@ -1,0 +1,35 @@
+﻿@using Medic.AppModels.Enums
+
+@model TransferSearch
+
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    Type trasnferProcedureSearchOrderEnum = typeof(TransferOrderEnum);
+    Type orderDirectionEnum = typeof(OrderDirectionEnum);
+    Type pageLengthEnum = typeof(PageLengthEnum);
+}
+
+<form asp-controller="@MedicBaseController.GetName(nameof(PlannedController))"
+      asp-action="@nameof(PlannedController.Index)"
+      method="get"
+      class="form-inline float-sm-right">
+    <div class="form-group mr-sm-3">
+        <label class="mr-sm-3" asp-for="@Model.Order"></label>
+        <select class="form-control" asp-for="@Model.Order"
+                asp-items="Enum.GetValues(trasnferProcedureSearchOrderEnum).Cast<int>().Select(v => new SelectListItem() { Value = v.ToString(), Text = Html.Raw(medicDataLocalization.Get(Enum.GetName(trasnferProcedureSearchOrderEnum, v))).ToString(), Selected = (TransferOrderEnum)v == Model.Order})"></select>
+    </div>
+    <div class="form-group mr-sm-3">
+        <label class="mr-sm-3" asp-for="@Model.Direction"></label>
+        <select class="form-control" asp-for="@Model.Direction"
+                asp-items="Enum.GetValues(orderDirectionEnum).Cast<int>().Select(v => new SelectListItem() { Value = v.ToString(), Text = Html.Raw(medicDataLocalization.Get(Enum.GetName(orderDirectionEnum, v))).ToString(), Selected = (OrderDirectionEnum)v == Model.Direction })"></select>
+    </div>
+    <div class="form-group mr-sm-3">
+        <label class="mr-sm-3" asp-for="@Model.Length"></label>
+        <select class="form-control" asp-for="@Model.Length"
+                asp-items="@Enum.GetValues(pageLengthEnum).Cast<int>().Select(v => new SelectListItem() { Value = v.ToString(), Text = v.ToString(), Selected = (PageLengthEnum)v == Model.Length })"></select>
+    </div>
+    <input type="hidden" asp-for="@Model.FirstMainDiagCode" />
+    <input type="hidden" asp-for="@Model.SecondMainDiagCode" />
+    <input class="btn btn-dark" type="submit" value="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Update))" />
+</form>

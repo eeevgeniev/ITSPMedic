@@ -351,6 +351,20 @@ namespace Medic.Resources
         public const string Search = nameof(Search);
         public const string Reset = nameof(Reset);
         public const string DeleteUser = nameof(DeleteUser);
+        public const string Transfers = nameof(Transfers);
+        public const string TransfersSummary = nameof(TransfersSummary);
+        public const string Transfer = nameof(Transfer);
+        public const string TransferSummary = nameof(TransferSummary);
+        public const string TransferDateTime = nameof(TransferDateTime);
+        public const string ViewTransfer = nameof(ViewTransfer);
+        public const string TransfersView = nameof(TransfersView);
+        public const string TransferView = nameof(TransferView);
+
+        public const string CashPatient = nameof(CashPatient);
+        public const string ClinicalProcedure = nameof(ClinicalProcedure);
+        public const string AmbulatoryProcedure = nameof(AmbulatoryProcedure);
+        public const string DischargeWard = nameof(DischargeWard);
+        public const string TransferWard = nameof(TransferWard);
 
         public MedicDataLocalization(IStringLocalizerFactory factory)
             : base(factory, nameof(MedicDataLocalization)) { }

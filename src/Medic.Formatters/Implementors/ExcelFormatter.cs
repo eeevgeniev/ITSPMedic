@@ -122,10 +122,6 @@ namespace Medic.Formatters.Implementors
                         {
                             cell.DataType = CellValues.Number;
                         }
-                        else if (propertyValue is DateTime)
-                        {
-                            cell.DataType = CellValues.Date;
-                        }
                         else if (propertyValue is bool)
                         {
                             cell.DataType = CellValues.Boolean;

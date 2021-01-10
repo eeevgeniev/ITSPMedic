@@ -96,6 +96,7 @@ namespace Medic.App.AppServices
             services.AddTransient<IPlannedService, PlannedService>();
             services.AddTransient<IClinicUsedDrugsService, ClinicUsedDrugsService>();
             services.AddTransient<IDrugProtocolService, DrugProtocolService>();
+            services.AddTransient<ITransferService, TransferService>();
 
             services.AddTransient<IImportMedicFile, ImportMedicFile>();
             services.AddTransient<IGetXmlParameters, GetXmlParameters>();

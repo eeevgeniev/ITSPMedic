@@ -1,0 +1,23 @@
+﻿@model TransferSearch
+
+@inject MedicDataLocalization medicDataLocalization
+
+<form asp-controller="@MedicBaseController.GetName(nameof(TransferController))"
+      asp-action="@nameof(TransferController.Index)"
+      method="get">
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label asp-for="@Model.FirstMainDiagCode"></label>
+            <input class="form-control" asp-for="@Model.FirstMainDiagCode" />
+        </div>
+        <div class="form-group col-sm-6">
+            <label asp-for="@Model.SecondMainDiagCode"></label>
+            <input class="form-control" asp-for="@Model.SecondMainDiagCode" />
+        </div>
+    </div>
+    <input type="hidden" asp-for="@Model.Order" />
+    <input type="hidden" asp-for="@Model.Length" />
+    <input type="hidden" asp-for="@Model.Direction" />
+    <input type="submit" class="btn btn-primary" value="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Search))" />
+    <input type="reset" class="btn btn-dark" value="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Reset))" />
+</form>

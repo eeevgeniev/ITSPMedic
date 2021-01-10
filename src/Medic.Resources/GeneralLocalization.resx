@@ -237,6 +237,9 @@
   <data name="SiteTile" xml:space="preserve">
     <value>ITSP Medic</value>
   </data>
+  <data name="Transfers" xml:space="preserve">
+    <value>Transfers</value>
+  </data>
   <data name="UploadFiles" xml:space="preserve">
     <value>Upload files</value>
   </data>

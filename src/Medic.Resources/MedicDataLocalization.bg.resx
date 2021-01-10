@@ -153,6 +153,9 @@
   <data name="AllDrugCost" xml:space="preserve">
     <value>Направени разходи по лекарство</value>
   </data>
+  <data name="AmbulatoryProcedure" xml:space="preserve">
+    <value>AmbulatoryProcedure</value>
+  </data>
   <data name="Anamnesa" xml:space="preserve">
     <value>Анамнеза</value>
   </data>
@@ -222,6 +225,9 @@
   <data name="BSA" xml:space="preserve">
     <value>Teгло в кг</value>
   </data>
+  <data name="CashPatient" xml:space="preserve">
+    <value>CashPatient</value>
+  </data>
   <data name="CeasedClinicalPath" xml:space="preserve">
     <value>Прекъсната клинична пътека</value>
   </data>
@@ -248,6 +254,9 @@
   </data>
   <data name="ClinicalPath" xml:space="preserve">
     <value>Клинична пътека</value>
+  </data>
+  <data name="ClinicalProcedure" xml:space="preserve">
+    <value>ClinicalProcedure</value>
   </data>
   <data name="ClinicProcedures" xml:space="preserve">
     <value>Процедури в клиниката</value>
@@ -401,6 +410,9 @@
   </data>
   <data name="DischargeStatus" xml:space="preserve">
     <value>Изход от заболяването</value>
+  </data>
+  <data name="DischargeWard" xml:space="preserve">
+    <value>DischargeWard</value>
   </data>
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Настъпили усложнения</value>
@@ -1062,6 +1074,30 @@
   <data name="TotalUses" xml:space="preserve">
     <value>Общ брой на прилагания</value>
   </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Трансфер на пациент</value>
+  </data>
+  <data name="TransferDateTime" xml:space="preserve">
+    <value>Дата на трансферът</value>
+  </data>
+  <data name="Transfers" xml:space="preserve">
+    <value>Трансфери на пациенти</value>
+  </data>
+  <data name="TransfersSummary" xml:space="preserve">
+    <value>Трансфери на пациенти, диагнози</value>
+  </data>
+  <data name="TransferSummary" xml:space="preserve">
+    <value>Трансфер на пациент, диагнози</value>
+  </data>
+  <data name="TransfersView" xml:space="preserve">
+    <value>Преглед на трансфери</value>
+  </data>
+  <data name="TransferView" xml:space="preserve">
+    <value>Преглед на трансфер</value>
+  </data>
+  <data name="TransferWard" xml:space="preserve">
+    <value>TransferWard</value>
+  </data>
   <data name="TypeProcPriem" xml:space="preserve">
     <value>Тип на приема на пациента</value>
   </data>
@@ -1139,6 +1175,9 @@
   </data>
   <data name="ViewProtocolDrugTherapy" xml:space="preserve">
     <value>Преглед на протокол от лечения с лекарства</value>
+  </data>
+  <data name="ViewTransfer" xml:space="preserve">
+    <value>Преглед на трансферът</value>
   </data>
   <data name="VisitDocumentName" xml:space="preserve">
     <value>Име на документа за посещение</value>

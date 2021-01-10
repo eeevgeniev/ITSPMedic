@@ -7,6 +7,7 @@ using Medic.AppModels.PathProcedures;
 using Medic.AppModels.Patients;
 using Medic.AppModels.Plannings;
 using Medic.AppModels.ProtocolDrugTherapies;
+using Medic.AppModels.Transfers;
 using Medic.EHR.Extracts;
 
 namespace Medic.ModelToEHR.Contracts
@@ -30,5 +31,7 @@ namespace Medic.ModelToEHR.Contracts
         EhrExtract Convert(ProtocolDrugTherapyViewModel model, string name, string systemId);
 
         EhrExtract Convert(PatientViewModel model, string name, string systemId);
+
+        EhrExtract Convert(TransferViewModel model, string name, string systemId);
     }
 }
