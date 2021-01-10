@@ -29,5 +29,6 @@ namespace Medic.App.Infrastructure
         internal const string AtcNames = nameof(AtcNames);
         internal const string IdentityErrorSeparator = ", ";
         internal const string ItupMedic = "ITSP Medic";
+        internal const string Transfers = nameof(Transfers);
     }
 }

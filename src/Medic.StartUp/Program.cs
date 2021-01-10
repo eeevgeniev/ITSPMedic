@@ -36,6 +36,7 @@ namespace Medic.FileImport
 
                 ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
                 configurationBuilder.AddUserSecrets<Program>();
+                configurationBuilder.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json"));
 
                 IConfigurationRoot configuration = configurationBuilder.Build();
 
@@ -112,6 +113,8 @@ namespace Medic.FileImport
 
         private static void ReadCpFiles(IMappable mapper, DbContextOptionsBuilder<MedicContext> builder, string directoryPath)
         {
+            string invalidCpFileMessage = "Invalid CP file.";
+
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
             IMedicXmlParser medicXmlParser = new DefaultMedicXmlParser(new GetXmlParameters());
 
@@ -123,19 +126,36 @@ namespace Medic.FileImport
 
                 CP.CPFile cpFile = medicXmlParser.ParseXML<CP.CPFile>(sr);
 
-                CPFile cpFileEntity = mapper.Map<CPFile, CP.CPFile>(cpFile);
+                if (cpFile != default)
+                {
+                    CPFile cpFileEntity = mapper.Map<CPFile, CP.CPFile>(cpFile);
 
-                using MedicContext medicContext = new MedicContext(builder.Options);
-                using IImportMedicFile importMedicFile = new ImportMedicFile(medicContext);
+                    if (cpFileEntity != default)
+                    {
+                        using MedicContext medicContext = new MedicContext(builder.Options);
+                        using IImportMedicFile importMedicFile = new ImportMedicFile(medicContext);
 
-                importMedicFile.ImportCPFile(cpFileEntity);
+                        importMedicFile.ImportCPFile(cpFileEntity);
 
-                consoleWriter.Notify($"{file} - imported, ({counter++}/{files.Length}).");
+                        consoleWriter.Notify($"{file} - imported, ({counter++}/{files.Length}).");
+                    }
+                    else
+                    {
+                        consoleWriter.Notify(invalidCpFileMessage);
+                    }
+                }
+                else
+                {
+                    consoleWriter.Notify(invalidCpFileMessage);
+                }
             }
         }
 
         private static void ReadCLPRFiles(IMappable mapper, DbContextOptionsBuilder<MedicContext> builder, string directoryPath)
         {
+            string invalidCLPRFileMessage = "Invalid CLPR file.";
+
+
             string[] files = Directory.GetFiles(directoryPath, "*.xml");
             IMedicXmlParser medicXmlParser = new DefaultMedicXmlParser(new GetXmlParameters());
 
@@ -147,14 +167,28 @@ namespace Medic.FileImport
 
                 CLPR.HospitalPractice clprFile = medicXmlParser.ParseXML<CLPR.HospitalPractice>(sr);
 
-               HospitalPractice hospitalPracticeEntity = mapper.Map<HospitalPractice, CLPR.HospitalPractice>(clprFile);
+                if (clprFile != default)
+                {
+                    HospitalPractice hospitalPracticeEntity = mapper.Map<HospitalPractice, CLPR.HospitalPractice>(clprFile);
 
-                using MedicContext medicContext = new MedicContext(builder.Options);
-                using IImportMedicFile importMedicFile = new ImportMedicFile(medicContext);
+                    if (hospitalPracticeEntity != default)
+                    {
+                        using MedicContext medicContext = new MedicContext(builder.Options);
+                        using IImportMedicFile importMedicFile = new ImportMedicFile(medicContext);
 
-                importMedicFile.ImportHospitalPractice(hospitalPracticeEntity);
+                        importMedicFile.ImportHospitalPractice(hospitalPracticeEntity);
 
-                consoleWriter.Notify($"{file} - imported, ({counter++}/{files.Length}).");
+                        consoleWriter.Notify($"{file} - imported, ({counter++}/{files.Length}).");
+                    }
+                    else
+                    {
+                        consoleWriter.Notify(invalidCLPRFileMessage);
+                    }
+                }
+                else
+                {
+                    consoleWriter.Notify(invalidCLPRFileMessage);
+                }
             }
         }
     }

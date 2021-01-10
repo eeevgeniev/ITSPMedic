@@ -7,6 +7,7 @@ using Medic.AppModels.PathProcedures;
 using Medic.AppModels.Patients;
 using Medic.AppModels.Plannings;
 using Medic.AppModels.ProtocolDrugTherapies;
+using Medic.AppModels.Transfers;
 using Medic.EHR.Extracts;
 using Medic.EHRBuilders.Contracts;
 using Medic.ModelToEHR.Contracts;
@@ -33,6 +34,7 @@ namespace Medic.ModelToEHR
         private PathProcedureToEHRConverter _pathProcedureToEHRConverter;
         private ProtocolDrugTherapyToEHRConverter _protocolDrugTherapyToEHRConverter;
         private PatientToEHRConverter _patientToEHRConverter;
+        private TransferToEHRConverter _transferToEHRConverter;
 
         public ToEHRConverter(IEHRManager ehrManager)
         {
@@ -235,6 +237,28 @@ namespace Medic.ModelToEHR
             }
 
             return _patientToEHRConverter.Convert(model, name, systemId);
+        }
+
+        public EhrExtract Convert(TransferViewModel model, string name, string systemId)
+        {
+            if (model == default)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            if (_transferToEHRConverter == default)
+            {
+                _locker.EnterWriteLock();
+
+                if (_transferToEHRConverter == default)
+                {
+                    _transferToEHRConverter = new TransferToEHRConverter(EhrManager);
+                }
+
+                _locker.ExitWriteLock();
+            }
+
+            return _transferToEHRConverter.Convert(model, name, systemId);
         }
 
         public void Dispose()

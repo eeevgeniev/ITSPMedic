@@ -24,6 +24,7 @@ using Medic.XMLImportHelper;
 using Medic.XMLImportHelper.Contracts;
 using Medic.XMLParser;
 using Medic.XMLParser.Contracts;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -95,6 +96,7 @@ namespace Medic.App.AppServices
             services.AddTransient<IPlannedService, PlannedService>();
             services.AddTransient<IClinicUsedDrugsService, ClinicUsedDrugsService>();
             services.AddTransient<IDrugProtocolService, DrugProtocolService>();
+            services.AddTransient<ITransferService, TransferService>();
 
             services.AddTransient<IImportMedicFile, ImportMedicFile>();
             services.AddTransient<IGetXmlParameters, GetXmlParameters>();
@@ -126,6 +128,11 @@ namespace Medic.App.AppServices
             services.AddTransient<IMedicLoggerContext, MedicLoggerContext>();
 
             services.AddTransient<IMedicLoggerService, MedicLoggerService>();
+
+            services.Configure<IISOptions>(options =>
+            {
+                options.ForwardClientCertificate = false;
+            });
 
             ServiceProvider serviceProvider = services.BuildServiceProvider();
 

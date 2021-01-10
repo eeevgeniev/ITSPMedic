@@ -282,6 +282,13 @@ namespace Medic.Resources
         public const string CompareConfirmNewPassword = nameof(CompareConfirmNewPassword);
         public const string PackageType = nameof(PackageType);
         public const string SendPackageType = nameof(SendPackageType);
+        public const string IZNumber = nameof(IZNumber);
+        public const string CashPatient = nameof(CashPatient);
+        public const string ClinicalProcedure = nameof(ClinicalProcedure);
+        public const string AmbulatoryProcedure = nameof(AmbulatoryProcedure);
+        public const string DischargeWard = nameof(DischargeWard);
+        public const string TransferWard = nameof(TransferWard);
+        public const string TransferDateTime = nameof(TransferDateTime);
 
         public IStringLocalizer Build(IStringLocalizerFactory factory)
         {

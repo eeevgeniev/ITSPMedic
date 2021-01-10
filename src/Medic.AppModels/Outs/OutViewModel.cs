@@ -76,7 +76,7 @@ namespace Medic.AppModels.Outs
         public int NZOKPay { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.InMedicalWard)]
-        public decimal InMedicalWard { get; set; }
+        public string InMedicalWard { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.EntryDate)]
         public DateTime EntryDate { get; set; }
@@ -112,7 +112,7 @@ namespace Medic.AppModels.Outs
         public int? IZNo { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.OutMedicalWard)]
-        public decimal OutMedicalWard { get; set; }
+        public string OutMedicalWard { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.OutUniqueIdentifier)]
         public string OutUniqueIdentifier { get; set; }

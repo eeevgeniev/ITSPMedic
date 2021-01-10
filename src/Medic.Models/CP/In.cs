@@ -130,7 +130,7 @@ namespace Medic.Models.CP
         public int NZOKPay { get; set; }
 
         [XmlElement(ElementName = "inMedicalWard")]
-        public decimal InMedicalWard { get; set; }
+        public string InMedicalWard { get; set; }
 
         [XmlIgnore]
         public DateTime EntryDate

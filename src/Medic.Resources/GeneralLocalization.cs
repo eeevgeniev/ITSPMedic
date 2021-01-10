@@ -51,6 +51,7 @@ namespace Medic.Resources
         public const string UserManagement = nameof(UserManagement);
         public const string InvalidUser = nameof(InvalidUser);
         public const string PasswordUpdateError = nameof(PasswordUpdateError);
+        public const string Transfers = nameof(Transfers);
 
         public GeneralLocalization(IStringLocalizerFactory factory)
             : base(factory, nameof(GeneralLocalization)) { }

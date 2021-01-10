@@ -1,0 +1,92 @@
+﻿@model TransferPageIndexModel
+
+@inject MedicDataLocalization medicDataLocalization
+
+@{
+    ViewData[Constants.Title] = Model.Title;
+
+    Dictionary<string, string> paramsByName = Model.Search != default ? Model.Search.BuildQuery(default) : new Dictionary<string, string>();
+    Dictionary<string, string> excelByName = new Dictionary<string, string>(paramsByName);
+}
+
+<article>
+    <header>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TransfersView)): @Html.Raw(Model.TotalResults) @Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Results))</h2>
+        <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
+        <section class="text-right">
+            <a asp-controller="@TransferController.GetName(nameof(TransferController))"
+               asp-action="@nameof(TransferController.Excel)"
+               asp-all-route-data="@excelByName"
+               asp-route-page="@Model.CurrentPage"
+               download
+               title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))"
+               class="export-anchor">
+                <img asp-append-version="true" src="~/images/excel.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))" />
+            </a>
+        </section>
+    </header>
+    <section>
+        <partial name="~/Views/Shared/Partials/Transfers/TransferSearch.cshtml" model="@Model.Search" view-data="@ViewData" />
+    </section>
+    <section class="mt-sm-1 clearfix">
+        <partial name="~/Views/Shared/Partials/Transfers/TransferOrder.cshtml" model="@Model.Search" />
+    </section>
+    <section class="mt-sm-1">
+        @if (Model.Transfers != default && Model.Transfers.Count > 0)
+        {
+            <div>
+                <div class="row">
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TransferDateTime))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstMainDiagCode))</div>
+                    <div class="col-sm-3 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstMainDiagName))</div>
+                    <div class="col-sm-1 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SecondMainDiagCode))</div>
+                    <div class="col-sm-3 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SecondMainDiagName))</div>
+                    <div class="col-sm-2 font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ViewTransfer))</div>
+                </div>
+                @foreach (TransferPreviewViewModel currentTransfer in Model.Transfers)
+                {
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-2">@Html.Raw(currentTransfer.TransferDateTime?.ToShortDateString())</div>
+                        <div class="col-sm-1">@Html.Raw(currentTransfer.FirstMainDiagCode)</div>
+                        <div class="col-sm-3">@Html.Raw(currentTransfer.FirstMainDiagName))</div>
+                        <div class="col-sm-1">@Html.Raw(currentTransfer.SecondMainDiagCode)</div>
+                        <div class="col-sm-3">@Html.Raw(currentTransfer.SecondMainDiagCode)</div>
+                        <div class="col-sm-2">
+                            <a asp-controller="@MedicBaseController.GetName(nameof(TransferController))"
+                               asp-action="@nameof(TransferController.Transfer)"
+                               asp-route-id="@currentTransfer.Id"
+                               class="btn btn-secondary">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.View))</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <footer>
+                <pager page-count="@Model.TotalPages"
+                       current-page="@Model.CurrentPage"
+                       controller-name="@MedicBaseController.GetName(nameof(TransferController))"
+                       action-name="@nameof(TransferController.Index)"
+                       additional-properties="@paramsByName"
+                       nav-class-names="btn-toolbar"
+                       ul-class-names="pagination"
+                       li-class-names="page-item"
+                       li-selected-class-names="page-item active"
+                       anchor-class-names="page-link">
+
+                </pager>
+            </footer>
+        }
+        else
+        {
+            <div class="text-center text-info font-weight-bold">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NoResults))</div>
+        }
+    </section>
+</article>
+@section Scripts {
+    <environment names="Development">
+        <script defer src="~/js/formreset.js"></script>
+    </environment>
+    <environment names="Production">
+        <script defer src="~/js/formreset.min.js" asp-append-version="true"></script>
+    </environment>
+}
