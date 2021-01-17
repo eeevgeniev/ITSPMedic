@@ -1,12 +1,20 @@
 ﻿@model TherapyTypePreviewViewModel
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
+
+@using Medic.Lookups
+
+@{ 
+    Type type = enumResolver.GetEnumByModel(ViewData[Constants.LookupEnumKey].ToString());
+
+    string key = type != null ? enumResolver.GetEnumValueByType(type, Model.Code) : Model.Code.ToString();
+}
 
 @if (Model != default)
 {
     <div>
         <div class="row">
-            <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Code)): @Html.Raw(Model.Code)</div>
-            <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Name)): @Html.Raw(Model.Name)</div>
+            <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TherapyType)): @Html.Raw(medicDataLocalization.Get(key))</div>
         </div>
     </div>
 }

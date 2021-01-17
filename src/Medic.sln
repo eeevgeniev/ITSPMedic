@@ -43,7 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.EHRBuilders", "Medic.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.Formatters", "Medic.Formatters\Medic.Formatters.csproj", "{E5DAA7C4-C2CB-4326-BD0B-6CCAF2E7616F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medic.ModelToEHR", "Medic.ModelToEHR\Medic.ModelToEHR.csproj", "{6D3D31D3-D354-4541-BAC2-AC758B8608F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medic.ModelToEHR", "Medic.ModelToEHR\Medic.ModelToEHR.csproj", "{6D3D31D3-D354-4541-BAC2-AC758B8608F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medic.Lookups", "Medic.Lookups\Medic.Lookups.csproj", "{79E7730B-FC07-455C-B317-63F5B5E8F74F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{6D3D31D3-D354-4541-BAC2-AC758B8608F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D3D31D3-D354-4541-BAC2-AC758B8608F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D3D31D3-D354-4541-BAC2-AC758B8608F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E7730B-FC07-455C-B317-63F5B5E8F74F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E7730B-FC07-455C-B317-63F5B5E8F74F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E7730B-FC07-455C-B317-63F5B5E8F74F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E7730B-FC07-455C-B317-63F5B5E8F74F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

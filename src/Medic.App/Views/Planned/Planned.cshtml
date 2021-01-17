@@ -1,5 +1,6 @@
 ﻿@model PlannedPagePlannedModel
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
 
 @{
     ViewData[Constants.Title] = Model.Title;
@@ -7,81 +8,81 @@
 
 @if (Model.Planned != default)
 {
-<article>
-    <header>
-        <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlannedView))} - {Html.Raw(Model.Planned.UniqueIdentifier)}")</h2>
-        <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
-        <section class="text-right">
-            <a asp-controller="@PlannedController.GetName(nameof(PlannedController))"
-               asp-action="@nameof(PlannedController.Xml)"
-               asp-route-id="@Model.Planned.Id"
-               download
-               title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))"
-               class="export-anchor">
-                <img asp-append-version="true" src="~/images/xml.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))" />
-            </a>
-            <a asp-controller="@PlannedController.GetName(nameof(PlannedController))"
-               asp-action="@nameof(PlannedController.Json)"
-               asp-route-id="@Model.Planned.Id"
-               download
-               title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))"
-               class="export-anchor">
-                <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))" />
-            </a>
-        </section>
-    </header>
-    <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
-    <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.Planned.Patient" />
-    <hr />
-    <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sender))</h2>
-    <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.Planned.Sender" />
-    <hr />
-    <div>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendDate)): @Html.Raw(Model.Planned.SendDate.ToShortDateString())</div>
-    <hr />
-    <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendDiagnoses))</h2>
-    <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModels.cshtml" model="@Model.Planned.SendDiagnoses" />
-    <hr />
-    <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Diagnoses))</h2>
-    <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModels.cshtml" model="@Model.Planned.Diagnoses" />
-    <hr />
-    <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AdditionalInformation))</h2>
-    <hr />
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientBranch)): @Html.Raw(Model.Planned.PatientBranch)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientHRegion)): @Html.Raw(Model.Planned.PatientHRegion)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InType)): @Html.Raw(Model.Planned.InType)</div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendDate)): @Html.Raw(Model.Planned.SendDate.ToString("g"))</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendUrgency)): @Html.Raw(Model.Planned.SendUrgency)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendClinicalPath)): @Html.Raw(Model.Planned.SendClinicalPath)</div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UniqueIdentifier)): @Html.Raw(Model.Planned.UniqueIdentifier)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExaminationDate)): @Html.Raw(Model.Planned.ExaminationDate.ToString("g"))</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlannedEntryDate)): @Html.Raw(Model.Planned.PlannedEntryDate == default ? default : ((DateTime)Model.Planned.PlannedEntryDate).ToString("g"))</div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlannedNumber)): @Html.Raw(Model.Planned.PlannedNumber)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Urgency)): @Html.Raw(Model.Planned.Urgency)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalPath)): @Html.Raw(Model.Planned.ClinicalPath)</div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendApr)): @Html.Raw(Model.Planned.SendAPr)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InApr)): @Html.Raw(Model.Planned.InAPr)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(Model.Planned.NZOKPay)</div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PackageType)): @Html.Raw(Model.Planned.PackageType)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendPackageType)): @Html.Raw(Model.Planned.SendPackageType)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFile)): @Html.Raw(Model.Planned.CPFile)</div>
-    </div>
-</article>
+    <article>
+        <header>
+            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlannedView))} - {Html.Raw(Model.Planned.UniqueIdentifier)}")</h2>
+            <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
+            <section class="text-right">
+                <a asp-controller="@PlannedController.GetName(nameof(PlannedController))"
+                   asp-action="@nameof(PlannedController.Xml)"
+                   asp-route-id="@Model.Planned.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/xml.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))" />
+                </a>
+                <a asp-controller="@PlannedController.GetName(nameof(PlannedController))"
+                   asp-action="@nameof(PlannedController.Json)"
+                   asp-route-id="@Model.Planned.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))" />
+                </a>
+            </section>
+        </header>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Patient))</h2>
+        <partial name="~/Views/Shared/Partials/Patients/PatientSummaryViewModel.cshtml" model="@Model.Planned.Patient" />
+        <hr />
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sender))</h2>
+        <partial name="~/Views/Shared/Partials/HealthcarePractitioners/HealthcarePractitionerSummaryViewModel.cshtml" model="@Model.Planned.Sender" />
+        <hr />
+        <div>@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendDate)): @Html.Raw(Model.Planned.SendDate.ToShortDateString())</div>
+        <hr />
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendDiagnoses))</h2>
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModels.cshtml" model="@Model.Planned.SendDiagnoses" />
+        <hr />
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Diagnoses))</h2>
+        <partial name="~/Views/Shared/Partials/Diagnoses/DiagnosePreviewViewModels.cshtml" model="@Model.Planned.Diagnoses" />
+        <hr />
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AdditionalInformation))</h2>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientBranch)): @Html.Raw(Model.Planned.PatientBranch)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientHRegion)): @Html.Raw(Model.Planned.PatientHRegion)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InType)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<InTypeEnum>(Model.Planned.InType)))</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendDate)): @Html.Raw(Model.Planned.SendDate.ToString("g"))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendUrgency)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>(Model.Planned.SendUrgency)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendClinicalPath)): @Html.Raw(Model.Planned.SendClinicalPath)</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UniqueIdentifier)): @Html.Raw(Model.Planned.UniqueIdentifier)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExaminationDate)): @Html.Raw(Model.Planned.ExaminationDate.ToString("g"))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlannedEntryDate)): @Html.Raw(Model.Planned.PlannedEntryDate == default ? default : ((DateTime)Model.Planned.PlannedEntryDate).ToString("g"))</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlannedNumber)): @Html.Raw(Model.Planned.PlannedNumber)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Urgency)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>(Model.Planned.Urgency)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalPath)): @Html.Raw(Model.Planned.ClinicalPath)</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendApr)): @Html.Raw(Model.Planned.SendAPr)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InApr)): @Html.Raw(Model.Planned.InAPr)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<NZOKPayEnum>(Model.Planned.NZOKPay)))</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PackageType)): @Html.Raw(Model.Planned.PackageType == null ? null : medicDataLocalization.Get(enumResolver.GetEnumValue<SendPackageTypeEnum>((int)Model.Planned.PackageType)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendPackageType)): @Html.Raw(Model.Planned.SendPackageType == null ? null : medicDataLocalization.Get(enumResolver.GetEnumValue<SendPackageTypeEnum>((int)Model.Planned.SendPackageType)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFile)): @Html.Raw(Model.Planned.CPFile)</div>
+        </div>
+    </article>
 }
 else
 {

@@ -1,5 +1,7 @@
 ﻿@model ChemotherapyPartPreviewViewModel
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver;
+
 
 @if (Model != default)
 {
@@ -12,9 +14,12 @@
         </div>
         <div class="row">
             <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TNM)): @Html.Raw(Model.TNM)</div>
-            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TherapyType)): @Html.Raw(Model.TherapyType)</div>
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TherapyType)): @medicDataLocalization.Get(enumResolver.GetEnumValue<ChemotherapyPartTherapyTypesEnum>(Model.TherapyType))</div>
             <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.EvalAfterCycle)): @Html.Raw(Model.EvalAfterCycle)</div>
             <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Interval)): @Html.Raw(Model.Interval)</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Status)): @Html.Raw(Model.Status == null ? null : medicDataLocalization.Get(enumResolver.GetEnumValue<StatusEnum>((int)Model.Status)))</div>
         </div>
         <hr />
         <h6 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AddDiag))</h6>

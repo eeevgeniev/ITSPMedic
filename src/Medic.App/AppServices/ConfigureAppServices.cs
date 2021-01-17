@@ -13,6 +13,8 @@ using Medic.Import.Contracts;
 using Medic.Infrastructure;
 using Medic.Logs;
 using Medic.Logs.Contracts;
+using Medic.Lookups.Contracts;
+using Medic.Lookups.Resolvers;
 using Medic.Mappers;
 using Medic.Mappers.Contracts;
 using Medic.ModelToEHR;
@@ -30,7 +32,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -128,6 +129,8 @@ namespace Medic.App.AppServices
             services.AddTransient<IMedicLoggerContext, MedicLoggerContext>();
 
             services.AddTransient<IMedicLoggerService, MedicLoggerService>();
+
+            services.AddTransient<IEnumResolver, EnumResolver>();
 
             services.Configure<IISOptions>(options =>
             {

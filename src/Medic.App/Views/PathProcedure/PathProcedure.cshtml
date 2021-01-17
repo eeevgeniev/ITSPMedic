@@ -1,5 +1,6 @@
 ﻿@model PathProcedurePagePathProcedureModel
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
 
 @{
     ViewData[Constants.Title] = Model.Title;
@@ -74,18 +75,18 @@
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.APrSend)): @Html.Raw(Model.PathProcedureViewModel.APrSend)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcSend)): @Html.Raw(Model.PathProcedureViewModel.TypeProcSend)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcSend)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>(Model.PathProcedureViewModel.TypeProcSend)))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPrPriem)): @Html.Raw(Model.PathProcedureViewModel.CPrPriem)</div>
         </div>
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.APrPriem)): @Html.Raw(Model.PathProcedureViewModel.APrPriem)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MedicalWard)): @Html.Raw(Model.PathProcedureViewModel.MedicalWard)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcPriem)): @Html.Raw(Model.PathProcedureViewModel.TypeProcPriem)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcPriem)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>(Model.PathProcedureViewModel.TypeProcPriem)))</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcRefuse)): @Html.Raw(Model.PathProcedureViewModel.ProcRefuse)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcRefuse)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<YesNoEnum>(Model.PathProcedureViewModel.ProcRefuse)))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZNumChild)): @Html.Raw(Model.PathProcedureViewModel.IZNumChild)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYearChild)): @Html.Raw(Model.PathProcedureViewModel.IZYearChild)</div>
         </div>
@@ -93,7 +94,7 @@
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstVisitDate)): @Html.Raw((Model.PathProcedureViewModel.FirstVisitDate == default ? default : ((DateTime)Model.PathProcedureViewModel.FirstVisitDate).ToShortDateString()))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DatePlanPriem)): @Html.Raw((Model.PathProcedureViewModel.DatePlanPriem == default ? default : ((DateTime)Model.PathProcedureViewModel.DatePlanPriem).ToShortDateString()))</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentUniqueIdentifier)): @Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentUniqueIdentifier)): @(Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier)</div>
         </div>
         <hr />
         <div class="row">
@@ -105,13 +106,13 @@
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDoneProcedures)): @Html.Raw(Model.PathProcedureViewModel.AllDoneProcedures)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AllDrugCost)): @Html.Raw(Model.PathProcedureViewModel.AllDrugCost)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientStatus)): @Html.Raw(Model.PathProcedureViewModel.PatientStatus)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientStatus)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<PatientStatusEnum>(Model.PathProcedureViewModel.PatientStatus)))</div>
         </div>
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.OutUniqueIdentifier)): @Html.Raw(Model.PathProcedureViewModel.OutUniqueIdentifier)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Html.Raw(Model.PathProcedureViewModel.Sign)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(Model.PathProcedureViewModel.NZOKPay)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientSign)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<YesNoEnum>(Model.PathProcedureViewModel.Sign)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<NZOKPayEnum>(Model.PathProcedureViewModel.NZOKPay)))</div>
         </div>
     </article>
 }

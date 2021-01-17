@@ -50,6 +50,7 @@
     <ProjectReference Include="..\Medic.Import\Medic.Import.csproj" />
     <ProjectReference Include="..\Medic.Infrastructure\Medic.Infrastructure.csproj" />
     <ProjectReference Include="..\Medic.Logs\Medic.Logs.csproj" />
+    <ProjectReference Include="..\Medic.Lookups\Medic.Lookups.csproj" />
     <ProjectReference Include="..\Medic.Mappers\Medic.Mappers.csproj" />
     <ProjectReference Include="..\Medic.Models\Medic.Models.csproj" />
     <ProjectReference Include="..\Medic.ModelToEHR\Medic.ModelToEHR.csproj" />

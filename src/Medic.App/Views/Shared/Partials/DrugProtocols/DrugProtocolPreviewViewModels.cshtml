@@ -1,13 +1,17 @@
 ﻿@model List<DrugProtocolPreviewViewModel>
 @inject MedicDataLocalization medicDataLocalization
 
+@{ 
+    ViewData[Constants.LookupEnumKey] = nameof(DrugProtocolPreviewViewModel);
+}
+
 @if (Model != default && Model.Count > 0)
 {
     @foreach (var currentDrugProtocol in Model)
     {
         <hr />
         <div>
-            <partial name="~/Views/Shared/Partials/TherapyTypes/TherapyTypePreviewViewModel.cshtml" model="@currentDrugProtocol.TherapyType" />
+            <partial name="~/Views/Shared/Partials/TherapyTypes/TherapyTypePreviewViewModel.cshtml" model="@currentDrugProtocol.TherapyType" view-data="@ViewData" />
             <div class="row">
                 <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCCode)): @Html.Raw(currentDrugProtocol.ATCCode)</div>
                 <div class="col-sm-3">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ATCName)): @Html.Raw(currentDrugProtocol.ATCName)</div>

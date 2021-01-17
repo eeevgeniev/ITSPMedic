@@ -138,11 +138,17 @@
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="Adjuvant" xml:space="preserve">
+    <value>Adjuvant</value>
+  </data>
   <data name="Administrator" xml:space="preserve">
     <value>Administrator</value>
   </data>
+  <data name="AfterHours" xml:space="preserve">
+    <value>After 24 hours</value>
+  </data>
   <data name="AgeInDays" xml:space="preserve">
-    <value>AgeInDays</value>
+    <value>Age in days</value>
   </data>
   <data name="AllDoneProcedures" xml:space="preserve">
     <value>All done procedures</value>
@@ -154,7 +160,7 @@
     <value>All drug cost</value>
   </data>
   <data name="AmbulatoryProcedure" xml:space="preserve">
-    <value>AmbulatoryProcedure</value>
+    <value>Ambulatory procedure</value>
   </data>
   <data name="Anamnesa" xml:space="preserve">
     <value>Anamnesa</value>
@@ -199,13 +205,16 @@
     <value>Batch number</value>
   </data>
   <data name="BedDays" xml:space="preserve">
-    <value>BedDays</value>
+    <value>Bed days</value>
+  </data>
+  <data name="Better" xml:space="preserve">
+    <value>Better</value>
   </data>
   <data name="BirthDate" xml:space="preserve">
     <value>Birth date</value>
   </data>
   <data name="BirthGestWeek" xml:space="preserve">
-    <value>Birth gest Week</value>
+    <value>Birth gest week</value>
   </data>
   <data name="BirthNumber" xml:space="preserve">
     <value>Birth number</value>
@@ -214,7 +223,7 @@
     <value>Birth practice</value>
   </data>
   <data name="BirthWeight" xml:space="preserve">
-    <value>BirthWeight</value>
+    <value>Birth weight</value>
   </data>
   <data name="Branch" xml:space="preserve">
     <value>Branch</value>
@@ -225,8 +234,11 @@
   <data name="BSA" xml:space="preserve">
     <value>BSA</value>
   </data>
+  <data name="Budget" xml:space="preserve">
+    <value>Budget</value>
+  </data>
   <data name="CashPatient" xml:space="preserve">
-    <value>CashPatient</value>
+    <value>Cash patient</value>
   </data>
   <data name="CeasedClinicalPath" xml:space="preserve">
     <value>Ceased clinical path</value>
@@ -240,23 +252,32 @@
   <data name="Chairman" xml:space="preserve">
     <value>Chairman</value>
   </data>
+  <data name="Change" xml:space="preserve">
+    <value>Change</value>
+  </data>
   <data name="Checked" xml:space="preserve">
     <value>Checked</value>
   </data>
   <data name="CheckupAfterDischarge" xml:space="preserve">
     <value>Checkup after discharge</value>
   </data>
+  <data name="Chemotherapy" xml:space="preserve">
+    <value>Chemotherapy</value>
+  </data>
   <data name="ChemotherapyPart" xml:space="preserve">
     <value>Chemotherapy part</value>
+  </data>
+  <data name="CKVZ" xml:space="preserve">
+    <value>CKVZ</value>
   </data>
   <data name="ClinicalExaminations" xml:space="preserve">
     <value>Clinical examinations</value>
   </data>
   <data name="ClinicalPath" xml:space="preserve">
-    <value>ClinicalPath</value>
+    <value>Clinical path</value>
   </data>
   <data name="ClinicalProcedure" xml:space="preserve">
-    <value>ClinicalProcedure</value>
+    <value>Clinical procedure</value>
   </data>
   <data name="ClinicProcedures" xml:space="preserve">
     <value>Clinic procedures</value>
@@ -291,11 +312,23 @@
   <data name="Consultations" xml:space="preserve">
     <value>Consultations</value>
   </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="Corticosteroids" xml:space="preserve">
+    <value>Corticosteroids</value>
+  </data>
   <data name="Cost" xml:space="preserve">
     <value>Cost</value>
   </data>
   <data name="Count" xml:space="preserve">
     <value>Count</value>
+  </data>
+  <data name="CourseFinished" xml:space="preserve">
+    <value>Course finished</value>
+  </data>
+  <data name="CourseNotFinished" xml:space="preserve">
+    <value>Course not finished</value>
   </data>
   <data name="CPFile" xml:space="preserve">
     <value>CPFile</value>
@@ -331,7 +364,7 @@
     <value>Date plan priem</value>
   </data>
   <data name="DatePrescr" xml:space="preserve">
-    <value>Date Prescr</value>
+    <value>Date prescr</value>
   </data>
   <data name="DateProcedureBegins" xml:space="preserve">
     <value>Date procedure begins</value>
@@ -346,6 +379,9 @@
     <value>Days</value>
   </data>
   <data name="Dead" xml:space="preserve">
+    <value>Dead</value>
+  </data>
+  <data name="DeadPatient" xml:space="preserve">
     <value>Dead</value>
   </data>
   <data name="Decision" xml:space="preserve">
@@ -365,6 +401,9 @@
   </data>
   <data name="DeleteUser" xml:space="preserve">
     <value>Confirm delete user.</value>
+  </data>
+  <data name="Dentist" xml:space="preserve">
+    <value>Dentist</value>
   </data>
   <data name="DeputyUniqueIdentifier" xml:space="preserve">
     <value>Deputy unique identifier</value>
@@ -405,6 +444,12 @@
   <data name="DiagSummaryTitle" xml:space="preserve">
     <value>Diag MKB summary by MKB code</value>
   </data>
+  <data name="Died" xml:space="preserve">
+    <value>Died</value>
+  </data>
+  <data name="DiedNoHealthcare" xml:space="preserve">
+    <value>Died without healthcare</value>
+  </data>
   <data name="Direction" xml:space="preserve">
     <value>Direction</value>
   </data>
@@ -412,10 +457,13 @@
     <value>Discharge status</value>
   </data>
   <data name="DischargeWard" xml:space="preserve">
-    <value>DischargeWard</value>
+    <value>Discharge ward</value>
   </data>
   <data name="DiseaseCourse" xml:space="preserve">
     <value>Disease course</value>
+  </data>
+  <data name="DiseaseProgression" xml:space="preserve">
+    <value>Disease progression</value>
   </data>
   <data name="DispanserDate" xml:space="preserve">
     <value>Dispanser date</value>
@@ -477,6 +525,9 @@
   <data name="DrugQuantity" xml:space="preserve">
     <value>Drug quantity</value>
   </data>
+  <data name="DZIF" xml:space="preserve">
+    <value>DZIF</value>
+  </data>
   <data name="ECOG" xml:space="preserve">
     <value>ECOG</value>
   </data>
@@ -491,6 +542,9 @@
   </data>
   <data name="Epicrisis" xml:space="preserve">
     <value>Epicrisis</value>
+  </data>
+  <data name="ER" xml:space="preserve">
+    <value>Emergency room</value>
   </data>
   <data name="EvalAfterCycle" xml:space="preserve">
     <value>Eval after cycle</value>
@@ -516,6 +570,12 @@
   <data name="FairCondition" xml:space="preserve">
     <value>Fair condition</value>
   </data>
+  <data name="FifthLine" xml:space="preserve">
+    <value>Fifth and nexts lines</value>
+  </data>
+  <data name="FirstLine" xml:space="preserve">
+    <value>First line</value>
+  </data>
   <data name="FirstMainDiag" xml:space="preserve">
     <value>First main diag</value>
   </data>
@@ -525,8 +585,17 @@
   <data name="FirstMainDiagName" xml:space="preserve">
     <value>First main diag name</value>
   </data>
+  <data name="FirstSixHours" xml:space="preserve">
+    <value>From 1 to 6 hours</value>
+  </data>
   <data name="FirstVisitDate" xml:space="preserve">
     <value>First visit date</value>
+  </data>
+  <data name="FourthLine" xml:space="preserve">
+    <value>Fourth line</value>
+  </data>
+  <data name="FullAnswer" xml:space="preserve">
+    <value>Full answer</value>
   </data>
   <data name="Genetic" xml:space="preserve">
     <value>Genetic</value>
@@ -537,11 +606,23 @@
   <data name="GPRecommendations" xml:space="preserve">
     <value>GP recommendations</value>
   </data>
+  <data name="GrowthFactors" xml:space="preserve">
+    <value>Growth factors / colony stimulating factors</value>
+  </data>
+  <data name="Healing" xml:space="preserve">
+    <value>Healing</value>
+  </data>
   <data name="HealthRegion" xml:space="preserve">
     <value>Health region</value>
   </data>
+  <data name="Healthy" xml:space="preserve">
+    <value>Healthy</value>
+  </data>
   <data name="Height" xml:space="preserve">
     <value>Height</value>
+  </data>
+  <data name="Hematology" xml:space="preserve">
+    <value>Hematology</value>
   </data>
   <data name="HematologyPart" xml:space="preserve">
     <value>Hematology part</value>
@@ -564,6 +645,12 @@
   <data name="HLTotalDays" xml:space="preserve">
     <value>HL total days</value>
   </data>
+  <data name="Hormonetherapy" xml:space="preserve">
+    <value>Hormonetherapy</value>
+  </data>
+  <data name="Hospital" xml:space="preserve">
+    <value>Hospital</value>
+  </data>
   <data name="HospitalPracticeFile" xml:space="preserve">
     <value>Hospital practice file</value>
   </data>
@@ -585,6 +672,12 @@
   <data name="IdentityNumber" xml:space="preserve">
     <value>Identity number</value>
   </data>
+  <data name="ImmunomodulatorsImmunosuppression" xml:space="preserve">
+    <value>Immunomodulators/Immunosuppression</value>
+  </data>
+  <data name="Immunotherapy" xml:space="preserve">
+    <value>Immunotherapy</value>
+  </data>
   <data name="ImplantCode" xml:space="preserve">
     <value>Implant code</value>
   </data>
@@ -598,7 +691,7 @@
     <value>Imuno</value>
   </data>
   <data name="InApr" xml:space="preserve">
-    <value>InApr</value>
+    <value>In apr</value>
   </data>
   <data name="InClinicProcedure" xml:space="preserve">
     <value>In clinic procedure</value>
@@ -621,8 +714,11 @@
   <data name="Information" xml:space="preserve">
     <value>Information</value>
   </data>
+  <data name="InitialTreatment" xml:space="preserve">
+    <value>Initial treatment</value>
+  </data>
   <data name="InMedicalWard" xml:space="preserve">
-    <value>InMedicalWard</value>
+    <value>In medical ward</value>
   </data>
   <data name="Ins" xml:space="preserve">
     <value>Ins</value>
@@ -639,8 +735,11 @@
   <data name="Interval" xml:space="preserve">
     <value>Interval</value>
   </data>
+  <data name="Intolerance" xml:space="preserve">
+    <value>Intolerance</value>
+  </data>
   <data name="InType" xml:space="preserve">
-    <value>InType</value>
+    <value>In type</value>
   </data>
   <data name="InvalidFile" xml:space="preserve">
     <value>The file is invalid.</value>
@@ -655,19 +754,22 @@
     <value>IZ Medical Ward</value>
   </data>
   <data name="IZNo" xml:space="preserve">
-    <value>IZNo</value>
+    <value>IZ No</value>
   </data>
   <data name="IZNumChild" xml:space="preserve">
     <value>IZ num child</value>
   </data>
   <data name="IZYear" xml:space="preserve">
-    <value>IZYear</value>
+    <value>IZ Year</value>
   </data>
   <data name="IZYearChild" xml:space="preserve">
     <value>IZ year child</value>
   </data>
   <data name="IZYearMedicalWard" xml:space="preserve">
     <value>IZ Year Medical Ward</value>
+  </data>
+  <data name="KOC" xml:space="preserve">
+    <value>KOC</value>
   </data>
   <data name="Laparoscopic" xml:space="preserve">
     <value>Laparoscopic</value>
@@ -699,6 +801,9 @@
   <data name="MedicalWard" xml:space="preserve">
     <value>Medical ward</value>
   </data>
+  <data name="Minus" xml:space="preserve">
+    <value>(-)</value>
+  </data>
   <data name="MKBCode" xml:space="preserve">
     <value>MKB code</value>
   </data>
@@ -709,10 +814,10 @@
     <value>Month сummaries</value>
   </data>
   <data name="MotherIZNo" xml:space="preserve">
-    <value>MotherIZNo</value>
+    <value>Mother IZ No</value>
   </data>
   <data name="MotherIZYear" xml:space="preserve">
-    <value>MotherIZYear</value>
+    <value>Mother IZ Year</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -720,8 +825,26 @@
   <data name="NameHS" xml:space="preserve">
     <value>Name HS</value>
   </data>
+  <data name="NextHours" xml:space="preserve">
+    <value>From 6 to 24 hours</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NoChanges" xml:space="preserve">
+    <value>No changes</value>
+  </data>
   <data name="NoDecision" xml:space="preserve">
     <value>No decision</value>
+  </data>
+  <data name="NoLine" xml:space="preserve">
+    <value>No line</value>
+  </data>
+  <data name="NonAdjuvant" xml:space="preserve">
+    <value>NonAdjuvant</value>
+  </data>
+  <data name="NoParturient" xml:space="preserve">
+    <value>No parturient</value>
   </data>
   <data name="NoPrescr" xml:space="preserve">
     <value>No Prescr</value>
@@ -735,6 +858,12 @@
   <data name="NoSelection" xml:space="preserve">
     <value>No selection</value>
   </data>
+  <data name="NotChecked" xml:space="preserve">
+    <value>Not checked</value>
+  </data>
+  <data name="NotDeterminate" xml:space="preserve">
+    <value>Not determinated</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>Notes</value>
   </data>
@@ -747,11 +876,29 @@
   <data name="NumberOfProtocol" xml:space="preserve">
     <value>Number of protocol</value>
   </data>
+  <data name="NZOK" xml:space="preserve">
+    <value>NZOK</value>
+  </data>
+  <data name="NZOKDemand" xml:space="preserve">
+    <value>Demand NZOK to pay</value>
+  </data>
   <data name="NZOKPay" xml:space="preserve">
-    <value>NZOKPay</value>
+    <value>NZOK pay</value>
+  </data>
+  <data name="NZOKPayment" xml:space="preserve">
+    <value>NZOK payment over required</value>
+  </data>
+  <data name="NZOKRefuse" xml:space="preserve">
+    <value>NZOK refuse to pay</value>
+  </data>
+  <data name="OPL" xml:space="preserve">
+    <value>OPL</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Order</value>
+  </data>
+  <data name="Osteomodulators" xml:space="preserve">
+    <value>Osteomodulators</value>
   </data>
   <data name="OtherDocuments" xml:space="preserve">
     <value>Other documents</value>
@@ -813,6 +960,9 @@
   <data name="PackageType" xml:space="preserve">
     <value>Package type</value>
   </data>
+  <data name="PartialRemission" xml:space="preserve">
+    <value>Partial remission</value>
+  </data>
   <data name="PathologicFinding" xml:space="preserve">
     <value>Pathologic finding</value>
   </data>
@@ -846,6 +996,9 @@
   <data name="Patients" xml:space="preserve">
     <value>Patients</value>
   </data>
+  <data name="PatientSign" xml:space="preserve">
+    <value>Patient signature</value>
+  </data>
   <data name="PatientsSummary" xml:space="preserve">
     <value>Patients, mkb, procedures</value>
   </data>
@@ -857,6 +1010,9 @@
   </data>
   <data name="Payer" xml:space="preserve">
     <value>Payer</value>
+  </data>
+  <data name="Person" xml:space="preserve">
+    <value>Person which uses № 17/2007</value>
   </data>
   <data name="Planned" xml:space="preserve">
     <value>Planned</value>
@@ -885,6 +1041,9 @@
   <data name="PlanVisitDate" xml:space="preserve">
     <value>Plan visit date</value>
   </data>
+  <data name="Plus" xml:space="preserve">
+    <value>(+)</value>
+  </data>
   <data name="PostoperativeStatus" xml:space="preserve">
     <value>Postoperative status</value>
   </data>
@@ -893,6 +1052,9 @@
   </data>
   <data name="PracticeCodeProtocol" xml:space="preserve">
     <value>Practice code protocol</value>
+  </data>
+  <data name="PracticeNumber" xml:space="preserve">
+    <value>RHI</value>
   </data>
   <data name="ProcedureCode" xml:space="preserve">
     <value>Procedure code</value>
@@ -951,6 +1113,9 @@
   <data name="Regimen" xml:space="preserve">
     <value>Regimen</value>
   </data>
+  <data name="Relapse" xml:space="preserve">
+    <value>Relapse</value>
+  </data>
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
@@ -960,6 +1125,12 @@
   <data name="RoleCreation" xml:space="preserve">
     <value>Role creation</value>
   </data>
+  <data name="RunAwayHealthcare" xml:space="preserve">
+    <value>Run away with healthcare</value>
+  </data>
+  <data name="RunAwayNoHealthcare" xml:space="preserve">
+    <value>Run away with no healtcare</value>
+  </data>
   <data name="SampleProtocol" xml:space="preserve">
     <value>Sample protocol</value>
   </data>
@@ -968,6 +1139,9 @@
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="SecondLine" xml:space="preserve">
+    <value>Second line</value>
   </data>
   <data name="SecondMainDiag" xml:space="preserve">
     <value>Second main diag</value>
@@ -1008,14 +1182,32 @@
   <data name="SendPackageType" xml:space="preserve">
     <value>Send package type</value>
   </data>
+  <data name="SendPackageTypeAdditional" xml:space="preserve">
+    <value>Additional</value>
+  </data>
+  <data name="SendPackageTypeMain" xml:space="preserve">
+    <value>Main</value>
+  </data>
   <data name="SendUrgency" xml:space="preserve">
     <value>Send urgency</value>
+  </data>
+  <data name="SendUrgencyEmergency" xml:space="preserve">
+    <value>Emergency</value>
+  </data>
+  <data name="SendUrgencyPlanned" xml:space="preserve">
+    <value>Planned</value>
   </data>
   <data name="Severity" xml:space="preserve">
     <value>Severity</value>
   </data>
   <data name="Sign" xml:space="preserve">
     <value>Sign</value>
+  </data>
+  <data name="SignedOut" xml:space="preserve">
+    <value>Signed out</value>
+  </data>
+  <data name="SIMP" xml:space="preserve">
+    <value>SIMP</value>
   </data>
   <data name="SingleDose" xml:space="preserve">
     <value>Single dose</value>
@@ -1029,6 +1221,9 @@
   <data name="Speciality" xml:space="preserve">
     <value>Speciality</value>
   </data>
+  <data name="StableDisease" xml:space="preserve">
+    <value>Stable disease</value>
+  </data>
   <data name="Staging" xml:space="preserve">
     <value>Staging</value>
   </data>
@@ -1038,6 +1233,9 @@
   <data name="StateAtDischarge" xml:space="preserve">
     <value>State at discharge</value>
   </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
   <data name="Summary" xml:space="preserve">
     <value>Summary</value>
   </data>
@@ -1046,6 +1244,9 @@
   </data>
   <data name="SummaryInformationKeywords" xml:space="preserve">
     <value>Statistic, information, summary</value>
+  </data>
+  <data name="Targeted" xml:space="preserve">
+    <value>Targeted</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Text</value>
@@ -1058,6 +1259,9 @@
   </data>
   <data name="TherapyType" xml:space="preserve">
     <value>Therapy type</value>
+  </data>
+  <data name="ThirdLine" xml:space="preserve">
+    <value>Third line</value>
   </data>
   <data name="TNM" xml:space="preserve">
     <value>TNM</value>
@@ -1079,6 +1283,12 @@
   </data>
   <data name="TransferDateTime" xml:space="preserve">
     <value>Transfer date and time</value>
+  </data>
+  <data name="Transferred" xml:space="preserve">
+    <value>Transferred</value>
+  </data>
+  <data name="TransferredNoHealthcare" xml:space="preserve">
+    <value>Transferred with no healthcare</value>
   </data>
   <data name="Transfers" xml:space="preserve">
     <value>Transfers</value>
@@ -1106,6 +1316,9 @@
   </data>
   <data name="UINPrescr" xml:space="preserve">
     <value>UIN Prescr</value>
+  </data>
+  <data name="Unassured" xml:space="preserve">
+    <value>Unassured</value>
   </data>
   <data name="UniqueIdentifier" xml:space="preserve">
     <value>Unique identifier of doctor</value>
@@ -1190,5 +1403,11 @@
   </data>
   <data name="WeightInGrams" xml:space="preserve">
     <value>Weight in grams</value>
+  </data>
+  <data name="Worse" xml:space="preserve">
+    <value>Worse</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

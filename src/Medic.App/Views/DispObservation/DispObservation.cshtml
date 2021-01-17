@@ -1,5 +1,6 @@
 ﻿@model DispObservationPageDispObservationModel
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
 
 @{
     ViewData[Constants.Title] = Model.Title;
@@ -63,18 +64,18 @@
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispanserDate)): @Html.Raw(Model.DispObservation.DispanserDate != default ? ((DateTime)Model.DispObservation.DispanserDate).ToString("g") : default)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispVisit)): @Html.Raw(Model.DispObservation.DispVisit)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DispVisit)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<YesNoEnum>(Model.DispObservation.DispVisit)))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Anamnesa)): @Html.Raw(Model.DispObservation.Anamnesa)</div>
         </div>
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.HState)): @Html.Raw(Model.DispObservation.HState)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Therapy)): @Html.Raw(Model.DispObservation.Therapy)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Html.Raw(Model.DispObservation.Sign)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientSign)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<YesNoEnum>(Model.DispObservation.Sign)))</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Model.DispObservation.NZOKPay</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<NZOKPayEnum>(Model.DispObservation.NZOKPay)))</div>
         </div>
     </article>
 }

@@ -1,5 +1,6 @@
 ﻿@model CommissionAprPageCommissionAprModel
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
 
 @{
     ViewData[Constants.Title] = Model.Title;
@@ -69,8 +70,8 @@
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DecisionDate)): @Html.Raw(Model.CommissionApr.DecisionDate.ToString("g"))</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Html.Raw(Model.CommissionApr.Sign)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(Model.CommissionApr.NZOKPay)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientSign)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<YesNoEnum>(Model.CommissionApr.Sign)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<NZOKPayEnum>(Model.CommissionApr.NZOKPay)))</div>
         </div>
     </article>
 }

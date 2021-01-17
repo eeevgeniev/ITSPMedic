@@ -1,5 +1,6 @@
 ﻿@model List<UsedDrugSummaryViewModel>
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
 
 @if (Model != default && Model.Count > 0)
 {
@@ -25,7 +26,7 @@
             <div class="row">
                 <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolNumber)): @Html.Raw(currentUsedDrug.ProtocolNumber)</div>
                 <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDate)): @Html.Raw(currentUsedDrug.ProtocolDate.ToShortDateString())</div>
-                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolType)): @Html.Raw(currentUsedDrug.ProtocolType)</div>
+                <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolType)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<UsedDrugTypeProtocolEnum>(currentUsedDrug.ProtocolType)))</div>
             </div>
             <div class="row">
                 <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BatchNumber)): @Html.Raw(currentUsedDrug.BatchNumber)</div>

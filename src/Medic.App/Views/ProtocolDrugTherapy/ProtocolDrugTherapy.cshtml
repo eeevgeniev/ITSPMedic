@@ -1,5 +1,6 @@
 ﻿@model ProtocolDrugTherapyPageProtocolDrugTherapyModel
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
 
 @{
     ViewData[Constants.Title] = Model.Title;
@@ -76,13 +77,13 @@
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TherapyLine)): @Html.Raw(Model.ProtocolDrugTherapy.TherapyLine)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TherapyLine)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<TherapyLineEnum>(Model.ProtocolDrugTherapy.TherapyLine)))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Scheme)): @Html.Raw(Model.ProtocolDrugTherapy.Scheme)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CycleCount)): @Html.Raw(Model.ProtocolDrugTherapy.CycleCount)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Sign)): @Html.Raw(Model.ProtocolDrugTherapy.Sign)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PatientSign)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<YesNoEnum>(Model.ProtocolDrugTherapy.Sign)))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFile)): @Html.Raw(Model.ProtocolDrugTherapy.CPFile)</div>
         </div>
     </article>

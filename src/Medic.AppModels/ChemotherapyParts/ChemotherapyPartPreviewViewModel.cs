@@ -44,5 +44,7 @@ namespace Medic.AppModels.ChemotherapyParts
         public int Interval { get; set; }
 
         public EvaluationPreviewViewModel Evaluation { get; set; }
+
+        public int? Status { get; set; }
     }
 }

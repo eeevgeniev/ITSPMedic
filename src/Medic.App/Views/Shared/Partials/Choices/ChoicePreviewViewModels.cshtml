@@ -1,5 +1,6 @@
 ﻿@model List<ChoicePreviewViewModel>
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
 
 @if (Model != default && Model.Count > 0)
 {
@@ -13,7 +14,7 @@
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(currentChoice.Number)</div>
-            <div class="col-sm-4">@Html.Raw(currentChoice.Checked)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<OptionsEnum>(currentChoice.Checked)))</div>
             <div class="col-sm-4">@Html.Raw(currentChoice.Text)</div>
         </div>
     }

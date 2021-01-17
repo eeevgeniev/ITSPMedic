@@ -1,5 +1,6 @@
 ﻿@model UsedDrugSummaryViewModel
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver 
 
 @if (Model != default)
 {
@@ -22,7 +23,7 @@
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolNumber)): @Html.Raw(Model.ProtocolNumber)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolDate)): @Html.Raw(Model.ProtocolDate.ToShortDateString())</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolType)): @Html.Raw(Model.ProtocolType)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProtocolType)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<UsedDrugTypeProtocolEnum>(Model.ProtocolType)))</div>
         </div>
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BatchNumber)): @Html.Raw(Model.BatchNumber)</div>

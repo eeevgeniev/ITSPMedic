@@ -1,5 +1,6 @@
 ﻿@model List<GenMarkerPreviewViewModel>
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
 
 @if (Model != default && Model.Count > 0)
 {
@@ -12,7 +13,7 @@
         <hr />
         <div class="row">
             <div class="col-sm-6">@Html.Raw(maker.Name)</div>
-            <div class="col-sm-6">@Html.Raw(maker.Sign)</div>
+            <div class="col-sm-6">@Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SignEnum>(maker.Sign)))</div>
         </div>
     }
 }
