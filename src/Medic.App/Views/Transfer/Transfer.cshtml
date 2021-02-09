@@ -1,5 +1,6 @@
 ﻿@model TransferPageTransferModel
 @inject MedicDataLocalization medicDataLocalization
+@inject IEnumResolver enumResolver
 
 @{
     ViewData[Constants.Title] = Model.Title;
@@ -7,58 +8,58 @@
 
 @if (Model.Transfer != default)
 {
-<article>
-    <header>
-        <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TransferView))}")</h2>
-        <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
-        <section class="text-right">
-            <a asp-controller="@TransferController.GetName(nameof(TransferController))"
-               asp-action="@nameof(TransferController.Xml)"
-               asp-route-id="@Model.Transfer.Id"
-               download
-               title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))"
-               class="export-anchor">
-                <img asp-append-version="true" src="~/images/xml.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))" />
-            </a>
-            <a asp-controller="@TransferController.GetName(nameof(TransferController))"
-               asp-action="@nameof(TransferController.Json)"
-               asp-route-id="@Model.Transfer.Id"
-               download
-               title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))"
-               class="export-anchor">
-                <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))" />
-            </a>
-        </section>
-    </header>
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TransferDateTime)): @Html.Raw(Model.Transfer.TransferDateTime == default ? string.Empty : ((DateTime)Model.Transfer.TransferDateTime).ToString("g"))</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYear)): @Html.Raw(Model.Transfer.IZYear)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZNo)): @Html.Raw(Model.Transfer.IZNumber)</div>
-    </div>
-    <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstMainDiag))</h2>
-    <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.Transfer.FirstMainDiag" />
-    <hr />
-    <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SecondMainDiag))</h2>
-    <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.Transfer.SecondMainDiag" />
-    <hr />
-    <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AdditionalInformation))</h2>
-    <hr />
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CashPatient)): @Html.Raw(Model.Transfer.CashPatient)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalProcedure)): @Html.Raw(Model.Transfer.ClinicalProcedure)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalPath)): @Html.Raw(Model.Transfer.ClinicalPath)</div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AmbulatoryProcedure)): @Html.Raw(Model.Transfer.AmbulatoryProcedure)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DischargeWard)): @Html.Raw(Model.Transfer.DischargeWard)</div>
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TransferWard)): @Html.Raw(Model.Transfer.TransferWard)</div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFile)): @Html.Raw(Model.Transfer.CPFile)</div>     
-    </div>
-</article>
+    <article>
+        <header>
+            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TransferView))}")</h2>
+            <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
+            <section class="text-right">
+                <a asp-controller="@TransferController.GetName(nameof(TransferController))"
+                   asp-action="@nameof(TransferController.Xml)"
+                   asp-route-id="@Model.Transfer.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/xml.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsXml))" />
+                </a>
+                <a asp-controller="@TransferController.GetName(nameof(TransferController))"
+                   asp-action="@nameof(TransferController.Json)"
+                   asp-route-id="@Model.Transfer.Id"
+                   download
+                   title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))"
+                   class="export-anchor">
+                    <img asp-append-version="true" src="~/images/json.jpg" class="export-image" alt="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsJson))" />
+                </a>
+            </section>
+        </header>
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TransferDateTime)): @Html.Raw(Model.Transfer.TransferDateTime == default ? string.Empty : ((DateTime)Model.Transfer.TransferDateTime).ToString("g"))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYear)): @Html.Raw(Model.Transfer.IZYear)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZNo)): @Html.Raw(Model.Transfer.IZNumber)</div>
+        </div>
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstMainDiag))</h2>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.Transfer.FirstMainDiag" />
+        <hr />
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SecondMainDiag))</h2>
+        <partial name="~/Views/Shared/Partials/Diags/DiagPreviewViewModel.cshtml" model="@Model.Transfer.SecondMainDiag" />
+        <hr />
+        <h2 class="text-center">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AdditionalInformation))</h2>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CashPatient)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<YesNoEnum>(Model.Transfer.CashPatient)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalProcedure)): @Html.Raw(Model.Transfer.ClinicalProcedure)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalPath)): @Html.Raw(Model.Transfer.ClinicalPath)</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AmbulatoryProcedure)): @Html.Raw(Model.Transfer.AmbulatoryProcedure)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DischargeWard)): @Html.Raw(Model.Transfer.DischargeWard)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TransferWard)): @Html.Raw(Model.Transfer.TransferWard)</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFile)): @Html.Raw(Model.Transfer.CPFile)</div>
+        </div>
+    </article>
 }
 else
 {

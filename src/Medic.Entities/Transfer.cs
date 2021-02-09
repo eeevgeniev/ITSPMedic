@@ -29,9 +29,9 @@ namespace Medic.Entities
 
         public string AmbulatoryProcedure { get; set; }
 
-        public double DischargeWard { get; set; }
+        public string DischargeWard { get; set; }
 
-        public double TransferWard { get; set; }
+        public string TransferWard { get; set; }
 
         public DateTime? TransferDateTime { get; set; }
 

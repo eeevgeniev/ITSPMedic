@@ -169,16 +169,16 @@
     <value>Път на прилагане</value>
   </data>
   <data name="APr05" xml:space="preserve">
-    <value>АПр 05</value>
+    <value>Амбулаторна процедура 05</value>
   </data>
   <data name="APr05sImuno" xml:space="preserve">
     <value>Имунофенотип/ имунохистохимия</value>
   </data>
   <data name="APr38" xml:space="preserve">
-    <value>АПр 38</value>
+    <value>Амбулаторна процедура 38</value>
   </data>
   <data name="APr38s" xml:space="preserve">
-    <value>АПр 38-и</value>
+    <value>Амбулаторни процедури 38</value>
   </data>
   <data name="AprCode" xml:space="preserve">
     <value>Код амбулаторна процедура при изпращане на пациента</value>
@@ -241,13 +241,13 @@
     <value>Пациентът заплаща лечението си сам</value>
   </data>
   <data name="CeasedClinicalPath" xml:space="preserve">
-    <value>Прекъсната клинична пътека</value>
+    <value>Приведен по клинична пътека</value>
   </data>
   <data name="CeasedOnly" xml:space="preserve">
-    <value>Приведен от клинична процедура</value>
+    <value>Приведен по процедура</value>
   </data>
   <data name="CeasedProcedure" xml:space="preserve">
-    <value>Прекратена процедура</value>
+    <value>Приведен от клинична процедура</value>
   </data>
   <data name="Chairman" xml:space="preserve">
     <value>Председател</value>
@@ -1291,19 +1291,19 @@
     <value>Преведен в друга болница - без лечение</value>
   </data>
   <data name="Transfers" xml:space="preserve">
-    <value>Трансфери на пациенти</value>
+    <value>Превеждане на пациенти</value>
   </data>
   <data name="TransfersSummary" xml:space="preserve">
-    <value>Трансфери на пациенти, диагнози</value>
+    <value>Превеждане на пациенти, диагнози</value>
   </data>
   <data name="TransferSummary" xml:space="preserve">
-    <value>Трансфер на пациент, диагнози</value>
+    <value>Превеждане на пациент, диагнози</value>
   </data>
   <data name="TransfersView" xml:space="preserve">
-    <value>Преглед на трансфери</value>
+    <value>Преглед на превеждане на пациенти</value>
   </data>
   <data name="TransferView" xml:space="preserve">
-    <value>Преглед на трансфер</value>
+    <value>Преглед на превеждане на пациент</value>
   </data>
   <data name="TransferWard" xml:space="preserve">
     <value>Отделение, към което се превежда</value>
@@ -1318,7 +1318,7 @@
     <value>Номер рецепта от болничната аптека</value>
   </data>
   <data name="Unassured" xml:space="preserve">
-    <value>НЕОСИГУРЕН по 09 или 10 Кл.Пр-заплаща се от МЗ.</value>
+    <value>Неосигорен по 09 или 10 Кл.Пр-заплаща се от МЗ.</value>
   </data>
   <data name="UniqueIdentifier" xml:space="preserve">
     <value>Уникалне номер на приемащият лекар</value>
@@ -1390,7 +1390,7 @@
     <value>Преглед на протокол от лечения с лекарства</value>
   </data>
   <data name="ViewTransfer" xml:space="preserve">
-    <value>Преглед на трансферът</value>
+    <value>Преглед на превеждането</value>
   </data>
   <data name="VisitDocumentName" xml:space="preserve">
     <value>Име на документа за посещение</value>

@@ -649,7 +649,7 @@
     <value>Други документи</value>
   </data>
   <data name="OutAPr" xml:space="preserve">
-    <value>Aмбулаторна процедура</value>
+    <value>Изписване  амбулаторна процедура</value>
   </data>
   <data name="OutClinicalPath" xml:space="preserve">
     <value>Изписване клиничен път</value>
@@ -688,7 +688,7 @@
     <value>Тип на изписване</value>
   </data>
   <data name="OutUniqueIdentifier" xml:space="preserve">
-    <value>Уникален номер при изписване</value>
+    <value>Номер на лекуващият лекар</value>
   </data>
   <data name="PackageType" xml:space="preserve">
     <value>Тип на пакета</value>
@@ -913,10 +913,10 @@
     <value>Общ брой на прилагания</value>
   </data>
   <data name="TransferDateTime" xml:space="preserve">
-    <value>Дата на трансфера</value>
+    <value>Дата на превеждане</value>
   </data>
   <data name="TransferWard" xml:space="preserve">
-    <value>Transfer ward</value>
+    <value>Отделение към, което се превежда</value>
   </data>
   <data name="TypeProcPriem" xml:space="preserve">
     <value>Тип на приема на пациента</value>
@@ -928,7 +928,7 @@
     <value>Номер рецепта от болничната аптека</value>
   </data>
   <data name="UniqueIdentifier" xml:space="preserve">
-    <value>Уникалне номер на приемащият лекар</value>
+    <value>Номер на приемащият лекар</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Обнови</value>

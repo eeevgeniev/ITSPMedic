@@ -42,10 +42,10 @@ namespace Medic.ModelToEHR.Helpers
                     .AddValue(EhrManager.REALBuilder.Clear().AddValue(model.ClinicalPath).Build()).Build(),
                  EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.DischargeWard)).Build())
-                    .AddValue(EhrManager.REALBuilder.Clear().AddValue(model.DischargeWard).Build()).Build(),
+                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.DischargeWard).Build()).Build(),
                  EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.TransferWard)).Build())
-                    .AddValue(EhrManager.REALBuilder.Clear().AddValue(model.TransferWard).Build()).Build()
+                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.TransferWard).Build()).Build()
                 );
 
             if (!string.IsNullOrWhiteSpace(model.AmbulatoryProcedure))

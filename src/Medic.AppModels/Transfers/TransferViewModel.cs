@@ -32,10 +32,10 @@ namespace Medic.AppModels.Transfers
         public string AmbulatoryProcedure { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.DischargeWard)]
-        public double DischargeWard { get; set; }
+        public string DischargeWard { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.TransferWard)]
-        public double TransferWard { get; set; }
+        public string TransferWard { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.TransferDateTime)]
         public DateTime? TransferDateTime { get; set; }

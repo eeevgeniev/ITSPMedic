@@ -33,10 +33,10 @@ namespace Medic.Models.CP
         public double ClinicalPath { get; set; }
 
         [XmlElement(ElementName = "dischargeWard")]
-        public double DischargeWard { get; set; }
+        public string DischargeWard { get; set; }
 
         [XmlElement(ElementName = "transferWard")]
-        public double TransferWard { get; set; }
+        public string TransferWard { get; set; }
 
         [XmlIgnore]
         public DateTime? TransferDateTime
