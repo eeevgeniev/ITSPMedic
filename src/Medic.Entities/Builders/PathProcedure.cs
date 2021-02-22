@@ -82,27 +82,31 @@ namespace Medic.Entities
 
                 b.Property(model => model.IZNumChild).HasMaxLength(12);
 
-                b.Property(model => model.VisitDocumentUniqueIdentifier).HasMaxLength(12);
+                b.Property(model => model.VisitDoctorUniqueIdentifier).HasMaxLength(12);
 
-                b.Property(model => model.VisitDocumentName).HasMaxLength(150);
+                b.Property(model => model.VisitDoctorName).HasMaxLength(150);
 
                 b.Property(model => model.OutUniqueIdentifier).HasMaxLength(12);
-
-                b.Property(model => model.APrPriem).HasColumnType("decimal(15,4)");
-
-                b.Property(model => model.APrSend).HasColumnType("decimal(15,4)");
 
                 b.Property(model => model.AllDrugCost).HasColumnType("decimal(15,4)");
 
                 b.Property(model => model.AllDoneProcedures).HasColumnType("decimal(15,4)");
-
-                b.Property(model => model.MedicalWard).HasColumnType("decimal(15,4)");
 
                 b.Property(model => model.BirthPractice).HasMaxLength(10);
 
                 b.Property(model => model.RedirectedClinicalPath).HasMaxLength(6);
 
                 b.Property(model => model.RedirectedProc).HasMaxLength(4);
+
+                b.Property(model => model.APrPriem).HasMaxLength(10);
+
+                b.Property(model => model.CPrPriem).HasMaxLength(10);
+
+                b.Property(model => model.APrSend).HasMaxLength(10);
+
+                b.Property(model => model.CPrSend).HasMaxLength(10);
+
+                b.Property(model => model.MedicalWard).HasMaxLength(10);
             });
         }
     }

@@ -157,13 +157,13 @@
     <value>Имунофенотип/ имунохистохимия</value>
   </data>
   <data name="AprCode" xml:space="preserve">
-    <value>Код амбулаторна процедура при изпращане на пациента</value>
+    <value>Код амбулаторна процедура</value>
   </data>
   <data name="APrPriem" xml:space="preserve">
     <value>Код амбулаторна процедура при прием на пациента</value>
   </data>
   <data name="APrSend" xml:space="preserve">
-    <value>Код клинична процедура при изпращане на пациента</value>
+    <value>Код амбулаторна процедура при изпращане на пациента</value>
   </data>
   <data name="Asc" xml:space="preserve">
     <value>Възходящ ред</value>
@@ -652,7 +652,7 @@
     <value>Изписване  амбулаторна процедура</value>
   </data>
   <data name="OutClinicalPath" xml:space="preserve">
-    <value>Изписване клиничен път</value>
+    <value>Изписване клиничен пътека</value>
   </data>
   <data name="OutCodeDiagnoses" xml:space="preserve">
     <value>Кодове на диагнози при изписване</value>
@@ -688,7 +688,7 @@
     <value>Тип на изписване</value>
   </data>
   <data name="OutUniqueIdentifier" xml:space="preserve">
-    <value>Номер на лекуващият лекар</value>
+    <value>Индетификатор на лекуващият лекар</value>
   </data>
   <data name="PackageType" xml:space="preserve">
     <value>Тип на пакета</value>
@@ -832,7 +832,7 @@
     <value>Бащино име</value>
   </data>
   <data name="SendApr" xml:space="preserve">
-    <value>Aмбулаторна процедура</value>
+    <value>Изпратена амбулаторна процедура</value>
   </data>
   <data name="SendClinicalPath" xml:space="preserve">
     <value>Клинична пътека на изпращането</value>
@@ -951,11 +951,11 @@
   <data name="View" xml:space="preserve">
     <value>Преглед</value>
   </data>
-  <data name="VisitDocumentName" xml:space="preserve">
-    <value>Име на документа за посещение</value>
+  <data name="VisitDoctorName" xml:space="preserve">
+    <value>Име на приемащият лекар</value>
   </data>
-  <data name="VisitDocumentUniqueIdentifier" xml:space="preserve">
-    <value>Идентификатор на документа за посещение</value>
+  <data name="VisitDoctorUniqueIdentifier" xml:space="preserve">
+    <value>Идентификатор на приемащият лекар</value>
   </data>
   <data name="Weight" xml:space="preserve">
     <value>Тегло</value>

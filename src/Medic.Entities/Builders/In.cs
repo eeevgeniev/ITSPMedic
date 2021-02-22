@@ -46,11 +46,17 @@ namespace Medic.Entities
 
                 b.HasIndex(model => model.PatientId).IsUnique(false);
 
-                b.Property(model => model.SendClinicalPath).HasMaxLength(10);
-
                 b.Property(model => model.UniqueIdentifier).HasMaxLength(12);
 
+                b.Property(model => model.SendClinicalPath).HasMaxLength(10);
+
                 b.Property(model => model.ClinicalPath).HasMaxLength(10);
+
+                b.Property(model => model.SendAPr).HasMaxLength(10);
+
+                b.Property(model => model.InAPr).HasMaxLength(10);
+
+                b.Property(model => model.InMedicalWard).HasMaxLength(10);
             });
         }
     }

@@ -951,11 +951,11 @@
   <data name="View" xml:space="preserve">
     <value>View</value>
   </data>
-  <data name="VisitDocumentName" xml:space="preserve">
-    <value>Visit document name</value>
+  <data name="VisitDoctorName" xml:space="preserve">
+    <value>Visit doctor name</value>
   </data>
-  <data name="VisitDocumentUniqueIdentifier" xml:space="preserve">
-    <value>Visit document unique identifier</value>
+  <data name="VisitDoctorUniqueIdentifier" xml:space="preserve">
+    <value>Visit doctor unique identifier</value>
   </data>
   <data name="Weight" xml:space="preserve">
     <value>Weight</value>

@@ -59,7 +59,7 @@ namespace Medic.ModelToEHR.Helpers
                     EhrManager.ElementBuilder
                         .Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.AprSend)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.AprSend).Build())
+                        .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.AprSend).Build())
                         .Build());
             }
 
@@ -69,7 +69,7 @@ namespace Medic.ModelToEHR.Helpers
                     EhrManager.ElementBuilder
                         .Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.AprPriem)).Build())
-                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.AprPriem).Build())
+                        .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.AprPriem).Build())
                         .Build());
             }
 

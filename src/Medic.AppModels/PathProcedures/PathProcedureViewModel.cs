@@ -28,10 +28,10 @@ namespace Medic.AppModels.PathProcedures
         public HealthcarePractitionerSummaryViewModel Sender { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.CPrSend)]
-        public double? CPrSend { get; set; }
+        public string CPrSend { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.APrSend)]
-        public decimal? APrSend { get; set; }
+        public string APrSend { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.TypeProcSend)]
         public int TypeProcSend { get; set; }
@@ -40,13 +40,13 @@ namespace Medic.AppModels.PathProcedures
         public DateTime DateSend { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.CPrPriem)]
-        public double? CPrPriem { get; set; }
+        public string CPrPriem { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.APrPriem)]
-        public decimal? APrPriem { get; set; }
+        public string APrPriem { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.MedicalWard)]
-        public decimal MedicalWard { get; set; }
+        public string MedicalWard { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.TypeProcPriem)]
         public int TypeProcPriem { get; set; }
@@ -70,11 +70,11 @@ namespace Medic.AppModels.PathProcedures
         [Display(Name = MedicDataAnnotationLocalizerProvider.DatePlanPriem)]
         public DateTime? DatePlanPriem { get; set; }
 
-        [Display(Name = MedicDataAnnotationLocalizerProvider.VisitDocumentUniqueIdentifier)]
-        public string VisitDocumentUniqueIdentifier { get; set; }
+        [Display(Name = MedicDataAnnotationLocalizerProvider.VisitDoctorUniqueIdentifier)]
+        public string VisitDoctorUniqueIdentifier { get; set; }
 
-        [Display(Name = MedicDataAnnotationLocalizerProvider.VisitDocumentName)]
-        public string VisitDocumentName { get; set; }
+        [Display(Name = MedicDataAnnotationLocalizerProvider.VisitDoctorName)]
+        public string VisitDoctorName { get; set; }
 
         public DiagPreviewViewModel FirstMainDiag { get; set; }
 
@@ -95,10 +95,10 @@ namespace Medic.AppModels.PathProcedures
         public List<DoneProcedureViewModel> DoneProcedures { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.AllDoneProcedures)]
-        public decimal AllDoneProcedures { get; set; }
+        public int? AllDoneProcedures { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.AllDrugCost)]
-        public decimal AllDrugCost { get; set; }
+        public decimal? AllDrugCost { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.PatientStatus)]
         public int PatientStatus { get; set; }

@@ -30,11 +30,11 @@ namespace Medic.Entities
 
         public HealthcarePractitioner Sender { get; set; }
 
-        public double? AprSend { get; set; }
+        public string AprSend { get; set; }
 
         public DateTime SendDate { get; set; }
 
-        public double? AprPriem { get; set; }
+        public string AprPriem { get; set; }
 
         public int SpecCommission { get; set; }
 

@@ -10,7 +10,7 @@ namespace Medic.AppModels.Enums
         FirstMainDiagCode,
         [Display(Name = nameof(SecondMainDiagCode))]
         SecondMainDiagCode,
-        [Display(Name = nameof(TransferDate))]
-        TransferDate
+        [Display(Name = nameof(TransferDateTime))]
+        TransferDateTime
     }
 }

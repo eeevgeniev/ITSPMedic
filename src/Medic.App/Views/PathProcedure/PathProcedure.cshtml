@@ -10,7 +10,7 @@
 {
     <article>
         <header>
-            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathProcedure))} - {@Html.Raw(Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier)}")</h2>
+            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PathProcedure))}, {Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDoctorUniqueIdentifier))} - {@Html.Raw(Model.PathProcedureViewModel.VisitDoctorUniqueIdentifier)}")</h2>
             <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
             <section class="text-right">
                 <a asp-controller="@PathProcedureController.GetName(nameof(PathProcedureController))"
@@ -94,11 +94,11 @@
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstVisitDate)): @Html.Raw((Model.PathProcedureViewModel.FirstVisitDate == default ? default : ((DateTime)Model.PathProcedureViewModel.FirstVisitDate).ToShortDateString()))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DatePlanPriem)): @Html.Raw((Model.PathProcedureViewModel.DatePlanPriem == default ? default : ((DateTime)Model.PathProcedureViewModel.DatePlanPriem).ToShortDateString()))</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentUniqueIdentifier)): @(Model.PathProcedureViewModel.VisitDocumentUniqueIdentifier)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDoctorUniqueIdentifier)): @(Model.PathProcedureViewModel.VisitDoctorUniqueIdentifier)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentName)): @Html.Raw(Model.PathProcedureViewModel.VisitDocumentName)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDoctorName)): @Html.Raw(Model.PathProcedureViewModel.VisitDoctorName)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DateProcedureBegins)): @Html.Raw((Model.PathProcedureViewModel.DateProcedureBegins == default ? default : ((DateTime)Model.PathProcedureViewModel.DateProcedureBegins).ToShortDateString()))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.DateProcedureEnd)): @Html.Raw((Model.PathProcedureViewModel.DateProcedureEnd == default ? default : ((DateTime)Model.PathProcedureViewModel.DateProcedureEnd).ToShortDateString()))</div>
         </div>

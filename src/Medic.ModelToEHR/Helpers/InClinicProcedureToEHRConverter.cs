@@ -31,14 +31,8 @@ namespace Medic.ModelToEHR.Helpers
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PatientHealthRegion)).Build())
                     .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.PatientHealthRegion).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.TypeProcSend)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.TypeProcSend).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.DateSend)).Build())
                     .AddValue(EhrManager.DATEBuilder.Clear().AddDate(model.DateSend).Build()).Build(),
-                EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.TypeProcPriem)).Build())
-                    .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.TypeProcPriem).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.ProcRefuse)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.ProcRefuse).Build()).Build(),
@@ -46,11 +40,11 @@ namespace Medic.ModelToEHR.Helpers
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.IZYearChild)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.IZYearChild).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.VisitDocumentUniqueIdentifier)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.VisitDocumentUniqueIdentifier).Build()).Build(),
+                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.VisitDoctorUniqueIdentifier)).Build())
+                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.VisitDoctorUniqueIdentifier).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
-                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.VisitDocumentName)).Build())
-                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.VisitDocumentName).Build()).Build(),
+                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.VisitDoctorName)).Build())
+                    .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.VisitDoctorName).Build()).Build(),
                 EhrManager.ElementBuilder.Clear()
                     .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.PatientStatus)).Build())
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.PatientStatus).Build()).Build(),
@@ -59,13 +53,33 @@ namespace Medic.ModelToEHR.Helpers
                     .AddValue(EhrManager.INTBuilder.Clear().AddValue(model.NZOKPay).Build()).Build()
                 );
 
+            if (model.TypeProcSend != default)
+            {
+                entryInClinicProcedureBuilder.AddItems(
+                    EhrManager.ElementBuilder
+                        .Clear()
+                        .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.TypeProcSend)).Build())
+                        .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.TypeProcSend).Build())
+                        .Build());
+            }
+
+            if (model.TypeProcPriem != default)
+            {
+                entryInClinicProcedureBuilder.AddItems(
+                     EhrManager.ElementBuilder
+                     .Clear()
+                    .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.TypeProcPriem)).Build())
+                    .AddValue(EhrManager.INTBuilder.Clear().AddValue((int)model.TypeProcPriem).Build())
+                    .Build());
+            }
+            
             if (model.CPrSend != default)
             {
                 entryInClinicProcedureBuilder.AddItems(
                     EhrManager.ElementBuilder
                         .Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.CPrSend)).Build())
-                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.CPrSend).Build())
+                        .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.CPrSend).Build())
                         .Build());
             }
 
@@ -75,7 +89,7 @@ namespace Medic.ModelToEHR.Helpers
                     EhrManager.ElementBuilder
                         .Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.APrSend)).Build())
-                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.APrSend).Build())
+                        .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.APrSend).Build())
                         .Build());
             }
 
@@ -85,7 +99,7 @@ namespace Medic.ModelToEHR.Helpers
                     EhrManager.ElementBuilder
                         .Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.CPrPriem)).Build())
-                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.CPrPriem).Build())
+                        .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.CPrPriem).Build())
                         .Build());
             }
 
@@ -95,7 +109,7 @@ namespace Medic.ModelToEHR.Helpers
                     EhrManager.ElementBuilder
                         .Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.APrPriem)).Build())
-                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.APrPriem).Build())
+                        .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.APrPriem).Build())
                         .Build());
             }
 

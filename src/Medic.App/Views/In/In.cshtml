@@ -10,7 +10,7 @@
 {
     <article>
         <header>
-            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InsView))} - {@Html.Raw(Model.InViewModel.UniqueIdentifier)}")</h2>
+            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InsView))}, {Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UniqueIdentifier))} - {@Html.Raw(Model.InViewModel.UniqueIdentifier)}")</h2>
             <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
             <section class="text-right">
                 <a asp-controller="@InController.GetName(nameof(InController))"
@@ -54,54 +54,56 @@
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendDate)): @Html.Raw(Model.InViewModel.SendDate.ToShortDateString())</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlannedNumber)): @Html.Raw(Model.InViewModel.PlannedNumber)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendUrgency)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>(Model.InViewModel.SendUrgency)))</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendApr)): @Html.Raw(Model.InViewModel.SendAPr)</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Urgency)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>(Model.InViewModel.Urgency)))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendClinicalPath)): @Html.Raw(Model.InViewModel.SendClinicalPath)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalPath)): @Html.Raw(Model.InViewModel.ClinicalPath)</div>
         </div>
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.UniqueIdentifier)): @Html.Raw(Model.InViewModel.UniqueIdentifier)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExaminationDate)): @Html.Raw(Model.InViewModel.ExaminationDate.ToShortDateString())</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlannedNumber)): @Html.Raw(Model.InViewModel.PlannedNumber)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlannedEntryDate)): @Html.Raw(Model.InViewModel.PlannedEntryDate == default ? default : ((DateTime)Model.InViewModel.PlannedEntryDate).ToShortDateString())</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Urgency)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>(Model.InViewModel.Urgency)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendApr)): @Html.Raw(Model.InViewModel.SendAPr)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InApr)): @Html.Raw(Model.InViewModel.InAPr)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ClinicalPath)): @Html.Raw(Model.InViewModel.ClinicalPath)</div>
-        </div>
-        <hr />
-        <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<NZOKPayEnum>(Model.InViewModel.NZOKPay)))</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InMedicalWard)): @Html.Raw(Model.InViewModel.InMedicalWard)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.EntryDate)): @Html.Raw(Model.InViewModel.EntryDate.ToString("g"))</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Severity)): @Html.Raw(Model.InViewModel.Severity)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Delay)): @Html.Raw(Model.InViewModel.Delay == null ? null : medicDataLocalization.Get(enumResolver.GetEnumValue<DelayEnum>((int)Model.InViewModel.Delay)))</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Payer)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<PayerEnum>(Model.InViewModel.Payer)))</div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AgeInDays)): @Html.Raw(Model.InViewModel.AgeInDays)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.WeightInGrams)): @Html.Raw(Model.InViewModel.WeightInGrams)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BirthWeight)): @Html.Raw(Model.InViewModel.BirthWeight)</div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MotherIZYear)): @Html.Raw(Model.InViewModel.MotherIZYear)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MotherIZNo)): @Html.Raw(Model.InViewModel.MotherIZNo)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYear)): @Html.Raw(Model.InViewModel.IZYear)</div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZNo)): @Html.Raw(Model.InViewModel.IZNo)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PackageType)): @Html.Raw(Model.InViewModel.PackageType == null ? null : medicDataLocalization.Get(enumResolver.GetEnumValue<SendPackageTypeEnum>((int)Model.InViewModel.PackageType)))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.SendPackageType)): @Html.Raw(Model.InViewModel.SendPackageType == null ? null : medicDataLocalization.Get(enumResolver.GetEnumValue<SendPackageTypeEnum>((int)Model.InViewModel.SendPackageType)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Severity)): @Html.Raw(Model.InViewModel.Severity)</div>
         </div>
         <hr />
         <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InMedicalWard)): @Html.Raw(Model.InViewModel.InMedicalWard)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.EntryDate)): @Html.Raw(Model.InViewModel.EntryDate.ToString("g"))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Delay)): @Html.Raw(Model.InViewModel.Delay == null ? null : medicDataLocalization.Get(enumResolver.GetEnumValue<DelayEnum>((int)Model.InViewModel.Delay)))</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.Payer)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<PayerEnum>(Model.InViewModel.Payer)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.AgeInDays)): @Html.Raw(Model.InViewModel.AgeInDays)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.WeightInGrams)): @Html.Raw(Model.InViewModel.WeightInGrams)</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.BirthWeight)): @Html.Raw(Model.InViewModel.BirthWeight)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MotherIZYear)): @Html.Raw(Model.InViewModel.MotherIZYear)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.MotherIZNo)): @Html.Raw(Model.InViewModel.MotherIZNo)</div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZYear)): @Html.Raw(Model.InViewModel.IZYear)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.IZNo)): @Html.Raw(Model.InViewModel.IZNo)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPFile)): @Html.Raw(Model.InViewModel.CPFile)</div>
         </div>
     </article>

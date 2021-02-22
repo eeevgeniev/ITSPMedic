@@ -258,8 +258,8 @@ namespace Medic.Resources
         public const string UsedDrugCode = nameof(UsedDrugCode);
         public const string Username = nameof(Username);
         public const string View = nameof(View);
-        public const string VisitDocumentName = nameof(VisitDocumentName);
-        public const string VisitDocumentUniqueIdentifier = nameof(VisitDocumentUniqueIdentifier);
+        public const string VisitDoctorName = nameof(VisitDoctorName);
+        public const string VisitDoctorUniqueIdentifier = nameof(VisitDoctorUniqueIdentifier);
         public const string Weight = nameof(Weight);
         public const string WeightInGrams = nameof(WeightInGrams);
         public const string YoungerThan = nameof(YoungerThan);

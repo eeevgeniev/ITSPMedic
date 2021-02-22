@@ -40,9 +40,9 @@ namespace Medic.Entities
 
         public int? SendPackageType { get; set; }
 
-        public int? SendAPr { get; set; }
+        public string SendAPr { get; set; }
 
-        public double? SendClinicalPath { get; set; }
+        public string SendClinicalPath { get; set; }
 
         public string UniqueIdentifier { get; set; }
 
@@ -50,7 +50,7 @@ namespace Medic.Entities
 
         public DateTime? PlannedEntryDate { get; set; }
 
-        public int PlannedNumber { get; set; }
+        public int? PlannedNumber { get; set; }
 
         public ICollection<Diagnose> Diagnoses { get; set; } = new HashSet<Diagnose>();
 
@@ -58,9 +58,9 @@ namespace Medic.Entities
 
         public int? PackageType { get; set; }
 
-        public int? InAPr { get; set; }
+        public string InAPr { get; set; }
 
-        public double? ClinicalPath { get; set; }
+        public string ClinicalPath { get; set; }
 
         public int NZOKPay { get; set; }
 

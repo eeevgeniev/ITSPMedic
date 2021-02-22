@@ -70,6 +70,7 @@ namespace Medic.Services
                     SendClinicalPath = inEntity.SendClinicalPath,
                     UniqueIdentifier = inEntity.UniqueIdentifier,
                     ExaminationDate = inEntity.ExaminationDate,
+                    PlannedEntryDate = inEntity.PlannedEntryDate,
                     PlannedNumber = inEntity.PlannedNumber,
                     Diagnoses = diagnoses,
                     Urgency = inEntity.Urgency,

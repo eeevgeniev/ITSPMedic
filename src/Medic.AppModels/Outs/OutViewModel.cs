@@ -38,16 +38,16 @@ namespace Medic.AppModels.Outs
         public int SendUrgency { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendClinicalPath)]
-        public double? SendClinicalPath { get; set; }
+        public string SendClinicalPath { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendApr)]
-        public int? SendAPr { get; set; }
+        public string SendAPr { get; set; }
         
         [Display(Name = MedicDataAnnotationLocalizerProvider.PlannedNumber)]
-        public int PlannedNumber { get; set; }
+        public int? PlannedNumber { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.InApr)]
-        public int? InAPr { get; set; }
+        public string InAPr { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.UniqueIdentifier)]
         public string UniqueIdentifier { get; set; }
@@ -67,7 +67,7 @@ namespace Medic.AppModels.Outs
         public int? PackageType { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.ClinicalPath)]
-        public double? ClinicalPath { get; set; }
+        public string ClinicalPath { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendPackageType)]
         public int? SendPackageType { get; set; }
@@ -135,7 +135,7 @@ namespace Medic.AppModels.Outs
         public int? BirthGestWeek { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.OutClinicalPath)]
-        public double OutClinicalPath { get; set; }
+        public string OutClinicalPath { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.OutAPr)]
         public string OutAPr { get; set; }

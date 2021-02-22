@@ -62,10 +62,10 @@ namespace Medic.Models.CP
         public int? SendPackageType { get; set; }
 
         [XmlElement(ElementName = "sendClinicalPath")]
-        public double? SendClinicalPath { get; set; }
+        public string SendClinicalPath { get; set; }
 
         [XmlElement(ElementName = "sendAPr")]
-        public int? SendAPr { get; set; }
+        public string SendAPr { get; set; }
 
         [XmlElement(ElementName = "uin")]
         public string UniqueIdentifier { get; set; }
@@ -111,7 +111,7 @@ namespace Medic.Models.CP
         }
 
         [XmlElement(ElementName = "plannedNo")]
-        public int PlannedNumber { get; set; }
+        public int? PlannedNumber { get; set; }
 
         [XmlElement(ElementName = "diagnose")]
         public List<Diagnose> Diagnoses { get; set; }
@@ -123,10 +123,10 @@ namespace Medic.Models.CP
         public int? PackageType { get; set; }
 
         [XmlElement(ElementName = "clinicalPath")]
-        public double? ClinicalPath { get; set; }
+        public string ClinicalPath { get; set; }
 
         [XmlElement(ElementName = "InAPr")]
-        public int? InAPr { get; set; }
+        public string InAPr { get; set; }
 
         [XmlElement(ElementName = "NZOKPay")]
         public int NZOKPay { get; set; }
@@ -232,7 +232,7 @@ namespace Medic.Models.CP
         public Redirected Redirected { get; set; }
 
         [XmlElement(ElementName = "outClinicalPath")]
-        public double OutClinicalPath { get; set; }
+        public string OutClinicalPath { get; set; }
 
         [XmlElement(ElementName = "outAPr")]
         public string OutAPr { get; set; }
@@ -295,7 +295,6 @@ namespace Medic.Models.CP
 
         [XmlElement(ElementName = "Laparoscopic")]
         public int? Laparoscopic { get; set; }
-
 
         [XmlElement(ElementName = "Pathologic_Finding")]
         public int? PathologicFinding { get; set; }

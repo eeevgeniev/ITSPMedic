@@ -29,10 +29,10 @@ namespace Medic.Models.CLPR
         public Sender Sender { get; set; }
 
         [XmlElement(ElementName = "CPr_Send")]
-        public double? CPrSend { get; set; }
+        public string CPrSend { get; set; }
 
         [XmlElement(ElementName = "APr_Send")]
-        public decimal? APrSend { get; set; }
+        public string APrSend { get; set; }
 
         [XmlElement(ElementName = "TypeProc_Send")]
         public int TypeProcSend { get; set; }
@@ -61,13 +61,13 @@ namespace Medic.Models.CLPR
         }
 
         [XmlElement(ElementName = "CPr_Priem")]
-        public double? CPrPriem { get; set; }
+        public string CPrPriem { get; set; }
 
         [XmlElement(ElementName = "APr_Priem")]
-        public decimal? APrPriem { get; set; }
+        public string APrPriem { get; set; }
 
         [XmlElement(ElementName = "MedicalWard")]
-        public decimal MedicalWard { get; set; }
+        public string MedicalWard { get; set; }
 
         [XmlElement(ElementName = "BirthPractice")]
         public string BirthPractice { get; set; }
@@ -79,7 +79,7 @@ namespace Medic.Models.CLPR
         public int? BirthGestWeek { get; set; }
 
         [XmlElement(ElementName = "TypeProc_Priem")]
-        public int TypeProcPriem { get; set; }
+        public int? TypeProcPriem { get; set; }
 
         [XmlElement(ElementName = "PackageType")]
         public int? PackageType { get; set; }
@@ -146,10 +146,10 @@ namespace Medic.Models.CLPR
         public int? PlannedNumber { get; set; }
 
         [XmlElement(ElementName = "UIN_PriemDoc")]
-        public string VisitDocumentUniqueIdentifier { get; set; }
+        public string VisitDoctorUniqueIdentifier { get; set; }
 
         [XmlElement(ElementName = "Name_PriemDoc")]
-        public string VisitDocumentName { get; set; }
+        public string VisitDoctorName { get; set; }
 
         [XmlElement(ElementName = "MainDiag1")]
         public Diag MainDiag1 { get; set; }
@@ -210,13 +210,13 @@ namespace Medic.Models.CLPR
         public List<DoneProcedure> DoneProcedures { get; set; }
 
         [XmlElement(ElementName = "All_Done_Proc")]
-        public decimal AllDoneProcedures { get; set; }
+        public int? AllDoneProcedures { get; set; }
 
         [XmlElement(ElementName = "All_Days")]
         public int? AllDays { get; set; }
 
         [XmlElement(ElementName = "All_Drug_Cost")]
-        public decimal AllDrugCost { get; set; }
+        public decimal? AllDrugCost { get; set; }
 
 
         [XmlElement(ElementName = "redirectedClinicalPath")]

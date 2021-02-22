@@ -30,9 +30,9 @@ namespace Medic.Entities
 
         public HealthcarePractitioner Sender { get; set; }
 
-        public double? CPrSend { get; set; }
+        public string CPrSend { get; set; }
 
-        public decimal? APrSend { get; set; }
+        public string APrSend { get; set; }
 
         public int TypeProcSend { get; set; }
 
@@ -40,11 +40,11 @@ namespace Medic.Entities
 
         public DateTime DateSend { get; set; }
 
-        public double? CPrPriem { get; set; }
+        public string CPrPriem { get; set; }
 
-        public decimal? APrPriem { get; set; }
+        public string APrPriem { get; set; }
 
-        public decimal MedicalWard { get; set; }
+        public string MedicalWard { get; set; }
 
         public string BirthPractice { get; set; }
 
@@ -80,9 +80,9 @@ namespace Medic.Entities
 
         public int? PlannedNumber { get; set; }
 
-        public string VisitDocumentUniqueIdentifier { get; set; }
+        public string VisitDoctorUniqueIdentifier { get; set; }
 
-        public string VisitDocumentName { get; set; }
+        public string VisitDoctorName { get; set; }
 
         public int? FirstMainDiagId { get; set; }
 
@@ -104,11 +104,11 @@ namespace Medic.Entities
 
         public ICollection<DoneProcedure> DoneProcedures { get; set; } = new HashSet<DoneProcedure>();
 
-        public decimal AllDoneProcedures { get; set; }
+        public int? AllDoneProcedures { get; set; }
 
         public int? AllDays { get; set; }
 
-        public decimal AllDrugCost { get; set; }
+        public decimal? AllDrugCost { get; set; }
 
         public string RedirectedClinicalPath { get; set; }
 

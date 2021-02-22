@@ -187,7 +187,7 @@
     <value>Код амбулаторна процедура при прием на пациента</value>
   </data>
   <data name="APrSend" xml:space="preserve">
-    <value>Код клинична процедура при изпращане на пациента</value>
+    <value>Код амбулаторна процедура при изпращане на пациента</value>
   </data>
   <data name="Asc" xml:space="preserve">
     <value>Възходящ ред</value>
@@ -340,7 +340,7 @@
     <value>Качете нов CP файл</value>
   </data>
   <data name="CPrPriem" xml:space="preserve">
-    <value>Тип на приема при изпращане на пациента</value>
+    <value>Код клинична при прием на пациента</value>
   </data>
   <data name="CPrSend" xml:space="preserve">
     <value>Код клинична процедура при изпращане на пациента</value>
@@ -904,10 +904,10 @@
     <value>Други документи</value>
   </data>
   <data name="OutAPr" xml:space="preserve">
-    <value>Aмбулаторна процедура</value>
+    <value>Изписване  амбулаторна процедура</value>
   </data>
   <data name="OutClinicalPath" xml:space="preserve">
-    <value>Изписване клиничен път</value>
+    <value>Изписване клиничен пътека</value>
   </data>
   <data name="OutDate" xml:space="preserve">
     <value>Дата на изписване</value>
@@ -952,7 +952,7 @@
     <value>Тип на изписване</value>
   </data>
   <data name="OutUniqueIdentifier" xml:space="preserve">
-    <value>Уникален номер при изписване</value>
+    <value>Идентификатор на лекуващият лекар</value>
   </data>
   <data name="OutView" xml:space="preserve">
     <value>Преглед на изписване на пациент</value>
@@ -1006,7 +1006,7 @@
     <value>Статус на пациента</value>
   </data>
   <data name="PatientTransfers" xml:space="preserve">
-    <value>Трансфери на пациенти</value>
+    <value>Превеждане на пациенти</value>
   </data>
   <data name="Payer" xml:space="preserve">
     <value>Начин на плащане</value>
@@ -1153,7 +1153,7 @@
     <value>Име на втората основна диагноза</value>
   </data>
   <data name="SendApr" xml:space="preserve">
-    <value>Aмбулаторна процедура</value>
+    <value>Изпратена амбулаторна процедура</value>
   </data>
   <data name="SendClinicalPath" xml:space="preserve">
     <value>Клинична пътека на изпращането</value>
@@ -1282,7 +1282,7 @@
     <value>Дата и час на превеждане</value>
   </data>
   <data name="TransferDateTime" xml:space="preserve">
-    <value>Дата на трансферът</value>
+    <value>Дата на превеждане</value>
   </data>
   <data name="Transferred" xml:space="preserve">
     <value>Преведен в друга болница - извършено лечение</value>
@@ -1321,7 +1321,7 @@
     <value>Неосигорен по 09 или 10 Кл.Пр-заплаща се от МЗ.</value>
   </data>
   <data name="UniqueIdentifier" xml:space="preserve">
-    <value>Уникалне номер на приемащият лекар</value>
+    <value>Уникален номер на приемащият лекар</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Обнови</value>
@@ -1392,11 +1392,11 @@
   <data name="ViewTransfer" xml:space="preserve">
     <value>Преглед на превеждането</value>
   </data>
-  <data name="VisitDocumentName" xml:space="preserve">
-    <value>Име на документа за посещение</value>
+  <data name="VisitDoctorName" xml:space="preserve">
+    <value>Име на приемащият лекар</value>
   </data>
-  <data name="VisitDocumentUniqueIdentifier" xml:space="preserve">
-    <value>Идентификатор на документа за посещение</value>
+  <data name="VisitDoctorUniqueIdentifier" xml:space="preserve">
+    <value>Идентификатор на приемащият лекар</value>
   </data>
   <data name="Weight" xml:space="preserve">
     <value>Тегло</value>

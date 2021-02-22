@@ -67,9 +67,17 @@ namespace Medic.Entities
 
                 b.HasIndex(model => model.PatientId).IsUnique(false);
 
-                b.Property(model => model.VisitDocumentUniqueIdentifier).HasMaxLength(12);
+                b.Property(model => model.VisitDoctorUniqueIdentifier).HasMaxLength(12);
 
-                b.Property(model => model.VisitDocumentName).HasMaxLength(200);
+                b.Property(model => model.VisitDoctorName).HasMaxLength(200);
+
+                b.Property(model => model.CPrSend).HasMaxLength(10);
+
+                b.Property(model => model.APrSend).HasMaxLength(10);
+
+                b.Property(model => model.CPrPriem).HasMaxLength(10);
+
+                b.Property(model => model.APrPriem).HasMaxLength(10);
             });
         }
     }

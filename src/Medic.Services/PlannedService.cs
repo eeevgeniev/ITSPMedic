@@ -26,9 +26,11 @@ namespace Medic.Services
             return await Task<PlannedViewModel>.Run(() =>
             {
                 Planned planned = MedicContext.Plannings
-                    .Include(o => o.PatientBranch)
+                    .Include(p => p.PatientBranch)
                         .ThenInclude(pb => pb.HealthRegion)
-                    .Include(o => o.PatientHRegion)
+                    .Include(p => p.PatientHRegion)
+                    .Include(p => p.CPFile)
+                        .ThenInclude(cp => cp.FileType)
                     .SingleOrDefault(p => p.Id == id);
 
                 if (planned == default)
@@ -57,6 +59,8 @@ namespace Medic.Services
                     SendDiagnoses = sendDiagnose,
                     SendUrgency = planned.SendUrgency,
                     SendClinicalPath = planned.SendClinicalPath,
+                    SendAPr = planned.SendAPr,
+                    InAPr = planned.InAPr,
                     UniqueIdentifier = planned.UniqueIdentifier,
                     ExaminationDate = planned.ExaminationDate,
                     PlannedEntryDate = planned.PlannedEntryDate,
@@ -64,7 +68,8 @@ namespace Medic.Services
                     Diagnoses = diagnose,
                     Urgency = planned.Urgency,
                     ClinicalPath = planned.ClinicalPath,
-                    NZOKPay = planned.NZOKPay
+                    NZOKPay = planned.NZOKPay,
+                    CPFile = planned?.CPFile?.FileType?.Name ?? default
                 };
             });
         }

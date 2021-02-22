@@ -30,21 +30,21 @@ namespace Medic.Entities
 
         public HealthcarePractitioner Sender { get; set; }
 
-        public double? CPrSend { get; set; }
+        public string CPrSend { get; set; }
 
-        public double? APrSend { get; set; }
+        public string APrSend { get; set; }
 
-        public int TypeProcSend { get; set; }
+        public int? TypeProcSend { get; set; }
 
         public int? SendPackageType { get; set; }
 
         public DateTime DateSend { get; set; }
 
-        public double? CPrPriem { get; set; }
+        public string CPrPriem { get; set; }
 
-        public double? APrPriem { get; set; }
+        public string APrPriem { get; set; }
 
-        public int TypeProcPriem { get; set; }
+        public int? TypeProcPriem { get; set; }
 
         public int? PackageType { get; set; }
 
@@ -72,9 +72,9 @@ namespace Medic.Entities
 
         public int? PlannedNumber { get; set; }
 
-        public string VisitDocumentUniqueIdentifier { get; set; }
+        public string VisitDoctorUniqueIdentifier { get; set; }
 
-        public string VisitDocumentName { get; set; }
+        public string VisitDoctorName { get; set; }
 
         public int? FirstMainDiagId { get; set; }
 

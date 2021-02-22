@@ -100,7 +100,21 @@ namespace Medic.Entities
 
                 b.Property(model => model.BirthPractice).HasMaxLength(12);
 
-                b.Property(model => model.OutAPr).HasMaxLength(12);
+                b.Property(model => model.OutAPr).HasMaxLength(10);
+
+                b.Property(model => model.ClinicalPath).HasMaxLength(10);
+
+                b.Property(model => model.SendAPr).HasMaxLength(10);
+
+                b.Property(model => model.InAPr).HasMaxLength(10);
+
+                b.Property(model => model.InMedicalWard).HasMaxLength(10);
+
+                b.Property(model => model.OutAPr).HasMaxLength(10);
+
+                b.Property(model => model.OutClinicalPath).HasMaxLength(10);
+
+                b.Property(model => model.OutMedicalWard).HasMaxLength(10);
 
                 b.Property(model => model.HLNumber).HasMaxLength(12);
 

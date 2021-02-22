@@ -26,7 +26,7 @@ namespace Medic.Models.CLPR
         public Sender Sender { get; set; }
 
         [XmlElement(ElementName = "APr_Send")]
-        public double? AprSend { get; set; }
+        public string AprSend { get; set; }
 
         [XmlIgnore]
         public DateTime SendDate
@@ -49,7 +49,7 @@ namespace Medic.Models.CLPR
         }
 
         [XmlElement(ElementName = "APr_Priem")]
-        public double? AprPriem { get; set; }
+        public string AprPriem { get; set; }
 
         [XmlElement(ElementName = "Spec_Commission")]
         public int SpecCommission { get; set; }

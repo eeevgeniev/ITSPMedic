@@ -327,8 +327,8 @@ namespace Medic.Resources
         public const string ViewPatient = nameof(ViewPatient);
         public const string ViewPlannedProcedure = nameof(ViewPlannedProcedure);
         public const string ViewProtocolDrugTherapy = nameof(ViewProtocolDrugTherapy);
-        public const string VisitDocumentName = nameof(VisitDocumentName);
-        public const string VisitDocumentUniqueIdentifier = nameof(VisitDocumentUniqueIdentifier);
+        public const string VisitDoctorName = nameof(VisitDoctorName);
+        public const string VisitDoctorUniqueIdentifier = nameof(VisitDoctorUniqueIdentifier);
         public const string Weight = nameof(Weight);
         public const string WeightInGrams = nameof(WeightInGrams);
         public const string ExportAsXml = nameof(ExportAsXml);

@@ -25,13 +25,13 @@ namespace Medic.AppModels.CommissionAprs
         public HealthcarePractitionerSummaryViewModel Sender { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.APrSend)]
-        public double? AprSend { get; set; }
+        public string AprSend { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.SendDate)]
         public DateTime SendDate { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.APrPriem)]
-        public double? AprPriem { get; set; }
+        public string AprPriem { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.SpecCommission)]
         public int SpecCommission { get; set; }

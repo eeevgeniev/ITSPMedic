@@ -27,13 +27,13 @@ namespace Medic.Models.CLPR
         public Sender Sender { get; set; }
 
         [XmlElement(ElementName = "CPr_Send")]
-        public double? CPrSend { get; set; }
+        public string CPrSend { get; set; }
 
         [XmlElement(ElementName = "APr_Send")]
-        public double? APrSend { get; set; }
+        public string APrSend { get; set; }
 
         [XmlElement(ElementName = "TypeProc_Send")]
-        public decimal? TypeProcSend { get; set; }
+        public int? TypeProcSend { get; set; }
 
         [XmlElement(ElementName = "sendPackageType")]
         public int? SendPackageType { get; set; }
@@ -59,13 +59,13 @@ namespace Medic.Models.CLPR
         }
 
         [XmlElement(ElementName = "CPr_Priem")]
-        public double? CPrPriem { get; set; }
+        public string CPrPriem { get; set; }
 
         [XmlElement(ElementName = "APr_Priem")]
-        public double? APrPriem { get; set; }
+        public string APrPriem { get; set; }
 
         [XmlElement(ElementName = "TypeProc_Priem")]
-        public int TypeProcPriem { get; set; }
+        public int? TypeProcPriem { get; set; }
 
         [XmlElement(ElementName = "PackageType")]
         public int? PackageType { get; set; }
@@ -137,10 +137,10 @@ namespace Medic.Models.CLPR
         public int? PlannedNumber { get; set; }
 
         [XmlElement(ElementName = "UIN_PriemDoc")]
-        public string VisitDocumentUniqueIdentifier { get; set; }
+        public string VisitDoctorUniqueIdentifier { get; set; }
 
         [XmlElement(ElementName = "Name_PriemDoc")]
-        public string VisitDocumentName { get; set; }
+        public string VisitDoctorName { get; set; }
 
         [XmlElement(ElementName = "MainDiag1")]
         public Diag MainDiag1 { get; set; }

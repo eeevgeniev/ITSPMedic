@@ -10,7 +10,7 @@
 {
     <article>
         <header>
-            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InClinicProcedure))} - {@Html.Raw(Model.InClinicProcedureViewModel.VisitDocumentUniqueIdentifier)}")</h2>
+            <h2 class="text-center">@($"{Html.Raw(medicDataLocalization.Get(MedicDataLocalization.InClinicProcedure))}, {Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDoctorUniqueIdentifier))} - {@Html.Raw(Model.InClinicProcedureViewModel.VisitDoctorUniqueIdentifier)}")</h2>
             <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
             <section class="text-right">
                 <a asp-controller="@InClinicProcedureController.GetName(nameof(InClinicProcedureController))"
@@ -59,13 +59,13 @@
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.APrSend)): @Html.Raw(Model.InClinicProcedureViewModel.APrSend)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcSend)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>(Model.InClinicProcedureViewModel.TypeProcSend)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcSend)): @(Model.InClinicProcedureViewModel.TypeProcSend != default ? @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>((int)Model.InClinicProcedureViewModel.TypeProcSend))) : default)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.CPrPriem)): @Html.Raw(Model.InClinicProcedureViewModel.CPrPriem)</div>
         </div>
         <hr />
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.APrPriem)): @Html.Raw(Model.InClinicProcedureViewModel.APrPriem)</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcPriem)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>(Model.InClinicProcedureViewModel.TypeProcPriem)))</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.TypeProcPriem)): @(Model.InClinicProcedureViewModel.TypeProcPriem != default ? @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<SendUrgencyEnum>((int)Model.InClinicProcedureViewModel.TypeProcPriem))) : default)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ProcRefuse)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<YesNoEnum>(Model.InClinicProcedureViewModel.ProcRefuse)))</div>
         </div>
         <hr />
@@ -78,11 +78,11 @@
         <div class="row">
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.FirstVisitDate)): @Html.Raw((Model.InClinicProcedureViewModel.FirstVisitDate == default ? default : ((DateTime)Model.InClinicProcedureViewModel.FirstVisitDate).ToShortDateString()))</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.PlanVisitDate)): @Html.Raw((Model.InClinicProcedureViewModel.PlanVisitDate == default ? default : ((DateTime)Model.InClinicProcedureViewModel.PlanVisitDate).ToShortDateString()))</div>
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentUniqueIdentifier)): @Html.Raw(Model.InClinicProcedureViewModel.VisitDocumentUniqueIdentifier)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDoctorUniqueIdentifier)): @Html.Raw(Model.InClinicProcedureViewModel.VisitDoctorUniqueIdentifier)</div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDocumentName)): @Html.Raw(Model.InClinicProcedureViewModel.VisitDocumentName)</div>
+            <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.VisitDoctorName)): @Html.Raw(Model.InClinicProcedureViewModel.VisitDoctorName)</div>
             <div class="col-sm-4">@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.NZOKPay)): @Html.Raw(medicDataLocalization.Get(enumResolver.GetEnumValue<NZOKPayEnum>(Model.InClinicProcedureViewModel.NZOKPay)))</div>
         </div>
     </article>
