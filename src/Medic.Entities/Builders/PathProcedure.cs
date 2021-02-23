@@ -90,8 +90,6 @@ namespace Medic.Entities
 
                 b.Property(model => model.AllDrugCost).HasColumnType("decimal(15,4)");
 
-                b.Property(model => model.AllDoneProcedures).HasColumnType("decimal(15,4)");
-
                 b.Property(model => model.BirthPractice).HasMaxLength(10);
 
                 b.Property(model => model.RedirectedClinicalPath).HasMaxLength(6);

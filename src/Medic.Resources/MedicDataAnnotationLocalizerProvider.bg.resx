@@ -523,7 +523,7 @@
     <value>Потребителят е администратор</value>
   </data>
   <data name="IZMedicalWard" xml:space="preserve">
-    <value>ИЗ на пациента на клиничната пътека от която е приведен</value>
+    <value>ИЗ на пациента на клиничната пътека от която е преведен</value>
   </data>
   <data name="IZNo" xml:space="preserve">
     <value>ИЗ номер</value>
@@ -541,7 +541,7 @@
     <value>ИЗ Година на детето (новородено)</value>
   </data>
   <data name="IZYearMedicalWard" xml:space="preserve">
-    <value>ИЗ година на пациента на клиничната пътека от която е приведен</value>
+    <value>ИЗ година на пациента на клиничната пътека от която е преведен</value>
   </data>
   <data name="Key" xml:space="preserve">
     <value>Ключ</value>

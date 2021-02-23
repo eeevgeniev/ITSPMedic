@@ -12,7 +12,7 @@ namespace Medic.Entities
 
                 b.Property(model => model.Note).HasMaxLength(2000);
 
-                b.Property(model => model.Code).HasColumnType("decimal(15,4)");
+                b.Property(model => model.Code).HasMaxLength(10);
             });
         }
     }

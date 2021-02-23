@@ -9,7 +9,7 @@ namespace Medic.Models.CP
         private DateTime _date;
         
         [XmlElement(ElementName = "code")]
-        public decimal Code { get; set; }
+        public string Code { get; set; }
 
         [XmlIgnore]
         public DateTime Date

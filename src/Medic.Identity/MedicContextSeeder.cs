@@ -27,7 +27,7 @@ namespace Medic.Identity
 
         public void Seed(List<(string username, string password, string email)> accounts)
         {
-            MedicIdentityContext.Database.EnsureCreated();
+            MedicIdentityContext.Database.Migrate();
 
             if (accounts == default || accounts.Count < 1)
             {

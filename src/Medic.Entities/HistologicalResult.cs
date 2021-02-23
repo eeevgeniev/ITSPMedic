@@ -13,7 +13,7 @@ namespace Medic.Entities
     {
         public int Id { get; set; }
 
-        public decimal Code { get; set; }
+        public string Code { get; set; }
 
         public DateTime Date { get; set; }
 

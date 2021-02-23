@@ -1,5 +1,6 @@
 ﻿using Medic.Contexts.Contracts;
 using Medic.Entities;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Medic.Contexts.Seeders
 
         public void Seed()
         {
-            MedicContext.Database.EnsureCreated();
+            MedicContext.Database.Migrate();
 
             bool isSpecialtyInserted = MedicContext.SpecialtyTypes.Any();
             bool isRegionsInserted = MedicContext.HealthRegions.Any();

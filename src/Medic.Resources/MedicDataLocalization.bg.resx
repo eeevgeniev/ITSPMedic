@@ -241,13 +241,13 @@
     <value>Пациентът заплаща лечението си сам</value>
   </data>
   <data name="CeasedClinicalPath" xml:space="preserve">
-    <value>Приведен по клинична пътека</value>
+    <value>Преведен по клинична пътека</value>
   </data>
   <data name="CeasedOnly" xml:space="preserve">
-    <value>Приведен по процедура</value>
+    <value>Преведен по процедура</value>
   </data>
   <data name="CeasedProcedure" xml:space="preserve">
-    <value>Приведен от клинична процедура</value>
+    <value>Преведен от клинична процедура</value>
   </data>
   <data name="Chairman" xml:space="preserve">
     <value>Председател</value>
@@ -751,7 +751,7 @@
     <value>Преглед на прием на пациент</value>
   </data>
   <data name="IZMedicalWard" xml:space="preserve">
-    <value>ИЗ на пациента на клиничната пътека от която е приведен</value>
+    <value>ИЗ на пациента на клиничната пътека от която е преведен</value>
   </data>
   <data name="IZNo" xml:space="preserve">
     <value>ИЗ номер</value>
@@ -766,7 +766,7 @@
     <value>ИЗ Година на детето (новородено)</value>
   </data>
   <data name="IZYearMedicalWard" xml:space="preserve">
-    <value>ИЗ година на пациента на клиничната пътека от която е приведен</value>
+    <value>ИЗ година на пациента на клиничната пътека от която е преведен</value>
   </data>
   <data name="KOC" xml:space="preserve">
     <value>КОЦ</value>
