@@ -181,13 +181,13 @@
     <value>Амбулаторни процедури 38</value>
   </data>
   <data name="AprCode" xml:space="preserve">
-    <value>Код амбулаторна процедура при изпращане на пациента</value>
+    <value>Код на амбулаторна процедура при изпращане на пациента</value>
   </data>
   <data name="APrPriem" xml:space="preserve">
-    <value>Код амбулаторна процедура при прием на пациента</value>
+    <value>Код на амбулаторна процедура при прием на пациента</value>
   </data>
   <data name="APrSend" xml:space="preserve">
-    <value>Код амбулаторна процедура при изпращане на пациента</value>
+    <value>Код на амбулаторна процедура при изпращане на пациента</value>
   </data>
   <data name="Asc" xml:space="preserve">
     <value>Възходящ ред</value>
@@ -340,10 +340,10 @@
     <value>Качете нов CP файл</value>
   </data>
   <data name="CPrPriem" xml:space="preserve">
-    <value>Код клинична при прием на пациента</value>
+    <value>Код на клинична процедура при прием на пациента</value>
   </data>
   <data name="CPrSend" xml:space="preserve">
-    <value>Код клинична процедура при изпращане на пациента</value>
+    <value>Код на клинична процедура при изпращане на пациента</value>
   </data>
   <data name="CreateUser" xml:space="preserve">
     <value>Създай потребител</value>
@@ -997,7 +997,7 @@
     <value>Пациенти</value>
   </data>
   <data name="PatientSign" xml:space="preserve">
-    <value>Положен попис на пациента</value>
+    <value>Положен подпис на пациента</value>
   </data>
   <data name="PatientsSummary" xml:space="preserve">
     <value>Пациенти, МКБ, процедури</value>
