@@ -459,7 +459,7 @@ namespace Medic.ModelToEHR.Helpers
                 .AddItems(
                     EhrManager.ElementBuilder.Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Code)).Build())
-                        .AddValue(EhrManager.REALBuilder.Clear().AddValue((double)model.Code).Build())
+                        .AddValue(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(model.Code).Build())
                         .Build(),
                     EhrManager.ElementBuilder.Clear()
                         .AddName(EhrManager.SimpleTextBuilder.Clear().AddOriginalText(nameof(model.Date)).Build())

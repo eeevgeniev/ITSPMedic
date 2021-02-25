@@ -9,7 +9,7 @@ namespace Medic.AppModels.HistologicalResult
         public int Id { get; set; }
         
         [Display(Name = MedicDataAnnotationLocalizerProvider.Code)]
-        public decimal Code { get; set; }
+        public string Code { get; set; }
 
         [Display(Name = MedicDataAnnotationLocalizerProvider.Date)]
         public DateTime Date { get; set; }
