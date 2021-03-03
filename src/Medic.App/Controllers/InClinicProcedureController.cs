@@ -217,15 +217,14 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(InClinicProcedureSearch search, int page = 1)
+        public async Task<IActionResult> Excel(InClinicProcedureSearch search)
         {
             try
             {
                 InClinicProcedureWhereBuilder inClinicProcedureWhereBuilder = new InClinicProcedureWhereBuilder(search);
 
-                string searchParams = search != default ? search.ToString() : default;
-
-                List<InClinicProcedurePreviewViewModel> inClinicProcedures = await GetPage(search, inClinicProcedureWhereBuilder, searchParams, page);
+                List<InClinicProcedurePreviewViewModel> inClinicProcedures = await InClinicProcedureService
+                    .GetInClinicProceduresAsync(inClinicProcedureWhereBuilder, new InClinicProcedureHelperBuilder(default), 0);
 
                 if (inClinicProcedures == default)
                 {

@@ -234,7 +234,7 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(ProtocolDrugTherapySearch search, int page = 1)
+        public async Task<IActionResult> Excel(ProtocolDrugTherapySearch search)
         {
             try
             {
@@ -242,7 +242,8 @@ namespace Medic.App.Controllers
 
                 string searchParams = search != default ? search.ToString() : default;
 
-                List<ProtocolDrugTherapyPreviewViewModel> protocolDrugTherapies = await GetPage(search, protocolDrugTherapyWhereBuilder, searchParams, page);
+                List<ProtocolDrugTherapyPreviewViewModel> protocolDrugTherapies = 
+                    await ProtocolDrugTherapyService.GetProtocolDrugTherapiesAsync(protocolDrugTherapyWhereBuilder, new ProtocolDrugTherapyHelperBuilder(default), 0);
 
                 if (protocolDrugTherapies == default)
                 {

@@ -232,15 +232,14 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(PathProcedureSearch search, int page = 1)
+        public async Task<IActionResult> Excel(PathProcedureSearch search)
         {
             try
             {
                 PathProcedureWhereBuilder pathProcedureWhereBuilder = new PathProcedureWhereBuilder(search);
 
-                string searchParams = search != default ? search.ToString() : default;
-
-                List<PathProcedurePreviewViewModel> pathProcedures = await GetPage(search, pathProcedureWhereBuilder, searchParams, page);
+                List<PathProcedurePreviewViewModel> pathProcedures = 
+                    await PathProcedureService.GetPathProceduresAsync(pathProcedureWhereBuilder, new PathProcedureHelperBuilder(default), 0);
 
                 if (pathProcedures == default)
                 {

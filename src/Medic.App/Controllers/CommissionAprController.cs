@@ -216,15 +216,14 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(CommissionAprSearch search, int page = 1)
+        public async Task<IActionResult> Excel(CommissionAprSearch search)
         {
             try
             {
                 CommissionAprWhereBuilder commissionAprWhereBuilder = new CommissionAprWhereBuilder(search);
 
-                string searchParams = search != default ? search.ToString() : default;
-
-                List<CommissionAprPreviewViewModel> commissionAprs = await GetPage(search, commissionAprWhereBuilder, searchParams, page);
+                List<CommissionAprPreviewViewModel> commissionAprs = 
+                    await CommissionAprService.GetCommissionAprsAsync(commissionAprWhereBuilder, new CommissionAprHelperBuilder(default), 0);
 
                 if (commissionAprs == default)
                 {

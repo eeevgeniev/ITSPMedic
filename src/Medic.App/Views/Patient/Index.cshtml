@@ -8,7 +8,11 @@
     bool hasResults = Model.Patients != default && Model.Patients.Count > 0;
 
     Dictionary<string, string> paramsByName = Model.Search != default ? Model.Search.BuildQuery(default) : new Dictionary<string, string>();
-    Dictionary<string, string> excelByName = new Dictionary<string, string>(paramsByName);
+
+    Dictionary<string, string> excelByName = new Dictionary<string, string>(paramsByName.Where(kv =>
+    !string.Equals(kv.Key, nameof(Model.Search.Length), StringComparison.OrdinalIgnoreCase) &&
+    !string.Equals(kv.Key, nameof(Model.Search.Order), StringComparison.OrdinalIgnoreCase) &&
+    !string.Equals(kv.Key, nameof(Model.Search.Direction), StringComparison.OrdinalIgnoreCase)));
 
     ViewData[Constants.Sexes] = Model.Sexes;
 }
@@ -18,10 +22,9 @@
         <h2 class="text-center">@($"{Html.Raw(patientLocalization.Get(PatientLocalization.PatientSearch))} - {Html.Raw(Model.TotalResults)} {Html.Raw(patientLocalization.Get(PatientLocalization.Results))}")</h2>
         <h4 class="text-center text-info">@Html.Raw(Model.Keywords)</h4>
         <section class="text-right">
-            <a asp-controller="@DispObservationController.GetName(nameof(DispObservationController))"
-               asp-action="@nameof(DispObservationController.Excel)"
+            <a asp-controller="@PatientController.GetName(nameof(PatientController))"
+               asp-action="@nameof(PatientController.Excel)"
                asp-all-route-data="@excelByName"
-               asp-route-page="@Model.CurrentPage"
                download
                title="@Html.Raw(patientLocalization.Get(MedicDataLocalization.ExportAsExcel))"
                class="export-anchor">

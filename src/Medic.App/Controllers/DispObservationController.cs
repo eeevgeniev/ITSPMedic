@@ -216,15 +216,14 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(DispObservationSearch search, int page = 1)
+        public async Task<IActionResult> Excel(DispObservationSearch search)
         {
             try
             {
                 DispObservationWhereBuilder dispObservationWhereBuilder = new DispObservationWhereBuilder(search);
 
-                string searchParams = search != default ? search.ToString() : default;
-
-                List<DispObservationPreviewViewModel> dispObservations = await GetPage(search, dispObservationWhereBuilder, searchParams, page);
+                List<DispObservationPreviewViewModel> dispObservations = 
+                    await DispObservationService.GetDispObservationsAsync(dispObservationWhereBuilder, new DispObservationHelperBuilder(default), 0);
 
                 if (dispObservations == default)
                 {

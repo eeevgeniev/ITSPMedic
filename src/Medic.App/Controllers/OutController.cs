@@ -232,15 +232,13 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(OutSearch search, int page = 1)
+        public async Task<IActionResult> Excel(OutSearch search)
         {
             try
             {
                 OutWhereBuilder outWhereBuilder = new OutWhereBuilder(search);
 
-                string searchParams = search != default ? search.ToString() : default;
-
-                List<OutPreviewViewModel> outs = await GetPage(search, outWhereBuilder, searchParams, page);
+                List<OutPreviewViewModel> outs = await OutService.GetOutsAsync(outWhereBuilder, new OutHelperBuilder(default), 0);
 
                 if (outs == default)
                 {

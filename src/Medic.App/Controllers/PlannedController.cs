@@ -216,15 +216,14 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(PlannedSearch search, int page = 1)
+        public async Task<IActionResult> Excel(PlannedSearch search)
         {
             try
             {
                 PlannedWhereBuilder plannedWhereBuilder = new PlannedWhereBuilder(search);
 
-                string searchParams = search != default ? search.ToString() : default;
-
-                List<PlannedPreviewViewModel> plannings = await GetPage(search, plannedWhereBuilder, searchParams, page);
+                List<PlannedPreviewViewModel> plannings = 
+                    await PlannedService.GetPlanningsAsync(plannedWhereBuilder, new PlannedHelperBuilder(default), 0);
 
                 if (plannings == default)
                 {
