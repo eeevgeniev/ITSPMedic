@@ -11,7 +11,6 @@
         <section class="text-right">
             <a asp-controller="@InController.GetName(nameof(HomeController))"
                asp-action="@nameof(HomeController.DiagsAsExcel)"
-               asp-route-page="@Model.CurrentPage"
                download
                title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))"
                class="export-anchor">

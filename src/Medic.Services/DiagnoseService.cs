@@ -23,6 +23,13 @@ namespace Medic.Services
             return await GetModel().CountAsync();
         }
 
+        public async Task<List<DiagnoseMKBSummaryViewModel>> MKBSummaryAsync()
+        {
+            return await GetModel()
+                .OrderByDescending(d => d.Count)
+                .ToListAsync();
+        }
+
         public async Task<List<DiagnoseMKBSummaryViewModel>> MKBSummaryAsync(int startIndex, int take)
         {
             return await GetModel()
