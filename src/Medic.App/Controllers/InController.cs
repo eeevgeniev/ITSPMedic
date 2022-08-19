@@ -216,15 +216,13 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(InsSearch search, int page = 1)
+        public async Task<IActionResult> Excel(InsSearch search)
         {
             try
             {
                 InWhereBuilder inWhereBuilder = new InWhereBuilder(search);
 
-                string searchParams = search != default ? search.ToString() : default;
-
-                List<InPreviewViewModel> ins = await GetPage(search, inWhereBuilder, searchParams, page);
+                List<InPreviewViewModel> ins = await InService.GetInsAsync(inWhereBuilder, new InHelperBuilder(default), 0);
 
                 if (ins == default)
                 {

@@ -162,13 +162,18 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> DiagsAsExcel(int page = 1)
+        public async Task<IActionResult> DiagsAsExcel()
         {
             try
             {
-                int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
+                string key = $"{nameof(DiagMKBSummaryViewModel)} - all";
 
-                List<DiagMKBSummaryViewModel> model = await GetDiags(startIndex, MedicConstants.SummaryPageLength);
+                if (!MedicCache.TryGetValue(key, out List<DiagMKBSummaryViewModel> model))
+                {
+                    model = await DiagService.GetMKBSummaryAsync();
+
+                    MedicCache.Set(key, model);
+                }
 
                 if (model == default)
                 {
@@ -235,13 +240,18 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> DiagnosesAsExcel(int page = 1)
+        public async Task<IActionResult> DiagnosesAsExcel()
         {
             try
             {
-                int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
+                string key = $"{nameof(DiagnoseMKBSummaryViewModel)} - all";
 
-                List<DiagnoseMKBSummaryViewModel> model = await GetDiagnoses(startIndex, MedicConstants.SummaryPageLength);
+                if (!MedicCache.TryGetValue(key, out List<DiagnoseMKBSummaryViewModel> model))
+                {
+                    model = await DiagnoseService.MKBSummaryAsync();
+
+                    MedicCache.Set(key, model);
+                }
 
                 if (model == default)
                 {
@@ -308,13 +318,18 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> UsedDrugsAsExcel(int page = 1)
+        public async Task<IActionResult> UsedDrugsAsExcel()
         {
             try
             {
-                int startIndex = base.GetStartIndex(MedicConstants.SummaryPageLength, page);
+                string key = $"{nameof(UsedDrugsSummaryStatistic)} - all";
 
-                List<UsedDrugsSummaryStatistic> model = await GetUsedDrugs(startIndex, MedicConstants.SummaryPageLength);
+                if (!MedicCache.TryGetValue(key, out List<UsedDrugsSummaryStatistic> model))
+                {
+                    model = await UsedDrugService.UsedDrugsSummaryAsync();
+
+                    MedicCache.Set(key, model);
+                }
 
                 if (model == default)
                 {

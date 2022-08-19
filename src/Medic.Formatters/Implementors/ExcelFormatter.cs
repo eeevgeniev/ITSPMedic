@@ -118,7 +118,10 @@ namespace Medic.Formatters.Implementors
                             CellValue = new CellValue(propertyValue?.ToString() ?? string.Empty)
                         };
 
-                        if (propertyValue is long || propertyValue is ulong || propertyValue is double || propertyValue is decimal)
+                        if (propertyValue is byte || propertyValue is sbyte || 
+                            propertyValue is short || propertyValue is ushort || 
+                            propertyValue is int || propertyValue is uint || 
+                            propertyValue is long || propertyValue is ulong)
                         {
                             cell.DataType = CellValues.Number;
                         }

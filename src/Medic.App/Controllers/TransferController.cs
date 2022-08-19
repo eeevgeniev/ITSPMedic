@@ -205,16 +205,13 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(TransferSearch search, int page = 1)
+        public async Task<IActionResult> Excel(TransferSearch search)
         {
             try
             {
                 TransferWhereBuilder transferWhereBuilder = new TransferWhereBuilder(search);
 
-                string searchParams = search != default ? search.ToString() : default;
-
-                List<TransferPreviewViewModel> transfers = await GetPage(search, transferWhereBuilder, searchParams, page);
-
+                List<TransferPreviewViewModel> transfers = await TransferService.GetTrasnfersAsync(transferWhereBuilder, new TransferHelperBuilder(default), 0);
                 if (transfers == default)
                 {
                     return BadRequest();
@@ -253,7 +250,7 @@ namespace Medic.App.Controllers
             return model;
         }
 
-        private async Task<List<TransferPreviewViewModel>> GetPage(TransferSearch search, TransferWhereBuilder plannedWhereBuilder, string searchParams, int page)
+        private async Task<List<TransferPreviewViewModel>> GetPage(TransferSearch search, TransferWhereBuilder transferWhereBuilder, string searchParams, int page)
         {
             int pageLength = (int)search.Length;
             int startIndex = base.GetStartIndex(pageLength, page);
@@ -264,7 +261,7 @@ namespace Medic.App.Controllers
             {
                 TransferHelperBuilder helperBuilder = new TransferHelperBuilder(search);
 
-                plannings = await TransferService.GetTrasnfersAsync(plannedWhereBuilder, helperBuilder, startIndex);
+                plannings = await TransferService.GetTrasnfersAsync(transferWhereBuilder, helperBuilder, startIndex);
 
                 base.MedicCache.Set(transferKey, plannings);
             }

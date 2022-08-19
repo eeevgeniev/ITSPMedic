@@ -209,15 +209,13 @@ namespace Medic.App.Controllers
             }
         }
 
-        public async Task<IActionResult> Excel(PatientSearch search, int page = 1)
+        public async Task<IActionResult> Excel(PatientSearch search)
         {
             try
             {
                 PatientWhereBuilder patientWhereBuilder = new PatientWhereBuilder(search);
 
-                string searchParams = search != default ? search.ToString() : default;
-
-                List<PatientPreviewViewModel> patientsModel = await GetPage(search, patientWhereBuilder, searchParams, page);
+                List<PatientPreviewViewModel> patientsModel = await PatientService.GetPatientsByQueryAsync(patientWhereBuilder, new PatientHelperBuilder(default), 0);
 
                 if (patientsModel == default)
                 {

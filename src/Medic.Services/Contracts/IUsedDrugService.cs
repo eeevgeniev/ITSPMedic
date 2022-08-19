@@ -8,6 +8,8 @@ namespace Medic.Services.Contracts
     {
         Task<List<UsedDrugCodeOption>> UsedDrugsByCodeAsync();
 
+        Task<List<UsedDrugsSummaryStatistic>> UsedDrugsSummaryAsync();
+
         Task<List<UsedDrugsSummaryStatistic>> UsedDrugsSummaryAsync(int startIndex, int take);
 
         Task<int> UsedDrugsSummaryCountAsync();

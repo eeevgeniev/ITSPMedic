@@ -450,8 +450,7 @@ namespace Medic.Import
                     (p.IdentityNumber != default && string.Equals(p.IdentityNumber, patient.IdentityNumber, StringComparison.OrdinalIgnoreCase)) ||
                     (p.LNCH != default && string.Equals(p.LNCH, patient.LNCH, StringComparison.OrdinalIgnoreCase)) ||
                     (p.NAPNumber != default && string.Equals(p.NAPNumber, patient.NAPNumber, StringComparison.OrdinalIgnoreCase)) ||
-                    (p.PersonalIdNumber != default && string.Equals(p.PersonalIdNumber, patient.PersonalIdNumber, StringComparison.OrdinalIgnoreCase)) ||
-                    (DateTime.Equals(p.BirthDate, patient.BirthDate) && patient.IdentityNumber == default && patient.LNCH == default && patient.NAPNumber == default && patient.PersonalIdNumber == default));
+                    (p.PersonalIdNumber != default && string.Equals(p.PersonalIdNumber, patient.PersonalIdNumber, StringComparison.OrdinalIgnoreCase)));
 
                 if (currentPatient == default)
                 {
@@ -459,8 +458,7 @@ namespace Medic.Import
                     (p.IdentityNumber != default && EF.Functions.Like(p.IdentityNumber, patient.IdentityNumber)) ||
                     (p.LNCH != default && EF.Functions.Like(p.LNCH, patient.LNCH)) ||
                     (p.NAPNumber != default && EF.Functions.Like(p.NAPNumber, patient.NAPNumber)) ||
-                    (p.PersonalIdNumber != default && EF.Functions.Like(p.PersonalIdNumber, patient.PersonalIdNumber)) ||
-                    (DateTime.Equals(p.BirthDate, patient.BirthDate) && patient.IdentityNumber == default && patient.LNCH == default && patient.NAPNumber == default && patient.PersonalIdNumber == default));
+                    (p.PersonalIdNumber != default && EF.Functions.Like(p.PersonalIdNumber, patient.PersonalIdNumber)));
                     
                     if (currentPatient == default)
                     {

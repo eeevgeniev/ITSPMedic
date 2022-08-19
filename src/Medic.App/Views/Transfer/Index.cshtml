@@ -6,7 +6,11 @@
     ViewData[Constants.Title] = Model.Title;
 
     Dictionary<string, string> paramsByName = Model.Search != default ? Model.Search.BuildQuery(default) : new Dictionary<string, string>();
-    Dictionary<string, string> excelByName = new Dictionary<string, string>(paramsByName);
+
+    Dictionary<string, string> excelByName = new Dictionary<string, string>(paramsByName.Where(kv =>
+    !string.Equals(kv.Key, nameof(Model.Search.Length), StringComparison.OrdinalIgnoreCase) &&
+    !string.Equals(kv.Key, nameof(Model.Search.Order), StringComparison.OrdinalIgnoreCase) &&
+    !string.Equals(kv.Key, nameof(Model.Search.Direction), StringComparison.OrdinalIgnoreCase)));
 }
 
 <article>
@@ -17,7 +21,6 @@
             <a asp-controller="@TransferController.GetName(nameof(TransferController))"
                asp-action="@nameof(TransferController.Excel)"
                asp-all-route-data="@excelByName"
-               asp-route-page="@Model.CurrentPage"
                download
                title="@Html.Raw(medicDataLocalization.Get(MedicDataLocalization.ExportAsExcel))"
                class="export-anchor">

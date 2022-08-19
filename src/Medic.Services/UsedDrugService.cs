@@ -27,6 +27,39 @@ namespace Medic.Services
                     .ToListAsync();
         }
 
+        public async Task<List<UsedDrugsSummaryStatistic>> UsedDrugsSummaryAsync()
+        {
+            return await MedicContext.Outs
+                .Include(o => o.UsedDrugs)
+                .Include(o => o.OutMainDiagnose)
+                    .ThenInclude(d => d.Primary)
+                .Where(o => o.UsedDrugs.Any(ud => ud.OutId == o.Id))
+                .SelectMany(o => o.UsedDrugs)
+                .GroupBy(ud => new
+                {
+                    UsedDrugCode = ud.Code,
+                    OutDiagnoseCode = ud.Out.OutMainDiagnose.Primary.Code,
+                    OutDiagnoseName = ud.Out.OutMainDiagnose.Primary.Name
+                },
+                ud => new
+                {
+                    ud.Quantity,
+                    ud.Cost
+                })
+                .Select((v) => new UsedDrugsSummaryStatistic()
+                {
+                    UsedDrugCode = v.Key.UsedDrugCode,
+                    OutDiagnoseName = v.Key.OutDiagnoseName,
+                    OutDiagnoseCode = v.Key.OutDiagnoseCode,
+                    TotalUses = v.Count(),
+                    AverageQuantity = v.Average(v => v.Quantity),
+                    TotalCosts = v.Sum(v => v.Cost)
+                })
+                .OrderBy(v => v.UsedDrugCode)
+                .ThenByDescending(v => v.TotalUses)
+                .ToListAsync();
+        }
+
         public async Task<List<UsedDrugsSummaryStatistic>> UsedDrugsSummaryAsync(int startIndex, int take)
         {
             return await MedicContext.Outs

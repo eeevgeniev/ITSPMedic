@@ -59,7 +59,10 @@ namespace Medic.App.Controllers.Base
             memoryStream = (MemoryStream)excelFormatter.Save();
             memoryStream.Position = 0;
 
-            return new FileStreamResult(memoryStream, excelFormatter.MimeType);
+            return new FileStreamResult(memoryStream, excelFormatter.MimeType)
+            {
+                FileDownloadName = DateTime.Now.ToUniversalTime().ToString("O")
+            };
         }
     }
 }
